@@ -15,6 +15,6 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
           server: food.progocrm.com
-          username: ${{ secrete.USERNAME }}
-          password: ${{ secrete.PASSWORD }}
+          username: ${{ secretes.USERNAME }}
+          password: ${{ secretes.PASSWORD }}
           server-dir: /
