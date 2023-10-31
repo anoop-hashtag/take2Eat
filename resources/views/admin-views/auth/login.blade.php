@@ -45,7 +45,7 @@
                         @csrf
                         <div class="auth-header">
                             <div class="mb-5">
-                                <h2 class="title">{{translate('sign_in')}}</h2>
+                                <h2 class="title title-new-class">{{translate('sign_in')}}</h2>
                                 <div class="text-capitalize">{{translate('welcome_back')}}</div>
                                 <p class="mb-0 text-capitalize">{{translate('want_to_login_your_branches')}}?
                                     <a href="{{route('branch.auth.login')}}">{{translate('branch_login')}}</a>
