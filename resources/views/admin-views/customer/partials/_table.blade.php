@@ -21,7 +21,7 @@
                 {{$customer->orders->count()}}
             </label>
         </td>
-        <td>{{$customer->orders->sum('order_amount')}}</td>
+        <td>₹{{$customer->orders->sum('order_amount')}}</td>
         <td class="show-point-{{$customer['id']}}-table">
             {{$customer['point']}}
         </td>

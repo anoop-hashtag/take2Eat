@@ -180,7 +180,7 @@
                                 <dl class="row text-sm-right">
                                     <dt class="col-sm-6">Items Price:</dt>
                                     <dd class="col-sm-6">{{$sub_total." ".\App\CentralLogics\Helpers::currency_symbol()}}</dd>
-                                    <dt class="col-sm-6">Tax / VAT:</dt>
+                                    <dt class="col-sm-6">Tax / GST:</dt>
                                     <dd class="col-sm-6">{{$total_tax." ".\App\CentralLogics\Helpers::currency_symbol()}}</dd>
                                     <dt class="col-sm-6">Addon Cost:</dt>
                                     <dd class="col-sm-6">

@@ -138,7 +138,7 @@
                                         <div class="form-floating" style="margin-bottom: 10px">
                                             <label for="exampleFormControlInput1"
                                                    class="form-label">{{ucwords(str_replace('_',' ',$key))}}
-                                                *</label>
+                                               <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control"
                                                    name="{{$key}}"
                                                    placeholder="{{ucwords(str_replace('_',' ',$key))}} *"

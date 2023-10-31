@@ -688,9 +688,15 @@ input.qty {
 .addon-wrap .addon-item .addon-input {
   min-height: 40px;
   border: 1px solid #d0dbe9;
-  max-width: 100px;
+  max-width: 160px;
+  flex-direction: column;
+  justify-content: center;
 }
-
+.addon-pricedw {
+  font-weight: 600;
+  font-size: 13px;
+  margin: 5px 0 0;
+}
 .addon-wrap .addon-quantity-input {
   z-index: 9;
   margin-top: -1rem;

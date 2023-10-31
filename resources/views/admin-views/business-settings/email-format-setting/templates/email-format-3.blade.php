@@ -56,7 +56,7 @@ $company_name = App\Model\BusinessSetting::where('key', 'restaurant_name')->firs
                                                         </td>
                                                         <td class="text-right p-2 px-3">
                                                             <h4>
-                                                                $5,465
+                                                            ₹5,465
                                                             </h4>
                                                         </td>
                                                     </tr>
@@ -66,7 +66,7 @@ $company_name = App\Model\BusinessSetting::where('key', 'restaurant_name')->firs
                                                         </td>
                                                         <td class="text-right p-2 px-3">
                                                             <h4>
-                                                                $354
+                                                            ₹354
                                                             </h4>
                                                         </td>
                                                     </tr>
@@ -77,37 +77,37 @@ $company_name = App\Model\BusinessSetting::where('key', 'restaurant_name')->firs
                                                                 <tr>
                                                                     <td style="width: 40%"></td>
                                                                     <td class="p-1 px-3">Item Price</td>
-                                                                    <td class="text-right p-1 px-3">$85</td>
+                                                                    <td class="text-right p-1 px-3">₹85</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 40%"></td>
                                                                     <td class="p-1 px-3">Addon</td>
-                                                                    <td class="text-right p-1 px-3">$85</td>
+                                                                    <td class="text-right p-1 px-3">₹85</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 40%"></td>
                                                                     <td class="p-1 px-3">Sub total</td>
-                                                                    <td class="text-right p-1 px-3">$90</td>
+                                                                    <td class="text-right p-1 px-3">₹90</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 40%"></td>
                                                                     <td class="p-1 px-3">Discount</td>
-                                                                    <td class="text-right p-1 px-3">$10</td>
+                                                                    <td class="text-right p-1 px-3">₹10</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 40%"></td>
                                                                     <td class="p-1 px-3">Coupon Discount</td>
-                                                                    <td class="text-right p-1 px-3">$00</td>
+                                                                    <td class="text-right p-1 px-3">₹00</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 40%"></td>
-                                                                    <td class="p-1 px-3">VAT / Tax</td>
-                                                                    <td class="text-right p-1 px-3">$15</td>
+                                                                    <td class="p-1 px-3">GST / Tax</td>
+                                                                    <td class="text-right p-1 px-3">₹15</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 40%"></td>
                                                                     <td class="p-1 px-3">Delivery Charge</td>
-                                                                    <td class="text-right p-1 px-3">$20</td>
+                                                                    <td class="text-right p-1 px-3">₹20</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="width: 40%"></td>
@@ -115,7 +115,7 @@ $company_name = App\Model\BusinessSetting::where('key', 'restaurant_name')->firs
                                                                         <h4>Total</h4>
                                                                     </td>
                                                                     <td class="text-right p-1 px-3">
-                                                                        <span class="text-base">$105</span>
+                                                                        <span class="text-base">₹105</span>
                                                                     </td>
                                                                 </tr>
                                                             </table>

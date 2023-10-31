@@ -303,7 +303,7 @@
 
                                     <dt class="col-6">
                                         <div class="d-flex max-w220 ml-auto">
-                                            <span>{{translate('tax')}} / {{translate('vat')}}</span>
+                                            <span>{{translate('tax')}} / {{translate('GST')}}</span>
                                             <span>:</span>
                                         </div>
                                     </dt>

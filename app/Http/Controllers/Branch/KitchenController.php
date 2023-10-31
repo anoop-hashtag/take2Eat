@@ -39,6 +39,7 @@ class KitchenController extends Controller
         $request->validate([
             'f_name' => 'required',
             'l_name' => 'required',
+            'country_code' => 'required',
             'phone' => 'required|unique:users,phone',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
@@ -46,11 +47,12 @@ class KitchenController extends Controller
         ], [
             'f_name.required' => translate('First name is required!'),
             'l_name.required' => translate('Last name is required!'),
-            'phone.required' => translate('Phone is required'),
-            'phone.unique' => translate('This phone is already taken! please try another one'),
-            'email.required' => translate('Email is Required'),
-            'email.email' => translate('Field type must be email'),
-            'email.unique' => translate('This email is already taken! please try another one'),
+            'country_code'    => translate('Country Code is required!'),
+            'phone.required'  => translate('Phone is required'),
+            'phone.unique'    => translate('This phone is already taken! please try another one'),
+            'email.required'  => translate('Email is Required'),
+            'email.email'     => translate('Field type must be email'),
+            'email.unique'    => translate('This email is already taken! please try another one'),
             'password.required' => translate('Password is Required'),
             'password.min' => translate('Password length must be 6 character'),
             'image.required' => translate('Image is Required'),
@@ -61,12 +63,15 @@ class KitchenController extends Controller
             $chef = $this->user;
             $chef->f_name = $request->f_name;
             $chef->l_name = $request->l_name;
-            $chef->phone = $request->phone;
+            $chef->country_code = $request->country_code;
+            $chef->phone = preg_replace("/\D/", "", $request->phone);
+                         
             $chef->email = $request->email;
             $chef->user_type = 'kitchen';
             $chef->is_active = 1;
             $chef->password = bcrypt($request->password);
             $chef->image = Helpers::upload('kitchen/', 'png', $request->file('image'));
+            // dd($chef);
             $chef->save();
 
             $chef_id = $chef->id;
@@ -151,11 +156,13 @@ class KitchenController extends Controller
         $request->validate([
             'f_name' => 'required',
             'l_name' => 'required',
+            'country_code' => 'required',
             'phone' => 'required|unique:users,phone,' . $id,
             'email' => 'required|email|unique:users,email,' . $id,
         ], [
             'f_name.required' => translate('First name is required!'),
             'l_name.required' => translate('Last name is required!'),
+            'country_code'    => translate('Country Code is required!'),
             'phone.required' => translate('Phone is Required'),
             'phone.unique' => translate('This email is already taken! please try another one'),
             'email.required' => translate('Email is Required'),
@@ -179,10 +186,13 @@ class KitchenController extends Controller
 
             $chef->f_name = $request->f_name;
             $chef->l_name = $request->l_name;
-            $chef->phone = $request->phone;
+            $chef->country_code = $request->country_code;
+            $chef->phone = preg_replace("/\D/", "", $request->phone);
             $chef->email = $request->email;
             $chef->password = $password;
             $chef->image = $request->has('image') ? Helpers::update('kitchen/', $chef->image, 'png', $request->file('image')) : $chef->image;
+            $chef->image = $request->has('image') ? Helpers::update('kitchen/', $chef->image, 'png', $request->file('image')) : $chef->image;
+            
             $chef->update();
 
             $chef_id = $chef->id;

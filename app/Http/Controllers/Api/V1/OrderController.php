@@ -403,40 +403,49 @@ class OrderController extends Controller
      * @return JsonResponse
      */
     public function get_order_list(Request $request): JsonResponse
-    {
-        $user_id = (bool)auth('api')->user() ? auth('api')->user()->id : $request['guest_id'];
-        $user_type = (bool)auth('api')->user() ? 0 : 1;
+{
+    $user_id = (bool)auth('api')->user() ? auth('api')->user()->id : $request['guest_id'];
+    $user_type = (bool)auth('api')->user() ? 0 : 1;
 
-        $orders = $this->order->with(['customer', 'delivery_man.rating'])
-            ->withCount('details')
-            ->where(['user_id' => $user_id, 'is_guest' => $user_type])
-            ->get();
-
-        $orders->map(function ($data) {
+    $orders = $this->order->with(['details','customer', 'delivery_man.rating'])
+        ->withCount('details')
+        ->where(['user_id' => $user_id, 'is_guest' => $user_type])
+        ->get();
+       
+        $modifiedOrders = $orders->map(function ($data) {
+            // Assuming $data["details"] is an array, and you want to process the first element
+            if (isset($data["details"][0])) {
+                $productJson = json_decode($data["details"][0]["product_details"]);
+        
+                // Check if the "product_details" were successfully decoded and contain an image
+                if ($productJson && isset($productJson->image) && !empty($productJson->image)) {
+                    // Product image is available
+                    $data["is_product_available"] = 1;
+                    $data["product_image"] = url("storage/app/public/product/" . $productJson->image);
+                } else {
+                    // Product image is not available
+                    $data["is_product_available"] = 0;
+                    $data["product_image"] = null; // Set to null or an appropriate default image URL
+                }
+            } else {
+                // Handle the case where $data["details"][0] does not exist
+                $data["is_product_available"] = 0;
+                $data["product_image"] = null; // Set to null or an appropriate default image URL
+            }
+        
             $data['deliveryman_review_count'] = DMReview::where(['delivery_man_id' => $data['delivery_man_id'], 'order_id' => $data['id']])->count();
-
-            //is product available
-            $order_id = $data->id;
-            $order_details = $this->order_detail->where('order_id', $order_id)->first();
-            $product_id = null;
-            $product = null;
-            if (isset($order_details))
-                $product_id = $order_details->product_id;
-
-            if (isset($product_id))
-                $product = $this->product->find($product_id);
-
-            $data['is_product_available'] = isset($product) ? 1 : 0;
-
-
+        
             return $data;
         });
+        
 
-        return response()->json($orders->map(function ($data) {
-            $data->details_count = (integer)$data->details_count;
-            return $data;
-        }), 200);
-    }
+    return response()->json($orders->map(function ($data) {
+        $data->details_count = (integer)$data->details_count;
+         
+        return $data;
+    }), 200);
+}
+
 
     /**
      * @param Request $request

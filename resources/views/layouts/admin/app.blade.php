@@ -74,7 +74,7 @@
                         <div class="col-12">
                             <center>
                                 <h2 style="color: rgba(96,96,96,0.68)">
-                                    <i class="tio-shopping-cart-outlined"></i> {{ translate('You have new order, Check Please.') }}
+                                    <i class="tio-shopping-cart-outlined"></i> {{ translate('You have a new order, please check.') }}
                                 </h2>
                                 <hr>
                                 <button onclick="check_order()" class="btn btn-primary">{{ translate('Ok, let me check') }}</button>
@@ -315,25 +315,25 @@
 {{-- Internet Status Check --}}
 <script>
     @if(env('APP_MODE')=='live')
-    //Internet Status Check
+    // Internet Status Check
     window.addEventListener('online', function() {
-        toastr.success('{{translate('Became online')}}');
+        toastr.success("You're online");
     });
     window.addEventListener('offline', function() {
-        toastr.error('{{translate('Became offline')}}');
+        toastr.error("You're offline");
     });
 
-    //Internet Status Check (after any event)
+    // Internet Status Check (after any event)
     document.body.addEventListener("click", function(event) {
-        if(window.navigator.onLine === false) {
-            toastr.error('{{translate('You are in offline')}}');
+        if (window.navigator.onLine === false) {
+            toastr.error("You are in offline");
             event.preventDefault();
         }
     }, false);
     @endif
-
-
 </script>
+
+
 
 <!-- IE Support -->
 <script>

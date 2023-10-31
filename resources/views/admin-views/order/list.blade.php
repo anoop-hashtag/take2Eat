@@ -13,7 +13,9 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-1">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/all_orders.png')}}" alt="">
                 <span class="page-header-title">
-                {{translate($status)}} {{translate('Orders')}}
+                <!-- {{$status =='canceled' ? 'cancelled':''}} {{translate('Orders')}} -->
+                {{$status =='canceled' ? 'cancelled':''}} {{translate('orders')}}
+               
                 </span>
             </h2>
             <span class="badge badge-soft-dark rounded-50 fz-14">{{ $orders->total() }}</span>

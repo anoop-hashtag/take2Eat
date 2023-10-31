@@ -115,7 +115,7 @@
                     @else
                         <div class="row p-2">
                             <div class="col-5 pr-0">
-                                <input type="text" class="form-control form-control-lg" name="default_captcha_value" value=""
+                                <input type="text" class="form-control form-control-lg border border-primary" name="default_captcha_value" value=""
                                        placeholder="{{translate('Enter captcha value')}}" style="border: none" autocomplete="off">
                             </div>
                             <div class="col-7 input-icons" class="bg-white rounded">

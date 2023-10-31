@@ -95,7 +95,7 @@
                         <div class="col-12">
                             <center>
                                 <h2 style="color: rgba(96,96,96,0.68)">
-                                    <i class="tio-shopping-cart-outlined"></i> {{ translate('You have new order, Check Please.') }}
+                                    <i class="tio-shopping-cart-outlined"></i> {{ translate('You have a new order, please check.') }}
                                 </h2>
                                 <hr>
                                 <button onclick="check_order()" class="btn btn-primary">{{ translate('Ok, let me check') }}</button>

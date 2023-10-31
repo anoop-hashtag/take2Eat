@@ -216,7 +216,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <input id="tax_input" type="number" min="0" step="any" name="tax" class="form-control"
-                                                               placeholder="{{translate('Ex : $100')}}" required>
+                                                               placeholder="{{translate('Ex : ₹100')}}" required>
                                                     </div>
                                                 </div>
                                             </div>

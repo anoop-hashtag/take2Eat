@@ -120,7 +120,7 @@
   'System Setup' => 'System Setup',
   'profile' => 'Profile',
   'Home' => 'Home',
-  'You have new order, Check Please.' => 'You have new order, Check Please.',
+  'You have a new order, please check.' => 'You have a new order, please check.',
   'Ok, let me check' => 'Ok, let me check',
   'Are you sure?' => 'Are you sure ',
   'Status changed successfully' => 'Status changed successfully',

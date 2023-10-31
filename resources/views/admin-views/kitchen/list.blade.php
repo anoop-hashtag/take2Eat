@@ -56,6 +56,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
+                                   
                                     <th>{{translate('Name')}}</th>
                                     <th>{{translate('Contact_Info')}}</th>
                                     <th>{{translate('Branch')}}</th>
@@ -67,7 +68,20 @@
                             @foreach($chefs as $k=>$chef)
                                 <tr>
                                     <td><span>{{$k+1}}</span></td>
-                                    <td class="text-capitalize">{{$chef['f_name'] . ' ' . $chef['l_name']}}</td>
+                                   
+                                    <td>
+                                            <div class="media gap-3 align-items-center">
+                                                <div class="avatar">
+                                                    <img width="60" class="img-fit rounded-circle"
+                                                        onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
+                                                        src="{{asset('storage/app/public/kitchen')}}/{{$chef['image']}}">
+                                                    {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
+                                                </div>
+                                                <div class="media-body text-capitalize">
+                                                    {{$chef['f_name'].' '.$chef['l_name']}}
+                                                </div>
+                                            </div>
+                                        </td>
                                     <td>
                                         <div><a class="text-dark" href="mailto:{{$chef['email']}}"><strong>{{$chef['email']}}</strong></a></div>
                                         <div><a class="text-dark" href="tel:{{$chef['phone']}}">{{$chef['phone']}}</a></div>

@@ -88,13 +88,13 @@
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('start')}} {{translate('date')}}</label>
-                                        <input type="text" name="start_date" class="js-flatpickr form-control flatpickr-custom" placeholder="yyyy-mm-dd" data-hs-flatpickr-options='{ "dateFormat": "Y/m/d", "minDate": "today" }'>
+                                        <input type="text" name="start_date" class="js-flatpickr form-control flatpickr-custom" placeholder="DD-MM-YYYY" data-hs-flatpickr-options='{ "dateFormat": "d-m-Y", "minDate": "today" }'>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('expire')}} {{translate('date')}}</label>
-                                        <input type="text" name="expire_date" class="js-flatpickr form-control flatpickr-custom" placeholder="yyyy-mm-dd" data-hs-flatpickr-options='{ "dateFormat": "Y/m/d", "minDate": "today" }'>
+                                        <input type="text" name="expire_date" class="js-flatpickr form-control flatpickr-custom" placeholder="DD-MM-YYYY" data-hs-flatpickr-options='{ "dateFormat": "d/m/y", "minDate": "today" }'>
                                     </div>
                                 </div>
                             </div>

@@ -47,7 +47,7 @@
     <a class="order-stats order-stats_canceled" href="{{route('branch.orders.list',['canceled'])}}">
         <div class="order-stats__content">
             <img width="20" src="{{asset('public/assets/admin/img/icons/canceled.png')}}" class="order-stats__img" alt="">
-            <h6 class="order-stats__subtitle">{{translate('canceled')}}</h6>
+            <h6 class="order-stats__subtitle">{{translate('cancelled')}}</h6>
         </div>
         <span class="order-stats__title">
             {{$data['all']}}

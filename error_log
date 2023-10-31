@@ -393,3 +393,6 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/amone/public_html/efood/index.php on line 24
+[30-Oct-2023 14:30:39 Asia/Calcutta] PHP Fatal error:  Cannot redeclare App\Http\Controllers\Api\V1\OrderController::get_order_details() in /home3/progocrm/food.progocrm.com/app/Http/Controllers/Api/V1/OrderController.php on line 481
+[30-Oct-2023 14:30:40 Asia/Calcutta] PHP Fatal error:  Cannot redeclare App\Http\Controllers\Api\V1\OrderController::get_order_details() in /home3/progocrm/food.progocrm.com/app/Http/Controllers/Api/V1/OrderController.php on line 481
+[31-Oct-2023 14:44:03 Asia/Calcutta] PHP Deprecated:  Optional parameter $token declared before required parameter $language_code is implicitly treated as a required parameter in /home3/progocrm/food.progocrm.com/app/Mail/EmailVerification.php on line 24

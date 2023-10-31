@@ -26,7 +26,7 @@
                     <div class="row justify-content-between align-items-center gy-2">
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <div>
-                                <form action="http://localhost:8000/admin/table/order/list/completed" method="GET">
+                                <form action="{{url('admin/table/order/list/completed')}}" method="GET">
                                     <div class="input-group">
                                         <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="Search by ID  customer or payment status" aria-label="Search" value="" required="" autocomplete="off">
                                         <div class="input-group-append">
