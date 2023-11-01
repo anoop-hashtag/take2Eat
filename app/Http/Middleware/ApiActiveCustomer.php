@@ -19,7 +19,7 @@ class ApiActiveCustomer
         return response()->json([
             'is_active' => Auth::user()->is_active,
             'from' => 'middleware',
-        ], 401);
+        ], 200);
 
         if (Auth::user()->is_active == 1) {
             return $next($request);
