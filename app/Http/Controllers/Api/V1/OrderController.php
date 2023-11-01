@@ -489,19 +489,32 @@ class OrderController extends Controller
      * @return JsonResponse
      */
     public function cancel_order(Request $request): JsonResponse
-    {
-        if ($this->order->where(['user_id' => $request->user()->id, 'id' => $request['order_id']])->first()) {
-            $this->order->where(['user_id' => $request->user()->id, 'id' => $request['order_id']])->update([
+{
+    // Validate the request input, e.g., check if 'order_id' is present and valid.
+    // You can also use request validation rules here.
+
+    // Ensure the user is authenticated
+    if ($request->user()) {
+        // Find the order based on user_id and order_id
+        $order = $this->order->where(['user_id' => $request->user()->id, 'id' => $request['order_id']])->first();
+
+        if ($order) {
+            // Update the order status to 'canceled'
+            $order->update([
                 'order_status' => 'canceled'
             ]);
             return response()->json(['message' => translate('order_canceled')], 200);
         }
-        return response()->json([
-            'errors' => [
-                ['code' => 'order', 'message' => translate('no_data_found')]
-            ]
-        ], 401);
     }
+
+    // If the user is not authenticated or the order is not found, return an error response
+    return response()->json([
+        'errors' => [
+            ['code' => 'order', 'message' => translate('no_data_found')]
+        ]
+    ], 401);
+}
+
 
     /**
      * @param Request $request
