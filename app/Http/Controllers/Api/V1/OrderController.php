@@ -496,11 +496,10 @@ class OrderController extends Controller
     // You can also use request validation rules here.
 
     // Ensure the user is authenticated
-    dd(auth('api')->user());
     if (auth('api')->user()) {
         // Find the order based on user_id and order_id
         $order = $this->order->where(['user_id' => auth('api')->user()->id, 'id' => $request->order_id])->first();
-        dd($order);
+       
         if ($order) {
             // Update the order status to 'canceled'
             $order->update([
