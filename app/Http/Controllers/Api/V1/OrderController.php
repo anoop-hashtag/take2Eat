@@ -405,7 +405,6 @@ class OrderController extends Controller
      */
     public function get_order_list(Request $request): JsonResponse
 {
-    dd(auth('api')->user()->id);
     $user_id = (bool)auth('api')->user() ? auth('api')->user()->id : $request['guest_id'];
     $user_type = (bool)auth('api')->user() ? 0 : 1;
 
@@ -497,11 +496,10 @@ class OrderController extends Controller
     // You can also use request validation rules here.
 
     // Ensure the user is authenticated
-    dd(Auth::user()?->is_active, 'OrderController');
-    if ($request->user()) {
+    if (auth('api')->user()) {
         // Find the order based on user_id and order_id
-        $order = $this->order->where(['user_id' => $request->user()->id, 'id' => $request->order_id])->first();
-
+        $order = $this->order->where(['user_id' => auth('api')->user()->id, 'id' => $request->order_id])->first();
+        dd($order);
         if ($order) {
             // Update the order status to 'canceled'
             $order->update([
