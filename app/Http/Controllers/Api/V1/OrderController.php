@@ -494,7 +494,8 @@ class OrderController extends Controller
         try {
             // Ensure the user is authenticated
             $user = $request->user();
-            echo $user; die();
+            $order = $user->orders()->find($request->input('order_id'));
+            echo $order; die();
     
             if ($user) {
                 // Validate the request input
