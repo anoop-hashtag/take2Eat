@@ -499,7 +499,9 @@ class OrderController extends Controller
     if (auth('api')->user()) {
         // Find the order based on user_id and order_id
         $order = $this->order->where('user_id', auth('api')->user()->id)
-                                ->where('id', $request->order_id)->first();
+                                ->where('id', $request->order_id)->update([
+                                    'order_status' => 'canceled'
+                                ]);
 dd($order);
         if ($order) {
             // Update the order status to 'canceled'
