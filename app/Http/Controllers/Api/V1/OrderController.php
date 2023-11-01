@@ -502,16 +502,9 @@ class OrderController extends Controller
                                 ->where('id', $request->order_id)->update([
                                     'order_status' => 'canceled'
                                 ]);
-dd($order);
         if ($order) {
-            // Update the order status to 'canceled'
-            $order->update([
-                'order_status' => 'canceled'
-            ]);
             return response()->json(['message' => translate('order_canceled')], 200);
         }
-        return response()->json(['message' => translate('order_not_found')], 401);
-    }
 
     // If the user is not authenticated or the order is not found, return an error response
     return response()->json([
@@ -519,6 +512,7 @@ dd($order);
             ['code' => 'order', 'message' => translate('no_data_found')]
         ]
     ], 401);
+}
 }
 
 
