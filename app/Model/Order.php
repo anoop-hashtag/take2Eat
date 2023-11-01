@@ -11,7 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
 {
+    
     protected $casts = [
+       
         'order_amount' => 'float',
         'coupon_discount_amount' => 'float',
         'total_tax_amount' => 'float',

@@ -205,21 +205,19 @@ class CustomerAuthController extends Controller
      */
     public function check_email(Request $request): JsonResponse
     {
-      
-    //   echo 'hh'; die();
         $validator = Validator::make($request->all(), [
             'email' => 'required|unique:users'
         ]);
-       
+
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
         if ($this->business_setting->where(['key' => 'email_verification'])->first()->value) {
-            
+
             $otp_interval_time= Helpers::get_business_settings('otp_resend_time') ?? 60;// seconds
             $otp_verification_data= DB::table('email_verifications')->where('email', $request['email'])->first();
-           
+
             if(isset($otp_verification_data) &&  Carbon::parse($otp_verification_data->created_at)->DiffInSeconds() < $otp_interval_time){
                 $time= $otp_interval_time - Carbon::parse($otp_verification_data->created_at)->DiffInSeconds();
 

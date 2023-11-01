@@ -494,6 +494,7 @@ class OrderController extends Controller
     // You can also use request validation rules here.
 
     // Ensure the user is authenticated
+    echo $request->order_id; die();
     if ($request->user()) {
         // Find the order based on user_id and order_id
         $order = $this->order->where(['user_id' => $request->user()->id, 'id' => $request['order_id']])->first();
