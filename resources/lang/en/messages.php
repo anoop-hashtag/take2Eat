@@ -2004,4 +2004,5 @@
   'Employee Add' => 'Employee Add',
   'Token sent failed!' => 'Token sent failed!',
   'table_orders' => 'Table orders',
+  'Country Code is required!' => 'Country Code is required!',
 );

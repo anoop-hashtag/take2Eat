@@ -13,8 +13,7 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-1">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/all_orders.png')}}" alt="">
                 <span class="page-header-title">
-                <!-- {{$status =='canceled' ? 'cancelled':''}} {{translate('Orders')}} -->
-                {{$status =='canceled' ? 'cancelled':''}} {{translate('orders')}}
+                {{$status =='canceled' ? 'cancelled':''}} {{translate('Orders')}}
                
                 </span>
             </h2>
@@ -145,7 +144,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
                                         <img src="{{asset('public/assets/admin/img/icons/canceled.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('canceled')}}</span>
+                                        <span>{{translate('cancelled')}}</span>
                                     </h6>
                                     <span class="card-title text-danger">
                                 {{$order_count['canceled']}}
