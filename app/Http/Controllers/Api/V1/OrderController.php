@@ -405,6 +405,7 @@ class OrderController extends Controller
      */
     public function get_order_list(Request $request): JsonResponse
 {
+    dd(auth('api')->user()->id);
     $user_id = (bool)auth('api')->user() ? auth('api')->user()->id : $request['guest_id'];
     $user_type = (bool)auth('api')->user() ? 0 : 1;
 
