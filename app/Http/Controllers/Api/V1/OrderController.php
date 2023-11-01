@@ -494,6 +494,7 @@ class OrderController extends Controller
         try {
             // Ensure the user is authenticated
             $user = $request->user();
+            echo $user; die();
     
             if ($user) {
                 // Validate the request input
