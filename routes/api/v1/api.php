@@ -115,7 +115,7 @@ Route::group(['namespace' => 'Api\V1', 'middleware' => 'localization'], function
             Route::get('list', 'OrderController@get_order_list')->withoutMiddleware(['auth:api', 'is_active']);
             Route::get('details', 'OrderController@get_order_details')->withoutMiddleware(['auth:api', 'is_active']);
             Route::post('place', 'OrderController@place_order')->withoutMiddleware(['auth:api', 'is_active']);
-            Route::put('cancel', 'OrderController@cancel_order')->withoutMiddleware(['auth:api', 'is_active']);
+            // Route::put('cancel', 'OrderController@cancel_order')->withoutMiddleware(['auth:api', 'is_active']);
             Route::get('track', 'OrderController@track_order')->withoutMiddleware(['auth:api', 'is_active']);
             Route::put('payment-method', 'OrderController@update_payment_method')->withoutMiddleware(['auth:api', 'is_active']);
             Route::post('guest-track', 'OrderController@guset_track_order')->withoutMiddleware(['auth:api', 'is_active']);
