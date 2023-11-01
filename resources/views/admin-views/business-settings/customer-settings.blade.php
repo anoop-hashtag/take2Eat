@@ -110,7 +110,7 @@
 
                         </span>
                         <span>
-                            {{ translate('Customer Loyalty Point') }}{{ translate('Settings') }}
+                            {{ translate('Customer Loyalty Point') }} {{ translate('Settings') }}
                         </span>
                     </h5>
                 </div>
@@ -152,7 +152,7 @@
 
                         </span>
                         <span>
-                            {{ translate('Customer Referrer') }}{{ translate('settings') }}
+                            {{ translate('Customer Referrer') }} {{ translate('settings') }}
                         </span>
                     </h5>
                 </div>
