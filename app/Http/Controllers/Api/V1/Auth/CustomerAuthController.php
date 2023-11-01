@@ -259,7 +259,7 @@ class CustomerAuthController extends Controller
 
                 return response()->json([
                     'errors' => [
-                        ['code' => 'otp', 'message' => translate('Token sent failed!')]
+                        ['code' => 'otp', 'message' => $exception->getMessage()]
                     ]
                 ], 404);
 
