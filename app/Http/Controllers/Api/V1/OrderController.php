@@ -489,44 +489,32 @@ class OrderController extends Controller
      * @return JsonResponse
      */
     public function cancel_order(Request $request): JsonResponse
-    {
-        // Validate the request input (order_id)
-        $request->validate([
-            'order_id' => 'required|integer'
-        ]);
+{
+    // Validate the request input, e.g., check if 'order_id' is present and valid.
+    // You can also use request validation rules here.
+
+    // Ensure the user is authenticated
     
-        // Ensure the user is authenticated
-        if ($request->user()) {
-            // Find the order based on user_id and order_id
-            $order = Order::where('user_id', $request->user()->id)
-                         ->where('id', $request->input('order_id'))
-                         ->first();
-    
-            if ($order) {
-                // Check if the order can be canceled (e.g., order status is not already canceled)
-                if ($order->order_status !== 'canceled') {
-                    // Update the order status to 'canceled'
-                    $order->update([
-                        'order_status' => 'canceled'
-                    ]);
-                    return response()->json(['message' => translate('order_canceled')], 200);
-                } else {
-                    return response()->json([
-                        'errors' => [
-                            ['code' => 'order', 'message' => translate('order_already_canceled')]
-                        ]
-                    ], 400);
-                }
-            }
+    if ($request->user()) {
+        // Find the order based on user_id and order_id
+        $order = $this->order->where(['user_id' => $request->user()->id, 'id' => $request->order_id])->first();
+
+        if ($order) {
+            // Update the order status to 'canceled'
+            $order->update([
+                'order_status' => 'canceled'
+            ]);
+            return response()->json(['message' => translate('order_canceled')], 200);
         }
-    
-        // If the user is not authenticated or the order is not found, return an error response
-        return response()->json([
-            'errors' => [
-                ['code' => 'order', 'message' => translate('no_data_found')]
-            ]
-        ], 401);
     }
+
+    // If the user is not authenticated or the order is not found, return an error response
+    return response()->json([
+        'errors' => [
+            ['code' => 'order', 'message' => translate('no_data_found')]
+        ]
+    ], 401);
+}
 
 
     /**
