@@ -46,7 +46,7 @@ class EmailVerification extends Mailable
             'footer_text' => $data->footer_text,
             'copyright_text' => $data->copyright_text
         ];
-
+        
         if ($local != 'en'){
             if (isset($data->translations)){
                 foreach ($data->translations as $translation){
