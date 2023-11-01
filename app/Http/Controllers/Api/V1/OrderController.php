@@ -24,6 +24,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use function App\CentralLogics\translate;
 
 class OrderController extends Controller
@@ -489,32 +490,40 @@ class OrderController extends Controller
      * @return JsonResponse
      */
     public function cancel_order(Request $request): JsonResponse
-{
-    // Validate the request input, e.g., check if 'order_id' is present and valid.
-    // You can also use request validation rules here.
-
-    // Ensure the user is authenticated
+    {
+        try {
+            // Ensure the user is authenticated
+            $user = $request->user();
     
-    if ($request->user()) {
-        // Find the order based on user_id and order_id
-        $order = $this->order->where(['user_id' => $request->user()->id, 'id' => $request->order_id])->first();
-
-        if ($order) {
-            // Update the order status to 'canceled'
-            $order->update([
-                'order_status' => 'canceled'
-            ]);
-            return response()->json(['message' => translate('order_canceled')], 200);
+            if ($user) {
+                // Validate the request input
+                $this->validate($request, [
+                    'order_id' => 'required|exists:orders,id',
+                ]);
+    
+                // Find the order based on user_id and order_id
+                $order = $user->orders()->find($request->input('order_id'));
+    
+                if ($order) {
+                    // Update the order status to 'canceled'
+                    $order->update([
+                        'order_status' => 'canceled',
+                    ]);
+    
+                    return response()->json(['message' => 'Order canceled'], 200);
+                }
+            }
+    
+            // If the user is not authenticated or the order is not found, return an error response
+            return response()->json([
+                'errors' => [
+                    ['code' => 'order', 'message' => 'Order not found'],
+                ],
+            ], 401);
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 400);
         }
     }
-
-    // If the user is not authenticated or the order is not found, return an error response
-    return response()->json([
-        'errors' => [
-            ['code' => 'order', 'message' => translate('no_data_found')]
-        ]
-    ], 401);
-}
 
 
     /**
