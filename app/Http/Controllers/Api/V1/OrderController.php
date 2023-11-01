@@ -22,6 +22,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use function App\CentralLogics\translate;
@@ -490,10 +491,12 @@ class OrderController extends Controller
      */
     public function cancel_order(Request $request): JsonResponse
 {
+   
     // Validate the request input, e.g., check if 'order_id' is present and valid.
     // You can also use request validation rules here.
 
     // Ensure the user is authenticated
+    dd(Auth::user());
     if ($request->user()) {
         // Find the order based on user_id and order_id
         $order = $this->order->where(['user_id' => $request->user()->id, 'id' => $request->order_id])->first();
