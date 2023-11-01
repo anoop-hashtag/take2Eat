@@ -16,6 +16,7 @@ class ApiActiveCustomer
      */
     public function handle($request, Closure $next)
     {
+        dd(Auth::user()->is_active, 'middleware');
         if (Auth::user()->is_active == 1) {
             return $next($request);
         }
