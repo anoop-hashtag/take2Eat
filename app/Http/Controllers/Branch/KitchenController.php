@@ -170,7 +170,7 @@ class KitchenController extends Controller
             'email.unique' => translate('This email is already taken! please try another one'),
         ]);
 
-        DB::beginTransaction();
+       // DB::beginTransaction();
         try {
             $chef = $this->user->find($request->id);
 
