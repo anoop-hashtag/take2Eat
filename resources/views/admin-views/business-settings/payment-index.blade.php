@@ -141,7 +141,7 @@
                                                <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control"
                                                    name="{{$key}}"
-                                                   placeholder="{{ucwords(str_replace('_',' ',$key))}} *"
+                                                   placeholder="{{ucwords(str_replace('_',' ',$key))}} "
                                                    value="{{env('APP_MODE')=='demo'?'':$value}}">
                                         </div>
                                     @endif
