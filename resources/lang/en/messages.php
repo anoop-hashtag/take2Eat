@@ -2006,4 +2006,6 @@
   'table_orders' => 'Table orders',
   'Country Code is required!' => 'Country Code is required!',
   'order_canceled' => 'Order canceled',
+  'Action' => 'Action',
+  'Deliveryman_Report_tsr' => 'Deliveryman Report tsr',
 );

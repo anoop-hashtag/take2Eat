@@ -4,7 +4,7 @@
         <td class="">
             {{$key+1}}
         </td>
-        <td class="table-column-pl-0">
+        <td class="">
             <a href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order['id']}}</a>
         </td>
         <td>{{date('d M Y',strtotime($order['created_at']))}}</td>
