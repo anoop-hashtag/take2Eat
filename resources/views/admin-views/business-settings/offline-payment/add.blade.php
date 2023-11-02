@@ -87,7 +87,7 @@
                     <div class="d-flex align-items-end gap-3 mb-4">
                         <div class="flex-grow-1">
                             <label class="input-label">{{translate('Payment Note')}}</label>
-                            <textarea name="payment_note" class="form-control" placeholder="{{ translate('payment_Note') }}" id="payment_note" readonly></textarea>
+                            <textarea name="payment_note" class="form-control" placeholder="{{ translate('payment_Note') }}" id="payment_note"></textarea>
                         </div>
                     </div>
 

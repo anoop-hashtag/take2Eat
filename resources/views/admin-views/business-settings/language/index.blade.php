@@ -40,9 +40,9 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">{{translate('country_code')}}</label>
+                                    <label for="message-text" class="col-form-label">{{translate('country_name')}}</label>
                                     <select class="form-control js-select2-custom" name="code" style="width: 100%" required>
-                                        <option selected disabled>---{{translate('Select_Country_Code')}}---</option>
+                                        <option selected disabled>--- {{translate('Select_Country_Name')}} ---</option>
                                         <option value="af">Afrikaans</option>
                                         <option value="sq">Albanian - shqip</option>
                                         <option value="am">Amharic - አማርኛ</option>
