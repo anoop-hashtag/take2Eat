@@ -119,7 +119,7 @@
                 </form>
 
                 <!-- Table -->
-                <div class="table-responsive mt-3" id="set-rows">
+                <div class="table-responsive mt-3" id="set-rows" style="padding-right: 10px;">
                     @include('admin-views.report.partials._table',['data'=>[]])
                 </div>
                 <!-- End Table -->
