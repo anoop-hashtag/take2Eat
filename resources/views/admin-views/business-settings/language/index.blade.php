@@ -203,11 +203,11 @@
                                     <tr>
                                         <th class="border-top-0">{{ translate('SL')}}</th>
                                         {{--<th class="border-top-0">{{translate('Id')}}</th>--}}
-                                        <th class="border-top-0" style="width: 25%">{{translate('name')}}</th>
-                                        <th class="border-top-0" style="width: 15%">{{translate('Code')}}</th>
-                                        <th class="border-top-0" style="width: 15%">{{translate('status')}}</th>
+                                        <th class="border-top-0" style="width: 30%">{{translate('name')}}</th>
+                                        <th class="border-top-0" style="width: 13%">{{translate('Code')}}</th>
+                                        <th class="border-top-0" style="width: 13%">{{translate('status')}}</th>
                                         <th class="border-top-0" style="width: 15%">{{translate('default_Status')}}</th>
-                                        <th class="border-top-0" style="width: 20%">{{translate('action')}}</th>
+                                        <th class="border-top-0" style="width: 24%">{{translate('action')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
