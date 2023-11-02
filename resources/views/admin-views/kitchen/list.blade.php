@@ -68,7 +68,6 @@
                             @foreach($chefs as $k=>$chef)
                                 <tr>
                                     <td>{{ $chefs->perPage() * ($chefs->currentPage() - 1) + $loop->index + 1 }}</td>
-                                    {{-- <td>{{$k->firstItem() + $k}}</td> --}}
                                     {{-- <td><span>{{$k+1}}</span></td> --}}
                                    
                                     <td>
