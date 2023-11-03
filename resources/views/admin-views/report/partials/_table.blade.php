@@ -13,15 +13,15 @@
     <tbody>
     @foreach($data as $key=>$row)
         <tr>
-            <td class="">
+            <td class="" style="padding-left: 18px;">
                 {{$key+1}}
             </td>
-            <td class="">
+            <td class="" style="padding-left: 18px;">
                 <a href="{{route('admin.orders.details',['id'=>$row['order_id']])}}">{{$row['order_id']}}</a>
             </td>
-            <td>{{date('d M Y',strtotime($row['date']))}}</td>
-            <td>{{$row['quantity']}}</td>
-            <td>{{ \App\CentralLogics\Helpers::set_symbol($row['price']) }}</td>
+            <td style="padding-left: 18px;">{{date('d M Y',strtotime($row['date']))}}</td>
+            <td style="padding-left: 18px;">{{$row['quantity']}}</td>
+            <td style="padding-left: 18px;">{{ \App\CentralLogics\Helpers::set_symbol($row['price']) }}</td>
         </tr>
     @endforeach
     </tbody>
