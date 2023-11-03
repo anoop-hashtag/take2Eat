@@ -2008,4 +2008,6 @@
   'order_canceled' => 'Order canceled',
   'Action' => 'Action',
   'Deliveryman_Report_tsr' => 'Deliveryman Report tsr',
+  'Show test Data by Date Range' => 'Show test Data by Date Range',
+  'Show  Data by Date Range' => 'Show  Data by Date Range',
 );

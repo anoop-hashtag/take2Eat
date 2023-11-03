@@ -60,7 +60,7 @@
                         @csrf
                         <div class="row g-2">
                             <div class="col-12">
-                                <h4 class="form-label mb-0">{{translate('Show Data by Date Range')}}</h4>
+                                <h4 class="form-label mb-0">{{translate('Show  Data by Date Range')}}</h4>
                             </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="mb-3">
@@ -80,16 +80,15 @@
                             </div>
                             <div class="col-12 col-sm-6 col-md-3">
                                 <div class="mb-3">
-                                    <input type="date" name="from" id="from_date"
-                                            class="form-control" required>
+                                    <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3">
                                 <div class="mb-3">
-                                    <input type="date" name="to" id="to_date"
-                                            class="form-control" required>
+                                    <input type="text" name="to" id="to_date" class="form-control" placeholder="DD-MM-YYYY" required>
                                 </div>
                             </div>
+                            
                             <div class="col-12 col-sm-6 col-md-2">
                                 <div class="mb-3">
                                     <button type="submit"
@@ -391,4 +390,26 @@
 
 
             </script>
+            <script>
+    $(function () {
+        // Initialize the datepicker for the "from_date" input field
+        $("#from_date").datepicker({
+            dateFormat: "dd-mm-yy", // Customize the date format
+        });
+
+        // Initialize the datepicker for the "to_date" input field
+        $("#to_date").datepicker({
+            dateFormat: "dd-mm-yy", // Customize the date format
+        });
+    });
+</script>
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include jQuery UI library -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- Include jQuery UI CSS for styling -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     @endpush
