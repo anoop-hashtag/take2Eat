@@ -51,7 +51,7 @@ $company_name = App\Model\BusinessSetting::where('key', 'restaurant_name')->firs
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td class="text-left p-2 px-3">
+                                                        <td class="text-left p-2 px-3" width="75%">
                                                             1. The school of life - emotional baggage tote bag - canvas tote bag (navy) x 1
                                                         </td>
                                                         <td class="text-right p-2 px-3">
