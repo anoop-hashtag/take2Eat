@@ -2026,4 +2026,5 @@
   'Table# - table_no ' => 'Table# - table no ',
   'Table -' => 'Table -',
   'Table - ' => 'Table - ',
+  'Clear Search' => 'Clear Search',
 );

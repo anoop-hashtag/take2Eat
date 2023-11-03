@@ -89,6 +89,7 @@
                                 </div>
                             </div>
                             
+                            
                             <div class="col-12 col-sm-6 col-md-2">
                                 <div class="mb-3">
                                     <button type="submit"
@@ -411,5 +412,21 @@
 
 <!-- Include jQuery UI CSS for styling -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script>
+    // Function to validate the date input
+    function validateDates() {
+        var fromDate = new Date(document.getElementById("from_date").value);
+        var toDate = new Date(document.getElementById("to_date").value);
+
+        if (fromDate > toDate) {
+            alert("End date cannot be less than the start date");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+
+    // Attach the validation function to the form submission
+    document.querySelector("form").addEventListener("submit", validateDates);
+</script>
 
     @endpush

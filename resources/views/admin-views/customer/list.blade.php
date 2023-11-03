@@ -34,8 +34,13 @@
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">{{translate('Search')}}
                                 </button>
+                            </div>&nbsp;
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-danger" onclick="goBack()">{{translate('Clear Search')}}</button>
                             </div>
+                            
                         </div>
+                        
                     </form>
 
                     <div>
@@ -162,6 +167,10 @@
                     $('#loading').hide();
                 },
             });
+        }
+        function goBack() 
+        {
+           window.history.back();
         }
     </script>
 @endpush
