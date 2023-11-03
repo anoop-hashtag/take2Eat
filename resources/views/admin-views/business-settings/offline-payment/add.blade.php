@@ -91,6 +91,32 @@
                         </div>
                     </div>
 
+                    <div class="d-flex align-items-end gap-3 mb-4 flex-wrap">
+                        <div class="flex-grow-1">
+                            <div class="">
+                                <label class="input-label">{{translate('Input Field Name')}} <span class="text-danger">*</span> </label>
+                                <input type="text" name="information_name[]" class="form-control" maxlength="255" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="">
+                                <label class="input-label">{{translate('Input Field Placeholder/Hints')}} <span class="text-danger">*</span> </label>
+                                <input type="text" name="information_placeholder[]" class="form-control" maxlength="255" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex align-items-center gap-10 mb-2">
+                                <input class="custom-control" type="checkbox" name="information_required[]">
+                                <label class="input-label mb-0">{{translate('Is Required')}}? </label>
+                            </div>
+                        </div>
+                        <div style="visibility:hidden" class="" data-toggle="tooltip" data-placement="top" title="{{translate('Remove the input field')}}">
+                            <div class="btn btn-outline-danger delete" onclick="delete_information_input_field(${count_info})">
+                                <i class="tio-delete"></i>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="information-field"></div>
                 </div>
             </div>
