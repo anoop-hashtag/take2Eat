@@ -779,7 +779,7 @@
             });
             $.post({
                 url: '{{route('admin.product.update',[$product['id']])}}',
-                 data: $('#product_form').serialize(),
+                // data: $('#product_form').serialize(),
                 data: formData,
                 cache: false,
                 contentType: false,
