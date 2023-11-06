@@ -100,6 +100,7 @@ class ReportController extends Controller
     public function deliveryman_report(): Renderable
     {
         $orders = $this->order->with(['customer', 'branch'])->paginate(25);
+        
         return view('admin-views.report.driver-index', compact('orders'));
     }
 
