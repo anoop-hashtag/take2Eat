@@ -392,17 +392,19 @@
 
             </script>
             <script>
+                @php($date_format=\App\Model\BusinessSetting::where('key','date_format')->first()->value)
     $(function () {
         // Initialize the datepicker for the "from_date" input field
         $("#from_date").datepicker({
-            dateFormat: "dd-mm-yy", // Customize the date format
+            dateFormat: "<?php echo $date_format ?>", // Customize the date format
         });
 
         // Initialize the datepicker for the "to_date" input field
         $("#to_date").datepicker({
-            dateFormat: "dd-mm-yy", // Customize the date format
+            dateFormat: "<?php echo $date_format ?>", // Customize the date format
         });
     });
+    
 </script>
 <!-- Include jQuery library -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

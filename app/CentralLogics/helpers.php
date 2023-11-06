@@ -234,6 +234,12 @@ class Helpers
         $currency_code = BusinessSetting::where(['key' => 'currency'])->first()->value;
         return $currency_code;
     }
+  public static function date_format()
+  {
+      $data_format = BusinessSetting::where(['key' => 'date_format'])->first()->value;
+      return $data_format;
+  }
+
 
     public static function currency_symbol()
     {

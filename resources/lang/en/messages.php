@@ -2027,4 +2027,11 @@
   'Table -' => 'Table -',
   'Table - ' => 'Table - ',
   'Clear Search' => 'Clear Search',
+  'date_format' => 'Date format',
+  'm/d/Y' => 'M/d/Y',
+  'YYYY-MM-DD' => 'YYYY-MM-DD',
+  'DD/MM/YYYY' => 'DD/MM/YYYY',
+  'MM/DD/YYYY' => 'MM/DD/YYYY',
+  'Select Date Format:' => 'Select Date Format:',
+  'Date Format' => 'Date Format',
 );

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Branch;
 use App\Model\BusinessSetting;
 use App\Model\Currency;
+use App\Model\Dateformet;
 use App\Model\SocialMedia;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Foundation\Application;
@@ -21,6 +22,7 @@ use Illuminate\Contracts\Support\Renderable;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Validator;
 use App\Model\Translation;
+
 
 
 class BusinessSettingsController extends Controller
@@ -39,13 +41,16 @@ class BusinessSettingsController extends Controller
      */
     public function restaurant_index(): Renderable
     {
+       
+        
         if ($this->business_setting->where(['key' => 'minimum_order_value'])->first() == false) {
             $this->business_setting->updateOrInsert(['key' => 'minimum_order_value'], [
                 'value' => 1,
             ]);
         }
-
-        return view('admin-views.business-settings.restaurant-index');
+        $data['dateFormats'] = DB::table('date_formet')->orderBy('date', 'DESC')->get();
+        
+        return view('admin-views.business-settings.restaurant-index',$data);
     }
 
     /**
@@ -184,6 +189,9 @@ class BusinessSettingsController extends Controller
 
         $this->business_setting->updateOrInsert(['key' => 'time_format'], [
             'value' => $request['time_format']
+        ]);
+        $this->business_setting->updateOrInsert(['key' => 'date_format'], [
+            'value' => $request['date_format']
         ]);
 
         $curr_fav_icon = $this->business_setting->where(['key' => 'fav_icon'])->first();
