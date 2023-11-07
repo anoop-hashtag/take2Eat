@@ -5,6 +5,7 @@
 @push('css_or_js')
     <!-- Custom styles for this page -->
     <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  
     
 @endpush
 
@@ -53,7 +54,7 @@
 
                 <div class="py-4">
                     <div class="table-responsive">
-                        <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                        <table id="datatable2" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
@@ -135,14 +136,13 @@
 @endsection
 
 @push('script')
-    <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <!-- Page level custom scripts -->
-    <script>
-        // Call the dataTables jQuery plugin
-        $(document).ready(function () {
-            $('#dataTable').DataTable();
+<script>
+    $(document).ready(function () {
+        $('#datatable2').DataTable({
+            "searching": true,
         });
-    </script>
+    });
+</script>
+
 @endpush
+

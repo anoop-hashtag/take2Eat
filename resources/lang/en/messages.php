@@ -2036,4 +2036,11 @@
   'Date Format' => 'Date Format',
   'ready_for_serve' => 'Ready for serve',
   'Search by Order ID, Status,Transaction Reference' => 'Search by Order ID, Status,Transaction Reference',
+  'View' => 'View',
+  'Invoice' => 'Invoice',
+  'Delivery_Information' => 'Delivery Information',
+  'Update_Delivery_Information' => 'Update Delivery Information',
+  'discount_in' => 'Discount in',
+  'min_purchase' => 'Min purchase',
+  'Show' => 'Show',
 );
