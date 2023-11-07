@@ -35,13 +35,13 @@
                             <div class="col-md-6 col-lg-4">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('Start Date') }}</label>
-                                    <input type="date" name="from" value="{{$from}}" id="from_date" class="form-control">
+                                    <input type="text" name="from" value="{{$from}}" id="from_date" placeholder="DD-MM-YY" autocomplete="off" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('End Date') }}</label>
-                                    <input type="date" value="{{$to}}" name="to" id="to_date" class="form-control">
+                                    <input type="text" value="{{$to}}" name="to" id="to_date" placeholder="DD-MM-YY" autocomplete="off" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-4 d-flex gap-2">
@@ -427,5 +427,48 @@
 
     <script>
 
+    </script>
+    @php($date_format=\App\Model\BusinessSetting::where('key','date_format')->first()->value)
+    <script>
+             
+       $(function () {
+           // Initialize the datepicker for the "from_date" input field
+           $("#from_date").datepicker({
+               dateFormat: "<?php echo $date_format ?>", // Customize the date format
+               changeMonth:true,
+               changeYear:true, //
+           });
+    
+           // Initialize the datepicker for the "to_date" input field
+           $("#to_date").datepicker({
+               dateFormat: "<?php echo $date_format ?>", // Customize the date format
+               changeMonth:true,
+               changeYear:true,
+           });
+       });
+       
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Include jQuery UI library -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <!-- Include jQuery UI CSS for styling -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script>
+    // Function to validate the date input
+    function validateDates() {
+       var fromDate = new Date(document.getElementById("from_date").value);
+       var toDate = new Date(document.getElementById("to_date").value);
+    
+       if (fromDate > toDate) {
+           alert("End date cannot be less than the start date");
+           return false; // Prevent form submission
+       }
+       return true; // Allow form submission
+    }
+    
+    // Attach the validation function to the form submission
+    document.querySelector("form").addEventListener("submit", validateDates);
     </script>
 @endpush

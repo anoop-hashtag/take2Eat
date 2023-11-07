@@ -83,11 +83,11 @@
                         </div>
 
                         <div class="col-sm-6 col-md-5">
-                            <input type="date" name="from" id="from_date"
-                                    class="form-control" required>
+                            <input type="text" name="from" id="from_date"
+                                    class="form-control" placeholder="DD-MM-YY" autocomplete="off" required>
                         </div>
                         <div class="col-sm-6 col-md-5">
-                            <input type="date" name="to" id="to_date"
+                            <input type="text" name="to" id="to_date" autocomplete="off" placeholder="DD-MM-YY"
                                     class="form-control" required>
                         </div>
                         <div class="col-md-2">

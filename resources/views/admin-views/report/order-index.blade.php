@@ -75,14 +75,14 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="">
-                                        <input type="date" name="from" id="from_date"
-                                            class="form-control" required>
+                                        <input type="text" name="from" id="from_date"
+                                            class="form-control" placeholder="select Date Format" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="">
-                                        <input type="date" name="to" id="to_date"
-                                            class="form-control" required>
+                                        <input type="text" name="to" id="to_date" 
+                                            class="form-control" autocomplete="off" placeholder="Select Date Format" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">

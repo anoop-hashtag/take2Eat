@@ -548,11 +548,13 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
+                            @php($date_format=\App\Model\BusinessSetting::where('key','date_format')->first()->value)
+                           
                             <div class="form-group">
                                 <label class="input-label">{{ translate('Date Format') }}</label>
                                 <select name="date_format" class="form-control js-select2-custom">
                                     @foreach ($dateFormats as $dateFormated)
-                                        <option value="{{ $dateFormated->date }}" {{ $dateFormated == $dateFormated->date ? 'selected' : '' }}>
+                                        <option value="{{ $dateFormated->date }}" {{ $date_format == $dateFormated->date ? 'selected' : '' }}>
                                             {{ $dateFormated->date }}
                                         </option>
                                     @endforeach

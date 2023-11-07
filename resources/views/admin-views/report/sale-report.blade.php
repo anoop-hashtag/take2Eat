@@ -71,12 +71,12 @@
                         </div>
 
                         <div class="col-sm-6 col-md-3">
-                            <input type="date" name="from" id="from_date"
-                                    class="form-control" required>
+                            <input type="text" name="from" id="from_date"
+                                    class="form-control" placeholder="DD-MM-YY" autocomplete="off" required>
                         </div>
                         <div class="col-sm-6 col-md-3">
-                            <input type="date" name="to" id="to_date"
-                                    class="form-control" required>
+                            <input type="text" name="to" id="to_date"
+                                    class="form-control" placeholder="DD-MM-YY" autocomplete="off" required>
                         </div>
                         <div class="col-sm-6 col-md-2">
                             <button type="submit"

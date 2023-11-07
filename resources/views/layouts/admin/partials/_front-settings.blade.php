@@ -1,3 +1,4 @@
+
 <div id="styleSwitcherDropdown" class="hs-unfold-content sidebar sidebar-bordered sidebar-box-shadow"
      style="width: 35rem;">
     <div class="card card-lg border-0 h-100">

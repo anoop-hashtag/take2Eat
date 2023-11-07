@@ -75,13 +75,13 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="">
-                                        <input type="date" name="from" id="from_date"
-                                            class="form-control" required>
+                                        <input type="text" name="from" id="from_date"
+                                            class="form-control" placeholder="DD-MM-YY" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="">
-                                        <input type="date" name="to" id="to_date"
+                                        <input type="text" name="to" placeholder="DD-MM-YY" autocomplete="off" id="to_date"
                                             class="form-control" required>
                                     </div>
                                 </div>

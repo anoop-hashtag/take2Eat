@@ -7,6 +7,7 @@
 @endpush
 
 @section('content')
+@php($date_format=\App\Model\BusinessSetting::where('key','date_format')->first()->value)
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
@@ -80,12 +81,13 @@
                             </div>
                             <div class="col-12 col-sm-6 col-md-3">
                                 <div class="mb-3">
-                                    <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" class="form-control" required>
+
+                                    <input type="text" name="from" id="from_date" placeholder="<?= strtoupper($date_format);?>" class="form-control"  autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3">
                                 <div class="mb-3">
-                                    <input type="text" name="to" id="to_date" class="form-control" placeholder="DD-MM-YYYY" required>
+                                    <input type="text" name="to" id="to_date" class="form-control" placeholder="<?= strtoupper($date_format);?>"  autocomplete="off" required>
                                 </div>
                             </div>
                             
@@ -392,43 +394,25 @@
 
             </script>
             <script>
-                @php($date_format=\App\Model\BusinessSetting::where('key','date_format')->first()->value)
+              
     $(function () {
         // Initialize the datepicker for the "from_date" input field
         $("#from_date").datepicker({
             dateFormat: "<?php echo $date_format ?>", // Customize the date format
+            changeMonth:true,
+            changeYear:true, //
         });
 
         // Initialize the datepicker for the "to_date" input field
         $("#to_date").datepicker({
             dateFormat: "<?php echo $date_format ?>", // Customize the date format
+            changeMonth:true,
+            changeYear:true,
         });
     });
     
 </script>
 <!-- Include jQuery library -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Include jQuery UI library -->
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<!-- Include jQuery UI CSS for styling -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script>
-    // Function to validate the date input
-    function validateDates() {
-        var fromDate = new Date(document.getElementById("from_date").value);
-        var toDate = new Date(document.getElementById("to_date").value);
-
-        if (fromDate > toDate) {
-            alert("End date cannot be less than the start date");
-            return false; // Prevent form submission
-        }
-        return true; // Allow form submission
-    }
-
-    // Attach the validation function to the form submission
-    document.querySelector("form").addEventListener("submit", validateDates);
-</script>
 
     @endpush

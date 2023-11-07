@@ -2034,4 +2034,6 @@
   'MM/DD/YYYY' => 'MM/DD/YYYY',
   'Select Date Format:' => 'Select Date Format:',
   'Date Format' => 'Date Format',
+  'ready_for_serve' => 'Ready for serve',
+  'Search by Order ID, Status,Transaction Reference' => 'Search by Order ID, Status,Transaction Reference',
 );
