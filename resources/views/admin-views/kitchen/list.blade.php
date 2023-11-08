@@ -5,8 +5,6 @@
 @push('css_or_js')
     <!-- Custom styles for this page -->
     <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  
-    
 @endpush
 
 @section('content')
@@ -54,11 +52,11 @@
 
                 <div class="py-4">
                     <div class="table-responsive">
-                        <table id="datatable2" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                        <table id="datatable" class="table dataTable table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
-                                   
                                     <th>{{translate('Name')}}</th>
                                     <th>{{translate('Contact_Info')}}</th>
                                     <th>{{translate('Branch')}}</th>
@@ -70,21 +68,18 @@
                             @foreach($chefs as $k=>$chef)
                                 <tr>
                                     <td>{{ $chefs->perPage() * ($chefs->currentPage() - 1) + $loop->index + 1 }}</td>
-                                    {{-- <td><span>{{$k+1}}</span></td> --}}
-                                   
                                     <td>
-                                            <div class="media gap-3 align-items-center">
-                                                <div class="avatar">
-                                                    <img width="60" class="img-fit rounded-circle"
-                                                        onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
-                                                        src="{{asset('storage/app/public/kitchen')}}/{{$chef['image']}}">
-                                                    {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
-                                                </div>
-                                                <div class="media-body text-capitalize">
-                                                    {{$chef['f_name'].' '.$chef['l_name']}}
-                                                </div>
+                                        <div class="media gap-3 align-items-center">
+                                            <div class="avatar">
+                                                <img width="60" class="img-fit rounded-circle"
+                                                    onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
+                                                    src="{{asset('storage/app/public/kitchen')}}/{{$chef['image']}}">
                                             </div>
-                                        </td>
+                                            <div class="media-body text-capitalize">
+                                                {{$chef['f_name'].' '.$chef['l_name']}}
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>
                                         <div><a class="text-dark" href="mailto:{{$chef['email']}}"><strong>{{$chef['email']}}</strong></a></div>
                                         <div><a class="text-dark" href="tel:{{$chef['phone']}}">{{$chef['phone']}}</a></div>
@@ -93,20 +88,20 @@
                                     <td>
                                         <label class="switcher">
                                             <input type="checkbox" class="switcher_input"
-                                                   onclick="location.href='{{route('admin.kitchen.status',[$chef['id'],$chef->is_active?0:1])}}'"
-                                                   class="toggle-switch-input" {{$chef->is_active?'checked':''}}>
+                                                onclick="location.href='{{route('admin.kitchen.status',[$chef['id'],$chef->is_active?0:1])}}'"
+                                                class="toggle-switch-input" {{$chef->is_active?'checked':''}}>
                                             <span class="switcher_control"></span>
                                         </label>
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center gap-2">
                                             <a href="{{route('admin.kitchen.update',[$chef['id']])}}"
-                                            class="btn btn-outline-info btn-sm square-btn"
-                                            title="{{translate('Edit')}}">
+                                                class="btn btn-outline-info btn-sm square-btn"
+                                                title="{{translate('Edit')}}">
                                                 <i class="tio-edit"></i>
                                             </a>
                                             <a class="btn btn-outline-danger btn-sm square-btn" title="{{translate('Delete')}}" href="javascript:"
-                                            onclick="form_alert('chef-{{$chef['id']}}','{{translate('Want to delete this chef ?')}}')">
+                                                onclick="form_alert('chef-{{$chef['id']}}','{{translate('Want to delete this chef ?')}}')">
                                                 <i class="tio-delete"></i>
                                             </a>
                                         </div>
@@ -132,17 +127,23 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @push('script')
-<script>
+@push('script')
+<script type="text/javascript">
     $(document).ready(function () {
-        $('#datatable2').DataTable({
-            "searching": true,
-        });
+        $('input').addClass('form-control');
+    });
+
+    // INITIALIZATION OF DATATABLES
+    // =======================================================
+    var datatable = $('#datatable').DataTable({
+        "destroy": true,
+        "pageLength": 25,
     });
 </script>
-
 @endpush
 
+
+@endpush

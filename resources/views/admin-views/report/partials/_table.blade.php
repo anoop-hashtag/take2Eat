@@ -36,6 +36,7 @@
     // =======================================================
     var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
         dom: 'Bfrtip',
+        "bDestroy": true,
         "iDisplayLength": 25,
     });
 </script>
@@ -48,6 +49,7 @@
     // =======================================================
     var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
         dom: 'Bfrtip',
+        "bDestroy": true,
         language: {
             zeroRecords: '<div class="text-center p-4">' +
                 '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +

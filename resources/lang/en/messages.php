@@ -2043,4 +2043,6 @@
   'discount_in' => 'Discount in',
   'min_purchase' => 'Min purchase',
   'Show' => 'Show',
+  'Do you want to Sign out?' => 'Do you want to Sign out?',
+  'Do you want to Sign out ?' => 'Do you want to Sign out ?',
 );

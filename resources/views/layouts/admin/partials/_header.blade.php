@@ -20,8 +20,7 @@
             <div class="navbar-nav-wrap-content-left d-xl-none">
                 <!-- Navbar Vertical Toggle -->
                 <button type="button" class="js-navbar-vertical-aside-toggle-invoker close mr-3">
-                    <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip"
-                       data-placement="right" title="Collapse"></i>
+                    <i class="tio-first-page navbar-vertical-aside-toggle-short-align"  title="Collapse"></i>
                     <i class="tio-last-page navbar-vertical-aside-toggle-full-align"
                        data-template='<div class="tooltip d-none d-sm-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
                        data-toggle="tooltip" data-placement="right" title="Expand"></i>
@@ -140,9 +139,9 @@
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="javascript:" onclick="Swal.fire({
-                                    title: '{{translate("Do you want to logout?")}}',
+                                    title: '{{translate("Do you want to Sign out?")}}',
                                     showDenyButton: true,
-                                    showCancelButton: true,
+                                    showCancelButton: false,
                                     confirmButtonColor: '#FC6A57',
                                     cancelButtonColor: '#363636',
                                     confirmButtonText: '{{translate("Yes")}}',
@@ -151,10 +150,7 @@
                                     if (result.value) {
                                     location.href='{{route('admin.auth.logout')}}';
                                     } else{
-                                        Swal.fire({
-                                        title: '{{translate("Canceled")}}',
-                                        confirmButtonText: '{{translate("Okay")}}',
-                                        })
+                                       
                                     }
                                     })">
                                     <span class="text-truncate pr-2" title="Sign out">{{translate('sign_out')}}</span>

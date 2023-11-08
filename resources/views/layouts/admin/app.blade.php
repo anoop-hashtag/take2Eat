@@ -19,7 +19,8 @@
     {{--Carousel Slider--}}
     <link rel="stylesheet" href="{{asset('public/assets/admin/css/owl.min.css')}}">
     <!-- CSS Front Template -->
-    <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme.minc619.css?v=1.0">
+    <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme.minc619.css?v=2.0">
+
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/style.css?v=1.0">
     @stack('css_or_js')
 
@@ -574,7 +575,8 @@
 
     // Attach the validation function to the form submission
     document.querySelector("form").addEventListener("submit", validateDates);
+    
 </script>
-
+<
 </body>
 </html>

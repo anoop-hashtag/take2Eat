@@ -237,5 +237,10 @@
                 }
             }
         });
+        $('#datatable').dataTable({
+    destroy: true,
+    ...
+});
     </script>
+    
 @endpush
