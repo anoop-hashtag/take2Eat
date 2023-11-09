@@ -88,7 +88,7 @@
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('start')}} {{translate('date')}}</label>
-                                        <input type="text" id="from_date" name="start_date" class="form-control"  placeholder="DD-MM-YYYY">
+                                        <input type="text" id="start_date" name="start_date" class="form-control"  placeholder="DD-MM-YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">

@@ -65,14 +65,14 @@
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="">{{translate('start_Date')}}</label>
-                                        <input type="text" name="start_date" class="js-flatpickr form-control flatpickr-custom" placeholder="{{ translate('Select dates') }}" value="{{date('d/m/Y',strtotime($coupon['start_date']))}}"
-                                            data-hs-flatpickr-options='{ "dateFormat": "D/m/Y", "minDate": "today" }'>
+                                        <input type="text" name="start_date"  class="form-control" placeholder="{{ translate('Select dates') }}" value="{{$coupon['start_date']}}"
+                                           >
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="">{{translate('expire_Date')}}</label>
-                                        <input type="text" name="expire_date" class="js-flatpickr form-control flatpickr-custom" placeholder="{{ translate('Select dates') }}" value="{{date('d/m/Y',strtotime($coupon['expire_date']))}}"
+                                        <input type="text" name="expire_date" class="js-flatpickr form-control flatpickr-custom"  class="form-control" placeholder="{{ translate('Select dates') }}" value="{{$coupon['expire_date']}}"
                                             data-hs-flatpickr-options='{
                                             "dateFormat": "d/m/Y",
                                             "minDate": "today"
