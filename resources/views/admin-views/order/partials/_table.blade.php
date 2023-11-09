@@ -48,17 +48,20 @@
             @endif
         </td>
         <td>
-            <div class="">
-                <button class="btn btn-outline-secondary" type="button">
-                   
-                    <a class=""
-                    href="{{route('admin.orders.details',['id'=>$order['id']])}}"><i
-                         class="tio-visible"></i> {{translate('view')}}</a>&nbsp;
-                 <a class="" target="_blank"
-                    href="{{route('admin.orders.generate-invoice',[$order['id']])}}"><i
-                         class="tio-download"></i> {{translate('invoice')}}</a>
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <i class="tio-settings"></i>
                 </button>
-                
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item"
+                       href="{{route('admin.orders.details',['id'=>$order['id']])}}"><i
+                            class="tio-visible"></i> {{translate('view')}}</a>
+                    <a class="dropdown-item" target="_blank"
+                       href="{{route('admin.orders.generate-invoice',[$order['id']])}}"><i
+                            class="tio-download"></i> {{translate('invoice')}}</a>
+                </div>
             </div>
         </td>
     </tr>

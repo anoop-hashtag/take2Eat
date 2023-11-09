@@ -4,7 +4,11 @@
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script> --}}
+
+</script>
 @endpush
 
 @section('content')
@@ -111,28 +115,24 @@
                 </div>
             </div>
             <!-- End Header -->
-            <div class="card-body p-0">
-                <div class="table-responsive datatable-custom py-3">
-                    <table id="datatable"
-                            class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
+            <div class="">
+                <div class="">
+                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
                             <tr>
-                                <th>
-                                    {{translate('SL')}}
-                                </th>
-                                <th>{{translate('order')}}</th>
-                                <th>{{translate('date')}}</th>
-                                <th>{{translate('customer')}}</th>
-                                <th>{{translate('branch')}}</th>
-                                {{-- <th>{{translate('payment')}} {{translate('status')}}</th> --}}
-                                <th>{{translate('total')}}</th>
-                                <th>{{translate('order')}} {{translate('status')}}</th>
-                                <th>{{translate('actions')}}</th>
+                                <th>{{ translate('SL') }}</th>
+                                <th>{{ translate('order') }}</th>
+                                <th>{{ translate('date') }}</th>
+                                <th>{{ translate('customer') }}</th>
+                                <th>{{ translate('branch') }}</th>
+                                <th>{{ translate('total') }}</th>
+                                <th>{{ translate('order') }} {{ translate('status') }}</th>
+                                <th>{{ translate('actions') }}</th>
                             </tr>
                         </thead>
-
+            
                         <tbody id="set-rows">
-
+                            <!-- Add table rows here -->
                         </tbody>
                     </table>
                 </div>
@@ -143,6 +143,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
             @endsection
 
@@ -343,47 +344,50 @@
                 });
            
                    // INITIALIZATION OF DATATABLES
-            // =======================================================
-            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'copy',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'excel',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'csv',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'pdf',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'print',
-                        className: 'd-none'
-                    },
-                ],
-                select: {
-                    style: 'multi',
-                    selector: 'td:first-child input[type="checkbox"]',
-                    classMap: {
-                        checkAll: '#datatableCheckAll',
-                        counter: '#datatableCounter',
-                        counterInfo: '#datatableCounterInfo'
-                    }
-                },
-                language: {
-                    zeroRecords: '<div class="text-center p-4">' +
-                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
-                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
-                        '</div>'
-                }
-            });
+    //         // =======================================================
+    //         var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+    // // ...
+
+
+    //             dom: 'Bfrtip',
+    //             buttons: [
+    //                 {
+    //                     extend: 'copy',
+    //                     className: 'd-none'
+    //                 },
+    //                 {
+    //                     extend: 'excel',
+    //                     className: 'd-none'
+    //                 },
+    //                 {
+    //                     extend: 'csv',
+    //                     className: 'd-none'
+    //                 },
+    //                 {
+    //                     extend: 'pdf',
+    //                     className: 'd-none'
+    //                 },
+    //                 {
+    //                     extend: 'print',
+    //                     className: 'd-none'
+    //                 },
+    //             ],
+    //             select: {
+    //                 style: 'multi',
+    //                 selector: 'td:first-child input[type="checkbox"]',
+    //                 classMap: {
+    //                     checkAll: '#datatableCheckAll',
+    //                     counter: '#datatableCounter',
+    //                     counterInfo: '#datatableCounterInfo'
+    //                 }
+    //             },
+    //             language: {
+    //                 zeroRecords: '<div class="text-center p-4">' +
+    //                     '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+    //                     '<p class="mb-0">{{translate('No data to show')}}</p>' +
+    //                     '</div>'
+    //             }
+    //         });
 
             </script>
 
@@ -458,6 +462,39 @@
     
 </script>
 <!-- Include jQuery library -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input').addClass('form-control');
+    });
+
+    // INITIALIZATION OF DATATABLES
+    // =======================================================
+    var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+        dom: 'Bfrtip',
+        "bDestroy": true,
+        "searching": true,
+        "iDisplayLength": 25,
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input').addClass('form-control');
+    });
+
+    // INITIALIZATION OF DATATABLES
+    // =======================================================
+    var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+        dom: 'Bfrtip',
+        "bDestroy": true,
+        language: {
+            zeroRecords: '<div class="text-center p-4">' +
+                '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                '</div>'
+        }
+    });
+    
+</script>
 
 
     @endpush

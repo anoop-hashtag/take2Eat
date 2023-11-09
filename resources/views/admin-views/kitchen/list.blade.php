@@ -4,7 +4,7 @@
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    {{-- <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> --}}
 @endpush
 
 @section('content')
@@ -52,8 +52,7 @@
 
                 <div class="py-4">
                     <div class="table-responsive">
-                        <table id="datatable" class="table dataTable table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-
+                        <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
