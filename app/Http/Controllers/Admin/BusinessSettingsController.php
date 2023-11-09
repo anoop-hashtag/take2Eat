@@ -48,7 +48,7 @@ class BusinessSettingsController extends Controller
                 'value' => 1,
             ]);
         }
-        $data['dateFormats'] = DB::table('date_formet')->orderBy('date', 'DESC')->get();
+        $data['dateFormats'] = DB::table('date_format')->orderBy('date', 'DESC')->get();
         
         return view('admin-views.business-settings.restaurant-index',$data);
     }
