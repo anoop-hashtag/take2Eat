@@ -2045,4 +2045,5 @@
   'Show' => 'Show',
   'Do you want to Sign out?' => 'Do you want to Sign out?',
   'Do you want to Sign out ?' => 'Do you want to Sign out ?',
+  'Show  Data by Date Range test' => 'Show  Data by Date Range test',
 );
