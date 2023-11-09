@@ -540,13 +540,13 @@
 
           
             $("#expire_date").datepicker({
-                dateFormat: "yy-mm-dd", // Customize the date format
+                dateFormat: "<?php echo $date_format ?>", // Customize the date format
                 changeMonth:true,
                 changeYear:true, //
             });
            
             $("#start_date").datepicker({
-                dateFormat: "yy-mm-dd", // Customize the date format
+                dateFormat: "<?php echo $date_format ?>", // Customize the date format
                 changeMonth:true,
                 changeYear:true, //
             });
