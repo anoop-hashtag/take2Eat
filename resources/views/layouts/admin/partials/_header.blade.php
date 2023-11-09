@@ -146,7 +146,7 @@
                                     confirmButtonColor: '#FC6A57',
                                     cancelButtonColor: '#363636',
                                     confirmButtonText: '{{translate("Yes")}}',
-                                    cancelButtonText: '{{translate('No')}}',
+                                    cancelButtonText: '{{translate("No")}}',
                                     }).then((result) => {
                                     if (result.value) {
                                     location.href='{{route('admin.auth.logout')}}';

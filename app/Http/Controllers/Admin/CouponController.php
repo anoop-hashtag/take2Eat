@@ -52,6 +52,7 @@ class CouponController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+       
         $request->validate([
             'code' => 'required',
             'title' => 'required|max:255',
@@ -106,6 +107,7 @@ class CouponController extends Controller
      */
     public function update(Request $request, $id): RedirectResponse
     {
+       
         $request->validate([
             'code' => 'required',
             'title' => 'required|max:255',

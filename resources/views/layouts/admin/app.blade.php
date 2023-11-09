@@ -537,6 +537,13 @@
      <script>
               
         $(function () {
+
+          
+            $("#expire_date").datepicker({
+                dateFormat: "<?php echo $date_format ?>", // Customize the date format
+                changeMonth:true,
+                changeYear:true, //
+            });
             // Initialize the datepicker for the "from_date" input field
             $("#from_date").datepicker({
                 dateFormat: "<?php echo $date_format ?>", // Customize the date format

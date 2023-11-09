@@ -2046,4 +2046,7 @@
   'Do you want to Sign out?' => 'Do you want to Sign out?',
   'Do you want to Sign out ?' => 'Do you want to Sign out ?',
   'Show  Data by Date Range test' => 'Show  Data by Date Range test',
+  'Bulk_Export' => 'Bulk Export',
+  'STEP 1' => 'STEP 1',
+  'Products imported successfully!' => 'Products imported successfully!',
 );
