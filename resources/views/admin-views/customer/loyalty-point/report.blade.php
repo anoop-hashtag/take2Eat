@@ -48,7 +48,7 @@
                                         @php
                                             $transaction_status=request()->get('transaction_type');
                                         @endphp
-                                        <select name="transaction_type" id="" class="form-control h--45px" title="{{translate('select')}} {{translate('transaction_type')}}">
+                                        <select name="transaction_type" id="" class="select2-selection custom-select" title="{{translate('select')}} {{translate('transaction_type')}}">
                                             <option value="">{{translate('all')}}</option>
                                             <option value="loyalty_point_to_wallet" {{isset($transaction_status) && $transaction_status=='loyalty_point_to_wallet'?'selected':''}}>{{translate('loyalty_point_to_wallet')}}</option>
                                             <option value="order_place" {{isset($transaction_status) && $transaction_status=='order_place'?'selected':''}}>{{translate('order_place')}}</option>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-sm-6 col-12">
                                     <div class="mb-3">
-                                        <select id='customer' name="customer_id" data-placeholder="{{translate('Select_Customer')}}" class="js-data-example-ajax form-control h--45px" title="{{translate('select_customer')}}">
+                                        <select id='customer' name="customer_id" data-placeholder="{{translate('Select_Customer')}}" class="select2 js-data-example-ajax form-control h--45px" title="{{translate('select_customer')}}">
                                             @if (request()->get('customer_id') && $customer_info = \App\User::find(request()->get('customer_id')))
                                                 <option value="{{$customer_info->id}}" selected>{{$customer_info->f_name.' '.$customer_info->l_name}}({{$customer_info->phone}})</option>
                                             @endif
