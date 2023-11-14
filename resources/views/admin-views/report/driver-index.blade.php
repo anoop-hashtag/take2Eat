@@ -5,7 +5,8 @@
 @push('css_or_js')
     <!-- Custom styles for this page -->
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css"> --}}
-  
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
 </script>
 @endpush
@@ -116,7 +117,7 @@
             <!-- End Header -->
             <div class="">
                 <div class="">
-                    <table id="datatable1" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 mt-3" id="datatable">
+                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 mt-3" id="datatable">
                         <thead class="thead-light">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
