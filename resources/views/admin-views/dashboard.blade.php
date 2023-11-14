@@ -215,7 +215,7 @@
                                     @elseif($recent['order_status'] == 'confirmed' || $recent['order_status'] == 'processing' || $recent['order_status'] == 'out_for_delivery')
                                         <span
                                             class="status text-warning">{{translate($recent['order_status'])}}</span>
-                                    @elseif($recent['order_status'] == 'canceled' || $recent['order_status'] == 'failed')
+                                    @elseif($recent['order_status'] == 'canceled' ? 'cancelled' : '' || $recent['order_status'] == 'failed')
                                         @if($recent['order_status'] == 'failed')
                                             <span
                                                 class="status text-warning">{{translate('failed_to_deliver')}}</span>
