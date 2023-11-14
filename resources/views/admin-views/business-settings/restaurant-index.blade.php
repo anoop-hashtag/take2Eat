@@ -555,7 +555,7 @@
                                 <select name="date_format" class="form-control js-select2-custom">
                                     @foreach ($dateFormats as $dateFormated)
                                         <option value="{{ $dateFormated->date }}" {{ $date_format == $dateFormated->date ? 'selected' : '' }}>
-                                            {{ $dateFormated->date }}
+                                            {{ $dateFormated->view_date }}
                                         </option>
                                     @endforeach
                                 </select>
