@@ -104,8 +104,8 @@
                                         <span>{{translate('processing')}}</span>
                                     </h6>
                                     <span class="card-title text-danger">
-                                {{$order_count['processing']}}
-                            </span>
+                                        {{$order_count['processing']}}
+                                    </span>
                                 </div>
                             </a>
                         </div>

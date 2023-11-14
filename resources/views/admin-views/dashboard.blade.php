@@ -205,7 +205,8 @@
                                     <div class="order-info ">
                                         <h5><a href="{{route('admin.orders.details', ['id' => $recent->id])}}" class="text-dark" >{{translate('Order')}}# {{$recent->id}}</a></h5>
                                         
-                                        <p>{{\Illuminate\Support\Carbon::parse($recent->created_at)->format('d-m-y, H:m A')}}</p>
+                                        <p>{{\Illuminate\Support\Carbon::parse($recent->created_at)->format('d-m-y, H:i A')}}</p>
+
                                     </div>
                                     @if($recent['order_status'] == 'pending')
                                         <span

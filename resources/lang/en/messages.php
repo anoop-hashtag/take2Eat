@@ -2050,4 +2050,5 @@
   'STEP 1' => 'STEP 1',
   'Products imported successfully!' => 'Products imported successfully!',
   'Admin updated successfully!' => 'Admin updated successfully!',
+  'recent_Orderstest' => 'Recent Orderstest',
 );
