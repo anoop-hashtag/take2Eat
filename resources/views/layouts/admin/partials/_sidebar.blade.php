@@ -201,7 +201,7 @@
                                         <a class="nav-link " href="{{route('admin.orders.list',['canceled'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate sidebar--badge-container">
-                                                {{translate('canceled')}}
+                                                {{translate('cancelled')}}
                                                     <span class="badge badge-soft-dark badge-pill ml-1">
                                                     {{\App\Model\Order::notPos()->notDineIn()->where(['order_status'=>'canceled'])->notSchedule()->count()}}
                                                 </span>
@@ -296,7 +296,7 @@
                                         <a class="nav-link " href="{{route('admin.table.order.list',['canceled'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate sidebar--badge-container">
-                                                {{translate('canceled')}}
+                                                {{translate('cancelled')}}
                                                 <span class="badge badge-soft-danger badge-pill ml-1">
                                                     {{\App\Model\Order::notPos()->dineIn()->where(['order_status'=>'canceled'])->notSchedule()->count()}}
                                                 </span>

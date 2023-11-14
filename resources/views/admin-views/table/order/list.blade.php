@@ -13,7 +13,8 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/all_orders.png')}}" alt="">
                 <span class="page-header-title">
-                    {{translate($status)}} {{translate('Table_Orders')}}
+                    {{$status =='canceled' ? 'cancelled':''}} {{translate('Table_Orders')}}
+                   
                 </span>
             </h2>
             <span class="badge badge-soft-dark rounded-50 fz-14">{{ $orders->total() }}</span>
@@ -127,7 +128,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
                                         <img src="{{asset('public/assets/admin/img/icons/canceled.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('canceled')}}</span>
+                                        <span>{{translate('cancelled')}}</span>
                                     </h6>
                                     <span class="card-title text-success">
                                 {{$order_count['canceled']}}
@@ -262,7 +263,7 @@
                                 @elseif($order['order_status']=='completed')
                                     <span class="badge-soft-success px-2 rounded">{{translate('completed')}}</span>
                                 @else
-                                    <span class="badge-soft-danger px-2 rounded">{{str_replace('_',' ',$order['order_status'])}}</span>
+                                    <span class="badge-soft-danger px-2 rounded">{{str_replace('_',' ',$order['order_status']=='canceled' ? 'cancelled' : '')}}</span>
                                 @endif
                             </td>
                             <td class="text-capitalize">

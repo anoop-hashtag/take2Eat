@@ -295,7 +295,7 @@
                                     @elseif($order['order_status']=='failed')
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{translate("failed_to_deliver")}}</span>
                                     @else
-                                        <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status'])}}</span>
+                                        <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status']=='canceled' ? 'cancelled' : '')}}</span>
                                     @endif
                                 </td>
                                 <td>
