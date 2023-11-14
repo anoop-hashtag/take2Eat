@@ -590,5 +590,25 @@
     document.querySelector("form").addEventListener("submit", validateDates);
     
 </script>
+<script>
+    $('#from_date, #to_date').change(function () {
+        let from = $('#from_date').val();
+        let to = $('#to_date').val();
+        if(from != ''){
+            $('#to_date').attr('required','required');
+        }
+        if(to != ''){
+            $('#from_date').attr('required','required');
+        }
+        if (from != '' && to != '') {
+            if (from > to) {
+                $('#from_date').val('');
+                $('#to_date').val('');
+                toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
+            }
+        }
+
+    })
+</script>
 </body>
 </html>
