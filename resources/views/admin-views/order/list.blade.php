@@ -46,13 +46,13 @@
                             <div class="col-md-4 col-lg-3">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('Start Date') }}</label>
-                                    <input type="text" name="from" value="{{ session()->get('') }}" id="from_date" placeholder="DD-MM-YY" autocomplete="off" class="form-control">
+                                    <input type="text" name="from" value="{{ session()->get('') }}" id="from_date" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-3">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('End Date') }}</label>
-                                    <input type="text" value="" name="to" id="to_date" autocomplete="off" placeholder="DD-MM-YY" class="form-control">
+                                    <input type="text" value="" name="to" id="to_date" autocomplete="off" placeholder="DD-MM-YYYY" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3 d-flex gap-2">

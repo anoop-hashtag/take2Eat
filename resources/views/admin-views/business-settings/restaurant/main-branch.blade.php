@@ -136,7 +136,7 @@
                                                 </label>
                                                 <input type="text" id="latitude" name="latitude" class="form-control"
                                                        placeholder="{{ translate('Ex:') }} 23.8118428"
-                                                       value="{{ $branch['latitude'] }}" required >
+                                                       value="{{ $branch['latitude'] }}" readonly required >
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -151,7 +151,7 @@
                                                 </label>
                                                 <input type="text" name="longitude" class="form-control"
                                                        placeholder="{{ translate('Ex:') }} 90.356331" id="longitude"
-                                                       value="{{ $branch['longitude'] }}" required>
+                                                       value="{{ $branch['longitude'] }}" readonly  required>
                                             </div>
                                         </div>
                                         <div class="col-12">
