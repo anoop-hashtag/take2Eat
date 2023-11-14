@@ -5,8 +5,7 @@
 @push('css_or_js')
     <!-- Custom styles for this page -->
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css"> --}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+  
 
 </script>
 @endpush
@@ -117,7 +116,7 @@
             <!-- End Header -->
             <div class="">
                 <div class="">
-                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
+                    <table id="datatable1" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 mt-3" id="datatable">
                         <thead class="thead-light">
                             <tr>
                                 <th>{{ translate('SL') }}</th>
@@ -462,7 +461,7 @@
     
 </script>
 <!-- Include jQuery library -->
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(document).ready(function () {
         $('input').addClass('form-control');
     });
@@ -475,6 +474,19 @@
         "searching": true,
         "iDisplayLength": 25,
     });
+</script> --}}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input').addClass('form-control');
+    });
+
+    // INITIALIZATION OF DATATABLES
+    // =======================================================
+    var datatable = $.HSCore.components.HSDatatables.init($('#datatable1'), {
+        dom: 'Bfrtip',
+        "bDestroy": true,
+        "iDisplayLength": 25,
+    });
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -483,7 +495,7 @@
 
     // INITIALIZATION OF DATATABLES
     // =======================================================
-    var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+    var datatable = $.HSCore.components.HSDatatables.init($('#datatable1'), {
         dom: 'Bfrtip',
         "bDestroy": true,
         language: {
@@ -493,7 +505,6 @@
                 '</div>'
         }
     });
-    
 </script>
 
 

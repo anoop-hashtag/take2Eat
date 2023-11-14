@@ -590,6 +590,5 @@
     document.querySelector("form").addEventListener("submit", validateDates);
     
 </script>
-<
 </body>
 </html>
