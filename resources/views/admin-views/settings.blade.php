@@ -137,8 +137,8 @@
 
                                 <div class="col-sm-9">
                                     <input type="text" class="js-masked-input form-control" name="phone" id="phone"
-                                           placeholder="+x(xxx)xxx-xx-xx" aria-label="+(xxx)xx-xxx-xxxxx"
-                                           value="{{auth('admin')->user()->phone}}"
+                                           placeholder="Please Enter Phone Number" aria-label="+91(xxx)xx-xxx-xxxxx"
+                                           value="+91{{auth('admin')->user()->phone}}"
                                            data-hs-mask-options='{
                                            "template": "+(880)00-000-00000"
                                          }'>
