@@ -441,7 +441,7 @@
                                             <option value="cooking" {{$order['order_status'] == 'cooking'? 'selected' : ''}}> {{translate('cooking')}}</option>
                                             <option value="completed" {{$order['order_status'] == 'completed'? 'selected' : ''}}> {{translate('completed')}}</option>
                                         @endif
-                                        <option value="canceled" {{$order['order_status'] == 'canceled' ? 'cancelled' : '' ? 'selected' : ''}}>{{translate('cancelled')}}</option>
+                                        <option value="canceled" {{$order['order_status'] == 'canceled' ? 'selected' : ''}}>{{translate('cancelled')}}</option>
 
                                     </select>
                                 </div>
