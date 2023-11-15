@@ -90,7 +90,7 @@
                 <div class="resturant-card dashboard--card bg--2">
                     <h4 class="title">{{translate('debit')}}</h4>
                     <span class="subtitle">
-                        {{ number_format(₹$debit, 2) }}
+                        ₹{{ number_format($debit, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/3.png')}}" alt="dashboard">
                 </div>
