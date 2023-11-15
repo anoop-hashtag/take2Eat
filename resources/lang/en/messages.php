@@ -2070,4 +2070,6 @@
   'Error , Something went wrong' => 'Error , Something went wrong',
   'Employee updated successfully!' => 'Employee updated successfully!',
   'Ex : (xxx)-xxx-xxxx' => 'Ex : (xxx)-xxx-xxxx',
+  'Update delivery-man' => 'Update delivery-man',
+  'update_Deliveryman' => 'Update Deliveryman',
 );
