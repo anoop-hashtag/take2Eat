@@ -49,7 +49,7 @@
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">Start Date</label>
-                                    <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" style="z-index: 4" autocomplete="off" class="form-control" value="{{$from}}" >
+                                    <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" style="position: relative; z-index: 4" autocomplete="off" class="form-control" value="{{$from}}" >
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
