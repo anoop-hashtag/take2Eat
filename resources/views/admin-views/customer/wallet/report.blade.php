@@ -175,7 +175,7 @@
                                     </span>
                                 </td>
 {{--                                <td>{{$wt->reference}}</td>--}}
-                              <td>{{ date('d-m-yy', strtotime($wt->created_at)) }}</td>
+                              <td>{{ date('dd-mm-yy', strtotime($wt->created_at)) }}</td>
 
                             </tr>
                         @endforeach
