@@ -101,7 +101,7 @@
                 <div class="resturant-card dashboard--card bg--3">
                     <h4 class="title">{{translate('credit')}}</h4>
                     <span class="subtitle">
-                        {{ number_format($credit, 2) }}
+                        ₹{{ number_format($credit, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/4.png')}}" alt="dashboard">
                 </div>
@@ -112,7 +112,7 @@
                 <div class="resturant-card dashboard--card bg--1">
                     <h4 class="title">{{translate('balance')}}</h4>
                     <span class="subtitle">
-                        {{ number_format($balance, 2) }}
+                        ₹{{ number_format($balance, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/1.png')}}" alt="dashboard">
                 </div>
