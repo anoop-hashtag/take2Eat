@@ -71,7 +71,7 @@ class EmployeeController extends Controller
 
         $this->admin->insert([
             'f_name' => $request->name,
-            'phone' => $request->phone,
+            'phone' => preg_replace("/\D/", "",$request->phone),
             'email' => $request->email,
             'admin_role_id' => $request->role_id,
             'identity_number' => $request->identity_number,

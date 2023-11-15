@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                     <label for="phone">{{translate('Phone')}}</label>
                                     <input type="tel" value="{{$e['phone']}}" required name="phone" class="form-control" id="phone"
-                                        placeholder="{{translate('Ex')}} : +88017********">
+                                        placeholder="{{translate('Ex')}} : +88017********"  maxlength="10">
                                 </div>
                                 <div class="form-group">
                                     <label for="name">{{translate('Role')}}</label>
