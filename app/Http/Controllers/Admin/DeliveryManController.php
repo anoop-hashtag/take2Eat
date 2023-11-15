@@ -155,6 +155,7 @@ class DeliveryManController extends Controller
         $dm->f_name = $request->f_name;
         $dm->l_name = $request->l_name;
         $dm->email = $request->email;
+        $dm->phone =  preg_replace("/\D/", "",$request->phone);
         $dm->phone = $request->phone;
         $dm->identity_number = $request->identity_number;
         $dm->identity_type = $request->identity_type;

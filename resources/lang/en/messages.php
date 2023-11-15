@@ -2069,4 +2069,5 @@
   'Image uploaded successfully' => 'Image uploaded successfully',
   'Error , Something went wrong' => 'Error , Something went wrong',
   'Employee updated successfully!' => 'Employee updated successfully!',
+  'Ex : (xxx)-xxx-xxxx' => 'Ex : (xxx)-xxx-xxxx',
 );
