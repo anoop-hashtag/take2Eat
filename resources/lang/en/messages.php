@@ -2051,4 +2051,5 @@
   'Products imported successfully!' => 'Products imported successfully!',
   'Admin updated successfully!' => 'Admin updated successfully!',
   'recent_Orderstest' => 'Recent Orderstest',
+  'No order found!' => 'No order found!',
 );
