@@ -364,9 +364,10 @@ class OrderController extends Controller
 
                 //send email
                 $emailServices = Helpers::get_business_settings('mail_config');
-                var_dump(auth('api')->user()->email); die();
+                
                 $order_mail_status = Helpers::get_business_settings('place_order_mail_status_user');
                 if (isset($emailServices['status']) && $emailServices['status'] == 1 && $order_mail_status == 1 && (bool)auth('api')->user()) {
+                    var_dump(auth('api')->user()->email); die();
                     Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id));
                 }
 
