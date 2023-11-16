@@ -36,6 +36,7 @@ class OrderPlaced extends Mailable
     public function build()
     {
         $order_id = $this->order_id;
+        print_r($order_id); die();
         $order=Order::where('id', $order_id)->first();
         $company_name = BusinessSetting::where('key', 'restaurant_name')->first()->value;
         $data=EmailTemplate::with('translations')->where('type','user')->where('email_type', 'new_order')->first();
