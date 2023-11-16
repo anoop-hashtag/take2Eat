@@ -49,10 +49,10 @@ class OrderPlaced extends Mailable
         // print_r($user_name); die();
         $restaurant_name = $order->branch->name;
        
-        $delivery_man_name = $order->delivery_man->f_name.' '.$order->delivery_man->l_name;
-        // print_r($delivery_man_name); die();
+        $delivery_man_name = $order->delivery_man?->f_name.' '.$order->delivery_man?->l_name;
+         print_r($delivery_man_name); die();
         $local = $order->customer->language_code ?? 'en';
-        print_r($local); die();
+      
 
         $content = [
             'title' => $data->title,
