@@ -372,7 +372,7 @@ class OrderController extends Controller
                     try {
                         Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id));
                     } catch (\Exception $e) {
-                        \Log::error('Mail sending failed: ' . $e->getMessage());
+                        \Log::error('Mail sending failed: ' . $e->getMessage()); die();
                     }
                     
                 }
