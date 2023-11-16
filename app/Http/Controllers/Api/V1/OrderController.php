@@ -369,7 +369,8 @@ class OrderController extends Controller
                 // print_r($order_mail_status); die();
                 if (isset($emailServices['status']) && $emailServices['status'] == 1 && $order_mail_status == 1 && (bool)auth('api')->user()) {
                     // print_r(auth('api')->user()->email); die();
-                    Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id));
+                    Mail::to($customer['email'])->send(new \App\Mail\PasswordResetMail($token, $customer['f_name']. ' '. $customer['l_name'], $customer->language_code ));
+                    // Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id));
                 }
 
             } catch (\Exception $e) {
