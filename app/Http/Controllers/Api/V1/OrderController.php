@@ -366,7 +366,7 @@ class OrderController extends Controller
                 $emailServices = Helpers::get_business_settings('mail_config');
 
                 $order_mail_status = Helpers::get_business_settings('place_order_mail_status_user');
-                // print_r($order_mail_status); die();
+                 print_r($order_mail_status); die();
                 if (isset($emailServices['status']) && $emailServices['status'] == 1 && $order_mail_status == 1 && (bool)auth('api')->user()) {
                     // print_r(auth('api')->user()->email); die();
                     
