@@ -49,8 +49,8 @@ class OrderPlaced extends Mailable
         // print_r($user_name); die();
         $restaurant_name = $order->branch->name;
        
-        $delivery_man_name = $order->delivery_man?->f_name.' '.$order->delivery_man?->l_name;
-         print_r($delivery_man_name); die();
+        // $delivery_man_name = $order->delivery_man?->f_name.' '.$order->delivery_man?->l_name;
+        //  print_r($delivery_man_name); die();
         $local = $order->customer->language_code ?? 'en';
       
 
@@ -71,8 +71,8 @@ class OrderPlaced extends Mailable
             }
         }
 
-        $title = Helpers::text_variable_data_format( value:$data['title']??'',user_name:$user_name??'',restaurant_name:$restaurant_name??'',delivery_man_name:$delivery_man_name??'',order_id:$order_id??'');
-        $body = Helpers::text_variable_data_format( value:$data['body']??'',user_name:$user_name??'',restaurant_name:$restaurant_name??'',delivery_man_name:$delivery_man_name??'',order_id:$order_id??'');
+        $title = Helpers::text_variable_data_format( value:$data['title']??'',user_name:$user_name??'',restaurant_name:$restaurant_name??'');
+        $body = Helpers::text_variable_data_format( value:$data['body']??'',user_name:$user_name??'',restaurant_name:$restaurant_name??'');
         $footer_text = Helpers::text_variable_data_format( value:$data['footer_text']??'',user_name:$user_name??'',restaurant_name:$restaurant_name??'',delivery_man_name:$delivery_man_name??'',order_id:$order_id??'');
         $copyright_text = Helpers::text_variable_data_format( value:$data['copyright_text']??'',user_name:$user_name??'',restaurant_name:$restaurant_name??'',delivery_man_name:$delivery_man_name??'',order_id:$order_id??'');
         return $this->subject(translate('Order_Place_Mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'title'=>$title,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'order'=>$order]);
