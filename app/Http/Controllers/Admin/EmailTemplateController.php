@@ -15,10 +15,12 @@ class EmailTemplateController extends Controller
     public function email_index(Request $request,$type,$tab)
     {
         $template = $request->query('template',null);
-
+       
         //user
         if ($tab == 'new-order') {
+           
             return view('admin-views.business-settings.email-format-setting.'.$type.'-email-formats.place-order-format',compact('template'));
+          
         }else if ($tab == 'forgot-password') {
             return view('admin-views.business-settings.email-format-setting.'.$type.'-email-formats.forgot-pass-format',compact('template'));
         }else if ($tab == 'registration-otp') {
@@ -93,6 +95,7 @@ class EmailTemplateController extends Controller
         $template->twitter = $request->twitter?'1':0;
         $template->linkedin = $request->linkedin?'1':0;
         $template->pinterest = $request->pinterest?'1':0;
+        // echo '<pre>';print_r($template); die();
         $template->save();
 
         $default_lang = str_replace('_', '-', app()->getLocale());

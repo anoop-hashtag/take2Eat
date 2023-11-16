@@ -11,7 +11,7 @@
                     <div class="item">
                         <div class="mb-20">
                             <div class="text-center">
-                                <img src="{{asset('/public/assets/admin/img/email-templates/1.png')}}" alt="" class="mb-20">
+                                {{-- <img src="{{asset('/public/assets/admin/img/email-templates/1.png')}}" alt="" class="mb-20"> --}}
                                 <h5 class="modal-title"> <b>{{translate('Select_Theme')}}</b></h5>
                                 <p>
                                     {{ translate('Choose_a_related_email_template_theme_for_the_purpose_for_which_you_are_creating_the_email.')}}

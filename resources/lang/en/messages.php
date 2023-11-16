@@ -2072,4 +2072,10 @@
   'Ex : (xxx)-xxx-xxxx' => 'Ex : (xxx)-xxx-xxxx',
   'Update delivery-man' => 'Update delivery-man',
   'update_Deliveryman' => 'Update Deliveryman',
+  'country_name' => 'Country name',
+  'Select_Country_Name' => 'Select Country Name',
+  'Ex: (xxx)-xxx-xxxx' => 'Ex: (xxx)-xxx-xxxx',
+  'Order_Summary_test' => 'Order Summary test',
+  'email_template_test' => 'Email template test',
+  'Email_Templates_test' => 'Email Templates test',
 );
