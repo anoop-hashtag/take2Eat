@@ -21,14 +21,12 @@ class OrderPlaced extends Mailable
      * @return void
      */
 
-    protected $token;
+    protected $order_id;
 
     public function __construct($order_id)
     {
         $this->order_id = $order_id;
-        
     }
-
 
     /**
      * Build the message.
@@ -109,5 +107,4 @@ class OrderPlaced extends Mailable
                 'url' => $url
             ]);
     }
-    
 }
