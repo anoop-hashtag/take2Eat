@@ -47,7 +47,7 @@ class OrderPlaced extends Mailable
         $template=$data?$data->email_template:3;
         //   print_r($data); die();
         $user_name = $order->customer->f_name.' '.$order->customer->l_name;
-        print_r($user_name); die();
+        // print_r($user_name); die();
         $restaurant_name = $order->branch->name;
        
         $delivery_man_name = ($order->delivery_man) ? $order->delivery_man->f_name.' '.$order->delivery_man->l_name : "test";
