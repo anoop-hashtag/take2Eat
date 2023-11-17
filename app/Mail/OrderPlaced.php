@@ -5,6 +5,7 @@ namespace App\Mail;
 use App\CentralLogics\Helpers;
 use App\Model\BusinessSetting;
 use App\Models\EmailTemplate;
+use App\Model\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
