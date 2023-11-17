@@ -369,7 +369,7 @@ class OrderController extends Controller
                
                 if (isset($emailServices['status']) && $emailServices['status'] == 1 && $order_mail_status == 1 && (bool)auth('api')->user()) {
                     // print_r(new \App\Mail\OrderPlaced($order_id)); die();
-                    Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id));
+                    Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id,'test', 'en'));
 
                     // Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id,'lucknow', 'test', 'en'));
 
