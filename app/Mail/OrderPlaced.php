@@ -38,11 +38,11 @@ class OrderPlaced extends Mailable
         $order_id = $this->order_id;
         // print_r($order_id); die();
         $order=Order::where('id', $order_id)->first();
-        echo '<pre>'; print_r($order); die();
+        // echo '<pre>'; print_r($order); die();
         $company_name = BusinessSetting::where('key', 'restaurant_name')->first()->value;
         //  print_r($company_name); die();
         $data=EmailTemplate::with('translations')->where('type','user')->where('email_type', 'new_order')->first();
-        // print_r($data); die();
+        print_r($data); die();
         $template=($data)?$data->email_template:"3";
         //  print_r($template); die();
         $user_name = $order->customer->f_name.' '.$order->customer->l_name;
