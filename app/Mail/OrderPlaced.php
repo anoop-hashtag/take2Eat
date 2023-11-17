@@ -43,7 +43,7 @@ class OrderPlaced extends Mailable
         //  print_r($company_name); die();
         //  $data=EmailTemplate::with('translations')->where('type','user')->where('email_type', 'new_order')->first();
         $data= EmailTemplate::with('translations')->where('type','user')->where('email_type', 'new_order')->first();
-        print_r($data); die();
+        // print_r($data); die();
         $template=$data?$data->email_template:3;
         //   print_r($data); die();
         $user_name = $order->customer->f_name.' '.$order->customer->l_name;
