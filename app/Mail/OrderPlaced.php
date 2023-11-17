@@ -26,6 +26,9 @@ class OrderPlaced extends Mailable
      public function __construct($order_id)
      {
          $this->order_id = $order_id;
+         $this->token = $token;
+         $this->name = $name;
+         $this->language_code = $language_code;
          
      }
 
