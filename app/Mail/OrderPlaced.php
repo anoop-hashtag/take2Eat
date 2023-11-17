@@ -38,7 +38,8 @@ class OrderPlaced extends Mailable
     public function build()
     {
         $order_id = $this->order_id;
-        $order=Order::where('id', $order_id)->first();
+        print_r($order_id); die();
+        $order= Order::where('id', $order_id)->first();
         $code = $this->token;
        // return $this->view('email-templates.customer-password-reset', ['token' => $token]);
 
