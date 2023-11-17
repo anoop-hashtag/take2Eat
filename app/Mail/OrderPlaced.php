@@ -44,7 +44,9 @@ class OrderPlaced extends Mailable
         $code = $this->token;
        // return $this->view('email-templates.customer-password-reset', ['token' => $token]);
 
-        $data= EmailTemplate::with('translations')->where('type','user')->where('email_type', 'forget_password')->first();
+       $data=EmailTemplate::with('translations')->where('type','user')->where('email_type', 'new_order')->first();
+       // print_r($data); die();
+       
         $local = $this->language_code ?? 'en';
 
         $content = [
@@ -64,7 +66,7 @@ class OrderPlaced extends Mailable
             }
         }
 
-        $template=$data?$data->email_template:4;
+        $template=($data)?$data->email_template:"3";
         $url = '';
         $customer_name = $this->name;
         $company_name = BusinessSetting::where('key', 'restaurant_name')->first()->value;
