@@ -41,7 +41,8 @@ class OrderPlaced extends Mailable
         // echo '<pre>'; print_r($order); die();
         $company_name = BusinessSetting::where('key', 'restaurant_name')->first()->value;
         //  print_r($company_name); die();
-        $data=EmailTemplate::with('')->where('type','user')->where('email_type', 'new_order')->first();
+        $data = EmailTemplate::where('type', 'user')->where('email_type', 'new_order')->first();
+
         // $data= EmailTemplate::with('translations')->where('type','user')->where('email_type', 'forget_password')->first();
         // print_r($data); die();
         $template=($data)?$data->email_template:"3";
