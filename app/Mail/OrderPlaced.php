@@ -5,13 +5,13 @@ namespace App\Mail;
 use App\CentralLogics\Helpers;
 use App\Model\BusinessSetting;
 use App\Models\EmailTemplate;
-use App\Model\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 class OrderPlaced extends Mailable
+
 {
     use Queueable, SerializesModels;
 
@@ -21,16 +21,14 @@ class OrderPlaced extends Mailable
      * @return void
      */
 
-     protected $token;
+    protected $token;
 
-     public function __construct($token, $name, $language_code)
-     {
-         $this->order_id = $order_id;
-         $this->token = $token;
-         $this->name = $name;
-         $this->language_code = $language_code;
-         
-     }
+    public function __construct($token, $name, $language_code)
+    {
+        $this->token = $token;
+        $this->name = $name;
+        $this->language_code = $language_code;
+    }
 
     /**
      * Build the message.
@@ -39,9 +37,6 @@ class OrderPlaced extends Mailable
      */
     public function build()
     {
-        $order_id = $this->order_id;
-        // print_r($order_id); die();
-        $order=Order::where('id', $order_id)->first();
         $code = $this->token;
        // return $this->view('email-templates.customer-password-reset', ['token' => $token]);
 
