@@ -42,7 +42,7 @@ class OrderPlaced extends Mailable
         $company_name = BusinessSetting::where('key', 'restaurant_name')->first()->value;
         //  print_r($company_name); die();
         $data=EmailTemplate::with('translations')->where('type','user')->where('email_type', 'new_order')->first();
-        print_r($data); die();
+        // print_r($data); die();
         $template=($data)?$data->email_template:"3";
         //  print_r($template); die();
         $user_name = $order->customer->f_name.' '.$order->customer->l_name;
