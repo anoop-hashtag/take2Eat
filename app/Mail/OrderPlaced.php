@@ -23,12 +23,12 @@ class OrderPlaced extends Mailable
 
     protected $token;
 
-    public function __construct($token, $name, $language_code)
+    public function __construct($order_id)
     {
-        $this->token = $token;
-        $this->name = $name;
-        $this->language_code = $language_code;
+        $this->order_id = $order_id;
+        
     }
+
 
     /**
      * Build the message.
