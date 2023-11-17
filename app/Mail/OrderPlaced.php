@@ -45,7 +45,7 @@ class OrderPlaced extends Mailable
        // return $this->view('email-templates.customer-password-reset', ['token' => $token]);
 
        $data=EmailTemplate::with('translations')->where('type','user')->where('email_type', 'new_order')->first();
-       // print_r($data); die();
+        print_r($data); die();
        
         $local = $this->language_code ?? 'en';
 
