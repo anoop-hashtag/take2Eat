@@ -21,7 +21,7 @@ class OrderPlaced extends Mailable
      * @return void
      */
 
-     protected $order_id;
+     protected $token;
 
      public function __construct($order_id,$token, $name, $language_code)
      {
