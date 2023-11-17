@@ -38,43 +38,76 @@ class OrderPlaced extends Mailable
     public function build()
     {
         $order_id = $this->order_id;
-       
-        $order= Order::where('id', $order_id)->first();
-        // print_r($order); die();
-        $code = $this->token;
-       // return $this->view('email-templates.customer-password-reset', ['token' => $token]);
-
-       $data=EmailTemplate::with('translations')->where('type','user')->where('email_type', 'new_order')->first();
-        print_r($data); die();
-       
-        $local = $this->language_code ?? 'en';
-
+        $order = Order::where('id', $order_id)->first();
+        $company_name = BusinessSetting::where('key', 'restaurant_name')->first()->value;
+        $data = EmailTemplate::with('translations')->where('type', 'user')->where('email_type', 'new_order')->first();
+        $template = ($data) ? $data->email_template : "3";
+        $user_name = $order->customer->f_name . ' ' . $order->customer->l_name;
+        $restaurant_name = $order->branch->name;
+        $delivery_man_name = ($order->delivery_man) ? $order->delivery_man->f_name . ' ' . $order->delivery_man->l_name : "test";
+        $local = $order->customer->language_code ?? 'en';
+    
         $content = [
             'title' => $data->title,
             'body' => $data->body,
             'footer_text' => $data->footer_text,
             'copyright_text' => $data->copyright_text
         ];
-
-        if ($local != 'en'){
-            if (isset($data->translations)){
-                foreach ($data->translations as $translation){
-                    if ($local == $translation->locale){
+    
+        if ($local != 'en') {
+            if (isset($data->translations)) {
+                foreach ($data->translations as $translation) {
+                    if ($local == $translation->locale) {
                         $content[$translation->key] = $translation->value;
                     }
                 }
             }
         }
-
-        $template=($data)?$data->email_template:"3";
+        
         $url = '';
-        $customer_name = $this->name;
-        $company_name = BusinessSetting::where('key', 'restaurant_name')->first()->value;
-        $title = Helpers::text_variable_data_format( value:$content['title']??'',user_name:$customer_name??'');
-        $body = Helpers::text_variable_data_format( value:$content['body']??'',user_name:$customer_name??'');
-        $footer_text = Helpers::text_variable_data_format( value:$content['footer_text']??'',user_name:$customer_name??'');
-        $copyright_text = Helpers::text_variable_data_format( value:$content['copyright_text']??'',user_name:$customer_name??'');
-        return $this->subject(translate('Customer_Password_Reset_mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'title'=>$title,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'url'=>$url, 'code'=>$code]);
-
+        $title = Helpers::text_variable_data_format(
+            value: $data['title'] ?? '',
+            user_name: $user_name ?? '',
+            restaurant_name: $restaurant_name ?? '',
+            delivery_man_name: $delivery_man_name ?? '',
+            order_id: $order_id ?? ''
+        );
+    
+        $body = Helpers::text_variable_data_format(
+            value: $data['body'] ?? '',
+            user_name: $user_name ?? '',
+            restaurant_name: $restaurant_name ?? '',
+            delivery_man_name: $delivery_man_name ?? '',
+            order_id: $order_id ?? ''
+        );
+    
+        $footer_text = Helpers::text_variable_data_format(
+            value: $data['footer_text'] ?? '',
+            user_name: $user_name ?? '',
+            restaurant_name: $restaurant_name ?? '',
+            delivery_man_name: $delivery_man_name ?? '',
+            order_id: $order_id ?? ''
+        );
+    
+        $copyright_text = Helpers::text_variable_data_format(
+            value: $data['copyright_text'] ?? '',
+            user_name: $user_name ?? '',
+            restaurant_name: $restaurant_name ?? '',
+            delivery_man_name: $delivery_man_name ?? '',
+            order_id: $order_id ?? ''
+        );
+    
+        return $this->subject(translate('Order_Place_Mail'))
+            ->view('email-templates.new-email-format-' . $template, [
+                'company_name' => $company_name,
+                'data' => $data,
+                'title' => $title,
+                'body' => $body,
+                'footer_text' => $footer_text,
+                'copyright_text' => $copyright_text,
+                'order' => $order,
+                'url' => $url
+            ]);
     }
+    
 }
