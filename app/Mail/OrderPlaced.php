@@ -50,8 +50,7 @@ class OrderPlaced extends Mailable
         $restaurant_name = $order->branch->name;
        
         $delivery_man_name = ($order->delivery_man) ? $order->delivery_man->f_name.' '.$order->delivery_man->l_name : "sonu";
-        print_r($delivery_man_name);
-        die();
+       
         
 
        
