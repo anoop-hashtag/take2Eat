@@ -219,26 +219,14 @@
         
                     <!-- Rest of the content remains unchanged -->
                     <!-- ... -->
-                    <tr>
+                   
                         <td>
                             <h3 class="subtitle">{{ translate('Order_Summary') }}</h3>
                             <span class="d-block">{{ translate('Order') }}# {{ $order->id }}</span>
                             <span class="d-block">{{ $order->created_at  }}</span>
                         </td>
-                        <td style="max-width:130px">
-                            <h3 class="subtitle">{{ translate('Delivery_Address') }}</h3>
-                            @if ($order->delivery_address)
-                                @php($address = json_decode($order->delivery_address, true))
-                                <span class="d-block">{{ $address['contact_person_name']  ?? $order->customer['f_name'] . ' ' . $order->customer['l_name'] }}</span>
-                                <span  class="d-block">
-                                    {{ $address['contact_person_number'] ?? null }}
-                                    </span>
-                                <span class="d-block" >
-                                        {{ $address['address'] ?? null }}
-                                    </span>
-                            @endif
-                        </td>
-                    </tr>
+                       
+                   
                     <hr>
                     <div class="mb-2" id="mail-footer">
                         {{ $footer_text ?? translate('Please_contact_us_for_any_queries,_we’re_always_happy_to_help.') }}
