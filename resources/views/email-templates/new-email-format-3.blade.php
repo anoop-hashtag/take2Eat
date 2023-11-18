@@ -3,7 +3,7 @@
     $lang = \App\CentralLogics\Helpers::get_default_language();
     //$site_direction = \App\CentralLogics\Helpers::system_default_direction();
 ?>
-{{--<html lang="{{ $lang }}" class="{{ $site_direction === 'rtl'?'active':'' }}">--}}
+
 <html lang="{{ $lang }}" class="">
 <head>
     <meta charset="UTF-8">
@@ -238,8 +238,7 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <h3 class="subtitle">{{ __('Order_Summary') }}</h3>
-
+                                            <h3 class="subtitle">{{ translate('Order_Summary') }}</h3>
                                             <span class="d-block">{{ translate('Order') }}# {{ $order->id }}</span>
                                             <span class="d-block">{{ $order->created_at  }}</span>
                                         </td>
