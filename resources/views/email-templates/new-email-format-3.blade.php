@@ -208,7 +208,105 @@
 
     <table  dir="" class="main-table">
         <tbody>
-            
+            @foreach($order->details as $detail)
+            @php($product_details = json_decode($detail['product_details'], true))
+            @php($add_on_qtys=json_decode($detail['add_on_qtys'],true))
+            @php($add_on_prices=json_decode($detail['add_on_prices'],true))
+            @php($add_on_taxes=json_decode($detail['add_on_taxes'],true))
+
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>
+                    <div class="media gap-3 w-max-content">
+
+                        <img class="img-fluid avatar avatar-lg"
+                             src="{{asset('storage/app/public/product/')}}/{{$detail->product?->image}}"
+                             onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
+                             alt="Image Description">
+
+                        <div class="media-body text-dark fz-12">
+                            {{--                                                <h6 class="text-capitalize">{{$detail->product?->name}}</h6>--}}
+                            <h6 class="text-capitalize">{{$product_details['name']}}</h6>
+                            <div class="d-flex gap-2">
+                                @if (isset($detail['variation']))
+                                    @foreach(json_decode($detail['variation'],true) as  $variation)
+                                        @if (isset($variation['name'])  && isset($variation['values']))
+                                            <span class="d-block text-capitalize">
+                            <strong>{{  $variation['name']}} -</strong>
+                        </span>
+                                            @foreach ($variation['values'] as $value)
+
+                                                <span class="d-block text-capitalize">
+                                 {{ $value['label']}} :
+                                <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
+                            </span>
+                                            @endforeach
+                                        @else
+                                            @if (isset(json_decode($detail['variation'],true)[0]))
+                                                <strong><u> {{  translate('Variation') }} : </u></strong>
+                                                @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
+                                                    <div class="font-size-sm text-body">
+                                                        <span>{{$key1}} :  </span>
+                                                        <span class="font-weight-bold">{{$variation}}</span>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <div class="font-size-sm text-body">
+                                        <span class="text-dark">{{translate('price')}}  : {{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</span>
+                                    </div>
+                                @endif
+
+                                <div class="d-flex gap-2">
+                                    <span class="">{{translate('Qty')}} :  </span>
+                                    <span>{{$detail['quantity']}}</span>
+                                </div>
+
+                                <br>
+                                @php($addon_ids = json_decode($detail['add_on_ids'],true))
+                                @if ($addon_ids)
+                                    <span>
+                    <u><strong>{{translate('addons')}}</strong></u>
+                    @foreach($addon_ids as $key2 =>$id)
+                                            @php($addon=\App\Model\AddOn::find($id))
+                                            @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
+
+                                            <div class="font-size-sm text-body">
+                                <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
+                                <span class="font-weight-semibold">
+                                    {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2]) }} <br>
+                                </span>
+                            </div>
+                                            @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
+                                            @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
+                                        @endforeach
+                </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @php($amount=$detail['price']*$detail['quantity'])
+                    {{\App\CentralLogics\Helpers::set_symbol($amount)}}
+                </td>
+                <td>
+                    @php($tot_discount = $detail['discount_on_product']*$detail['quantity'])
+                    {{\App\CentralLogics\Helpers::set_symbol($tot_discount)}}
+                </td>
+                <td>
+                    @php($product_tax = $detail['tax_amount']*$detail['quantity'])
+                    {{\App\CentralLogics\Helpers::set_symbol($product_tax + $add_ons_tax_cost)}}
+                </td>
+                <td class="text-right">{{\App\CentralLogics\Helpers::set_symbol($amount-$tot_discount + $product_tax)}}</td>
+            </tr>
+            @php($total_dis_on_pro += $tot_discount)
+            @php($sub_total += $amount)
+            @php($total_tax += $product_tax)
+
+        @endforeach
             <tr>
                 
                 <tr>
@@ -220,7 +318,7 @@
                         @php($del_c=$order['delivery_charge'])
                     @endif
                     <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
-                    <h6 class="text-capitalize">{{$product_details['name']}}</h6>
+                  
                 </tr>
                 <td class="main-table-td">
                    <div class="text-center">
