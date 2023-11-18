@@ -205,7 +205,8 @@
 <body style="background-color: #e9ecef; padding: 15px;">
 
     {{-- <table dir="{{ $site_direction }}" class="main-table"> --}}
-    <table dir="" class="main-table">
+        <table dir="{{ $site_direction }}" class="main-table">
+    {{-- <table dir="" class="main-table"> --}}
         <tbody>
             <tr>
                 <td class="main-table-td">
