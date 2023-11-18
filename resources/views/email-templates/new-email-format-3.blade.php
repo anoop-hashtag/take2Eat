@@ -209,6 +209,11 @@
     <table  dir="" class="main-table">
         <tbody>
             <tr>
+                <td>
+                    <h3 class="subtitle">{{ translate('Order_Summary') }}</h3>
+                    <span class="d-block">{{ translate('Order') }}# {{ $order->id }}</span>
+                    <span class="d-block">{{ $order->created_at  }}</span>
+                </td>
                 <td class="main-table-td">
                     <div class="text-center">
                     <img onerror="this.src='{{ asset('/public/assets/admin/img/blank3.png') }}'" class="mail-img-2"
