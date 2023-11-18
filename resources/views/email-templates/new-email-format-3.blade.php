@@ -209,6 +209,14 @@
     <table  dir="" class="main-table">
         <tbody>
             <tr>
+                <td class="p-10">
+                    <span class="d-block text-center">
+                        @php($restaurant_logo = \App\Models\BusinessSetting::where(['key' => 'logo'])->first()->value)
+                        <img class="mb-2 mail-img-2" onerror="this.src='{{ asset('storage/app/public/restaurant/' . $restaurant_logo) }}'"
+                             src="{{ asset('storage/app/public/email_template/') }}/{{ $data['logo']??'' }}" alt="">
+                        <h3 class="mb-3 mt-0">{{ translate('Order_Info') }}</h3>
+                    </span>
+            </td>
                 <td>
                     <h3 class="subtitle">{{ translate('Order_Summary') }}</h3>
                     <span class="d-block">{{ translate('Order') }}# {{ $order->id }}</span>
