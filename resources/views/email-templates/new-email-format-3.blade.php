@@ -211,7 +211,16 @@
             
             <tr>
                 
-                
+                <tr>
+                    <td style="width: 40%"></td>
+                    <td class="p-1 px-3"> {{translate('delivery fee')}}</td>
+                    @if($order['order_type']=='take_away')
+                        @php($del_c=0)
+                    @else
+                        @php($del_c=$order['delivery_charge'])
+                    @endif
+                    <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
+                </tr>
                 <td class="main-table-td">
                    <div class="text-center">
                       <img onerror="this.src='{{ asset('/public/assets/admin/img/blank3.png') }}'" class="mail-img-2"
