@@ -222,14 +222,7 @@
                     <table class="bg-section p-10 w-100">
                         <tbody>
                         <tr>
-                            <td class="p-10">
-                                    <span class="d-block text-center">
-                                        @php($restaurant_logo = \App\Models\BusinessSetting::where(['key' => 'logo'])->first()->value)
-                                        <img class="mb-2 mail-img-2" onerror="this.src='{{ asset('storage/app/public/restaurant/' . $restaurant_logo) }}'"
-                                             src="{{ asset('storage/app/public/email_template/') }}/{{ $data['logo']??'' }}" alt="">
-                                        <h3 class="mb-3 mt-0">{{ translate('Order_Info') }}</h3>
-                                    </span>
-                            </td>
+                          
                         </tr>
                         <tr>
                             <td>
@@ -333,7 +326,7 @@
                                                                         <span>
                                                         <u><strong>{{translate('addons')}}</strong></u>
                                                         @foreach($addon_ids as $key2 =>$id)
-                                                       <?php echo print_r($addon_ids); die(); ?>
+                                                      
                                                                                 @php($addon=\App\Model\AddOn::find($id))
                                                                                 @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
 
