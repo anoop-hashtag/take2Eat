@@ -230,6 +230,11 @@
                         <h2 style="font-size: 26px;margin: 0;letter-spacing:4px">
                             {{ $code??'' }}
                         </h2>
+                        <span class="d-block text-center mb-3">
+                            @if ($data?->button_url)
+                            <a href="{{ $data['button_url']??'#' }}" class="cmn-btn" id="mail-button">{{ $data['button_name']??'Submit' }}</a>
+                            @endif                    </span>
+    
                     </div>
                     
                     @if ($data?->button_url)
