@@ -221,70 +221,7 @@
                     @endif
                     <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <hr class="mt-0">
-                        <table class="w-100">
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3">{{ translate('item_price') }}</td>
-                                <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3">{{translate('tax')}} / {{translate('vat')}}</td>
-                                <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($total_tax) }}</td>
-                            </tr>
-                           
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3">{{translate('addon')}} {{translate('cost')}}</td>
-
-                                <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($add_ons_cost + $total_addon_price) }}</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3">{{ translate('discount') }}</td>
-                                <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($total_dis_on_pro) }}</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3">{{ translate('subtotal') }}</td>
-                                <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($sub_total =$sub_total+$total_tax+$add_ons_cost-$total_dis_on_pro + $add_ons_tax_cost) }}</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3">{{translate('coupon')}} {{translate('discount')}}</td>
-                                <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3"> {{translate('extra discount')}}</td>
-                                <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3"> {{translate('delivery fee')}}</td>
-                                @if($order['order_type']=='take_away')
-                                    @php($del_c=0)
-                                @else
-                                    @php($del_c=$order['delivery_charge'])
-                                @endif
-                                <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
-                            </tr>
-
-                            <tr>
-                                <td style="width: 40%"></td>
-                                <td class="p-1 px-3">
-                                    <h4>{{ translate('total') }}</h4>
-                                </td>
-                                <td class="text-right p-1 px-3">
-                                    <span class="text-base">{{ \App\CentralLogics\Helpers::set_symbol($sub_total - $order['coupon_discount_amount'] - $order['extra_discount'] + $del_c) }}</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
+                
                 <td class="main-table-td">
                    <div class="text-center">
                       <img onerror="this.src='{{ asset('/public/assets/admin/img/blank3.png') }}'" class="mail-img-2"
