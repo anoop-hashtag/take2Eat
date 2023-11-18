@@ -206,7 +206,49 @@
 
     {{-- <table dir="{{ $site_direction }}" class="main-table"> --}}
     <table dir="" class="main-table">
-       
+        <tbody>
+            <tr>
+                <td class="main-table-td">
+                    <h2 class="mb-3" id="mail-title">{{ $title ?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
+                    <div class="mb-1" id="mail-body">{!! $body ?? translate('Hi_Sabrina,') !!}</div>
+                    <span class="d-block text-center mb-3">
+                        @if (optional($data)->button_url)
+                            <a href="{{ optional($data)->button_url ?? '#' }}" class="cmn-btn" id="mail-button">{{ optional($data)->button_name ?? 'Submit' }}</a>
+                        @endif
+                    </span>
+        
+                    <!-- Rest of the content remains unchanged -->
+                    <!-- ... -->
+        
+                    <hr>
+                    <div class="mb-2" id="mail-footer">
+                        {{ $footer_text ?? translate('Please_contact_us_for_any_queries,_we’re_always_happy_to_help.') }}
+                    </div>
+                    <div>
+                        {{ translate('Thanks_&_Regards') }},
+                    </div>
+                    <div class="mb-4">
+                        {{ $company_name }}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="privacy">
+                        @if (optional($data)['privacy'] ?? false)
+                            <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a>
+                        @endif
+                        @if (optional($data)['contact'] ?? false)
+                            <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a>
+                        @endif
+                    </span>
+                    <span class="copyright" id="mail-copyright">
+                        {{ $copyright_text ?? translate('Copyright_2023_eFood._All_right_reserved') }}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+        
     </table>
 
 
