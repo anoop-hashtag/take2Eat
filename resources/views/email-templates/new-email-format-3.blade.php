@@ -210,15 +210,35 @@
         <tbody>
             <tr>
                 <td class="main-table-td">
-                    <div class="text-center">
-                    <img onerror="this.src='{{ asset('/public/assets/admin/img/blank3.png') }}'" class="mail-img-2"
-                    src="{{ asset('storage/app/public/email_template/') }}/{{ $data['icon']??'' }}" id="iconViewer" alt="">
+                   <div class="text-center">
+                      <img onerror="this.src='{{ asset('/public/assets/admin/img/blank3.png') }}'" class="mail-img-2"
+                       src="{{ asset('storage/app/public/email_template/') }}/{{ $data['logo']??'' }}" id="logoViewer" alt="">
                         <h2 id="mail-title" class="mt-2">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
                         <div class="mb-1" id="mail-body">{!! $body?? translate('Hi_Sabrina,') !!}</div>
                         <h2 style="font-size: 26px;margin: 0;letter-spacing:4px">
                             {{ $code??'' }}
                         </h2>
                     </div>
+                    <tr>
+                        <td>
+                            <h3 class="subtitle">{{ translate('Order_Summary') }}</h3>
+                            <span class="d-block">{{ translate('Order') }}# {{ $order->id }}</span>
+                            <span class="d-block">{{ $order->created_at  }}</span>
+                        </td>
+                        <td style="max-width:130px">
+                            <h3 class="subtitle">{{ translate('Delivery_Address') }}</h3>
+                            @if ($order->delivery_address)
+                                @php($address = json_decode($order->delivery_address, true))
+                                <span class="d-block">{{ $address['contact_person_name']  ?? $order->customer['f_name'] . ' ' . $order->customer['l_name'] }}</span>
+                                <span  class="d-block">
+                                    {{ $address['contact_person_number'] ?? null }}
+                                    </span>
+                                <span class="d-block" >
+                                        {{ $address['address'] ?? null }}
+                                    </span>
+                            @endif
+                        </td>
+                    </tr>
                     @if ($data?->button_url)
                     <span class="d-block text-center" style="margin-top: 16px">
                     <a href="{{ $data['button_url']??'#' }}" class="cmn-btn" id="mail-button">{{ $data['button_name']??'Submit' }}</a>
