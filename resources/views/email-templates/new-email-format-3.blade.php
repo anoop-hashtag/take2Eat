@@ -220,6 +220,7 @@
                         @php($del_c=$order['delivery_charge'])
                     @endif
                     <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
+                    <h6 class="text-capitalize">{{$product_details['name']}}</h6>
                 </tr>
                 <td class="main-table-td">
                    <div class="text-center">
