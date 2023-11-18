@@ -221,12 +221,15 @@
                         <tbody>
                         <tr>
                             <td class="p-10">
-                                    <span class="d-block text-center">
-                                        @php($restaurant_logo = \App\Models\BusinessSetting::where(['key' => 'logo'])->first()->value)
-                                        <img class="mb-2 mail-img-2" onerror="this.src='{{ asset('storage/app/public/restaurant/' . $restaurant_logo) }}'"
-                                             src="{{ asset('storage/app/public/email_template/') }}/{{ $data['logo']??'' }}" alt="">
-                                        <h3 class="mb-3 mt-0">{{ translate('Order_Info') }}</h3>
-                                    </span>
+                                    <div class="text-center">
+                    <img onerror="this.src='{{ asset('/public/assets/admin/img/blank3.png') }}'" class="mail-img-2"
+                    src="{{ asset('storage/app/public/email_template/') }}/{{ $data['icon']??'' }}" id="iconViewer" alt="">
+                        <h2 id="mail-title" class="mt-2">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
+                        <div class="mb-1" id="mail-body">{!! $body?? translate('Hi_Sabrina,') !!}</div>
+                        <h2 style="font-size: 26px;margin: 0;letter-spacing:4px">
+                            {{ $code??'' }}
+                        </h2>
+                    </div>
                             </td>
                         </tr>
                         <tr>
@@ -235,7 +238,8 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <h3 class="subtitle">{{ translate('Order_Summary') }}</h3>
+                                            <h3 class="subtitle">{{ __('Order_Summary') }}</h3>
+
                                             <span class="d-block">{{ translate('Order') }}# {{ $order->id }}</span>
                                             <span class="d-block">{{ $order->created_at  }}</span>
                                         </td>
