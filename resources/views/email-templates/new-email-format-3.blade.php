@@ -218,7 +218,7 @@
                         @if ($data?->button_url)
                         <a href="{{ $data['button_url']??'#' }}" class="cmn-btn" id="mail-button">{{ $data['button_name']??'Submit' }}</a>
                         @endif                    </span>
-                        <?php echo '<pre>'; print_r($order); die(); ?>
+                       
 
                     <table class="bg-section p-10 w-100">
                         <tbody>
@@ -232,6 +232,7 @@
                                     </span>
                             </td>
                         </tr>
+                        <?php echo '<pre>'; print_r($order); die(); ?>
                         <tr>
                             <td>
                                 <table class="order-table w-100">
