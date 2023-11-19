@@ -285,7 +285,7 @@
                                                 src="{{ asset('storage/app/public/email_template/') }}/{{ $data['logo']??'' }}"
                                                 alt="">
                                             <h3 class="mb-3 mt-0">{{ translate('Order_Info') }}</h3>
-                                            <?php echo  $restaurant_logo die(); ?>
+                                            <?php echo  print_r($restaurant_logo) die(); ?>
                                         </span>
                                     </td>
                                 </tr>
