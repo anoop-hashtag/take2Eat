@@ -263,12 +263,12 @@
 
             <tr>
                 <td class="main-table-td">
-                    <h2 class="mb-3" id="mail-title">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
+                    <h2 class="mb-3" id="mail-title">{{ $title ?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
                     <div class="mb-1" id="mail-body">{!! $body?? translate('Hi_Sabrina,') !!}</div>
                     <span class="d-block text-center mb-3">
                         @if ($data->button_url)
                         <a href="{{ $data['button_url']??'#' }}" class="cmn-btn"
-                            id="mail-button">{{ $data['button_name']??'Submit' }}</a>
+                            id="mail-button">{{ $data['button_name'] ?? 'Submit' }}</a>
                         @endif </span>
 
 
@@ -277,8 +277,10 @@
                             <tr>
                                 <td class="p-10">
                                     <span class="d-block text-center">
-                                        @php($restaurant_logo = \App\Models\BusinessSetting::where(['key' =>
-                                        'logo'])->first()->value)@endphp
+                                        @php
+                                        $restaurant_logo = \App\Models\BusinessSetting::where(['key' =>
+                                        'logo'])->first()->value
+                                        @endphp
                                         <img class="mb-2 mail-img-2"
                                             onerror="this.src='{{ asset('storage/app/public/restaurant/' . $restaurant_logo) }}'"
                                             src="{{ asset('storage/app/public/email_template/') }}/{{ $data['logo']??'' }}"
@@ -302,7 +304,7 @@
                                                 <td style="max-width:130px">
                                                     <h3 class="subtitle">{{ translate('Delivery_Address') }}</h3>
                                                     @if ($order->delivery_address)
-                                                    @php($address = json_decode($order->delivery_address, true))@endphp
+                                                    @php $address = json_decode($order->delivery_address, true) @endphp
                                                     <span
                                                         class="d-block">{{ $address['contact_person_name']  ?? $order->customer['f_name'] . ' ' . $order->customer['l_name'] }}</span>
                                                     <span class="d-block">
@@ -375,8 +377,7 @@
                                                                             </span>
                                                                             @endforeach
                                                                             @else
-                                                                            @if
-                                                                            (isset(json_decode($detail['variation'],true)[0]))
+                                                                            @if(isset(json_decode($detail['variation'],true)[0]))
                                                                             <strong><u> {{  translate('Variation') }} :
                                                                                 </u></strong>
                                                                             @foreach(json_decode($detail['variation'],true)[0]
@@ -427,10 +428,11 @@
                                                                                         <br>
                                                                                     </span>
                                                                                 </div>
-                                                                                @php($add_ons_cost+=$add_on_prices[$key2]
-                                                                                * $add_on_qty);
-                                                                                ($add_ons_tax_cost +=
-                                                                                $add_on_taxes[$key2] * $add_on_qty);
+                                                                                @php
+                                                                                $add_ons_cost+=$add_on_prices[$key2]
+                                                                                * $add_on_qty;
+                                                                                $add_ons_tax_cost +=
+                                                                                $add_on_taxes[$key2] * $add_on_qty;
                                                                                 @endphp
                                                                                 @endforeach
                                                                             </span>
@@ -441,7 +443,7 @@
                                                             </td>
                                                             <td>
                                                                 @php
-                                                                ($amount=$detail['price']*$detail['quantity']); @endphp
+                                                                $amount=$detail['price']*$detail['quantity']; @endphp
                                                                 {{\App\CentralLogics\Helpers::set_symbol($amount)}}
 
 
@@ -453,8 +455,9 @@
                                                                 {{\App\CentralLogics\Helpers::set_symbol($tot_discount)}}
                                                             </td>
                                                             <td>
-                                                                @php($product_tax =
-                                                                $detail['tax_amount']*$detail['quantity']) @endphp
+                                                                @php 
+                                                                $product_tax =
+                                                                $detail['tax_amount']*$detail['quantity'] @endphp
                                                                 {{\App\CentralLogics\Helpers::set_symbol($product_tax + $add_ons_tax_cost)}}
                                                             </td>
                                                             <td class="text-right">
@@ -533,9 +536,9 @@
                                                                         <td class="p-1 px-3">
                                                                             {{translate('delivery fee')}}</td>
                                                                         @if($order['order_type']=='take_away')
-                                                                        @php($del_c=0); @endphp
+                                                                        @php $del_c=0; @endphp
                                                                         @else
-                                                                        @php($del_c=$order['delivery_charge']); @endphp
+                                                                        @php $del_c=$order['delivery_charge']; @endphp
                                                                         @endif
                                                                         <td class="text-right p-1 px-3">
                                                                             {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
