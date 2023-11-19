@@ -209,7 +209,7 @@
 {{--    <table dir="{{ $site_direction }}" class="main-table">--}}
     <table dir="" class="main-table">
         <tbody>
-            <?php echo '<pre>'; print_r($order); die(); ?>
+          
             <tr>
                 <td class="main-table-td">
                     <h2 class="mb-3" id="mail-title">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
@@ -218,7 +218,7 @@
                         @if ($data?->button_url)
                         <a href="{{ $data['button_url']??'#' }}" class="cmn-btn" id="mail-button">{{ $data['button_name']??'Submit' }}</a>
                         @endif                    </span>
-
+                        <?php echo '<pre>'; print_r($order); die(); ?>
 
                     <table class="bg-section p-10 w-100">
                         <tbody>
