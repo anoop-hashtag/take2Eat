@@ -45,6 +45,7 @@ class OrderPlaced extends Mailable
         //  $data= EmailTemplate::with('translations')->where('type','user')->where('email_type', 'forget_password')->first();
         // print_r($data); die();
         $template=$data?$data->email_template:3;
+        
         //   print_r($data); die();
         $user_name = $order->customer->f_name.' '.$order->customer->l_name;
         // print_r($user_name); die();
@@ -88,8 +89,8 @@ class OrderPlaced extends Mailable
         // $template_data = $this->subject(translate('Customer_Password_Reset_mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'title'=>$title,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'url'=>"test.php", 'code'=>'678']);
 
         
-       return   $this->subject(translate('Order_Place_Mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'title'=>$title,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'order'=>$order,'url'=>$url]);
-        //  echo '<pre>';print_r($template_data); die();
+       $template_data=   $this->subject(translate('Order_Place_Mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'title'=>$title,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'order'=>$order,'url'=>$url]);
+          echo '<pre>';print_r($template_data); die();
        
     }
 }
