@@ -222,7 +222,10 @@
                     <span class="d-block">{{ translate('Order') }}# {{ $order->id }}</span>
                     <span class="d-block">{{ $order->created_at  }}</span>
                 </td>
-              
+                <tr>
+                    <th class="text-left p-1 px-3">{{ translate('Product') }}</th>
+                    <th class="text-right p-1 px-3">{{ translate('Price') }}</th>
+                </tr>
 
 
 </body>
