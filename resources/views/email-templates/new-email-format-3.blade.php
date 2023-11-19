@@ -232,7 +232,7 @@
                                     </span>
                             </td>
                         </tr>
-                        <?php echo '<pre>'; print_r($order); die(); ?>
+                        <?php echo '<pre>'; dd($order); die(); ?>
                         <tr>
                             <td>
                                 <table class="order-table w-100">
