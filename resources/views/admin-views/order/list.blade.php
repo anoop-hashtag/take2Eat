@@ -46,13 +46,13 @@
                             <div class="col-md-4 col-lg-3">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('Start Date') }}</label>
-                                    <input type="date" name="from" value="{{ session()->get('') }}" id="from_date" class="form-control">
+                                    <input type="text" name="from" value="{{ session()->get('') }}" id="from_date" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-3">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('End Date') }}</label>
-                                    <input type="date" value="" name="to" id="to_date" class="form-control">
+                                    <input type="text" value="" name="to" id="to_date" autocomplete="off" placeholder="DD-MM-YYYY" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3 d-flex gap-2">
@@ -104,8 +104,8 @@
                                         <span>{{translate('processing')}}</span>
                                     </h6>
                                     <span class="card-title text-danger">
-                                {{$order_count['processing']}}
-                            </span>
+                                        {{$order_count['processing']}}
+                                    </span>
                                 </div>
                             </a>
                         </div>
@@ -297,7 +297,7 @@
                                     @elseif($order['order_status']=='canceled')
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{translate("cancelled")}}</span>
                                     @else
-                                        <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status'])}}</span>
+                                        <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status']=='canceled' ? 'cancelled' : '')}}</span>
                                     @endif
                                 </td>
                                 <td>
