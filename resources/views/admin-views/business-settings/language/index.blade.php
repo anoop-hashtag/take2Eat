@@ -246,7 +246,7 @@
                                                             <i class="tio-edit"></i>
                                                         </a>
                                                         @if($data['default'] != true)
-                                                            <button class="btn btn-sm btn-outline-primary px-3" id="delete"
+                                                            <button class="btn btn-sm btn-outline-danger px-3" id="delete"
                                                                 onclick="delete_language('{{ route('admin.business-settings.web-app.system-setup.language.delete',[$data['code']]) }}')">
                                                                 <i class="tio-delete-outlined"></i>
                                                             </button>
