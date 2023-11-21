@@ -7,6 +7,7 @@
 @endpush
 
 @section('content')
+
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
@@ -54,7 +55,7 @@
                                 <div class="col-md-4 col-sm-6" id="limit-for-user">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('limit')}} {{translate('for')}} {{translate('same')}} {{translate('user')}}</label>
-                                        <input type="number" name="limit" id="user-limit" class="form-control" placeholder="{{ translate('EX: 10') }}" required min="1">
+                                        <input type="text" name="limit" id="user-limit" class="form-control" placeholder="{{ translate('EX: 10') }}" required min="1">
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
@@ -69,13 +70,13 @@
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label text-capitalize" id="discount_label">{{translate('discount_percent')}}</label>
-                                        <input type="number" step="any" min="1" max="10000" placeholder="{{translate('Ex: 50%')}}" id="discount_input" name="discount" class="form-control" required>
+                                        <input type="text" step="any" min="1" max="10000" placeholder="{{translate('Ex: 50%')}}" id="discount_input" name="discount" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('minimum')}} {{translate('purchase')}}</label>
-                                        <input type="number" step="any" name="min_purchase" value="0" min="0" max="100000" class="form-control"
+                                        <input type="text" step="any" id="min_purchase" name="min_purchase" value="0" min="0" max="100000" class="form-control"
                                             placeholder="{{ translate('100') }}">
                                     </div>
                                 </div>

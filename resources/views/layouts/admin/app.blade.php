@@ -610,5 +610,28 @@
 
     })
 </script>
+<script>
+    // Function to disallow special characters
+    function disallowSpecialCharacters(input) {
+        // Remove special characters using a regular expression
+        input.value = input.value.replace(/[^\d]/g, '');
+    }
+
+    // Get the input element
+    var limitInput = document.getElementById('user-limit');
+    limitInput.addEventListener('input', function () {
+        disallowSpecialCharacters(this);
+    });
+
+    var min_purchase = document.getElementById('min_purchase');
+    min_purchase.addEventListener('input', function () {
+        disallowSpecialCharacters(this);
+    });
+
+    var discount_input = document.getElementById('discount_input');
+    discount_input.addEventListener('input', function () {
+        disallowSpecialCharacters(this);
+    });
+</script>
 </body>
 </html>
