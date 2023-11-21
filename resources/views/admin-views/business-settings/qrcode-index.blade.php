@@ -54,10 +54,10 @@
                                         {{ isset($data) ? $data['description'] : translate('description') }}
                                     </span>
                                 </div>
-                                <div class="open-time">
+                                {{-- <div class="open-time">
                                     <div>{{ translate('OPEN DAILY') }}</div>
                                     <div>{{ isset($data) ? $data['opening_time'] : '09:00 AM' }} - {{ isset($data) ? $data['closing_time'] : '09:00 PM' }}</div>
-                                </div>
+                                </div> --}}
                                 <div class="phone-number">
                                     {{ translate('PHONE NUMBER') }} : {{ isset($data) ? $data['phone'] : '+00 123 4567890' }}
                                 </div>

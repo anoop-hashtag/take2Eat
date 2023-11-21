@@ -50,10 +50,10 @@
                                     </span>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <div class="open-time" style="background: #dc373f; padding: 8px 16px; margin-top: 20px; border-radius: 5px; color: #fff">
+                                    {{-- <div class="open-time" style="background: #dc373f; padding: 8px 16px; margin-top: 20px; border-radius: 5px; color: #fff">
                                         <div>{{ translate('OPEN DAILY') }}</div>
                                         <div>{{ isset($data) ? $data['opening_time'] : '09:00 AM' }} - {{ isset($data) ? $data['closing_time'] : '09:00 PM' }}</div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="phone-number text-center mt-3" style="border-bottom: 1px solid #ff6767; padding-bottom: .5rem;">
                                     {{ translate('PHONE NUMBER') }} : {{ isset($data) ? $data['phone'] : '+00 123 4567890' }}
