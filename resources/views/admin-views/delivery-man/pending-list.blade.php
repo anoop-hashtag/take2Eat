@@ -121,14 +121,14 @@
                                         <td class="text-center">
                                             <div class="justify-content-center">
                                                 <a class="btn btn-sm btn--primary btn-outline-primary action-btn"
-                                                   data-toggle="tooltip" data-placement="top" title="{{translate('Approve')}}"
+                                                   data-toggle="tooltip" data-placement="top" 
                                                    onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'approved']) }}','{{ translate('you_want_to_approve_this_application') }}')"
-                                                   href="javascript:"><i class="tio-done font-weight-bold"></i></a>
+                                                   href="javascript:"><i class="tio-done font-weight-bold" title="{{translate('Approve')}}"></i></a>
                                                 @if ($dm->application_status != 'denied')
-                                                    <a class="btn btn-sm btn--danger btn-outline-danger action-btn" data-toggle="tooltip" data-placement="top" title="{{translate('Deny')}}"
+                                                    <a class="btn btn-sm btn--danger btn-outline-danger action-btn" data-toggle="tooltip" data-placement="top" 
                                                        onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'denied']) }}','{{ translate('you_want_to_deny_this_application') }}')"
                                                        href="javascript:"><i
-                                                            class="tio-clear"></i></a>
+                                                            class="tio-clear" title="{{translate('Deny')}}"></i></a>
                                                 @endif
 
                                             </div>
