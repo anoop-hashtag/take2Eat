@@ -228,7 +228,7 @@
                                         <div class="js-circle"
                                             data-hs-circles-options='{
                                 "value": {{round(($failed/$total)*100)}},
-                                "maxValue": 100,
+                                {{-- "maxValue": 100, --}}
                                 "duration": 2000,
                                 "isViewportInit": true,
                                 "colors": ["#e7eaf3", "darkred"],
