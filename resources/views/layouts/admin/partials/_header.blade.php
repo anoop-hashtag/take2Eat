@@ -144,7 +144,7 @@
                                     showDenyButton: true,
                                     showCancelButton: true,
                                     confirmButtonColor: '#FC6A57',
-                                    cancelButtonColor: '#363636',
+                                    cancelButtonColor: '#808080',
                                     confirmButtonText: '{{translate("Yes")}}',
                                     cancelButtonText: '{{translate("No")}}',
                                     }).then((result) => {
