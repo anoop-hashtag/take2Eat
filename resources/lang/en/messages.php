@@ -2078,4 +2078,5 @@
   'Order_Summary_test' => 'Order Summary test',
   'email_template_test' => 'Email template test',
   'Email_Templates_test' => 'Email Templates test',
+  'Wallet Bonus Setup test' => 'Wallet Bonus Setup test',
 );

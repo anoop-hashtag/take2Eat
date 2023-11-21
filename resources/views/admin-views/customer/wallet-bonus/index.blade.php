@@ -56,11 +56,10 @@
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('Bonus_Amount')}}
                                             <span  class="d-none" id='currency_symbol'>({{ \App\CentralLogics\Helpers::currency_symbol() }})</span>
                                             <span id="percentage">(%)</span>
-                                            <span class="input-label-secondary text--title" data-toggle="tooltip"
-                                                data-placement="right"
-                                                data-original-title="{{ translate('Set_the_bonus_amount/percentage_a_customer_will_receive_after_adding_money_to_his_wallet.') }}">
-                                                <i class="tio-info-outined"></i>
+                                            <span>
+                                                <i class="tio-info-outined" title="{{ translate('Set_the_bonus_amount/percentage_a_customer_will_receive_after_adding_money_to_his_wallet.') }}."></i>
                                             </span>
+                                           
                                         </label>
                                         <input type="number" step="0.01" min="1" max="999999999999.99"  placeholder="{{ translate('Ex:_100') }}"  name="bonus_amount"
                                                id="bonus_amount" class="form-control" required>
@@ -69,12 +68,10 @@
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('Minimum_Add_Money_Amount')}} ({{ \App\CentralLogics\Helpers::currency_symbol() }})
-                                            <span
-                                                class="input-label-secondary text--title" data-toggle="tooltip"
-                                                data-placement="right"
-                                                data-original-title="{{ translate('Set_the_minimum_add_money_amount_for_a_customer_to_be_eligible_for_the_bonus.') }}">
-                                                <i class="tio-info-outined"></i>
+                                            <span>
+                                                <i class="tio-info-outined" title="{{ translate('Set_the_minimum_add_money_amount_for_a_customer_to_be_eligible_for_the_bonus.') }}."></i>
                                             </span>
+                                          
                                         </label>
                                         <input type="number" step="0.01" min="1" max="999999999999.99" placeholder="{{ translate('Ex:_10') }}" name="minimum_add_amount"
                                                id="minimum_add_amount" class="form-control" required>
@@ -83,12 +80,10 @@
                                 <div class="col-md-4 col-lg-4 col-sm-6" id="maximum_bonus_amount_div">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('Maximum_Bonus')}} ({{ \App\CentralLogics\Helpers::currency_symbol() }})
-                                            <span
-                                                class="input-label-secondary text--title" data-toggle="tooltip"
-                                                data-placement="right"
-                                                data-original-title="{{ translate('Set_the_maximum_bonus_amount_a_customer_can_receive_for_adding_money_to_his_wallet.') }}">
-                                                <i class="tio-info-outined"></i>
+                                            <span>
+                                                <i class="tio-info-outined" title="{{ translate('Set_the_maximum_bonus_amount_a_customer_can_receive_for_adding_money_to_his_wallet.') }}."></i>
                                             </span>
+                                           
 
                                         </label>
                                         <input type="number" step="0.01" min="1" max="999999999999.99"  placeholder="{{ translate('Ex:_1000') }}" name="maximum_bonus_amount" id="maximum_bonus_amount" class="form-control" required>
@@ -97,13 +92,13 @@
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('start_date')}}</label>
-                                        <input type="date" name="start_date" class="form-control" id="date_from" required>
+                                        <input type="text" name="start_date" class="form-control" id="from_date" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('expire_date')}}</label>
-                                        <input type="date" name="end_date" class="form-control" id="date_to" required>
+                                        <input type="text" name="end_date" class="form-control" id="to_date" required>
                                     </div>
                                 </div>
                             </div>
