@@ -1638,7 +1638,7 @@
   'Approve' => 'Approve',
   'you_want_to_approve_this_application?' => 'You want to approve this application',
   'Deny' => 'Deny',
-  'you_want_to_deny_this_application' => 'You want to deny this application?',
+  'you_want_to_deny_this_application?' => 'You want to deny this application?',
   'successfully updated!' => 'Successfully updated!',
   'update_success' => 'Update success',
   'restaurant_name.' => 'Restaurant name.',
