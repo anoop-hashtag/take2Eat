@@ -664,7 +664,7 @@
                                             <span class="text-truncate">{{translate('Delivery_Man_List')}}</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/delivery-man/add/add') ?'active':''}}">
+                                    <li class="nav-item {{Request::is('admin/delivery-man/add')? 'active' : ''}}">
                                         <a class="nav-link " href="{{route('admin.delivery-man.add')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('Add_New_Delivery_Man')}}</span>
