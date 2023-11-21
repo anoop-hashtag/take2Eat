@@ -76,7 +76,10 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="name">{{translate('password')}} <span class="text-danger">*</span> {{translate('(minimum length will be 6 character)')}}</label>
+                                <label for="name">{{translate('password')}} 
+                                    <span class="text-danger">*</span> 
+                                    <span class="badge badge-soft-danger">{{translate('(minimum length will be 6 character)')}}</span>
+                                </label>
                                 <div class="input-group input-group-merge">
                                     <input type="password" name="password" class="js-toggle-password form-control form-control input-field" id="password"
                                            placeholder="{{translate('Password')}}" required
