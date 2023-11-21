@@ -92,13 +92,13 @@
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('start_date')}}</label>
-                                        <input type="text" name="start_date" class="form-control" id="from_date" required>
+                                        <input type="text" name="start_date" class="form-control" placeholder="DD-MM-YYYY" id="from_date" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('expire_date')}}</label>
-                                        <input type="text" name="end_date" class="form-control" id="to_date" required>
+                                        <input type="text" name="end_date" class="form-control" placeholder="DD-MM-YYYY" id="to_date" required>
                                     </div>
                                 </div>
                             </div>
