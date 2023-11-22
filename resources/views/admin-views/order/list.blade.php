@@ -242,6 +242,11 @@
                         </thead>
 
                         <tbody id="set-rows">
+
+                        @php
+                            echo "<pre>";
+                            print_r($orders);
+                        @endphp
                         @foreach($orders as $key=>$order)
                             <tr class="status-{{$order['order_status']}} class-all">
                                 <td>{{$orders->firstitem()+$key}}</td>
@@ -295,7 +300,7 @@
                                     @elseif($order['order_status']=='failed')
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{translate("failed_to_deliver")}}</span>
                                     @elseif($order['order_status']=='returned')
-                                        <span class="badge-soft-danger px-2 py-1 rounded">{{translate("Returned")}}</span>
+                                        <span class="badge-soft-danger px-2 py-1 rounded">{{translate("returned")}}</span>
                                     @elseif($order['order_status']=='canceled')
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{translate("cancelled")}}</span>
                                     @else
