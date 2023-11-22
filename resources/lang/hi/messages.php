@@ -1636,7 +1636,7 @@
   'Identity Image' => 'Identity Image',
   'click for bigger view' => 'Click for bigger view',
   'Approve' => 'Approve',
-  'you_want_to_approve_this_application?' => 'You want to approve this application?',
+  'you_want_to_approve_this_application' => 'You want to approve this application',
   'Deny' => 'Deny',
   'you_want_to_deny_this_application?' => 'You want to deny this application?',
   'successfully updated!' => 'Successfully updated!',
