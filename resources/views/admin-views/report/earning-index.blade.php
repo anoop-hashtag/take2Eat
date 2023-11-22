@@ -286,7 +286,7 @@
                                   "fontColor": "#97a4af",
                                   "fontFamily": "Open Sans, sans-serif",
                                   "padding": 10,
-                                  "postfix": " {{\App\CentralLogics\Helpers::currency_symbol()}}"
+                                  "prefix": " {{\App\CentralLogics\Helpers::currency_symbol()}} "
                                 }
                               }],
                               "xAxes": [{
