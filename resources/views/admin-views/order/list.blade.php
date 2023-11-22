@@ -222,9 +222,6 @@
                 </div>
             </div>
             <!-- End Card Top -->
-                             @php
-                                dd($orders);
-                            @endphp
             <!-- Table -->
             <div class="py-4">
                 <div class="table-responsive datatable-custom">
