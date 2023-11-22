@@ -306,7 +306,8 @@ class DashboardController extends Controller
 
         } elseif ($dateType == 'MonthOrder') {
             $from = date('Y-m-01');
-            $to = date('Y-m-t');
+            $to = date('Y-m-d');
+            $month = date('m');
             $number = date('d', strtotime($to));
             $key_range = range(1, $number);
 
@@ -324,7 +325,7 @@ class DashboardController extends Controller
             for ($inc = 1; $inc <= $number; $inc++) {
                 $order_data[$inc] = 0;
                 foreach ($orders as $match) {
-                    if ($match['day'] == $inc) {
+                    if ($match['day'] == $inc && $match['month'] == $month) {
                         $order_data[$inc] += $match['total'];
                     }
                 }
