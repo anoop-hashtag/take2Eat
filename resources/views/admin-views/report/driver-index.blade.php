@@ -109,7 +109,7 @@
             </div>
             <!-- End Header -->
             <div class="card-body p-0">
-                <div class="table-responsive datatable-custom py-3">
+                <div class="table-responsive datatable_wrapper_row mt-5">
                     <table id="datatable"
                             class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
