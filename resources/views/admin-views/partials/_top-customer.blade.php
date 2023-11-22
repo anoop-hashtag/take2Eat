@@ -20,7 +20,7 @@
                             <span class="text-dark">{{ $item->customer['phone']?? translate('Not exist') }}</span>
                         </div>
                     </div>
-                    <span class="px-2 py-1 badge-soft-c1 font-weight-bold fz-12 rounded lh-1">{{translate('Orders :')}}{{$item['count']}}</span>
+                    <span class="px-2 py-1 badge-soft-c1 font-weight-bold fz-12 rounded lh-1">{{translate('Orders: ')}}{{$item['count']}}</span>
                 </a>
             @endif
         @endforeach

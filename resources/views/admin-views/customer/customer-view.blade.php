@@ -119,12 +119,8 @@
                                         <td class="text-center">{{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center gap-2">
-                                                    <a class="btn btn-outline-success btn-sm square-btn"
-                                                    href="{{route('admin.orders.details',['id'=>$order['id']])}}"><i
-                                                            class="tio-visible"></i></a>
-                                                    <a class="btn btn-outline-info btn-sm square-btn" target="_blank"
-                                                    href="{{route('admin.orders.generate-invoice',[$order['id']])}}"><i
-                                                            class="tio-download"></i></a>
+                                                <a class="btn btn-outline-success btn-sm square-btn" href="{{route('admin.orders.details',['id'=>$order['id']])}}" title="View"><i class="tio-visible"></i></a>
+                                                <a class="btn btn-outline-info btn-sm square-btn" target="_blank" href="{{route('admin.orders.generate-invoice',[$order['id']])}}" title="Invoice"><i class="tio-download"></i></a>
                                             </div>
                                         </td>
                                     </tr>

@@ -576,7 +576,7 @@
                             $('#loading').show()
                         },
                         success: function (response_data) {
-                            console.log(response_data)
+                            console.log(response_data);
                             document.getElementById("line-adwords").remove();
                             let graph = document.createElement('div');
                             graph.setAttribute("id", "line-adwords");
