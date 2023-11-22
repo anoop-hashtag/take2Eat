@@ -392,7 +392,8 @@ class DashboardController extends Controller
             $order_data = $earning;
         } elseif ($dateType == 'MonthEarn') {
             $from = date('Y-m-01');
-            $to = date('Y-m-t');
+            $to = date('Y-m-d');
+            $month = date('m');
             $number = date('d', strtotime($to));
             $key_range = range(1, $number);
 
@@ -406,13 +407,23 @@ class DashboardController extends Controller
             for ($inc = 1; $inc <= $number; $inc++) {
                 $earning_data[$inc] = 0;
                 foreach ($earning as $match) {
-                    if ($match['day'] == $inc) {
+                    if ($match['day'] == $inc && $match['month'] == $month) {
                         $earning_data[$inc] += $match['sums'];
                     }
                 }
             }
 
-            $order_data = $earning_data;
+            // $order_data = $earning_data;
+
+            $round_array = array();
+
+            for($i = 1; $i <= count($earning_data); $i++) {
+                $x = round($earning_data[$i], 2);
+                $round_array[$i] = $x;
+            }
+
+            $order_data = $round_array;
+            
         } elseif ($dateType == 'WeekEarn') {
 
             Carbon::setWeekStartsAt(Carbon::SUNDAY);
@@ -437,6 +448,7 @@ class DashboardController extends Controller
             'earning_label' => $label,
             'earning' => array_values($earning_data_final),
         );
+
         return response()->json($data);
     }
 
