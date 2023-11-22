@@ -101,7 +101,7 @@
                                 {{translate('total')}} {{translate('orders')}} : <span id="order_count"> </span>
                             </strong>
                             <strong>
-                                {{translate('total')}} {{translate('item')}} {{translate('qty')}}:<span id="item_count"></span>
+                                {{translate('total')}} {{translate('item')}} {{translate('qty')}} :<span id="item_count"></span>
                             </strong>
                             <strong>
                                 {{translate('total')}}  {{translate('amount')}} : <span id="order_amount"></span>
@@ -119,7 +119,7 @@
                 </form>
 
                 <!-- Table -->
-                <div class="table-responsive mt-3" id="set-rows" style="padding-right: 10px;">
+                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
                     @include('admin-views.report.partials._table',['data'=>[]])
                 </div>
                 <!-- End Table -->

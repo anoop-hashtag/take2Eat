@@ -44,7 +44,7 @@
                                     <div class="d-flex flex-wrap gap-2 align-items-center">
                                         <div>{{translate('date')}} :</div>
                                         <div>
-                                            ( {{date('Y-m-d '. config('time_format'),strtotime(session('from_date')))}} - {{date('Y-m-d '. config('time_format'),strtotime(session('to_date')))}} )
+                                            ( {{date('d-m-Y '. config('time_format'),strtotime(session('from_date')))}} - {{date('d-m-Y '. config('time_format'),strtotime(session('to_date')))}} )
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                 <a class="btn btn-icon btn-primary px-2 rounded-circle" href="{{route('admin.dashboard')}}">
                                     <i class="tio-home-outlined"></i>
                                 </a>
-                            </div>
+                            </div
                         </div>
                     </div>
                 </div>
