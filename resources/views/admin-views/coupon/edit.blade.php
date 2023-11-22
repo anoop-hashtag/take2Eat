@@ -65,14 +65,14 @@
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="">{{translate('start_Date')}}</label>
-                                        <input id="start_date" type="text" name="start_date"  class="form-control" placeholder="DD-MM-YYYY" value="{{$coupon['start_date']}}"
+                                        <input id="start_date" type="text" name="start_date"  class="form-control" placeholder="DD-MM-YYYY" value="{{date('d-m-Y', strtotime($coupon['start_date']))}}"
                                            >
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="">{{translate('expire_Date')}}</label>
-                                        <input type="text"  name="expire_date" id="expire_date" class="form-control"  placeholder="DD-MM-YYYY" value="{{$coupon['expire_date']}}">
+                                        <input type="text"  name="expire_date" id="expire_date" class="form-control"  placeholder="DD-MM-YYYY" value="{{date('d-m-Y', strtotime($coupon['expire_date']))}}">
                                     </div>
                                 </div>
 
