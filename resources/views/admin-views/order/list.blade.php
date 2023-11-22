@@ -294,6 +294,8 @@
                                         <span class="badge-soft-success px-2 py-1 rounded">{{translate('delivered')}}</span>
                                     @elseif($order['order_status']=='failed')
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{translate("failed_to_deliver")}}</span>
+                                    @elseif($order['order_status']=='returned')
+                                        <span class="badge-soft-danger px-2 py-1 rounded">{{translate("returned")}}</span>
                                     @elseif($order['order_status']=='canceled')
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{translate("cancelled")}}</span>
                                     @else
