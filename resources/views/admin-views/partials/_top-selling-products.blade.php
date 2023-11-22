@@ -15,7 +15,7 @@
                         <img class="rounded avatar avatar-lg" src="{{ asset('storage/app/public/product').'/'.$item->product->image  ?? '' }}" onerror="this.src='{{asset('public/assets/admin/img/400x400/img2.jpg')}}'" alt="{{$item->product->name}} image">
                         <span class="font-weight-semibold text-capitalize media-body">{{substr($item->product['name'],0,18)}} {{strlen($item->product['name'])>18?'...':''}}</span>
                     </div>
-                    <span class="px-2 py-1 badge-soft-c1 font-weight-bold fz-12 rounded lh-1">{{translate('Sold :')}}{{$item['count']}}</span>
+                    <span class="px-2 py-1 badge-soft-c1 font-weight-bold fz-12 rounded lh-1">{{translate('Sold: ')}}{{$item['count']}}</span>
                 </a>
             @endif
         @endforeach
