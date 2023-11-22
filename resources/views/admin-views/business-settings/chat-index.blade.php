@@ -41,7 +41,7 @@
 
                                 @csrf
                                 <div class="form-group">
-                                    <label>{{translate('number')}} <span class="text-danger">({{ translate('without country code') }})</span></label><br>
+                                    <label>{{translate('number')}} <small class="text-danger">({{ translate('without country code') }})</small></label><br>
                                     <input type="text" class="form-control" name="number"
                                            value="{{$config['number'] ?? ''}}" placeholder="{{ translate('WhatsApp Number') }}">
                                 </div>

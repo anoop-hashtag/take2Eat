@@ -786,15 +786,19 @@
             });
         }
 
-        function emptyCart() {
-            $.post('{{ route('admin.pos.emptyCart') }}', {_token: '{{ csrf_token() }}'}, function (data) {
-                updateCart();
-                toastr.info('{{translate('Item has been removed from cart')}}', {
-                    CloseButton: true,
-                    ProgressBar: true
+        function emptyCart(id) {
+            if(id > 0) {
+                $.post('{{ route('admin.pos.emptyCart') }}', {_token: '{{ csrf_token() }}'}, function (data) {
+                    updateCart();
+                    toastr.info('{{translate('Item has been removed from cart')}}', {
+                        CloseButton: true,
+                        ProgressBar: true,
+                        onHidden: function () {
+                            location.reload();
+                        }
+                    });
                 });
-                location.reload();
-            });
+            }
         }
 
         function updateCart() {

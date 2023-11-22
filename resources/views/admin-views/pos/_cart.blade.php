@@ -177,7 +177,7 @@
 
             <div class="row mt-4 gy-2">
                 <div class="col-md-6">
-                    <a href="#" class="btn btn-outline-danger btn--danger btn-block" onclick="emptyCart()"><i
+                    <a href="#" class="btn btn-outline-danger btn--danger btn-block" onclick="emptyCart({{ round($total+$total_tax+$addon_total_tax+$delivery_charge, 2) }})"><i
                             class="fa fa-times-circle "></i> {{translate('Cancel_Order')}} </a>
                 </div>
                 <div class="col-md-6">
