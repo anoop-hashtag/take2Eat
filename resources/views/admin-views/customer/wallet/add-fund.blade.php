@@ -78,8 +78,9 @@
             console.log(formData);
 
             Swal.fire({
-                title: '{{translate('are_you_sure')}}',
-                text: '{{translate('add_fund ')}}'+$('#amount').val()+' {{\App\CentralLogics\Helpers::currency_code().' '.translate('to')}} '+$('#customer option:selected').text()+'{{translate('wallet')}}',
+                title: '{{translate('are_you_sure')}}'+'?',
+                text: '{{ translate('add') }}' + ' {{translate('₹')}}' + $('#amount').val() + ' {{ translate('to_wallet_of_') }}' +  $('#customer option:selected').text() 
+,
                 type: 'info',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
