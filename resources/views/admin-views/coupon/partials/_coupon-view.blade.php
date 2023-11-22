@@ -26,11 +26,11 @@
         @endif
         <div class="coupon-info-item">
             <span>{{\App\CentralLogics\translate('start_date')}} : </span>
-            <span id="start_date">{{date_format($coupon->start_date, 'Y-m-d')}}</span>
+            <span id="start_date">{{date_format($coupon->start_date, 'd-m-Y')}}</span>
         </div>
         <div class="coupon-info-item">
             <span>{{\App\CentralLogics\translate('expire_date')}} : </span>
-            <span id="expire_date">{{date_format($coupon->expire_date, 'Y-m-d')}}</span>
+            <span id="expire_date">{{date_format($coupon->expire_date, 'd-m-Y')}}</span>
         </div>
     </div>
 </div>
