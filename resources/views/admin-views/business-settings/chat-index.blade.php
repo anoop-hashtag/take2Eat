@@ -34,7 +34,6 @@
                                     <h5 class="mb-4">{{translate('Whatsapp')}}</h5>
                                     <label class="switcher">
                                         <input class="switcher_input" name="status" type="checkbox" {{$config['status'] == 1? 'checked' : ''}}>
-
                                         <span class="switcher_control"></span>
                                     </label>
                                 </div>
