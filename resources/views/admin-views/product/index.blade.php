@@ -230,8 +230,8 @@
                                     <div class="card h-100">
                                         <div class="card-header">
                                             <h4 class="mb-0 d-flex gap-2 align-items-center">
-                                                <i class="tio-"></i>
-                                                <span>₹</span>
+                                                <i class="tio-column-view-outlined"></i>
+                                               
                                                 {{translate('Stock Information')}}
                                             </h4>
                                         </div>
