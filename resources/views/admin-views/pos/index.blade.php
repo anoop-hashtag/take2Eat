@@ -792,9 +792,11 @@
                     updateCart();
                     toastr.info('{{translate('Item has been removed from cart')}}', {
                         CloseButton: true,
-                        ProgressBar: true
+                        ProgressBar: true,
+                        onHidden: function () {
+                            location.reload();
+                        }
                     });
-                    // location.reload();
                 });
             }
         }
