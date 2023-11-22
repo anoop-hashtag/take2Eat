@@ -242,6 +242,9 @@
                         </thead>
 
                         <tbody id="set-rows">
+                            @php
+                                print_r($orders);
+                            @endphp
                         @foreach($orders as $key=>$order)
                             <tr class="status-{{$order['order_status']}} class-all">
                                 <td>{{$orders->firstitem()+$key}}</td>
