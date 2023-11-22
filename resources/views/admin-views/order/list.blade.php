@@ -222,7 +222,9 @@
                 </div>
             </div>
             <!-- End Card Top -->
-
+                             @php
+                                dd($orders);
+                            @endphp
             <!-- Table -->
             <div class="py-4">
                 <div class="table-responsive datatable-custom">
@@ -242,6 +244,7 @@
                         </thead>
 
                         <tbody id="set-rows">
+                           
                         @foreach($orders as $key=>$order)
                             <tr class="status-{{$order['order_status']}} class-all">
                                 <td>{{$orders->firstitem()+$key}}</td>
@@ -299,7 +302,7 @@
                                     @elseif($order['order_status']=='canceled')
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{translate("cancelled")}}</span>
                                     @else
-                                        <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status']=='canceled' ? 'cancelled' : '')}}</span>
+                                        <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status']=='canceled' ? 'cancelled' : $order['order_status'])}}</span>
                                     @endif
                                 </td>
                                 <td>
