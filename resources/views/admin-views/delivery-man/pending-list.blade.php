@@ -172,7 +172,8 @@
         function request_alert(url, message) {
             Swal.fire({
                 title: '{{ translate('are_you_sure') }}',
-                text: message,
+                text: message + '?',
+              
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
