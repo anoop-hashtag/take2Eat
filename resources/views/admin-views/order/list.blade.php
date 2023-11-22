@@ -246,6 +246,7 @@
                         @php
                             echo "<pre>";
                             print_r($orders);
+                            die;
                         @endphp
                         @foreach($orders as $key=>$order)
                             <tr class="status-{{$order['order_status']}} class-all">
