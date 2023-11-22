@@ -62,7 +62,7 @@
                         <label class="input-label text-capitalize" for="signinSrEmail">{{translate('your')}} {{translate('email')}}</label>
 
                         <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail"
-                               tabindex="1" placeholder="{{translate('email@address.com')}}" aria-label="email@address.com"
+                               tabindex="1" placeholder="{{translate('email')}}" aria-label="email@address.com"
                                required data-msg="Please enter a valid email address.">
                     </div>
                     <!-- End Form Group -->
@@ -77,7 +77,7 @@
 
                         <div class="input-group input-group-merge">
                             <input type="password" class="js-toggle-password form-control form-control-lg"
-                                   name="password" id="signupSrPassword" placeholder="{{translate('8+ characters required')}}"
+                                   name="password" id="signupSrPassword" placeholder="{{translate('password')}}"
                                    aria-label="8+ characters required" required
                                    data-msg="Your password is invalid. Please try again."
                                    data-hs-toggle-password-options='{
