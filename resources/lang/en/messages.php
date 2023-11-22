@@ -2086,4 +2086,6 @@
   'to_wallet' => 'To wallet',
   'to_wallet_of' => 'To wallet of',
   'to_wallet_of_' => 'To wallet of ',
+  'Sold: ' => 'Sold: ',
+  'Orders: ' => 'Orders: ',
 );
