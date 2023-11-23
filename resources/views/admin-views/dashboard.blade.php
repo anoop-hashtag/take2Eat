@@ -347,12 +347,19 @@
             <!-- Dognut Pie Chart -->
             <script>
                 var options = {
-                    series: [{{$donut['ongoing']}}, {{$donut['delivered']}}, {{$donut['pending']}}, {{$donut['canceled']}}, {{$donut['returned']}}, {{$donut['failed']}}],
+                    series: [
+                        {{ intval($donut['ongoing']) }},
+                        {{ intval($donut['delivered']) }},
+                        {{ intval($donut['pending']) }},
+                        {{ intval($donut['canceled']) }},
+                        {{ intval($donut['returned']) }},
+                        {{ intval($donut['failed']) }}
+                    ],
                     chart: {
                         width: 256,
                         type: 'donut',
                     },
-                    labels: ['{{ translate('ongoing') }}', '{{ translate('delivered') }}', '{{ translate('pending') }}', '{{translate('canceled')}}', '{{translate('returned')}}', '{{translate('failed_to_deliver')}}'],
+                    labels: ['{{ translate('ongoing') }}', '{{ translate('delivered') }}', '{{ translate('pending') }}', '{{translate('cancelled')}}', '{{translate('returned')}}', '{{translate('failed_to_deliver')}}'],
                     dataLabels: {
                         enabled: false,
                         style: {
@@ -374,12 +381,21 @@
                     legend: {
                         show: false
                     },
+                    yaxis: {
+                        labels: {
+                            formatter: function (val) {
+                                return Math.floor(val); // Display only integer values
+                            }
+                        }
+                    }
                 };
-
+            
                 var chart = new ApexCharts(document.querySelector("#dognut-pie"), options);
                 chart.render();
-
             </script>
+            
+            
+            
             <!-- Dognut Pie Chart -->
 
             {{-- Earning Statistics Line Chart --}}
