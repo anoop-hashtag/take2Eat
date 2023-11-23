@@ -681,7 +681,7 @@
                 width: 256,
                 type: 'donut',
             },
-            labels: ['{{ translate('ongoing') }}', '{{ translate('delivered') }}', '{{ translate('pending') }}', '{{translate('canceled')}}', '{{translate('returned')}}', '{{translate('failed_to_deliver')}}'],
+            labels: ['{{ translate('ongoing') }}', '{{ translate('delivered') }}', '{{ translate('pending') }}', '{{translate('cancelled')}}', '{{translate('returned')}}', '{{translate('failed_to_deliver')}}'],
             dataLabels: {
                 enabled: false,
                 style: {
