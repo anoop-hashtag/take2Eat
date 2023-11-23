@@ -995,7 +995,7 @@
   'product_name' => 'Product name',
   'selling_price' => 'Selling price',
   'total_sale' => 'Total sale',
-  'Want to delete this item ?' => 'Want to delete this item ?',
+  'Want to delete this item ?' => 'You want to delete this item ?',
   'Product Preview' => 'Product Preview',
   'of' => 'Of',
   'Excellent' => 'Excellent',
