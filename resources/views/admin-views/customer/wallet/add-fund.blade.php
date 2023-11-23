@@ -153,4 +153,25 @@
             $('#customer').val(null).trigger('change');
         })
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var amountInput = document.getElementById('amount');
+      
+          amountInput.addEventListener('input', function(event) {
+            let inputValue = event.target.value;
+      
+            // Remove non-numeric characters except dots
+            inputValue = inputValue.replace(/[^0-9.]/g, '');
+      
+            // Ensure only one dot is present
+            const dotCount = (inputValue.match(/\./g) || []).length;
+            if (dotCount > 1) {
+              inputValue = inputValue.substring(0, inputValue.lastIndexOf('.'));
+            }
+      
+            // Update the input value
+            event.target.value = inputValue;
+          });
+        });
+      </script>
 @endpush
