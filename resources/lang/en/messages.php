@@ -2089,4 +2089,5 @@
   'Sold: ' => 'Sold: ',
   'Orders: ' => 'Orders: ',
   '-- Select --' => '-- Select --',
+  'Invalid video URL' => 'Invalid video URL',
 );

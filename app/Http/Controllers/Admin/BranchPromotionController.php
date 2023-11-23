@@ -45,6 +45,12 @@ class BranchPromotionController extends Controller
         return view('admin-views.branch_promotion.create', compact('branches', 'search', 'promotions'));
     }
 
+    function is_valid_url($url) {
+        // Use filter_var with FILTER_VALIDATE_URL
+        return filter_var($url, FILTER_VALIDATE_URL) !== false;
+    }
+    
+
     /**
      * @param Request $request
      * @return RedirectResponse
@@ -61,6 +67,13 @@ class BranchPromotionController extends Controller
         $promotion->branch_id = $request->branch_id;
         $promotion->promotion_type = $request->banner_type;;
         if ($request->video) {
+
+            $url = $request->video;
+            if (!filter_var($url, FILTER_VALIDATE_URL)) {
+                Toastr::error(translate('Invalid video URL'));
+                return back();
+            } 
+
             $promotion->promotion_name = $request->video;
         }
         if ($request->image) {
