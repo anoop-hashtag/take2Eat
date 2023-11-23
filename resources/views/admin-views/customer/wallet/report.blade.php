@@ -46,7 +46,7 @@
                                 @php
                                     $transaction_status=request()->get('transaction_type');
                                 @endphp
-                                <select name="transaction_type" id="" class="form-control h--45px" title="{{translate('select')}} {{translate('transaction_type')}}">
+                                <select name="transaction_type" id="" class="js-example-basic-single form-control h--45px" title="{{translate('select')}} {{translate('transaction_type')}}">
                                     <option value="">{{translate('all')}}</option>
                                     <option value="add_fund_by_admin" {{isset($transaction_status) && $transaction_status=='add_fund_by_admin'?'selected':''}} >{{translate('add_fund_by_admin')}}</option>
                                     <option value="referral_order_place" {{isset($transaction_status) && $transaction_status=='referral_order_place	'?'selected':''}}>{{translate('referral_order_place')}}</option>
@@ -260,5 +260,11 @@
                 $('#reset_btn').click(function(){
                     $('#customer').val(null).trigger('change');
                 })
+            </script>
+
+            <script>
+                $(document).ready(function() {
+                    $('.js-example-basic-single').select2();
+                });
             </script>
     @endpush
