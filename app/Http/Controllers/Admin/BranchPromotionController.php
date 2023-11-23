@@ -65,7 +65,7 @@ class BranchPromotionController extends Controller
 
         $promotion = $this->branch_promotion;
         $promotion->branch_id = $request->branch_id;
-        $promotion->promotion_type = $request->banner_type;;
+        $promotion->promotion_type = $request->banner_type;
         if ($request->video) {
 
             $url = $request->video;
