@@ -150,5 +150,25 @@
 
 @push('script')
 
+<script>
+    // Function to disallow special characters
+    function disallowSpecialCharacters(input) {
+        // Remove special characters using a regular expression
+        input.value = input.value.replace(/[^\d]/g, '');
+    }
+
+    // Get the input element
+    var number = document.getElementById('number');
+    number.addEventListener('input', function () {
+        disallowSpecialCharacters(this);
+    });
+
+    var capacity = document.getElementById('capacity');
+    capacity.addEventListener('input', function () {
+        disallowSpecialCharacters(this);
+    });
+
+</script>
+
 @endpush
 

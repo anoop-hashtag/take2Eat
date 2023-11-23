@@ -35,7 +35,7 @@
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="amount">{{translate('amount')}}</label>
-                                <input type="number" class="form-control h--45px" name="amount" id="amount" step=".01" required>
+                                <input type="text" class="form-control h--45px" name="amount" id="amount" step="0.01" min="1" required>
                             </div>
                         </div>
                         <div class="col-12">
@@ -153,4 +153,25 @@
             $('#customer').val(null).trigger('change');
         })
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var amountInput = document.getElementById('amount');
+      
+          amountInput.addEventListener('input', function(event) {
+            let inputValue = event.target.value;
+      
+            // Remove non-numeric characters except dots
+            inputValue = inputValue.replace(/[^0-9.]/g, '');
+      
+            // Ensure only one dot is present
+            const dotCount = (inputValue.match(/\./g) || []).length;
+            if (dotCount > 1) {
+              inputValue = inputValue.substring(0, inputValue.lastIndexOf('.'));
+            }
+      
+            // Update the input value
+            event.target.value = inputValue;
+          });
+        });
+      </script>
 @endpush
