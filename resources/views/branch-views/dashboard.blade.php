@@ -703,6 +703,13 @@
             legend: {
                 show: false
             },
+            yaxis: {
+                        labels: {
+                            formatter: function (val) {
+                                return Math.floor(val); // Display only integer values
+                            }
+                        }
+                    }
         };
 
         var chart = new ApexCharts(document.querySelector("#dognut-pie"), options);
