@@ -35,7 +35,7 @@
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="amount">{{translate('amount')}}</label>
-                                <input type="number" class="form-control h--45px" name="amount" id="amount" step=".01" required>
+                                <input type="text" class="form-control h--45px" name="amount" id="amount" step="0.01" min="1" required>
                             </div>
                         </div>
                         <div class="col-12">
