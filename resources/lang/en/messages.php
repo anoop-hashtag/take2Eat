@@ -2088,4 +2088,5 @@
   'to_wallet_of_' => 'To wallet of ',
   'Sold: ' => 'Sold: ',
   'Orders: ' => 'Orders: ',
+  '-- Select --' => '-- Select --',
 );

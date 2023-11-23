@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <label class="input-label">{{translate('Select Branch')}} <span class="text-danger ml-1">*</span></label>
                                 <select name="branch_id" class="custom-select" required>
-                                    <option disabled selected>{{ translate('--select--') }}</option>
+                                    <option disabled selected>{{ translate('-- Select --') }}</option>
                                     @foreach($branches as $branch)
                                         <option value="{{$branch['id']}}">{{$branch['name']}}</option>
                                     @endforeach
@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <label class="input-label">{{translate('Select Banner Type')}} <span class="text-danger ml-1">*</span></label>
                                 <select name="banner_type" id="banner_type" class="custom-select" required>
-                                    <option value="" selected>{{ translate('--select--') }}</option>
+                                    <option disabled selected>{{ translate('-- Select --') }}</option>
                                     <option value="bottom_banner">{{ translate('Bottom Banner (1110*380 px)') }}</option>
                                     <option value="top_right_banner">{{ translate('Top Right Banner (280*450 px)') }}</option>
                                     <option value="bottom_right_banner">{{ translate('Bottom Right Banner (280*350 px)') }}</option>
@@ -53,7 +53,8 @@
                             <div class="form-group">
                                 <div class=" from_part_2 video_section d--none" id="video_section">
                                     <label class="input-label">{{translate('youtube Video URL')}}<span class="text-danger ml-1">*</span></label>
-                                    <input type="text" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}">
+                                    <input type="text" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" id="url" oninput="validateUrl()">
+                                    <span id="urlValidationMessage"></span>
                                 </div>
                                 <div class=" from_part_2 image_section d--none" id="image_section">
                                     <label class="input-label">{{translate('Image')}} <span class="text-danger ml-1">*</span></label>
@@ -205,5 +206,23 @@
             readURL(this, 'viewer');
         });
 
+    </script>
+    <script>
+        function validateUrl() {
+            var urlInput = document.getElementById('url');
+            var validationMessage = document.getElementById('urlValidationMessage');
+            var url = urlInput.value;
+
+            // Regular expression for basic URL validation
+            var urlRegex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,6}(\/\S*)?$/i;
+
+            if (urlRegex.test(url)) {
+            validationMessage.textContent = '';
+            validationMessage.style.color = 'green';
+            } else {
+            validationMessage.textContent = 'Invalid URL. Please enter a valid URL.';
+            validationMessage.style.color = 'red';
+            }
+        }
     </script>
 @endpush
