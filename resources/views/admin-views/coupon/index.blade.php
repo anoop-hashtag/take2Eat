@@ -83,7 +83,7 @@
                                 <div class="col-md-4 col-sm-6" id="max_discount_div">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('maximum')}} {{translate('discount')}}</label>
-                                        <input type="number" step="any" min="0" value="0" max="1000000" name="max_discount" class="form-control">
+                                        <input type="number" step="any" min="0" value="0" max="1000000" id="max_discount" name="max_discount" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">

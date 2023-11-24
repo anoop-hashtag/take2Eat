@@ -632,6 +632,11 @@
     discount_input.addEventListener('input', function () {
         disallowSpecialCharacters(this);
     });
+
+    var discount_input = document.getElementById('max_discount');
+    discount_input.addEventListener('input', function () {
+        disallowSpecialCharacters(this);
+    });
 </script>
 </body>
 </html>
