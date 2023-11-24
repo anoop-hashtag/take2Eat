@@ -65,7 +65,10 @@
 .gap-2 {
   gap: 0.5rem;
 }
-
+li.paginate_item.page-item span.ellipsis.page-link {
+  height: 33.28px;
+  padding: .5em 1em;
+}
 @media only screen and (min-width: 576px) {
   .gap-sm-2 {
     gap: 8px !important;
