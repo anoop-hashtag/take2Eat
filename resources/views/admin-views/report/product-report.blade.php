@@ -101,7 +101,7 @@
                                 {{translate('total')}} {{translate('orders')}} : <span id="order_count"> </span>
                             </strong>
                             <strong>
-                                {{translate('total')}} {{translate('item')}} {{translate('qty')}} :<span id="item_count"></span>
+                                {{translate('total')}} {{translate('item')}} {{translate('qty')}} : <span id="item_count"></span>
                             </strong>
                             <strong>
                                 {{translate('total')}}  {{translate('amount')}} : <span id="order_amount"></span>
