@@ -54,7 +54,7 @@
                                 <a class="btn btn-icon btn-primary px-2 rounded-circle" href="{{route('admin.dashboard')}}">
                                     <i class="tio-home-outlined"></i>
                                 </a>
-                            </div
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -240,84 +240,99 @@
             <div class="card-body">
                 <!-- Bar Chart -->
                 <div class="chartjs-custom" style="height: 360px">
-                    <canvas class="js-chart"
-                            data-hs-chartjs-options='{
-                        "type": "line",
-                        "data": {
-                           "labels": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
-                           "datasets": [{
-                            "data": [{{$sold[1]}},{{$sold[2]}},{{$sold[3]}},{{$sold[4]}},{{$sold[5]}},{{$sold[6]}},{{$sold[7]}},{{$sold[8]}},{{$sold[9]}},{{$sold[10]}},{{$sold[11]}},{{$sold[12]}}],
-                            "backgroundColor": ["rgba(55, 125, 255, 0)", "rgba(255, 255, 255, 0)"],
-                            "borderColor": "green",
-                            "borderWidth": 2,
-                            "pointRadius": 0,
-                            "pointBorderColor": "#fff",
-                            "pointBackgroundColor": "green",
-                            "pointHoverRadius": 0,
-                            "hoverBorderColor": "#fff",
-                            "hoverBackgroundColor": "#377dff"
-                          },
-                          {
-                            "data": [{{$tax[1]}},{{$tax[2]}},{{$tax[3]}},{{$tax[4]}},{{$tax[5]}},{{$tax[6]}},{{$tax[7]}},{{$tax[8]}},{{$tax[9]}},{{$tax[10]}},{{$tax[11]}},{{$tax[12]}}],
-                            "backgroundColor": ["rgba(0, 201, 219, 0)", "rgba(255, 255, 255, 0)"],
-                            "borderColor": "#ec9a3c",
-                            "borderWidth": 2,
-                            "pointRadius": 0,
-                            "pointBorderColor": "#fff",
-                            "pointBackgroundColor": "#ec9a3c",
-                            "pointHoverRadius": 0,
-                            "hoverBorderColor": "#fff",
-                            "hoverBackgroundColor": "#00c9db"
-                          }]
-                        },
-                        "options": {
-                          "gradientPosition": {"y1": 200},
-                           "scales": {
-                              "yAxes": [{
-                                "gridLines": {
-                                  "color": "#e7eaf3",
-                                  "drawBorder": false,
-                                  "zeroLineColor": "#e7eaf3"
+                    <canvas class="js-chart"></canvas>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var ctx = document.querySelector('.js-chart').getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                    datasets: [
+                                        {
+                                            data: [{{$sold[1]}}, {{$sold[2]}}, {{$sold[3]}}, {{$sold[4]}}, {{$sold[5]}}, {{$sold[6]}}, {{$sold[7]}}, {{$sold[8]}}, {{$sold[9]}}, {{$sold[10]}}, {{$sold[11]}}, {{$sold[12]}}],
+                                            backgroundColor: 'rgba(0, 0, 0, 0)',
+                                            borderColor: "green",
+                                            borderWidth: 2,
+                                            pointRadius: 0,
+                                            pointBorderColor: "#fff",
+                                            pointBackgroundColor: "green",
+                                            pointHoverRadius: 0,
+                                            hoverBorderColor: "#fff",
+                                            hoverBackgroundColor: "#377dff",
+                                            label: 'Sold'
+                                        },
+                                        {
+                                            data: [{{$tax[1]}}, {{$tax[2]}}, {{$tax[3]}}, {{$tax[4]}}, {{$tax[5]}}, {{$tax[6]}}, {{$tax[7]}}, {{$tax[8]}}, {{$tax[9]}}, {{$tax[10]}}, {{$tax[11]}}, {{$tax[12]}}],
+                                            backgroundColor: 'rgba(0, 0, 0, 0)',
+                                            borderColor: "#ec9a3c",
+                                            borderWidth: 2,
+                                            pointRadius: 0,
+                                            pointBorderColor: "#fff",
+                                            pointBackgroundColor: "#ec9a3c",
+                                            pointHoverRadius: 0,
+                                            hoverBorderColor: "#fff",
+                                            hoverBackgroundColor: "#00c9db",
+                                            label: 'Tax'
+                                        }
+                                    ]
                                 },
-                                "ticks": {
-                                  "min": 0,
-                                  "max": {{\App\CentralLogics\Helpers::max_earning()}},
-                                  "stepSize": {{round(\App\CentralLogics\Helpers::max_earning()/5)}},
-                                  "fontColor": "#97a4af",
-                                  "fontFamily": "Open Sans, sans-serif",
-                                  "padding": 10,
-                                  "prefix": " {{\App\CentralLogics\Helpers::currency_symbol()}} "
+                                options: {
+                                    gradientPosition: { "y1": 200 },
+                                    scales: {
+                                        yAxes: [{
+                                            gridLines: {
+                                                color: "#e7eaf3",
+                                                drawBorder: false,
+                                                zeroLineColor: "#e7eaf3"
+                                            },
+                                            ticks: {
+                                                min: 0,
+                                                max: {{\App\CentralLogics\Helpers::max_earning()}},
+                                                stepSize: {{round(\App\CentralLogics\Helpers::max_earning()/5)}},
+                                                fontColor: "#97a4af",
+                                                fontFamily: "Open Sans, sans-serif",
+                                                padding: 10,
+                                                prefix: " {{\App\CentralLogics\Helpers::currency_symbol()}} "
+                                            }
+                                        }],
+                                        xAxes: [{
+                                            gridLines: {
+                                                display: false,
+                                                drawBorder: false
+                                            },
+                                            ticks: {
+                                                fontSize: 12,
+                                                fontColor: "#97a4af",
+                                                fontFamily: "Open Sans, sans-serif",
+                                                padding: 5
+                                            }
+                                        }]
+                                    },
+                                    tooltips: {
+                                        prefix: "",
+                                        postfix: "",
+                                        hasIndicator: true,
+                                        mode: "index",
+                                        intersect: false,
+                                        lineMode: true,
+                                        lineWithLineColor: "rgba(19, 33, 68, 0.075)",
+                                        callbacks: {
+                                            label: function (tooltipItem, data) {
+                                                var label = data.datasets[tooltipItem.datasetIndex].label || "";
+                                                var value = tooltipItem.yLabel.toFixed(2);
+                                                return label + ": " + value;
+                                            }
+                                        }
+                                    },
+                                    hover: {
+                                        mode: "nearest",
+                                        intersect: true
+                                    }
                                 }
-                              }],
-                              "xAxes": [{
-                                "gridLines": {
-                                  "display": false,
-                                  "drawBorder": false
-                                },
-                                "ticks": {
-                                  "fontSize": 12,
-                                  "fontColor": "#97a4af",
-                                  "fontFamily": "Open Sans, sans-serif",
-                                  "padding": 5
-                                }
-                              }]
-                          },
-                          "tooltips": {
-                            "prefix": "",
-                            "postfix": "",
-                            "hasIndicator": true,
-                            "mode": "index",
-                            "intersect": false,
-                            "lineMode": true,
-                            "lineWithLineColor": "rgba(19, 33, 68, 0.075)"
-                          },
-                          "hover": {
-                            "mode": "nearest",
-                            "intersect": true
-                          }
-                        }
-                      }'>
-                    </canvas>
+                            });
+                        });
+                    </script>
                 </div>
                 <!-- End Bar Chart -->
             </div>
