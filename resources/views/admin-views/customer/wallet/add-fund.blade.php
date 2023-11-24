@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="btn--container justify-content-end">
-                        <button type="reset" id="reset" class="btn btn-secondary">{{translate('reset')}}</button>
+                        <button type="button" onClick="window.location.reload();" id="reset" class="btn btn-secondary">{{translate('reset')}}</button>
                         <button type="submit" id="submit" class="btn btn-primary">{{translate('submit')}}</button>
                     </div>
                 </form>
