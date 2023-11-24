@@ -293,7 +293,9 @@
                                                 fontColor: "#97a4af",
                                                 fontFamily: "Open Sans, sans-serif",
                                                 padding: 10,
-                                                prefix: '{{\App\CentralLogics\Helpers::currency_symbol()}}'
+                                                callback: function(value, index, values) {
+                                                    return '{{\App\CentralLogics\Helpers::currency_symbol()}} ' + value;
+                                                }
                                             }
                                         }],
                                         xAxes: [{
@@ -301,11 +303,14 @@
                                                 display: false,
                                                 drawBorder: false
                                             },
+                                           
                                             ticks: {
                                                 fontSize: 12,
                                                 fontColor: "#97a4af",
                                                 fontFamily: "Open Sans, sans-serif",
-                                                padding: 5
+                                                padding: 5,
+                                                // prefix: '{{\App\CentralLogics\Helpers::currency_symbol()}}'
+                                              
                                             }
                                         }]
                                     },
