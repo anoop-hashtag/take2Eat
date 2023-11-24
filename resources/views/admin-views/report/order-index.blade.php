@@ -263,7 +263,7 @@
                                             <i class="tio-flight-cancelled nav-icon"></i>
 
                                             <div class="media-body">
-                                                <h4 class="mb-1">{{translate('canceled')}}</h4>
+                                                <h4 class="mb-1">{{translate('cancelled')}}</h4>
                                                 <span class="font-size-sm text-muted">
                                                 <i class="tio-trending-up"></i> {{$canceled}}
                                                 </span>
