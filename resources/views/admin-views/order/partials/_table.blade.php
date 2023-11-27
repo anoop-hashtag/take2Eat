@@ -47,21 +47,18 @@
                                     </span>
             @endif
         </td>
+        
         <td>
-            <div class="dropdown">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                    <i class="tio-settings"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item"
-                       href="{{route('admin.orders.details',['id'=>$order['id']])}}"><i
-                            class="tio-visible"></i> {{translate('view')}}</a>
-                    <a class="dropdown-item" target="_blank"
-                       href="{{route('admin.orders.generate-invoice',[$order['id']])}}"><i
-                            class="tio-download"></i> {{translate('invoice')}}</a>
-                </div>
+            <div class="d-flex justify-content-center gap-2">
+                <a class="btn btn-outline-info btn-sm square-btn"
+                   href="{{ route('admin.orders.details', ['id' => $order['id']]) }}">
+                    <i class="tio-visible"></i>
+                </a>
+        
+                <a class="btn btn-outline-info btn-sm square-btn" target="_blank"
+                   href="{{ route('admin.orders.generate-invoice', [$order['id']]) }}">
+                    <i class="tio-download"></i> 
+                </a>
             </div>
         </td>
     </tr>
