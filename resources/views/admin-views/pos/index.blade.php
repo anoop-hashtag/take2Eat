@@ -3,6 +3,7 @@
 @section('title', translate('New_Sale'))
 
 @push('css_or_js')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
 <style>
     #location_map_div #pac-input{
         height: 40px;
@@ -1147,6 +1148,9 @@
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public/assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');
     </script>
 
+
+
+    
 @endpush
 {{-- </body>
 </html> --}}

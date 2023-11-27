@@ -3,6 +3,7 @@
 @section('title', translate('Deliveryman List'))
 
 @push('css_or_js')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
@@ -29,11 +30,11 @@
                         <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
                             <form action="{{url()->current()}}" method="GET">
                                 <div class="input-group">
-                                    <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by Name or Phone or Email')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
+                                    {{-- <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by Name or Phone or Email')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off"> --}}
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">
+                                        {{-- <button type="submit" class="btn btn-primary">
                                         {{translate('Search')}}
-                                        </button>
+                                        </button> --}}
                                     </div>
                                 </div>
                             </form>
@@ -63,8 +64,8 @@
                     </div>
 
                     <div class="py-4">
-                        <div class="table-responsive datatable-custom">
-                            <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                        <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
+                            <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>{{translate('SL')}}</th>
@@ -146,30 +147,95 @@
 
 @push('script_2')
     <script>
-        $('#search-form').on('submit', function () {
-            var formData = new FormData(this);
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        $(document).on('ready', function () {
+            // INITIALIZATION OF NAV SCROLLER
+            // =======================================================
+            $('.js-nav-scroller').each(function () {
+                new HsNavScroller($(this)).init()
+            });
+
+            // INITIALIZATION OF SELECT2
+            // =======================================================
+            $('.js-select2-custom').each(function () {
+                var select2 = $.HSCore.components.HSSelect2.init($(this));
+            });
+
+
+            // INITIALIZATION OF DATATABLES
+            // =======================================================
+            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                ],
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
                 }
             });
-            $.post({
-                url: '{{route('admin.delivery-man.search')}}',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                beforeSend: function () {
-                    $('#loading').show();
-                },
-                success: function (data) {
-                    $('#set-rows').html(data.view);
-                    $('.page-area').hide();
-                },
-                complete: function () {
-                    $('#loading').hide();
-                },
+
+            // INITIALIZATION OF TAGIFY
+            // =======================================================
+            $('.js-tagify').each(function () {
+                var tagify = $.HSCore.components.HSTagify.init($(this));
             });
         });
+
+        function filter_branch_orders(id) {
+            location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+        }
     </script>
+
+   
+    <script>
+        $('#from_date,#to_date').change(function () {
+            let fr = $('#from_date').val();
+            let to = $('#to_date').val();
+            if (fr != '' && to != '') {
+                if (fr > to) {
+                    $('#from_date').val('');
+                    $('#to_date').val('');
+                    toastr.error('{{translate('Invalid date range!')}}', Error, {
+                        CloseButton: true,
+                        ProgressBar: true
+                    });
+                }
+            }
+        });
+        $('#datatable').dataTable({
+    destroy: true,
+    ...
+});
+    </script>
+    
 @endpush

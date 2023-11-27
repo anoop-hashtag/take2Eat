@@ -219,8 +219,8 @@
 
             <div class="py-4">
                 <!-- Table -->
-                <div class="table-responsive datatable-custom">
-                    <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
+                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>
                                 <th>{{translate('SL')}}</th>
@@ -471,4 +471,98 @@
     // Attach the validation function to the form submission
     document.querySelector("form").addEventListener("submit", validateDates);
     </script>
+     @push('script_2')
+     <script>
+         $(document).on('ready', function () {
+             // INITIALIZATION OF NAV SCROLLER
+             // =======================================================
+             $('.js-nav-scroller').each(function () {
+                 new HsNavScroller($(this)).init()
+             });
+ 
+             // INITIALIZATION OF SELECT2
+             // =======================================================
+             $('.js-select2-custom').each(function () {
+                 var select2 = $.HSCore.components.HSSelect2.init($(this));
+             });
+ 
+ 
+             // INITIALIZATION OF DATATABLES
+             // =======================================================
+             var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                 dom: 'Bfrtip',
+                 buttons: [
+                     {
+                         extend: 'copy',
+                         className: 'd-none'
+                     },
+                     {
+                         extend: 'excel',
+                         className: 'd-none'
+                     },
+                     {
+                         extend: 'csv',
+                         className: 'd-none'
+                     },
+                     {
+                         extend: 'pdf',
+                         className: 'd-none'
+                     },
+                     {
+                         extend: 'print',
+                         className: 'd-none'
+                     },
+                 ],
+                 select: {
+                     style: 'multi',
+                     selector: 'td:first-child input[type="checkbox"]',
+                     classMap: {
+                         checkAll: '#datatableCheckAll',
+                         counter: '#datatableCounter',
+                         counterInfo: '#datatableCounterInfo'
+                     }
+                 },
+                 language: {
+                     zeroRecords: '<div class="text-center p-4">' +
+                         '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                         '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                         '</div>'
+                 }
+             });
+ 
+             // INITIALIZATION OF TAGIFY
+             // =======================================================
+             $('.js-tagify').each(function () {
+                 var tagify = $.HSCore.components.HSTagify.init($(this));
+             });
+         });
+ 
+         function filter_branch_orders(id) {
+             location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+         }
+     </script>
+ 
+    
+     <script>
+         $('#from_date,#to_date').change(function () {
+             let fr = $('#from_date').val();
+             let to = $('#to_date').val();
+             if (fr != '' && to != '') {
+                 if (fr > to) {
+                     $('#from_date').val('');
+                     $('#to_date').val('');
+                     toastr.error('{{translate('Invalid date range!')}}', Error, {
+                         CloseButton: true,
+                         ProgressBar: true
+                     });
+                 }
+             }
+         });
+         $('#datatable').dataTable({
+     destroy: true,
+     ...
+ });
+     </script>
+     
+ @endpush
 @endpush
