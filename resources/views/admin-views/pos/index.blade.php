@@ -329,7 +329,7 @@
                                     <div class="form-group">
                                         <label class="input-label">
                                             {{translate('Email')}}
-                                            <span class="input-label-secondary text-danger">*</span>
+                                            <small class="input-label-secondary text-danger">*</small>
                                         </label>
                                         <input type="email" name="email" class="form-control" value="" placeholder="Ex : ex@example.com" required="">
                                     </div>
