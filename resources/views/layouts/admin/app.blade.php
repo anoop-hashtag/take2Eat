@@ -287,7 +287,7 @@
 
     function form_alert(id, message) {
         Swal.fire({
-            title: '{{translate("Are you sure?")}}',
+            // title: '{{translate("Are you sure?")}}',
             text: message,
             type: 'warning',
             showCancelButton: true,
