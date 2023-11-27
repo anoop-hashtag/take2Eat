@@ -142,7 +142,7 @@
 
         function delete_schedule(route) {
             Swal.fire({
-                title: '{{translate('are_you_sure')}}',
+                // title: '{{translate('are_you_sure')}}',
                 text: '{{translate('You want to remove this schedule')}}',
                 type: 'warning',
                 showCancelButton: true,

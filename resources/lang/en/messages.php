@@ -2091,4 +2091,5 @@
   '-- Select --' => '-- Select --',
   'Invalid video URL' => 'Invalid video URL',
   'Branch unavailable' => 'Branch unavailable',
+  'Category removed!' => 'Category removed!',
 );

@@ -107,7 +107,7 @@
                                                 @foreach(json_decode($dm['identity_image'], true) as $identification_image)
                                                     @php($image_full_path = asset('storage/app/public/delivery-man'). '/' .$identification_image)
                                                     <div class="overflow-hidden">
-                                                        <img class="cursor-pointer rounded img-fit" style="max-height: 60px; width: 100px; min-width: 100px;"
+                                                        <img class="cursor-pointer rounded img-fit" style="max-height: 50px; max-width: 50px;"
                                                              onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                              src="{{$image_full_path}}"
                                                              onclick="show_modal('{{$image_full_path}}')">
@@ -119,16 +119,16 @@
                                             <strong class="text-info text-capitalize">{{ translate($dm->application_status) }}</strong>
                                         </td>
                                         <td class="text-center">
-                                            <div class="justify-content-center">
-                                                <a class="btn btn-sm btn--primary btn-outline-primary action-btn"
-                                                   data-toggle="tooltip" data-placement="top" 
-                                                   onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'approved']) }}','{{ translate('you_want_to_approve_this_application') }}')"
-                                                   href="javascript:"><i class="tio-done font-weight-bold" title="{{translate('Approve')}}"></i></a>
+                                            <div class="d-flex justify-content-center gap-2">
+                                                <a class="btn btn-outline-primary btn-sm square-btn" data-toggle="tooltip" data-placement="top" 
+                                                onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'approved']) }}','{{ translate('you_want_to_approve_this_application') }}')" href="javascript:">
+                                                   <i class="tio-done font-weight-bold" title="{{translate('Approve')}}"></i>
+                                                </a>
                                                 @if ($dm->application_status != 'denied')
-                                                    <a class="btn btn-sm btn--danger btn-outline-danger action-btn" data-toggle="tooltip" data-placement="top" 
-                                                       onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'denied']) }}','{{ translate('you_want_to_deny_this_application') }}')"
-                                                       href="javascript:"><i
-                                                            class="tio-clear" title="{{translate('Deny')}}"></i></a>
+                                                    <a class="btn btn-outline-danger btn-sm square-btn" data-toggle="tooltip" data-placement="top" 
+                                                    onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'denied']) }}','{{ translate('you_want_to_deny_this_application') }}')" href="javascript:">
+                                                        <i class="tio-delete" title="{{translate('Deny')}}"></i>
+                                                    </a>
                                                 @endif
 
                                             </div>
@@ -171,7 +171,7 @@
     <script>
         function request_alert(url, message) {
             Swal.fire({
-                title: '{{ translate('are_you_sure') }}',
+                // title: '{{ translate('are_you_sure') }}',
                 text: message + '?',
               
                 type: 'warning',
