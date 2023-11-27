@@ -174,4 +174,10 @@
           });
         });
       </script>
+      <script>
+        document.getElementById('reset').addEventListener('click', function () {
+            document.getElementById('add_fund').reset();
+            $('#customer').val('').trigger('change');
+        });
+    </script>
 @endpush

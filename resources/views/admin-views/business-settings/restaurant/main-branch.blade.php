@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('password')}} <span class="text-danger">*{{translate('(input_if_you_want_to_reset)') }}</span></label>
+                                        <label class="input-label">{{translate('password')}} <small class="text-danger">*{{translate('(input_if_you_want_to_reset)') }}</small></label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" name="password" class="js-toggle-password form-control form-control input-field" id="password"
                                                    placeholder="{{translate('Ex: 8+ Characters')}}"
