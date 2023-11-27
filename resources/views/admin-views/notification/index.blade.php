@@ -143,10 +143,12 @@
                                         <td>
                                             <!-- Dropdown -->
                                             <div class="d-flex justify-content-center gap-2">
-                                                <a class="btn btn-outline-info btn-sm edit square-btn"
-                                                href="{{route('admin.notification.edit',[$notification['id']])}}"><i class="tio-edit"></i></a>
-                                                <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"
-                                                onclick="$('#notification-{{$notification['id']}}').submit()"><i class="tio-delete"></i></button>
+                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="{{route('admin.notification.edit',[$notification['id']])}}">
+                                                    <i class="tio-edit"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="form_alert('notification-{{$notification['id']}}','{{translate('Want to delete this notification ?')}}')">
+                                                    <i class="tio-delete"></i>
+                                                </button>
                                             </div>
                                             <form
                                                 action="{{route('admin.notification.delete',[$notification['id']])}}"

@@ -2092,4 +2092,5 @@
   'Invalid video URL' => 'Invalid video URL',
   'Branch unavailable' => 'Branch unavailable',
   'Category removed!' => 'Category removed!',
+  'Want to delete this notification ?' => 'Want to delete this notification ?',
 );
