@@ -127,7 +127,7 @@
     <script>
         function deleteItem(id) {
             Swal.fire({
-                title: '{{translate('Are you sure')}}?',
+                // title: '{{translate('Are you sure')}}?',
                 text: "{{translate('You will not be able to revert this')}}!",
                 showCancelButton: true,
                 confirmButtonColor: '#FC6A57',
