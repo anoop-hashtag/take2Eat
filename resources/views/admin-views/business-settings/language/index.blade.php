@@ -351,7 +351,7 @@
     <script>
         function delete_language(route) {
             Swal.fire({
-                title: '{{translate('Are you sure to delete this')}}?',
+                // title: '{{translate('Are you sure to delete this')}}?',
                 text: "{{translate('You will not be able to revert this')}}!",
                 showCancelButton: true,
                 confirmButtonColor: '#FC6A57',
