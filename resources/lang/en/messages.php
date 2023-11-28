@@ -2097,4 +2097,5 @@
   'Test' => 'Test',
   'ABC123' => 'ABC123',
   'Testing' => 'Testing',
+  'Gst' => 'Gst',
 );
