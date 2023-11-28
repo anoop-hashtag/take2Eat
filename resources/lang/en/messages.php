@@ -2092,10 +2092,5 @@
   'Invalid video URL' => 'Invalid video URL',
   'Branch unavailable' => 'Branch unavailable',
   'Category removed!' => 'Category removed!',
-//   'Want to delete this notification ?' => 'Want to delete this notification ?',
-// =======
-//   'POS_Orders_test' => 'POS Orders test',
-//   'Edit Role' => 'Edit Role',
-//   'update_employee_role' => 'Update employee role',
-// >>>>>>> Stashed changes
+  'Want to delete this notification ?' => 'Want to delete this notification ?',
 );
