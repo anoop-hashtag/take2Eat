@@ -115,6 +115,8 @@
                                             <span class="badge-soft-success px-2 rounded text-capitalize">{{translate('delivered')}}</span>
                                         @elseif($order['order_status']=='failed')
                                             <span class="badge-soft-danger px-2 rounded text-capitalize">{{translate('failed_to_deliver')}}</span>
+                                        @elseif($order['order_status']=='canceled')
+                                            <span class="badge-soft-danger px-2 rounded text-capitalize">{{translate('cancelled')}}</span>
                                         @else
                                             <span class="badge-soft-danger px-2 rounded text-capitalize">{{str_replace('_',' ',$order['order_status'])}}</span>
                                         @endif
@@ -423,7 +425,7 @@
                                             <option value="cooking" {{$order['order_status'] == 'cooking'? 'selected' : ''}}> {{translate('cooking')}}</option>
                                             <option value="completed" {{$order['order_status'] == 'completed'? 'selected' : ''}}> {{translate('completed')}}</option>
                                         @endif
-                                        <option value="canceled" {{$order['order_status'] == 'canceled'? 'selected' : ''}}>{{translate('canceled')}} </option>
+                                        <option value="canceled" {{$order['order_status'] == 'canceled'? 'selected' : ''}}>{{translate('cancelled')}} </option>
                                     </select>
                                 </div>
                                 <div class="">
