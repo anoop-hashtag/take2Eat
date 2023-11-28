@@ -77,7 +77,7 @@
                                                     <a class="btn btn-outline-info btn-sm edit square-btn"
                                                         href="{{route('admin.addon.edit',[$addon['id']])}}"><i class="tio-edit"></i></a>
                                                     <button class="btn btn-outline-danger btn-sm delete square-btn" type="button"
-                                                        onclick="form_alert('addon-{{$addon['id']}}','{{translate('Want to delete this addon')}} ?')"><i class="tio-delete"></i></button>
+                                                        onclick="form_alert('addon-{{$addon['id']}}','{{translate('Want to delete this addon')}}')"><i class="tio-delete"></i></button>
                                                 </div>
                                                 <form action="{{route('admin.addon.delete',[$addon['id']])}}"
                                                         method="post" id="addon-{{$addon['id']}}">
