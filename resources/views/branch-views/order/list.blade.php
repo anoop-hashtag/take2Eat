@@ -220,9 +220,9 @@
 
             <div class="py-4">
                 <!-- Table -->
-                <div class="table-responsive datatable_wrapper_row mt-5">
+                <div class="table-responsive datatable_wrapper_row mt-5" style="padding: 0% 10px;">
                     <table id="datatable"
-                            class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100"  style="padding-right: 20px;">
+                            class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
                             <tr>
                                 <th>{{translate('SL')}}</th>
@@ -616,6 +616,7 @@
                          counterInfo: '#datatableCounterInfo'
                      }
                  },
+                 
                  language: {
                      zeroRecords: '<div class="text-center p-4">' +
                          '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
