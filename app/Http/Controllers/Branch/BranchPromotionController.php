@@ -58,6 +58,13 @@ class BranchPromotionController extends Controller
         $promotion->branch_id = auth('branch')->user()->id;
         $promotion->promotion_type = $request->banner_type;;
         if ($request->video) {
+
+            $url = $request->video;
+            if (!filter_var($url, FILTER_VALIDATE_URL)) {
+                Toastr::error(translate('Invalid video URL'));
+                return back();
+            } 
+            
             $promotion->promotion_name = $request->video;
         }
         if ($request->image) {
