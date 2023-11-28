@@ -278,7 +278,7 @@
 
     function route_alert(route, message) {
         Swal.fire({
-            title: '{{translate("Are you sure?")}}',
+            // title: '{{translate("Are you sure?")}}',
             text: message,
             type: 'warning',
             showCancelButton: true,
