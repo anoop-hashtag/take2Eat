@@ -283,7 +283,8 @@
                                                                <img class="img-fluid avatar avatar-lg"
                                                                   src="{{asset('storage/app/public/product/')}}/{{$detail->product?->image}}"
                                                                   onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
-                                                                  alt="Image Description">
+                                                                  alt="Image Description" style="width: 60px;
+                                                                  height: 60px;">
                                                                <div class="media-body text-dark fz-12">
                                                                   {{--                                                
                                                                   <h6 class="text-capitalize">{{$detail->product?->name}}</h6>
