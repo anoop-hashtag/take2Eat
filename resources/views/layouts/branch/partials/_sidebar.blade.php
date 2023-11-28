@@ -29,7 +29,7 @@
                         <!-- Navbar Vertical Toggle -->
                         <button type="button" class="js-navbar-vertical-aside-toggle-invoker close">
                             <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip" data-placement="right" title="" data-original-title="Collapse"></i>
-                            <i class="tio-last-page navbar-vertical-aside-toggle-full-align"></i>
+                            <i class="tio-last-page navbar-vertical-aside-toggle-full-align" title="Expand"></i>
                         </button>
                         <!-- End Navbar Vertical Toggle -->
                     </div>
