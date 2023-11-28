@@ -375,7 +375,7 @@
                                                                </tr>
                                                                <tr>
                                                                   <td style="width: 40%"></td>
-                                                                  <td class="p-1 px-3">{{translate('tax')}} / {{translate('vat')}}</td>
+                                                                  <td class="p-1 px-3">{{translate('tax')}} / {{translate('Gst')}}</td>
                                                                   <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($total_tax) }}</td>
                                                                </tr>
                                                                <tr>
