@@ -242,7 +242,7 @@
                                                    <div class="pl-2">
                                                       <h3 class="subtitle">{{ translate('Order_Summary') }}</h3>
                                                       <span class="d-block">{{ translate('Order') }}# {{ $order->id  }}</span>
-                                                      <span class="d-block">{{ $order->created_at->format('d M Y H:i:s') }}</span>
+                                                      <span class="d-block">{{ $order->created_at  }}</span>
                                                    </div>
                                                 </td>
                                                 <td style="max-width:130px">
