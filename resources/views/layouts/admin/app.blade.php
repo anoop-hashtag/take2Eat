@@ -148,6 +148,7 @@
 <script>
     $(document).on('ready', function() {
         $('#datatable').css('font-size', '13px');
+        $('#datatable').css('padding-left', '10px');
     });
 </script>
 
