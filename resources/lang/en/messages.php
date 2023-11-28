@@ -2093,4 +2093,8 @@
   'Branch unavailable' => 'Branch unavailable',
   'Category removed!' => 'Category removed!',
   'Want to delete this notification ?' => 'Want to delete this notification ?',
+  'SBI' => 'SBI',
+  'Test' => 'Test',
+  'ABC123' => 'ABC123',
+  'Testing' => 'Testing',
 );

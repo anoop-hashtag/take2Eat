@@ -3,7 +3,7 @@
 @section('title', translate('Add new attribute'))
 
 @push('css_or_js')
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
 @endpush
 
 @section('content')
@@ -49,8 +49,8 @@
 
                     <!-- Table -->
                     <div class="py-4">
-                        <div class="table-responsive datatable-custom">
-                            <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                        <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
+                            <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>{{translate('SL')}}</th>
@@ -214,6 +214,106 @@
                 var select2 = $.HSCore.components.HSSelect2.init($(this));
             });
         });
+    </script>
+       <script>
+        $('#search-form').on('submit', function () {
+            var formData = new FormData(this);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.post({
+                url: '{{route('admin.category.search')}}',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                success: function (data) {
+                    $('#set-rows').html(data.view);
+                    $('.page-area').hide();
+                },
+                complete: function () {
+                    $('#loading').hide();
+                },
+            });
+        });
+    </script>
+    @push('script_2')
+    <script>
+        $(document).on('ready', function () {
+            // INITIALIZATION OF NAV SCROLLER
+            // =======================================================
+            $('.js-nav-scroller').each(function () {
+                new HsNavScroller($(this)).init()
+            });
+    
+            // INITIALIZATION OF SELECT2
+            // =======================================================
+            $('.js-select2-custom').each(function () {
+                var select2 = $.HSCore.components.HSSelect2.init($(this));
+            });
+    
+    
+            // INITIALIZATION OF DATATABLES
+            // =======================================================
+            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                    
+                ],
+               
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                }
+            });
+    
+            // INITIALIZATION OF TAGIFY
+            // =======================================================
+            $('.js-tagify').each(function () {
+                var tagify = $.HSCore.components.HSTagify.init($(this));
+            });
+        });
+    
+        function filter_branch_orders(id) {
+            location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+        }
+       
     </script>
 @endpush
 
