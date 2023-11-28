@@ -133,12 +133,6 @@
         @endforeach
     </script>
 @endif
-{{-- //--------- For datatable font size ----------// --}}
-  <script>
-    $(document).on('ready', function() {
-        $('#datatable').css('font-size', '13px');
-    });
-    </script>
 <!-- Toggle Direction Init -->
 <script>
     $(document).on('ready', function(){
@@ -229,7 +223,7 @@
 
     function route_alert(route, message) {
         Swal.fire({
-            title: '{{ translate('Are you sure?') }}',
+            // title: '{{ translate('Are you sure?') }}',
             text: message,
             type: 'warning',
             showCancelButton: true,
