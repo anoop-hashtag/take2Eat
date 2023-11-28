@@ -50,6 +50,7 @@
                 </center>
                 <hr class="non-printable">
             </div>
+            <div class="col-3"></div>
             <div class="col-5" id="printableAreaContent">
                 <div class="text-center pt-4 mb-3">
                     <h2 style="line-height: 1">{{\App\Model\BusinessSetting::where(['key'=>'restaurant_name'])->first()->value}}</h2>
