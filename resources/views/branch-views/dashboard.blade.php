@@ -229,7 +229,7 @@
                                     <span>{{ translate('delivered') }} ({{$donut['delivered']}})</span>
                                 </div>
                                 <div class="before-bg-17202A">
-                                    <span>{{ translate('canceled') }} ({{$donut['canceled']}})</span>
+                                    <span>{{ translate('cancelled') }} ({{$donut['canceled']}})</span>
                                 </div>
                                 <div class="before-bg-21618C">
                                     <span>{{ translate('returned') }} ({{$donut['returned']}})</span>

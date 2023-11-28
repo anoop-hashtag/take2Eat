@@ -306,7 +306,7 @@
 
                                     <dt class="col-6">
                                         <div class="d-flex max-w220 ml-auto">
-                                            {{translate('tax')}} / {{translate('vat')}}:
+                                            {{translate('tax')}} / {{translate('Gst')}}:
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax+$add_ons_tax_cost) }}</dd>
