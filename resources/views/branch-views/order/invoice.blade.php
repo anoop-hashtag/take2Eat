@@ -222,7 +222,7 @@
                         <dl class="row text-right" style="color: black!important;">
                             <dt class="col-6">{{translate('Items Price')}}:</dt>
                             <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</dd>
-                            <dt class="col-6">{{translate('Tax')}} / {{translate('VAT')}}:</dt>
+                            <dt class="col-6">{{translate('Tax')}} / {{translate('GST')}}:</dt>
                             <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax+$add_ons_tax_cost) }}</dd>
                             <dt class="col-6">{{translate('Addon Cost')}}:</dt>
                             <dd class="col-6">
