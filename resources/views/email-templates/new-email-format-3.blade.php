@@ -425,16 +425,9 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                                                             @endforeach
                                                          </tr>
                                                          <tr>
-                                                            <hr class="mt-0">
-                                                         </tr>
-                                                         <tr>
                                                             <td colspan="2">
+                                                               <hr class="mt-0">
                                                                <table class="w-100">
-                                                                  <tr>
-                                                                     <td style="width: 60%"></td>
-                                                                     <td style="width: 30%"></td>
-                                                                     <td style="width: 10%"></td>
-                                                                  </tr>
                                                                   <tr>
                                                                      <td></td>
                                                                      <td class="p-1 px-3">{{ translate('item_price') }}</td>
