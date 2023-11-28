@@ -138,7 +138,7 @@
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="javascript:" onclick="Swal.fire({
-                                    title: '{{translate('Do you want to logout ?')}}',
+                                    title: '{{translate('Do you want to signout ?')}}',
                                     showDenyButton: true,
                                     showCancelButton: true,
                                     confirmButtonColor: '#FC6A57',
