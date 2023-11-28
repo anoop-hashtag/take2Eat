@@ -43,7 +43,8 @@
                                     <div class="form-group">
                                         <div class="col-12 from_part_2 video_section" id="video_section" style="display: none">
                                             <label class="input-label">{{translate('youtube_Video_URL')}} <span class="text-danger">*</span></label>
-                                            <input type="text" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}">
+                                            <input type="text" id="url" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" oninput="validateUrl()">
+                                            <span id="urlValidationMessage"></span>
                                         </div>
                                         <div class="col-12 from_part_2 image_section" id="image_section" style="display: none">
                                             <label class="input-label">{{translate('Image')}} <span class="text-danger">*</span></label>
@@ -203,6 +204,23 @@
                     $('#'+viewer_id).attr('src', e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function validateUrl() {
+            var urlInput = document.getElementById('url');
+            var validationMessage = document.getElementById('urlValidationMessage');
+            var url = urlInput.value;
+
+            // Regular expression for basic URL validation
+            var urlRegex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,6}(\/\S*)?$/i;
+
+            if (urlRegex.test(url)) {
+            validationMessage.textContent = '';
+            validationMessage.style.color = 'green';
+            } else {
+            validationMessage.textContent = 'Invalid URL. Please enter a valid URL.';
+            validationMessage.style.color = 'red';
             }
         }
 
