@@ -144,6 +144,14 @@
         @endforeach
     </script>
 @endif
+
+<script>
+    $(document).on('ready', function() {
+        $('#datatable').css('font-size', '13px');
+    });
+</script>
+
+
 <!-- Toggle Direction Init -->
 <script>
     $(document).on('ready', function(){

@@ -225,7 +225,7 @@
             <!-- End Card Top -->
             <!-- Table -->
             <div class="py-4">
-                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
+                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding: 0px 10px;">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>
@@ -389,7 +389,7 @@
    
                // INITIALIZATION OF DATATABLES
                // =======================================================
-               var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
                    dom: 'Bfrtip',
                    buttons: [
                        {
@@ -422,6 +422,8 @@
                            counterInfo: '#datatableCounterInfo'
                        }
                    },
+                   info: false,
+                   paging: false,
                    language: {
                        zeroRecords: '<div class="text-center p-4">' +
                            '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
