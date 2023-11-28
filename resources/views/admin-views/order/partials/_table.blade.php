@@ -49,7 +49,7 @@
         </td>
         
         <td>
-            <div class="d-flex justify-content-center gap-2">
+            <div class="d-flex justify-content gap-2">
                 <a class="btn btn-outline-info btn-sm square-btn"
                    href="{{ route('admin.orders.details', ['id' => $order['id']]) }}">
                     <i class="tio-visible"></i>
