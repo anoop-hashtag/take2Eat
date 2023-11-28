@@ -71,14 +71,14 @@
                         </li>
 
                         <!-- POS -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('branch/pos/*')?'active':''}}">
+                        <li class="navbar-vertical-aside-has-menu {{Request::is('branch/pos*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
                                 <i class="tio-shopping nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('POS')}}</span>
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                style="display: {{Request::is('branch/pos/*')?'block':'none'}}">
-                                <li class="nav-item {{Request::is('branch/pos/')?'active':''}}">
+                                style="display: {{Request::is('branch/pos*')?'block':'none'}}">
+                                <li class="nav-item {{Request::is('branch/pos')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.pos.index')}}"
                                        title="{{translate('pos')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>

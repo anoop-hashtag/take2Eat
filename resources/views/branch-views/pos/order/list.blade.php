@@ -89,7 +89,7 @@
             </div>
 
             <div class="card-body">
-                <div class="table-responsive datatable_wrapper_row mt-5" style="padding-right: 10px;">
+                <div class="table-responsive datatable_wrapper_row">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                         <tr>
