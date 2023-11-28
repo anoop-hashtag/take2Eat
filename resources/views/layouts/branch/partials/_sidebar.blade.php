@@ -211,7 +211,7 @@
                                     <a class="nav-link " href="{{route('branch.orders.list',['canceled'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
-                                            {{translate('canceled')}}
+                                            {{translate('cancelled')}}
                                                 <span class="badge badge-soft-dark badge-pill ml-1">
                                                 {{\App\Model\Order::notPos()->notSchedule()->where(['order_status'=>'canceled','branch_id'=>auth('branch')->id()])->count()}}
                                             </span>
