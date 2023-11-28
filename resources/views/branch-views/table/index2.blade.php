@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="table_hover-menu px-3">
-                                <h3 class="mb-3">{{ translate('Table - D2 ') }}</h3>
+                                <h3 class="mb-3">{{ translate('Table - ') }}{{ $table['number'] }}</h3>
                                 @if(($table['order'] != null))
                                     @foreach($table['order'] as $order)
                                         <div class="fz-14 mb-1">{{ translate('order id') }}: <strong>{{ $order['id'] }}</strong></div>
