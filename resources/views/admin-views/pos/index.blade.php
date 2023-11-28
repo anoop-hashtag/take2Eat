@@ -339,7 +339,7 @@
                                     <div class="form-group">
                                         <label class="input-label">
                                             {{translate('Phone')}}
-                                            (<span>{{translate('with_country_code')}}</span>)
+                                            <small class="text-danger" style="margin-top: 3px;">&nbsp;( {{translate('with_country_code')}} ) </small>
                                             <span class="input-label-secondary text-danger">*</span>
                                         </label>
                                         <input type="text" name="phone" class="form-control" value="" placeholder="{{translate('Ex : +88017*****')}}" required="">
