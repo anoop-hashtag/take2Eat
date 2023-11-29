@@ -929,7 +929,7 @@
         @else
         function maintenance_mode() {
             Swal.fire({
-                title: '{{translate('Are you sure?')}}',
+                // title: '{{translate('Are you sure?')}}',
                 text: '{{translate('Be careful before you turn on/off maintenance mode')}}',
                 type: 'warning',
                 showCancelButton: true,
