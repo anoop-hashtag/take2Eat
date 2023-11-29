@@ -553,9 +553,11 @@ class CustomerAuthController extends Controller
     {
         $customer = $this->user->find($request->user()->id);
 
+
         if (isset($customer)) {
             Helpers::file_remover('customer/', $customer->image);
-            $customer->delete();
+            // $customer->delete();
+            $customer->update(['is_active' => 0]);
         } else {
             return response()->json(['status_code' => 404, 'message' => translate('Not found')], 200);
         }
