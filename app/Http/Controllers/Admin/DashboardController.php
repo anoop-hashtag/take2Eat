@@ -389,7 +389,25 @@ class DashboardController extends Controller
                 }
             }
             $key_range = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
-            $order_data = $earning;
+            // $order_data = $earning;
+
+            $round_array = array();
+
+            for($i = 1; $i <= count($earning); $i++) {
+                if(is_float($earning[$i])) {
+                    $x = $earning[$i];
+                } else {
+                    if($earning[$i] == 0) {
+                        $x = $earning[$i].".00";
+                    } else {
+                        $x = $earning[$i]."0";
+                    }
+                }
+                $round_array[$i] = $x;
+            }
+
+            $order_data = $round_array;
+
         } elseif ($dateType == 'MonthEarn') {
             $from = date('Y-m-01');
             $to = date('Y-m-d');
