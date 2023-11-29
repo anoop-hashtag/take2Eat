@@ -356,7 +356,7 @@
         let status = checked === true ? 1 : 0;
 
         Swal.fire({
-            title: 'Are you sure?',
+            // title: 'Are you sure?',
             text: 'Want to change status',
             type: 'warning',
             showCancelButton: true,
