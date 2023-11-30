@@ -168,7 +168,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
   border-radius: 5px;
 }
 .navbar .active > .nav-link, .navbar .nav-link.active, .navbar .nav-link.show, .navbar .show > .nav-link {
-  color: #7452EE;
+  color: #ff611d;
 }
 .navbar-vertical .navbar-nav.nav-tabs {
   padding: 0 10px;
@@ -203,7 +203,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
   margin-inline: 10px;
 }
 .navbar .nav-link:hover {
-  color: #7452EE;
+  color: #ff611d;
 }
 .sidebar--search-form .search--form-group {
   position: relative;
@@ -220,7 +220,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 }
 
 .sidebar--search-form .search--form-group input {
-  border: 1px solid #7452EE;
+  border: 1px solid #ff611d;
   padding-inline-start: 40px;
 }
 
@@ -359,7 +359,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 .option-select-btn {
   display: flex;
   background: #ffffff;
-  border: 1px solid #7452EE;
+  border: 1px solid #ff611d;
   border-radius: 5px;
   padding: 3px;
 }
