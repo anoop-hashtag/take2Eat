@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 :root {
-  --c1: #8867ff;
+  --c1: #ff611d;
   --c1-rgb: 255, 103, 103;
   --c2: #006ae5;
   --tc: #334257;
@@ -36,7 +36,7 @@
   font-size: 14px !important;
 }
 .swal2-popup .swal2-styled.swal2-confirm {
-  background-color: #8867ff !important;
+  background-color: #ff611d !important;
 }
 .fz-16 {
   font-size: 16px !important;
@@ -122,7 +122,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 
 .text-c1,
 .c1 {
-  color: #8867ff !important;
+  color: #ff611d !important;
 }
 
 .text-c2,
@@ -164,7 +164,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 .navbar-vertical-aside-has-menu.show > .nav-link,
 .navbar-vertical .navbar-nav.nav-tabs .active > .nav-link,
 .navbar-vertical .navbar-nav.nav-tabs .active.nav-link {
-  background: #8867ff30;
+  background: #ff611d30;
   border-radius: 5px;
 }
 .navbar .active > .nav-link, .navbar .nav-link.active, .navbar .nav-link.show, .navbar .show > .nav-link {
@@ -1833,7 +1833,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 .auth-wrapper-right .auth-header a {
   font-weight: 700;
   text-decoration: underline;
-  color: #8867ff;
+  color: #ff611d;
 }
 
 .auth-wrapper-right .auth-header .title {
@@ -1846,8 +1846,8 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 .auth-wrapper-right .auth-header .badge {
   font-weight: 400;
   font-size: 14px;
-  color: #8867ff;
-  background-color: #8867ff36;
+  color: #ff611d;
+  background-color: #ff611d36;
   border-radius: 15px;
   padding: 7px 13px 6px;
 }
