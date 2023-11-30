@@ -42,7 +42,7 @@
                           </td>
                           <td style="max-width:130px">
                             <h3 class="subtitle" style="color: #000000;font-size: 18px;margin: 0 0 5px;">Delivery Address</h3>
-                            <span class="d-block">{{ $address['contact_person_name']  ?? $order->customer['f_name'] . ' ' . $order->customer['l_name'] }}</span>
+                            <span class="d-block">{{ $address['address']  ?? $order->customer['f_name'] . ' ' . $order->customer['l_name'] }}</span>
                             <span class="d-block">{{ $address['contact_person_number'] ?? null }}</span>
                           </td>
                         </tr> @php($sub_total=0) @php($total_tax=0) @php($total_dis_on_pro=0) @php($add_ons_cost=0) @php($add_on_tax=0) @php($add_ons_tax_cost=0) <tr>
@@ -161,11 +161,11 @@
                                                            @php($product_tax = $detail['tax_amount']*$detail['quantity'])
                                                            {{\App\CentralLogics\Helpers::set_symbol($product_tax + $add_ons_tax_cost)}}
                                                         </td> -->
-                                                        <td class="text-right">{{\App\CentralLogics\Helpers::set_symbol($amount-$tot_discount + $product_tax)}}</td>
+                                                       <!--  <td class="text-right">{{\App\CentralLogics\Helpers::set_symbol($amount-$tot_discount + $product_tax)}}</td>
                                                         @php($total_dis_on_pro += $tot_discount)
                                                         @php($sub_total += $amount)
                                                         @php($total_tax += $product_tax)
-                                                        @endforeach
+                                                        @endforeach -->
                                                      </tr>
                                                      <tr>
                                                        <td colspan="3"><hr class="mt-0"></td>
