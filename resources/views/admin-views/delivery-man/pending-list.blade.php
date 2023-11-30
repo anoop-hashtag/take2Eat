@@ -74,11 +74,11 @@
                                         <td>{{$delivery_men->firstitem()+$key}}</td>
                                         <td>
                                             <div class="media gap-3 align-items-center">
-                                                <div class="avatar">
+                                                {{-- <div class="avatar">
                                                     <img width="60" class="img-fit rounded-circle"
                                                         onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                         src="{{asset('storage/app/public/delivery-man')}}/{{$dm['image']}}">
-                                                </div>
+                                                </div> --}}
                                                 <div class="media-body">
                                                     {{$dm['f_name'].' '.$dm['l_name']}}
                                                 </div>
@@ -104,7 +104,7 @@
                                         <td class="text-center">{{ translate($dm->identity_type) }}</td>
                                         <td class="text-center">{{ $dm->identity_number }}</td>
                                         <td class="text-center">
-                                            <div class="d-flex gap-2" data-toggle="" data-placement="top" title="{{translate('click for bigger view')}}">
+                                            <div class="align-items-center" data-toggle="" data-placement="top" title="{{translate('click for bigger view')}}">
                                                 @foreach(json_decode($dm['identity_image'], true) as $identification_image)
                                                     @php($image_full_path = asset('storage/app/public/delivery-man'). '/' .$identification_image)
                                                     <div class="overflow-hidden">
@@ -249,6 +249,8 @@
                         counterInfo: '#datatableCounterInfo'
                     }
                 },
+                info: false,
+                   paging: false,
                 language: {
                     zeroRecords: '<div class="text-center p-4">' +
                         '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
