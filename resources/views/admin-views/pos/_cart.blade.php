@@ -125,6 +125,7 @@
             $delivery_charge = 0;
         }
     ?>
+    <br>
     <div class="pos-data-table p-3">
         <dl class="row">
             <dt  class="col-6">{{translate('addon')}} : </dt>
