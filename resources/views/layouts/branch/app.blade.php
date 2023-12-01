@@ -289,7 +289,48 @@
             });
         });
     </script>
+<!-- Include jQuery UI library -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<!-- Include jQuery UI CSS for styling -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script>
+    // Function to validate the date input
+    function validateDates() {
+        var fromDate = new Date(document.getElementById("from_date").value);
+        var toDate = new Date(document.getElementById("to_date").value);
+
+        if (fromDate > toDate) {
+            alert("End date cannot be less than the start date");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+
+    // Attach the validation function to the form submission
+    document.querySelector("form").addEventListener("submit", validateDates);
+    
+</script>
+<script>
+    $('#from_date, #to_date').change(function () {
+        let from = $('#from_date').val();
+        let to = $('#to_date').val();
+        if(from != ''){
+            $('#to_date').attr('required','required');
+        }
+        if(to != ''){
+            $('#from_date').attr('required','required');
+        }
+        if (from != '' && to != '') {
+            if (from > to) {
+                $('#from_date').val('');
+                $('#to_date').val('');
+                toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
+            }
+        }
+
+    })
+</script>
 <!-- IE Support -->
 <script>
     if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public/assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');
