@@ -4,7 +4,7 @@
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
-    <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
 @endpush
 
 @section('content')
@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="d-flex flex-wrap justify-content-md-end gap-3">
-                                <form action="{{url()->current()}}" method="GET">
+                                {{-- <form action="{{url()->current()}}" method="GET">
                                     <div class="input-group">
                                         <input id="datatableSearch_" type="search" name="search"
                                             class="form-control"
@@ -45,7 +45,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                </form>
+                                </form> --}}
                                 <a href="{{route('branch.kitchen.add-new')}}" class="btn btn-primary text-nowrap">
                                     <i class="tio-add"></i>
                                     <span class="text"> {{translate('Add_New')}}</span>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-4">
+                <div class="pt-4" style="padding-right: 10px; padding-left:10px;">
                     <div class="table-responsive">
                         <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
@@ -139,6 +139,7 @@
     <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
+    @push('script_2')
     <script>
         $(document).on('ready', function () {
             // INITIALIZATION OF NAV SCROLLER
@@ -146,14 +147,14 @@
             $('.js-nav-scroller').each(function () {
                 new HsNavScroller($(this)).init()
             });
-    
+
             // INITIALIZATION OF SELECT2
             // =======================================================
             $('.js-select2-custom').each(function () {
                 var select2 = $.HSCore.components.HSSelect2.init($(this));
             });
-    
-    
+
+
             // INITIALIZATION OF DATATABLES
             // =======================================================
             var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
@@ -180,6 +181,8 @@
                         className: 'd-none'
                     },
                 ],
+                     info    : false,
+                     paging  : false,
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',
@@ -189,8 +192,6 @@
                         counterInfo: '#datatableCounterInfo'
                     }
                 },
-                info: false,
-                paging: false,
                 language: {
                     zeroRecords: '<div class="text-center p-4">' +
                         '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
@@ -198,14 +199,14 @@
                         '</div>'
                 }
             });
-    
+
             // INITIALIZATION OF TAGIFY
             // =======================================================
             $('.js-tagify').each(function () {
                 var tagify = $.HSCore.components.HSTagify.init($(this));
             });
         });
-    
+
         function filter_branch_orders(id) {
             location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
         }
