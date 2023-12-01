@@ -30,11 +30,11 @@
                                     <a type="button" href="{{ route('admin.business-settings.restaurant.qrcode.print') }}" class="btn btn-primary pt-1"><i class="tio-print"></i> {{translate('Print')}}</a>
                                 </div>
                             </div>
-                            @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()?->value)
+                            @php($restaurant_logo = \App\Models\EmailTemplate::get()[0]->logo)
                             <div class="qr-wrapper" style="background: url({{asset('public/assets/admin/img/qr-bg.png')}}) no-repeat center center / 100% 100%">
                                 <a href="" class="qr-logo">
-                                    <img src="{{asset('storage/app/public/restaurant/'.$restaurant_logo)}}" class="mw-100"
-                                         onerror="this.src='{{asset('public/assets/admin/img/logo2.png')}}'" alt="">
+                                    <img class="mb-2 mail-img-2" onerror="this.src='{{ asset('storage/app/public/qrcode/' . $restaurant_logo) }}'"
+                                    src="{{ asset('storage/app/public/qrcode/') }}/{{ $data['logo']??'' }}" id="logoViewer" alt="">
 
                                 </a>
                                 <a class="view-menu" href="">
@@ -151,7 +151,7 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label class="input-label">{{translate('Phone')}}</label>
-                                            <input type="text" name="phone" placeholder="{{ translate('Ex : +123456') }}" value="{{old('phone')}}" class="form-control" required>
+                                            <input type="text" name="phone" id="phone" placeholder="{{ translate('Ex : +123456') }}" value="{{old('phone')}}" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -194,5 +194,38 @@
 {{--            }--}}
 {{--        }--}}
 {{--    </script>--}}
+<script>
+    function isNumber(evt) {
+evt = (evt) ? evt : window.event;
+var charCode = (evt.which) ? evt.which : evt.keyCode;
+if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+alert("Please enter only Numbers.");
+return false;
+}
+if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
+alert("Please enter 10 Digit only Numbers.");
+return false;
+}
+
+return true;
+}
+
+var phoneInput = document.getElementById('phone');
+var myForm = document.forms.myForm;
+var result = document.getElementById('result');  // only for debugging purposes
+
+phoneInput.addEventListener('input', function (e) {
+var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+});
+
+myForm.addEventListener('submit', function(e) {
+phoneInput.value = phoneInput.value.replace(/\D/g, '');
+result.innerText = phoneInput.value;  // only for debugging purposes
+
+e.preventDefault(); // You wouldn't prevent it
+});
+
+    </script>
 @endpush
 
