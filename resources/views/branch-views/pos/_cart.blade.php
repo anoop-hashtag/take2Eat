@@ -125,6 +125,7 @@ if (session()->get('order_type') == 'home_delivery'){
     $delivery_charge = 0;
 }
 ?>
+<br>
 <div class="pos-data-table p-3">
     <dl class="row">
         <dt  class="col-6">{{translate('addon')}} : </dt>
@@ -143,8 +144,7 @@ if (session()->get('order_type') == 'home_delivery'){
             </button>
             - {{ \App\CentralLogics\Helpers::set_symbol($extra_discount) }}
         </dd>
-
-        <dt  class="col-6">{{translate('GST/TAX:')}} : </dt>
+        <dt  class="col-6">{{translate('GST/TAX:')}}</dt>
         <dd class="col-6 text-right">{{ \App\CentralLogics\Helpers::set_symbol(round($total_tax + $addon_total_tax,2)) }}</dd>
 
         <dt  class="col-6">{{translate('Delivery Charge')}} :</dt>
