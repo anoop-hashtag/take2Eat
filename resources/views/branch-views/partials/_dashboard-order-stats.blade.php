@@ -22,7 +22,7 @@
 </div>
 <div class="col-sm-6 col-lg-3">
     <a href="{{route('branch.orders.list',['out_for_delivery'])}}" class="dashboard--card">
-        <h5 class="dashboard--card__subtitle">{{translate('out_for_delivery')}}</h5>
+        <h5 class="dashboard--card__subtitle">{{translate('out_for_Delivery')}}</h5>
         <h2 class="dashboard--card__title">{{$data['out_for_delivery']}}</h2>
         <img width="30" src="{{asset('public/assets/admin/img/icons/out_for_delivery.png')}}" class="dashboard--card__img" alt="">
     </a>
