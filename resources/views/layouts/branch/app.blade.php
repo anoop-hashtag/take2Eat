@@ -133,13 +133,12 @@
         @endforeach
     </script>
 @endif
-
-<script>
+{{-- //--------- For datatable font size ----------// --}}
+  <script>
     $(document).on('ready', function() {
         $('#datatable').css('font-size', '13px');
     });
-</script>
-
+    </script>
 <!-- Toggle Direction Init -->
 <script>
     $(document).on('ready', function(){
@@ -230,7 +229,7 @@
 
     function route_alert(route, message) {
         Swal.fire({
-            // title: '{{ translate('Are you sure?') }}',
+            title: '{{ translate('Are you sure?') }}',
             text: message,
             type: 'warning',
             showCancelButton: true,
@@ -289,47 +288,82 @@
             });
         });
     </script>
+  @php($date_format=\App\Model\BusinessSetting::where('key','date_format')->first()->value)
+  <script>
+           
+     $(function () {
+
+       
+         $("#expire_date").datepicker({
+             dateFormat: "dd-mm-yy", // Customize the date format
+             changeMonth:true,
+             changeYear:true, //
+         });
+        
+         $("#start_date").datepicker({
+             dateFormat: "dd-mm-yy", // Customize the date format
+             changeMonth:true,
+             changeYear:true, //
+         });
+         // Initialize the datepicker for the "from_date" input field
+         $("#from_date").datepicker({
+             dateFormat: "<?php echo $date_format ?>", // Customize the date format
+             changeMonth:true,
+             changeYear:true, //
+         });
+ 
+         // Initialize the datepicker for the "to_date" input field
+         $("#to_date").datepicker({
+             dateFormat: "<?php echo $date_format ?>", // Customize the date format
+             changeMonth:true,
+             changeYear:true,
+         });
+     });
+     
+ </script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
 <!-- Include jQuery UI library -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- Include jQuery UI CSS for styling -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
-    // Function to validate the date input
-    function validateDates() {
-        var fromDate = new Date(document.getElementById("from_date").value);
-        var toDate = new Date(document.getElementById("to_date").value);
+ // Function to validate the date input
+ function validateDates() {
+     var fromDate = new Date(document.getElementById("from_date").value);
+     var toDate = new Date(document.getElementById("to_date").value);
 
-        if (fromDate > toDate) {
-            alert("End date cannot be less than the start date");
-            return false; // Prevent form submission
-        }
-        return true; // Allow form submission
-    }
+     if (fromDate > toDate) {
+         alert("End date cannot be less than the start date");
+         return false; // Prevent form submission
+     }
+     return true; // Allow form submission
+ }
 
-    // Attach the validation function to the form submission
-    document.querySelector("form").addEventListener("submit", validateDates);
-    
+ // Attach the validation function to the form submission
+ document.querySelector("form").addEventListener("submit", validateDates);
+ 
 </script>
 <script>
-    $('#from_date, #to_date').change(function () {
-        let from = $('#from_date').val();
-        let to = $('#to_date').val();
-        if(from != ''){
-            $('#to_date').attr('required','required');
-        }
-        if(to != ''){
-            $('#from_date').attr('required','required');
-        }
-        if (from != '' && to != '') {
-            if (from > to) {
-                $('#from_date').val('');
-                $('#to_date').val('');
-                toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
-            }
-        }
+ $('#from_date, #to_date').change(function () {
+     let from = $('#from_date').val();
+     let to = $('#to_date').val();
+     if(from != ''){
+         $('#to_date').attr('required','required');
+     }
+     if(to != ''){
+         $('#from_date').attr('required','required');
+     }
+     if (from != '' && to != '') {
+         if (from > to) {
+             $('#from_date').val('');
+             $('#to_date').val('');
+             toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
+         }
+     }
 
-    })
+ })
 </script>
 <!-- IE Support -->
 <script>
