@@ -43,9 +43,9 @@
             {{--                <a href="#" class="btn btn-primary text-nowrap">{{ translate('Place_Order') }}</a>--}}
             {{--            </div>--}}
             
-                        <div class="d-flex mt-5 mx-lg-5">
+                        {{-- <div class="d-flex mt-5 mx-lg-5">
                             <a href="#" class="btn btn-outline-primary w-100 text-nowrap" data-dismiss="modal" data-toggle="modal" data-target="#reservationModal"><i class="tio-alarm-alert"></i> {{ translate('Create_Reservation') }}</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
               </div>
