@@ -604,7 +604,10 @@ input.qty {
 .pos-data-table dt {
   font-weight: 400;
 }
-
+.pos-data-table dd button.btn.btn-sm {
+  height: 22px;
+  padding-top: 0;
+}
 .billing-section-wrap {
   max-height: calc(100vh - 120px);
   overflow-y: auto;
