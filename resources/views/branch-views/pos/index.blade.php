@@ -121,7 +121,7 @@
 
                                 <div class="d-none" id="dine_in_section">
                                     <div class="form-group d-flex flex-wrap flex-sm-nowrap gap-2">
-                                        <select onchange="store_key('table_id',this.value)" id='table' name="table_id"  class="table-data-selector form-control form-ellipsis">
+                                        <select onchange="store_key('table_id',this.value)" id='table' name="table_id" class="js-data-example-ajax form-control">
                                             <option selected disabled>{{translate('Select Table')}}</option>
                                             @foreach($tables as $table)
                                                 <option value="{{$table['id']}}" {{ $table['id'] == session('table_id') ? 'selected' : ''}}>{{translate('Table')}} - {{$table['number']}}</option>
