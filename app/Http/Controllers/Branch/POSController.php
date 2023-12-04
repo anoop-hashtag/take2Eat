@@ -337,16 +337,17 @@ class POSController extends Controller
                     // If the item exists in the cart, update it
                     $updatedCart=  $cart->map(function ($item) use ($data) {
                         if ($item['id'] === $data['id']) {
-                                if($item['quantity']==$data['quantity']) {
-                                  $data['quantity'] = $data['quantity']+1;
-                                  return $data; 
-                                } else{
-                                    return $data; 
-                                }
-    
-                          
-                        }
-                        return $item;
+                            if($item['quantity']==$data['quantity']) {
+                                $data['quantity'] += $data['quantity'];
+                                return $data; 
+                              } else{
+                                  $item['quantity'] += $data['quantity'];
+                                  return $item; 
+                              }
+  
+                        
+                      }
+                      return $item;
                     });
                     $request->session()->put('cart', $updatedCart);
                 } else {
