@@ -189,8 +189,8 @@
 
                             <div class="p-2 p-sm-4">
                                 <div class="form-group d-flex gap-2">
-                                    <select onchange="store_key('customer_id',this.value)" id='customer' name="customer_id" data-placeholder="{{translate('Walk_In_Customer')}}" class="js-data-example-ajax form-control form-ellipsis">
-                                    <option disabled selected>{{translate('select Customer')}}</option>
+                                    <select onchange="store_key('customer_id',this.value)" id='customer' name="customer_id" data-placeholder="{{translate('Walk_In_Customer')}}" class="js-select2-custom-x form-ellipsis form-control">
+                                    <option  disabled selected>{{translate('select Customer')}}</option>
                                     @foreach(\App\User::select('id', 'f_name', 'l_name')->get() as $customer)
                                             <option value="{{$customer['id']}}" {{ session()->get('customer_id') == $customer['id'] ? 'selected' : '' }}>{{$customer['f_name']. ' '. $customer['l_name'] }}</option>
                                         @endforeach
@@ -701,6 +701,7 @@
         }
 
         function addToCart(form_id = 'add-to-cart-form') {
+          
             if (checkAddToCartValidity()) {
                 $.ajaxSetup({
                     headers: {
