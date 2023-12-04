@@ -397,7 +397,7 @@ class POSController extends Controller
                     if ($item['id'] === $data['id']) {
                         
                             if($item['quantity']==$data['quantity']) {
-                              $data['quantity'] = $data['quantity']+1;
+                              $data['quantity'] += $data['quantity'];
                               return $data; 
                             } else{
                                 $item['quantity'] += $data['quantity'];
