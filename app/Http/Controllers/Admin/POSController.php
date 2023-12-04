@@ -301,8 +301,10 @@ class POSController extends Controller
         $addon_total_tax = 0;
         $variation_price = 0;
 
-        $branch_product = $this->product_by_branch->where(['product_id' => $request->id, 'branch_id' => session()->get('branch_id')])->first();
 
+
+        $branch_product = $this->product_by_branch->where(['product_id' => $request->id, 'branch_id' => session()->get('branch_id')])->first();
+    //    echo  '<pre>'; print_r($branch_product); die();
         $branch_product_price = 0;
         $discount_data = [];
 
@@ -378,10 +380,91 @@ class POSController extends Controller
 
         $data['addon_price'] = $addon_price;
         $data['addon_total_tax'] = $addon_total_tax;
+       
 
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart', collect([]));
-            $cart->push($data);
+            //    echo '<pre>'; print_r($cart); die();
+            //  $cart->push($data);
+            // $found = false;
+            // $cart2 = Session::get('cart');
+            // foreach($cart2 as $i=>$el)
+            // {
+            //     if($el['id'] == $request->id)
+            //     { 
+            //         $cart2[$i]['quantity']=2;
+            //         echo "data==";
+            //         // echo $request->quantity;
+            //         echo print_r($cart2[$i]['quantity']);
+            //         $found = true;
+            //     }
+            // }
+
+            // if($found)
+            // {
+
+            //     $request->session()->put('cart', $cart2);
+                
+            // } else {
+            //     $cart->push($data);
+            // }
+
+            $idToRemove = $product->id;
+
+
+            $existingItem = $cart->firstWhere('id', $data['id']);
+
+            if ($existingItem !== null) {
+                // If the item exists in the cart, update it
+                $updatedCart=  $cart->map(function ($item) use ($data) {
+                    if ($item['id'] === $data['id']) {
+                            if($item['quantity']==$data['quantity']) {
+                              $data['quantity'] = $data['quantity']+1;
+                              return $data; 
+                            } else{
+                                return $data; 
+                            }
+
+                      
+                    }
+                    return $item;
+                });
+                $request->session()->put('cart', $updatedCart);
+            } else {
+                // If the item doesn't exist in the cart, add it
+                $cart->push($data);
+            }
+
+
+            // $request->session()->put('cart', $updatedCart);
+
+
+
+
+            // $itemExists = $cart->contains(function ($cartItem) use ($idToRemove) {
+            //     // Replace 'id' with the appropriate key used to identify the item
+            //     return $cartItem['id'] === $idToRemove;
+            // });
+
+            // if ($itemExists) {
+            //     $updatedCart = $cart->filter(function ($item) use ($idToRemove) {
+            //     return $item['id'] !== $idToRemove;
+            // });
+
+            //     $new
+
+            //   $request->session()->put('cart', $updatedCart);
+            
+            //   $cart->push($data);
+            //   $cart->push($data);
+
+
+            // } else { 
+            //     $cart->push($data);
+            // }
+
+           
+
         } else {
             $cart = collect([$data]);
             $request->session()->put('cart', $cart);
