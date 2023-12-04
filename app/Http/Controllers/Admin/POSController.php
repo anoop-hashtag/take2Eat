@@ -384,30 +384,7 @@ class POSController extends Controller
 
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart', collect([]));
-            //    echo '<pre>'; print_r($cart); die();
-            //  $cart->push($data);
-            // $found = false;
-            // $cart2 = Session::get('cart');
-            // foreach($cart2 as $i=>$el)
-            // {
-            //     if($el['id'] == $request->id)
-            //     { 
-            //         $cart2[$i]['quantity']=2;
-            //         echo "data==";
-            //         // echo $request->quantity;
-            //         echo print_r($cart2[$i]['quantity']);
-            //         $found = true;
-            //     }
-            // }
-
-            // if($found)
-            // {
-
-            //     $request->session()->put('cart', $cart2);
-                
-            // } else {
-            //     $cart->push($data);
-            // }
+          
 
             $idToRemove = $product->id;
 
@@ -436,34 +413,6 @@ class POSController extends Controller
             }
 
 
-            // $request->session()->put('cart', $updatedCart);
-
-
-
-
-            // $itemExists = $cart->contains(function ($cartItem) use ($idToRemove) {
-            //     // Replace 'id' with the appropriate key used to identify the item
-            //     return $cartItem['id'] === $idToRemove;
-            // });
-
-            // if ($itemExists) {
-            //     $updatedCart = $cart->filter(function ($item) use ($idToRemove) {
-            //     return $item['id'] !== $idToRemove;
-            // });
-
-            //     $new
-
-            //   $request->session()->put('cart', $updatedCart);
-            
-            //   $cart->push($data);
-            //   $cart->push($data);
-
-
-            // } else { 
-            //     $cart->push($data);
-            // }
-
-           
 
         } else {
             $cart = collect([$data]);

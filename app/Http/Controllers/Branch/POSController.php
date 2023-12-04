@@ -324,7 +324,39 @@ class POSController extends Controller
 
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart', collect([]));
-            $cart->push($data);
+            if ($request->session()->has('cart')) {
+                $cart = $request->session()->get('cart', collect([]));
+              
+    
+                $idToRemove = $product->id;
+    
+    
+                $existingItem = $cart->firstWhere('id', $data['id']);
+    
+                if ($existingItem !== null) {
+                    // If the item exists in the cart, update it
+                    $updatedCart=  $cart->map(function ($item) use ($data) {
+                        if ($item['id'] === $data['id']) {
+                                if($item['quantity']==$data['quantity']) {
+                                  $data['quantity'] = $data['quantity']+1;
+                                  return $data; 
+                                } else{
+                                    return $data; 
+                                }
+    
+                          
+                        }
+                        return $item;
+                    });
+                    $request->session()->put('cart', $updatedCart);
+                } else {
+                    // If the item doesn't exist in the cart, add it
+                    $cart->push($data);
+                }
+    
+    
+    
+            } 
         } else {
             $cart = collect([$data]);
             $request->session()->put('cart', $cart);
