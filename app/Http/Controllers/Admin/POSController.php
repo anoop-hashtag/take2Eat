@@ -384,7 +384,7 @@ class POSController extends Controller
 
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart', collect([]));
-          
+            // echo '<pre>'; print_r($cart); die();
 
             $idToRemove = $product->id;
 
@@ -395,11 +395,13 @@ class POSController extends Controller
                 // If the item exists in the cart, update it
                 $updatedCart=  $cart->map(function ($item) use ($data) {
                     if ($item['id'] === $data['id']) {
+                        
                             if($item['quantity']==$data['quantity']) {
                               $data['quantity'] = $data['quantity']+1;
                               return $data; 
                             } else{
-                                return $data; 
+                                $item['quantity'] += $data['quantity'];
+                                return $item; 
                             }
 
                       
