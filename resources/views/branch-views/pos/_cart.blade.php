@@ -125,7 +125,9 @@ if (session()->get('order_type') == 'home_delivery'){
     $delivery_charge = 0;
 }
 ?>
-<br>
+ <br>
+ {{-- <hr style="border: 1px solid gray; !important;"> --}}
+ <hr>
 <div class="pos-data-table p-3">
     <dl class="row">
         <dt  class="col-6">{{translate('addon')}} : </dt>
