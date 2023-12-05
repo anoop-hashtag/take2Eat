@@ -20,6 +20,9 @@
   width: 100%;
   padding-top: 10px;
 }
+table#datatable.table-responsive {
+  display: block!important;
+}
 
 }
 @media (min-width:992px) and (max-width:1120px){
@@ -29,8 +32,13 @@
     width: 100%;
     padding-top: 10px;
   }
+  table#datatable.table-responsive {
+    display: block!important;
 }
-
+}
+table#datatable.table-responsive  {
+  display: table;
+}
 
 /* Redesign CSS */
 .navbar-dropdown-lg {
