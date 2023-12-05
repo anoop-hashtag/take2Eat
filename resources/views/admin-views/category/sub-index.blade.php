@@ -97,12 +97,12 @@
                             </div>
                             <div class="col-sm-8 col-md-6 col-lg-4">
                                 <form action="{{url()->current()}}" method="GET">
-                                    <div class="input-group">
+                                    {{-- <div class="input-group">
                                         <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by sub category name')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-primary">{{ translate('Search') }}</button>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </form>
                             </div>
                         </div>
