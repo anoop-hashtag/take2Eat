@@ -22,7 +22,14 @@
 }
 
 }
-
+@media (min-width:992px) and (max-width:1020px){
+  .datatable_wrapper_row .dataTable {
+    display: block;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
+}
 
 
 /* Redesign CSS */
