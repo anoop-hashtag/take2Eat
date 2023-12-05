@@ -22,7 +22,7 @@
 }
 
 }
-@media (min-width:992px) and (max-width:1320px){
+@media (min-width:992px) and (max-width:1120px){
   .datatable_wrapper_row .dataTable {
     display: block;
     overflow-x: auto!important;
