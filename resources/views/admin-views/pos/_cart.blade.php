@@ -1,13 +1,14 @@
-    <div class="table-responsive pos-cart-table border">
+<div class="table-responsive pos-cart-table border">
         <table class="table table-align-middle mb-0">
             <thead class="text-dark bg-light">
                 <tr>
-                    <th class="text-capitalize border-0 min-w-120">{{translate('item')}}</th>
-                    <th class="text-capitalize border-0">{{translate('qty')}}</th>
-                    <th class="text-capitalize border-0">{{translate('price')}}</th>
-                    <th class="text-capitalize border-0">{{translate('delete')}}</th>
+                    <th class="text-capitalize border min-w-120">{{ translate('item') }}</th>
+                    <th class="text-capitalize border">{{ translate('qty') }}</th>
+                    <th class="text-capitalize border">{{ translate('price') }}</th>
+                    <th class="text-capitalize border">{{ translate('delete') }}</th>
                 </tr>
             </thead>
+            
             <tbody>
             <?php
                 $subtotal = 0;
@@ -18,6 +19,7 @@
                 $addon_total_tax =0;
                 $total_tax = 0;
             ?>
+
             @if(session()->has('cart') && count( session()->get('cart')) > 0)
                 <?php
                     $cart = session()->get('cart');
@@ -27,8 +29,12 @@
                         $discount_type = $cart['discount_type'];
                     }
                 ?>
+
+                
                 @foreach(session()->get('cart') as $key => $cartItem)
+              
                 @if(is_array($cartItem))
+                
                     <?php
                     $product_subtotal = ($cartItem['price'])*$cartItem['quantity'];
                     $discount_on_product += ($cartItem['discount']*$cartItem['quantity']);
@@ -38,9 +44,11 @@
 
                     //tax calculation
                     $product = \App\Model\Product::find($cartItem['id']);
+                    //  echo '<pre>'; print_r($product->id); 
                     $total_tax += \App\CentralLogics\Helpers::tax_calculate($product, $cartItem['price'])*$cartItem['quantity'];
 
                     ?>
+                   
                     <tr>
                         <td>
                             <div class="media align-items-center gap-10">
@@ -51,6 +59,7 @@
                                     <small>{{Str::limit($cartItem['variant'], 20)}}</small>
                                     <small class="d-block">
                                         @php($add_on_qtys=$cartItem['add_on_qtys'])
+                                        
                                         @foreach($cartItem['add_ons'] as $key2 =>$id)
                                             @php($addon=\App\Model\AddOn::find($id))
                                             @if($key2==0)<strong><u>Addons : </u></strong>@endif
@@ -86,6 +95,7 @@
                             </a>
                         </td>
                     </tr>
+                   
                 @endif
                 @endforeach
             @endif
@@ -98,7 +108,6 @@
         $discount_amount = ($discount_type=='percent' && $discount>0)?(($total * $discount)/100):$discount;
         $discount_amount += $discount_on_product;
         $total -= $discount_amount;
-
         $extra_discount = session()->get('cart')['extra_discount'] ?? 0;
         $extra_discount_type = session()->get('cart')['extra_discount_type'] ?? 'amount';
         if($extra_discount_type == 'percent' && $extra_discount > 0){
@@ -107,7 +116,6 @@
         if($extra_discount) {
             $total -= $extra_discount;
         }
-
         $delivery_charge = 0;
         if (session()->get('order_type') == 'home_delivery'){
             $distance = 0;
@@ -126,6 +134,8 @@
         }
     ?>
     <br>
+    {{-- <hr style="border: 1px solid gray; !important;"> --}}
+    <hr>
     <div class="pos-data-table p-3">
         <dl class="row">
             <dt  class="col-6">{{translate('addon')}} : </dt>
@@ -133,24 +143,18 @@
 
             <dt  class="col-6">{{translate('subtotal')}} : </dt>
             <dd class="col-6 text-right">{{\App\CentralLogics\Helpers::set_symbol($subtotal+$addon_price) }}</dd>
-
             <dt  class="col-6">{{translate('product')}} {{translate('discount')}} :</dt>
             <dd class="col-6 text-right">- {{ \App\CentralLogics\Helpers::set_symbol(round($discount_amount,2)) }}</dd>
-
             <dt  class="col-6">{{translate('extra')}} {{translate('discount')}} :</dt>
             <dd class="col-6 text-right">
                 <button class="btn btn-sm" type="button" data-toggle="modal" data-target="#add-discount">
                     <i class="tio-edit"></i>
-                </button>
-                - {{ \App\CentralLogics\Helpers::set_symbol($extra_discount) }}
+                </button>- {{ \App\CentralLogics\Helpers::set_symbol($extra_discount) }}
             </dd>
-
             <dt  class="col-6">{{translate('GST/TAX')}} : </dt>
             <dd class="col-6 text-right">{{ \App\CentralLogics\Helpers::set_symbol(round($total_tax + $addon_total_tax,2)) }}</dd>
-
             <dt  class="col-6">{{translate('Delivery Charge')}} :</dt>
             <dd class="col-6 text-right"> {{ \App\CentralLogics\Helpers::set_symbol(round($delivery_charge,2)) }}</dd>
-
             <dt  class="col-6 border-top font-weight-bold pt-2">{{translate('total')}} : </dt>
             <dd class="col-6 text-right border-top font-weight-bold pt-2">{{ \App\CentralLogics\Helpers::set_symbol(round($total+$total_tax+$addon_total_tax+$delivery_charge, 2)) }}</dd>
         </dl>
