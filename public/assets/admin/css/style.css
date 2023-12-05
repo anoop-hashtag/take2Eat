@@ -5,6 +5,25 @@
   --c2: #006ae5;
   --tc: #334257;
 }
+/* ------ For tablat view fo design -------- */
+@media only screen and (max-width:992px){
+  .badge-soft-c1 {
+    min-width: 86px!important;
+   
+    text-align: center;
+    color: var(--c1);
+    background-color: rgba(255, 103, 103, 0.1);
+}
+.datatable_wrapper_row .dataTable {
+  display: block;
+  overflow-x: auto!important;
+  width: 100%;
+  padding-top: 10px;
+}
+
+}
+
+
 
 /* Redesign CSS */
 .navbar-dropdown-lg {
@@ -118,6 +137,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 .badge-soft-c1 {
   color: var(--c1);
   background-color: rgba(255, 103, 103, 0.1);
+  min-width: 65px;
 }
 
 .text-c1,
