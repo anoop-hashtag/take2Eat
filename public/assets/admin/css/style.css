@@ -6,6 +6,15 @@
   --tc: #334257;
 }
 /* ------ For tablat view fo design -------- */
+.card-top{
+  position: relative;
+  top:34px;
+}
+@media screen and (max-width: 640px) {
+  .dataTables_wrapper .dataTables_filter {
+    margin: 2.5em 0 0 1.3rem!important;
+  }
+}
 @media only screen and (max-width:992px){
   .badge-soft-c1 {
     min-width: 86px!important;
