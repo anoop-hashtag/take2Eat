@@ -33,14 +33,14 @@
                         </div>
                         <div class="col-md-8">
                             <div class="d-flex flex-wrap justify-content-md-end gap-3">
-                                <form action="{{url()->current()}}" method="GET">
+                                {{-- <form action="{{url()->current()}}" method="GET">
                                     <div class="input-group">
                                         <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by Name')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-primary">{{translate('Search')}}</button>
                                         </div>
                                     </div>
-                                </form>
+                                </form> --}}
                                 <a href="{{route('admin.kitchen.add-new')}}" class="btn btn-primary text-nowrap">
                                     <i class="tio-add"></i>
                                     <span class="text">{{translate('Add_New')}}</span>
