@@ -173,7 +173,7 @@
                                     @endif
                                 </td>
                                 <td class="text-capitalize">
-                                    <span class="badge-soft-success px-2 py-1 rounded">{{translate($order['order_type'])}}</span>
+                                    <span class="badge-soft-success px-2 py-1 rounded">{{translate($order['order_type']== 'pos' ? 'POS' : '')}}</span>
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
