@@ -23,8 +23,8 @@
 
         <!-- Card -->
         <div class="card">
-            <div class="card-top px-card pt-4">
-                <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
+            <div class="card-top px-card ">
+                <div class="d-flex flex-column flex-md-row flex-wrap   align-items-md-center">
                     <form action="{{url()->current()}}" method="GET">
                         <div class="input-group">
                             {{-- <input id="datatableSearch_" type="search" name="search"
@@ -62,9 +62,9 @@
                 </div>
             </div>
 
-            <div class="py-3">
-                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
-                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
+            <div class="">
+                <div class=" datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
+                    <table id="datatable" class="table table-responsive table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
                             <tr>
                                 <th class="">
