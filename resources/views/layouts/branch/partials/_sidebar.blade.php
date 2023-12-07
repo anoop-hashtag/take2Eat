@@ -308,7 +308,7 @@
                                        title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
-                                                {{translate('canceled')}}
+                                                {{translate('cancelled')}}
                                                 <span class="badge badge-soft-danger badge-pill ml-1">
                                                     {{\App\Model\Order::dineIn()->where(['order_status'=>'canceled'])->where(['branch_id' => auth('branch')->id()])->count()}}
                                                 </span>
