@@ -14,7 +14,7 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-1">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/all_orders.png')}}" alt="">
                 <span class="page-header-title">
-                {{translate($status)}} {{translate('table')}} {{translate('Orders')}}
+                    {{$status =='canceled' ? 'cancelled':''}} {{translate('Table_Orders')}}
                 </span>
             </h2>
             <span class="badge badge-soft-dark rounded-50 fz-14">{{ $orders->total() }}</span>
@@ -247,7 +247,7 @@
                                     @elseif($order['order_status']=='delivered')
                                         <span class="badge-soft-success px-2 py-1 rounded">{{translate('delivered')}}</span>
                                     @else
-                                        <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status'])}}</span>
+                                        <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status']=='canceled' ? 'cancelled' : '')}}</span>
                                     @endif
                                 </td>
                                 <td class="text-capitalize">
