@@ -246,6 +246,8 @@
                                         <span class="badge-soft-warning px-2 py-1 rounded">{{translate('out_for_delivery')}}</span>
                                     @elseif($order['order_status']=='delivered')
                                         <span class="badge-soft-success px-2 py-1 rounded">{{translate('delivered')}}</span>
+                                        @elseif($order['order_status']=='done')
+                                        <span class="badge-soft-success px-2 py-1 rounded">{{translate('Done')}}</span>
                                     @else
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status']=='canceled' ? 'cancelled' : '')}}</span>
                                     @endif
