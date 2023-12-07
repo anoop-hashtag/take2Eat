@@ -181,31 +181,31 @@
                                                               <tr>
                                                                  <td></td>
                                                                  <td class="p-1 px-3">{{ translate('item_price') }}</td>
-                                                                 <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</td>
+                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</td>
                                                               </tr>
                                                               <tr>
                                                                  <td></td>
-                                                                 <td class="p-1 px-3">{{translate('tax')}} / {{translate('Gst')}}</td>
-                                                                 <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($total_tax) }}</td>
+                                                                 <td class="p-1 px-3">{{translate('tax')}} / {{translate('GST')}}</td>
+                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax) }}</td>
                                                               </tr>
                                                               <tr>
                                                                  <td></td>
                                                                  <td class="p-1 px-3">{{ translate('discount') }}</td>
-                                                                 <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($total_dis_on_pro) }}</td>
+                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($total_dis_on_pro) }}</td>
                                                               </tr>
                                                               <tr>
                                                                  <td></td>
                                                                  <td class="p-1 px-3">{{ translate('subtotal') }}</td>
-                                                                 <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($sub_total =$sub_total+$total_tax+$add_ons_cost-$total_dis_on_pro + $add_ons_tax_cost) }}</td>
+                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($sub_total =$sub_total+$total_tax+$add_ons_cost-$total_dis_on_pro + $add_ons_tax_cost) }}</td>
                                                               </tr>
                                                               <tr>
                                                                  <td></td>
                                                                  <td class="p-1 px-3">{{translate('coupon')}} {{translate('discount')}}</td>
-                                                                 <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</td>
+                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</td>
                                                               </tr>
                                                               <tr>
                                                                  <td></td>
-                                                                 <td class="p-1 px-3"> {{translate('extra discount')}}</td>
+                                                                 <td class="p-1 px-3" style="text-align:right"> {{translate('extra discount')}}</td>
                                                                  <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</td>
                                                               </tr>
                                                               <tr>
@@ -216,7 +216,7 @@
                                                                  @else
                                                                  @php($del_c=$order['delivery_charge'])
                                                                  @endif
-                                                                 <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
+                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
                                                               </tr>
                                                               <tr>
                                                                  <td></td>
