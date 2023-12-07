@@ -37,8 +37,7 @@
                             <div class="pl-2">
                               <h3 class="subtitle" style="color: #000000;font-size: 18px;margin: 0 0 5px;">Order Summary</h3>
                               <span class="d-block">{{ translate('Order') }}# {{ $order->id  }}</span>
-                              <span class="d-block">{{date('d/M/Y h:m a',strtotime($order->created_at))}}
-                              
+                              <span class="d-block">{{ $order->created_at  }}
                               </span>
                             </div>
                           </td>
