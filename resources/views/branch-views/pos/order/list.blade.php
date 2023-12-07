@@ -171,12 +171,12 @@
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
-                                        <a class="btn btn-sm btn-outline-info square-btn"
+                                        <a class="btn btn-sm btn-outline-danger square-btn"
                                                 href="{{route('branch.orders.details',['id'=>$order['id']])}}"><i
                                                         class="tio-visible"></i></a>
                                         <button class="btn btn-sm btn-outline-success square-btn" target="_blank" type="button"
                                                 onclick="print_invoice('{{$order->id}}')"><i
-                                                class="tio-download"></i></button>
+                                                class="tio-print"></i></button>
                                     </div>
                                 </td>
                             </tr>
