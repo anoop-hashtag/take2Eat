@@ -307,7 +307,7 @@
                                 </div>
                                 @if($recent['order_status'] == 'pending')
                                     <span
-                                        class="status text-primary">{{translate($recent['order_status']=='canceled' ? 'cancelled' : '')}}</span>
+                                        class="status text-primary">{{translate($recent['order_status'])}}</span>
                                 @elseif($recent['order_status'] == 'delivered')
                                     <span
                                         class="status text-success">{{translate($recent['order_status'])}}</span>
