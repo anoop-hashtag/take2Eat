@@ -205,8 +205,8 @@
                                                               </tr>
                                                               <tr>
                                                                  <td></td>
-                                                                 <td class="p-1 px-3" style="text-align:right"> {{translate('extra discount')}}</td>
-                                                                 <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</td>
+                                                                 <td class="p-1 px-3"> {{translate('extra discount')}}</td>
+                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</td>
                                                               </tr>
                                                               <tr>
                                                                  <td></td>
