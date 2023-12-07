@@ -2113,4 +2113,6 @@
   'Place Order' => 'Place Order',
   'Modal Title' => 'Modal Title',
   'View Order Details' => 'View Order Details',
+  'Done' => 'Done',
+  'not_found' => 'Not found',
 );

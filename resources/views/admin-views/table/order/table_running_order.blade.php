@@ -22,7 +22,7 @@
         </div>
         <div id="all_running_order">
             <div class="card">
-                <div class="card-top px-card pt-4">
+                <div class="card-top px-card ">
                     <div class="row justify-content-between align-items-center gy-2">
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <div>

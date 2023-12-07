@@ -123,7 +123,7 @@
         <!-- Card -->
         <div class="card mt-3">
             <!-- Header -->
-            <div class="card-header text-capitalize border-0">
+            <div class="card-top px-card pb-2">
                 <h4 class="card-title">
                     <span class="card-header-icon"><i class="tio-money"></i></span>
                     <span class="ml-2">{{translate('transactions')}}</span>
@@ -133,7 +133,7 @@
 
             <!-- Body -->
             <div class="card-body p-0">
-                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
+                <div class="table-responsive datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                         <tr>

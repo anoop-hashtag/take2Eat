@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="mt-3">
                     <div class="card">
-                        <div class="card-top px-card pt-4">
+                        <div class="card-top px-card">
                             <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
                                 <h5 class="d-flex align-items-center gap-2">
                                     {{translate('Addon_Table')}}

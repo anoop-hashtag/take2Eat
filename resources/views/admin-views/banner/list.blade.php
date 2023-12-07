@@ -92,7 +92,7 @@
             <div class="col-12">
                 <!-- Card -->
                 <div class="card">
-                    <div class="card-top px-card pt-4">
+                    <div class="card-top px-card ">
                         <div class="row align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -116,8 +116,8 @@
                     </div>
 
                     <!-- Table -->
-                    <div class="py-4">
-                        <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
+                    <div class="">
+                        <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                 <tr>

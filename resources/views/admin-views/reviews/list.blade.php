@@ -24,7 +24,7 @@
         <div class="row g-2">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-top px-card pt-4">
+                    <div class="card-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h4>{{translate('review_list')}} <span id="total_count" class="badge badge-soft-dark rounded-50 fz-14">{{ $reviews->total() }}</span></h4>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="py-4">
+                    <div class="">
                         <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">

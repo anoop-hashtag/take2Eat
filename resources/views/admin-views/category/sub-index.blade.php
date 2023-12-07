@@ -87,15 +87,15 @@
 
             <div class="mt-3">
                 <div class="card">
-                    <div class="card-top px-card pt-4">
+                    <div class="card-top px-card py-1">
                         <div class="row justify-content-between align-items-center gy-2">
-                            <div class="col-sm-4 col-md-6 col-lg-8">
+                            <div class="col-sm-6 col-md-8 col-lg-8">
                                 <h5 class="d-flex mb-0 gap-2 align-items-center">
                                     {{translate('Sub_Category_Table')}}
                                     <span class="badge badge-soft-dark rounded-50 fz-12">{{ $categories->total() }}</span>
                                 </h5>
                             </div>
-                            <div class="col-sm-8 col-md-6 col-lg-4">
+                            <div class="col-sm-6 col-md-4 col-lg-4">
                                 <form action="{{url()->current()}}" method="GET">
                                     {{-- <div class="input-group">
                                         <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by sub category name')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
@@ -109,9 +109,9 @@
                     </div>
 
 
-                    <div class="py-4">
-                        <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
-                            <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                    <div class="">
+                        <div class=" datatable_wrapper_row"  style="padding-right: 10px;">
+                            <table id="datatable" class="table table-responsive table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
@@ -170,7 +170,7 @@
                             </table>
                         </div>
                         <div class="table-responsive mt-4 px-3">
-                            <div class="d-flex justify-content-lg-end">
+                            <div class="d-flex justify-content-lg-end" >
                                 <!-- Pagination -->
                                 {!! $categories->links() !!}
                             </div>
