@@ -11,7 +11,7 @@
   top:34px;
 }
 @media (min-width:1200px) and (max-width:1290px){
-  .gdgfdgf {
+  .set_table {
     position: relative;
   }
   .dataTables_wrapper .dataTables_filter {
@@ -22,10 +22,29 @@
     height: 45px;
     top: 0;
   }
-  .gdgfdgf table{
+  .set_table table{
     margin: 35px 0 0 !important;
   }
-  .gdgfdgf .dataTables_wrapper {
+  .set_table .dataTables_wrapper {
+    position: unset;
+}
+}
+@media (min-width:992px) and (max-width:1040px){
+  .set_table {
+    position: relative;
+  }
+  .dataTables_wrapper .dataTables_filter {
+    float: right!important;
+    text-align: right!important;
+    position: absolute;
+    right: 10px;
+    height: 45px;
+    top: 0;
+  }
+  .set_table table{
+    margin: 35px 0 0 !important;
+  }
+  .set_table .dataTables_wrapper {
     position: unset;
 }
 }
@@ -40,18 +59,10 @@
     margin: 2.5em 0 0 1.3rem!important;
   }
 }
-@media (min-width:992px) and(max-width:1190px){
-  .datatable_wrapper_row .dataTable {
-    display: block;
-    overflow-x: auto!important;
-    width: 100%;
-    padding-top: 10px;
-  }
-}
+
 @media only screen and (max-width:992px){
   .badge-soft-c1 {
     min-width: 86px!important;
-   
     text-align: center;
     color: var(--c1);
     background-color: rgba(255, 103, 103, 0.1);

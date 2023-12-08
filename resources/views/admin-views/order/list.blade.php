@@ -225,9 +225,10 @@
             </div>
             <!-- End Card Top -->
             <!-- Table -->
-            <div class="">
+            <div class="set_table">
                 <div class="datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
-                    <table id="datatable" class=" table-responsive table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                <div class="table-responsive">
+                    <table id="datatable" class=" table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>
                                 <th>{{translate('SL')}}</th>
@@ -322,7 +323,7 @@
                         @endforeach
                         </tbody>
                     </table>
-
+                </div>
                 </div>
             </div>
             <!-- End Table -->
