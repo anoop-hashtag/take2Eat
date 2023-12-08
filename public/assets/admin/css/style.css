@@ -11,6 +11,9 @@
   top:34px;
 }
 @media (min-width:1200px) and (max-width:1290px){
+  .datatable_wrapper_row .dataTable {
+    padding-top: 25px!important;
+}
   .set_table {
     position: relative;
   }
@@ -52,6 +55,7 @@
   .dataTables_wrapper .dataTables_filter {
     margin: 1em 0 0 1.3rem!important;
 }
+
 }
 
 @media   (min-width:580px) and (max-width: 640px) {
@@ -86,6 +90,9 @@ table#datatable.table-responsive {
   display: none;
 }
 /*8/12/203*/
+.invoice_print{
+  width:320px;
+}
 .btn-attribute{
   height: 42px;
 }

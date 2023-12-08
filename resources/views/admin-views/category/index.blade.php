@@ -161,7 +161,7 @@
                                         <td>{{$categories->firstitem()+$key}}</td>
                                         <td>
                                             <div>
-                                                <img width="50" class="avatar-img rounded" src="{{asset('storage/app/public/category')}}/{{$category['image']}}" onerror="this.src='{{asset('public/assets/admin/img/icons/category_img.png')}}'" alt="">
+                                                <img width="50" class="avatar-img rounded" src="{{asset('storage/app/public/category')}}/{{$category['image']}}" onerror="this.src='{{asset('public/assets/admin/img/icons/category_img.png')}}'" alt="" style="height:50px">
                                             </div>
                                         </td>
                                         <td><div class="text-capitalize">{{$category['name']}}</div></td>
