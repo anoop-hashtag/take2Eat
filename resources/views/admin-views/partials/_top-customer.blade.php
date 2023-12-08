@@ -11,13 +11,13 @@
         @foreach($top_customer as $key=>$item)
             @if(isset($item->customer))
                 <a class="d-flex justify-content-between align-items-center text-dark" href='{{route('admin.customer.view', [$item['user_id']])}}'>
-                    <div class="media align-items-center gap-3">
+                    <div class="media align-items-center gap-2">
                         <img class="rounded avatar avatar-lg"
                                 onerror="this.src='{{asset('public/assets/admin/img/400x400/img2.jpg')}}'"
                                 src="{{asset('storage/app/public/profile'.'/'. $item->customer->image  ?? '' )}}">
-                        <div class="media-body d-flex flex-column" style="margin-right: 60px">
+                        <div class="media-body d-flex flex-column" >
                             <span class="font-weight-semibold text-capitalize">{{$item->customer['f_name']??'Not exist'}}</span>
-                            <span class="text-dark">{{ $item->customer['phone']?? translate('Not exist') }}</span>
+                            <span class="text-dark" style="font-size:12px">{{ $item->customer['phone']?? translate('Not exist') }}</span>
                         </div>
                     </div>
                     <span class="px-2 py-1 badge-soft-c1 font-weight-bold fz-12 rounded lh-1">{{translate('Orders: ')}}{{$item['count']}}</span>

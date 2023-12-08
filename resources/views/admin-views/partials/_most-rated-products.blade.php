@@ -17,7 +17,7 @@
                                 src="{{asset('storage/app/public/product')}}/{{ $item->product->image ?? '' }}"
                                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
                                 alt="{{$product->name}} image">
-                        <span class=" font-weight-semibold text-capitalize media-body">
+                        <span class=" font-weight-semibold text-capitalize media-body" style="width:72px">
                             {{isset($product)?substr($product->name,0,18) . (strlen($product->name)>18?'...':''):'not exists'}}
                         </span>
                     </div>
