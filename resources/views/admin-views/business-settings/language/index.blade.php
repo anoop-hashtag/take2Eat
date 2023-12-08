@@ -238,15 +238,15 @@
                                             </td>
                                             <td class="">
                                                 <div class="d-flex justify-content-start align-items-center gap-2 flex-wrap">
-                                                    <a class="btn btn-sm btn-outline-success"
+                                                    <a class="btn btn-sm btn-outline-success btn-action"
                                                     href="{{route('admin.business-settings.web-app.system-setup.language.translate',[$data['code']])}}">{{translate('Translate')}}</a>
                                                     @if($data['code']!='en')
-                                                        <a class="btn btn-sm btn-outline-info px-3" data-toggle="modal"
+                                                        <a class="btn btn-sm btn-outline-info btn-action" data-toggle="modal"
                                                             data-target="#lang-modal-update-{{$data['code']}}">
                                                             <i class="tio-edit"></i>
                                                         </a>
                                                         @if($data['default'] != true)
-                                                            <button class="btn btn-sm btn-outline-danger px-3" id="delete"
+                                                            <button class="btn btn-sm btn-outline-danger btn-action" id="delete"
                                                                 onclick="delete_language('{{ route('admin.business-settings.web-app.system-setup.language.delete',[$data['code']]) }}')">
                                                                 <i class="tio-delete-outlined"></i>
                                                             </button>

@@ -10,6 +10,25 @@
   position: relative;
   top:34px;
 }
+@media (min-width:1200px) and (max-width:1290px){
+  .gdgfdgf {
+    position: relative;
+  }
+  .dataTables_wrapper .dataTables_filter {
+    float: right!important;
+    text-align: right!important;
+    position: absolute;
+    right: 10px;
+    height: 45px;
+    top: 0;
+  }
+  .gdgfdgf table{
+    margin: 35px 0 0 !important;
+  }
+  .gdgfdgf .dataTables_wrapper {
+    position: unset;
+}
+}
 @media screen and (max-width:580px){
   .dataTables_wrapper .dataTables_filter {
     margin: 1em 0 0 1.3rem!important;
@@ -19,6 +38,14 @@
 @media   (min-width:580px) and (max-width: 640px) {
   .dataTables_wrapper .dataTables_filter {
     margin: 2.5em 0 0 1.3rem!important;
+  }
+}
+@media (min-width:992px) and(max-width:1190px){
+  .datatable_wrapper_row .dataTable {
+    display: block;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
   }
 }
 @media only screen and (max-width:992px){
@@ -40,19 +67,17 @@ table#datatable.table-responsive {
 }
 
 }
-@media (min-width:992px) and (max-width:1120px){
-  .datatable_wrapper_row .dataTable {
-    display: block;
-    overflow-x: auto!important;
-    width: 100%;
-    padding-top: 10px;
-  }
-  
+.navbar-vertical-aside-has-menu table#datatable.table-responsive{
+  display: table;
 }
+
 .navbar-vertical-aside-has-menu .badge{
   display: none;
 }
-
+/*8/12/203*/
+.btn-action{
+  padding: 8px 10px!important;
+}
 
 /* Redesign CSS */
 .navbar-dropdown-lg {

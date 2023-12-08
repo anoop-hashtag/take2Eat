@@ -192,7 +192,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                                    </div>
+                </div>
                 </div>
             </div>
             <!-- End Table -->
