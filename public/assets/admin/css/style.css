@@ -86,6 +86,11 @@ table#datatable.table-responsive {
   display: none;
 }
 /*8/12/203*/
+.tio-more-horizontal:before {
+  content: "\ed49";
+  display: flex;
+  justify-content: center;
+}
 .btn-action{
   padding: 8px 10px!important;
 }
