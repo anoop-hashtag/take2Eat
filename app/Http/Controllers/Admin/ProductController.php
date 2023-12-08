@@ -162,7 +162,7 @@ class ProductController extends Controller
             'image' => 'required',
             'price' => 'required|numeric',
             'item_type' => 'required',
-            'product_type' => 'required|in:veg,non_veg',
+            'product_type' => 'required|in:veg,non_veg,egg',
             'discount_type' => 'required',
             'tax_type' => 'required',
             'stock_type' => 'required|in:unlimited,daily,fixed',
