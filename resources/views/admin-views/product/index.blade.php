@@ -152,6 +152,7 @@
                                                             <option selected disabled>---{{translate('select')}}---</option>
                                                             <option value="veg">{{translate('veg')}}</option>
                                                             <option value="non_veg">{{translate('nonveg')}}</option>
+                                                            <option value="egg">{{translate('egg')}}</option>
                                                         </select>
                                                     </div>
                                                 </div>

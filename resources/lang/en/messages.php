@@ -2147,4 +2147,5 @@
   'product_tag' => 'Product tag',
   'products' => 'Products',
   'social_medias' => 'Social medias',
+  'egg' => 'Egg',
 );
