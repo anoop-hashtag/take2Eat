@@ -21,7 +21,7 @@
 
         <div class="card">
             <!-- Header -->
-            <div class="card-top px-card pt-4">
+            <div class="card-top px-card ">
                 <div class="row justify-content-between align-items-center gy-2">
                     <div class="col-sm-4 col-md-6 col-lg-8">
                         <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -45,9 +45,9 @@
             </div>
             <!-- End Header -->
 
-            <div class="card-body px-0 pb-0">
-                <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
-                    <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+            <div class="set_table">
+                <div class="table-responsive datatable_wrapper_row mt-2"  style="padding-right: 10px;">
+                    <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" style="padding-top:0">
                         <thead class="thead-light">
                         <tr>
                             <th>{{translate('SL')}}</th>

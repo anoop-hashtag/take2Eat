@@ -63,7 +63,7 @@
         </div>
 
         <div class="card mt-3">
-            <div class="card-top px-card pt-4">
+            <div class="card-top px-card ">
                 <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
                     <h5 class="d-flex gap-2 mb-0">
                         {{translate('Employee_Role_Table')}}
@@ -98,8 +98,8 @@
                 </div>
             </div>
 
-            <div class="py-4">
-                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
+            <div class="set_table">
+                <div class="table-responsive datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
                     <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                         <tr>

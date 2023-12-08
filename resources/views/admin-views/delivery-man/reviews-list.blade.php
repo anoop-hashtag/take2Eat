@@ -24,7 +24,7 @@
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
                 <!-- Card -->
                 <div class="card">
-                    <div class="card-top px-card pt-4">
+                    <div class="card-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2">
@@ -46,8 +46,8 @@
                     </div>
 
                     <div class="py-3">
-                        <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
-                            <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                        <div class="table-responsive datatable_wrapper_row"  style="padding:20px 10px;">
+                            <table id="datatable" class="my-3 table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>{{translate('SL')}}</th>

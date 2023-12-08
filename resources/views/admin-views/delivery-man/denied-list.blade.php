@@ -35,7 +35,7 @@
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
                 <!-- Card -->
                 <div class="card">
-                    <div class="card-top px-card pt-4">
+                    <div class="card-top px-card pb-4">
                         <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
                             <form action="{{url()->current()}}" method="GET">
                                 <div class="input-group">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="py-4">
+                    <div class="set_table">
                         <div class="table-responsive datatable-custom">
                             <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">

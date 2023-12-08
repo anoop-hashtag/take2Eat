@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-top px-card pt-4">
+                <div class="card-top px-card ">
                     <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
                         <h5 class="d-flex gap-2">
                             {{translate('employee_table')}}
@@ -58,7 +58,7 @@
                     </div>
                 </div>
 
-                <div class="py-3">
+                <div class="set_table">
                     <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
                         <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">

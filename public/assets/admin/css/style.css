@@ -48,7 +48,7 @@
     position: unset;
 }
 }
-@media screen and (max-width:580px){
+ @media screen and (max-width:580px){
   .dataTables_wrapper .dataTables_filter {
     margin: 1em 0 0 1.3rem!important;
 }
@@ -86,6 +86,9 @@ table#datatable.table-responsive {
   display: none;
 }
 /*8/12/203*/
+.btn-attribute{
+  height: 42px;
+}
 .tio-more-horizontal:before {
   content: "\ed49";
   display: flex;

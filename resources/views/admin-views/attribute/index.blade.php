@@ -23,7 +23,7 @@
         <div class="row g-3">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-top px-card pt-4">
+                    <div class="card-top px-card">
                         <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
                             <h5 class="d-flex align-items-center gap-2 mb-0">
                                 {{translate('Attribute_Table')}}
@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adAttributeModal">
+                                <button type="button" class="btn btn-primary btn-attribute" data-toggle="modal" data-target="#adAttributeModal" >
                                     <i class="tio-add"></i>
                                     {{translate('Add_Attribute')}}
                                 </button>
@@ -48,7 +48,7 @@
                     </div>
 
                     <!-- Table -->
-                    <div class="py-4">
+                    <div class="py-4 ">
                         <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
