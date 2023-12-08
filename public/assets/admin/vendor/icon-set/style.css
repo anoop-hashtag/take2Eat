@@ -3337,6 +3337,8 @@
 }
 .tio-more-horizontal:before {
   content: "\ed49";
+  display: flex;
+  justify-content: center;
 }
 .tio-more-vertical:before {
   content: "\ed4a";

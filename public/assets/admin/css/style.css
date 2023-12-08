@@ -47,13 +47,12 @@ table#datatable.table-responsive {
     width: 100%;
     padding-top: 10px;
   }
-  table#datatable.table-responsive {
-    display: block!important;
+  
 }
+.navbar-vertical-aside-has-menu .badge{
+  display: none;
 }
-table#datatable.table-responsive  {
-  display: block;
-}
+
 
 /* Redesign CSS */
 .navbar-dropdown-lg {
@@ -297,7 +296,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 }
 
 .navbar-vertical-aside-mini-mode .navbar-vertical:not([class*=container]) .navbar-nav .nav-link {
-  padding-inline-start: 1.75rem !important;
+  text-align: center;
 }
 
 .custom-select {

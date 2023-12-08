@@ -16103,9 +16103,9 @@ input[type=number] {
     position: fixed
 }
 
-.navbar-vertical-aside-mini-mode .navbar-vertical-aside .navbar-vertical-content {
+/* .navbar-vertical-aside-mini-mode .navbar-vertical-aside .navbar-vertical-content {
     height: auto
-}
+} */
 
 .navbar-vertical-aside-mini-mode .navbar-vertical-aside .navbar-vertical-footer {
     position: static;
@@ -16163,10 +16163,6 @@ input[type=number] {
 
 .navbar-vertical-aside-closed-mode .navbar-vertical-aside {
     margin-inline-start: -16.25rem
-}
-
-.navbar-vertical-aside-mini-mode .navbar-nav > .navbar-vertical-aside-has-menu > .nav-link-toggle::before {
-    opacity: 1
 }
 
 .navbar-vertical-aside-has-menu > .nav-link-toggle {
@@ -17223,7 +17219,7 @@ input[type=number] {
     .navbar-vertical-aside-show-xl.navbar-vertical-aside-mini-mode .navbar-vertical-content > .navbar-nav > .navbar-vertical-aside-has-menu > .nav {
         position: absolute;
         top: 0;
-        inset-inline-start: calc(100% + .9125rem);
+        inset-inline-start: calc(100% + .2rem);
         z-index: 2;
         min-width: 15rem;
         background-color: #fff;
@@ -20290,7 +20286,7 @@ label.btn {
 }
 
 .sidebar-body {
-    min-height: auto
+    min-height: auto;
 }
 
 .sidebar-scrollbar {
