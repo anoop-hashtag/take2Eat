@@ -255,10 +255,17 @@
         <tr>
           <td>
             <span class="privacy" style="display: block;width: 100%;text-align: center;">
-              <a href="#" id="privacy-check" style="color: #334257;text-decoration: none;padding: 0 5px;">Privacy Policy</a>
-              <a href="#" id="refund-check" style="color: #334257;text-decoration: none;padding: 0 5px;">Refund Policy</a>
-              <a href="#" id="cancelation-check" style="color: #334257;text-decoration: none;padding: 0 5px;">Cancelation Policy</a>
-              <a href="#" id="contact-check" style="color: #334257;text-decoration: none;padding: 0 5px;">Contact us</a>
+              @if(isset($data['privacy']) && $data['privacy'] == 1)
+                           <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a>
+                       @endif
+                       @if(isset($data['contact']) && $data['contact'] == 1)
+                           <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a>
+                       @endif
+                        @if(isset($data['refund']) && $data['refund'] == 1)
+                           <a href="{{ route('about-us') }}" id="refund-check">{{ translate('Refunnd_Policy')}}</a>
+                       @endif
+                       
+
             </span>
           </td>
         </tr>
