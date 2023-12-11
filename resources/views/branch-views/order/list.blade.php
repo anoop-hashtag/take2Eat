@@ -175,22 +175,7 @@
             <!-- Header -->
             <div class="card-top px-card pt-4">
                 <div class="row justify-content-between align-items-center gy-2">
-                    <div class="col-sm-8 col-md-6 col-lg-4">
-                        <form action="{{url()->current()}}" method="GET">
-                            {{-- <div class="input-group">
-                                <input id="datatableSearch_" type="search" name="search"
-                                        class="form-control"
-                                        placeholder="{{translate('Search by ID, customer or payment status')}}" aria-label="Search"
-                                        value="{{$search}}" required autocomplete="off">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{translate('Search')}}
-                                    </button>
-                                </div>
-                            </div> --}}
-                        </form>
-                    </div>
-                    <div class="col-sm-4 col-md-6 col-lg-8 d-flex justify-content-end">
+                <div class="col-sm-4 col-md-6 col-lg-8 d-flex justify-content-start">
                         <div>
                             <button type="button" class="btn btn-outline-primary" data-toggle="dropdown" aria-expanded="false">
                                 <i class="tio-download-to"></i>
@@ -213,14 +198,30 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="col-sm-8 col-md-6 col-lg-4">
+                        <form action="{{url()->current()}}" method="GET">
+                            {{-- <div class="input-group">
+                                <input id="datatableSearch_" type="search" name="search"
+                                        class="form-control"
+                                        placeholder="{{translate('Search by ID, customer or payment status')}}" aria-label="Search"
+                                        value="{{$search}}" required autocomplete="off">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{translate('Search')}}
+                                    </button>
+                                </div>
+                            </div> --}}
+                        </form>
+                    </div>
+                    
                 </div>
                 <!-- End Row -->
             </div>
             <!-- End Header -->
 
-            <div class="py-4">
+            <div class="set_table">
                 <!-- Table -->
-                <div class="table-responsive datatable_wrapper_row mt-5" style="padding: 0% 10px;">
+                <div class="table-responsive datatable_wrapper_row" style="padding-right:10px;">
                     <table id="datatable"
                             class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">

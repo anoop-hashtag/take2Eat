@@ -51,7 +51,7 @@
 
             <div class="col-12">
                 <div class="card">
-                    <div class="card-top px-card pt-4">
+                    <div class="card-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -77,10 +77,10 @@
                         </div>
                     </div>
 
-                    <div class="py-4">
-                        <div class="table-responsive datatable_wrapper_row mt-5" style="padding: 0px 10px;">
+                    <div class="set_table random">
+                        <div class="table-responsive datatable_wrapper_row" style="padding: 0px 10px;">
                             <table id="datatable"
-                                    class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100"  >
+                                    class=" table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100"  >
                                 <thead class="thead-light">
                                     <tr>
                                         <th>{{translate('SL')}}</th>

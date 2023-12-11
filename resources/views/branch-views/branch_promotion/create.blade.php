@@ -78,7 +78,7 @@
 
 
         <div class="card mt-3">
-            <div class="card-top px-card pt-4">
+            <div class="card-top px-card mb-4">
                 <div class="row justify-content-between align-items-center gy-2">
                     <div class="col-md-4">
                         <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -115,9 +115,9 @@
                 </div>
             </div>
 
-            <div class="py-4">
-                <div class="table-responsive">
-                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+            <div class="set_table">
+                <div class="table-responsive datatable_wrapper_row">
+                    <table id="datatable" class=" table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>
                                 <th>{{translate('SL')}}</th>

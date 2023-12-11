@@ -2149,4 +2149,5 @@
   'social_medias' => 'Social medias',
   'egg' => 'Egg',
   'Order Date' => 'Order Date',
+  'Cooking' => 'Cooking',
 );

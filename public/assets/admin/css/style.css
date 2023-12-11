@@ -114,8 +114,7 @@
 @media only screen and (max-width:992px){
   .set_table .dataTables_wrapper {
     position: unset;
-}
- 
+  }
   .product-style{
     text-overflow: ellipsis;
     overflow: hidden; 
@@ -175,6 +174,11 @@
   height: 45px;
   right: 10px;
   top:10px;
+}
+.table-responsive.datatable_wrapper_row.branch-chef-style {
+  position: relative;
+  top: 30px;
+  right: 10px;
 }
 
 .navbar-vertical-aside-has-menu table#datatable.table-responsive{
