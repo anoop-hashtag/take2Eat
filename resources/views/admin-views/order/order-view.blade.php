@@ -166,10 +166,10 @@
                     <!-- End Header -->
 
                     <div class="py-4 table-responsive">
-                        <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                        <table class="table-style table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                             <tr>
-                                <th>{{translate('SL')}}</th>
+                                <th >{{translate('SL')}}</th>
                                 <th>{{translate('Item Details')}}</th>
                                 <th>{{translate('Price')}}</th>
                                 <th>{{translate('Discount')}}</th>
@@ -196,16 +196,16 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        <div class="media gap-3 w-max-content">
+                                        <div class="media gap-3 w-max-content gap-style">
 
-                                            <img class="img-fluid avatar avatar-lg"
+                                            <img class="img-fluid avatar avatar-lg avatar-style"
                                                  src="{{asset('storage/app/public/product/')}}/{{$detail->product?->image}}"
                                                  onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
                                                  alt="Image Description">
 
                                             <div class="media-body text-dark fz-12">
                                                 {{--<h6 class="text-capitalize">{{$detail->product?->name}}</h6>--}}
-                                                <h6 class="text-capitalize">{{$product_details['name']}}</h6>
+                                                <h6 class="text-capitalize product-style">{{$product_details['name']}}</h6>
                                                 <div class="d-flex gap-2">
                                                     @if (isset($detail['variation']))
                                                         @foreach(json_decode($detail['variation'],true) as  $variation)

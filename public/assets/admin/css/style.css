@@ -65,6 +65,12 @@
 }
 
 @media only screen and (max-width:992px){
+  .product-style{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 50px; 
+    white-space: nowrap;
+  }
   .set_table.random table#datatable thead, .set_table.random table#datatable tbody {
     width: 100%;
     display: table;
@@ -81,6 +87,24 @@
   width: 100%;
   padding-top: 10px;
 }
+}
+@media only screen and (max-width:657px){
+  
+  .table-style .avatar-style{
+    width:1.36875rem!important;
+    height:1.36875rem!important;
+  }
+ .product-style{
+  font-size: 10px;
+ }
+  .table-style td,.table-style th{
+    font-size: 10px!important;
+    padding: 1rem 0.2rem!important;
+    font-size: 10px!important;
+  }
+  .table-style .gap-style{
+    gap:0.5rem;
+  }
 }
 .navbar-vertical-aside-has-menu table#datatable.table-responsive{
   display: table;
