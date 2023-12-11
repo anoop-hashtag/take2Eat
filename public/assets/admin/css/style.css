@@ -29,6 +29,15 @@
   }
 }
 @media only screen and (max-width:1250px){
+  .chef-style .dataTables_wrapper .dataTables_filter{
+    position: relative;
+    right: 0!important;
+    top: 0;
+    height: 45px;
+  }
+  .set_table {
+    position: relative;
+  }
   .product-style{
     text-overflow: ellipsis;
     overflow: hidden; 
@@ -42,8 +51,16 @@
 }
 @media (min-width:1200px) and (max-width:1290px){
   
-  .datatable_wrapper_row .dataTable {
+  /* .datatable_wrapper_row .dataTable {
     padding-top: 25px!important;
+} */
+.chef-style .dataTables_wrapper .dataTables_filter{
+  float: right!important;
+  text-align: right!important;
+  position: absolute;
+  right: 0!important;
+  top: 0;
+  height: 45px;
 }
   .set_table {
     position: relative;
@@ -56,18 +73,19 @@
     float: right!important;
     text-align: right!important;
     position: absolute;
-    right: 10px;
+    right: 10px!important;
     height: 45px;
     top: 0;
   }
   .set_table table{
     margin: 35px 0 0 !important;
   }
-  .set_table .dataTables_wrapper {
-    position: unset;
-}
 }
 @media (min-width:992px) and (max-width:1040px){
+  .chef-style{
+    position: relative;
+    right: 0;
+  }
   .set_table {
     position: relative;
   }
@@ -75,7 +93,7 @@
     float: right!important;
     text-align: right!important;
     position: absolute;
-    right: 10px;
+    right: 10px!important;
     height: 45px;
     top: 0;
   }
@@ -88,6 +106,10 @@
 }
  
 @media only screen and (max-width:992px){
+  .set_table .dataTables_wrapper {
+    position: unset;
+}
+ 
   .product-style{
     text-overflow: ellipsis;
     overflow: hidden; 
@@ -97,6 +119,7 @@
   .set_table.random table#datatable thead, .set_table.random table#datatable tbody {
     width: 100%;
     display: table;
+    overflow-x: auto;
   }
   .badge-soft-c1 {
     min-width: 86px!important;
@@ -104,7 +127,7 @@
     color: var(--c1);
     background-color: rgba(255, 103, 103, 0.1);
 }
-.datatable_wrapper_row .dataTable {
+.datatable_wrapper_row .dataTable{
   display: block;
   overflow-x: auto!important;
   width: 100%;

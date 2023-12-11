@@ -21,8 +21,7 @@
 
         <div class="card">
             <div class="card-body">
-                <div class="media flex-column flex-sm-row flex-wrap align-items-sm-center gap-4">
-                   
+               
 
                     <div class="row justify-content-between align-items-center gy-2">
                         <div class="col-md-4">
@@ -47,8 +46,10 @@
                                 </a>
                             </div>
                         </div>
+</div>
                           <!-- Table -->
-                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
+                          <div class="set_table random">
+                <div class="table-responsive datatable_wrapper_row mt-3 chef-style" id="set-rows" >
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>
@@ -112,7 +113,8 @@
                     </table>
                 </div>
                 <!-- End Table -->
-                    </div>
+    
+</div>
                     </div>
                 </div>
             </div>

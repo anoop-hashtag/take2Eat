@@ -44,9 +44,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
-                        <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
-                            <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                    <div class="set_table">
+                        <div class="table-responsive datatable_wrapper_row mt-5 employee-style"  style="padding-right: 10px;">
+                            <table id="datatable" class="mt-3 table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
