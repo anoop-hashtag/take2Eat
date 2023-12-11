@@ -109,7 +109,7 @@
             </div>
             <!-- End Header -->
             <div class="card-body p-0 ">
-                <div class="table-responsive datatable_wrapper_row " style="padding-right: 10px;">
+                <div class="table-responsive datatable_wrapper_row printable_btn" style="padding-right: 10px;">
                     <table id="datatable"
                             class=" pt-4 table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">

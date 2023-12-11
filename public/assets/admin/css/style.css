@@ -10,11 +10,23 @@
   position: relative;
   top:34px;
 }
+.dataTables_wrapper .dataTables_filter input {
+  border: 2px solid #aaa!important;
+}
+.table-responsive.datatable_wrapper_row.printable_btn {
+  padding: 10px 10px 10px 22px;
+}
 .product-style{
   text-overflow: ellipsis;
   overflow: hidden; 
   width: 50px; 
   white-space: nowrap;
+}
+@media only screen and (min-width:1300px){
+  .set_table table{
+    width: 100%;
+    display: table;
+  }
 }
 @media only screen and (max-width:1250px){
   .product-style{
@@ -36,6 +48,10 @@
   .set_table {
     position: relative;
   }
+  .employee-style .dataTables_wrapper .dataTables_filter {
+    right: 20px;
+    top:40px;
+  }
   .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -52,7 +68,6 @@
 }
 }
 @media (min-width:992px) and (max-width:1040px){
- 
   .set_table {
     position: relative;
   }
@@ -97,8 +112,7 @@
 }
 }
 
-@media only screen and (max-width:657px){
-  
+@media only screen and (max-width:657px){ 
   .table-style .avatar-style{
     width:1.36875rem!important;
     height:1.36875rem!important;
@@ -125,7 +139,14 @@
 }
 
 }
-
+.employee-style .dataTables_wrapper .dataTables_filter {
+  float: right!important;
+  text-align: right!important;
+  position: relative;
+  height: 45px;
+  right: 10px;
+  top:10px;
+}
 
 .navbar-vertical-aside-has-menu table#datatable.table-responsive{
   display: table;
