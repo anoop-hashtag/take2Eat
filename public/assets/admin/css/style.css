@@ -76,7 +76,7 @@
   .product-style{
     text-overflow: ellipsis;
     overflow: hidden; 
-    width: 50px; 
+    width:45px; 
     white-space: nowrap;
   }
   .set_table.random table#datatable thead, .set_table.random table#datatable tbody {
