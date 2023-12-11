@@ -15,7 +15,7 @@
               <p>&nbsp;</p>
             </div>
             <span class="d-block text-center mb-3" style="text-align: center;display: block;">
-              <a href="#" class="cmn-btn" id="mail-button" style="background: #ff7a00; color: #fff; padding: 8px 20px;  display: inline-block; text-decoration: none;">Order Now</a>
+              <a href="#" class="cmn-btn" id="mail-button" style="background: #ff7a00; color: #fff; padding: 8px 20px;  display: inline-block; text-decoration: none;"></a>
             </span>
             <table class="bg-section p-10 w-100" width="100%">
               <tbody>
@@ -37,6 +37,7 @@
                             <div class="pl-2">
                               <h3 class="subtitle" style="color: #000000;font-size: 18px;margin: 0 0 5px;">Order Summary</h3>
                               <span class="d-block">{{ translate('Order') }}# {{ $order->id  }}</span>
+                              <br>
                               <span class="d-block">{{date('d M Y',strtotime($order['created_at']))}} {{ date(config('time_format'), strtotime($order['created_at'])) }}</span>
                             </div>
                           </td>
