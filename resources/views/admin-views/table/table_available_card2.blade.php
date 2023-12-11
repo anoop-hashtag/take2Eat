@@ -11,9 +11,12 @@
                 <h3 class="card-title mb-2">{{ translate('table') }}</h3>
                 <h5 class="card-title mb-1">{{ $table['number'] }}</h5>
                 <h5 class="card-title mb-1">{{ translate('capacity') }}: {{ $table['capacity'] }}</h5>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ translate('table').$table['number'] }}">
+                    View Details
+                </button>
             </div>
         </div>
-        <div class="table_hover-menu px-3">
+        {{-- <div class="table_hover-menu px-3">
             
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -46,11 +49,65 @@
                         {{-- <div class="d-flex mt-5 mx-lg-5">
                             <a href="#" class="btn btn-outline-primary w-100 text-nowrap" data-dismiss="modal" data-toggle="modal" data-target="#reservationModal"><i class="tio-alarm-alert"></i> {{ translate('Create_Reservation') }}</a>
                         </div> --}}
-                    </div>
+                    {{-- </div>
                 </div>
               </div>
-        </div>
+        </div>  --}}
         
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal{{ translate('table').$table['number'] }}">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ translate('Table - ') }}{{ $table['number'] }}</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        @if(($table['order'] != null))
+                            <div style="width: 100%; height: auto; max-height: 500px; overflow: scroll">
+                                <table class="table  table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>{{ translate('Order ID') }}</th>
+                                            <th>{{ translate('Order Amount') }}</th>
+                                            <th>{{ translate('Order Date') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $i = 1;
+                                        @endphp
+                                        @foreach($table['order'] as $order)
+                                            <tr>
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $order['id'] }}</td>
+                                                <td>{{\App\CentralLogics\Helpers::currency_symbol()}} {{ number_format((float)$order['order_amount'], 2, '.', '') }}</td>
+                                                <td>{{ date('d M Y',strtotime($order['created_at'])) .' '. date(config('time_format'), strtotime($order['created_at'])) }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        @else
+                            <div class="fz-14 mb-1">{{ translate('current status') }} - <strong>{{ translate('empty') }}</strong></div>
+                            <div class="fz-14 mb-1">{{ translate('any reservation') }} - <strong>{{ translate('N/A') }}</strong></div>
+                        @endif
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
     </div>
 @endforeach
 @else
