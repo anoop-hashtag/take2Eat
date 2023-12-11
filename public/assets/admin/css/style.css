@@ -11,12 +11,7 @@
   top:34px;
 }
 @media (min-width:1200px) and (max-width:1290px){
-  .product-style{
-    text-overflow: ellipsis;
-    overflow: hidden; 
-    width: 50px; 
-    white-space: nowrap;
-  }
+  
   .datatable_wrapper_row .dataTable {
     padding-top: 25px!important;
 }
@@ -39,6 +34,7 @@
 }
 }
 @media (min-width:992px) and (max-width:1040px){
+ 
   .set_table {
     position: relative;
   }
@@ -81,6 +77,18 @@
   width: 100%;
   padding-top: 10px;
 }
+}
+@media only screen and (max-width:1250px){
+  .product-style{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 50px; 
+    white-space: nowrap;
+  }
+  .table-style .avatar-style{
+    width:2.36875rem!important;
+    height:2.36875rem!important;
+  }
 }
 @media only screen and (max-width:657px){
   
