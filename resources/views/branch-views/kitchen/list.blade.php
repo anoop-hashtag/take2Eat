@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-            <div class="card-top px-card pt-4">
+            <div class="card-top px-card">
                     <div class="row justify-content-between align-items-center gy-2">
                         <div class="col-md-4">
                             <h5 class="d-flex gap-2 mb-0">
@@ -40,7 +40,7 @@
                                             placeholder="{{translate('Search_By_Name')}}" aria-label="Search"
                                             value="{{$search}}" required autocomplete="off">
                                         <div class="input-group-append">
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="submit" class="btn btn-primary ">
                                                 {{translate('Search')}}
                                             </button>
                                         </div>
@@ -54,8 +54,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-4" style="padding-right: 10px; padding-left:10px;">
-                    <div class="table-responsive">
+                <div class="set_table random" style="padding:0 10px;">
+                    <div class="table-responsive datatable_wrapper_row mt-3 branch-chef-style">
                         <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                             <tr>

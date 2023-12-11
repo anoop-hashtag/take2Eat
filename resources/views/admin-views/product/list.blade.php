@@ -67,7 +67,7 @@
                     <!-- End Header -->
 
                     <div class="set_table">
-                        <div class="table-responsive datatable_wrapper_row"  style="padding-right: 10px;">
+                        <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                 <tr>
