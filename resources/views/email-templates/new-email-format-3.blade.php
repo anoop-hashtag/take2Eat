@@ -23,10 +23,10 @@
                   <td style="height: 10px;"></td>
                 </tr>
                 <tr>
-                  {{-- <td class="p-10" style="background-color: #e3f5f1;text-align: center; padding: 10px;">
-                    <span class="d-block text-center"> @php($restaurant_logo = \App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value) <img class="mb-2 mail-img-2" onerror="this.src='{{ asset('storage/app/public/restaurant/' . $restaurant_logo) }}'" src="{{ asset('storage/app/public/email_templatee/') }}/{{ $data['logo'] }}" id="logoViewer" alt=""> <?php echo $data['logo'];  ?> <h3 class="mb-3 mt-0" style="color: #000000;font-size: 18px;margin: 0 0 5px;">{{ translate('Order_Info') }}</h3>
+                  <td class="p-10" style="background-color: #e3f5f1;text-align: center; padding: 10px;">
+                    <span class="d-block text-center"> @php($restaurant_logo = \App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value) <img class="mb-2 mail-img-2" onerror="this.src='{{ asset('storage/app/public/restaurant/' . $restaurant_logo) }}'" src='{{ asset("storage/app/public/email_template/")."/".$data["logo"] }}' id="logoViewer" alt='{{ asset("storage/app/public/email_template/")."/".$data["logo"] }}'>  <h3 class="mb-3 mt-0" style="color: #000000;font-size: 18px;margin: 0 0 5px;">{{ translate('Order_Info') }}</h3>
                     </span>
-                  </td> --}}
+                  </td>
                 </tr>
                 <tr>
                   <td>
