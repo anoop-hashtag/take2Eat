@@ -128,7 +128,7 @@
     background-color: rgba(255, 103, 103, 0.1);
 }
 .datatable_wrapper_row .dataTable{
-  display: block;
+  display: table;
   overflow-x: auto!important;
   width: 100%;
   padding-top: 10px;
