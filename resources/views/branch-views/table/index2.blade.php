@@ -63,8 +63,60 @@
                                     <h5 class="card-title mb-1">{{ translate('capacity') }}: {{ $table['capacity'] }}</h5>
                                 </div>
                             </div>
-                            <div class="table_hover-menu px-3">
-                                <h3 class="mb-3">{{ translate('Table - test') }}{{ $table['number'] }}</h3>
+                            <div class="modal fade" id="myModal{{ translate('table').$table['number'] }}">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">{{ translate('Table - ') }}{{ $table['number'] }}</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            @if(($table['order'] != null))
+                                                <div style="width: 100%; height: auto; max-height: 500px; overflow: scroll">
+                                                    <table class="table  table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>S.No.</th>
+                                                                <th>{{ translate('Order ID') }}</th>
+                                                                <th>{{ translate('Order Amount') }}</th>
+                                                                <th>{{ translate('Order Date') }}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @php
+                                                                $i = 1;
+                                                            @endphp
+                                                            @foreach($table['order'] as $order)
+                                                                <tr>
+                                                                    <td>{{ $i++ }}</td>
+                                                                    <td>{{ $order['id'] }}</td>
+                                                                    <td>{{\App\CentralLogics\Helpers::currency_symbol()}} {{ number_format((float)$order['order_amount'], 2, '.', '') }}</td>
+                                                                    <td>{{ date('d M Y',strtotime($order['created_at'])) .' '. date(config('time_format'), strtotime($order['created_at'])) }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>                            
+                                                </div>
+                                            @else
+                                                <div class="fz-14 mb-1">{{ translate('current status') }} - <strong>{{ translate('empty') }}</strong></div>
+                                                <div class="fz-14 mb-1">{{ translate('any reservation') }} - <strong>{{ translate('N/A') }}</strong></div>
+                                            @endif
+                                        </div>
+                                        
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="table_hover-menu px-3">
+                                <h3 class="mb-3">{{ translate('Table -') }}{{ $table['number'] }}</h3>
                                 @if(($table['order'] != null))
                                     @foreach($table['order'] as $order)
                                         <div class="fz-14 mb-1">{{ translate('order id') }}: <strong>{{ $order['id'] }}</strong></div>
@@ -72,13 +124,13 @@
                                 @else
                                     <div class="fz-14 mb-1">{{ translate('current status') }} - <strong>{{ translate('empty') }}</strong></div>
                                     <div class="fz-14 mb-1">{{ translate('any reservation') }} - <strong>{{ translate('N/A') }}</strong></div>
-                                @endif
+                                @endif --}}
                                 {{-- next release--}}
                                 {{--            <div class="d-flex flex-wrap gap-2 mt-3">--}}
                                 {{--                <a href="#" data-dismiss="modal" class="btn btn-outline-primary text-nowrap stopPropagation" data-toggle="modal" data-target="#reservationModal"><i class="tio-alarm-alert"></i> {{ translate('Create_Reservation') }}</a>--}}
                                 {{--                <a href="#" class="btn btn-primary text-nowrap">{{ translate('Place_Order') }}</a>--}}
                                 {{--            </div>--}}
-                            </div>
+                            
                         </div>
                     @endforeach
                 @else
