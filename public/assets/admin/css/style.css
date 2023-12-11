@@ -103,6 +103,12 @@
   .set_table .dataTables_wrapper {
     position: unset;
 }
+.datatable_wrapper_row .dataTable{
+  display: block;
+  overflow-x: auto!important;
+  width: 100%;
+  padding-top: 10px;
+}
 }
  
 @media only screen and (max-width:992px){
@@ -128,7 +134,7 @@
     background-color: rgba(255, 103, 103, 0.1);
 }
 .datatable_wrapper_row .dataTable{
-  display: table;
+  display: block;
   overflow-x: auto!important;
   width: 100%;
   padding-top: 10px;
