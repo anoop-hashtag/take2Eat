@@ -148,27 +148,8 @@
             // =======================================================
             var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
                 dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'copy',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'excel',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'csv',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'pdf',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'print',
-                        className: 'd-none'
-                    },
+        buttons: [
+        'excel', 'csv', 'pdf', 'print'
                 ],
                 select: {
                     style: 'multi',
@@ -242,5 +223,6 @@
     ...
 });
     </script>
+    
     
 @endpush
