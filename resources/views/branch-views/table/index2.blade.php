@@ -70,7 +70,9 @@
                                         <!-- Modal Header -->
                                         <div class="modal-header">
                                             <h4 class="modal-title">{{ translate('Table - ') }}{{ $table['number'] }}</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ translate('table').$table['number'] }}">
+                                                View Details
+                                            </button>
                                         </div>
                                         
                                         <!-- Modal body -->
