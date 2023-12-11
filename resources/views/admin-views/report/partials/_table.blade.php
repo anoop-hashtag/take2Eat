@@ -27,6 +27,7 @@
     </tbody>
 </table>
 
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('input').addClass('form-control');
@@ -36,19 +37,9 @@
     // =======================================================
     var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
         dom: 'Bfrtip',
-        "bDestroy": true,
-        "iDisplayLength": 25,
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('input').addClass('form-control');
-    });
-
-    // INITIALIZATION OF DATATABLES
-    // =======================================================
-    var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
-        dom: 'Bfrtip',
+        buttons: [
+        'excel', 'csv', 'pdf', 'print'
+    ],
         "bDestroy": true,
         language: {
             zeroRecords: '<div class="text-center p-4">' +
