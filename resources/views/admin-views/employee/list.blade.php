@@ -30,7 +30,7 @@
                             <span class="badge badge-soft-dark rounded-50 fz-12">{{$em->total()}}</span>
                         </h5>
 
-                        <div class="d-flex flex-wrap justify-content-md-end gap-3">
+                        <div class="d-flex flex-wrap justify-content-md-end gap-3 ">
                             <form action="{{url()->current()}}" method="GET">
                                 <div class="input-group">
                                     {{-- <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by name, email or phone')}}" aria-label="Search" value="" required="" autocomplete="off"> --}}
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="set_table">
-                    <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
+                    <div class="table-responsive datatable_wrapper_row mt-5 employee-style"  style="padding-right:10px">
                         <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                                 <tr>

@@ -24,7 +24,7 @@
             <div class="col-12">
                 <!-- Card -->
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header mb-3">
                         <div class="justify-content-between align-items-center gy-2">
                             <form action="{{ url()->current() }}" method="GET">
                                 {{-- <div class="input-group">
@@ -44,7 +44,7 @@
 
                     <!-- Table -->
                     <div class="set_table">
-                        <div class="table-responsive datatable_wrapper_row"  style="padding-right:10px;">
+                        <div class="table-responsive datatable_wrapper_row employee_style"  style="padding-right:10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                 <tr>
