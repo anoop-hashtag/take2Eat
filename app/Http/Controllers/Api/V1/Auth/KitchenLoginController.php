@@ -33,15 +33,15 @@ class KitchenLoginController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $fullPhoneNumber = $request['email_or_phone'];
+
         if (is_numeric($request['email_or_phone'])) {
             $data = [
-                'phone' => substr($fullPhoneNumber, 2),
+                'phone' => $request['email_or_phone'],
                 'password' => $request->password,
                 'is_active' => 1,
                 'user_type' => 'kitchen',
             ];
-        
+
         } elseif (filter_var($request['email_or_phone'], FILTER_VALIDATE_EMAIL)) {
             $data = [
                 'email' => $request['email_or_phone'],
