@@ -33,14 +33,15 @@ class KitchenLoginController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-
+        $phone = substr($request['email_or_phone'], 3);
         if (is_numeric($request['email_or_phone'])) {
             $data = [
-                'phone' => substr($request['email_or_phone'], 3),
+                'phone' =>  $phone,
                 'password' => $request->password,
                 'is_active' => 1,
                 'user_type' => 'kitchen',
             ];
+            
 
         } elseif (filter_var($request['email_or_phone'], FILTER_VALIDATE_EMAIL)) {
             $data = [
@@ -82,6 +83,7 @@ class KitchenLoginController extends Controller
                 $token = auth()->user()->createToken('KitchenChefAuth')->accessToken;
                 return response()->json([
                     'user' => auth()->user(),
+                    
                     'token' => $token,
                     'message' => translate('Successfully login.')
                 ], 200);
@@ -133,7 +135,7 @@ class KitchenLoginController extends Controller
         }
 
         $errors = [];
-        $errors[] = ['code' => 'auth-001', 'message' => translate('Invalid credential.')];
+        $errors[] = ['code' => 'auth-001', 'message' => translate('Invalid credential.'), 'data' =>$data];
         return response()->json(['errors' => $errors], 401);
     }
 
