@@ -36,7 +36,7 @@ class KitchenLoginController extends Controller
 
         if (is_numeric($request['email_or_phone'])) {
             $data = [
-                'phone' => $request['email_or_phone'],
+                'phone' => substr($request['email_or_phone'], 3),
                 'password' => $request->password,
                 'is_active' => 1,
                 'user_type' => 'kitchen',
