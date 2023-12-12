@@ -33,9 +33,7 @@ class KitchenLoginController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $phone = trim(substr($request['email_or_phone'], 3));
-        $dtype1 = gettype($phone);
-        $dtype2 = gettype($request['email_or_phone']);
+        $phone = substr($request['email_or_phone'], 3);
         if (is_numeric($request['email_or_phone'])) {
             $data = [
                 'phone' =>  $phone,
@@ -137,7 +135,7 @@ class KitchenLoginController extends Controller
         }
 
         $errors = [];
-        $errors[] = ['code' => 'auth-001', 'message' => translate('Invalid credential.'), 'data1' =>$dtype1, 'data2' =>$dtype2, 'data3' =>$user];
+        $errors[] = ['code' => 'auth-001', 'message' => translate('Invalid credential.')];
         return response()->json(['errors' => $errors], 401);
     }
 
