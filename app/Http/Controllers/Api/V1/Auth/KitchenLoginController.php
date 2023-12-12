@@ -33,7 +33,7 @@ class KitchenLoginController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $phone = substr($request['email_or_phone'], 3);
+        $phone = trim(substr($request['email_or_phone'], 3));
         $dtype1 = gettype($phone);
         $dtype2 = gettype($request['email_or_phone']);
         if (is_numeric($request['email_or_phone'])) {
