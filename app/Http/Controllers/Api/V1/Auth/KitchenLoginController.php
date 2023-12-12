@@ -137,7 +137,7 @@ class KitchenLoginController extends Controller
         }
 
         $errors = [];
-        $errors[] = ['code' => 'auth-001', 'message' => translate('Invalid credential.'), 'data1' =>$dtype1, 'data2' =>$dtype2];
+        $errors[] = ['code' => 'auth-001', 'message' => translate('Invalid credential.'), 'data1' =>$dtype1, 'data2' =>$dtype2, 'data3' =>$data];
         return response()->json(['errors' => $errors], 401);
     }
 
