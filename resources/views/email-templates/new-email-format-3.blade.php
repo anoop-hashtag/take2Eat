@@ -14,9 +14,9 @@
               <p>hello users,</p>
               <p>&nbsp;</p>
             </div>
-            <span class="d-block text-center mb-3" style="text-align: center;display: block;">
+            {{-- <span class="d-block text-center mb-3" style="text-align: center;display: block;">
               <a href="#" class="cmn-btn" id="mail-button" style="background: #ff7a00; color: #fff; padding: 8px 20px;  display: inline-block; text-decoration: none;"></a>
-            </span>
+            </span> --}}
             <table class="bg-section p-10 w-100" width="100%">
               <tbody>
                 <tr>
