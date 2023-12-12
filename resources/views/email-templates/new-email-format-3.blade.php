@@ -273,22 +273,34 @@
         <tr>
           <td style="text-align: center;">
             <span class="social" style="text-align:center">
-              <a href="#" id="facebook-check" style="margin: 0 5px;text-decoration:none;">
-                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/facebook.png" alt="">
-              </a>
-              <a href="#" id="instagram-check" style="margin: 0 5px;text-decoration:none;">
-                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/instagram.png" alt="">
-              </a>
-              <a href="#" id="twitter-check" style="margin: 0 5px;text-decoration:none;">
-                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/twitter.png" alt="">
-              </a>
-              <a href="#" id="linkedin-check" style="margin: 0 5px;text-decoration:none;">
-                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/linkedin.png" alt="">
-              </a>
-              <a href="#" id="pinterest-check" style="margin: 0 5px;text-decoration:none;">
-                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/pinterest.png" alt="">
-              </a>
-            </span>
+              @foreach ($socialMediaData as $value)
+                  @if(isset($value->name) && $value->name == 'facebook')
+                      <a href="https://{{ $value->link }}" id="facebook-check" style="margin: 0 5px;text-decoration:none;">
+                          <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/facebook.png" alt="">
+                      </a>
+                  @endif
+          
+                  @if(isset($value->name) && $value->name == 'instagram')
+                      <a href="https://{{ $value->link }}" id="instagram-check" style="margin: 0 5px;text-decoration:none;">
+                          <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/instagram.png" alt="">
+                      </a>
+                  @endif
+          
+                  @if(isset($value->name) && $value->name == 'twitter')
+                      <a href="https://{{ $value->link }}" id="twitter-check" style="margin: 0 5px;text-decoration:none;">
+                          <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/twitter.png" alt="">
+                      </a>
+                  @endif
+          
+                  @if(isset($value->name) && $value->name == 'linkedin')
+                      <a href="https://{{ $value->link }}" id="linkedin-check" style="margin: 0 5px;text-decoration:none;">
+                          <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/linkedin.png" alt="">
+                      </a>
+                  @endif
+          
+                  <!-- Add similar blocks for other social media platforms as needed -->
+              @endforeach
+          </span>
           </td>
         </tr>
         <tr>
