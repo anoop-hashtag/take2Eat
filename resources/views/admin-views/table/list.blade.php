@@ -67,7 +67,7 @@
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex gap-2">
-                                    {{translate('Table_List')}}
+                                    {{translate('Number_of_Table :')}}
                                     <span class="badge badge-soft-dark rounded-50 fz-12">{{$tables->total()}}</span>
                                 </h5>
                             </div>
