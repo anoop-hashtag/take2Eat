@@ -41,7 +41,7 @@
 @section('content')
 
     <div class="content container-fluid" style="color: black!important;">
-        <div class="row" id="printableArea">
+        <div class="row justify-content-center" id="printableArea">
             <div class="col-md-12">
                 <center>
                     <input type="button" class="btn btn-primary non-printable" onclick="printDiv('printableArea')"
@@ -50,8 +50,8 @@
                 </center>
                 <hr class="non-printable">
             </div>
-            <div class="col-3"></div>
-            <div class="col-5" id="printableAreaContent">
+        
+            <div class="invoice_print" id="printableAreaContent">
                 <div class="text-center pt-4 mb-3">
                     <h2 style="line-height: 1">{{\App\Model\BusinessSetting::where(['key'=>'restaurant_name'])->first()->value}}</h2>
                     <h5 style="font-size: 20px;font-weight: lighter;line-height: 1">
@@ -71,8 +71,8 @@
                         <h5 style="font-weight: lighter">
                             {{date('d/M/Y h:m a',strtotime($order['created_at']))}}
                         </h5>
-                    </div>
-{{--                    <div class="col-12">--}}
+                </div>
+{{--                   <div class="col-12">--}}
 {{--                        @if($order->customer)--}}
 {{--                            <h5>--}}
 {{--                                {{translate('Customer Name')}} : <span class="font-weight-normal">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</span>--}}
@@ -87,7 +87,7 @@
 {{--                                {{translate('Address')}} : <span class="font-weight-normal">{{isset($address)?$address['address']:''}}</span>--}}
 {{--                            </h5>--}}
 {{--                        @endif--}}
-{{--                    </div>--}}
+{{--                   </div>--}}
                     <div class="col-12">
                         @if($order->is_guest == 0)
                             @if(isset($order->customer))
