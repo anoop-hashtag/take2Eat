@@ -65,7 +65,7 @@
                                 </div>
                             <div class="col-md-6 mb-3">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span></label>
-                                <input type="text" value="{{$chef['phone']}}" required name="phone"  class="form-control" id="phone"
+                                <input type="text" value="{{substr($chef['phone'],3)}}" required name="phone"  class="form-control" id="phone"
                                        placeholder="{{translate('Ex')}} : 88017********" maxlength="10">
                             </div>
                             <div class="col-md-12 mb-3">
