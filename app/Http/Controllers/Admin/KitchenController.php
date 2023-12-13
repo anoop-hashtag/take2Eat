@@ -200,7 +200,8 @@ class KitchenController extends Controller
             $chef->f_name = $request->f_name;
             $chef->l_name = $request->l_name;
             $chef->country_code = $request->country_code;
-            $chef->phone = preg_replace("/\D/", "", $request->phone);
+            // $chef->phone = preg_replace("/\D/", "", $request->phone);
+            $chef->phone =  $request->country_code .$request->phone;
             $chef->email = $request->email;
             $chef->password = $password;
             $chef->image = $request->has('image') ? Helpers::update('kitchen/', $chef->image, 'png', $request->file('image')) : $chef->image;

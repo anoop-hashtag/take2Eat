@@ -111,6 +111,13 @@
                         @endforeach
                         </tbody>
                     </table>
+                   
+                </div>
+                <div class="table-responsive mt-4 px-3">
+                    <div class="d-flex justify-content-lg-end">
+                        <!-- Pagination -->
+                        {{$chefs->links()}}
+                    </div>
                 </div>
                 <!-- End Table -->
     

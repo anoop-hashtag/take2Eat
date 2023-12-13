@@ -7,6 +7,17 @@
 @endpush
 
 @section('content')
+
+  
+ 
+
+  
+
+
+
+
+
+
 <div class="content container-fluid">
     <!-- Page Header -->
     <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
@@ -57,9 +68,12 @@
                         <div class="">
                             <div class="row">
                             <div class="col-md-6 mb-3">
+                                
                                     <label for="name">{{translate('Country Code')}} <span class="text-danger">*</span></label>
-                                    <input type="text" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
-                                           placeholder="{{translate('Ex')}} : +91" required>
+                                    {{-- <input type="text" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
+                                           placeholder="{{translate('Ex')}} : +91" required> --}}
+                                           <br>
+                                           <input type="text" id="mobile-number" value="+91"  class="form-control" name="country_code" placeholder="e.g. +1 702 123 4567">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>

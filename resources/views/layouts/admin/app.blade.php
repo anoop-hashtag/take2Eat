@@ -21,7 +21,8 @@
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme.minc619.css?v=2.0">
 
-    <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/style.css?v=1.0">
+    <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/style.css?v=1.0">  
+  
     @stack('css_or_js')
 
     <script
@@ -579,9 +580,37 @@
 
 <!-- Include jQuery UI library -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
+<link href="https://www.jquery-az.com/jquery/css/intlTelInput/demo.css" rel="stylesheet" />
+<link href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css" rel="stylesheet" />
 <!-- Include jQuery UI CSS for styling -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script type="text/javascript">
+    $(document).ready(function() {
+      var input = $("#mobile-number");
+      var selectedCountryData = $("#selected-country-data");
+  
+      input.intlTelInput({
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+          $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+            var countryCode = (resp && resp.country) ? resp.country : "";
+            callback(countryCode);
+          });
+        },
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js",
+      });
+  
+      // Event listener for the change event
+      input.on("countrychange", function() {
+        // Get selected country data
+        var countryData = input.intlTelInput('getSelectedCountryData');
+        
+        // Display selected country data
+        selectedCountryData.text("Selected Country Data: " + JSON.stringify(countryData));
+      });
+    });
+  </script>
 <script>
     // Function to validate the date input
     function validateDates() {
