@@ -71,8 +71,10 @@ class KitchenController extends Controller
             $chef = $this->user;
             $chef->f_name = $request->f_name;
             $chef->l_name = $request->l_name;
-            $chef->phone = preg_replace("/\D/", "", $request->phone);
+           
             $chef->country_code = $request->country_code;
+            $chef->phone = $request->country_code . preg_replace("/\D/", "", $request->phone);
+            
             $chef->email = $request->email;
             $chef->user_type = 'kitchen';
             $chef->is_active = 1;
