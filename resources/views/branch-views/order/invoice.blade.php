@@ -40,7 +40,7 @@
 
 @section('content')
 
-    <div class="content container-fluid" style="color: black!important;">
+    <div class="content container-fluid">
         <div class="row justify-content-center" id="printableArea">
             <div class="col-md-12">
                 <center>
@@ -126,8 +126,8 @@
                     <thead>
                     <tr>
                         <th style="width: 10%">{{translate('QTY')}}</th>
-                        <th class="">{{translate('DESC')}}</th>
-                        <th style="text-align:right; padding-right:4px">{{translate('Price')}}</th>
+                        <th class="">{{translate('DESCRIPTION')}}</th>
+                        <th style="text-align:right; padding-right:4px">{{translate('PRICE')}}</th>
                     </tr>
                     </thead>
 

@@ -28,7 +28,7 @@
             text-align: center;
         }
         #printableAreaContent * {
-            font-weight: normal !important;
+            font-weight: normal;
         }
     </style>
 
@@ -111,9 +111,9 @@
                 <table class="table table-bordered mt-3">
                     <thead>
                     <tr>
-                        <th style="width: 10%">{{translate('QTY')}}</th>
-                        <th class="">{{translate('DESC')}}</th>
-                        <th style="text-align:right; padding-right:4px">{{translate('Price')}}</th>
+                        <th style="width: 10%;font-weight:600" >{{translate('QTY')}}</th>
+                        <th style="font-weight:600">{{translate('DESCRIPTION')}}</th>
+                        <th style="text-align:right; padding-right:4px; font-weight:600" >{{translate('PRICE')}}</th>
                     </tr>
                     </thead>
 
@@ -135,12 +135,12 @@
                                     {{$detail['quantity']}}
                                 </td>
                                 <td class="">
-                                    <span style="word-break: break-all;"> {{ Str::limit($detail->product['name'], 200) }}</span><br>
+                                    <span style="word-break: break-all; " class="font-weight-bold"> {{ Str::limit($detail->product['name'], 200) }}</span><br>
                                     @if (count(json_decode($detail['variation'], true)) > 0)
                                         <strong><u>{{ translate('variation') }} : </u></strong>
                                         @foreach(json_decode($detail['variation'],true) as  $variation)
                                             @if ( isset($variation['name'])  && isset($variation['values']))
-                                                <span class="d-block text-capitalize">
+                                                <span class="d-block text-capitalize ">
                                                     <strong>{{  $variation['name']}} - </strong>
                                                 </span>
                                                 @foreach ($variation['values'] as $value)
@@ -152,7 +152,7 @@
                                             @else
                                                 @if (isset(json_decode($detail['variation'],true)[0]))
                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
-                                                        <div class="font-size-sm text-body">
+                                                        <div class="font-size-sm ">
                                                             <span>{{$key1}} :  </span>
                                                             <span class="font-weight-bold">{{$variation}}</span>
                                                         </div>
@@ -162,14 +162,14 @@
                                             @endif
                                         @endforeach
                                     @else
-                                        <div class="font-size-sm text-body">
+                                        <div class="font-size-sm right-font">
                                             <span>{{ translate('Price') }} : </span>
                                             <span
                                                 class="font-weight-bold">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
                                         </div>
                                     @endif
 
-
+                                    <div class="font-size-sm right-font">
                                     @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                                         @php($addon=\App\Model\AddOn::find($id))
                                         @if($key2==0)<strong><u>{{translate('Addons : ')}}</u></strong>@endif
@@ -178,6 +178,7 @@
                                             @php($add_on_qty=1)
                                         @else
                                             @php($add_on_qty=$add_on_qtys[$key2])
+                                        </div>
                                         @endif
 
                                         <div class="font-size-sm text-body">
