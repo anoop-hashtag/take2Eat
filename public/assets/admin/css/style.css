@@ -6,12 +6,20 @@
   --tc: #334257;
 }
 /* ------ For tablat view fo design -------- */
+.right-font{
+  text-align: end;
+  position: relative;
+  right:60px;
+}
 .card-top{
   position: relative;
   top:34px;
 }
 .dataTables_wrapper .dataTables_filter input {
   border: 2px solid #aaa!important;
+}
+.dataTables_wrapper .dataTables_filter label {
+  font-weight: 600;
 }
 .table-responsive.datatable_wrapper_row.printable_btn {
   padding: 10px 10px 10px 22px;
@@ -203,12 +211,13 @@
 .navbar-vertical-aside-has-menu .badge{
   display: none;
 }
+
 /*8/12/203*/
 .dataTables_wrapper .dataTables_filter input {
  width: 182px!important;
 }
 .invoice_print{
-  width:320px;
+  width:368px;
 }
 .btn-attribute{
   height: 42px;

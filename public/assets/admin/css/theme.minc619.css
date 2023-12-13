@@ -26662,7 +26662,7 @@ a:hover .text-hover-primary {
 }
 #printableAreaContent * {
         color: #000000;
-        font-weight: 600 !important;
+        /* font-weight: 600 !important; */
         font-family: 'Roboto Mono', monospace !important;
 
 }

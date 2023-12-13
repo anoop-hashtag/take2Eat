@@ -2152,4 +2152,7 @@
   'Cooking' => 'Cooking',
   'You have been blocked' => 'You have been blocked',
   'Employee status updated!' => 'Employee status updated!',
+  'Table Orders' => 'Table Orders',
+  'DESCRIPTION' => 'DESCRIPTION',
+  'PRICE' => 'PRICE',
 );
