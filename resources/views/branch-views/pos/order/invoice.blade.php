@@ -1,4 +1,11 @@
-<div style="width:370px;margin-left:18px" class="" id="printableAreaContent">
+
+<style>
+    .font-size-sm{
+        font-size:12px;
+    }
+</style> 
+
+<div style="width:320px;" class="" id="printableAreaContent">
     <div class="text-center pt-4 mb-3 w-100">
         <h2 style="line-height: 1">{{\App\Model\BusinessSetting::where(['key'=>'restaurant_name'])->first()->value}}</h2>
         <h5 style="font-size: 20px;font-weight: lighter;line-height: 1">
@@ -10,13 +17,13 @@
         </h5>
     </div>
 
-    <span>--------------------------------------------</span>
+    <span>--------------------------------------</span>
     <div class="row mt-3">
         <div class="col-6">
             <h5>{{translate('Order ID')}} : {{$order['id']}}</h5>
         </div>
         <div class="col-6">
-            <h5 style="font-weight: lighter">
+            <h5 style="font-weight: lighter" class="order_id">
                 {{date('d/M/Y h:i a',strtotime($order['created_at']))}}
             </h5>
         </div>
@@ -28,7 +35,7 @@
         @endif
     </div>
     <h5 class="text-uppercase"></h5>
-    <span>--------------------------------------------</span>
+    <span>--------------------------------------</span>
     <table class="table table-bordered mt-3" style="width: 98%">
         <thead>
         <tr>
@@ -91,7 +98,7 @@
 
                         @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                             @php($addon=\App\Model\AddOn::find($id))
-                            @if($key2==0)<strong><u>{{translate('Addons')}} : </u></strong>@endif
+                            @if($key2==0)<strong>{{translate('Addons')}} :</strong>@endif
 
                             @if($add_on_qtys==null)
                                 @php($add_on_qty=1)
@@ -99,18 +106,21 @@
                                 @php($add_on_qty=$add_on_qtys[$key2])
                             @endif
 
-                            <div class="font-size-sm text-body">
+                            <div class="font-size-sm text-body" style="width:173px">
                                 <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
                                 <span class="font-weight-bold">
                                     {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2])}}
                                 </span>
                             </div>
+                            <span class="font-size-sm">
 {{--                            @php($add_ons_cost+=$addon['price']*$add_on_qty)--}}
                             @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
                             @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
                         @endforeach
-
+</span>
+                        <span class="font-size-sm">
                         {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }}
+</span>
                     </td>
                     <td style="width: 28%;padding-right:4px; text-align:right">
                         @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
@@ -123,7 +133,7 @@
         @endforeach
         </tbody>
     </table>
-    <span>--------------------------------------------</span>
+    <span>--------------------------------------</span>
     <div class="row justify-content-end">
         <div class="col-md-8 col-lg-8">
             <dl class="row text-right" style="color: black!important;">
@@ -190,11 +200,11 @@
         </div>
     </div>
     <div class="d-flex flex-row justify-content-between border-top">
-        <span>{{translate('Paid_by')}}: {{\App\CentralLogics\translate($order->payment_method)}}</span>
+        <span>{{translate('Paid_by')}}: <span style="font-weight:bold">{{\App\CentralLogics\translate($order->payment_method)}}</span></span>
     </div>
-    <span>--------------------------------------------</span>
+    <span>--------------------------------------</span>
     <h5 class="text-center pt-3">
         """{{translate('THANK YOU')}}"""
     </h5>
-    <span>--------------------------------------------</span>
+    <span>--------------------------------------</span>
 </div>

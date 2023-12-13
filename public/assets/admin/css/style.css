@@ -104,7 +104,8 @@
     padding-top: 10px;
   }
 }
-@media (min-width:992px) and (max-width:1040px){
+@media only screen and (min-width:992px) and (max-width:1040px){
+  
   .chef-style{
     position: relative;
     right: 0;
@@ -132,9 +133,16 @@
   width: 100%;
   padding-top: 10px;
 }
+
 }
  
 @media only screen and (max-width:992px){
+  .new-responsive .datatable_wrapper_row .dataTable{
+    display: table;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
   .set_table .dataTables_wrapper {
     position: unset;
   }
@@ -161,9 +169,16 @@
   width: 100%;
   padding-top: 10px;
 }
+
 }
 
 @media only screen and (max-width:657px){ 
+  .new-responsive .datatable_wrapper_row .dataTable{
+    display: block;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
   .table-style .avatar-style{
     width:1.36875rem!important;
     height:1.36875rem!important;
@@ -188,8 +203,26 @@
   .dataTables_wrapper .dataTables_filter {
     margin: 1em 0 0 1.3rem!important;
 }
+.order_id{
+  font-size: 11px;
+}
+.date-order{
+  padding-left: 0;
+}
+.order_id{
+  padding-right: 0;
+}
+.date-order span{
+  font-size: 11px;
+}
+.right-font{
+  text-align: end;
+  position: relative;
+  right: 0;
+}
 
 }
+
 .employee-style .dataTables_wrapper .dataTables_filter {
   float: right!important;
   text-align: right!important;

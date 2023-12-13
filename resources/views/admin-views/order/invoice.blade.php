@@ -4,6 +4,7 @@
 
 @push('css_or_js')
     <style>
+
         @media print {
             .non-printable {
                 display: none;
@@ -66,11 +67,11 @@
                 <hr class="text-dark hr-style-1">
 
                 <div class="row mt-4">
-                    <div class="col-6">
-                        <h5>{{translate('Order ID : ')}}{{$order['id']}}</h5>
+                    <div class="col-6 order_id">
+                        <h5 class="order_id">{{translate('Order ID : ')}}{{$order['id']}}</h5>
                     </div>
-                    <div class="col-6">
-                        <h5 style="font-weight: lighter">
+                    <div class="col-6 date-order">
+                        <h5 style="font-weight: lighter ">
                             <span class="font-weight-normal">{{date('d/M/Y h:m a',strtotime($order['created_at']))}}</span>
                         </h5>
                     </div>
@@ -113,7 +114,7 @@
                     <tr>
                         <th style="width: 10%;font-weight:600" >{{translate('QTY')}}</th>
                         <th style="font-weight:600">{{translate('DESCRIPTION')}}</th>
-                        <th style="text-align:right; padding-right:4px; font-weight:600" >{{translate('PRICE')}}</th>
+                        <th style="text-align:center;font-weight:600" >{{translate('PRICE')}}</th>
                     </tr>
                     </thead>
 
@@ -165,14 +166,14 @@
                                         <div class="font-size-sm right-font">
                                             <span>{{ translate('Price') }} : </span>
                                             <span
-                                                class="font-weight-bold">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
+                                                class="">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
                                         </div>
                                     @endif
 
                                     <div class="font-size-sm right-font">
                                     @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                                         @php($addon=\App\Model\AddOn::find($id))
-                                        @if($key2==0)<strong><u>{{translate('Addons : ')}}</u></strong>@endif
+                                        @if($key2==0)<strong>{{translate('Addons : ')}}</strong>@endif
 
                                         @if($add_on_qtys==null)
                                             @php($add_on_qty=1)
@@ -249,7 +250,7 @@
                                         <div class="">
                                             <span>
                                                 {{translate('Paid By')}} ({{str_replace('_', ' ',$partial->paid_with)}})</span>
-                                            <span>:</span>
+                                            <span style="font-weight:600">:</span>
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">

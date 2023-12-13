@@ -247,7 +247,7 @@
                                                     @php($addon_ids = json_decode($detail['add_on_ids'],true))
                                                     @if ($addon_ids)
                                                     <span>
-                                                        <u><strong>{{translate('addons')}}</strong></u>
+                                                    <strong>{{translate('addons')}}</strong>
                                                         @foreach($addon_ids as $key2 =>$id)
                                                             @php($addon=\App\Model\AddOn::find($id))
                                                             @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
@@ -389,7 +389,7 @@
                                                 <div class="d-flex max-w220 ml-auto">
                                             <span>
                                                 {{translate('Paid By')}} ({{str_replace('_', ' ',$partial->paid_with)}})</span>
-                                                    <span>:</span>
+                                                    <span style="font-weight:600">:</span>
                                                 </div>
                                             </dt>
                                             <dd class="col-6 text-dark text-right">

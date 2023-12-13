@@ -228,7 +228,7 @@
             <div class="set_table responsive-ui">
                 <div class="datatable_wrapper_row" id="set-rows" style="padding:0 10px;">
                 <div class="table-responsive">
-                    <table id="datatable" class=" table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>
                                 <th>{{translate('SL')}}</th>

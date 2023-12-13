@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="set_table">
+            <div class="set_table responsive-ui">
                 <div class=" datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
                     <table id="datatable" class="table table-responsive table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
