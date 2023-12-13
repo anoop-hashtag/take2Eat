@@ -22,11 +22,14 @@
   width: 50px; 
   white-space: nowrap;
 }
+
 @media only screen and (min-width:1300px){
   .set_table table{
     width: 100%;
     display: table;
   }
+  
+  
 }
 @media only screen and (max-width:1250px){
   .chef-style .dataTables_wrapper .dataTables_filter{
@@ -80,6 +83,18 @@
   .set_table table{
     margin: 35px 0 0 !important;
   }
+  .datatable_wrapper_row .dataTable{
+    display: table;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
+  .responsive-ui .datatable_wrapper_row .dataTable{
+    display: block;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
 }
 @media (min-width:992px) and (max-width:1040px){
   .chef-style{
@@ -104,7 +119,7 @@
     position: unset;
 }
 .datatable_wrapper_row .dataTable{
-  display: block;
+  display: table;
   overflow-x: auto!important;
   width: 100%;
   padding-top: 10px;

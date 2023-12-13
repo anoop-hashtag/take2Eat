@@ -109,7 +109,7 @@
             <!-- End Header -->
 
             <!-- Table -->
-            <div class="set_table">
+            <div class="set_table responsive-ui">
                 <div class=" datatable_wrapper_row" style="padding-right: 10px;">
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">

@@ -2150,4 +2150,6 @@
   'egg' => 'Egg',
   'Order Date' => 'Order Date',
   'Cooking' => 'Cooking',
+  'You have been blocked' => 'You have been blocked',
+  'Employee status updated!' => 'Employee status updated!',
 );

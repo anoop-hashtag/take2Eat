@@ -219,7 +219,7 @@
             </div>
             <!-- End Header -->
 
-            <div class="set_table">
+            <div class="set_table responsive-ui">
                 <!-- Table -->
                 <div class="table-responsive datatable_wrapper_row" style="padding-right:10px;">
                     <table id="datatable"
