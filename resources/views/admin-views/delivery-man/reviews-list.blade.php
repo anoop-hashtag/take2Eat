@@ -45,7 +45,7 @@
                         </div>
                     </div>
 
-                    <div class=" py-3">
+                    <div class="set_table py-3 ">
                         <div class="table-responsive datatable_wrapper_row"  style="padding:20px 10px;">
                             <table id="datatable" class="my-3 table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">

@@ -64,12 +64,12 @@
 
                 <hr class="text-dark hr-style-1">
                 <div class="row mt-4">
-                    <div class="col-6">
-                        <h5>{{translate('Order ID')}} : {{$order['id']}}</h5>
+                    <div class="col-6 order_id ">
+                        <h5 class="order_id">{{translate('Order ID')}} : {{$order['id']}}</h5>
                     </div>
-                    <div class="col-6">
-                        <h5 style="font-weight: lighter">
-                            {{date('d/M/Y h:m a',strtotime($order['created_at']))}}
+                    <div class="col-6 date-order">
+                        <h5 style="font-weight:400!important" >
+                            <span>{{date('d/M/Y h:m a',strtotime($order['created_at']))}}</span>
                         </h5>
                 </div>
 {{--                   <div class="col-12">--}}
@@ -127,7 +127,7 @@
                     <tr>
                         <th style="width: 10%">{{translate('QTY')}}</th>
                         <th class="">{{translate('DESCRIPTION')}}</th>
-                        <th style="text-align:right; padding-right:4px">{{translate('PRICE')}}</th>
+                        <th style="text-align:center;">{{translate('PRICE')}}</th>
                     </tr>
                     </thead>
 
@@ -176,23 +176,23 @@
                                             @endif
                                         @endforeach
                                     @else
-                                        <div class="font-size-sm text-body">
+                                        <div class="font-size-sm text-body right-font">
                                             <span>{{ translate('Price') }} : </span>
                                             <span
                                                 class="font-weight-bold">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
                                         </div>
                                     @endif
-
+        <div class="right-font">
                                     @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                                         @php($addon=\App\Model\AddOn::find($id))
-                                        @if($key2==0)<strong><u>Addons : </u></strong>@endif
+                                        @if($key2==0)<strong>Addons : </strong>@endif
 
                                         @if($add_on_qtys==null)
                                             @php($add_on_qty=1)
                                         @else
                                             @php($add_on_qty=$add_on_qtys[$key2])
                                         @endif
-
+    </div>
                                         <div class="font-size-sm text-body">
                                             <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
                                             <span class="font-weight-bold">
@@ -259,7 +259,7 @@
                                         <div class="">
                                             <span>
                                                 {{translate('Paid By')}} ({{str_replace('_', ' ',$partial->paid_with)}})</span>
-                                            <span>:</span>
+                                            <span style="font-weight:600">:</span>
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">
