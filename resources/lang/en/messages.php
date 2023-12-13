@@ -2155,4 +2155,5 @@
   'Table Orders' => 'Table Orders',
   'DESCRIPTION' => 'DESCRIPTION',
   'PRICE' => 'PRICE',
+  '' => '',
 );

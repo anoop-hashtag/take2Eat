@@ -401,10 +401,7 @@
     // =======================================================
     var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
         dom: 'Bfrtip',
-        buttons: [
-        'excel', 'csv', 'pdf', 'print'
-    ],
-        "bDestroy": true,
+        buttons: ['excel', 'csv', 'pdf', 'print'],
         language: {
             zeroRecords: '<div class="text-center p-4">' +
                 '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
@@ -412,7 +409,54 @@
                 '</div>'
         }
     });
+
+    $('#search-form').on('submit', function (e) {
+        e.preventDefault();
+
+        let formDate = $('#from_date').val();
+        let toDate = $('#to_date').val();
+        let delivery_man = $('#delivery_man').val();
+
+        $.post({
+            url: "{{route('admin.report.deliveryman_filter')}}",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                'formDate': formDate,
+                'toDate': toDate,
+                'delivery_man': delivery_man,
+            },
+            beforeSend: function () {
+                $('#loading').show();
+            },
+            success: function (data) {
+                console.log(data.delivered_qty)
+                // Clear the DataTable before reinitializing it
+                datatable.destroy();
+
+                $('#set-rows').html(data.view);
+                $('#delivered_qty').html(data.delivered_qty);
+                $('.card-footer').hide();
+
+                // Reinitialize the DataTable
+                datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                    dom: 'Bfrtip',
+                    buttons: ['excel', 'csv', 'pdf', 'print'],
+                    language: {
+                        zeroRecords: '<div class="text-center p-4">' +
+                            '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                            '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                            '</div>'
+                    }
+                });
+            },
+            complete: function () {
+                $('#loading').hide();
+            },
+        });
+    });
+
 </script>
+
 
 
 

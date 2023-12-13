@@ -513,7 +513,7 @@
                                             <div class="row">
                                                 <div class="col-sm mb-2 mb-sm-0">
                                                     <h2 class="font-weight-normal mb-1">#{{$order['id']}} <small
-                                                            class="font-size-sm text-body text-uppercase">{{translate('id')}}</small>
+                                                            class="font-size-sm text-body text-uppercase"></small>
                                                     </h2>
                                                     <h5 class="text-hover-primary mb-0">{{translate('order')}} {{translate('amount')}}
                                                         : {{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</h5>
