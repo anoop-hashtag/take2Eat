@@ -2677,11 +2677,11 @@ body > #printableAreaContent {
   width: 0;
 }
 
-.custom-radio input[type=radio] {
+/* .custom-radio input[type=radio] {
   width: 30px;
-    height: 22px;
-    border: 1px solid var(--tc);
-}
+  height: 22px;
+  border: 1px solid var(--tc);
+} */
 
 .custom-radio input[type=radio]:checked {
   border-color: var(--c1);

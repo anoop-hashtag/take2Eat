@@ -2156,4 +2156,5 @@
   'DESCRIPTION' => 'DESCRIPTION',
   'PRICE' => 'PRICE',
   '' => '',
+  'Number_of_Table :' => 'Number of Table :',
 );

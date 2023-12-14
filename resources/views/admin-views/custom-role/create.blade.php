@@ -5,6 +5,8 @@
 @push('css_or_js')
     <!-- Custom styles for this page -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+
+
 @endpush
 
 @section('content')
@@ -36,7 +38,7 @@
 
                     <div class="mb-5 d-flex flex-wrap align-items-center gap-3">
                         <h5 class="mb-0">{{translate('Module_Permission')}} : </h5>
-                        <div class="form-check">
+                        <div class="form-check ">
 {{--                            <input onclick="selectAll()" type="checkbox" name="modules[]" value="dashboard_management" class="form-check-input" id="select-all-btn">--}}
                             <input type="checkbox" class="form-check-input" id="select-all-btn">
                             <label class="form-check-label" for="select-all-btn">{{translate('Select_All')}}</label>
@@ -45,7 +47,7 @@
                     <div class="row">
                         @foreach(MANAGEMENT_SECTION as $section)
                             <div class="col-xl-4 col-lg-4 col-sm-6">
-                                <div class="form-group form-check">
+                                <div class="form-group form-check ">
                                     <input type="checkbox" name="modules[]" value="{{$section}}" class="form-check-input select-all-associate"
                                             id="{{$section}}">
                                     <label class="form-check-label ml-2" for="{{$section}}">{{translate($section)}}</label>
