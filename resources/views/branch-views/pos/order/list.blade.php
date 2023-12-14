@@ -54,7 +54,7 @@
                 <div class="row justify-content-between align-items-center gy-2">
                 <div class="col-sm-4 col-md-6 col-lg-8 d-flex justify-content-start">
                         <div>
-                            <button type="button" class="btn btn-outline-primary" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-outline-primary btn-attribute" data-toggle="dropdown" aria-expanded="false">
                                 <i class="tio-download-to"></i>
                                 {{translate('Export')}}
                                 <i class="tio-chevron-down"></i>
@@ -90,7 +90,7 @@
             </div>
 
             <div class=" set_table responsive-ui">
-                <div class="table-responsive datatable_wrapper_row">
+                <div class="table-responsive datatable_wrapper_row" style="padding:0 10px;">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                         <tr>

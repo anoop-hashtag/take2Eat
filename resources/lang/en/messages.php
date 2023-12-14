@@ -2157,4 +2157,8 @@
   'PRICE' => 'PRICE',
   '' => '',
   'Number_of_Table :' => 'Number of Table :',
+  'No. of Attribute' => 'No. of Attribute',
+  'No. of Addon' => 'No. of Addon',
+  'Attribute list' => 'Attribute list',
+  'Addon List' => 'Addon List',
 );

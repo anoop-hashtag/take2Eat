@@ -13,8 +13,10 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/attribute.png')}}" alt="">
                 <span class="page-header-title">
-                    {{translate('Add_New_Addon')}}
+                    {{translate('Addon List')}}
                 </span>
+                <span class="badge badge-soft-dark rounded-50 fz-12">{{ $addons->total() }}</span>
+                               
             </h2>
         </div>
         <!-- End Page Header -->
@@ -25,13 +27,10 @@
                 <div class="mt-3">
                     <div class="card">
                         <div class="card-top px-card">
-                            <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
-                                <h5 class="d-flex align-items-center gap-2">
-                                    {{translate('Addon_Table')}}
-                                    <span class="badge badge-soft-dark rounded-50 fz-12">{{ $addons->total() }}</span>
-                                </h5>
+                            <div class="d-flex flex-column flex-md-row flex-wrap gap-3  align-items-md-center">
+                               
 
-                                <div class="d-flex flex-wrap justify-content-md-end gap-3">
+                                <div class="d-flex flex-wrap justify-content-md-end ">
                                     <form action="{{url()->current()}}" method="GET">
                                         {{-- <div class="input-group">
                                             <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by Addon name')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
@@ -40,7 +39,7 @@
                                             </div>
                                         </div> --}}
                                     </form>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adAddondModal">
+                                    <button type="button" class="btn btn-primary btn-attribute" data-toggle="modal" data-target="#adAddondModal">
                                         <i class="tio-add"></i>
                                         {{translate('Add_Addon')}}
                                     </button>
@@ -48,8 +47,8 @@
                             </div>
                         </div>
 
-                        <div class="py-4 set_table">
-                            <div class="table-responsive datatable_wrapper_row mt-5"  style="padding-right: 10px;">
+                        <div class=" set_table new-responsive  addon-list">
+                            <div class="table-responsive datatable_wrapper_row"  style="padding-right: 10px;">
                                 <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                     <thead class="thead-light">
                                         <tr>

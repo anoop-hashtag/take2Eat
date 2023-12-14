@@ -32,7 +32,7 @@
                         <div class="col-lg-8">
                                 <div class="d-flex gap-3 justify-content-start text-nowrap flex-wrap">
                                     <div>
-                                        <button type="button" class="btn btn-outline-primary" data-toggle="dropdown" aria-expanded="false">
+                                        <button type="button" class="btn btn-outline-primary btn-attribute" data-toggle="dropdown" aria-expanded="false">
                                             <i class="tio-download-to"></i>
                                             Export
                                             <i class="tio-chevron-down"></i>
@@ -46,7 +46,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <a href="{{route('admin.product.add-new')}}" class="btn btn-primary">
+                                    <a href="{{route('admin.product.add-new')}}" class="btn-attribute btn btn-primary">
                                         <i class="tio-add"></i> {{translate('add_New_Product')}}
                                     </a>
                                 </div>
@@ -66,7 +66,7 @@
                     </div>
                     <!-- End Header -->
 
-                    <div class="set_table py-5">
+                    <div class="set_table py-5 margin-style">
                         <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">

@@ -18,6 +18,7 @@
                 <span class="page-header-title">
                     {{translate('employee_role_setup')}}
                 </span>
+                <span class="badge badge-soft-dark rounded-50 fz-12">{{$rl->count()}}</span>
             </h2>
         </div>
         <!-- End Page Header -->
@@ -66,13 +67,13 @@
 
         <div class="card mt-3">
             <div class="card-top px-card ">
-                <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
-                    <h5 class="d-flex gap-2 mb-0">
+                <div class="">
+                    <!-- <h5 class="d-flex gap-2 mb-0">
                         {{translate('Employee_Role_Table')}}
                         <span class="badge badge-soft-dark rounded-50 fz-12">{{$rl->count()}}</span>
-                    </h5>
+                    </h5> -->
 
-                    <div class="d-flex flex-wrap justify-content-md-end gap-3">
+                    <div class="d-flex flex-wrap justify-content-start">
                         <form action="" method="GET">
                             <div class="input-group">
                                 {{-- <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="Search by Role Name" aria-label="Search" value="" required="" autocomplete="off"> --}}
@@ -82,7 +83,7 @@
                             </div>
                         </form>
                         <div>
-                            <button type="button" class="btn btn-outline-primary text-nowrap" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-attribute btn-outline-primary text-nowrap" data-toggle="dropdown" aria-expanded="false">
                                 <i class="tio-download-to"></i>
                                 {{translate('export')}}
                                 <i class="tio-chevron-down"></i>
@@ -100,8 +101,8 @@
                 </div>
             </div>
 
-            <div class="set_table">
-                <div class="table-responsive datatable_wrapper_row mt-5 employee-style" id="set-rows" style="padding-right: 10px;">
+            <div class="set_table employee-style ">
+                <div class="table-responsive datatable_wrapper_row  employee-style" id="set-rows" style="padding-right: 10px;">
                     <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                         <tr>
