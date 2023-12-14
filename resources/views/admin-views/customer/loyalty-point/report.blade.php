@@ -296,6 +296,7 @@
                          className: 'd-none'
                      },
                  ],
+                 paging  : false,
                  select: {
                      style: 'multi',
                      selector: 'td:first-child input[type="checkbox"]',
@@ -305,6 +306,7 @@
                          counterInfo: '#datatableCounterInfo'
                      }
                  },
+
                  language: {
                      zeroRecords: '<div class="text-center p-4">' +
                          '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
