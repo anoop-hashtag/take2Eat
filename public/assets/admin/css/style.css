@@ -42,15 +42,12 @@
     width: 100%;
     display: table;
   }
-  
-  
 }
 @media only screen and (max-width:1250px){
   .chef-style .dataTables_wrapper .dataTables_filter{
     position: relative;
     right: 0!important;
     top: 0;
-    height: 45px;
   }
   .set_table {
     position: relative;
@@ -71,16 +68,12 @@
 }
 @media (min-width:1200px) and (max-width:1290px){
   
-  /* .datatable_wrapper_row .dataTable {
-    padding-top: 25px!important;
-} */
 .chef-style .dataTables_wrapper .dataTables_filter{
   float: right!important;
   text-align: right!important;
   position: absolute;
   right: 0!important;
   top: 0;
-  height: 45px;
 }
   .set_table {
     position: relative;
@@ -92,9 +85,8 @@
   .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
-    position: absolute;
-    right: 10px!important;
-    height: 45px;
+    /* position: absolute;
+    right: 10px!important; */
     top: 0;
   }
   .set_table table{
@@ -127,9 +119,8 @@
   .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
-    position: absolute;
-    right: 10px!important;
-    height: 45px;
+    /* position: absolute;
+    right: 10px!important;*/
     top: 0;
   }
   .set_table table{
@@ -271,23 +262,19 @@
 .employee-style .dataTables_wrapper .dataTables_filter {
   float: right!important;
   text-align: right!important;
-  position: relative;
-  height: 45px;
-  right: 10px;
+  /* position: relative;
+  right: 10px; */
   top:10px;
 }
-
 .navbar-vertical-aside-has-menu table#datatable.table-responsive{
   display: table;
 }
-
 .navbar-vertical-aside-has-menu .badge{
   display: none;
 }
-
-
 .dataTables_wrapper .dataTables_filter input {
  width: 182px!important;
+ height: 35px!important;
 }
 .invoice_print{
   width:368px;
@@ -1081,7 +1068,7 @@ label {
   user-select: none;
   inline-size: 36px;
   block-size: 18px;
-  margin-bottom: 0;
+  margin:auto auto 0 auto;
 }
 
 .switcher_control {

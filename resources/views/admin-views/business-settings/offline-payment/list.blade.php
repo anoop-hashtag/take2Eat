@@ -23,9 +23,12 @@
         <div class="row g-2">
             <div class="col-12">
                 <!-- Card -->
-                <div class="card">
-                    <div class="card-header mb-3">
-                        <div class="justify-content-between align-items-center gy-2">
+                <div class="card ">
+                
+                        <div class="justify-content-start card-top px-card">
+                        <div>
+                            <a href="{{ route('admin.business-settings.web-app.third-party.offline-payment.add') }}" type="button" class="btn btn-primary btn-attribute"><i class="tio-add"></i>{{translate('Add New Method')}}</a>
+                        </div>
                             <form action="{{ url()->current() }}" method="GET">
                                 {{-- <div class="input-group">
                                     <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search_by_method_name')}}" aria-label="Search" value="{{ $search }}" required="" autocomplete="off">
@@ -37,10 +40,8 @@
                                 </div> --}}
                             </form>
                         </div>
-                        <div>
-                            <a href="{{ route('admin.business-settings.web-app.third-party.offline-payment.add') }}" type="button" class="btn btn-primary"><i class="tio-add"></i>{{translate('Add New Method')}}</a>
-                        </div>
-                    </div>
+                        
+                
 
                     <!-- Table -->
                     <div class="set_table">
@@ -109,7 +110,7 @@
                         </div>
 
                         <div class="table-responsive mt-4 px-3">
-                            <div class="d-flex justify-content-lg-end">
+                            <div class="d-flex justify-content-lg-end pagination-style">
                                 <!-- Pagination -->
                                 {!! $methods->links() !!}
                             </div>
@@ -201,7 +202,8 @@
                              },
                              
                          ],
-                        
+                         info: false,
+                   paging: false,
                          select: {
                              style: 'multi',
                              selector: 'td:first-child input[type="checkbox"]',

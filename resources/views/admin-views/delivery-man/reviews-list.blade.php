@@ -106,7 +106,7 @@
                         </div>
 
                         <div class="table-responsive mt-4 px-3">
-                            <div class="d-flex justify-content-lg-end">
+                            <div class="d-flex justify-content-lg-end pagination-style">
                                 <!-- Pagination -->
                                 {!! $reviews->links() !!}
                             </div>
@@ -205,6 +205,8 @@
                         className: 'd-none'
                     },
                 ],
+                "paging": false,
+                "info" :info,
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',

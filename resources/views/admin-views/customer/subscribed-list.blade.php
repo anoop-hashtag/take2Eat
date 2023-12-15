@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="table-responsive px-3">
-                    <div class="d-flex justify-content-lg-end">
+                    <div class="d-flex justify-content-lg-end pagination-style">
                         <!-- Pagination -->
                         {!! $newsletters->links() !!}
                     </div>
