@@ -63,7 +63,7 @@
                                 <div class="from_part_2 image_section" id="image_section">
                                     <label class="input-label">{{translate('Image')}}<span class="text-danger">*</span></label>
                                     <div class="custom-file">
-                                        <input type="file" name="image" id="customFileEg" class="custom-file-input"
+                                        <input type="file" name="image" id="customFileEg" onchange="readURL(this)" class="custom-file-input"
                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
                                                oninvalid="document.getElementById('en-link').click()">
                                         <label class="custom-file-label" for="customFileEg">{{ translate('choose file') }}</label>
@@ -71,7 +71,7 @@
                                     <div class="from_part_2 mt-3">
                                         <div class="form-group">
                                             <div class="text-center">
-                                                <img width="180" class="rounded-10 border mx-80px" id="viewer"
+                                                <img width="180" class="rounded-10 border mx-80px" id="img"
                                                      src="{{asset('storage/app/public/promotion')}}/{{$promotion['promotion_name']}}" alt="image"
                                                      onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"/>
                                             </div>
@@ -97,6 +97,40 @@
 
 @push('script_2')
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Function to validate YouTube URL
+        function validateUrl() {
+            var youtubeUrl = $('#url').val();
+            var youtubeRegex = /^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/;
+
+            if (youtubeRegex.test(youtubeUrl)) {
+                $('#urlValidationMessage').text('Valid YouTube URL').css('color', 'green');
+            } else {
+                $('#urlValidationMessage').text('Invalid YouTube URL').css('color', 'red');
+            }
+        }
+
+        // Bind input event to the text input
+        $('#url').on('input', validateUrl);
+
+        // Initial validation on page load
+        validateUrl();
+    });
+</script>
+<script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+      
+        var reader = new FileReader();
+        reader.onload = function (e) { 
+          document.querySelector("#img").setAttribute("src",e.target.result);
+        };
+  
+        reader.readAsDataURL(input.files[0]); 
+      }
+    }
+    </script>
     <script>
         $(function() {
             $('#banner_type').change(function(){
