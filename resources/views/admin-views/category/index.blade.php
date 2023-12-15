@@ -4,6 +4,7 @@
 
 @push('css_or_js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
@@ -58,7 +59,7 @@
                                             <label class="input-label"
                                                 for="exampleFormControlInput1">{{ translate('name') }}
                                                 ({{ strtoupper($default_lang) }})</label>
-                                            <input type="text" name="name[]" class="form-control" maxlength="255"
+                                            <input type="text" name="name[]"  onchange="readURL(this)" class="form-control" maxlength="255"
                                                 placeholder="{{ translate('New Category') }}" required>
                                         </div>
                                         <input type="hidden" name="lang[]" value="{{ $default_lang }}">
@@ -69,7 +70,7 @@
                                         <div class="from_part_2 mt-2">
                                             <div class="form-group">
                                                 <div class="text-center">
-                                                    <img width="105" class="rounded-10 border" id="viewer"
+                                                    <img width="105" class="rounded-10 border" id="img2"
                                                         src="{{ asset('public/assets/admin/img/400x400/img2.jpg') }}" alt="image" />
                                                 </div>
                                             </div>
@@ -78,7 +79,7 @@
                                             <label>{{ translate('category_Image') }}</label>
                                             <small class="text-danger">* ( {{ translate('ratio') }} 1:1 )</small>
                                             <div class="custom-file">
-                                                <input type="file" name="image" id="customFileEg1" class="custom-file-input"
+                                                <input type="file" name="image" id="customFileEg1" onchange="readURL2(this)" class="custom-file-input"
                                                     accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required
                                                     oninvalid="document.getElementById('en-link').click()">
                                                 <label class="custom-file-label" for="customFileEg1">{{ translate('choose file') }}</label>
@@ -89,7 +90,7 @@
                                         <div class="from_part_2 mb-4 px-4">
                                             <div class="form-group">
                                                 <div class="text-center">
-                                                    <img width="500" class="rounded-10 border" id="viewer2"
+                                                    <img width="500" class="rounded-10 border" id="img"
                                                         src="{{ asset('public/assets/admin/img/900x400/img1.jpg') }}" alt="image" />
                                                 </div>
                                             </div>
@@ -98,11 +99,37 @@
                                             <label>{{ translate('banner image') }}</label>
                                             <small class="text-danger">* ( {{ translate('ratio') }} 8:1 )</small>
                                             <div class="custom-file">
-                                                <input type="file" name="banner_image" id="customFileEg2" class="custom-file-input"
+                                                <input type="file" name="banner_image" id="customFileEg2" onchange="readURL(this)" class="custom-file-input"
                                                     accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required
                                                     oninvalid="document.getElementById('en-link').click()">
                                                 <label class="custom-file-label" for="customFileEg2">{{ translate('choose file') }}</label>
                                             </div>
+                                            <script>
+                                                function readURL(input) {
+                                                  if (input.files && input.files[0]) {
+                                                  
+                                                    var reader = new FileReader();
+                                                    reader.onload = function (e) { 
+                                                      document.querySelector("#img").setAttribute("src",e.target.result);
+                                                     
+                                                    };
+                                              
+                                                    reader.readAsDataURL(input.files[0]); 
+                                                  }
+                                                }
+                                                function readURL2(input) {
+                                                  if (input.files && input.files[0]) {
+                                                  
+                                                    var reader = new FileReader();
+                                                    reader.onload = function (e) { 
+                                                      document.querySelector("#img2").setAttribute("src",e.target.result);
+                                                     
+                                                    };
+                                              
+                                                    reader.readAsDataURL(input.files[0]); 
+                                                  }
+                                                }
+                                                </script>
                                         </div>
                                     </div>
                                 </div>
@@ -279,26 +306,33 @@
         });
     </script>
 
-    <script>
-        function readURL(input, viewer_id) {
+<script>
+    $(document).ready(function () {
+        // Function to show selected image
+        function readURL(input, targetId) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#'+viewer_id).attr('src', e.target.result);
-                }
+                    $(targetId).attr('src', e.target.result);
+                };
 
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
-        $("#customFileEg1").change(function () {
-            readURL(this, 'viewer');
+        // Trigger when a file is selected for category image
+        $('#customFileEg1').on('change', function () {
+            readURL(this, '#viewer');
         });
-        $("#customFileEg2").change(function () {
-            readURL(this, 'viewer2');
+
+        // Trigger when a file is selected for banner image
+        $('#customFileEg2').on('change', function () {
+            readURL(this, '#viewer2');
         });
-    </script>
+    });
+</script>
+
 
     <script>
 
