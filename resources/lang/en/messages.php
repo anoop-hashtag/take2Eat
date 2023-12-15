@@ -2160,11 +2160,5 @@
   'No. of Attribute' => 'No. of Attribute',
   'No. of Addon' => 'No. of Addon',
   'Attribute list' => 'Attribute list',
-  'Addon List' => 'Addon List',
-<<<<<<< Updated upstream
-  'Country' => 'Country',
-  'Country_code' => 'Country code',
-=======
-  'Category_Name' => 'Category Name',
->>>>>>> Stashed changes
+  'Addon List' => 'Addon List'
 );
