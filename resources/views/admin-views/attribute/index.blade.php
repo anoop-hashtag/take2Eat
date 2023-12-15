@@ -286,7 +286,8 @@
                     },
                     
                 ],
-               
+                info: false,
+            paging: false,
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',
