@@ -88,7 +88,7 @@
                                     </td>
                                     <td>{{ \App\User::get_chef_branch_name($chef) }}</td>
                                     <td>
-                                        <label class="switcher">
+                                        <label class="switcher category-mid">
                                             <input type="checkbox" class="switcher_input"
                                                    onclick="location.href='{{route('branch.kitchen.status',[$chef['id'],$chef->is_active?0:1])}}'"
                                                    class="toggle-switch-input" {{$chef->is_active?'checked':''}}>

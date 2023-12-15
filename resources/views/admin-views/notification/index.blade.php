@@ -11,7 +11,7 @@
         <!-- Page Header -->
         <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
-                <i class="tio-notifications"></i>
+                <i class="tio-notifications "></i>
                 <span class="page-header-title">
                     {{translate('send_Notification')}}
                 </span>
@@ -29,7 +29,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('title')}}
-                                            <i class="tio-info text-secondary" data-toggle="tooltip" data-placement="right"
+                                            <i class="tio-info-outined" data-toggle="tooltip" data-placement="right"
                                                title="{{ translate('not_more_than_100_characters') }}">
                                             </i>
                                         </label>
@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="input-label">{{translate('description')}}
-                                            <i class="tio-info text-secondary" data-toggle="tooltip" data-placement="right"
+                                            <i class="tio-info-outined" data-toggle="tooltip" data-placement="right"
                                                title="{{ translate('not_more_than_255_characters') }}">
                                             </i>
                                         </label>
@@ -72,7 +72,7 @@
 
             <div class="col-12">
                 <div class="card">
-                    <div class="card-top px-card ">
+                    <div class="new-top px-card">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -134,7 +134,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <label class="switcher">
+                                            <label class="switcher category-mid">
                                                 <input class="switcher_input" type="checkbox" onclick="status_change(this)" id="{{$notification['id']}}"
                                                     data-url="{{route('admin.notification.status',[$notification['id'],0])}}" {{$notification['status'] == 1? 'checked' : ''}}>
                                                 <span class="switcher_control"></span>

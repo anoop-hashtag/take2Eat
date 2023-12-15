@@ -221,7 +221,7 @@
                                             </td>
                                             <td>{{$data['code']}}</td>
                                             <td>
-                                                <label class="switcher">
+                                                <label class="switcher category-mid">
                                                     <input type="checkbox"
                                                            onclick="updateStatus('{{route('admin.business-settings.web-app.system-setup.language.update-status')}}','{{$data['code']}}','{{$data['default']}}')"
                                                            class="switcher_input" {{$data['status']==1?'checked':''}}>
@@ -229,7 +229,7 @@
                                                 </label>
                                             </td>
                                             <td>
-                                                <label class="switcher">
+                                                <label class="switcher category-mid">
                                                     <input type="checkbox"
                                                            onclick="window.location.href ='{{route('admin.business-settings.web-app.system-setup.language.update-default-status', ['code'=>$data['code']])}}'"
                                                            class="switcher_input" {{ ((array_key_exists('default', $data) && $data['default']==true) ? 'checked': ((array_key_exists('default', $data) && $data['default']==false) ? '' : 'disabled')) }}>

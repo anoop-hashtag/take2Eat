@@ -110,7 +110,7 @@
 
             <div class="col-12">
                 <div class="card">
-                    <div class="card-top px-card ">
+                    <div class="new-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -172,7 +172,7 @@
                                         {{-- <td>{{$coupon['discount_type']}}</td> --}}
                                         <td><div class="text-muted">{{date('d M, Y', strtotime($coupon['start_date']))}} - {{date('d M, Y', strtotime($coupon['expire_date']))}}</div></td>
                                         <td>
-                                            <label class="switcher">
+                                            <label class="switcher category-mid">
                                                 <input id="{{$coupon['id']}}" class="switcher_input" type="checkbox" onchange="status_change(this)" {{$coupon['status']==1? 'checked': '' }}
                                                     data-url="{{route('admin.coupon.status',[$coupon['id'],1])}}"
                                                 >

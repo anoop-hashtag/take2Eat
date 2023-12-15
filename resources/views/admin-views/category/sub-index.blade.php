@@ -87,7 +87,7 @@
 
             <div class="mt-3">
                 <div class="card">
-                    <div class="card-top px-card py-1">
+                    <div class="new-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-6 col-md-8 col-lg-8">
                                 <h5 class="d-flex mb-0 gap-2 align-items-center">
@@ -140,7 +140,7 @@
                                         <td>
 
                                                 <div>
-                                                    <label class="switcher">
+                                                    <label class="switcher category-mid">
                                                         <input class="switcher_input" type="checkbox" {{$category['status']==1? 'checked' : ''}} id="{{$category['id']}}"
                                                         onchange="status_change(this)" data-url="{{route('admin.category.status',[$category['id'],1])}}"
                                                         >

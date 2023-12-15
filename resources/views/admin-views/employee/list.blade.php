@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="set_table new-responsive attibute-list emp-style">
-                    <div class="table-responsive datatable_wrapper_row employee-style"  style="padding-right:10px">
+                    <div class="table-responsive datatable_wrapper_row customer-style"  style="padding-right:10px">
                         <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                                 <tr>
@@ -76,13 +76,13 @@
                                 <tr>
                                     <td>{{$em->firstitem()+$k}}</td>
                                     <td class="text-capitalize">
-                                        <div class="media align-items-center gap-3">
+                                        <div class="media align-items-center gap-3 category-mid">
                                             <div class="avatar">
                                                 <img class="img-fit rounded-circle" src="{{asset('storage/app/public/admin')}}/{{$e['image']}}" alt=""
                                                      onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                 >
                                             </div>
-                                            <div class="media-body">{{$e['f_name'] . ' ' . $e['l_name']}}</div>
+                                            <div class="media-body name-width">{{$e['f_name'] . ' ' . $e['l_name']}}</div>
                                         </div>
                                     </td>
                                     <td >
@@ -91,7 +91,7 @@
                                     </td>
                                     <td><span class="badge badge-soft-info py-1 px-2">{{$e->role['name']}}</span></td>
                                     <td>
-                                        <label class="switcher">
+                                        <label class="switcher category-mid" >
                                             <input type="checkbox" class="switcher_input"
                                                    onclick="location.href='{{route('admin.employee.status',[$e['id'],$e->status?0:1])}}'"
                                                    class="toggle-switch-input" {{$e->status?'checked':''}}>
@@ -99,7 +99,7 @@
                                         </label>
                                     </td>
                                     <td>
-                                        <div class="d-flex justify-content-center gap-2">
+                                        <div class="d-flex justify-content-center gap-2 category-mid">
                                             <a href="{{route('admin.employee.update',[$e['id']])}}"
                                             class="btn btn-outline-info btn-sm square-btn"
                                             title="{{translate('Edit')}}">

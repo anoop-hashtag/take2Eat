@@ -92,7 +92,7 @@
             <div class="col-12">
                 <!-- Card -->
                 <div class="card">
-                    <div class="card-top px-card ">
+                    <div class="new-top px-card ">
                         <div class="row align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -151,7 +151,7 @@
                                             <td></td>
                                         @endif
                                         <td>
-                                            <label class="switcher">
+                                            <label class="switcher category-mid">
                                                 <input class="switcher_input" type="checkbox" {{$banner['status']==1 ? 'checked' : ''}} id="{{$banner['id']}}"
                                                     data-url="{{route('admin.banner.status',[$banner['id'],0])}}" onchange="status_change(this)">
                                                 <span class="switcher_control"></span>

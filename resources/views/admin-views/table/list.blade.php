@@ -104,7 +104,7 @@
                                         <td>{{$table['capacity']}}</td>
                                         <td>{{$table->branch->name ?? null}}</td>
                                         <td>
-                                            <label class="switcher">
+                                            <label class="switcher category-mid">
                                                 <input type="checkbox" class="switcher_input"
                                                         onclick="location.href='{{route('admin.table.status',[$table['id'],$table->is_active?0:1])}}'"
                                                         class="toggle-switch-input" {{$table->is_active?'checked':''}}>
@@ -112,7 +112,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-3">
+                                            <div class="d-flex justify-content-center gap-3 category-mid">
                                                 <a href="{{route('admin.table.update',[$table['id']])}}"
                                                     class="btn btn-outline-info btn-sm square-btn"
                                                     title="{{translate('Edit')}}">

@@ -101,8 +101,8 @@
                 </div>
             </div>
 
-            <div class="set_table employee-style ">
-                <div class="table-responsive datatable_wrapper_row  employee-style" id="set-rows" style="padding-right: 10px;">
+            <div class="set_table new-responsive ">
+                <div class="table-responsive datatable_wrapper_row  " id="set-rows" style="padding-right: 10px;">
                     <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                         <tr>
@@ -120,7 +120,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$r['name']}}</td>
                                 <td class="text-capitalize">
-                                    <div class="max-w300 text-wrap">
+                                    <div class="max-w300 text-wrap category-mid">
                                         @if($r['module_access']!=null)
                                             @php($comma = '')
                                             @foreach((array)json_decode($r['module_access']) as $m)
@@ -132,7 +132,7 @@
                                 </td>
                                 <td>{{date('d-M-Y',strtotime($r['created_at']))}}</td>
                                 <td>
-                                    <label class="switcher">
+                                    <label class="switcher category-mid">
                                         <input type="checkbox" name="status" class="switcher_input" {{$r['status'] == true? 'checked' : ''}}
                                         onclick="role_status_change(this)" data-url="{{route('admin.custom-role.change-status', ['id' => $r['id']])}}" id="{{$r['id']}}"
                                         >
@@ -140,7 +140,7 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <div class="d-flex justify-content-center gap-2">
+                                    <div class="d-flex justify-content-center gap-2 category-mid">
                                         <a href="{{route('admin.custom-role.update',[$r['id']])}}"
                                         class="btn btn-outline-info btn-sm square-btn"
                                         title="{{translate('Edit') }}">

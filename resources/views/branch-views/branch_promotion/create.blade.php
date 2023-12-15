@@ -89,7 +89,7 @@
                     <div class="col-md-4">
                         <div class="d-flex align-items-md-center gap-2 justify-content-md-center">
                             {{translate('Promotion Status')}} :
-                            <label class="switcher">
+                            <label class="switcher category-mid">
                                 <input type="checkbox" class="switcher_input"
                                         onclick="location.href='{{route('branch.promotion.status',[$branch['id'],$branch->branch_promotion_status?0:1])}}'"
                                         class="toggle-switch-input" {{$branch->branch_promotion_status?'checked':''}}>

@@ -91,7 +91,7 @@
         </div>
 
         <div class="card mt-3">
-            <div class="card-top px-card">
+            <div class="new-top px-card">
                 <div class="row justify-content-between align-items-center gy-2">
                     <div class="col-sm-4 col-md-6 col-lg-8">
                         <h5 class="d-flex gap-2 mb-0">
@@ -273,8 +273,14 @@
                         className: 'd-none'
                     },
                 ],
+<<<<<<< Updated upstream
                 paging:false,
                 info:false,
+=======
+                info:false,
+                paging:false,
+                
+>>>>>>> Stashed changes
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',

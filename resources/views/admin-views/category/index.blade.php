@@ -144,7 +144,7 @@
 
             <div class="col-12 mb-3">
                 <div class="card">
-                    <div class="card-top px-card py-1">
+                    <div class="new-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex gap-1 mb-0">
@@ -174,8 +174,8 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>{{translate('SL')}}</th>
-                                        <th>{{translate('Category_Image')}}</th>
-                                        <th>{{translate('name')}}</th>
+                                        <th>{{translate('Category_Name')}}</th>
+                                        
                                         <th>{{translate('status')}}</th>
                                         <th>{{translate('priority')}}</th>
                                         <th class="text-center">{{translate('action')}}</th>
@@ -187,14 +187,16 @@
                                     <tr>
                                         <td>{{$categories->firstitem()+$key}}</td>
                                         <td>
-                                            <div>
-                                                <img width="50" class="avatar-img rounded" src="{{asset('storage/app/public/category')}}/{{$category['image']}}" onerror="this.src='{{asset('public/assets/admin/img/icons/category_img.png')}}'" alt="" style="height:50px">
+                                            <div class="category-mid media align-items-center gap-3">
+                                                <div>
+                                                <img width="50" class="avatar-img rounded " src="{{asset('storage/app/public/category')}}/{{$category['image']}}" onerror="this.src='{{asset('public/assets/admin/img/icons/category_img.png')}}'" alt="" style="height:50px">
+                                                </div>
+                                                <div class="text-capitalize name-width ">{{$category['name']}}</div>
                                             </div>
                                         </td>
-                                        <td><div class="text-capitalize">{{$category['name']}}</div></td>
                                         <td>
-                                                <div class="">
-                                                    <label class="switcher">
+                                                <div class="category-mid ">
+                                                    <label class="switcher ">
                                                         <input class="switcher_input" type="checkbox" {{$category['status']==1? 'checked' : ''}} id="{{$category['id']}}"
                                                         onchange="status_change(this)" data-url="{{route('admin.category.status',[$category['id'],1])}}"
                                                         >
@@ -205,7 +207,7 @@
                                         </td>
                                         <td>
                                             <div class="">
-                                                <select name="priority" class="custom-select"
+                                                <select name="priority" class="custom-select category-select"
                                                         onchange="location.href='{{ route('admin.category.priority', ['id' => $category['id'], 'priority' => '']) }}' + this.value">
                                                     @for($i = 1; $i <= 10; $i++)
                                                         <option value="{{ $i }}" {{ $category->priority == $i ? 'selected' : '' }}>{{ $i }}</option>

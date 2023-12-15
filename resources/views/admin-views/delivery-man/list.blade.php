@@ -75,14 +75,14 @@
                                     <tr>
                                         <td>{{$delivery_men->firstitem()+$key}}</td>
                                         <td>
-                                            <div class="media gap-3 align-items-center">
+                                            <div class="media gap-3 align-items-center category-mid">
                                                 <div class="avatar">
                                                     <img width="60" class="img-fit rounded-circle"
                                                         onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                         src="{{asset('storage/app/public/delivery-man')}}/{{$dm['image']}}">
                                                     {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
                                                 </div>
-                                                <div class="media-body">
+                                                <div class="media-body name-width">
                                                     {{$dm['f_name'].' '.$dm['l_name']}}
                                                 </div>
                                             </div>
@@ -99,7 +99,7 @@
                                         </td>
                                         <td><span class="badge fz-14 badge-soft-info px-5">{{ $dm['orders_count'] }}</span></td>
                                         <td>
-                                            <label class="switcher">
+                                            <label class="switcher category-mid">
                                                 <input id="{{$dm['id']}}" type="checkbox" class="switcher_input" {{$dm['is_active'] == 1? 'checked' : ''}}
                                                        data-url="{{route('admin.delivery-man.ajax-is-active', ['id'=>$dm['id']])}}" onchange="status_change(this)"
                                                 >
@@ -107,7 +107,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-3">
+                                            <div class="d-flex justify-content-center gap-3 category-mid">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                 href="{{route('admin.delivery-man.edit',[$dm['id']])}}"><i class="tio-edit"></i></a>
                                                 <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"

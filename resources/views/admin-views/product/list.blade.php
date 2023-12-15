@@ -86,13 +86,13 @@
                                     <tr>
                                         <td>{{$products->firstitem()+$key}}</td>
                                         <td>
-                                            <div class="media align-items-center gap-3">
+                                            <div class="category-mid media align-items-center gap-3">
                                                 <div class="avatar">
                                                     <img src="{{asset('storage/app/public/product')}}/{{$product['image']}}" class="rounded img-fit"
                                                         onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'">
                                                 </div>
 
-                                                <div class="media-body">
+                                                <div class=" name-width">
                                                     <a class="text-dark" href="{{route('admin.product.view',[$product['id']])}}">
                                                         {{ Str::limit($product['name'], 30) }}
                                                     </a>
@@ -111,7 +111,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <div>
+                                            <div class="category-mid">
                                                 <label class="switcher">
                                                     <input id="{{$product['id']}}" class="switcher_input" type="checkbox" {{$product['status']==1? 'checked' : ''}} data-url="{{route('admin.product.status',[$product['id'],0])}}" onchange="status_change(this)">
                                                     <span class="switcher_control"></span>
