@@ -14,7 +14,7 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/deliveryman.png')}}" alt="">
                 <span class="page-header-title">
-                    {{translate('Deliveryman_List')}}
+                    {{translate('Delivery_partner')}}
                 </span>
             </h2>
             <span class="badge badge-soft-dark rounded-circle fz-12">{{ $delivery_men->total() }}</span>
@@ -50,7 +50,7 @@
                                 </div>
                                  <a href="{{route('admin.delivery-man.add')}}" class="btn-attribute btn btn-primary">
                                     <i class="tio-add"></i>
-                                    {{translate('add_Deliveryman')}}
+                                    {{translate('add_Delivery_partner')}}
                                 </a>
                             </div>
                         </div>

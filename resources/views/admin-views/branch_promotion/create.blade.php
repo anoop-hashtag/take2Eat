@@ -4,6 +4,7 @@
 
 @push('css_or_js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+
 @endpush
 
 @section('content')
@@ -76,6 +77,11 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Include jQuery library if not already included -->
+
+
+
+
                     <div class="d-flex justify-content-end gap-3">
                         <button type="reset" class="btn btn-secondary">{{translate('reset')}}</button>
                         <button type="submit" class="btn btn-primary">{{translate('Save')}}</button>
@@ -176,7 +182,7 @@
 
     </div>
 @endsection
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @push('script_2')
     <script>
         $(function() {
@@ -267,6 +273,8 @@
                         className: 'd-none'
                     },
                 ],
+                paging:false,
+                info:false,
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',

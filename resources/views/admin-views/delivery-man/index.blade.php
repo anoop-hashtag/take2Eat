@@ -13,7 +13,7 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/deliveryman.png')}}" alt="">
                 <span class="page-header-title">
-                    {{translate('add_New_Deliveryman')}}
+                    {{translate('add_New_Delivery_partner')}}
                 </span>
             </h2>
         </div>

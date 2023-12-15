@@ -13,7 +13,7 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/takeaway.png')}}" alt="">
                 <span class="page-header-title">
-                    {{translate('Deliveryman_Report')}}
+                    {{translate('Delivery_partner_Report')}}
                 </span>
             </h2>
         </div>
@@ -33,7 +33,7 @@
                     <div class="media-body">
                         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                             <div class="">
-                                <h2 class="page-header-title">{{translate('deliveryman_Report_Overview')}}</h2>
+                                <h2 class="page-header-title">{{translate('Delivery_Partner_Report_Overview')}}</h2>
 
                                 <div class="">
                                     <span>{{translate('admin')}}:</span>
@@ -67,7 +67,7 @@
                                     <select class="form-control" name="delivery_man_id"
                                             id="delivery_man">
                                         <option
-                                            value="0">{{translate('select Deliveryman')}}</option>
+                                            value="0">{{translate('select Delivery Partner')}}</option>
                                         @foreach(\App\Model\DeliveryMan::all() as $deliveryMan)
                                             <option
                                                 value="{{$deliveryMan['id']}}">

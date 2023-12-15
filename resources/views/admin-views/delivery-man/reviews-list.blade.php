@@ -28,7 +28,7 @@
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-8 col-md-8 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2">
-                                    {{translate('Delivery_Men_Review_Table')}}
+                                    {{translate('Delivery_Partner_Review_Table')}}
                                     <span class="badge badge-soft-dark rounded-50 fz-12">{{ $reviews->total() }}</span>
                                 </h5>
                             </div>
@@ -51,7 +51,7 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>{{translate('SL')}}</th>
-                                        <th>{{translate('deliveryman')}}</th>
+                                        <th>{{translate('Delivery_partner')}}</th>
                                         <th>{{translate('customer')}}</th>
                                         <th>{{translate('review')}}</th>
                                         <th class="text-center">{{translate('rating')}}</th>
@@ -71,7 +71,7 @@
                                                 </div>
                                             @else
                                                 <span class="text-muted small">
-                                                        {{translate('Deliveryman_Unavailable')}}
+                                                        {{translate('Delivery_partner_Unavailable')}}
                                                 </span>
                                             @endif
                                         </td>
