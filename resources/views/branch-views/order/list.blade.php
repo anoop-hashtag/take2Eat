@@ -177,7 +177,7 @@
                 <div class="row justify-content-between align-items-center gy-2">
                 <div class="col-sm-4 col-md-6 col-lg-8 d-flex justify-content-start">
                         <div>
-                            <button type="button" class="btn btn-outline-primary" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-outline-primary btn-attribute" data-toggle="dropdown" aria-expanded="false">
                                 <i class="tio-download-to"></i>
                                 {{translate('Export')}}
                                 <i class="tio-chevron-down"></i>

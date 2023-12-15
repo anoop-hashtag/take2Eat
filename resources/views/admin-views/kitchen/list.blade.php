@@ -15,23 +15,20 @@
             <span class="page-header-title">
                 {{translate('Chef_List')}}
             </span>
+            <span class="badge badge-soft-dark rounded-50 fz-12">{{$chefs->total()}}</span>
+                            
         </h2>
     </div>
     <!-- End Page Header -->
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-top px-card">
                
 
                     <div class="row justify-content-between align-items-center gy-2">
-                        <div class="col-md-4">
-                            <h5 class="d-flex gap-2 mb-0">
-                                {{translate('chef_Table')}}
-                                <span class="badge badge-soft-dark rounded-50 fz-12">{{$chefs->total()}}</span>
-                            </h5>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="d-flex flex-wrap justify-content-md-end gap-3">
+                        
+                        <div class="col-md-12">
+                            <div class="d-flex flex-wrap justify-content-start">
                                 {{-- <form action="{{url()->current()}}" method="GET">
                                     <div class="input-group">
                                         <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by Name')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
@@ -40,16 +37,17 @@
                                         </div>
                                     </div>
                                 </form> --}}
-                                <a href="{{route('admin.kitchen.add-new')}}" class="btn btn-primary text-nowrap">
+                                <a href="{{route('admin.kitchen.add-new')}}" class="btn btn-attribute btn-primary text-nowrap">
                                     <i class="tio-add"></i>
                                     <span class="text">{{translate('Add_New')}}</span>
                                 </a>
                             </div>
                         </div>
-</div>
+                        </div>
+                    </div>
                           <!-- Table -->
-                          <div class="set_table random">
-                <div class="table-responsive datatable_wrapper_row mt-3 chef-style" id="set-rows" >
+                          <div class="set_table new-responsive">
+                <div class="table-responsive datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>

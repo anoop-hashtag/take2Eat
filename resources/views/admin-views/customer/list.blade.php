@@ -45,7 +45,7 @@
                     </form>
 
                     <div>
-                        <button type="button" class="btn btn-outline-primary text-nowrap" data-toggle="dropdown" aria-expanded="false">
+                        <button type="button" class="btn btn-outline-primary text-nowrap btn-attribute" data-toggle="dropdown" aria-expanded="false">
                             <i class="tio-download-to"></i>
                             Export
                             <i class="tio-chevron-down"></i>
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="set_table responsive-ui">
+            <div class="set_table responsive-ui customer-style">
                 <div class=" datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
                     <table id="datatable" class="table table-responsive table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="table-responsive mt-4 px-3">
-                    <div class="d-flex justify-content-lg-end">
+                    <div class="d-flex pagination-style justify-content-lg-end">
                         <!-- Pagination -->
                         {!! $customers->links() !!}
                     </div>

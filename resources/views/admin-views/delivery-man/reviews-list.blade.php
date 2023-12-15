@@ -26,13 +26,13 @@
                 <div class="card">
                     <div class="card-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
-                            <div class="col-sm-4 col-md-6 col-lg-8">
+                            <div class="col-sm-8 col-md-8 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2">
                                     {{translate('Delivery_Men_Review_Table')}}
                                     <span class="badge badge-soft-dark rounded-50 fz-12">{{ $reviews->total() }}</span>
                                 </h5>
                             </div>
-                            <div class="col-sm-8 col-md-6 col-lg-4">
+                            <div class="col-sm-4 col-md-4 col-lg-4">
                                 {{-- <form action="{{url()->current()}}" method="GET">
                                     <div class="input-group">
                                         <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by Name')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
@@ -45,8 +45,8 @@
                         </div>
                     </div>
 
-                    <div class="set_table py-3 ">
-                        <div class="table-responsive datatable_wrapper_row"  style="padding:20px 10px;">
+                    <div class="set_table new-responsive  ">
+                        <div class="table-responsive datatable_wrapper_row"  style="padding-right: 10px;">
                             <table id="datatable" class="my-3 table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                     <tr>

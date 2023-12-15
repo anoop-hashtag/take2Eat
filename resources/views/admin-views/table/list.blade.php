@@ -83,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="set_table">
+                    <div class="set_table new-responsive">
                         <div class="table-responsive datatable_wrapper_row"  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">

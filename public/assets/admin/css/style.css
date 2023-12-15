@@ -6,6 +6,9 @@
   --tc: #334257;
 }
 /* ------ For tablat view fo design -------- */
+.pagination-style{
+  justify-content: end!important;
+}
 .right-font{
   text-align: end;
   position: relative;
@@ -21,7 +24,7 @@
 .dataTables_wrapper .dataTables_filter label {
   font-weight: 600;
 }
-.table-responsive.datatable_wrapper_row.printable_btn {
+.table-responsive.datatable_wrapper_row.printable_btn .dt-buttons {
   padding: 10px 10px 10px 22px;
 }
 .product-style{
@@ -32,7 +35,10 @@
 }
 
 @media only screen and (min-width:1300px){
-  .set_table table{
+.margin-style{
+  margin-top:20px
+}  
+.set_table table{
     width: 100%;
     display: table;
   }
@@ -58,6 +64,9 @@
   .table-style .avatar-style{
     width:2.36875rem!important;
     height:2.36875rem!important;
+  }
+  .margin-style{
+    margin-top:20px
   }
 }
 @media (min-width:1200px) and (max-width:1290px){
@@ -89,7 +98,7 @@
     top: 0;
   }
   .set_table table{
-    margin: 35px 0 0 !important;
+    margin: 30px 0 0 !important;
   }
   .datatable_wrapper_row .dataTable{
     display: table;
@@ -103,9 +112,11 @@
     width: 100%;
     padding-top: 10px;
   }
+  
 }
 @media only screen and (min-width:992px) and (max-width:1040px){
-  
+
+ 
   .chef-style{
     position: relative;
     right: 0;
@@ -152,11 +163,7 @@
     width:45px; 
     white-space: nowrap;
   }
-  .set_table.random table#datatable thead, .set_table.random table#datatable tbody {
-    width: 100%;
-    display: table;
-    overflow-x: auto;
-  }
+ 
   .badge-soft-c1 {
     min-width: 86px!important;
     text-align: center;
@@ -169,16 +176,25 @@
   width: 100%;
   padding-top: 10px;
 }
-
 }
 
 @media only screen and (max-width:657px){ 
+  .search-style .dataTables_wrapper .dataTables_filter{
+    margin: 1em 0 0 0rem!important;
+  }
   .new-responsive .datatable_wrapper_row .dataTable{
     display: block;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
   }
+  
+  .attribute-list .datatable_wrapper_row .dataTable{
+    display: table;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  } 
   .table-style .avatar-style{
     width:1.36875rem!important;
     height:1.36875rem!important;
@@ -195,11 +211,33 @@
   }
 }
 @media   (min-width:580px) and (max-width: 640px) {
+  
   .dataTables_wrapper .dataTables_filter {
     margin: 2.5em 0 0 1.3rem!important;
   }
+  .addon-list .datatable_wrapper_row .dataTable{
+    display: table;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  } 
 }
 @media screen and (max-width:580px){
+  .emp-style .dataTables_wrapper .dataTables_filter {
+    margin: 10px!important;
+  }
+  .customer-style .dataTables_wrapper .dataTables_filter{
+    margin-top:30px!important; 
+  } 
+  .search-style .dataTables_wrapper .dataTables_filter{
+    margin: 1em 0 0 0rem!important;
+  }
+  .addon-list .dataTables_wrapper .dataTables_filter{
+    margin-top:30px!important;  
+  }
+  .attribute-list .dataTables_wrapper .dataTables_filter{
+    margin-top:30px!important;
+  } 
   .dataTables_wrapper .dataTables_filter {
     margin: 1em 0 0 1.3rem!important;
 }
@@ -220,9 +258,16 @@
   position: relative;
   right: 0;
 }
-
+.table-responsive.datatable_wrapper_row.branch-chef-style {
+  position: relative;
+  top: 20px;
+  right: 10px;
 }
 
+}
+.sorting_1{
+  text-align: center;
+}
 .employee-style .dataTables_wrapper .dataTables_filter {
   float: right!important;
   text-align: right!important;
@@ -230,11 +275,6 @@
   height: 45px;
   right: 10px;
   top:10px;
-}
-.table-responsive.datatable_wrapper_row.branch-chef-style {
-  position: relative;
-  top: 30px;
-  right: 10px;
 }
 
 .navbar-vertical-aside-has-menu table#datatable.table-responsive{
@@ -245,7 +285,7 @@
   display: none;
 }
 
-/*8/12/203*/
+
 .dataTables_wrapper .dataTables_filter input {
  width: 182px!important;
 }
@@ -253,7 +293,8 @@
   width:368px;
 }
 .btn-attribute{
-  height: 42px;
+  height: 35px;
+  padding: 5px 10px!important;
 }
 .tio-more-horizontal:before {
   content: "\ed49";
@@ -263,6 +304,11 @@
 .btn-action{
   padding: 8px 10px!important;
 }
+.datatable_wrapper_row thead, .datatable_wrapper_row tbody{
+  text-align: center;
+}
+/*8/12/203* end /
+
 
 /* Redesign CSS */
 .navbar-dropdown-lg {
@@ -2631,6 +2677,7 @@ body > #printableAreaContent {
 }
 
 .mx-80px {
+  max-width: 100px;
   max-height: 80px;
 }
 
@@ -2677,11 +2724,11 @@ body > #printableAreaContent {
   width: 0;
 }
 
-.custom-radio input[type=radio] {
+/* .custom-radio input[type=radio] {
   width: 30px;
-    height: 22px;
-    border: 1px solid var(--tc);
-}
+  height: 22px;
+  border: 1px solid var(--tc);
+} */
 
 .custom-radio input[type=radio]:checked {
   border-color: var(--c1);

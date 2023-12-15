@@ -27,21 +27,14 @@
                 <!-- Card -->
                 <div class="card">
                     <div class="card-top px-card ">
-                        <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
+                        <div class="d-flex flex-column flex-md-row flex-wrap  justify-content-start align-items-md-center">
                             <form action="{{url()->current()}}" method="GET">
-                                <div class="input-group">
-                                    {{-- <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by Name or Phone or Email')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off"> --}}
-                                    <div class="input-group-append">
-                                        {{-- <button type="submit" class="btn btn-primary">
-                                        {{translate('Search')}}
-                                        </button> --}}
-                                    </div>
-                                </div>
+                                
                             </form>
 
-                            <div class="d-flex flex-wrap justify-content-md-end gap-3">
+                            <div class="d-flex flex-wrap justify-content-start gap-3">
                                 <div>
-                                    <button type="button" class="btn btn-outline-primary text-nowrap" data-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-attribute btn-outline-primary text-nowrap" data-toggle="dropdown" aria-expanded="false">
                                         <i class="tio-download-to"></i>
                                         Export
                                         <i class="tio-chevron-down"></i>
@@ -55,7 +48,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                 <a href="{{route('admin.delivery-man.add')}}" class="btn btn-primary">
+                                 <a href="{{route('admin.delivery-man.add')}}" class="btn-attribute btn btn-primary">
                                     <i class="tio-add"></i>
                                     {{translate('add_Deliveryman')}}
                                 </a>
@@ -63,8 +56,8 @@
                         </div>
                     </div>
 
-                    <div class="py-4 set_table  new-responsive">
-                        <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
+                    <div class=" set_table  new-responsive">
+                        <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
                             <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                     <tr>

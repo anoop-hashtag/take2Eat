@@ -33,7 +33,7 @@
         </td>
         <td>
             <div class="d-flex justify-content-center gap-2">
-                <a class="btn btn-outline-success btn-sm square-btn"
+                <a class="btn btn-outline-primary btn-sm square-btn"
                     href="{{route('admin.customer.view',[$customer['id']])}}">
                     <i class="tio-visible"></i>
                 </a>

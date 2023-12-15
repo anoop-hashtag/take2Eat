@@ -581,7 +581,7 @@
 <!-- Include jQuery UI library -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
-<link href="https://www.jquery-az.com/jquery/css/intlTelInput/demo.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{asset('public/assets/admin/css/demo.css')}}">
 <link href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css" rel="stylesheet" />
 <!-- Include jQuery UI CSS for styling -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

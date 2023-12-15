@@ -132,7 +132,7 @@
                                         </td>
                                         <td>{{$order['number_of_people']}}</td>
                                         <td>
-                                            <a class="btn btn-sm btn-outline-info square-btn" href="{{route('branch.orders.details',['id'=>$order['id']])}}"><i class="tio-visible"></i></a>
+                                            <a class="btn btn-sm btn-outline-primary square-btn" href="{{route('branch.orders.details',['id'=>$order['id']])}}"><i class="tio-visible"></i></a>
                                         </td>
                                     </tr>
 
