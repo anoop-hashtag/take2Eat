@@ -66,7 +66,7 @@
                     </div>
                     <!-- End Header -->
 
-                    <div class="set_table py-5 margin-style">
+                    <div class="set_table new-responsive">
                         <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
@@ -137,7 +137,7 @@
                         </div>
 
                         <div class="table-responsive mt-4 px-3">
-                            <div class="d-flex justify-content-lg-end">
+                            <div class="d-flex justify-content-lg-end pagination-style">
                                 <!-- Pagination -->
                                 {!! $products->links() !!}
                             </div>
@@ -222,7 +222,8 @@
                         },
                         
                     ],
-                   paging:false
+                    info: false,
+                    paging: false,
                     select: {
                         style: 'multi',
                         selector: 'td:first-child input[type="checkbox"]',

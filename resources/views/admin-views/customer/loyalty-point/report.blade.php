@@ -179,7 +179,7 @@
                 </div>
                 <!-- Pagination -->
                 <div class="page-area px-4 pb-3">
-                    <div class="d-flex align-items-center justify-content-end">
+                    <div class="d-flex align-items-center justify-content-end ">
                         {{-- <div>
                             1-15 of 380
                         </div> --}}

@@ -56,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class=" set_table  new-responsive">
+                    <div class="py-5 set_table  new-responsive">
                         <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
                             <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
@@ -180,6 +180,8 @@
                         className: 'd-none'
                     },
                 ],
+                "paging": false,
+                "info" :info
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',

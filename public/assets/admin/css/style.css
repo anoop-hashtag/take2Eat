@@ -16,7 +16,7 @@
 }
 .card-top{
   position: relative;
-  top:34px;
+  top:35px;
 }
 .dataTables_wrapper .dataTables_filter input {
   border: 2px solid #aaa!important;
@@ -42,15 +42,12 @@
     width: 100%;
     display: table;
   }
-  
-  
 }
 @media only screen and (max-width:1250px){
   .chef-style .dataTables_wrapper .dataTables_filter{
     position: relative;
     right: 0!important;
     top: 0;
-    height: 45px;
   }
   .set_table {
     position: relative;
@@ -70,17 +67,12 @@
   }
 }
 @media (min-width:1200px) and (max-width:1290px){
-  
-  /* .datatable_wrapper_row .dataTable {
-    padding-top: 25px!important;
-} */
 .chef-style .dataTables_wrapper .dataTables_filter{
   float: right!important;
   text-align: right!important;
   position: absolute;
   right: 0!important;
   top: 0;
-  height: 45px;
 }
   .set_table {
     position: relative;
@@ -94,7 +86,6 @@
     text-align: right!important;
     position: absolute;
     right: 10px!important;
-    height: 45px;
     top: 0;
   }
   .set_table table{
@@ -112,11 +103,8 @@
     width: 100%;
     padding-top: 10px;
   }
-  
 }
 @media only screen and (min-width:992px) and (max-width:1040px){
-
- 
   .chef-style{
     position: relative;
     right: 0;
@@ -129,7 +117,6 @@
     text-align: right!important;
     position: absolute;
     right: 10px!important;
-    height: 45px;
     top: 0;
   }
   .set_table table{
@@ -144,7 +131,6 @@
   width: 100%;
   padding-top: 10px;
 }
-
 }
  
 @media only screen and (max-width:992px){
@@ -265,29 +251,23 @@
 }
 
 }
-.sorting_1{
-  text-align: center;
-}
+
 .employee-style .dataTables_wrapper .dataTables_filter {
   float: right!important;
   text-align: right!important;
   position: relative;
-  height: 45px;
   right: 10px;
   top:10px;
 }
-
 .navbar-vertical-aside-has-menu table#datatable.table-responsive{
   display: table;
 }
-
 .navbar-vertical-aside-has-menu .badge{
   display: none;
 }
-
-
 .dataTables_wrapper .dataTables_filter input {
  width: 182px!important;
+ height: 35px!important;
 }
 .invoice_print{
   width:368px;
@@ -306,6 +286,14 @@
 }
 .datatable_wrapper_row thead, .datatable_wrapper_row tbody{
   text-align: center;
+}
+.product-category{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.name-width{
+  width: 115px;
 }
 /*8/12/203* end /
 

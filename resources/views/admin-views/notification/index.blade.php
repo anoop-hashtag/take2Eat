@@ -29,7 +29,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('title')}}
-                                            <i class="tio-info text-danger" data-toggle="tooltip" data-placement="right"
+                                            <i class="tio-info text-secondary" data-toggle="tooltip" data-placement="right"
                                                title="{{ translate('not_more_than_100_characters') }}">
                                             </i>
                                         </label>
@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="input-label">{{translate('description')}}
-                                            <i class="tio-info text-danger" data-toggle="tooltip" data-placement="right"
+                                            <i class="tio-info text-secondary" data-toggle="tooltip" data-placement="right"
                                                title="{{ translate('not_more_than_255_characters') }}">
                                             </i>
                                         </label>
@@ -163,7 +163,7 @@
                         </div>
 
                         <div class="table-responsive mt-4 px-3">
-                            <div class="d-flex justify-content-lg-end">
+                            <div class="d-flex justify-content-lg-end pagination-style">
                                 <!-- Pagination -->
                                 {!! $notifications->links() !!}
                             </div>

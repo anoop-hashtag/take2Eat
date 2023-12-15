@@ -36,7 +36,7 @@
                 <!-- Card -->
                 <div class="card">
                     <div class="card-top px-card pb-4">
-                        <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-between align-items-md-center">
+                        <div class="d-flex flex-column flex-md-row flex-wrap gap-3 justify-content-md-end align-items-md-center">
                             <form action="{{url()->current()}}" method="GET">
                                 <div class="input-group">
                                     <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by Name or Phone or Email')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="set_table">
-                        <div class="table-responsive datatable-custom">
+                        <div class="table-responsive datatable-custom mt-4">
                             <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                     <tr>

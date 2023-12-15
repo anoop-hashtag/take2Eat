@@ -166,7 +166,7 @@
                 </div>
                 <div class="card-footer">
                     <!-- Pagination -->
-                    <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+                    <div class="row justify-content-center justify-content-sm-between align-items-sm-center pagination-style">
                         <div class="col-sm-auto">
                             <div class="d-flex justify-content-center justify-content-sm-end">
                                 {!! $orders->links() !!}

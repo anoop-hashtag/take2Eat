@@ -124,7 +124,7 @@
                         </table>
                     </div>
                     <div class="table-responsive mt-4 px-3">
-                        <div class="d-flex justify-content-lg-end">
+                        <div class="d-flex justify-content-lg-end pagination-style">
                             <!-- Pagination -->
                             {{$em->links()}}
                         </div>
