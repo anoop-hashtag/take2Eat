@@ -61,14 +61,14 @@
                                     <tr>
                                         <td>{{$reviews->firstitem()+$key}}</td>
                                         <td>
-                                            <div>
+                                            <div class="product-category">
                                                 @if($review->product)
-                                                    <a class="text-dark media align-items-center gap-2" href="{{route('admin.product.view',[$review['product_id']])}}">
+                                                    <a class="text-dark media align-items-center gap-2 " href="{{route('admin.product.view',[$review['product_id']])}}">
                                                         <div class="avatar">
-                                                            <img class="rounded-circle img-fit" src="{{asset('storage/app/public/product')}}/{{$review->product['image']}}" alt=""
+                                                            <img class="rounded img-fit" src="{{asset('storage/app/public/product')}}/{{$review->product['image']}}" alt=""
                                                                  onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'">
                                                         </div>
-                                                        <span class="media-body max-w220 text-wrap">{{$review->product['name']}}</span>
+                                                        <span class="media-body max-w220 text-wrap text-justify name-width">{{$review->product['name']}}</span>
                                                     </a>
                                                 @else
                                                     <span class="badge-pill badge-soft-dark text-muted small">
