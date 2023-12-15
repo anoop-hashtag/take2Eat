@@ -57,18 +57,21 @@
                         </div>
 
                         <div class="row">
-                               <div class="col-md-6 mb-3">
-                                    <label for="name">{{translate('Country Code')}} <span class="text-danger">*</span></label>
+                               <div class="col-md-1 mb-3">
+                                    <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
                                    
                                            <br>
-                                           <input type="text" id="mobile-number" value="{{$chef['country_code'];}}"  class="form-control" name="country_code" placeholder="e.g. +1 702 123 4567">
+                                           <input type="text" id="country-dropdown"  value="{{$chef['country_code'];}}"  style=" width: 70px; " class="form-control" name="country_code" placeholder="e.g. +1 702 123 4567">
+                                           {{-- <div  id="country-dropdown" value="{{$chef['country_code'];}}" class="form-control"></div> --}}
+
+                                           <input type="hidden"  id="hidden-country-code" name="country_code">
                                 </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-5 mb-3">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span></label>
                                 <input type="text" value="{{substr($chef['phone'],3)}}" required name="phone"  class="form-control" id="phone"
                                        placeholder="{{translate('Ex')}} : 88017********" maxlength="10">
                             </div>
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
                                 <input type="email" value="{{$chef['email']}}" name="email" class="form-control" id="email"
                                        placeholder="{{translate('Ex')}} : ex@gmail.com" required>

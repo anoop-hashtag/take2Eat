@@ -587,30 +587,41 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript">
     $(document).ready(function() {
-      var input = $("#mobile-number");
+      var countryDropdown = $("#country-dropdown");
       var selectedCountryData = $("#selected-country-data");
+      var hiddenInput = $("#hidden-country-code"); // Add this line to select the hidden input
   
-      input.intlTelInput({
-        initialCountry: "auto",
-        geoIpLookup: function(callback) {
-          $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-            var countryCode = (resp && resp.country) ? resp.country : "";
-            callback(countryCode);
-          });
-        },
+      countryDropdown.intlTelInput({
+        initialCountry: "in", // Default initial country (change as needed)
+        separateDialCode: true,
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js",
       });
-  
+
+      // Set the initial country based on the value in the hidden input
+      var initialCountryCode = hiddenInput.val();
+      if (initialCountryCode) {
+        countryDropdown.intlTelInput('setCountry', initialCountryCode);
+      }
+
+      // Manually trigger the 'countrychange' event to update the hidden input
+      countryDropdown.trigger("countrychange");
+
       // Event listener for the change event
-      input.on("countrychange", function() {
+      countryDropdown.on("countrychange", function() {
         // Get selected country data
-        var countryData = input.intlTelInput('getSelectedCountryData');
+        var countryData = countryDropdown.intlTelInput('getSelectedCountryData');
         
+        // Set the value of the hidden input field
+        hiddenInput.val("+" + countryData.dialCode);
+  
         // Display selected country data
-        selectedCountryData.text("Selected Country Data: " + JSON.stringify(countryData));
+        // selectedCountryData.text("Selected Country Data: " + JSON.stringify(countryData));
       });
     });
-  </script>
+</script>
+
+
+
 <script>
     // Function to validate the date input
     function validateDates() {

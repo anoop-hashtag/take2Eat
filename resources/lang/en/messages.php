@@ -2161,4 +2161,6 @@
   'No. of Addon' => 'No. of Addon',
   'Attribute list' => 'Attribute list',
   'Addon List' => 'Addon List',
+  'Country' => 'Country',
+  'Country_code' => 'Country code',
 );

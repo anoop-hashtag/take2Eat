@@ -67,20 +67,24 @@
 
                         <div class="">
                             <div class="row">
-                            <div class="col-md-6 mb-3">
-                                
-                                    <label for="name">{{translate('Country Code')}} <span class="text-danger">*</span></label>
-                                    {{-- <input type="text" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
+                            <div class="col-md-1 mb-3">
+                               
+                                    <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
+                                    {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
                                            placeholder="{{translate('Ex')}} : +91" required> --}}
                                            <br>
-                                           <input type="text" id="mobile-number" value="+91"  class="form-control" name="country_code" placeholder="e.g. +1 702 123 4567">
+                                        <div  id="country-dropdown" class="form-control"></div>
+
+                                        <input type="hidden" id="hidden-country-code" value="+91" name="country_code">
+
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-5 mb-3">
                                     <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
                                     <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
                                            placeholder="{{translate('Ex')}} : 88017********" required>
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                
+                                <div class="col-md-5 mb-3">
                                     <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
                                     <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"
                                            placeholder="{{translate('Ex')}} : ex@gmail.com" required>
