@@ -467,7 +467,7 @@
                                     <div class="d-flex justify-content-between align-items-center gap-10 form-control">
                                         <span class="title-color">{{ translate('Payment Status') }}</span>
 
-                                        <label class="switcher payment-status-text">
+                                        <label class="switcher payment-status-text category-mid">
                                             <input class="switcher_input" type="checkbox" name="payment_status" value="1"
                                                    onclick="location.href='{{route('admin.orders.payment-status',['id'=>$order['id'],'payment_status' =>$order->payment_status == 'paid' ?'unpaid':'paid'])}}'"
                                                 {{$order->payment_status == 'paid' ?'checked':''}}>

@@ -151,7 +151,7 @@
                                     </td>
                                     <td>{{$order['number_of_people']}}</td>
                                     <td>
-                                        <div class="dropdown">
+                                        <div class="dropdown category-mid">
                                             <a class="btn btn-sm btn-outline-primary square-btn" href="{{route('admin.orders.details',['id'=>$order['id']])}}">
                                                 <i class="tio-invisible"></i>
                                             </a>

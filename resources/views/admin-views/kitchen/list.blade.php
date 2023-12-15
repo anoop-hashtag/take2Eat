@@ -47,7 +47,7 @@
                     </div>
                           <!-- Table -->
                           <div class="set_table new-responsive">
-                <div class="table-responsive datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
+                <div class="table-responsive datatable_wrapper_row customer-style" id="set-rows" style="padding-right: 10px;">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>
@@ -70,7 +70,7 @@
                                                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                 src="{{asset('storage/app/public/kitchen')}}/{{$chef['image']}}">
                                         </div>
-                                        <div class="media-body text-capitalize">
+                                        <div class="media-body text-capitalize name-width">
                                             {{$chef['f_name'].' '.$chef['l_name']}}
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@
                                 </td>
                                 <td>{{ \App\User::get_chef_branch_name($chef) }}</td>
                                 <td>
-                                    <label class="switcher">
+                                    <label class="switcher category-mid">
                                         <input type="checkbox" class="switcher_input"
                                             onclick="location.href='{{route('admin.kitchen.status',[$chef['id'],$chef->is_active?0:1])}}'"
                                             class="toggle-switch-input" {{$chef->is_active?'checked':''}}>
@@ -89,7 +89,7 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <div class="d-flex justify-content-center gap-2">
+                                    <div class="d-flex justify-content-center gap-2 category-mid">
                                         <a href="{{route('admin.kitchen.update',[$chef['id']])}}"
                                             class="btn btn-outline-info btn-sm square-btn"
                                             title="{{translate('Edit')}}">

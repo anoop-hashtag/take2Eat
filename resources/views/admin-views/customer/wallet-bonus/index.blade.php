@@ -113,7 +113,7 @@
 
             <div class="col-12">
                 <div class="card">
-                    <div class="card-top px-card">
+                    <div class="new-top px-card">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -168,7 +168,7 @@
                                         <td>{{ \Carbon\Carbon::parse($bonus->start_date)->format('d M Y') }}</td>
                                         <td>{{ \Carbon\Carbon::parse($bonus->end_date)->format('d M Y') }}</td>
                                         <td>
-                                            <label class="switcher">
+                                            <label class="switcher category-mid">
                                                 <input id="{{$bonus['id']}}" class="switcher_input" type="checkbox" onchange="status_change(this)" {{$bonus['status']==1? 'checked': '' }}
                                                 data-url="{{route('admin.customer.wallet.bonus.status',[$bonus['id'],1])}}"
                                                 >
@@ -176,7 +176,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex justify-content-center gap-2 category-mid">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                    href="{{route('admin.customer.wallet.bonus.edit',[$bonus['id']])}}"><i class="tio-edit"></i></a>
                                                 <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"

@@ -29,23 +29,14 @@
                         <div>
                             <a href="{{ route('admin.business-settings.web-app.third-party.offline-payment.add') }}" type="button" class="btn btn-primary btn-attribute"><i class="tio-add"></i>{{translate('Add New Method')}}</a>
                         </div>
-                            <form action="{{ url()->current() }}" method="GET">
-                                {{-- <div class="input-group">
-                                    <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search_by_method_name')}}" aria-label="Search" value="{{ $search }}" required="" autocomplete="off">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{translate('Search')}}
-                                        </button>
-                                    </div>
-                                </div> --}}
-                            </form>
+                           
                         </div>
                         
                 
 
                     <!-- Table -->
-                    <div class="set_table">
-                        <div class="table-responsive datatable_wrapper_row employee_style"  style="padding-right:10px;">
+                    <div class="set_table new-responsive">
+                        <div class="table-responsive datatable_wrapper_row customer-style"  style="padding-right:10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
                                 <tr>
@@ -80,13 +71,13 @@
                                                      {{translate($informations['information_name'])}} |
                                                 </span>
                                             @endforeach
-                                            <div class="max-w300 text-wrap">
+                                            <span class="max-w300 text-wrap">
                                                 Payment note
-                                            </div>
+</span>
                                         </td>
                                         <td>
                                             <div>
-                                                <label class="switcher">
+                                                <label class="switcher category-mid">
                                                     <input class="switcher_input" type="checkbox" {{$method['status']==1? 'checked' : ''}} id="{{$method['id']}}"
                                                            onchange="status_change(this)" data-url="{{route('admin.business-settings.web-app.third-party.offline-payment.status',[$method['id'],1])}}">
                                                     <span class="switcher_control"></span>

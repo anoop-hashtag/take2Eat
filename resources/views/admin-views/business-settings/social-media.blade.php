@@ -106,13 +106,13 @@
                             html += '<td class="column_name" data-column_name="name" data-id="' + data[count].id + '">' + data[count].name + '</td>';
                             html += '<td class="column_name" data-column_name="slug" data-id="' + data[count].id + '">' + data[count].link + '</td>';
                             html += `<td class="column_name" data-column_name="status" data-id="${data[count].id}">
-                                <label class="switcher">
+                                <label class="switcher category-mid">
                                     <input type="checkbox" onclick="status_change_sm(this)" class="switcher_input" id="${data[count].id}" ${data[count].status == 1 ? "checked" : ""} >
                                     <span class="switcher_control"></span>
                                 </label>
                             </td>`;
                             // html += '<td><a type="button" class="btn btn-primary btn-xs edit" id="' + data[count].id + '"><i class="fa fa-edit text-white"></i></a> <a type="button" class="btn btn-danger btn-xs delete" id="' + data[count].id + '"><i class="fa fa-trash text-white"></i></a></td></tr>';
-                            html += '<td><a type="button" class="btn btn-outline-info btn-xs square-btn edit" id="' + data[count].id + '"> <i class="tio-edit"></i> </a> </td></tr>';
+                            html += '<td><a type="button" class=" category-mid btn btn-outline-info btn-xs square-btn edit" id="' + data[count].id + '"> <i class="tio-edit"></i> </a> </td></tr>';
                         }
                         $('tbody').html(html);
                     }

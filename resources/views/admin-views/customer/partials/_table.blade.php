@@ -9,7 +9,7 @@
                     <img src="{{asset('storage/app/public/profile')}}/{{$customer['image']}}" class="rounded-circle img-fit"
                          onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'">
                 </div>
-                <div class="media-body text-truncate">{{$customer['f_name']." ".$customer['l_name']}}</div>
+                <div class="media-body text-truncate name-width">{{$customer['f_name']." ".$customer['l_name']}}</div>
             </a>
         </td>
         <td>
@@ -26,13 +26,13 @@
             {{$customer['point']}}
         </td>
         <td>
-            <label class="switcher">
+            <label class="switcher category-mid">
                 <input id="{{$customer['id']}}" data-url="{{route('admin.customer.update_status', ['id' => $customer['id']])}}" onclick="status_change(this)" type="checkbox" class="switcher_input" {{$customer->is_active == 1? 'checked' : ''}}>
                 <span class="switcher_control"></span>
             </label>
         </td>
         <td>
-            <div class="d-flex justify-content-center gap-2">
+            <div class="d-flex justify-content-center gap-2 category-mid">
                 <a class="btn btn-outline-primary btn-sm square-btn"
                     href="{{route('admin.customer.view',[$customer['id']])}}">
                     <i class="tio-visible"></i>

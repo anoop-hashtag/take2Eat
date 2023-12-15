@@ -205,8 +205,9 @@
                         className: 'd-none'
                     },
                 ],
+                "info" :false,
                 "paging": false,
-                "info" :info,
+                
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',

@@ -37,7 +37,7 @@
                                 <div class="form-group d-flex gap-3 align-items-center justify-content-between">
                                     <div
                                         class="text-dark font-weight-bold">{{ translate('Enable_Download_Link_for_Web_Footer') }}</div>
-                                    <label class="switcher">
+                                    <label class="switcher category-mid">
                                         <input type="checkbox" class="switcher_input" name="play_store_status"
                                                value="1" {{(isset($config) && $config['status']==1)?'checked':''}}>
                                         <span class="switcher_control"></span>
@@ -51,7 +51,7 @@
 
                                 <div class="form-group">
                                     <label class="text-dark" for="android_min_version">{{ translate('Minimum_Version_for_Force_Update') }}
-                                        <i class="tio-info text-danger" data-toggle="tooltip" data-placement="right"
+                                        <i class="tio-info-outined" data-toggle="tooltip" data-placement="right"
                                            title="{{ translate("If there is any update available in the admin panel and for that, the previous user app will not work, you can force the customer from here by providing the minimum version for force update. That means if a customer has an app below this version the customers must need to update the app first. If you don't need a force update just insert here zero (0) and ignore it.") }}"></i>
                                     </label>
                                     <input type="number" min="0" step=".1" id="android_min_version"
@@ -86,7 +86,7 @@
                                 <div class="form-group d-flex align-items-center gap-3 justify-content-between">
                                     <div
                                         class="text-dark font-weight-bold">{{ translate('Enable download link for web footer') }}</div>
-                                    <label class="switcher">
+                                    <label class="switcher category-mid">
                                         <input type="checkbox" class="switcher_input" name="app_store_status"
                                                value="1" {{(isset($config) && $config['status']==1)?'checked':''}}>
                                         <span class="switcher_control"></span>
@@ -100,7 +100,7 @@
 
                                 <div class="form-group">
                                     <label class="text-dark" for="ios_min_version">{{ translate('Minimum version for force update') }}
-                                        <i class="tio-info text-danger" data-toggle="tooltip" data-placement="right"
+                                        <i class="tio-info-outined" data-toggle="tooltip" data-placement="right"
                                            title="{{ translate("If there is any update available in the admin panel and for that, the previous user app will not work, you can force the customer from here by providing the minimum version for force update. That means if a customer has an app below this version the customers must need to update the app first. If you don't need a force update just insert here zero (0) and ignore it.") }}"></i>
                                     </label>
                                     <input type="number" min="0" step=".1" id="ios_min_version" name="ios_min_version"

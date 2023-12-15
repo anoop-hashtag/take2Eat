@@ -87,20 +87,20 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <label class="switcher">
+                                    <label class="switcher category-mid">
                                         <input class="switcher_input" type="checkbox" onclick="location.href='{{route('admin.promotion.status',[$branch['id'],$branch->branch_promotion_status?0:1])}}'" {{$branch->branch_promotion_status?'checked':''}}>
                                         <span class="switcher_control"></span>
                                     </label>
                                 </td>
                                 <td>
-                                    <label class="switcher">
+                                    <label class="switcher category-mid">
                                         <input class="switcher_input" type="checkbox" onclick="location.href='{{route('admin.branch.status',[$branch['id'],$branch->status?0:1])}}'" {{$branch->status?'checked':''}}>
                                         <span class="switcher_control"></span>
                                     </label>
                                 </td>
                                 <td>
                                     @if(env('APP_MODE')!='demo' || $branch['id']!=1)
-                                        <div class="d-flex justify-content-center gap-3">
+                                        <div class="d-flex justify-content-center gap-3 category-mid">
                                             <a class="btn btn-outline-info btn-sm edit square-btn"
                                                 href="{{route('admin.branch.edit',[$branch['id']])}}"><i class="tio-edit"></i></a>
                                             @if($branch['id']!=1)

@@ -280,7 +280,7 @@
                                 @endif
                             </td>
                             <td>
-                                <div class="d-flex justify-content-center gap-2">
+                                <div class="d-flex justify-content-center gap-2 category-mid">
                                     <a class="btn btn-sm btn-outline-primary square-btn" href="{{route('admin.table.order.details',['id'=>$order['id']])}}">
                                         <i class="tio-invisible"></i>
                                     </a>
