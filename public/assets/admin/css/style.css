@@ -6,6 +6,11 @@
   --tc: #334257;
 }
 /* ------ For tablat view fo design -------- */
+/* ---For Button -------- */
+.d-flex.flex-wrap.justify-content-start a {
+	position: relative;
+	z-index: 1;
+}
 .pagination-style{
   justify-content: end!important;
 }
@@ -3281,7 +3286,4 @@ body > #printableAreaContent {
 .inputDnD .form-control-file:hover:before {
     border-style: solid;
 }
-d-flex.flex-wrap.justify-content-start a {
-	position: relative;
-	z-index: 1;
-}
+
