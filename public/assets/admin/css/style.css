@@ -7,7 +7,7 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
-.d-flex.flex-wrap.justify-content-start a {
+card-top.px-card .d-flex.flex-wrap a, .card-top.px-card .d-flex.flex-wrap .btn {
 	position: relative;
 	z-index: 1;
 }
