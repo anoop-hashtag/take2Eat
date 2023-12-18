@@ -113,7 +113,12 @@
                                     <div class="col">
                                         <!-- Media -->
                                         <div class="media">
-                                            <i class="tio-rupee-outlined nav-icon"></i>
+                                          
+                                            <span style="border: 3px solid #ccc;
+                                            border-radius: 5px; 
+                                          
+                                            padding: 5px; ">&#8377;</span>&nbsp;&nbsp;
+
 
                                             <div class="media-body">
                                                 <h4 class="mb-1">{{translate('total')}} {{translate('sold')}}</h4>
