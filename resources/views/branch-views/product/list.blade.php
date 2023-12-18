@@ -43,8 +43,8 @@
                     </div>
                     <!-- End Header -->
 
-                    <div class="py-4">
-                        <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
+                    <div class="set_table  new-responsive py-4 ">
+                        <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding:0 10px;">
                             <table id="datatable" class="mt-3 table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table" style="padding-right: 10px">
                                 <thead class="thead-light">
                                 <tr>
@@ -62,12 +62,12 @@
                                     <tr>
                                         <td>{{$products->firstitem()+$key}}</td>
                                         <td>
-                                            <div class="media align-items-center gap-3">
+                                            <div class="media align-items-center gap-3 category-mid">
                                                 <div class="avatar">
                                                     <img src="{{asset('storage/app/public/product')}}/{{$product['image']}}" class="rounded img-fit"
                                                         onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'">
                                                 </div>
-                                                <div class="media-body">
+                                                <div class="media-body name-width">
                                                         {{ Str::limit($product['name'], 30) }}
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@
                                         </td>
                                         <td>
                                             <div>
-                                                <label class="switcher">
+                                                <label class="switcher category-mid">
                                                     @forelse($product->product_by_branch as $item)
                                                         <input id="{{$product['id']}}" class="switcher_input"
                                                             type="checkbox" {{ ($item->product_id == $product->id) && $item->is_available == 1 ? 'checked' : ''}}
@@ -102,7 +102,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex justify-content-center gap-2 category-mid">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                     href="{{route('branch.product.set-price',[$product['id']])}}"><i class="tio-edit"></i></a>
                                             </div>

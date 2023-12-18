@@ -39,6 +39,7 @@
 }
 
 @media only screen and (min-width:1300px){
+
 .margin-style{
   margin-top:20px
 }  
@@ -86,6 +87,7 @@
   }
 }
 @media (min-width:1200px) and (max-width:1290px){
+ 
   .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -123,8 +125,28 @@
     width: 100%;
     padding-top: 10px;
   }
+  .responsive-ui.customer-style .datatable_wrapper_row .dataTable{
+    display: table!important;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
   .responsive-ui .datatable_wrapper_row .dataTable{
     display: block;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
+  .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
+    display: table!important;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
+}
+@media (min-width:1040px) and (max-width:1200px){
+  .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
+    display: table!important;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
@@ -153,6 +175,12 @@
 }
 .datatable_wrapper_row .dataTable{
   display: table;
+  overflow-x: auto!important;
+  width: 100%;
+  padding-top: 10px;
+}
+.responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
+  display: table!important;
   overflow-x: auto!important;
   width: 100%;
   padding-top: 10px;
@@ -235,6 +263,12 @@
   } 
 }
 @media screen and (max-width:580px){
+  .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
+    display: block!important;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
   .emp-style .dataTables_wrapper .dataTables_filter {
     margin: 10px!important;
   }
@@ -276,6 +310,7 @@
   right: 10px;
 }
 }
+
 .employee-style .dataTables_wrapper .dataTables_filter {
   float: right!important;
   text-align: right!important;
@@ -328,8 +363,12 @@
 }
 .category-select{
   width:80px;
-
 }
+.link-style{
+  max-width: 150px!important;
+  white-space: break-spaces!important;
+}
+
 /*8/12/203* end /
 
 

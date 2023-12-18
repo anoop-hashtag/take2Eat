@@ -173,7 +173,7 @@
             </div>
             @endif
             <!-- Header -->
-            <div class="card-top px-card pt-4">
+            <div class="card-top px-card ">
                 <div class="row justify-content-between align-items-center gy-2">
                 <div class="col-sm-4 col-md-6 col-lg-8 d-flex justify-content-start">
                         <div>
@@ -221,7 +221,7 @@
 
             <div class="set_table responsive-ui">
                 <!-- Table -->
-                <div class="table-responsive datatable_wrapper_row" style="padding-right:10px;">
+                <div class="table-responsive datatable_wrapper_row " style="padding:0 10px;">
                     <table id="datatable"
                             class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">

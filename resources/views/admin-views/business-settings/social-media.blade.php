@@ -104,7 +104,7 @@
                             html += '<tr>';
                             html += '<td class="column_name" data-column_name="sl" data-id="' + data[count].id + '">' + (count + 1) + '</td>';
                             html += '<td class="column_name" data-column_name="name" data-id="' + data[count].id + '">' + data[count].name + '</td>';
-                            html += '<td class="column_name" data-column_name="slug" data-id="' + data[count].id + '">' + data[count].link + '</td>';
+                            html += '<td class="column_name link-style" data-column_name="slug" data-id="' + data[count].id + '">' + data[count].link + '</td>';
                             html += `<td class="column_name" data-column_name="status" data-id="${data[count].id}">
                                 <label class="switcher category-mid">
                                     <input type="checkbox" onclick="status_change_sm(this)" class="switcher_input" id="${data[count].id}" ${data[count].status == 1 ? "checked" : ""} >

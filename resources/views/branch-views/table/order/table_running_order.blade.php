@@ -37,9 +37,9 @@
                             </div>
                             <!-- End Select -->
                         </div>
-                        <div class="col-3">
+                        <div class="col-3" >
                             <!-- Select -->
-                            <select class="custom-select custom-select-sm text-capitalize" name="table" id="select_table">
+                            <select style="margin-right:20px" class="custom-select custom-select-sm text-capitalize" name="table" id="select_table">
                                 <option disabled selected>--- {{translate('select')}} {{translate('table')}} ---</option>
                                 @foreach($tables as $table)
                                     <option value="{{$table['id']}}" {{$table_id==$table['id'] ? 'selected' : ''}}>{{translate('Table')}} - {{$table['number']}}</option>
@@ -49,9 +49,9 @@
                         </div>
                     </div>
 {{--                    <div class="card-body p-3">--}}
-                        <div class="table-responsive datatable-custom">
+                        <div class="table-responsive datatable-custom" style="padding:0 10px">
                             <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
-                                   style="width: 100%">
+                                   style="width: 100%;">
                                 <thead class="thead-light">
                                 <tr>
                                     <th class="">
@@ -132,7 +132,7 @@
                                         </td>
                                         <td>{{$order['number_of_people']}}</td>
                                         <td>
-                                            <a class="btn btn-sm btn-outline-primary square-btn" href="{{route('branch.orders.details',['id'=>$order['id']])}}"><i class="tio-visible"></i></a>
+                                            <a class="btn btn-sm btn-outline-primary square-btn category-mid" href="{{route('branch.orders.details',['id'=>$order['id']])}}"><i class="tio-visible"></i></a>
                                         </td>
                                     </tr>
 

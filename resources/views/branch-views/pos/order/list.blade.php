@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="card-top px-card pt-4">
+            <div class="card-top px-card ">
                 <div class="row justify-content-between align-items-center gy-2">
                 <div class="col-sm-4 col-md-6 col-lg-8 d-flex justify-content-start">
                         <div>

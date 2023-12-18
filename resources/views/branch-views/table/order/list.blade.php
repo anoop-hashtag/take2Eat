@@ -149,11 +149,11 @@
                 </div>
             @endif
             <!-- Header -->
-            <div class="card-top px-card pt-4">
+            <div class="card-top px-card ">
                 <div class="row justify-content-between align-items-center gy-2">
                 <div class="col-sm-4 col-md-6 col-lg-8 d-flex justify-content-start">
                         <div>
-                            <button type="button" class="btn btn-outline-primary" data-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-outline-primary btn-attribute" data-toggle="dropdown" aria-expanded="false">
                                 <i class="tio-download-to"></i>
                                 {{translate('Export')}}
                                 <i class="tio-chevron-down"></i>
@@ -189,10 +189,10 @@
             </div>
             <!-- End Header -->
 
-            <div class="set_table new-responsive">
+            <div class="set_table responsive-ui customer-style table-css">
                 <!-- Table -->
-                <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding: 0% 10px;">
-                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                <div class=" datatable_wrapper_row " id="set-rows" style="padding: 0% 10px;">
+                    <table id="datatable" class="table-responsive table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                         <tr>
                             <th>{{translate('SL')}}</th>

@@ -51,7 +51,7 @@
 
             <div class="col-12">
                 <div class="card">
-                    <div class="card-top px-card ">
+                    <div class="new-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-sm-4 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -77,10 +77,10 @@
                         </div>
                     </div>
 
-                    <div class="set_table new-responsive">
-                        <div class="table-responsive datatable_wrapper_row" style="padding: 0px 10px;">
+                    <div class="set_table responsive-ui customer-style ">
+                        <div class=" datatable_wrapper_row" style="padding: 0px 10px;">
                             <table id="datatable"
-                                    class=" table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100"  >
+                                    class=" table-responsive table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100"  >
                                 <thead class="thead-light">
                                     <tr>
                                         <th>{{translate('SL')}}</th>
@@ -99,7 +99,7 @@
                                         <td>{{$table['capacity']}}</td>
                                         <td>{{$table->branch->name ?? null}}</td>
                                         <td>
-                                            <label class="switcher">
+                                            <label class="switcher category-mid">
                                                 <input type="checkbox" class="switcher_input"
                                                         onclick="location.href='{{route('branch.table.status',[$table['id'],$table->is_active?0:1])}}'"
                                                         class="toggle-switch-input" {{$table->is_active?'checked':''}}>
@@ -107,7 +107,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex justify-content-center gap-2 category-mid">
                                                 <a href="{{route('branch.table.edit',[$table['id']])}}"
                                                     class="btn btn-outline-info btn-sm edit square-btn"
                                                     title="{{translate('Edit')}}">
@@ -186,6 +186,8 @@
                     className: 'd-none'
                 },
             ],
+            info:false,
+            paging:false,
             select: {
                 style: 'multi',
                 selector: 'td:first-child input[type="checkbox"]',
