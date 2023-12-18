@@ -3,6 +3,7 @@
 @section('title', translate('table order'))
 
 @push('css_or_js')
+
 @endpush
 
 @section('content')
@@ -24,18 +25,7 @@
             <div class="card">
                 <div class="card-top px-card ">
                     <div class="row justify-content-between align-items-center gy-2">
-                        <div class="col-sm-4 col-md-5 col-lg-4">
-                            <div>
-                                <form action="{{url('admin/table/order/list/completed')}}" method="GET">
-                                    <div class="input-group">
-                                        <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="Search by ID  customer or payment status" aria-label="Search" value="" required="" autocomplete="off">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-primary">Search</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                       
                         <div class="col-sm-6 col-md-6 col-lg-7">
                             <div class="row">
                                 <div class="col-3">
@@ -68,9 +58,8 @@
                     <!-- End Row -->
                 </div>
                 <div class="card-body mt-4 px-3">
-                    <div class="table-responsive datatable-custom">
-                        <table class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
-                               style="width: 100%">
+                    <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
+                        <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                             <tr>
                                 <th class="">
@@ -196,5 +185,98 @@
             });
         });
     </script>
-
+   @push('script_2')
+   <script>
+       $(document).on('ready', function () {
+           // INITIALIZATION OF NAV SCROLLER
+           // =======================================================
+           $('.js-nav-scroller').each(function () {
+               new HsNavScroller($(this)).init()
+           });
+   
+           // INITIALIZATION OF SELECT2
+           // =======================================================
+           $('.js-select2-custom').each(function () {
+               var select2 = $.HSCore.components.HSSelect2.init($(this));
+           });
+   
+   
+           // INITIALIZATION OF DATATABLES
+           // =======================================================
+           var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+               dom: 'Bfrtip',
+               buttons: [
+                   {
+                       extend: 'copy',
+                       className: 'd-none'
+                   },
+                   {
+                       extend: 'excel',
+                       className: 'd-none'
+                   },
+                   {
+                       extend: 'csv',
+                       className: 'd-none'
+                   },
+                   {
+                       extend: 'pdf',
+                       className: 'd-none'
+                   },
+                   {
+                       extend: 'print',
+                       className: 'd-none'
+                   },
+               ],
+               select: {
+                   style: 'multi',
+                   selector: 'td:first-child input[type="checkbox"]',
+                   classMap: {
+                       checkAll: '#datatableCheckAll',
+                       counter: '#datatableCounter',
+                       counterInfo: '#datatableCounterInfo'
+                   }
+               },
+               info: false,
+               paging: false,
+               language: {
+                   zeroRecords: '<div class="text-center p-4">' +
+                       '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                       '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                       '</div>'
+               }
+           });
+   
+           // INITIALIZATION OF TAGIFY
+           // =======================================================
+           $('.js-tagify').each(function () {
+               var tagify = $.HSCore.components.HSTagify.init($(this));
+           });
+       });
+   
+       function filter_branch_orders(id) {
+           location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+       }
+   </script>
+   
+   
+   <script>
+       $('#from_date,#to_date').change(function () {
+           let fr = $('#from_date').val();
+           let to = $('#to_date').val();
+           if (fr != '' && to != '') {
+               if (fr > to) {
+                   $('#from_date').val('');
+                   $('#to_date').val('');
+                   toastr.error('{{translate('Invalid date range!')}}', Error, {
+                       CloseButton: true,
+                       ProgressBar: true
+                   });
+               }
+           }
+       });
+       $('#datatable').dataTable({
+   destroy: true,
+   ...
+   });
+   </script>
 @endpush
