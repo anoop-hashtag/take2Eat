@@ -178,10 +178,10 @@
                                                 @if ($variation['type'] == 'multi')
                                                     {{ translate('multiple_select') }}
                                                 @elseif($variation['type'] =='single')
-                                                    {{ translate('single_select') }}
+                                                 {{ translate('single_select') }}
                                                 @endif
                                                 @if ($variation['required'] == 'on')
-                                                    - ({{ translate('required') }})
+                                                <strong>- ({{ translate('required') }})</strong>
                                                 @endif
                                             </span>
 
@@ -192,7 +192,7 @@
                                             @if (isset($variation['values']))
                                                 @foreach ($variation['values'] as $value)
                                                     <span class="d-block text-capitalize">
-                                                        {{ $value['label']}} :<strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
+                                                        <strong>{{ $value['label']}}</strong> : {{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}
                                                     </span>
                                                 @endforeach
                                             @endif

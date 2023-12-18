@@ -294,7 +294,7 @@
                                                 fontFamily: "Open Sans, sans-serif",
                                                 padding: 10,
                                                 callback: function(value, index, values) {
-                                                    return '{{\App\CentralLogics\Helpers::currency_symbol()}} ' + value;
+                                                    return ' ' + value;
                                                 }
                                             }
                                         }],
