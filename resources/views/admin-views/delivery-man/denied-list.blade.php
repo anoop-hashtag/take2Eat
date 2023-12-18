@@ -3,6 +3,7 @@
 @section('title', translate('New Joining Request'))
 
 @push('css_or_js')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 

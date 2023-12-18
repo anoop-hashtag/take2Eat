@@ -3281,3 +3281,7 @@ body > #printableAreaContent {
 .inputDnD .form-control-file:hover:before {
     border-style: solid;
 }
+d-flex.flex-wrap.justify-content-start a {
+	position: relative;
+	z-index: 1;
+}
