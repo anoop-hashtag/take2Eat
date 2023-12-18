@@ -114,10 +114,7 @@
                                         <!-- Media -->
                                         <div class="media">
                                           
-                                            <span style="border: 3px solid #ccc;
-                                            border-radius: 5px; 
-                                          
-                                            padding: 5px; ">&#8377;</span>&nbsp;&nbsp;
+                                            <span style="font-size: 18px; position: relative; top: -3px;">₹</span>&nbsp;
 
 
                                             <div class="media-body">
