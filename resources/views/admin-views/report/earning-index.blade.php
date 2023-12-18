@@ -113,7 +113,7 @@
                                     <div class="col">
                                         <!-- Media -->
                                         <div class="media">
-                                            <i class="tio-dollar-outlined nav-icon"></i>
+                                            <i class="tio-rupee-outlined nav-icon"></i>
 
                                             <div class="media-body">
                                                 <h4 class="mb-1">{{translate('total')}} {{translate('sold')}}</h4>

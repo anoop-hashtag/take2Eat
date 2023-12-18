@@ -239,30 +239,35 @@
                                                     @endif
 
                                                     <div class="d-flex gap-2">
-                                                        <span class="">{{translate('Qty')}} :  </span>
-                                                        <span>{{$detail['quantity']}}</span>
+                                                        <div style="text-align: left">
+                                                            <span class="">{{translate('Qty')}} :  </span>
+                                                            <span>{{$detail['quantity']}}</span>
+                                                        {{-- </div> --}}
+                                                        <br/>
+                                                        
+                                                        {{-- <div> --}}
+                                                            @php($addon_ids = json_decode($detail['add_on_ids'],true))
+                                                            @if ($addon_ids)
+                                                                                                                
+                                                                <strong>{{translate('addons')}}</strong>
+                                                                @foreach($addon_ids as $key2 =>$id)
+                                                                    @php($addon=\App\Model\AddOn::find($id))
+                                                                    @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
+
+                                                                    <div class="font-size-sm text-body">
+                                                                            <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
+                                                                            <span class="font-weight-semibold">
+                                                                                {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2]) }}
+                                                                            </span>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                    @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
+                                                                    @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
                                                     </div>
-
-                                                    <br>
-                                                    @php($addon_ids = json_decode($detail['add_on_ids'],true))
-                                                    @if ($addon_ids)
-                                                    <span>
-                                                    <strong>{{translate('addons')}}</strong>
-                                                        @foreach($addon_ids as $key2 =>$id)
-                                                            @php($addon=\App\Model\AddOn::find($id))
-                                                            @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
-
-                                                            <div class="font-size-sm text-body">
-                                                                    <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
-                                                                    <span class="font-weight-semibold">
-                                                                        {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2]) }} <br>
-                                                                    </span>
-                                                                </div>
-                                                            @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
-                                                            @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
-                                                        @endforeach
-                                                    </span>
-                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
