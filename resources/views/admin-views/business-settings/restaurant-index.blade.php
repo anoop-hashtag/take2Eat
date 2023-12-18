@@ -681,7 +681,7 @@
                             @php($vnv_status=\App\CentralLogics\Helpers::get_business_settings('toggle_veg_non_veg'))
                             <div class="form-control d-flex justify-content-between align-items-center gap-3">
                                 <div>
-                                    <label class="text-dark mb-0">{{translate('Veg / Non Veg Option')}}
+                                    <label class="text-dark mb-0">{{translate('Veg / Non Veg / Egg Option')}}
                                         <i class="tio-info-outined"
                                            data-toggle="tooltip"
                                            data-placement="top"
