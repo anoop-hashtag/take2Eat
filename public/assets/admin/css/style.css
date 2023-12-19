@@ -112,7 +112,7 @@ div#country-dropdown {
     margin-top:20px
   }
 }
-@media (min-width:1200px) and (max-width:1290px){
+@media (min-width:1200px) and (max-width:1299px){
   .search-arrange .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
