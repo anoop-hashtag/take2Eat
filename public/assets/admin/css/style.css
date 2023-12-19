@@ -51,10 +51,10 @@ div#country-dropdown {
 .margin-style{
   margin-top:20px
 }  
-/* .set_table table{
+.set_table table{
     width: 100%;
     display: table;
-  } */
+  }
   .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
   text-align: right!important;
@@ -134,7 +134,7 @@ div#country-dropdown {
     padding-top: 10px;
   }
   .responsive-ui.customer-style .datatable_wrapper_row .dataTable{
-    display: block!important;
+    display: table!important;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
@@ -342,8 +342,6 @@ div#country-dropdown {
 .btn-attribute{
   height: 35px;
   padding: 5px 10px!important;
-  position: relative;
-  z-index: 1;
 }
 .tio-more-horizontal:before {
   content: "\ed49";
