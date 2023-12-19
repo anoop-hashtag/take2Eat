@@ -57,8 +57,9 @@
                     </div>
                     <!-- End Row -->
                 </div>
-                <div class="card-body mt-4 px-3">
-                    <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
+                
+                    <div class="set_table">
+                    <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding:0 10px;">
                         <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                             <tr>
@@ -152,7 +153,8 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                    </div>
+               
                 <div class="card-footer">
                     <!-- Pagination -->
                     <div class="row justify-content-center justify-content-sm-between align-items-sm-center pagination-style">

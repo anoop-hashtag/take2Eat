@@ -117,7 +117,7 @@
                                                 <strong> {{$detail->product['name']}}</strong><br>
 
                                                 @if(count(json_decode($detail['variation'],true))>0)
-                                                    <strong><u>Variation : </u></strong>
+                                                    <strong>Variation : </strong>
                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                         <div class="font-size-sm text-body">
                                                             <span>{{$key1}} :  </span>
@@ -128,7 +128,7 @@
 
                                                 @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                                                     @php($addon=\App\Model\AddOn::find($id))
-                                                    @if($key2==0)<strong><u>Addons : </u></strong>@endif
+                                                    @if($key2==0)<strong>Addons : </strong>@endif
 
                                                     @if($add_on_qtys==null)
                                                         @php($add_on_qty=1)

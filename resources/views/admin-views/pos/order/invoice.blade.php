@@ -23,7 +23,7 @@
             <h5>{{translate('Order ID')}} : {{$order['id']}}</h5>
         </div>
         <div class="col-6">
-            <h5 style="font-weight: lighter; " class="order_id">
+            <h5 style="font-weight: lighter; " class="order_id font-size-sm">
                 {{date('d/M/Y h:i a',strtotime($order['created_at']))}}
             </h5>
         </div>
@@ -67,10 +67,10 @@
                     <td class="">
                         {{$detail['quantity']}}
                     </td>
-                    <td class="">
+                    <td class="" style="text-align:left">
                         <span style="word-break: break-all;"> {{ Str::limit($detail->product['name'], 200) }}</span><br>
                         @if (count(json_decode($detail['variation'], true)) > 0)
-                            <strong><u>{{ translate('variation') }} : </u></strong>
+                            <strong>{{ translate('variation') }} : </strong>
                             @foreach(json_decode($detail['variation'],true) as  $variation)
                                 @if ( isset($variation['name'])  && isset($variation['values']))
                                     <span class="d-block text-capitalize">
