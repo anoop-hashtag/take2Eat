@@ -135,10 +135,10 @@
                                 <td class="">
                                     {{$detail['quantity']}}
                                 </td>
-                                <td class="">
+                                <td class="" style="text-align:left ">
                                     <span style="word-break: break-all; " class="font-weight-bold"> {{ Str::limit($detail->product['name'], 200) }}</span><br>
                                     @if (count(json_decode($detail['variation'], true)) > 0)
-                                        <strong><u>{{ translate('variation') }} : </u></strong>
+                                        <strong>{{ translate('variation') }} : </strong>
                                         @foreach(json_decode($detail['variation'],true) as  $variation)
                                             @if ( isset($variation['name'])  && isset($variation['values']))
                                                 <span class="d-block text-capitalize ">
@@ -163,14 +163,14 @@
                                             @endif
                                         @endforeach
                                     @else
-                                        <div class="font-size-sm right-font">
+                                        <div class="font-size-sm ">
                                             <span>{{ translate('Price') }} : </span>
                                             <span
                                                 class="">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
                                         </div>
                                     @endif
 
-                                    <div class="font-size-sm right-font">
+                                    <div class="font-size-sm">
                                     @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                                         @php($addon=\App\Model\AddOn::find($id))
                                         @if($key2==0)<strong>{{translate('Addons : ')}}</strong>@endif
