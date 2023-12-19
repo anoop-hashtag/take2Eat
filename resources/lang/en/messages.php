@@ -2160,5 +2160,10 @@
   'No. of Attribute' => 'No. of Attribute',
   'No. of Addon' => 'No. of Addon',
   'Attribute list' => 'Attribute list',
-  'Addon List' => 'Addon List'
+  'Addon List' => 'Addon List',
+  'Delivery_partner_Report' => 'Delivery partner Report',
+  'Delivery_partner' => 'Delivery partner',
+  'Delivery_partner_List' => 'Delivery partner List',
+  'Add_New_Delivery_partner' => 'Add New Delivery partner',
+  'Delivery_partner_Reviews' => 'Delivery partner Reviews',
 );
