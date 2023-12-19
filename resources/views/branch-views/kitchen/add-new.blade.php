@@ -40,7 +40,7 @@
                                 <input type="text" name="l_name" class="form-control" id="l_name"
                                         placeholder="{{translate('Ex')}} : {{translate('Doe')}}" value="{{old('l_name')}}" required>
                             </div>
-                               <<div class="col-md-1 mb-3">
+                               <div class="col-md-1 mb-3">
                                
                                 <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
                                 {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
