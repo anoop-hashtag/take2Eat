@@ -284,6 +284,9 @@ div#country-dropdown {
   .customer-style .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important; 
   } 
+  .top-style .dataTables_wrapper .dataTables_filter{
+    margin-top:30px!important; 
+  } 
   .search-style .dataTables_wrapper .dataTables_filter{
     margin: 1em 0 0 0rem!important;
   }
