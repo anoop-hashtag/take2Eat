@@ -33,10 +33,24 @@
                             <div class="text-center sub-txt text-capitalize">{{translate('google_login')}}</div>
                             <div class="custom--switch switch--right">
                                 @php($google = \App\CentralLogics\Helpers::get_business_settings('google_social_login'))
-                                <input onclick="loginStatusChange(this)" type="checkbox" id="google_social_login" name="google" switch="primary" class="toggle-switch-input"
+                                <!-- <input onclick="loginStatusChange(this)" type="checkbox" id="google_social_login" name="google" switch="primary" class="toggle-switch-input"
                                        {{$google == 1 ? 'checked' : ''}}>
                                 <label for="google_social_login" data-on-label="on" data-off-label="off"></label>
+ -->
+
+                                
+                                <label class="switch--custom-label toggle-switch toggle-switch-sm d-inline-flex">
+                                    <span class="mr-2 switch--custom-label-text text-primary on text-uppercase">on</span>
+                                    <span class="mr-2 switch--custom-label-text off text-uppercase">off</span>
+                                    <input type="checkbox" 
+                                           class="toggle-switch-input" onclick="loginStatusChange(this)"  id="google_social_login" name="google" switch="primary" class="toggle-switch-input"
+                                       {{$google == 1 ? 'checked' : ''}}>
+                                    <span class="toggle-switch-label text">
+                                            <span class="toggle-switch-indicator"></span>
+                                        </span>
+                                    </label>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -51,9 +65,22 @@
                             <div class="text-center sub-txt text-capitalize">{{translate('facebook_login')}}</div>
                             <div class="custom--switch switch--right">
                                 @php($facebook = \App\CentralLogics\Helpers::get_business_settings('facebook_social_login'))
-                                <input onclick="loginStatusChange(this)" type="checkbox" id="facebook" name="facebook_social_login" switch="primary" class="toggle-switch-input"
+                                <!-- <input onclick="loginStatusChange(this)" type="checkbox" id="facebook" name="facebook_social_login" switch="primary" class="toggle-switch-input"
                                 {{$facebook == 1 ? 'checked' : ''}}>
                                 <label for="facebook" data-on-label="on" data-off-label="off"></label>
+ -->
+
+
+                                <label class="switch--custom-label toggle-switch toggle-switch-sm d-inline-flex">
+                                    <span class="mr-2 switch--custom-label-text text-primary on text-uppercase">on</span>
+                                    <span class="mr-2 switch--custom-label-text off text-uppercase">off</span>
+                                    <input type="checkbox" 
+                                           class="toggle-switch-input" onclick="loginStatusChange(this)" type="checkbox" id="facebook" name="facebook_social_login" switch="primary" class="toggle-switch-input"
+                                {{$facebook == 1 ? 'checked' : ''}}>
+                                    <span class="toggle-switch-label text">
+                                            <span class="toggle-switch-indicator"></span>
+                                        </span>
+                                    </label>
                             </div>
                         </div>
                     </div>
@@ -73,11 +100,22 @@
                                             <img src="{{asset('/public/assets/admin/img/apple.png')}}" class="mr-1 w--20" alt="">
                                             {{translate('Apple Login')}}
                                         </h5>
-                                        <div class="custom--switch switch--right">
+                                        <!-- <div class="custom--switch switch--right">
                                             <input type="checkbox" id="apple" name="status" switch="primary" class="toggle-switch-input"
                                                 {{$appleLoginService['status'] == 1 ? 'checked' : ''}}>
                                             <label for="apple" data-on-label="on" data-off-label="off"></label>
-                                        </div>
+                                        </div> -->
+                                        
+                                    <label class="switch--custom-label toggle-switch toggle-switch-sm d-inline-flex">
+                                    <span class="mr-2 switch--custom-label-text text-primary on text-uppercase">on</span>
+                                    <span class="mr-2 switch--custom-label-text off text-uppercase">off</span>
+                                    <input type="checkbox"  id="apple" name="status" switch="primary" class="toggle-switch-input"
+                                                {{$appleLoginService['status'] == 1 ? 'checked' : ''}} />
+                                    <span class="toggle-switch-label text">
+                                            <span class="toggle-switch-indicator"></span>
+                                        </span>
+                                    </label>
+
                                     </div>
                                 </div>
 

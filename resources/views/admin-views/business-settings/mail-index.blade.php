@@ -70,10 +70,20 @@
                             <div class="card-body">
                                 <div class="d-flex flex-wrap mb-3">
                                     <label class="control-label h3 mb-0 text-capitalize mr-3">{{translate('Mail Configuration  Status')}}</label>
-                                    <div class="custom--switch">
-                                        <input type="checkbox" name="status" value="" id="smtp-mail" switch="primary" class="toggle-switch-input" {{isset($data['status']) && $data['status']==1 ? 'checked' : ''}}>
+                                    <!-- <div class="custom--switch">
+                                        <input type="checkbox" name="status" value="" id="smtp-mail" switch="primary" class="toggle-switch-input" >
                                         <label for="smtp-mail" data-on-label="on" data-off-label="off"></label>
-                                    </div>
+                                    </div> -->
+
+                                    <label class="switch--custom-label toggle-switch toggle-switch-sm d-inline-flex">
+                                    <span class="mr-2 switch--custom-label-text text-primary on text-uppercase">on</span>
+                                    <span class="mr-2 switch--custom-label-text off text-uppercase">off</span>
+                                    <input type="checkbox" name="status" value="1"
+                                           class="toggle-switch-input" {{isset($data['status']) && $data['status']==1 ? 'checked' : ''}}>
+                                    <span class="toggle-switch-label text">
+                                            <span class="toggle-switch-indicator"></span>
+                                        </span>
+                                    </label>
                                 </div>
                                 <div class="row g-2">
                                     <div class="col-sm-6">

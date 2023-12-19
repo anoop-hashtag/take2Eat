@@ -408,10 +408,10 @@ div#country-dropdown {
   text-align: center;
 } */
 table.dataTable thead th, table.dataTable thead td {
-	padding: 8px 10px;
+	padding: 8px 10px!important;
 }
 table.dataTable tbody td {
-	padding: 8px 10px;
+	padding: 8px 10px!important;
 }
 .product-category{
   display: flex;
