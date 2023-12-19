@@ -189,7 +189,7 @@
                                         <td>
                                             <div class="category-mid media align-items-center gap-3">
                                                 <div>
-                                                <img width="50" class="avatar-img rounded " src="{{asset('storage/app/public/category')}}/{{$category['image']}}" onerror="this.src='{{asset('public/assets/admin/img/icons/category_img.png')}}'" alt="" style="height:50px">
+                                                <img width="50" class="avatar-img rounded " src="{{asset('storage/app/public/category')}}/{{$category['image']}}" onerror="this.src='{{asset('public/assets/admin/img/icons/category_img.png')}}'" alt="" style="height:50px;">
                                                 </div>
                                                 <div class="text-capitalize name-width ">{{$category['name']}}</div>
                                             </div>

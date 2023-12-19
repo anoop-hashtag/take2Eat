@@ -363,8 +363,9 @@ div#country-dropdown {
   align-items: center;
 }
 .name-width{
-  width: 115px!important;
+  width: 125px!important;
   text-align: justify!important;
+  white-space: break-spaces;
 }
 .category-mid{
   display: flex;
