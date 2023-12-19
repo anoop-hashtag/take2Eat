@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
     <meta name="csrf-token" content="{{csrf_token()}}">
     <!-- Title -->
     <title>@yield('title')</title>
@@ -592,7 +592,8 @@
       var hiddenInput = $("#hidden-country-code"); // Add this line to select the hidden input
   
       countryDropdown.intlTelInput({
-        initialCountry: "AF", // Default initial country (change as needed)
+        preferredCountries: [],
+        // initialCountry: "in", // Default initial country (change as needed)
         separateDialCode: true,
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js",
       });
