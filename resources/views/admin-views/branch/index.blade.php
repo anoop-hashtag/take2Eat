@@ -6,12 +6,14 @@
     <style>
         #location_map_div #pac-input{
             height: 40px;
-            border: 1px solid #fbc1c1;
+            border: 1px solid #e7eaf3;
             outline: none;
             box-shadow: none;
             top: 7px !important;
-            transform: translateX(7px);
+            /* transform: translateX(5px); */
             padding-left: 10px;
+            margin:32px 0 10px 0;
+            width:100%;
         }
     </style>
 @endpush
