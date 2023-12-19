@@ -413,11 +413,11 @@ table.dataTable thead th, table.dataTable thead td {
 table.dataTable tbody td {
 	padding: 8px 10px!important;
 }
-.product-category{
+/* .product-category{
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .name-width{
   width: 115px!important;
   text-align: left!important;
@@ -426,12 +426,12 @@ table.dataTable tbody td {
   width: 115px!important;
   text-align: justify!important;
 }
-.category-mid{
+/* .category-mid{
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
-}
+} */
 .category-select{
   width:80px;
 }
