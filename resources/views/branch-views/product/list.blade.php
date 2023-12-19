@@ -67,7 +67,7 @@
                                                     <img src="{{asset('storage/app/public/product')}}/{{$product['image']}}" class="rounded img-fit"
                                                         onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'">
                                                 </div>
-                                                <div class="media-body name-width">
+                                                <div class="media-body branch-width">
                                                         {{ Str::limit($product['name'], 30) }}
                                                 </div>
                                             </div>

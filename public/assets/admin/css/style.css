@@ -158,6 +158,7 @@ div#country-dropdown {
   }
 }
 @media (min-width:1040px) and (max-width:1200px){
+  
   .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
     display: table!important;
     overflow-x: auto!important;
@@ -288,6 +289,9 @@ div#country-dropdown {
   .customer-style .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important; 
   } 
+  .top-style .dataTables_wrapper .dataTables_filter{
+    margin-top:30px!important; 
+  } 
   .search-style .dataTables_wrapper .dataTables_filter{
     margin: 1em 0 0 0rem!important;
   }
@@ -347,6 +351,9 @@ div#country-dropdown {
 .btn-attribute{
   height: 35px;
   padding: 5px 10px!important;
+  position: relative;
+  z-index: 1;
+
 }
 .tio-more-horizontal:before {
   content: "\ed49";
@@ -365,6 +372,10 @@ div#country-dropdown {
   align-items: center;
 }
 .name-width{
+  width: 115px!important;
+  text-align: left!important;
+}
+.branch-width{
   width: 115px!important;
   text-align: justify!important;
 }

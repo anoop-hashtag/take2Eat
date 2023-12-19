@@ -178,7 +178,7 @@
                     @endif
                 </div>
                 <!-- Pagination -->
-                <div class="page-area px-4 pb-3">
+                <div class="page-area px-4 py-3">
                     <div class="d-flex align-items-center justify-content-end ">
                         {{-- <div>
                             1-15 of 380
@@ -296,6 +296,7 @@
                          className: 'd-none'
                      },
                  ],
+                 info:false,
                  paging  : false,
                  select: {
                      style: 'multi',
