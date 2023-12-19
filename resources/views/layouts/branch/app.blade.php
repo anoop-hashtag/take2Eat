@@ -325,6 +325,10 @@
 
 <!-- Include jQuery UI library -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
+<link rel="stylesheet" href="{{asset('public/assets/admin/css/demo.css')}}">
+<link href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css" rel="stylesheet" />
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- Include jQuery UI CSS for styling -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -335,7 +339,7 @@
       var hiddenInput = $("#hidden-country-code"); // Add this line to select the hidden input
   
       countryDropdown.intlTelInput({
-        preferredCountries: [],
+        preferredCountries: ["in"],
         // initialCountry: "in", // Default initial country (change as needed)
         separateDialCode: true,
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js",

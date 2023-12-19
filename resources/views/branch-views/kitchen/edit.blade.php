@@ -41,22 +41,25 @@
                                 <input type="text" name="l_name" value="{{$chef['l_name']}}" class="form-control" id="l_name"
                                         placeholder="{{translate('Ex')}} : {{translate('Doe')}}">
                             </div>
-                            <div class="col-md-6 mb-3">
-                                    <label for="name">{{translate('Country Code')}} <span class="text-danger">*</span></label>
-                                    <input type="text" name="country_code" value="{{$chef['country_code'];}}" class="form-control" id="country_code" 
-                                           placeholder="{{translate('Ex')}} : +91" required>
-                                </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="name">{{translate('Phone')}} <span class="text-danger">*</span></label>
-                                <input type="text" value="{{$chef['phone']}}" required name="phone" class="form-control" id="phone"
-                                        placeholder="{{translate('Ex')}} : +88017********">
-                            </div>
+                            <div class="col-md-1 mb-3">
+                                <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
+                               
+                                       <br>
+                                       <input type="text" id="country-dropdown"  value="{{$chef['country_code'];}}"  style=" width: 70px; " class="form-control" name="country_code" placeholder="e.g. +1 702 123 4567">
+                                       {{-- <div  id="country-dropdown" value="{{$chef['country_code'];}}" class="form-control"></div> --}}
 
-                            <div class="col-md-12 mb-3">
-                                <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
-                                <input type="email" value="{{$chef['email']}}" name="email" class="form-control" id="email"
-                                        placeholder="{{translate('Ex')}} : ex@gmail.com" required>
+                                       <input type="hidden"  id="hidden-country-code" name="country_code">
                             </div>
+                        <div class="col-md-5 mb-3">
+                            <label for="name">{{translate('Phone')}} <span class="text-danger">*</span></label>
+                            <input type="text" value="{{substr($chef['phone'],3)}}" required name="phone"  class="form-control" id="phone"
+                                   placeholder="{{translate('Ex')}} : 88017********" maxlength="10">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
+                            <input type="email" value="{{$chef['email']}}" name="email" class="form-control" id="email"
+                                   placeholder="{{translate('Ex')}} : ex@gmail.com" required>
+                        </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="name">{{translate('Password')}}</label><small> ( {{translate('input if you want to change')}} )</small>
@@ -127,36 +130,5 @@
             width: 'resolve'
         });
     </script>
-    <script>
-        function isNumber(evt) {
-  evt = (evt) ? evt : window.event;
-  var charCode = (evt.which) ? evt.which : evt.keyCode;
-  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-    alert("Please enter only Numbers.");
-    return false;
-  }
-  if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
-    alert("Please enter 10 Digit only Numbers.");
-    return false;
-  }
-
-  return true;
-}
-
-var phoneInput = document.getElementById('phone');
-var myForm = document.forms.myForm;
-var result = document.getElementById('result');  // only for debugging purposes
-
-phoneInput.addEventListener('input', function (e) {
-  var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-  e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-});
-
-myForm.addEventListener('submit', function(e) {
-  phoneInput.value = phoneInput.value.replace(/\D/g, '');
-  result.innerText = phoneInput.value;  // only for debugging purposes
-  
-  e.preventDefault(); // You wouldn't prevent it
-});
-        </script>
+ 
 @endpush

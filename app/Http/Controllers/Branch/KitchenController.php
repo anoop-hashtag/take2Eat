@@ -64,7 +64,7 @@ class KitchenController extends Controller
             $chef->f_name = $request->f_name;
             $chef->l_name = $request->l_name;
             $chef->country_code = $request->country_code;
-            $chef->phone = preg_replace("/\D/", "", $request->phone);
+            $chef->phone = $request->country_code .preg_replace("/\D/", "", $request->phone);
                          
             $chef->email = $request->email;
             $chef->user_type = 'kitchen';
@@ -157,15 +157,13 @@ class KitchenController extends Controller
             'f_name' => 'required',
             'l_name' => 'required',
             'country_code' => 'required',
-            'phone' => 'required|unique:users,phone,' . $id,
-            'email' => 'required|email|unique:users,email,' . $id,
+            // 'phone' => 'required|unique:users,phone,' . $id,
+            // 'email' => 'required|email|unique:users,email,' . $id,
         ], [
             'f_name.required' => translate('First name is required!'),
             'l_name.required' => translate('Last name is required!'),
-            'country_code'    => translate('Country Code is required!'),
-            'phone.required' => translate('Phone is Required'),
-            'phone.unique' => translate('This email is already taken! please try another one'),
-            'email.required' => translate('Email is Required'),
+            // 'country_code'    => translate('Country Code is required!'),
+            // 'phone.required' => translate('Phone is Required'),
             'email.email' => translate('Field type must be email'),
             'email.unique' => translate('This email is already taken! please try another one'),
         ]);
@@ -187,7 +185,7 @@ class KitchenController extends Controller
             $chef->f_name = $request->f_name;
             $chef->l_name = $request->l_name;
             $chef->country_code = $request->country_code;
-            $chef->phone = preg_replace("/\D/", "", $request->phone);
+            $chef->phone = $request->country_code .$request->phone;
             $chef->email = $request->email;
             $chef->password = $password;
             $chef->image = $request->has('image') ? Helpers::update('kitchen/', $chef->image, 'png', $request->file('image')) : $chef->image;
