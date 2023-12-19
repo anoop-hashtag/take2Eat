@@ -592,7 +592,7 @@
       var hiddenInput = $("#hidden-country-code"); // Add this line to select the hidden input
   
       countryDropdown.intlTelInput({
-        initialCountry: "in", // Default initial country (change as needed)
+        initialCountry: "AF", // Default initial country (change as needed)
         separateDialCode: true,
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js",
       });

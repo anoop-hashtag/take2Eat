@@ -8,15 +8,6 @@
 
 @section('content')
 
-  
- 
-
-  
-
-
-
-
-
 
 <div class="content container-fluid">
     <!-- Page Header -->
@@ -73,10 +64,10 @@
                                     {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
                                            placeholder="{{translate('Ex')}} : +91" required> --}}
                                            <br>
-                                        <div  id="country-dropdown" class="form-control"></div>
+                                        <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
 
-                                        <input type="hidden" id="hidden-country-code" name="country_code">
-
+                                        <input type="hidden"  id="hidden-country-code"  name="country_code">
+                                       
                                 </div>
                                 <div class="col-md-5 mb-3">
                                     <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
@@ -132,8 +123,10 @@
                                 </div>
                             </div>
                         </div>
-
+                       <br>
                         <div class="row">
+                            {{-- <div class="col-md-6 mb-3">
+                            </div>  --}}
                             <div class="col-md-12 mb-3">
                                 <label for="name">{{translate('image')}} <span class="text-danger">*</span></label>
                                 <span class="badge badge-soft-danger">( {{translate('ratio')}} 1:1 )</span>
