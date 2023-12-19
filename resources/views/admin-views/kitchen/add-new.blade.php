@@ -75,7 +75,7 @@
                                            <br>
                                         <div  id="country-dropdown" class="form-control"></div>
 
-                                        <input type="hidden" id="hidden-country-code" value="+91" name="country_code">
+                                        <input type="hidden" id="hidden-country-code" name="country_code">
 
                                 </div>
                                 <div class="col-md-5 mb-3">
@@ -83,8 +83,7 @@
                                     <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
                                            placeholder="{{translate('Ex')}} : 88017********" required>
                                 </div>
-                                
-                                <div class="col-md-5 mb-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
                                     <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"
                                            placeholder="{{translate('Ex')}} : ex@gmail.com" required>

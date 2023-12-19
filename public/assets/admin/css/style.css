@@ -11,6 +11,9 @@ card-top.px-card .d-flex.flex-wrap a, .card-top.px-card .d-flex.flex-wrap .btn {
 	position: relative;
 	z-index: 1;
 }
+div#country-dropdown {
+  border: none;
+}
 .pagination-style{
   justify-content: end!important;
 }
