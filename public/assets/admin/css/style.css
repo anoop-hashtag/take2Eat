@@ -342,6 +342,9 @@ div#country-dropdown {
 .btn-attribute{
   height: 35px;
   padding: 5px 10px!important;
+  position: relative;
+  z-index: 1;
+
 }
 .tio-more-horizontal:before {
   content: "\ed49";
