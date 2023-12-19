@@ -2166,4 +2166,5 @@
   'Delivery_partner_List' => 'Delivery partner List',
   'Add_New_Delivery_partner' => 'Add New Delivery partner',
   'Delivery_partner_Reviews' => 'Delivery partner Reviews',
+  'Category_Name' => 'Category Name',
 );
