@@ -153,6 +153,7 @@ div#country-dropdown {
   }
 }
 @media (min-width:1040px) and (max-width:1200px){
+  
   .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
     display: table!important;
     overflow-x: auto!important;
