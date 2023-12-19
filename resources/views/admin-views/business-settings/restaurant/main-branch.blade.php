@@ -8,9 +8,11 @@
             height: 40px;
             border: 1px solid #fbc1c1;
             outline: none;
+            width:100%;
             box-shadow: none;
-            top: 7px !important;
-            transform: translateX(7px);
+            position: relative;
+            top: 5px !important;
+            /* transform: translateX(7px); */
             padding-left: 10px;
         }
     </style>
@@ -176,7 +178,7 @@
                                            data-placement="right"
                                            data-original-title="{{ translate('search_your_location_here') }}"
                                            type="text" placeholder="{{ translate('search_here') }}" />
-                                    <div id="location_map_canvas" class="overflow-hidden rounded" style="height: 100%"></div>
+                                    <div id="location_map_canvas" class="overflow-hidden rounded" style="height: 80%;position:relative;top:20px" ></div>
                                 </div>
 
                             </div>

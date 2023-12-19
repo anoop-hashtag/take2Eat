@@ -164,7 +164,7 @@ div#country-dropdown {
     padding-top: 10px;
   }
   .responsive-ui .datatable_wrapper_row .dataTable{
-    display: block;
+    display: table;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
@@ -426,12 +426,12 @@ table.dataTable tbody td {
   width: 115px!important;
   text-align: justify!important;
 }
-/* .category-mid{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-} */
+  /* .category-mid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  } */
 .category-select{
   width:80px;
 }

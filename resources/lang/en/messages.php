@@ -2167,4 +2167,5 @@
   'Add_New_Delivery_partner' => 'Add New Delivery partner',
   'Delivery_partner_Reviews' => 'Delivery partner Reviews',
   'Category_Name' => 'Category Name',
+  'Veg / Non Veg / Egg Option' => 'Veg / Non Veg / Egg Option',
 );
