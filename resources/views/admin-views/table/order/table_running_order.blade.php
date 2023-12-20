@@ -23,17 +23,17 @@
         </div>
         <div id="all_running_order">
             <div class="card">
-                <div class="card-top px-card ">
+                <div class="pt-3 px-card ">
                     <div class="row justify-content-between align-items-center gy-2">
                        
-                        <div class="col-sm-6 col-md-6 col-lg-7">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="row">
-                                <div class="col-3">
-                                    <div id="invoice_btn" class="{{ is_null($table_id) ? 'd-none' : '' }}">
+                                <div class="col-4 d-none">
+                                    <div id="invoice_btn" class="{{ is_null($table_id) ?  : '' }}">
                                         <a class="form-control btn btn-sm btn-white float-right" href="{{ route('admin.table.order.running.invoice', ['table_id' => $table_id]) }}"><i class="tio-print"></i> {{translate('invoice')}}</a>
                                     </div>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-4">
                                     <select class="form-control text-capitalize" name="branch" onchange="filter_branch_orders(this.value)">
                                         <option disabled>--- {{translate('select')}} {{translate('branch')}} ---</option>
                                         @foreach(\App\Model\Branch::all() as $branch)
@@ -58,7 +58,7 @@
                     <!-- End Row -->
                 </div>
                 
-                    <div class="set_table">
+                    <div class="set_table search-arrange">
                     <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding:0 10px;">
                         <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">

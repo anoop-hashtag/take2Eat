@@ -52,7 +52,13 @@ div#country-dropdown {
 }
 
 @media only screen and (min-width:1300px){
-
+  .search-arrange .dataTables_wrapper .dataTables_filter {
+    float: right!important;
+    text-align: right!important;
+    position: absolute;
+    right: 10px!important;
+    top: 20px;
+  }
 .margin-style{
   margin-top:20px
 }  
@@ -70,6 +76,13 @@ div#country-dropdown {
 }
 
 @media only screen and (max-width:1250px){
+  .search-arrange .dataTables_wrapper .dataTables_filter {
+    float: right!important;
+    text-align: right!important;
+    position: absolute;
+    right: 10px!important;
+    top: -35px;
+  }
   .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -99,8 +112,14 @@ div#country-dropdown {
     margin-top:20px
   }
 }
-@media (min-width:1200px) and (max-width:1290px){
- 
+@media (min-width:1200px) and (max-width:1299px){
+  .search-arrange .dataTables_wrapper .dataTables_filter {
+    float: right!important;
+    text-align: right!important;
+    position: absolute;
+    right: 10px!important;
+    top: -35px;
+  }
   .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -145,7 +164,7 @@ div#country-dropdown {
     padding-top: 10px;
   }
   .responsive-ui .datatable_wrapper_row .dataTable{
-    display: block;
+    display: table;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
@@ -230,9 +249,24 @@ div#country-dropdown {
   width: 100%;
   padding-top: 10px;
 }
+.search-arrange .dataTables_wrapper .dataTables_filter {
+  float: left!important;
+  text-align: right!important;
+  position: relative;
+  right: -17px!important;
+  top: 15px;
+  padding: 0 0 15px 0!important;
+}
 }
 
 @media only screen and (max-width:657px){ 
+  .search-arrange .dataTables_wrapper .dataTables_filter {
+    float: left!important;
+    text-align: right!important;
+    position: relative;
+    right: -17px!important;
+    top: 15px;
+}
   .search-style .dataTables_wrapper .dataTables_filter{
     margin: 1em 0 0 0rem!important;
   }
@@ -277,6 +311,13 @@ div#country-dropdown {
   } 
 }
 @media screen and (max-width:580px){
+  .search-arrange .dataTables_wrapper .dataTables_filter {
+    float: left!important;
+    text-align: right!important;
+    position: relative;
+    right: -17px!important;
+    top: 15px;
+}
   .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
     display: block!important;
     overflow-x: auto!important;
@@ -293,7 +334,7 @@ div#country-dropdown {
     margin-top:30px!important; 
   } 
   .search-style .dataTables_wrapper .dataTables_filter{
-    margin: 1em 0 0 0rem!important;
+    margin: 1rem 0 0 0rem!important;
   }
   .addon-list .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important;  
@@ -363,14 +404,20 @@ div#country-dropdown {
 .btn-action{
   padding: 8px 10px!important;
 }
-.table thead, .table tbody{
+/* .table thead, .table tbody{
   text-align: center;
+} */
+table.dataTable thead th, table.dataTable thead td {
+	padding: 8px 10px!important;
 }
-.product-category{
+table.dataTable tbody td {
+	padding: 8px 10px!important;
+}
+/* .product-category{
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .name-width{
   width: 115px!important;
   text-align: left!important;
@@ -379,12 +426,12 @@ div#country-dropdown {
   width: 115px!important;
   text-align: justify!important;
 }
-.category-mid{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
+  /* .category-mid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  } */
 .category-select{
   width:80px;
 }
