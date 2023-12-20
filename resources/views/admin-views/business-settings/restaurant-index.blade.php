@@ -738,7 +738,7 @@
                             @php($dm_status=\App\CentralLogics\Helpers::get_business_settings('dm_self_registration'))
                             <div class="form-control d-flex justify-content-between align-items-center gap-3">
                                 <div>
-                                    <label class="text-dark mb-0">{{translate('Deliveryman Self Registration')}}
+                                    <label class="text-dark mb-0">{{translate('Delivery Partner Self Registration')}}
                                         <i class="tio-info-outined"
                                            data-toggle="tooltip"
                                            data-placement="top"
