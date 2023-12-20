@@ -35,12 +35,12 @@
                             <div class="row">
                                 <div class="col-sm-6 col-12">
                                     <div class="mb-3">
-                                        <input type="text" name="from" id="from_date" value="{{request()->get('from')}}" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control h--45px" title="{{translate('from')}} {{translate('date')}}">
+                                        <input type="text" name="from" id="from_date" value="{{request()->get('from')}}" class="form-control h--45px" placeholder="DD-MM-YYYY" autocomplete="off" title="{{translate('from')}} {{translate('date')}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-12">
                                     <div class="mb-3">
-                                        <input type="text" name="to" id="to_date" value="{{request()->get('to')}}"  class="form-control h--45px" placeholder="DD-MM-YYYY" autocomplete="off" title="{{ucfirst(translate('to'))}} {{translate('date')}}">
+                                        <input type="text" name="to" id="to_date" value="{{request()->get('to')}}" class="form-control h--45px" placeholder="DD-MM-YYYY" autocomplete="off" title="{{ucfirst(translate('to'))}} {{translate('date')}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-12">
@@ -48,7 +48,7 @@
                                         @php
                                             $transaction_status=request()->get('transaction_type');
                                         @endphp
-                                        <select name="transaction_type" id="" class="select2-selection custom-select" title="{{translate('select')}} {{translate('transaction_type')}}">
+                                        <select name="transaction_type" id="" class="form-control h--45px" title="{{translate('select')}} {{translate('transaction_type')}}">
                                             <option value="">{{translate('all')}}</option>
                                             <option value="loyalty_point_to_wallet" {{isset($transaction_status) && $transaction_status=='loyalty_point_to_wallet'?'selected':''}}>{{translate('loyalty_point_to_wallet')}}</option>
                                             <option value="order_place" {{isset($transaction_status) && $transaction_status=='order_place'?'selected':''}}>{{translate('order_place')}}</option>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-sm-6 col-12">
                                     <div class="mb-3">
-                                        <select id='customer' name="customer_id" data-placeholder="{{translate('Select_Customer')}}" class="select2 js-data-example-ajax form-control h--45px" title="{{translate('select_customer')}}">
+                                        <select id='customer' name="customer_id" data-placeholder="{{translate('Select_Customer')}}" class="js-data-example-ajax form-control h--45px" title="{{translate('select_customer')}}">
                                             @if (request()->get('customer_id') && $customer_info = \App\User::find(request()->get('customer_id')))
                                                 <option value="{{$customer_info->id}}" selected>{{$customer_info->f_name.' '.$customer_info->l_name}}({{$customer_info->phone}})</option>
                                             @endif
@@ -90,7 +90,7 @@
                 <div class="resturant-card dashboard--card bg--2">
                     <h4 class="title">{{translate('debit')}}</h4>
                     <span class="subtitle">
-                        ₹{{ number_format($debit, 2) }}
+                        {{ number_format($debit, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/3.png')}}" alt="dashboard">
                 </div>
@@ -101,7 +101,7 @@
                 <div class="resturant-card dashboard--card bg--3">
                     <h4 class="title">{{translate('credit')}}</h4>
                     <span class="subtitle">
-                        ₹{{ number_format($credit, 2) }}
+                        {{ number_format($credit, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/4.png')}}" alt="dashboard">
                 </div>
@@ -112,7 +112,7 @@
                 <div class="resturant-card dashboard--card bg--1">
                     <h4 class="title">{{translate('balance')}}</h4>
                     <span class="subtitle">
-                        ₹{{ number_format($balance, 2) }}
+                        {{ number_format($balance, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/1.png')}}" alt="dashboard">
                 </div>
@@ -123,7 +123,7 @@
         <!-- Card -->
         <div class="card mt-3">
             <!-- Header -->
-            <div class="card-top px-card pb-2">
+            <div class="card-header text-capitalize border-0">
                 <h4 class="card-title">
                     <span class="card-header-icon"><i class="tio-money"></i></span>
                     <span class="ml-2">{{translate('transactions')}}</span>
@@ -132,9 +132,10 @@
             <!-- End Header -->
 
             <!-- Body -->
-            <div class="set_table">
-                <div class="table-responsive datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
-                    <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table id="datatable"
+                           class="table table-thead-bordered table-align-middle card-table table-nowrap">
                         <thead class="thead-light">
                         <tr>
                             <th>{{ translate('sl') }}</th>
@@ -178,8 +179,8 @@
                     @endif
                 </div>
                 <!-- Pagination -->
-                <div class="page-area px-4 py-3">
-                    <div class="d-flex align-items-center justify-content-end ">
+                <div class="page-area px-4 pb-3">
+                    <div class="d-flex align-items-center justify-content-end">
                         {{-- <div>
                             1-15 of 380
                         </div> --}}
@@ -254,99 +255,74 @@
             $('#customer').val(null).trigger('change');
         })
     </script>
-     @push('script_2')
-     <script>
-         $(document).on('ready', function () {
-             // INITIALIZATION OF NAV SCROLLER
-             // =======================================================
-             $('.js-nav-scroller').each(function () {
-                 new HsNavScroller($(this)).init()
-             });
-     
-             // INITIALIZATION OF SELECT2
-             // =======================================================
-             $('.js-select2-custom').each(function () {
-                 var select2 = $.HSCore.components.HSSelect2.init($(this));
-             });
-     
-     
-             // INITIALIZATION OF DATATABLES
-             // =======================================================
-             var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
-                 dom: 'Bfrtip',
-                 buttons: [
-                     {
-                         extend: 'copy',
-                         className: 'd-none'
-                     },
-                     {
-                         extend: 'excel',
-                         className: 'd-none'
-                     },
-                     {
-                         extend: 'csv',
-                         className: 'd-none'
-                     },
-                     {
-                         extend: 'pdf',
-                         className: 'd-none'
-                     },
-                     {
-                         extend: 'print',
-                         className: 'd-none'
-                     },
-                 ],
-                 info:false,
-                 paging  : false,
-                 select: {
-                     style: 'multi',
-                     selector: 'td:first-child input[type="checkbox"]',
-                     classMap: {
-                         checkAll: '#datatableCheckAll',
-                         counter: '#datatableCounter',
-                         counterInfo: '#datatableCounterInfo'
-                     }
-                 },
+      <script>
+        $(document).on('ready', function () {
+            // INITIALIZATION OF NAV SCROLLER
+            // =======================================================
+            $('.js-nav-scroller').each(function () {
+                new HsNavScroller($(this)).init()
+            });
+    
+            // INITIALIZATION OF SELECT2
+            // =======================================================
+           
+    
+    
+            // INITIALIZATION OF DATATABLES
+            // =======================================================
+            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                ],
+                info:false,
+                paging  : false,
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
 
-                 language: {
-                     zeroRecords: '<div class="text-center p-4">' +
-                         '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
-                         '<p class="mb-0">{{translate('No data to show')}}</p>' +
-                         '</div>'
-                 }
-             });
-     
-             // INITIALIZATION OF TAGIFY
-             // =======================================================
-             $('.js-tagify').each(function () {
-                 var tagify = $.HSCore.components.HSTagify.init($(this));
-             });
-         });
-     
-         function filter_branch_orders(id) {
-             location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
-         }
-     </script>
-     
-     
-     <script>
-         $('#from_date,#to_date').change(function () {
-             let fr = $('#from_date').val();
-             let to = $('#to_date').val();
-             if (fr != '' && to != '') {
-                 if (fr > to) {
-                     $('#from_date').val('');
-                     $('#to_date').val('');
-                     toastr.error('{{translate('Invalid date range!')}}', Error, {
-                         CloseButton: true,
-                         ProgressBar: true
-                     });
-                 }
-             }
-         });
-         $('#datatable').dataTable({
-     destroy: true,
-     ...
-     });
-     </script>
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                }
+            });
+    
+            // INITIALIZATION OF TAGIFY
+            // =======================================================
+            $('.js-tagify').each(function () {
+                var tagify = $.HSCore.components.HSTagify.init($(this));
+            });
+        });
+    
+        function filter_branch_orders(id) {
+            location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+        }
+    </script>
 @endpush
