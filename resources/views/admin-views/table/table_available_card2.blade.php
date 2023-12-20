@@ -68,7 +68,7 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         @if(($table['order'] != null))
-                            <div style="width: 100%; height: auto; max-height: 500px; overflow: scroll">
+                            <div style="width: 100%; height: auto; max-height: 500px; overflow: auto">
                                 <table class="table  table-bordered">
                                     <thead>
                                         <tr>
