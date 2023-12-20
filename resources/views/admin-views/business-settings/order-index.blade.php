@@ -32,7 +32,7 @@
                         @php($mov=\App\Model\BusinessSetting::where('key','minimum_order_value')->first()->value)
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <label class="input-label">
+                                <label class="input-label label-height" >
                                     {{translate('min_Order_value')}} ( {{\App\CentralLogics\Helpers::currency_symbol()}} )
                                 </label>
                                 <input type="number" min="1" value="{{$mov}}"
@@ -43,7 +43,7 @@
                         @php($default_preparation_time=\App\CentralLogics\Helpers::get_business_settings('default_preparation_time'))
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <label class="input-label">{{translate('Food_Preparation_Time')}}
+                                <label class="input-label label-height">{{translate('Food_Preparation_Time')}}
                                     <small class="text-danger">{{translate(' ( in_Minute )')}}</small>
                                 </label>
                                 <input type="number" value="{{$default_preparation_time}}"
@@ -55,7 +55,7 @@
                         <div class="col-md-4 col-sm-6">
                             @php($schedule_order_slot_duration=\App\CentralLogics\Helpers::get_business_settings('schedule_order_slot_duration'))
                             <div class="form-group">
-                                <label class="input-label text-capitalize" for="schedule_order_slot_duration">{{ translate('Schedule_Order_Slot_Duration_Minute') }}</label>
+                                <label class="input-label text-capitalize label-height" for="schedule_order_slot_duration">{{ translate('Schedule_Order_Slot_Duration_Minute') }}</label>
                                 <input type="number" name="schedule_order_slot_duration" class="form-control" id="schedule_order_slot_duration" value="{{$schedule_order_slot_duration?$schedule_order_slot_duration:0}}" min="1" placeholder="{{translate('Ex: 30')}}" required>
                             </div>
                         </div>

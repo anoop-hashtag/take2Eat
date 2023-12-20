@@ -7,6 +7,29 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+.content-row{
+  display: flex;
+  flex-wrap: nowrap;
+}
+.col-area-2 label{
+  width: 100%;
+}
+.col-area-2{
+  width:95px;
+}
+.col-area-2 .intl-tel-input {
+  width: 100%;
+}
+.col-area-2 .intl-tel-input .flag-container {
+  width: 100%;
+}
+.col-area-2 .intl-tel-input .flag-container .selected-flag {
+  width: 100% !important;
+  border-radius: 5px 0 0 5px;
+}
+.col-area-10{
+  width:82%;
+}
 .card-top.px-card .d-flex.flex-wrap a, .card-top.px-card .d-flex.flex-wrap .btn {
 	position: relative;
 	z-index: 1;
@@ -258,6 +281,9 @@ div#country-dropdown {
 }
  
 @media only screen and (max-width:992px){
+  .label-height{
+    min-height: 45px;
+  }
   .review-size h4{
     font-size: 30px!important;
   }
