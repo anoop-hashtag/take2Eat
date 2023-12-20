@@ -34,7 +34,7 @@
                                  src="{{asset('storage/app/public/product')}}/{{$product['image']}}"
                                  onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
                                  alt="Image Description">
-                            <div class="d-block">
+                            <div class="d-block review-size">
                                 <h4 class="display-2 text-dark mb-0">
                                     <span class="c1">{{count($product->rating)>0?number_format($product->rating[0]->average, 1, '.', ' '):0}}</span><span class="text-muted">/5</span>
                                 </h4>
@@ -287,7 +287,7 @@
                                 </a>
                             </td>
                             <td>
-                                <div class="text-wrap" style="width: 18rem;">
+                                <div class="text-wrap" style="width: 10rem;">
                                     <div class="d-flex mb-2">
                                         <label class="badge badge-soft-info">
                                             {{$review->rating}} <i class="tio-star"></i>

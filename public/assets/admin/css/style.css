@@ -239,6 +239,9 @@ div#country-dropdown {
 }
  
 @media only screen and (max-width:992px){
+  .review-size h4{
+    font-size: 30px!important;
+  }
   .new-responsive .datatable_wrapper_row .dataTable{
     display: table;
     overflow-x: auto!important;
