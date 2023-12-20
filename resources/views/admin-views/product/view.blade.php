@@ -158,58 +158,71 @@
                                 </td>
                                 <td>
                                     <div class="d-flex flex-column gap-2">
-                                        <div><strong>{{translate('Price')}} :</strong> {{ \App\CentralLogics\Helpers::set_symbol($product['price']) }}</div>
-                                        <div><strong>{{translate('tax')}} :</strong> {{ \App\CentralLogics\Helpers::set_symbol(\App\CentralLogics\Helpers::tax_calculate($product,$product['price'])) }}</div>
-                                        <div><strong>{{translate('Discount')}} :</strong> {{ \App\CentralLogics\Helpers::set_symbol(\App\CentralLogics\Helpers::discount_calculate($product,$product['price'])) }}</div>
-                                        <div><strong>{{translate('Available_Time_Start')}} :</strong> {{date(config('time_format'), strtotime($product['available_time_starts']))}}</div>
-                                        <div><strong>{{translate('Available_Time_End')}} :</strong> {{date(config('time_format'), strtotime($product['available_time_ends']))}}</div>
+                                        <div class="product-label"><span><strong>{{translate('Price')}} </strong></span> : <span>{{ \App\CentralLogics\Helpers::set_symbol($product['price']) }}</span></div>
+                                        <div class="product-label"><span><strong>{{translate('tax')}} </strong></span> : <span> {{ \App\CentralLogics\Helpers::set_symbol(\App\CentralLogics\Helpers::tax_calculate($product,$product['price'])) }}</span></div>
+                                        <div class="product-label"><span><strong>{{translate('Discount')}} </strong></span> : <span> {{ \App\CentralLogics\Helpers::set_symbol(\App\CentralLogics\Helpers::discount_calculate($product,$product['price'])) }}</span></div>
+                                        <div class="product-label"><span><strong>{{translate('Time_Start')}} </strong></span> : <span> {{date(config('time_format'), strtotime($product['available_time_starts']))}}</span></div>
+                                        <div class="product-label"><span><strong>{{translate('Time_End')}} </strong></span> : <span> {{date(config('time_format'), strtotime($product['available_time_ends']))}}</span></div>
                                     </div>
                                 </td>
-                                <td class="px-4">
+                                <td>
+                                <div class="d-flex flex-column gap-2">
+                                    <div class="product-label-half">
                                     @foreach(json_decode($product->variations,true) as $variation)
                                         @if(isset($variation["price"]))
-                                            <span class="d-block mb-1 text-capitalize">
+                                            <span class=" mb-1 text-capitalize">
                                                 <strong>{{ translate('please_update_the_product_variations.') }}</strong>
                                             </span>
                                         @break
                                         @else
-                                            <span class="d-block text-capitalize">
-                                                <strong>{{$variation['name']}} -</strong>
+                                            <span>
+                                                <strong>{{$variation['name']}} </strong>
+                                            </span> :
+                                            <span class=" text-capitalize">
                                                 @if ($variation['type'] == 'multi')
                                                     {{ translate('multiple_select') }}
                                                 @elseif($variation['type'] =='single')
                                                  {{ translate('single_select') }}
                                                 @endif
+
+                                            </span>
+                                                <span>
                                                 @if ($variation['required'] == 'on')
                                                 <strong>- ({{ translate('required') }})</strong>
                                                 @endif
                                             </span>
-
+                                            <span>
                                             @if ($variation['min'] != 0 && $variation['max'] != 0)
                                                 ({{ translate('Min_select') }}: {{ $variation['min'] }} - {{ translate('Max_select') }}: {{ $variation['max'] }})
                                             @endif
-
+                                            </span> 
+                                    </div>
+                                    
+                                    <div class="product-label-half">
                                             @if (isset($variation['values']))
                                                 @foreach ($variation['values'] as $value)
-                                                    <span class="d-block text-capitalize">
-                                                        <strong>{{ $value['label']}}</strong> : {{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}
-                                                    </span>
+                                                    <span class=" text-capitalize">
+                                                        <strong>{{ $value['label']}} </strong> </span> : <span> {{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</span>
+                                                   
                                                 @endforeach
                                             @endif
                                         @endif
+                                    </div>
+                                </div>
                                     @endforeach
+
                                 </td>
                                 <td>
-                                    <div class="d-flex flex-column gap-1">
+                                    <div class="d-flex flex-column gap-2">
                                         @foreach(\App\Model\AddOn::whereIn('id',json_decode($product['add_ons'],true))->get() as $addon)
-                                            <div class="text-capitalize">
-                                            <strong>{{$addon['name']}} :</strong> {{ \App\CentralLogics\Helpers::set_symbol($addon['price']) }}
+                                            <div class="text-capitalize product-label">
+                                            <span><strong>{{$addon['name']}} </strong></span> : <span>{{ \App\CentralLogics\Helpers::set_symbol($addon['price']) }}</span>
                                             </div>
                                         @endforeach
                                     </div>
                                 </td>
                                 <td>
-                                    @foreach($product->tags as $tag)
+                                    @foreach($product->tags as $tag)    
                                         <span class="badge-soft-success mb-1 mr-1 d-inline-block px-2 py-1 rounded">{{$tag->tag}} </span> <br>
                                     @endforeach
                                 </td>

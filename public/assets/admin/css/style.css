@@ -7,9 +7,28 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
-card-top.px-card .d-flex.flex-wrap a, .card-top.px-card .d-flex.flex-wrap .btn {
+.card-top.px-card .d-flex.flex-wrap a, .card-top.px-card .d-flex.flex-wrap .btn {
 	position: relative;
 	z-index: 1;
+}
+.product-label span:nth-child(1) {
+  display: inline-block;
+  width: 85px;
+  text-align: start;
+}
+.product-label span:nth-child(2){
+  text-align: start;
+}
+.product-label-half span:nth-child(1) {
+  display: inline-block;
+  width: 50px;
+  text-align: start;
+}
+.product-label-half span:nth-child(2){
+  text-align: start;
+}
+input[type=time].form-control{
+  appearance:auto!important;
 }
 div#country-dropdown {
   border: none;
@@ -1538,7 +1557,7 @@ ol.order-list {
 
 .__descripiton-txt.__not-first-hidden {
   margin-bottom: 25px;
-  min-height: 86px;
+  /* min-height: 86px; */
   max-height: 110px;
   overflow: hidden;
   padding-bottom: 0;
