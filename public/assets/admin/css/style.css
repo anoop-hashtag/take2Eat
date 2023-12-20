@@ -1553,7 +1553,7 @@ ol.order-list {
 }
 
 #location_map_canvas {
-  min-height: 200px;
+  min-height: 255px;
 }
 
 body {

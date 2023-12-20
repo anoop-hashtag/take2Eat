@@ -183,7 +183,7 @@
 
                             </div>
 
-                            <div class="d-flex justify-content-end gap-3 mt-4">
+                            <div class="d-flex justify-content-end gap-3 mt-5">
                                 <button type="reset" class="btn btn-secondary">{{translate('reset')}}</button>
                                 <button type="submit" class="btn btn-primary">{{translate('submit')}}</button>
                             </div>
