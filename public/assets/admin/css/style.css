@@ -25,7 +25,7 @@
 }
 .col-area-2 .intl-tel-input .flag-container .selected-flag {
   width: 100% !important;
-  border-radius: 5px 0 0 5px;
+  border-radius: .3125rem 0 0 .3125rem;
 }
 .col-area-10{
   width:82%;
