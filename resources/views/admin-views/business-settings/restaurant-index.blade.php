@@ -685,7 +685,7 @@
                                         <i class="tio-info-outined"
                                            data-toggle="tooltip"
                                            data-placement="top"
-                                           title="{{ translate('The system will not display any categories based on veg and non veg products if this option is disabled') }}">
+                                           title="{{ translate('The system will not display the filter, on any categories based on Veg/ Non veg/ Egg, if this option is disabled.') }}">
                                         </i>
                                     </label>
                                 </div>
