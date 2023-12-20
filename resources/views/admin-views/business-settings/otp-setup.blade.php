@@ -29,12 +29,12 @@
                                 @php($maximum_otp_hit=\App\Model\BusinessSetting::where('key','maximum_otp_hit')->first()?->value)
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label text-capitalize">{{translate('maximum_OTP_submit_attempt')}}
-                                            <i class="tio-info-outined"
+                                        <label class="input-label text-capitalize" style="display:block">{{translate('maximum_OTP_submit_attempt')}}
+                                            <span><i class="tio-info-outined"
                                                data-toggle="tooltip"
                                                data-placement="top"
                                                title="{{ translate('The maximum OTP hit is a measure of how many times a specific one-time password has been generated and used within a time.') }}">
-                                            </i>
+                                            </i><span>
                                         </label>
                                         <input type="number" value="{{$maximum_otp_hit}}" min="1"
                                                name="maximum_otp_hit" class="form-control" required>
