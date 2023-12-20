@@ -38,7 +38,7 @@
                                 <h4 class="display-2 text-dark mb-0">
                                     <span class="c1">{{count($product->rating)>0?number_format($product->rating[0]->average, 1, '.', ' '):0}}</span><span class="text-muted">/5</span>
                                 </h4>
-                                <p> {{translate('of')}} {{$product->reviews->count()}} {{translate('reviews')}}
+                                <p> {{translate('')}} {{$product->reviews->count()}} {{translate('reviews')}}
                                     <span class="badge badge-soft-dark badge-pill ml-1"></span>
                                 </p>
                             </div>
