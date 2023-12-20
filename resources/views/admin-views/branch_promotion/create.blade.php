@@ -273,14 +273,8 @@
                         className: 'd-none'
                     },
                 ],
-<<<<<<< Updated upstream
                 paging:false,
                 info:false,
-=======
-                info:false,
-                paging:false,
-                
->>>>>>> Stashed changes
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',
