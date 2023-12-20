@@ -642,6 +642,37 @@
 </script>
 <script>
     $('#from_date, #to_date').change(function () {
+        let fr = $('#from_date').val();
+        let to = $('#to_date').val();
+        
+        if (fr !== '' && to !== '') {
+            // Parse dates in the format dd-mm-yy
+            let fromDate = parseDate(fr);
+            let toDate = parseDate(to);
+
+            if (isNaN(fromDate) || isNaN(toDate) || fromDate >= toDate) {
+                $('#from_date').val('');
+                $('#to_date').val('');
+                toastr.error('Invalid date range! Start date must be less than end date.', 'Error', {
+                    closeButton: true,
+                    progressBar: true
+                });
+            }
+        }
+    });
+
+    $('#reset_btn').click(function () {
+        $('#customer').val(null).trigger('change');
+    });
+
+    // Function to parse date in the format dd-mm-yy
+    function parseDate(dateString) {
+        let parts = dateString.split("-");
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+</script>
+{{-- <script>
+    $('#from_date, #to_date').change(function () {
         let from = $('#from_date').val();
         let to = $('#to_date').val();
         if(from != ''){
@@ -659,7 +690,7 @@
         }
 
     })
-</script>
+</script> --}}
 <script>
     // Function to disallow special characters
     function disallowSpecialCharacters(input) {
