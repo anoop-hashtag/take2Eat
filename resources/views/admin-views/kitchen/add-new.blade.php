@@ -58,7 +58,7 @@
 
                         <div class="">
                             <div class="row">
-                            <div class="col-md-1 mb-3">
+                            <div class="col-md-1 mb-3 ">
                                
                                     <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
                                     {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
@@ -69,7 +69,7 @@
                                         <input type="hidden"  id="hidden-country-code"  name="country_code">
                                        
                                 </div>
-                                <div class="col-md-5 mb-3">
+                                <div class="col-md-5 mb-3 ">
                                     <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
                                     <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
                                            placeholder="{{translate('Ex')}} : 88017********" required>

@@ -49,7 +49,7 @@
                                                 @endif
                                             @endforeach
                                         </a>
-                                        <ul class="dropdown-menu">
+                                        <ul class="dropdown-menu" style="position:absolute;">
                                             @foreach($lang as $key =>$data)
                                                 @if($data['status']==1)
                                                     <li>

@@ -8,9 +8,11 @@
             height: 40px;
             border: 1px solid #fbc1c1;
             outline: none;
+            width:100%;
             box-shadow: none;
-            top: 7px !important;
-            transform: translateX(7px);
+            top: 10px !important;
+            margin:32px 0 10px 0;
+            /* transform: translateX(7px); */
             padding-left: 10px;
         }
     </style>
@@ -195,12 +197,12 @@
                                            data-placement="right"
                                            data-original-title="{{ translate('search_your_location_here') }}"
                                            type="text" placeholder="{{ translate('search_here') }}" />
-                                    <div id="location_map_canvas" class="overflow-hidden rounded" style="height: 100%"></div>
+                                    <div id="location_map_canvas" class="overflow-hidden rounded" style="height: 80%"></div>
                                 </div>
 
                             </div>
 
-                            <div class="d-flex justify-content-end gap-3 mt-4">
+                            <div class="d-flex justify-content-end gap-3 mt-5">
                                 <button type="reset" class="btn btn-secondary">{{translate('reset')}}</button>
                                 <button type="submit" class="btn btn-primary">{{translate('submit')}}</button>
                             </div>

@@ -7,9 +7,28 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
-card-top.px-card .d-flex.flex-wrap a, .card-top.px-card .d-flex.flex-wrap .btn {
+.card-top.px-card .d-flex.flex-wrap a, .card-top.px-card .d-flex.flex-wrap .btn {
 	position: relative;
 	z-index: 1;
+}
+.product-label span:nth-child(1) {
+  display: inline-block;
+  width: 85px;
+  text-align: start;
+}
+.product-label span:nth-child(2){
+  text-align: start;
+}
+.product-label-half span:nth-child(1) {
+  display: inline-block;
+  width: 50px;
+  text-align: start;
+}
+.product-label-half span:nth-child(2){
+  text-align: start;
+}
+input[type=time].form-control{
+  appearance:auto!important;
 }
 div#country-dropdown {
   border: none;
@@ -52,6 +71,7 @@ div#country-dropdown {
 }
 
 @media only screen and (min-width:1300px){
+  
   .search-arrange .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -152,32 +172,43 @@ div#country-dropdown {
     margin: 30px 0 0 !important;
   }
   .datatable_wrapper_row .dataTable{
-    display: table;
-    overflow-x: auto!important;
-    width: 100%;
-    padding-top: 10px;
-  }
-  .responsive-ui.customer-style .datatable_wrapper_row .dataTable{
     display: table!important;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
   }
-  .responsive-ui .datatable_wrapper_row .dataTable{
-    display: table;
+  .responsive-ui.block-view .datatable_wrapper_row .dataTable{
+    display: block!important;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
   }
-  .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
+  /* .responsive-ui.customer-style .datatable_wrapper_row .dataTable{
     display: table!important;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
-  }
+  } */
+  /* .responsive-ui .datatable_wrapper_row .dataTable{
+    display: table;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  } */
+  /* .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
+    display: table!important;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  } */
 }
 @media (min-width:1040px) and (max-width:1200px){
-  
+  .responsive-ui.block-view .datatable_wrapper_row .dataTable{
+    display: block!important;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
   .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
     display: table!important;
     overflow-x: auto!important;
@@ -186,6 +217,12 @@ div#country-dropdown {
   }
 }
 @media only screen and (min-width:992px) and (max-width:1040px){
+  .responsive-ui.block-view .datatable_wrapper_row .dataTable{
+    display: block!important;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
   .chef-style{
     position: relative;
     right: 0;
@@ -221,6 +258,9 @@ div#country-dropdown {
 }
  
 @media only screen and (max-width:992px){
+  .review-size h4{
+    font-size: 30px!important;
+  }
   .new-responsive .datatable_wrapper_row .dataTable{
     display: table;
     overflow-x: auto!important;
@@ -250,11 +290,10 @@ div#country-dropdown {
   padding-top: 10px;
 }
 .search-arrange .dataTables_wrapper .dataTables_filter {
-  float: left!important;
+  float: right!important;
   text-align: right!important;
-  position: relative;
-  right: -17px!important;
-  top: 15px;
+  right: 10px!important;
+  top: -40px;
   padding: 0 0 15px 0!important;
 }
 }
@@ -328,9 +367,6 @@ div#country-dropdown {
     margin: 10px!important;
   }
   .customer-style .dataTables_wrapper .dataTables_filter{
-    margin-top:30px!important; 
-  } 
-  .top-style .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important; 
   } 
   .search-style .dataTables_wrapper .dataTables_filter{
@@ -408,10 +444,10 @@ div#country-dropdown {
   text-align: center;
 } */
 table.dataTable thead th, table.dataTable thead td {
-	padding: 8px 10px!important;
+	padding: 8px 13px!important;
 }
 table.dataTable tbody td {
-	padding: 8px 10px!important;
+	padding: 8px 13px!important;
 }
 /* .product-category{
   display: flex;
@@ -1521,7 +1557,7 @@ ol.order-list {
 
 .__descripiton-txt.__not-first-hidden {
   margin-bottom: 25px;
-  min-height: 86px;
+  /* min-height: 86px; */
   max-height: 110px;
   overflow: hidden;
   padding-bottom: 0;
@@ -1553,7 +1589,7 @@ ol.order-list {
 }
 
 #location_map_canvas {
-  min-height: 200px;
+  min-height: 255px;
 }
 
 body {

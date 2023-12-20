@@ -37,7 +37,7 @@
                                 alt="Image Description">
                             </div>
                             <div class="d-block">
-                                <h4 class="display-2 text-dark mb-0"><span class="c1">{{count($dm->rating)>0?number_format($dm->rating[0]->average, 1, '.', ' '):0}}</span><span class="text-muted" style="font-size: 42px;">/5</span></h4>
+                                <h4 class="display-2 text-dark mb-0"><span class="c1">{{count($dm->rating)>0?number_format($dm->rating[0]->average, 1, '.', ' '):0}}</span><span class="text-muted" >/5</span></h4>
                                 <p> {{$dm->reviews->count()}} {{translate('reviews')}}
                                     <span class="badge badge-soft-dark badge-pill ml-1"></span>
                                 </p>

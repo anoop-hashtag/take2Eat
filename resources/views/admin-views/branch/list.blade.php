@@ -65,7 +65,7 @@
                             <tr>
                                 <td>{{$branches->firstItem()+$key}}</td>
                                 <td>
-                                    <div class="media align-items-center gap-3 px-3">
+                                    <div class="media align-items-center gap-3 ">
                                         <img width="50" class="rounded"
                                                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                 src="{{asset('storage/app/public/branch')}}/{{$branch['image']}}">

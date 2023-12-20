@@ -92,9 +92,9 @@
                         </div>
                     </div>
 
-                    <div class="py-3">
+                    <div class="set_table new-responsive">
                         <div class="datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
-                            <table id="datatable" class=" table-responsive table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
+                            <table id="datatable" class="pb-3 table-responsive table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                                 data-hs-datatables-options='{
                                     "order": [],
                                     "orderCellsTop": true
