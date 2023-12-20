@@ -110,6 +110,8 @@
 </main>
 <!-- ========== END MAIN CONTENT ========== -->
 
+
+
 <!-- ========== END SECONDARY CONTENTS ========== -->
 <script src="{{asset('public/assets/admin')}}/js/custom.js"></script>
 <!-- JS Implementing Plugins -->
@@ -121,6 +123,7 @@
 <script src="{{asset('public/assets/admin')}}/js/theme.min.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/toastr.js"></script>
+    <script src="{{asset('public/assets/admin/js/owl.min.js')}}"></script>
 {!! Toastr::message() !!}
 
 @if ($errors->any())
@@ -134,6 +137,8 @@
     </script>
 @endif
 {{-- //--------- For datatable font size ----------// --}}
+
+
   <script>
     $(document).on('ready', function() {
         $('#datatable').css('font-size', '13px');
@@ -169,6 +174,8 @@
 
     })
 </script>
+
+
 <!-- JS Plugins Init. -->
 <script>
     $(document).on('ready', function () {
@@ -320,15 +327,55 @@
          });
      });
      
- </script>
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+ </script> 
 
-<!-- Include jQuery UI library -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+ // Function to validate the date input
+ function validateDates() {
+     var fromDate = new Date(document.getElementById("from_date").value);
+     var toDate = new Date(document.getElementById("to_date").value);
+
+     if (fromDate > toDate) {
+         alert("End date cannot be less than the start date");
+         return false; // Prevent form submission
+     }
+     return true; // Allow form submission
+ }
+
+ // Attach the validation function to the form submission
+ document.querySelector("form").addEventListener("submit", validateDates);
+ 
+</script>
+<script>
+ $('#from_date, #to_date').change(function () {
+     let from = $('#from_date').val();
+     let to = $('#to_date').val();
+     if(from != ''){
+         $('#to_date').attr('required','required');
+     }
+     if(to != ''){
+         $('#from_date').attr('required','required');
+     }
+     if (from != '' && to != '') {
+         if (from > to) {
+             $('#from_date').val('');
+             $('#to_date').val('');
+             toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
+         }
+     }
+
+ })
+</script>
+<!-- Include jQuery UI library -->
+
+
 <script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
+
 <link rel="stylesheet" href="{{asset('public/assets/admin/css/demo.css')}}">
 <link href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css" rel="stylesheet" />
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- Include jQuery UI CSS for styling -->
 
 <!-- Include jQuery UI CSS for styling -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -367,47 +414,11 @@
       });
     });
 </script>
-<script>
- // Function to validate the date input
- function validateDates() {
-     var fromDate = new Date(document.getElementById("from_date").value);
-     var toDate = new Date(document.getElementById("to_date").value);
-
-     if (fromDate > toDate) {
-         alert("End date cannot be less than the start date");
-         return false; // Prevent form submission
-     }
-     return true; // Allow form submission
- }
-
- // Attach the validation function to the form submission
- document.querySelector("form").addEventListener("submit", validateDates);
- 
-</script>
-<script>
- $('#from_date, #to_date').change(function () {
-     let from = $('#from_date').val();
-     let to = $('#to_date').val();
-     if(from != ''){
-         $('#to_date').attr('required','required');
-     }
-     if(to != ''){
-         $('#from_date').attr('required','required');
-     }
-     if (from != '' && to != '') {
-         if (from > to) {
-             $('#from_date').val('');
-             $('#to_date').val('');
-             toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
-         }
-     }
-
- })
-</script>
 <!-- IE Support -->
 <script>
     if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public/assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');
 </script>
+
 
 </body>
 </html>

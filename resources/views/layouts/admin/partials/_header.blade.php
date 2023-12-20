@@ -20,11 +20,12 @@
             <div class="navbar-nav-wrap-content-left d-xl-none">
                 <!-- Navbar Vertical Toggle -->
                 <button type="button" class="js-navbar-vertical-aside-toggle-invoker close mr-3">
-                    <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip" data-placement="right" title="" title="Collapse"></i>
-                    
+                    <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip" data-placement="right" data-original-title=""></i>
+
                     <i class="tio-last-page navbar-vertical-aside-toggle-full-align"
                        data-template='<div class="tooltip d-none d-sm-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
-                       data-toggle="tooltip" data-placement="right" title="Expand"></i>
+                       data-toggle="tooltip" data-placement="right" data-original-title=""></i>
+                    
                 </button>
                 <!-- End Navbar Vertical Toggle -->
             </div>

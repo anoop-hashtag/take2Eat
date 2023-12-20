@@ -13,7 +13,7 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/deliveryman.png')}}" alt="">
                 <span class="page-header-title">
-                    {{translate('update_Deliveryman')}}
+                    {{translate('update_Delivery_partner')}}
                 </span>
             </h2>
         </div>
@@ -109,7 +109,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>{{translate('deliveryman_Image')}}</label>
+                                        <label>{{translate('Delivery_partner_Image')}}</label>
                                         <small class="text-danger">* ( {{translate('ratio')}} 1:1 )</small>
                                         <div class="custom-file">
                                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"

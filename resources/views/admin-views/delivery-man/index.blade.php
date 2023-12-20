@@ -89,7 +89,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>{{translate('deliveryman_Image')}}</label>
+                                        <label>{{translate('Delivery_partner_Image')}}</label>
                                         <small class="text-danger">* ( {{translate('ratio')}} 1:1 )</small>
                                         <div class="custom-file">
                                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
