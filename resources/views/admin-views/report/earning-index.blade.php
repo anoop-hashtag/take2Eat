@@ -296,7 +296,7 @@
                                                 fontFamily: "Open Sans, sans-serif",
                                                 padding: 10,
                                                 callback: function(value, index, values) {
-                                                    return ' ' + value;
+                                                    return ' ' + value.toFixed(2);
                                                 }
                                             }
                                         }],
@@ -377,21 +377,5 @@
         // });
     </script>
 
-    <script>
-        $('#from_date,#to_date').change(function () {
-            let fr = $('#from_date').val();
-            let to = $('#to_date').val();
-            if (fr != '' && to != '') {
-                if (fr > to) {
-                    $('#from_date').val('');
-                    $('#to_date').val('');
-                    toastr.error('Invalid date range!', Error, {
-                        CloseButton: true,
-                        ProgressBar: true
-                    });
-                }
-            }
-
-        })
-    </script>
+    
 @endpush
