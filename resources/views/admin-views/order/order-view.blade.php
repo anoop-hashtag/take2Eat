@@ -165,7 +165,7 @@
                     </div>
                     <!-- End Header -->
 
-                    <div class="py-4">
+                    <div class="py-4 table-responsive">
                         <table class="table-style table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
                             <tr>

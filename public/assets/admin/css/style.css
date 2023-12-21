@@ -232,6 +232,12 @@ div#country-dropdown {
     width: 100%;
     padding-top: 10px;
   }
+  .responsive-ui.new-ui .datatable_wrapper_row .dataTable{
+    display: block!important;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
   /* .responsive-ui.customer-style .datatable_wrapper_row .dataTable{
     display: table!important;
     overflow-x: auto!important;
@@ -254,6 +260,12 @@ div#country-dropdown {
 @media (min-width:1040px) and (max-width:1200px){
   .responsive-ui.block-view .datatable_wrapper_row .dataTable{
     display: block!important;
+    overflow-x: auto!important;
+    width: 100%;
+    padding-top: 10px;
+  }
+  .responsive-ui.new-ui .datatable_wrapper_row .dataTable{
+    display: table!important;
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
