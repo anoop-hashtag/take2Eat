@@ -55,8 +55,8 @@
                                             <th>{{translate('SL')}}</th>
                                             <th>{{translate('name')}}</th>
                                             <th>{{translate('price')}}</th>
-                                            <th class="text-center">{{translate('tax')}} (%)</th>
-                                            <th class="text-center">{{translate('action')}}</th>
+                                            <th>{{translate('tax')}} (%)</th>
+                                            <th>{{translate('action')}}</th>
                                         </tr>
                                     </thead>
 
@@ -70,9 +70,9 @@
                                                 </div>
                                             </td>
                                             <td>{{ Helpers::set_symbol($addon['price']) }}</td>
-                                            <td class="text-center">{{ $addon['tax'] }}</td>
+                                            <td>{{ $addon['tax'] }}</td>
                                             <td>
-                                                <div class="d-flex justify-content-center gap-2">
+                                                <div class="d-flex r gap-2">
                                                     <a class="btn btn-outline-info btn-sm edit square-btn"
                                                         href="{{route('admin.addon.edit',[$addon['id']])}}"><i class="tio-edit"></i></a>
                                                     <button class="btn btn-outline-danger btn-sm delete square-btn" type="button"

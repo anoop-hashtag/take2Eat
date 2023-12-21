@@ -71,7 +71,7 @@
         <div class="row flex-wrap-reverse g-2" id="printableArea">
             <div class="col-lg-8">
                 <div class="card">
-                    <div class="card-top px-card pt-4">
+                    <div class="card-top px-card ">
                         <div class="row align-items-center">
                             <div class="col-sm-4 col-md-6 col-xl-7">
                                 <h5 class="d-flex gap-2 align-items-center">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
 
-                    <div class="set_table new-responsive">
+                    <div class="set_table new-responsive pb-4">
                         <div class="datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
                             <table id="datatable" class="pb-3 table-responsive table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                                 data-hs-datatables-options='{

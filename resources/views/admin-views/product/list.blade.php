@@ -74,10 +74,10 @@
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('product_name')}}</th>
                                     <th>{{translate('selling_price')}}</th>
-                                    <th class="text-center">{{translate('total_sale')}}</th>
+                                    <th>{{translate('total_sale')}}</th>
                                     <th>{{translate('stock')}}</th>
                                     <th>{{translate('status')}}</th>
-                                    <th class="text-center">{{translate('action')}}</th>
+                                    <th>{{translate('action')}}</th>
                                 </tr>
                                 </thead>
 
@@ -100,7 +100,7 @@
                                             </div>
                                         </td>
                                         <td>{{ \App\CentralLogics\Helpers::set_symbol($product['price']) }}</td>
-                                        <td class="text-center">{{\App\Model\OrderDetail::whereHas('order', function ($q){
+                                        <td >{{\App\Model\OrderDetail::whereHas('order', function ($q){
                                                     $q->where('order_status', 'delivered');
                                                 })->where('product_id', $product->id)->sum('quantity')}}
                                         </td>
@@ -111,7 +111,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <div class="category-mid">
+                                            <div class="">
                                                 <label class="switcher">
                                                     <input id="{{$product['id']}}" class="switcher_input" type="checkbox" {{$product['status']==1? 'checked' : ''}} data-url="{{route('admin.product.status',[$product['id'],0])}}" onchange="status_change(this)">
                                                     <span class="switcher_control"></span>
@@ -119,7 +119,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex  gap-2">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                 href="{{route('admin.product.edit',[$product['id']])}}"><i class="tio-edit"></i></a>
                                                 <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"

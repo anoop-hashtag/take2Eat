@@ -63,7 +63,7 @@
             </div>
 
             <div class="set_table responsive-ui customer-style block-view">
-                <div class=" datatable_wrapper_row " id="set-rows" style="padding-right: 10px;">
+                <div class=" datatable_wrapper_row " id="set-rows" style="padding:0 10px;">
                     <table id="datatable" class="table table-responsive table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
                             <tr>
@@ -76,7 +76,7 @@
                                 <th>{{translate('total_Order_Amount')}}</th>
                                 <th>{{translate('available_Points')}}</th>
                                 <th>{{translate('status')}}</th>
-                                <th class="text-center">{{translate('actions')}}</th>
+                                <th>{{translate('actions')}}</th>
                             </tr>
                         </thead>
 

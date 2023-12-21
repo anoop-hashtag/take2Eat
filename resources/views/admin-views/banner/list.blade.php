@@ -126,7 +126,7 @@
                                     <th>{{translate('Title')}}</th>
                                     <th>{{translate('Banner_Type')}}</th>
                                     <th>{{translate('status')}}</th>
-                                    <th class="text-center">{{translate('action')}}</th>
+                                    <th >{{translate('action')}}</th>
                                 </tr>
                                 </thead>
 
@@ -151,14 +151,14 @@
                                             <td></td>
                                         @endif
                                         <td>
-                                            <label class="switcher category-mid">
+                                            <label class="switcher ">
                                                 <input class="switcher_input" type="checkbox" {{$banner['status']==1 ? 'checked' : ''}} id="{{$banner['id']}}"
                                                     data-url="{{route('admin.banner.status',[$banner['id'],0])}}" onchange="status_change(this)">
                                                 <span class="switcher_control"></span>
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex  gap-2">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                     href="{{route('admin.banner.edit',[$banner['id']])}}"><i class="tio-edit"></i></a>
                                                 <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"

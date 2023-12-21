@@ -118,7 +118,7 @@
                                     <th>{{translate('Main_Category')}}</th>
                                     <th>{{translate('sub_Category')}}</th>
                                     <th>{{translate('status')}}</th>
-                                    <th class="text-center">{{translate('action')}}</th>
+                                    <th>{{translate('action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody id="set-rows">
@@ -150,7 +150,7 @@
 
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex  gap-2">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                     href="{{route('admin.category.edit',[$category['id']])}}">
                                                     <i class="tio-edit"></i>

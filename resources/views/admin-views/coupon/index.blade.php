@@ -148,7 +148,7 @@
                                         {{-- <th>{{translate('discount_Type')}}</th> --}}
                                         <th>{{translate('duration')}}</th>
                                         <th>{{translate('status')}}</th>
-                                        <th class="text-center">{{translate('action')}}</th>
+                                        <th>{{translate('action')}}</th>
                                     </tr>
                                 </thead>
 
@@ -180,7 +180,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex  gap-2">
                                                 <a class="btn btn-outline-primary btn-sm edit square-btn openBtn" id="{{$coupon['id']}}" onclick="modalShow(this)">
                                                     <i class="tio-invisible"></i>
                                                 </a>

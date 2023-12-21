@@ -56,7 +56,7 @@
                                     <tr>
                                         <th>{{translate('SL')}}</th>
                                         <th>{{translate('name')}}</th>
-                                        <th class="text-center">{{translate('action')}}</th>
+                                        <th >{{translate('action')}}</th>
                                     </tr>
                                 </thead>
 
@@ -71,7 +71,7 @@
                                         </td>
                                         <td>
                                             <!-- Dropdown -->
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex  gap-2">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                    href="{{route('admin.attribute.edit',[$attribute['id']])}}"><i class="tio-edit"></i></a>
                                                 <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"

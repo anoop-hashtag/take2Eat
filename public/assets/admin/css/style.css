@@ -7,12 +7,24 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+.email-template-item .nav-item{
+  white-space: normal!important;
+}
+.email-format-section{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0!important;
+  --base: #ff7a00;
+}
 .content-row{
   display: flex;
   flex-wrap: nowrap;
 }
 .col-area-2 label{
   width: 100%;
+}
+.intl-tel-input .flag-container{
+  padding: 0!important;
 }
 .col-area-2{
   width:95px;

@@ -95,7 +95,7 @@
                                     class="btn btn-primary btn-block">{{translate('show')}}</button>
                         </div>
                     </div>
-                    <div class="row g-2 mt-3">
+                    <div class="row g-2 my-3">
                         <div class="col-md-6 d-flex flex-column gap-2">
                             <strong>
                                 {{translate('total')}} {{translate('orders')}} : <span id="order_count"> </span>
@@ -117,10 +117,10 @@
                         </div>
                     </div>
                 </form>
-
+                <hr>
                 <!-- Table -->
                 <div class="set_table new-responsive">
-                    <div class="table-responsive datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
+                    <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
                     @include('admin-views.report.partials._table',['data'=>[]])
                     </div>
                 </div>
@@ -153,6 +153,8 @@
         buttons: [
         'excel', 'csv', 'pdf', 'print'
                 ],
+                paging:false,
+                info:false,
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',
