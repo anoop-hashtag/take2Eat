@@ -148,7 +148,7 @@
                                     <th class="border-0">{{translate('started_on')}}</th>
                                     <th class="border-0">{{translate('expires_on')}}</th>
                                     <th class="border-0">{{translate('status')}}</th>
-                                    <th class="border-0 text-center">{{translate('action')}}</th>
+                                    <th class="border-0">{{translate('action')}}</th>
                                 </tr>
                                 </thead>
 
@@ -176,7 +176,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2 category-mid">
+                                            <div class="d-flex gap-2 category-mid">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                    href="{{route('admin.customer.wallet.bonus.edit',[$bonus['id']])}}"><i class="tio-edit"></i></a>
                                                 <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"

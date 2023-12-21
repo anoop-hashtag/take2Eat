@@ -7,12 +7,38 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+.tio-time-1::before {
+  content: "\e971";
+  float: right;
+  position: relative;
+  top: -29px;
+  right: 17px;
+}
+
+.xdsoft_datetimepicker .xdsoft_timepicker{
+  width:100px!important;
+}
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_prev, .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_next{
+  margin:auto!important;
+}
+.email-template-item .nav-item{
+  white-space: normal!important;
+}
+.email-format-section{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0!important;
+  --base: #ff7a00;
+}
 .content-row{
   display: flex;
   flex-wrap: nowrap;
 }
 .col-area-2 label{
   width: 100%;
+}
+.intl-tel-input .flag-container{
+  padding: 0!important;
 }
 .col-area-2{
   width:95px;
@@ -1058,7 +1084,6 @@ li.paginate_item.page-item span.ellipsis.page-link {
 
 .select2-container {
   max-width: 100%;
-  width: 100% !important;
 }
 
 .select2-container .select2-selection--single {

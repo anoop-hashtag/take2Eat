@@ -106,7 +106,7 @@
                                     <th>{{translate('title')}}</th>
                                     <th>{{translate('description')}}</th>
                                     <th>{{translate('status')}}</th>
-                                    <th class="text-center">{{translate('action')}}</th>
+                                    <th>{{translate('action')}}</th>
                                 </tr>
                                 </thead>
 
@@ -142,7 +142,7 @@
                                         </td>
                                         <td>
                                             <!-- Dropdown -->
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex  gap-2">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn" href="{{route('admin.notification.edit',[$notification['id']])}}">
                                                     <i class="tio-edit"></i>
                                                 </a>

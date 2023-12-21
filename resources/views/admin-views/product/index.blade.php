@@ -299,13 +299,15 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('available_From')}}</label>
-                                                        <input type="text" id="datetimepicker1" name="available_time_starts" class="form-control" placeholder="{{translate('Ex : 10:30 am')}}" required data-input>
+                                                        <input type="text" id="datetimepicker1" name="available_time_starts" class="form-control" placeholder="{{translate('--:--')}}" required data-input>
+                                                        <i class="tio-time-1"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('available_Till')}}</label>
-                                                        <input type="text" id="datetimepicker2" name="available_time_ends" class="form-control" placeholder="{{translate('5:45 pm')}}" required data-input>
+                                                        <input type="text" id="datetimepicker2" name="available_time_ends" class="form-control" placeholder="{{translate('--:--')}}" required data-input>
+                                                        <i class="tio-time-1"></i>
                                                     </div>
                                                 </div>
                                             </div>

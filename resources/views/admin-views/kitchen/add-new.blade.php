@@ -73,7 +73,7 @@
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
                                     <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
-                                           placeholder="{{translate('Ex')}} : 88017********" required>
+                                           placeholder="{{translate('Ex')}} : 88017********" required style="border-radius:0 .3125rem  .3125rem 0">
                                
                                 </div>
                                </div>
@@ -92,7 +92,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="name">{{translate('password')}} 
                                     <span class="text-danger">*</span> 
-                                    <span class="badge badge-soft-danger">{{translate('(minimum length will be 6 character)')}}</span>
+                                    <span class="badge badge-soft-danger" style="background:white;font-weight:400">{{translate('(minimum length will be 6 character)')}}</span>
                                 </label>
                                 <div class="input-group input-group-merge">
                                     <input type="password" name="password" class="js-toggle-password form-control form-control input-field" id="password"
@@ -135,7 +135,7 @@
                             </div>  --}}
                             <div class="col-md-12 mb-3">
                                 <label for="name">{{translate('image')}} <span class="text-danger">*</span></label>
-                                <span class="badge badge-soft-danger">( {{translate('ratio')}} 1:1 )</span>
+                                <span class="badge badge-soft-danger" style="background:white;font-weight:400">( {{translate('ratio')}} 1:1 )</span>
                                 <div class="form-group">
                                     <div class="custom-file text-left">
                                         <input type="file" name="image" id="customFileUpload" class="custom-file-input"

@@ -137,9 +137,9 @@
 
             <!-- Body -->
             <div class="card-body p-0">
-                <div class="table-responsive">
+                <div class="table-responsive" style="padding:0 10px;">
                     <table id="datatable"
-                           class="table table-thead-bordered table-align-middle card-table table-nowrap">
+                           class="table table-thead-bordered table-align-middle card-table table-nowrap" >
                         <thead class="thead-light">
                         <tr>
                             <th>{{ translate('sl') }}</th>

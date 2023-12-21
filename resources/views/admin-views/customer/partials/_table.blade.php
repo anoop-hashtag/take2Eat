@@ -32,7 +32,7 @@
             </label>
         </td>
         <td>
-            <div class="d-flex justify-content-center gap-2 category-mid">
+            <div class="d-flex  gap-2 category-mid">
                 <a class="btn btn-outline-primary btn-sm square-btn"
                     href="{{route('admin.customer.view',[$customer['id']])}}">
                     <i class="tio-visible"></i>
