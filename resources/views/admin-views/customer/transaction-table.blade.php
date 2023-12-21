@@ -28,7 +28,7 @@
 
                     </div>
                     <div class="col-sm-8 col-md-6 col-lg-4">
-                        <form action="{{url()->current()}}" method="GET">
+                        {{-- <form action="{{url()->current()}}" method="GET">
                             <div class="input-group">
                                 <input id="datatableSearch_" type="search" name="search"
                                     class="form-control"
@@ -39,7 +39,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
             </div>
