@@ -579,6 +579,33 @@
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
 <!-- Include jQuery UI library -->
+<!-- Include flatpickr CSS and JS from CDN -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-datetimepicker/build/jquery.datetimepicker.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+
+<script>
+    $(function () { 
+        $('#datetimepicker1').datetimepicker({
+            format: 'H:i', // Format for 24-hour time with seconds
+            datepicker: false, // Disable the datepicker
+            defaultTime: '10:30:00', // Default time for available_time_starts
+            // You can set more options here
+        });
+        $('#datetimepicker2').datetimepicker({
+            format: 'H:i', // Format for 24-hour time with seconds
+            datepicker: false, // Disable the datepicker
+            defaultTime: '10:30', // Default time for available_time_starts
+            // You can set more options here
+        });
+    });
+   
+    
+</script>
+
+
+
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
 <link rel="stylesheet" href="{{asset('public/assets/admin/css/demo.css')}}">
