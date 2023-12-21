@@ -591,12 +591,14 @@
             format: 'H:i', // Format for 24-hour time with seconds
             datepicker: false, // Disable the datepicker
             defaultTime: '10:30:00', // Default time for available_time_starts
+            pick12HourFormat: true,     
             // You can set more options here
         });
         $('#datetimepicker2').datetimepicker({
             format: 'H:i', // Format for 24-hour time with seconds
             datepicker: false, // Disable the datepicker
             defaultTime: '10:30', // Default time for available_time_starts
+            pick12HourFormat: true     
             // You can set more options here
         });
     });

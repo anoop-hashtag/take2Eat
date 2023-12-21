@@ -494,7 +494,7 @@
 
                                     <a href="#" class="btn btn-primary btn-block d-flex gap-1 justify-content-center align-items-center" data-toggle="modal" data-target="#assignDeliveryMan">
                                         <img width="17" src="{{asset('public/assets/admin/img/icons/assain_delivery_man.png')}}" alt="">
-                                        {{translate('Assign_Delivery_Man')}}
+                                        {{translate('Assign_Delivery Partner')}}
                                     </a>
                                 @endif
                             @endif
@@ -520,7 +520,7 @@
                                     <span class="card-header-icon">
                                         <i class="tio-user text-dark"></i>
                                     </span>
-                                            <span>{{ translate('delivery_man') }}</span>
+                                            <span>{{ translate('Delivery Partner') }}</span>
                                             <a  href="#"  data-toggle="modal" data-target="#assignDeliveryMan"
                                                 class="text--base cursor-pointer ml-auto">
                                                 {{translate('Change')}}
