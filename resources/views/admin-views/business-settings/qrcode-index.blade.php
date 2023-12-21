@@ -140,6 +140,7 @@
                                         <div class="form-group">
                                             <label class="input-label">{{translate('Opening Time')}}</label>
                                             <input type="time" class="form-control" name="opening_time" value="{{old('opening_time')}}" required>
+                                            <i class="fa-regular fa-clock"></i>
                                         </div>
                                     </div>
                                     <div class="col-6">

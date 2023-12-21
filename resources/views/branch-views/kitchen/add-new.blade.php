@@ -40,22 +40,25 @@
                                 <input type="text" name="l_name" class="form-control" id="l_name"
                                         placeholder="{{translate('Ex')}} : {{translate('Doe')}}" value="{{old('l_name')}}" required>
                             </div>
-                            <div class="col-md-1 mb-3">
-                               
+                            <div class="col-md-6 mb-3">
+                            <div class="content-row">
+                                <div class="col-area-2">
                                 <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
-                                {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
-                                       placeholder="{{translate('Ex')}} : +91" required> --}}
-                                       <br>
-                                    <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
+                                    {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
+                                           placeholder="{{translate('Ex')}} : +91" required> --}}
+                                          
+                                        <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
 
-                                    <input type="hidden"  id="hidden-country-code"  name="country_code">
-                                   
-                            </div>
-                            <div class="col-md-5  mb-3">
+                                        <input type="hidden"  id="hidden-country-code"  name="country_code">
+                                       
+                                </div>
+                                <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger" >*</span></label>
                                 <input type="text"  name="phone"  value="{{old('phone')}}" class="form-control" id="phone"
                                 onkeypress="return isNumber(event)"      placeholder="{{translate('Ex')}} : +88017********" required>
-                            </div>
+                             </div>
+</div>
+                             </div>
                             <div class="col-md-6  mb-3">
                                 <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
                                 <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"
