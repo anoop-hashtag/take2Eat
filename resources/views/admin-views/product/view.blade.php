@@ -320,7 +320,8 @@
                                 </div>
                             </td>
                             <td>
-                                {{date('d M Y H:i:s',strtotime($review['created_at']))}}
+                                {{-- {{date('d M Y H:i:s',strtotime($review['created_at']))}} --}}
+                                {{date('d M Y',strtotime($review['created_at']))}} {{ date(config('time_format'), strtotime($review['created_at'])) }}
                             </td>
                         </tr>
                     @endforeach
