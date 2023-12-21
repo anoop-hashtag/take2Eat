@@ -14,7 +14,9 @@
   top: -29px;
   right: 17px;
 }
-
+.intl-tel-input .country-list{
+  z-index:1000!important;
+}
 .xdsoft_datetimepicker .xdsoft_timepicker{
   width:100px!important;
 }
