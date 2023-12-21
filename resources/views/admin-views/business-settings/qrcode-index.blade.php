@@ -139,14 +139,14 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label class="input-label">{{translate('Opening Time')}}</label>
-                                            <input type="text" id="datetimepicker1" class="form-control" name="opening_time" value="{{old('opening_time')}}" required>
+                                            <input type="text" id="datetimepicker1" placeholder="10:30" class="form-control" name="opening_time" value="{{old('opening_time')}}" required>
                                             <i class="fa-regular fa-clock"></i>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label class="input-label">{{translate('Closing Time')}}</label>
-                                            <input type="text" id="datetimepicker2" class="form-control" name="closing_time" value="{{old('closing_time')}}" required>
+                                            <input type="text" id="datetimepicker2" placeholder="10:30" class="form-control" name="closing_time" value="{{old('closing_time')}}" required>
                                         </div>
                                     </div>
                                     <div class="col-6">
