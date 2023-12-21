@@ -7,6 +7,20 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+.tio-time-1::before {
+  content: "\e971";
+  float: right;
+  position: relative;
+  top: -29px;
+  right: 17px;
+}
+
+.xdsoft_datetimepicker .xdsoft_timepicker{
+  width:100px!important;
+}
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_prev, .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_next{
+  margin:auto!important;
+}
 .email-template-item .nav-item{
   white-space: normal!important;
 }
