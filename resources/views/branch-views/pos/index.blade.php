@@ -18,7 +18,7 @@
 {{--        <!-- Content -->--}}
 {{--        <!-- ========================= SECTION CONTENT ========================= -->--}}
 {{--        <section class="section-content padding-y-sm bg-default mt-3">--}}
-            <div class="container-fluid">
+            <div class="container-fluid mt-5">
                 <div class="row gy-3 gx-2">
                     <div class="col-lg-7">
                         <div class="card">
@@ -362,12 +362,12 @@
 <!-- ========== END SECONDARY CONTENTS ========== -->
 
 <!-- JS Implementing Plugins -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <!-- JS Front -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="{{asset('public/assets/admin')}}/js/vendor.min.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/theme.min.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
-<script src="{{asset('public/assets/admin')}}/js/toastr.js"></script>
+<script src="{{asset('public/assets/admin')}}/js/toastr.js"></script> -->
 <script src="https://maps.googleapis.com/maps/api/js?key={{ \App\Model\BusinessSetting::where('key', 'map_api_client_key')->first()?->value }}&libraries=places&v=3.51"></script>
 
 {{--{!! Toastr::message() !!}--}}

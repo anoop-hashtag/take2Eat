@@ -180,8 +180,8 @@
                         className: 'd-none'
                     },
                 ],
-                "paging": false,
-                "info" :false,
+                paging: false,
+                info :false,
                 select: {
                     style: 'multi',
                     selector: 'td:first-child input[type="checkbox"]',

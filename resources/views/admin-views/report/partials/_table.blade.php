@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
 
-<table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100 mt-3" id="datatable">
+<table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100" id="datatable" style="margin-top:10px!important;padding-left:0!important">
     <thead class="thead-light">
         <tr>
             <th>{{translate('SL')}} </th>
@@ -40,6 +40,8 @@
         buttons: [
         'excel', 'csv', 'pdf', 'print'
     ],
+    info:false,
+    paging:false,
         "bDestroy": true,
         language: {
             zeroRecords: '<div class="text-center p-4">' +

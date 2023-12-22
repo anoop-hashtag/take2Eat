@@ -49,7 +49,7 @@
                     <div class="card border-0">
                         <div class="card-body">
                             <div class="email-format-section email-format-wrapper row">
-                                <div class="col-lg-8 col-md-8 col-sm-12">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="d-inline-block">
                                         @include('admin-views.business-settings.email-format-setting.partials.email-template-section')
                                     </div>
@@ -59,7 +59,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="d-flex flex-wrap justify-content-between __gap-15px mt-2 mb-5">
                                         @php($data=\App\Models\EmailTemplate::withoutGlobalScope('translate')->with('translations')->where('type','user')->where('email_type', 'new_order')->first())
 
@@ -151,7 +151,7 @@
                                                     <div class="form-group">
                                                        <label class="form-label">{{translate('Main_Title')}}({{strtoupper($lang->code)}})
                                                             <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_title_within_45_characters')}}">
-                                                                <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('show_hide_food_menu') }}">
+                                                                 <i class="tio-info-outined"></i>
                                                             </span>
                                                         </label>
                                                         <input type="text" maxlength="45" name="title[]"  placeholder="{{ translate('Order_has_been_placed_successfully.') }}" class="form-control" value="{{$translate[$lang->code]['title']??''}}">
@@ -175,7 +175,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label">{{translate('Main_Title')}}
                                                     <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_title_within_45_characters')}}">
-                                                                <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('show_hide_food_menu') }}">
+                                                                 <i class="tio-info-outined"></i>
                                                             </span></label>
                                                     <input type="text" maxlength="45" name="title[]" placeholder="{{ translate('Order_has_been_placed_successfully.') }}"class="form-control">
                                                 </div>
