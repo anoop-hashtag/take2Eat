@@ -140,22 +140,7 @@
         });
 
     </script>
-    <script>
-        $('#from_date,#to_date').change(function () {
-            let fr = $('#from_date').val();
-            let to = $('#to_date').val();
-            if (fr != '' && to != '') {
-                if (fr > to) {
-                    $('#from_date').val('');
-                    $('#to_date').val('');
-                    toastr.error('Invalid date range!', Error, {
-                        CloseButton: true,
-                        ProgressBar: true
-                    });
-                }
-            }
-        });
-    </script>
+    
     <script type="text/javascript">
         $(document).ready(function () {
             $('input').addClass('form-control');

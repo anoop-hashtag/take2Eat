@@ -581,30 +581,25 @@
 <!-- Include jQuery UI library -->
 <!-- Include flatpickr CSS and JS from CDN -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-datetimepicker/build/jquery.datetimepicker.min.css">
+<!-- Include ClockPicker stylesheet and script -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/clockpicker/dist/jquery-clockpicker.min.css">
+<script src="https://cdn.jsdelivr.net/npm/clockpicker/dist/jquery-clockpicker.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
-
+<!-- Your existing script -->
 <script>
     $(function () { 
-        $('#datetimepicker1').datetimepicker({
-            format: 'H:i', // Format for 24-hour time with seconds
-            datepicker: false, // Disable the datepicker
-            defaultTime: '10:30:00', // Default time for available_time_starts
-            pick12HourFormat: true,     
-            // You can set more options here
+        $('#datetimepicker1').clockpicker({
+            autoclose: true,
+            'default': '10:30', // Default time for available_time_starts
         });
-        $('#datetimepicker2').datetimepicker({
-            format: 'H:i', // Format for 24-hour time with seconds
-            datepicker: false, // Disable the datepicker
-            defaultTime: '10:30', // Default time for available_time_starts
-            pick12HourFormat: true     
-            // You can set more options here
+
+        $('#datetimepicker2').clockpicker({
+            autoclose: true,
+            'default': '10:30', // Default time for available_time_starts
         });
     });
-   
-    
 </script>
+
 
 
 
@@ -700,26 +695,7 @@
         return new Date(parts[2], parts[1] - 1, parts[0]);
     }
 </script>
-{{-- <script>
-    $('#from_date, #to_date').change(function () {
-        let from = $('#from_date').val();
-        let to = $('#to_date').val();
-        if(from != ''){
-            $('#to_date').attr('required','required');
-        }
-        if(to != ''){
-            $('#from_date').attr('required','required');
-        }
-        if (from != '' && to != '') {
-            if (from > to) {
-                $('#from_date').val('');
-                $('#to_date').val('');
-                toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
-            }
-        }
 
-    })
-</script> --}}
 <script>
     // Function to disallow special characters
     function disallowSpecialCharacters(input) {
