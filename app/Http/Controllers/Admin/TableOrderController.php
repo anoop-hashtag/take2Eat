@@ -48,7 +48,7 @@ class TableOrderController extends Controller
                 }
             })
                 ->when($from && $to, function ($query) use ($from, $to) {
-                    $query->whereBetween('created_at', [$from, $to]);
+                    $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                 });
             $query_param = ['search' => $request['search']];
         } else {
@@ -62,13 +62,13 @@ class TableOrderController extends Controller
                 if ($status == 'all') {
                     $orders = $this->order->with(['customer', 'branch', 'table'])
                         ->when($from && $to, function ($query) use ($from, $to) {
-                            $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                            $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                         });
                 } else {
                     $orders = $this->order->with(['customer', 'branch', 'table'])
                         ->where(['order_status' => $status])
                         ->when($from && $to, function ($query) use ($from, $to) {
-                            $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                            $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                         });
                 }
             } //selected branch
@@ -77,13 +77,13 @@ class TableOrderController extends Controller
                 if ($status == 'all') {
                     $orders = $this->order->with(['customer', 'branch', 'table'])->where('branch_id', session('branch_filter'))
                         ->when($from && $to, function ($query) use ($from, $to) {
-                            $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                            $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                         });
                 } else {
                     $orders = $this->order->with(['customer', 'branch', 'table'])
                         ->where(['order_status' => $status, 'branch_id' => session('branch_filter')])
                         ->when($from && $to, function ($query) use ($from, $to) {
-                            $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                            $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                         });
                 }
             }
@@ -92,23 +92,23 @@ class TableOrderController extends Controller
         $order_count = [
             'confirmed' => $this->order->notPos()->dineIn()->where(['order_status' => 'confirmed'])->notSchedule()
                 ->when(!is_null($from) && !is_null($to), function ($query) use ($from, $to) {
-                    $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                    $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                 })->count(),
             'cooking' => $this->order->notPos()->dineIn()->where(['order_status' => 'cooking'])->notSchedule()
                 ->when(!is_null($from) && !is_null($to), function ($query) use ($from, $to) {
-                    $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                    $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                 })->count(),
             'done' => $this->order->notPos()->dineIn()->where(['order_status' => 'done'])->notSchedule()
                 ->when(!is_null($from) && !is_null($to), function ($query) use ($from, $to) {
-                    $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                    $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                 })->count(),
             'completed' => $this->order->notPos()->dineIn()->where(['order_status' => 'completed'])->notSchedule()
                 ->when(!is_null($from) && !is_null($to), function ($query) use ($from, $to) {
-                    $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                    $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                 })->count(),
             'canceled' => $this->order->notPos()->dineIn()->where(['order_status' => 'canceled'])->notSchedule()
                 ->when(!is_null($from) && !is_null($to), function ($query) use ($from, $to) {
-                    $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                    $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
                 })->count(),
         ];
 
