@@ -7,6 +7,7 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+
 .tio-time-1::before {
   content: "\e971";
   float: right;
@@ -122,7 +123,6 @@ div#country-dropdown {
 }
 
 @media only screen and (min-width:1300px){
-  
   .search-arrange .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -184,6 +184,9 @@ div#country-dropdown {
   }
 }
 @media (min-width:1200px) and (max-width:1299px){
+  .customer-height{
+    min-height: 45px;
+  }
   .search-arrange .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -240,26 +243,11 @@ div#country-dropdown {
     width: 100%;
     padding-top: 10px;
   }
-  /* .responsive-ui.customer-style .datatable_wrapper_row .dataTable{
-    display: table!important;
-    overflow-x: auto!important;
-    width: 100%;
-    padding-top: 10px;
-  } */
-  /* .responsive-ui .datatable_wrapper_row .dataTable{
-    display: table;
-    overflow-x: auto!important;
-    width: 100%;
-    padding-top: 10px;
-  } */
-  /* .responsive-ui.customer-style.table-css .datatable_wrapper_row .dataTable{
-    display: table!important;
-    overflow-x: auto!important;
-    width: 100%;
-    padding-top: 10px;
-  } */
 }
 @media (min-width:1040px) and (max-width:1200px){
+  .customer-height{
+    min-height: 45px;
+  }
   .responsive-ui.block-view .datatable_wrapper_row .dataTable{
     display: block!important;
     overflow-x: auto!important;
@@ -506,20 +494,13 @@ div#country-dropdown {
 .btn-action{
   padding: 8px 10px!important;
 }
-/* .table thead, .table tbody{
-  text-align: center;
-} */
+
 table.dataTable thead th, table.dataTable thead td {
 	padding: 8px 13px!important;
 }
 table.dataTable tbody td {
 	padding: 8px 13px!important;
 }
-/* .product-category{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 .name-width{
   width: 115px!important;
   text-align: left!important;
@@ -528,12 +509,6 @@ table.dataTable tbody td {
   width: 115px!important;
   text-align: justify!important;
 }
-  /* .category-mid{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-  } */
 .category-select{
   width:80px;
 }
@@ -541,9 +516,6 @@ table.dataTable tbody td {
   max-width: 150px!important;
   white-space: break-spaces!important;
 }
-
-/*8/12/203* end /
-
 
 /* Redesign CSS */
 .navbar-dropdown-lg {
@@ -1159,19 +1131,16 @@ input.qty {
   flex-wrap: wrap;
   gap: 8px;
 }
-
 .option-buttons input:checked + label {
   background-color: #334257 !important;
   border-color: #334257 !important;
   color: #fff !important;
 }
-
 .btn-bordered {
   border: 1px solid #d0dbe9;
   border-radius: 3px;
   color: #334257;
 }
-
 .btn-bordered:hover {
   background-color: #334257;
   border-color: #334257;

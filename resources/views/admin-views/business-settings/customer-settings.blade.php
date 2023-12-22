@@ -118,7 +118,7 @@
                     <div class="row g-3">
                         <div class="col-sm-6 col-lg-4">
                             <div class="form-group m-0">
-                                <label class="input-label"
+                                <label class="input-label customer-height"
                                        for="loyalty_point_exchange_rate">{{ translate('1 '.\App\CentralLogics\Helpers::currency_code().' Equal to How Much Loyalty Points?') }}</label>
                                 <input type="number" class="form-control" name="loyalty_point_exchange_rate"
                                        value="{{ $data['loyalty_point_exchange_rate'] ?? '0' }}">
@@ -126,7 +126,7 @@
                         </div>
                         <div class="col-sm-6 col-lg-4">
                             <div class="form-group m-0">
-                                <label class="input-label"
+                                <label class="input-label customer-height"
                                        for="intem_purchase_point">{{ translate('Percentage of Loyalty Point on Order Amount') }}
 
                                 </label>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="col-sm-6 col-lg-4">
                             <div class="form-group m-0">
-                                <label class="input-label"
+                                <label class="input-label customer-height"
                                        for="intem_purchase_point">{{ translate('Minimum Loyalty Points to Transfer Into Wallet') }}</label>
                                 <input type="number" class="form-control" name="minimun_transfer_point" min="0"
                                        value="{{ $data['loyalty_point_minimum_point'] ?? '0' }}">

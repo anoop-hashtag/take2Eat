@@ -111,7 +111,7 @@
             <div class="card-body p-0 new-responsive filter-style">
                 <div class="table-responsive datatable_wrapper_row printable_btn" style="padding-right: 10px;">
                     <table id="datatable"
-                            class=" pt-4 table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
+                            class="py-4 table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
                             <tr>
                                 <th>
@@ -425,6 +425,8 @@
                 datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
                     dom: 'Bfrtip',
                     buttons: ['excel', 'csv', 'pdf', 'print'],
+                    paging:false,
+                    info:false,
                     language: {
                         zeroRecords: '<div class="text-center p-4">' +
                             '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +

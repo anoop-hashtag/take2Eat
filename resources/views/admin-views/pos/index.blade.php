@@ -480,19 +480,11 @@
 
 @push('script_2')
     <!-- JS Implementing Plugins -->
-<<<<<<< Updated upstream
     {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> --}}
     {{-- <script src="{{asset('public/assets/admin')}}/js/vendor.min.js"></script>
     <script src="{{asset('public/assets/admin')}}/js/theme.min.js"></script>
     <script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
     <script src="{{asset('public/assets/admin')}}/js/toastr.js"></script> --}}
-=======
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="{{asset('public/assets/admin')}}/js/vendor.min.js"></script>
-    <script src="{{asset('public/assets/admin')}}/js/theme.min.js"></script>
-    <script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
-    <script src="{{asset('public/assets/admin')}}/js/toastr.js"></script> -->
->>>>>>> Stashed changes
     <script src="https://maps.googleapis.com/maps/api/js?key={{ \App\Model\BusinessSetting::where('key', 'map_api_client_key')->first()?->value }}&libraries=places&v=3.51"></script>
 
     {{--{!! Toastr::message() !!}--}}

@@ -114,6 +114,7 @@
 
 
 <!-- ========== END SECONDARY CONTENTS ========== -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/custom.js"></script>
 <!-- JS Implementing Plugins -->
 
@@ -330,7 +331,7 @@
      
  </script> 
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 
 <script>
