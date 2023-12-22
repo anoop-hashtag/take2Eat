@@ -34,19 +34,26 @@
                         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                             <div class="">
                                 <h2 class="page-header-title mb-2">{{translate('earning_report_overview')}}</h2>
-
+                              
                                 <div>
                                     <div class="mb-1">
                                         <span>{{translate('admin')}}:</span>
                                         <a href="#">{{auth('admin')->user()->f_name.' '.auth('admin')->user()->l_name}}</a>
                                     </div>
-
+                                    <?php
+                                if (empty($_GET)) {
+                                    echo 'All Data';
+                                } else {
+                                    ?>
                                     <div class="d-flex flex-wrap gap-2 align-items-center">
                                         <div>{{translate('date')}} :</div>
                                         <div>
                                             ( {{date('d-m-Y '. config('time_format'),strtotime(session('from_date')))}} - {{date('d-m-Y '. config('time_format'),strtotime(session('to_date')))}} )
                                         </div>
                                     </div>
+                              <?php } ?> 
+                                
+                                    
                                 </div>
                             </div>
 

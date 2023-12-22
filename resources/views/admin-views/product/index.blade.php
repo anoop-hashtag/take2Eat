@@ -176,7 +176,7 @@
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('default_Price')}}
                                                             <span class="text-danger">*</span></label>
-                                                        <input type="number" min="0" step="any" value="1" name="price" class="form-control"
+                                                        <input type="number" min="0" step="any"  name="price" class="form-control"
                                                                placeholder="{{translate('Ex : 100')}}" required>
                                                     </div>
                                                 </div>
