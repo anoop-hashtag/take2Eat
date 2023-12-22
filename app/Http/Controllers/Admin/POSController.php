@@ -776,10 +776,13 @@ class POSController extends Controller
         } elseif ($request->has('filter')) {
 
             $query->when($from && $to && $branch_id == 'all', function ($q) use ($from, $to) {
-                $q->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                // $q->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
+                 $q->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
+                 
             })
                 ->when($from && $to && $branch_id != 'all', function ($q) use ($from, $to, $branch_id) {
-                    $q->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()])
+                    // $q->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()])
+                    $q->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59'])
                         ->whereHas('branch', function ($q) use ($branch_id) {
                             $q->where('id', $branch_id);
                         });

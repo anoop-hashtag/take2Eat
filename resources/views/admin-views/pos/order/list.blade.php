@@ -322,26 +322,7 @@
 
     </script>
 
-    <script>
-        $('#from_date, #to_date').change(function () {
-            let from = $('#from_date').val();
-            let to = $('#to_date').val();
-            if(from != ''){
-                $('#to_date').attr('required','required');
-            }
-            if(to != ''){
-                $('#from_date').attr('required','required');
-            }
-            if (from != '' && to != '') {
-                if (from > to) {
-                    $('#from_date').val('');
-                    $('#to_date').val('');
-                    toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
-                }
-            }
-
-        })
-    </script>
+    
 @push('script_2')
 <script>
     $(document).on('ready', function () {
@@ -417,20 +398,7 @@
 
 
 <script>
-    $('#from_date,#to_date').change(function () {
-        let fr = $('#from_date').val();
-        let to = $('#to_date').val();
-        if (fr != '' && to != '') {
-            if (fr > to) {
-                $('#from_date').val('');
-                $('#to_date').val('');
-                toastr.error('{{translate('Invalid date range!')}}', Error, {
-                    CloseButton: true,
-                    ProgressBar: true
-                });
-            }
-        }
-    });
+   
     $('#datatable').dataTable({
 destroy: true,
 ...

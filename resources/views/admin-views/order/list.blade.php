@@ -47,7 +47,7 @@
                             <div class="col-md-4 col-lg-3">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('Start Date') }}</label>
-                                    <input type="text" name="from" value="{{ session()->get('') }}" id="from_date" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
+                                    <input type="text" name="from" value="" id="from_date" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-3">
