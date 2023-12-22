@@ -46,9 +46,9 @@ class ReportController extends Controller
         $from = Carbon::parse($request->from)->startOfDay();
         $to = Carbon::parse($request->to)->endOfDay();
 
-        if ($request->from > $request->to) {
-            Toastr::warning(translate('Invalid date range!'));
-        }
+        // if ($request->from > $request->to) {
+        //     Toastr::warning(translate('Invalid date range!'));
+        // }
 
         $orders = $this->order->where(['order_status' => 'delivered'])
             ->when($request->from && $request->to, function ($q) use ($from, $to) {
