@@ -647,23 +647,7 @@
 
 
 
-<script>
-    // Function to validate the date input
-    function validateDates() {
-        var fromDate = new Date(document.getElementById("from_date").value);
-        var toDate = new Date(document.getElementById("to_date").value);
 
-        if (fromDate > toDate) {
-            alert("End date cannot be less than the start date");
-            return false; // Prevent form submission
-        }
-        return true; // Allow form submission
-    }
-
-    // Attach the validation function to the form submission
-    document.querySelector("form").addEventListener("submit", validateDates);
-    
-</script>
 <script>
     $('#from_date, #to_date').change(function () {
         let fr = $('#from_date').val();
