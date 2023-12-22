@@ -140,7 +140,7 @@
                             </table>
 
                         </div>
-                        <div class="table-responsive px-3 mt-3">
+                        <div class="table-responsive px-3 mt-3 pagination-style">
                             <div class="d-flex justify-content-end">
                                 {!! $delivery_men->links() !!}
                             </div>
