@@ -86,8 +86,8 @@
                     </table>
                 </div>
 
-                <div class="table-responsive mt-4 px-3">
-                    <div class="d-flex pagination-style justify-content-lg-end">
+                <div class="table-responsive mt-4 px-3 pagination-style">
+                    <div class="d-flex justify-content-lg-end">
                         <!-- Pagination -->
                         {!! $customers->links() !!}
                     </div>

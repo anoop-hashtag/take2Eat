@@ -140,8 +140,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="table-responsive mt-4 px-3">
-                            <div class="d-flex justify-content-lg-end pagination-style">
+                        <div class="table-responsive mt-4 px-3 pagination-style">
+                            <div class="d-flex justify-content-lg-end">
                                 <!-- Pagination -->
                                 {!! $orders->links() !!}
                             </div>
