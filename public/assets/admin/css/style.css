@@ -433,7 +433,7 @@ div#country-dropdown {
     margin-top:30px!important;
   } 
   .dataTables_wrapper .dataTables_filter {
-    margin: 1em 0 0 1.3rem!important;
+    margin: 1em 0 0 0.8rem!important;
 }
 .order_id{
   font-size: 11px;

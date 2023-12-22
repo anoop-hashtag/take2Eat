@@ -39,15 +39,15 @@
                                 @php($lang = \App\CentralLogics\Helpers::get_business_settings('language')??null)
                                 <div class="topbar-text dropdown disable-autohide text-capitalize">
                                     @if(isset($lang) && array_key_exists('code', $lang[0]))
-                                        <a class="topbar-link dropdown-toggle d-flex gap-2 align-items-center font-weight-bold dropdown-toggle-empty" href="#" data-toggle="dropdown">
-                                            {{--<img class="avatar-img rounded-0" src="{{asset('public/assets/admin/img/flag.png')}}" alt="Image Description">--}}
-                                            <i class="tio-globe"></i>
+                                        
+                                            <a class="topbar-link dropdown-toggle d-flex gap-2 align-items-center font-weight-bold dropdown-toggle-empty lang-country-flag" href="#" data-toggle="dropdown">
                                             @foreach($lang as $data)
                                                 @if($data['code']==$local)
-                                                    <span>{{$data['name']}}</span>
+                                                    <img src="{{asset('public/assets/admin/img/google_translate_logo.png')}}" alt=""> <span>{{$data['name']}}</span>
                                                 @endif
                                             @endforeach
                                         </a>
+                                       
                                         <ul class="dropdown-menu" style="position:absolute;">
                                             @foreach($lang as $key =>$data)
                                                 @if($data['status']==1)
