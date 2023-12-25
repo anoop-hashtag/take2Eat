@@ -7,7 +7,29 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
-
+.card-design .card-number span{
+  background: #ff611d;
+  box-shadow: 0px 0px 10px gray;
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+  line-height: 35px;
+  border-radius: 50%;
+  color: #fff;
+}
+.card-design .card-title{
+  text-transform:uppercase;
+}
+.bg-card{
+  background: #ffc3a9 ;
+}
+.card-design .btn-card{
+  border-radius: 20px;
+}
+.card-design h5,.card-design button{
+  text-align: center;
+  margin:12px 0;
+}
 .tio-time-1::before {
   content: "\e971";
   float: right;
@@ -501,10 +523,10 @@ table.dataTable thead th, table.dataTable thead td {
 table.dataTable tbody td {
 	padding: 8px 13px!important;
 }
-.name-width{
+/* .name-width{
   width: 115px!important;
   text-align: left!important;
-}
+} */
 .branch-width{
   width: 115px!important;
   text-align: justify!important;

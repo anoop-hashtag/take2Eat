@@ -59,7 +59,7 @@
                                     {{--                next release--}}
                                     {{--                <i class="tio-alarm-alert position-absolute right-0 top-0 fz-18 text-primary"></i>--}}
                                     <h3 class="card-title mb-2">{{ translate('table') }}</h3>
-                                    <h5 class="card-title mb-1">{{ $table['number'] }}</h5>
+                                    <h5 class="card-title mb-1 card-number">{{ $table['number'] }}</h5>
                                     <h5 class="card-title mb-1">{{ translate('capacity') }}: {{ $table['capacity'] }}</h5>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ translate('table').$table['number'] }}">
                                         View Details

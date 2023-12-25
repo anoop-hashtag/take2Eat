@@ -2,16 +2,16 @@
 @if($tables != null)
 @foreach($tables as $table)
     <div class="dropright">
-        <div class="card table_hover-btn py-4 {{ $table['order'] != null ? 'bg-c1' : 'bg-gray'}} stopPropagation"
+        <div class="card table_hover-btn py-4 {{ $table['order'] != null ? 'bg-card' : 'bg-gray'}} stopPropagation"
 {{--             data-toggle="modal" data-target="#tableInfoModal"--}}
         >
-            <div class="card-body mx-3 position-relative text-center">
+            <div class=" mx-3 position-relative text-center card-design">
 {{--                next release--}}
 {{--                <i class="tio-alarm-alert position-absolute right-0 top-0 fz-18 text-primary"></i>--}}
-                <h3 class="card-title mb-2">{{ translate('table') }}</h3>
-                <h5 class="card-title mb-1">{{ $table['number'] }}</h5>
-                <h5 class="card-title mb-1">{{ translate('capacity') }}: {{ $table['capacity'] }}</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ translate('table').$table['number'] }}">
+                <!-- <h3 class="card-title mb-2">{{ translate('table') }}</h3> -->
+                <h5 class="card-title mb-1 card-number"><span>{{ $table['number'] }}</span></h5>
+                <h5 class="card-title mb-1" >{{ translate('capacity') }}: {{ $table['capacity'] }}</h5>
+                <button type="button" class="btn btn-primary btn-card" data-toggle="modal" data-target="#myModal{{ translate('table').$table['number'] }}">
                     View Details
                 </button>
             </div>

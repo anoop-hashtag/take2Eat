@@ -21,7 +21,7 @@
                         <div class="card py-4">
                             <div class="card-body text-center {{ $table['order'] != null ? 'bg-danger' : 'bg-gray'}}">
                                 <h5 class="card-title">{{ translate('table') }}</h5>
-                                <h5 class="card-title">{{ $table['number'] }}</h5>
+                                <h5 class="card-title card-number">{{ $table['number'] }}</h5>
                                 <h5 class="card-title">{{ translate('capacity') }}: {{ $table['capacity'] }}</h5>
                                 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo_{{$table->id}}">Show Orders</button>
                             </div>
