@@ -33,12 +33,12 @@
                     <div class="row">
                         <div class="col-sm-6 col-12">
                             <div class="mb-3">
-                                <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" value="{{request()->get('from')}}" class="form-control h--45px" title="{{translate('from')}} {{translate('date')}}">
+                                <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" value="{{request()->get('from')}}" autocomplete="off" class="form-control h--45px" title="{{translate('from')}} {{translate('date')}}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-12">
                             <div class="mb-3">
-                                <input type="text" name="to" id="to_date" placeholder="DD-MM-YYYY" value="{{request()->get('to')}}" class="form-control h--45px" title="{{ucfirst(translate('to'))}} {{translate('date')}}">
+                                <input type="text" name="to" id="to_date" placeholder="DD-MM-YYYY" value="{{request()->get('to')}}" autocomplete="off" class="form-control h--45px" title="{{ucfirst(translate('to'))}} {{translate('date')}}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-12">
@@ -66,9 +66,19 @@
                         </div>
                     </div>
                     <div class="btn--container justify-content-end">
-                        <button type="reset" id="reset_btn" class="btn btn-secondary">
-                            {{translate('reset')}}
+                        <button type="reset" id="reset_btn" class="btn btn-secondary" onclick="window.location.href = '{{ route('admin.customer.wallet.report') }}'">
+                            {{ translate('reset') }}
                         </button>
+                        
+                        <script>
+                            function resetAndGoBack() {
+                                // Reset the form
+                                // document.getElementById("reset_btn").reset(); // Replace "yourFormId" with the actual ID of your form
+                        
+                                // Go back in the browser's history
+                                history.back();
+                            }
+                        </script>
                         <button type="submit" class="btn btn-primary">
                             <i class="tio-filter-list mr-1"></i>{{translate('filter')}}
                         </button>
