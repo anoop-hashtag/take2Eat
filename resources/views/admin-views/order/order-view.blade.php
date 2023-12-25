@@ -506,7 +506,7 @@
                                 @if($order['order_type'] != 'pos' && $order['order_type'] != 'take_away' && ($order['order_status'] != DELIVERED && $order['order_status'] != RETURNED && $order['order_status'] != CANCELED && $order['order_status'] != FAILED && $order['order_status'] != COMPLETED))
                                     <label class="font-weight-bold text-dark fz-14">{{translate('Food_Preparation_Time')}}</label>
                                     <div class="form-control justify-content-between">
-                                        <span class="ml-2 ml-sm-3 ">
+                                        <span class="ml-2">
                                         <i class="tio-timer d-none" id="timer-icon"></i>
                                         <span id="counter" class="text-info"></span>
                                         <i class="tio-edit p-2 d-none" id="edit-icon" style="cursor: pointer;" data-toggle="modal" data-target="#counter-change" data-whatever="@mdo"></i>
