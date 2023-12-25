@@ -99,7 +99,7 @@
                                 <tbody>
                                 @foreach($tables as $k=>$table)
                                     <tr>
-                                        <th scope="row">{{$tables->firstitem()+$k}}</th>
+                                        <td scope="row">{{$tables->firstitem()+$k}}</td>
                                         <td>{{$table['number']}}</td>
                                         <td>{{$table['capacity']}}</td>
                                         <td>{{$table->branch->name ?? null}}</td>

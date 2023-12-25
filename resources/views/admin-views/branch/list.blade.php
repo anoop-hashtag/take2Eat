@@ -65,11 +65,13 @@
                             <tr>
                                 <td>{{$branches->firstItem()+$key}}</td>
                                 <td>
-                                    <div class="media align-items-center gap-3 ">
-                                        <img width="50" class="rounded"
-                                                onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
-                                                src="{{asset('storage/app/public/branch')}}/{{$branch['image']}}">
-                                        <div class="media-body d-flex align-items-center flex-wrap">
+                                    <div class="media gap-3 align-items-center ">
+                                        <div class="avatar">
+                                            <img width="50" class="rounded"
+                                            onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
+                                            src="{{asset('storage/app/public/branch')}}/{{$branch['image']}}" />
+                                        </div>
+                                        <div class="media-body">
                                             <span> {{$branch['name']}}</span>
                                             @if($branch['id']==1)
                                                 <span class="badge badge-soft-danger">{{translate('main')}}</span>
