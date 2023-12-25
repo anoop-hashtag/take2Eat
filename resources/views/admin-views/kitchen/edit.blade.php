@@ -57,15 +57,16 @@
                         </div>
 
                         <div class="row">
-                               <div class="col-md-1 mb-3">
-                                    <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
-                                   
-                                           <br>
-                                           <input type="text" id="country-dropdown"  value="{{$chef['country_code'];}}"  style=" width: 70px; " class="form-control" name="country_code" placeholder="e.g. +1 702 123 4567">
-                                           {{-- <div  id="country-dropdown" value="{{$chef['country_code'];}}" class="form-control"></div> --}}
-
-                                           <input type="hidden"  id="hidden-country-code" name="country_code">
-                                </div>
+                            <div class="col-md-1 mb-3">
+                                <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
+                                <br>
+                                <input type="text" id="country-dropdown" value="{{ $chef['country_code'] }}" style="width: 70px;" class="form-control" name="country_code1" placeholder="e.g. +1 702 123 4567">
+                                <input type="hidden" id="hidden-country-code"  sonu="{{ $chef['country_code'] }}" name="country_code">
+                            </div>
+                            
+                           
+                            
+                            
                             <div class="col-md-5 mb-3">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span></label>
                                 <input type="text" value="{{substr($chef['phone'],3)}}" required name="phone"  class="form-control" id="phone"

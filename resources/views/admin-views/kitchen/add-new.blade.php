@@ -67,7 +67,7 @@
                                           
                                         <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
 
-                                        <input type="hidden"  id="hidden-country-code"  name="country_code">
+                                        <input type="hidden"  id="hidden-country-code"    name="country_code">
                                        
                                 </div>
                                 <div class="col-area-10">
