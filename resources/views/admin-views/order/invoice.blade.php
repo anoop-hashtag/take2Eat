@@ -117,7 +117,6 @@
                         <th style="text-align:center;font-weight:600" >{{translate('PRICE')}}</th>
                     </tr>
                     </thead>
-
                     <tbody>
                     @php($sub_total=0)
                     @php($total_tax=0)
