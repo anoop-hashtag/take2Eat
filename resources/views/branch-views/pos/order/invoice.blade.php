@@ -62,9 +62,9 @@
                         {{$detail['quantity']}}
                     </td>
                     <td class="">
-                        <span style="word-break: break-all;"> {{ Str::limit($detail->product['name'], 200) }}</span><br>
+                        <span style="word-break: break-all;" > {{ Str::limit($detail->product['name'], 200) }}</span><br>
                         @if (count(json_decode($detail['variation'], true)) > 0)
-                            <strong><u>{{ translate('variation') }} : </u></strong>
+                            <strong>{{ translate('variation') }} : </strong>
                             @foreach(json_decode($detail['variation'],true) as  $variation)
                                 @if ( isset($variation['name'])  && isset($variation['values']))
                                     <span class="d-block text-capitalize">
@@ -135,7 +135,7 @@
     </table>
     <span>--------------------------------------</span>
     <div class="row justify-content-end">
-        <div class="col-md-8 col-lg-8">
+        <div class="col-md-9 col-lg-9">
             <dl class="row text-right" style="color: black!important;">
                 <dt class="col-8">{{translate('Items Price')}}:</dt>
                 <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</dd>

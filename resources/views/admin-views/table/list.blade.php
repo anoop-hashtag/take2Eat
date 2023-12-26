@@ -93,7 +93,7 @@
                                     <th>{{translate('Table Capacity')}}</th>
                                     <th>{{translate('Branch')}}</th>
                                     <th>{{translate('Status')}}</th>
-                                    <th class="text-center">{{translate('action')}}</th>
+                                    <th >{{translate('action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -112,7 +112,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-3 category-mid">
+                                            <div class="d-flex  gap-3 ">
                                                 <a href="{{route('admin.table.update',[$table['id']])}}"
                                                     class="btn btn-outline-info btn-sm square-btn"
                                                     title="{{translate('Edit')}}">

@@ -45,7 +45,7 @@
                                     <th>{{translate('Payment Info')}}</th>
                                     <th>{{translate('Required Info from Customer')}}</th>
                                     <th>{{translate('status')}}</th>
-                                    <th class="text-center">{{translate('action')}}</th>
+                                    <th >{{translate('action')}}</th>
                                 </tr>
                                 </thead>
 
@@ -85,7 +85,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-2">
+                                            <div class="d-flex gap-2">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                    href="{{ route('admin.business-settings.web-app.third-party.offline-payment.edit', [$method['id']]) }}"><i class="tio-edit"></i>
                                                 </a>

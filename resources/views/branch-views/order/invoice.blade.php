@@ -151,7 +151,7 @@
                                 <td class="">
                                     <span style="word-break: break-all;" class="font-weight-bold" > {{ Str::limit($detail->product['name'], 200) }}</span><br>
                                     @if (count(json_decode($detail['variation'], true)) > 0)
-                                        <strong><u>{{ translate('variation') }} : </u></strong>
+                                        <strong>{{ translate('variation') }} :</strong>
                                         @foreach(json_decode($detail['variation'],true) as  $variation)
                                             @if ( isset($variation['name'])  && isset($variation['values']))
                                                 <span class="d-block text-capitalize font-weight-bold">

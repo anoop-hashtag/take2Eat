@@ -29,7 +29,7 @@
                     <!-- Header -->
                     <div class="card-top px-card ">
                         <div class="row justify-content-between align-items-center gy-2">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                                 <div class="d-flex gap-3 justify-content-start text-nowrap flex-wrap">
                                     <div>
                                         <button type="button" class="btn btn-outline-primary btn-attribute" data-toggle="dropdown" aria-expanded="false">
@@ -51,22 +51,13 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <form action="{{url()->current()}}" method="GET">
-                                    {{-- <div class="input-group">
-                                        <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('search_by_product_name')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-primary">{{translate('Search')}}</button>
-                                        </div>
-                                    </div> --}}
-                                </form>
-                            </div>
+                           
                             
                         </div>
                     </div>
                     <!-- End Header -->
 
-                    <div class="set_table new-responsive">
+                    <div class="set_table customer-style">
                         <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">

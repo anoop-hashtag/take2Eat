@@ -148,7 +148,13 @@ div#country-dropdown {
   width: 50px; 
   white-space: nowrap;
 }
-
+@media only screen and (min-width:1400px){
+  .position-icon::before {
+    position: relative;
+    right: 35px;
+    top: 12px;
+}
+}
 @media only screen and (min-width:1300px){
   .search-arrange .dataTables_wrapper .dataTables_filter {
     float: right!important;
@@ -451,7 +457,7 @@ div#country-dropdown {
     margin-top:30px!important; 
   } 
   .search-style .dataTables_wrapper .dataTables_filter{
-    margin: 1rem 0 0 0rem!important;
+    margin: 1rem 0 0 1rem!important;
   }
   .addon-list .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important;  

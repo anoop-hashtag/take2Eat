@@ -56,7 +56,7 @@
                             <th>{{translate('Contact_Info')}}</th>
                             <th>{{translate('Promotion_campaign')}}</th>
                             <th>{{translate('status')}}</th>
-                            <th class="text-center">{{translate('action')}}</th>
+                            <th>{{translate('action')}}</th>
                         </tr>
                         </thead>
 
@@ -102,7 +102,7 @@
                                 </td>
                                 <td>
                                     @if(env('APP_MODE')!='demo' || $branch['id']!=1)
-                                        <div class="d-flex justify-content-center gap-3 category-mid">
+                                        <div class="d-flex gap-3 ">
                                             <a class="btn btn-outline-info btn-sm edit square-btn"
                                                 href="{{route('admin.branch.edit',[$branch['id']])}}"><i class="tio-edit"></i></a>
                                             @if($branch['id']!=1)
