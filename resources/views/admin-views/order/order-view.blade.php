@@ -254,7 +254,7 @@
                                                                     @php($addon=\App\Model\AddOn::find($id))
                                                                     @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
 
-                                                                    <div class="font-size-sm text-body">
+                                                                    <div class="font-size-sm text-body" style="font-size:12px">
                                                                             <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
                                                                             <span class="font-weight-semibold">
                                                                                 {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2]) }}

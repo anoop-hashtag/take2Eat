@@ -30,10 +30,10 @@
             @if($tables != null)
                 @foreach($tables as $table)
                     <div class="col-md-2 mb-5 dropright">
-                        <div class="card py-4 {{ $table['order'] != null ? 'bg-c1' : 'bg-gray'}} " data-toggle="dropdown" >
+                        <div class="card py-4 {{ $table['order'] != null ? 'bg-card' : 'bg-gray'}} " data-toggle="dropdown" >
                             <div class="card-body text-center">
-                                <h5 class="card-title">{{ translate('table') }}</h5>
-                                <h5 class="card-title">{{ $table['number'] }}</h5>
+                                <!-- <h5 class="card-title">{{ translate('table') }}</h5> -->
+                                <h5 class="card-title card-number">{{ $table['number'] }}</h5>
                                 <h5 class="card-title">{{ translate('capacity') }}: {{ $table['capacity'] }}</h5>
                             </div>
                         </div>

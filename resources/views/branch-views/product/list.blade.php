@@ -53,7 +53,7 @@
                                     <th>{{translate('price')}}</th>
                                     <th>{{translate('stock')}}</th>
                                     <th>{{translate('Availability')}}</th>
-                                    <th class="text-center">{{translate('update_price')}}</th>
+                                    <th>{{translate('update_price')}}</th>
                                 </tr>
                                 </thead>
 
@@ -87,7 +87,7 @@
                                         </td>
                                         <td>
                                             <div>
-                                                <label class="switcher category-mid">
+                                                <label class="switcher">
                                                     @forelse($product->product_by_branch as $item)
                                                         <input id="{{$product['id']}}" class="switcher_input"
                                                             type="checkbox" {{ ($item->product_id == $product->id) && $item->is_available == 1 ? 'checked' : ''}}
