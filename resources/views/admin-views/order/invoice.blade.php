@@ -134,14 +134,14 @@
                                 <td class="">
                                     {{$detail['quantity']}}
                                 </td>
-                                <td class="" style="text-align:left ">
+                                <td class="" style="text-align:left;text-transform:capitalize">
                                     <span style="word-break: break-all; " class="font-weight-bold"> {{ Str::limit($detail->product['name'], 200) }}</span><br>
                                     @if (count(json_decode($detail['variation'], true)) > 0)
                                         <strong>{{ translate('variation') }} : </strong>
                                         @foreach(json_decode($detail['variation'],true) as  $variation)
                                             @if ( isset($variation['name'])  && isset($variation['values']))
                                                 <span class="d-block text-capitalize ">
-                                                    <strong>{{  $variation['name']}} - </strong>
+                                                    <strong>{{  $variation['name']}} : </strong>
                                                 </span>
                                                 @foreach ($variation['values'] as $value)
                                                     <span class="d-block text-capitalize">
