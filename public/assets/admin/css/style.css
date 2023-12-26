@@ -528,14 +528,7 @@ table.dataTable thead th, table.dataTable thead td {
 table.dataTable tbody td {
 	padding: 8px 13px!important;
 }
-/* .name-width{
-  width: 115px!important;
-  text-align: left!important;
-} */
-.branch-width{
-  width: 115px!important;
-  text-align: justify!important;
-}
+
 .category-select{
   width:80px;
 }

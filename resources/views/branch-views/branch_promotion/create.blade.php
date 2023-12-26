@@ -3,7 +3,7 @@
 @section('title', translate('Promotional campaign'))
 
 @push('css_or_js')
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
 @endpush
 
 @section('content')
@@ -78,7 +78,7 @@
 
 
         <div class="card mt-3">
-            <div class=" px-card my-4">
+            <div class="new-top px-card">
                 <div class="row justify-content-between align-items-center gy-2">
                     <div class="col-md-4">
                         <h5 class="d-flex align-items-center gap-2 mb-0">
@@ -86,28 +86,18 @@
                             <span class="badge badge-soft-dark rounded-50 fz-12">{{$promotions->total()}}</span>
                         </h5>
                     </div>
-                    <div class="col-md-4">
-                        <div class="d-flex align-items-md-center gap-2 justify-content-md-center">
-                            {{translate('Promotion Status')}} :
-                            <label class="switcher category-mid">
-                                <input type="checkbox" class="switcher_input"
-                                        onclick="location.href='{{route('branch.promotion.status',[$branch['id'],$branch->branch_promotion_status?0:1])}}'"
-                                        class="toggle-switch-input" {{$branch->branch_promotion_status?'checked':''}}>
-                                <span class="switcher_control"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
+                  
+                    <div class="col-md-8">
                         <form action="{{url()->current()}}" method="GET">
                             <div class="input-group">
-                                <input id="datatableSearch_" type="search" name="search"
+                                <!-- <input id="datatableSearch_" type="search" name="search"
                                         class="form-control"
                                         placeholder="{{translate('Search')}}" aria-label="Search"
-                                        value="{{$search}}" required autocomplete="off">
+                                        value="{{$search}}" required autocomplete="off"> -->
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn btn-primary">
+                                    <!-- <button type="submit" class="btn btn-primary">
                                         {{translate('Search')}}
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                         </form>
@@ -116,15 +106,15 @@
             </div>
 
             <div class="set_table ">
-                <div class="table-responsive datatable_wrapper_row">
-                    <table id="datatable" class=" table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                <div class="table-responsive datatable_wrapper_row" style="padding:0 10px">
+                    <table id="datatable" class=" table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table" >
                         <thead class="thead-light">
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('Branch')}}</th>
                                 <th>{{translate('Promotion type')}}</th>
                                 <th>{{translate('Promotion Name')}}</th>
-                                <th class="text-center">{{translate('action')}}</th>
+                                <th>{{translate('action')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -149,7 +139,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="d-flex justify-content-center gap-2">
+                                    <div class="d-flex  gap-2">
                                         <a href="{{route('branch.promotion.edit',[$promotion['id']])}}"
                                             class="btn btn-outline-info btn-sm edit square-btn"
                                             title="{{translate('Edit')}}">
@@ -229,4 +219,99 @@
         });
 
     </script>
+ @push('script_2')
+    <script>
+        $(document).on('ready', function () {
+            // INITIALIZATION OF NAV SCROLLER
+            // =======================================================
+            $('.js-nav-scroller').each(function () {
+                new HsNavScroller($(this)).init()
+            });
+    
+            // INITIALIZATION OF SELECT2
+            // =======================================================
+            $('.js-select2-custom').each(function () {
+                var select2 = $.HSCore.components.HSSelect2.init($(this));
+            });
+    
+    
+            // INITIALIZATION OF DATATABLES
+            // =======================================================
+            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                ],
+                paging:false,
+                info:false,
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                }
+            });
+    
+            // INITIALIZATION OF TAGIFY
+            // =======================================================
+            $('.js-tagify').each(function () {
+                var tagify = $.HSCore.components.HSTagify.init($(this));
+            });
+        });
+    
+        function filter_branch_orders(id) {
+            location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+        }
+    </script>
+    
+    
+    <script>
+        $('#from_date,#to_date').change(function () {
+            let fr = $('#from_date').val();
+            let to = $('#to_date').val();
+            if (fr != '' && to != '') {
+                if (fr > to) {
+                    $('#from_date').val('');
+                    $('#to_date').val('');
+                    toastr.error('{{translate('Invalid date range!')}}', Error, {
+                        CloseButton: true,
+                        ProgressBar: true
+                    });
+                }
+            }
+        });
+        $('#datatable').dataTable({
+    destroy: true,
+    ...
+    });
+    </script>
 @endpush
+

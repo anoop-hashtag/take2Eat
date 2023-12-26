@@ -23,12 +23,12 @@
             <h5>{{translate('Order ID')}} : {{$order['id']}}</h5>
         </div>
         <div class="col-6">
-            <h5 style="font-weight: lighter" class="order_id">
+            <h5 style="font-weight: lighter " class="order_id font-size-sm">
                 {{date('d/M/Y h:i a',strtotime($order['created_at']))}}
             </h5>
         </div>
         @if($order->customer)
-            <div class="col-12">
+            <div class="col-12 ">
                 <h5>{{translate('Customer Name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}</h5>
                 <h5>{{translate('Phone')}} : {{$order->customer['phone']}}</h5>
             </div>
