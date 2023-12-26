@@ -330,7 +330,24 @@
      });
      
  </script> 
+ {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+<link rel="stylesheet" href="https://cdn.rawgit.com/weareoutman/clockpicker/v0.0.7/dist/bootstrap-clockpicker.min.css">
+<script src="https://cdn.rawgit.com/weareoutman/clockpicker/v0.0.7/dist/jquery-clockpicker.min.js"></script>
 
+<!-- Your existing script -->
+<script>
+    $(function () { 
+        $('#datetimepicker1').clockpicker({
+            autoclose: true,
+            'default': '10:30', // Default time for available_time_starts
+        });
+
+        $('#datetimepicker2').clockpicker({
+            autoclose: true,
+            'default': '10:30', // Default time for available_time_starts
+        });
+    });
+</script>
 
 
 

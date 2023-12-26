@@ -3,7 +3,7 @@
 @section('title',translate('customer_Wallet').' '.translate('report'))
 
 @push('css_or_js')
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
 @endpush
 
 @section('content')
@@ -70,15 +70,7 @@
                             {{ translate('reset') }}
                         </button>
                         
-                        <script>
-                            function resetAndGoBack() {
-                                // Reset the form
-                                // document.getElementById("reset_btn").reset(); // Replace "yourFormId" with the actual ID of your form
-                        
-                                // Go back in the browser's history
-                                history.back();
-                            }
-                        </script>
+                       
                         <button type="submit" class="btn btn-primary">
                             <i class="tio-filter-list mr-1"></i>{{translate('filter')}}
                         </button>
@@ -256,5 +248,75 @@
                 $(document).ready(function() {
                     $('.js-example-basic-single').select2();
                 });
+            </script>
+            <script>
+                $(document).on('ready', function () {
+                    // INITIALIZATION OF NAV SCROLLER
+                    // =======================================================
+                    $('.js-nav-scroller').each(function () {
+                        new HsNavScroller($(this)).init()
+                    });
+            
+                    // INITIALIZATION OF SELECT2
+                    // =======================================================
+                   
+            
+            
+                    // INITIALIZATION OF DATATABLES
+                    // =======================================================
+                    var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'copy',
+                                className: 'd-none'
+                            },
+                            {
+                                extend: 'excel',
+                                className: 'd-none'
+                            },
+                            {
+                                extend: 'csv',
+                                className: 'd-none'
+                            },
+                            {
+                                extend: 'pdf',
+                                className: 'd-none'
+                            },
+                            {
+                                extend: 'print',
+                                className: 'd-none'
+                            },
+                        ],
+                        info:false,
+                        paging  : false,
+                        select: {
+                            style: 'multi',
+                            selector: 'td:first-child input[type="checkbox"]',
+                            classMap: {
+                                checkAll: '#datatableCheckAll',
+                                counter: '#datatableCounter',
+                                counterInfo: '#datatableCounterInfo'
+                            }
+                        },
+        
+                        language: {
+                            zeroRecords: '<div class="text-center p-4">' +
+                                '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                                '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                                '</div>'
+                        }
+                    });
+            
+                    // INITIALIZATION OF TAGIFY
+                    // =======================================================
+                    $('.js-tagify').each(function () {
+                        var tagify = $.HSCore.components.HSTagify.init($(this));
+                    });
+                });
+            
+                function filter_branch_orders(id) {
+                    location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+                }
             </script>
     @endpush
