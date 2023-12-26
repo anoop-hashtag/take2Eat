@@ -167,7 +167,7 @@
                 </div>
 
                 <div class="rounded p-4 mt-3 mt-4" id="offline_payment_bottom_part">
-                    <h2 class="text-center mb-4">Amount : $2,560</h2>
+                    <h2 class="text-center mb-4">Amount : ₹2,560</h2>
 
                     <h4 class="mb-3">Payment Info</h4>
                     <div class="d-flex flex-column gap-3">
