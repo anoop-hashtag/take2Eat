@@ -76,7 +76,7 @@
                                                     @php($current=\App\Model\DeliveryHistory::where(['deliveryman_id'=>$order['delivery_man_id'],'order_id'=>$order['id']])->latest()->first())
                                                     @if(isset($origin))
                                                         <a class="btn btn-outline-primary" target="_blank"
-                                                           title="{{translate('Delivery Man Last Location')}}" data-toggle="tooltip" data-placement="top"
+                                                           title="{{translate('Delivery Partner Last Location')}}" data-toggle="tooltip" data-placement="top"
                                                            href="https://www.google.com/maps/dir/?api=1&origin={{$origin['latitude']}},{{$origin['longitude']}}&destination={{$current['latitude']}},{{$current['longitude']}}">
                                                             <i class="tio-map"></i> {{translate('Show_Location_in_Map')}}
                                                         </a>
@@ -748,7 +748,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title fs-5" id="assignDeliveryManLabel">{{translate('Assign_Delivery_Man')}}</h4>
+                    <h4 class="modal-title fs-5" id="assignDeliveryManLabel">{{translate('Assign_Delivery_Partner')}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
