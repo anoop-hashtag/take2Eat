@@ -367,7 +367,7 @@
 </script>
 <!-- Include jQuery UI library -->
 
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
 
 <link rel="stylesheet" href="{{asset('public/assets/admin/css/demo.css')}}">

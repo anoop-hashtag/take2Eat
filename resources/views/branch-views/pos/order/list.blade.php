@@ -33,7 +33,7 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{translate('start_date')}}</label>
-                                    <input type="text" name="from" value="{{$from}}" id="from_date" placeholder="DD-MM-YYYY" autocomplete="" class="form-control">
+                                    <input type="text" name="from" value="{{$from}}" id="from_date" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4">
