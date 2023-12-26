@@ -83,7 +83,7 @@
                         <!-- End Notification -->
                     </li>
 
-                    <li class="nav-item d-none d-sm-inline-block">
+                    {{-- <li class="nav-item d-none d-sm-inline-block">
                         <div class="hs-unfold">
                             <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
                                href="{{route('admin.orders.list',['status'=>'pending'])}}">
@@ -91,7 +91,7 @@
                                 <span class="btn-status btn-status-c1">0</span>
                             </a>
                         </div>
-                    </li>
+                    </li> --}}
 
 
                     <li class="nav-item ml-4">
