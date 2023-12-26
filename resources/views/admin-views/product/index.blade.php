@@ -457,9 +457,12 @@
                                             <label for="options[` + count + `][required]" class="m-0">{{ translate('Required') }}</label>
                                         </div>
                                         <div>
-                                            <button type="button" class="btn btn-danger btn-sm delete_input_button" onclick="removeOption(this)"title="{{ translate('Delete') }}">
-                                                <i class="tio-add-to-trash"></i>
+                                            <button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="removeOption(this)"title="{{ translate('Delete') }}">
+                                                <i class="tio-delete"></i>
                                             </button>
+
+                                          
+                                            
                                         </div>
                                     </div>
                                 </div>
