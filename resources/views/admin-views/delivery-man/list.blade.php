@@ -66,7 +66,7 @@
                                         <th>{{translate('Contact_Info ')}}</th>
                                         <th>{{translate('Total_Orders')}}</th>
                                         <th>{{translate('Status')}}</th>
-                                        <th class="text-center">{{translate('action')}}</th>
+                                        <th>{{translate('action')}}</th>
                                     </tr>
                                 </thead>
 
@@ -107,7 +107,7 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center gap-3 category-mid">
+                                            <div class="d-flex  gap-3">
                                                 <a class="btn btn-outline-info btn-sm edit square-btn"
                                                 href="{{route('admin.delivery-man.edit',[$dm['id']])}}"><i class="tio-edit"></i></a>
                                                 <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"

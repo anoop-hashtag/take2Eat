@@ -56,7 +56,7 @@
                                 <th>{{translate('Contact_Info')}}</th>
                                 <th>{{translate('Branch')}}</th>
                                 <th>{{translate('Status')}}</th>
-                                <th class="text-center">{{translate('action')}}</th>
+                                <th>{{translate('action')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,7 +89,7 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <div class="d-flex justify-content-center gap-2 category-mid">
+                                    <div class="d-flex  gap-2 ">
                                         <a href="{{route('admin.kitchen.update',[$chef['id']])}}"
                                             class="btn btn-outline-info btn-sm square-btn"
                                             title="{{translate('Edit')}}">

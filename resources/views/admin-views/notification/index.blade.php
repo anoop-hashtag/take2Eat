@@ -34,7 +34,7 @@
                                             </i>
                                         </label>
                                         <input type="text" name="title" maxlength="100" class="form-control" placeholder="{{translate('New notification')}}" required>
-                                    </div>
+                                    </div>  
                                     <div class="form-group">
                                         <label class="input-label">{{translate('description')}}
                                             <i class="tio-info-outined" data-toggle="tooltip" data-placement="right"
@@ -74,13 +74,13 @@
                 <div class="card">
                     <div class="new-top px-card">
                         <div class="row justify-content-between align-items-center gy-2">
-                            <div class="col-sm-4 col-md-6 col-lg-8">
+                            <div class="col-sm-6 col-md-6 col-lg-8">
                                 <h5 class="d-flex align-items-center gap-2 mb-0">
                                     {{translate('Notification_Table')}}
                                     <span class="badge badge-soft-dark rounded-50 fz-12">{{ $notifications->total() }}</span>
                                 </h5>
                             </div>
-                            <div class="col-sm-8 col-md-6 col-lg-4">
+                            <div class="col-sm-6 col-md-6 col-lg-4">
                                 <form action="{{url()->current()}}" method="GET">
                                     <div class="input-group">
                                         {{-- <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search by title or description')}}" aria-label="Search" value="{{$search}}" required="" autocomplete="off"> --}}

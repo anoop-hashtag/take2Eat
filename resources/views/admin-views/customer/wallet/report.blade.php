@@ -129,17 +129,32 @@
         <!-- Card -->
         <div class="card mt-3">
             <!-- Header -->
-            <div class="card-header text-capitalize border-0">
+            <!-- <div class="card-header text-capitalize border-0">
                 <h4 class="card-title">
                     <span class="card-header-icon"><i class="tio-money"></i></span>
                     <span class="ml-2">{{translate('transactions')}}</span>
                 </h4>
-            </div>
+            </div> -->
+            <div class="new-top px-card">
+                        <div class="row justify-content-between align-items-center gy-2">
+                            <div class="col-sm-4 col-md-6 col-lg-8">
+                            <h4 class="card-title">
+                    <span class="card-header-icon"><i class="tio-money"></i></span>
+                    <span class="ml-2">{{translate('transactions')}}</span>
+                </h4>
+                            </div>
+                            <div class="col-sm-8 col-md-6 col-lg-4">
+                                <form action="http://localhost/take2Eat/admin/customer/wallet/bonus/index" class="mb-0" method="GET">
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
             <!-- End Header -->
 
             <!-- Body -->
-            <div class="card-body p-0">
-                <div class="table-responsive" style="padding:0 10px;">
+            <div class="set_table ">
+                <div class="table-responsive datatable_wrapper_row  " style="padding:0 10px;">
                     <table id="datatable"
                            class="table table-thead-bordered table-align-middle card-table table-nowrap" >
                         <thead class="thead-light">

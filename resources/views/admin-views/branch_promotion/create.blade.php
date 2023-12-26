@@ -121,7 +121,7 @@
                             <th>{{translate('Branch')}}</th>
                             <th>{{translate('Promotion type')}}</th>
                             <th>{{translate('Promotion_Banner')}}</th>
-                            <th class="text-center">{{translate('action')}}</th>
+                            <th>{{translate('action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -148,7 +148,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="d-flex justify-content-center gap-3">
+                                    <div class="d-flex  gap-3">
                                         <a href="{{route('admin.promotion.edit',[$promotion['id']])}}"
                                         class="btn btn-outline-info btn-sm square-btn"
                                         title="{{translate('Edit')}}">
