@@ -27,6 +27,7 @@
             border-top: medium double #000000;
             text-align: center;
         }
+        
     </style>
 
     <style type="text/css" media="print">
@@ -140,7 +141,7 @@
                                     <td class="">
                                         {{$detail->product['name']}} <br>
                                         @if(count(json_decode($detail['variation'],true))>0)
-                                            <strong><u>{{translate('Variation : ')}}</u></strong>
+                                            <strong>{{translate('Variation : ')}}</strong>
                                             @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                 <div class="font-size-sm text-body" style="color: black!important;">
                                                     <span>{{$key1}} :  </span>
@@ -151,7 +152,7 @@
 
                                         @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                                             @php($addon=\App\Model\AddOn::find($id))
-                                            @if($key2==0)<strong><u>{{translate('addons : ')}}</u></strong>@endif
+                                            @if($key2==0)<strong>{{translate('addons : ')}}</strong>@endif
 
                                             @if($add_on_qtys==null)
                                                 @php($add_on_qty=1)
