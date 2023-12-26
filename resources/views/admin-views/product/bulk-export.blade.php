@@ -62,13 +62,13 @@
                                 <div class="col-md-4 date-wise-div" style="display: none">
                                     <div class="form-group date_wise">
                                         <label class="input-label">{{translate('From Date')}}</label>
-                                        <input type="date" name="start_date" id="start_date" class="form-control">
+                                        <input type="text" name="start_date" id="start_date" class="form-control" placeholder="DD-MM-YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-4 date-wise-div" style="display: none">
                                     <div class="form-group date_wise">
                                         <label class="input-label">{{translate('To Date')}}</label>
-                                        <input type="date" name="end_date" id="end_date" class="form-control">
+                                        <input type="text" name="end_date" id="expire_date" class="form-control" placeholder="DD-MM-YYYY">
                                     </div>
                                 </div>
                                 <div class="col-12">

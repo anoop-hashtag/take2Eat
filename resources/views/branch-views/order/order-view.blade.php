@@ -463,8 +463,8 @@
                                     {{--                                need change option--}}
                                     <label class="font-weight-bold text-dark fz-14">{{translate('Delivery_Date_&_Time')}} {{$order['delivery_date'] > \Carbon\Carbon::now()->format('Y-m-d')? translate('(Scheduled)') : ''}}</label>
                                     <div class="d-flex gap-2 flex-wrap flex-xxl-nowrap">
-                                        <input onchange="changeDeliveryTimeDate(this)" name="delivery_date" type="date" class="form-control" value="{{$order['delivery_date'] ?? ''}}">
-                                        <input onchange="changeDeliveryTimeDate(this)" name="delivery_time" type="time" class="form-control" value="{{$order['delivery_time'] ?? ''}}">
+                                        <input onchange="changeDeliveryTimeDate(this)"  name="delivery_date" type="text" id="from_date" class="form-control" value="{{ date('d-m-Y', strtotime($order['delivery_date'] ?? '')) }}">
+                                        <input onchange="changeDeliveryTimeDate(this)" name="delivery_time" type="text" id="datetimepicker1" class="form-control" value="{{$order['delivery_time'] ?? ''}}">
                                     </div>
                                 </div>
                                 @if($order['order_type']!='take_away' && $order['order_type'] != 'pos' && $order['order_type'] != 'dine_in' && !$order['delivery_man_id'])
