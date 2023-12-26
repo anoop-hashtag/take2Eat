@@ -77,7 +77,7 @@
 {{--                        </div>--}}
 {{--                    </li>--}}
 
-                    <li class="nav-item d-none d-sm-inline-block">
+                    {{-- <li class="nav-item d-none d-sm-inline-block">
                         <!-- Notification -->
                         <div class="hs-unfold">
                             <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
@@ -87,7 +87,7 @@
                             </a>
                         </div>
                         <!-- End Notification -->
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item ml-4">
                         <!-- Account -->
