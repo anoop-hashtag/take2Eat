@@ -73,7 +73,7 @@
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
                                     <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
-                                           placeholder="{{translate('Ex')}} : 88017********" required style="border-radius:0 .3125rem  .3125rem 0">
+                                           placeholder="{{translate('Ex')}} : 88017********" pattern="\(\d{3}\) \d{3}-\d{4}" required style="border-radius:0 .3125rem  .3125rem 0">
                                
                                 </div>
                                </div>

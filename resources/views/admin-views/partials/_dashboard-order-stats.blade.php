@@ -36,7 +36,7 @@
             <h6 class="order-stats__subtitle">{{__('messages.delivered')}}</h6>
         </div>
         <span class="order-stats__title">
-            {{$data['delivered']}}
+            <span class="text-dark">  {{$data['delivered']}} </span>
         </span>
     </a>
     <!-- End Card -->
@@ -49,7 +49,7 @@
             <h6 class="order-stats__subtitle">{{translate('cancelled')}}</h6>
         </div>
         <span class="order-stats__title">
-            {{$data['canceled']}}
+            <span class="text-dark"> {{$data['canceled']}} </span>
         </span>
     </a>
     <!-- End Card -->
@@ -62,7 +62,7 @@
             <h6 class="order-stats__subtitle">{{__('messages.returned')}}</h6>
         </div>
         <span class="order-stats__title">
-            {{$data['returned']}}
+           <span class="text-dark"> {{$data['returned']}} </span>
         </span>
     </a>
     <!-- End Card -->
@@ -76,7 +76,7 @@
             <h6 class="order-stats__subtitle">{{translate('failed_to_deliver')}}</h6>
         </div>
         <span class="order-stats__title">
-            {{$data['failed']}}
+            <span class="text-dark"> {{$data['failed']}} </span>
         </span>
     </a>
     <!-- End Card -->
