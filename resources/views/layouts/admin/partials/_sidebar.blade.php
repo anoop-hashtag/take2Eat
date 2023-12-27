@@ -661,13 +661,13 @@
                                     <li class="nav-item {{Request::is('admin/delivery-man/list')? 'active' : ''}}">
                                         <a class="nav-link" href="{{route('admin.delivery-man.list')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">{{translate('Delivery_partner_List')}}</span>
+                                            <span class="text-truncate">{{translate('List')}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item {{Request::is('admin/delivery-man/add')? 'active' : ''}}">
                                         <a class="nav-link " href="{{route('admin.delivery-man.add')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">{{translate('Add_New_Delivery_partner')}}</span>
+                                            <span class="text-truncate">{{translate('Add New')}}</span>
                                         </a>
                                     </li>
                                     <li class="nav-item {{Request::is('admin/delivery-man/pending/list') || Request::is('admin/delivery-man/denied/list')?'active':''}}">
@@ -679,7 +679,7 @@
                                     <li class="nav-item {{Request::is('admin/delivery-man/reviews/list')? 'active' : ''}}">
                                         <a class="nav-link" href="{{route('admin.delivery-man.reviews.list')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">{{translate('Delivery_partner_Reviews')}}</span>
+                                            <span class="text-truncate">{{translate('Reviews')}}</span>
                                         </a>
                                     </li>
 
