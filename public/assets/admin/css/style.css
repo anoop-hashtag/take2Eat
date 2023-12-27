@@ -7,6 +7,9 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+.order-stats__title{
+  color:#000!important;
+}
 .position-icon::before {
   position: absolute;
   right: 35px;

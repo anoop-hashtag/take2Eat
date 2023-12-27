@@ -76,7 +76,7 @@
                                         <img src="{{asset('public/assets/admin/img/icons/confirmed.png')}}" alt="dashboard" class="oder--card-icon">
                                         <span>{{translate('confirmed')}}</span>
                                     </h6>
-                                    <span class="card-title text-107980">
+                                    <span class="card-title ">
                                  {{$order_count['confirmed']}}
                             </span>
                                 </div>
@@ -90,7 +90,7 @@
                                         <img src="{{asset('public/assets/admin/img/icons/cooking.png')}}" alt="dashboard" class="oder--card-icon">
                                         <span>{{translate('cooking')}}</span>
                                     </h6>
-                                    <span class="card-title text-danger">
+                                    <span class="card-title">
                                 {{$order_count['cooking']}}
                             </span>
                                 </div>
@@ -104,7 +104,7 @@
                                         <img src="{{asset('public/assets/admin/img/icons/review.png')}}" alt="dashboard" class="oder--card-icon">
                                         <span>{{translate('ready_to_serve')}}</span>
                                     </h6>
-                                    <span class="card-title text-00B2BE">
+                                    <span class="card-title">
                                 {{$order_count['done']}}
                             </span>
                                 </div>
@@ -118,7 +118,7 @@
                                         <img src="{{asset('public/assets/admin/img/icons/product.png')}}" alt="dashboard" class="oder--card-icon">
                                         <span>{{translate('completed')}}</span>
                                     </h6>
-                                    <span class="card-title text-success">
+                                    <span class="card-title">
                                 {{$order_count['completed']}}
                             </span>
                                 </div>
@@ -131,7 +131,7 @@
                                         <img src="{{asset('public/assets/admin/img/icons/canceled.png')}}" alt="dashboard" class="oder--card-icon">
                                         <span>{{translate('cancelled')}}</span>
                                     </h6>
-                                    <span class="card-title text-success">
+                                    <span class="card-title">
                                 {{$order_count['canceled']}}
                             </span>
                                 </div>
@@ -146,7 +146,7 @@
                                         <img src="{{asset('public/assets/admin/img/icons/out_for_delivery.png')}}" alt="dashboard" class="oder--card-icon">
                                         <span>{{translate('running')}}</span>
                                     </h6>
-                                    <span class="card-title text-danger">
+                                    <span class="card-title">
                                     {{\App\Model\Order::with('table_order')->whereHas('table_order', function($q){
                                         $q->where('branch_table_token_is_expired', 0);
                                     })->count()}}
