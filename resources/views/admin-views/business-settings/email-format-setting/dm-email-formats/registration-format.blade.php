@@ -29,15 +29,9 @@
                     <div class="card-body">
                         <div class="maintainance-mode-toggle-bar d-flex flex-wrap justify-content-between border rounded align-items-center p-2">
                             <h5 class="text-capitalize m-0 text--primary pl-2">
-<<<<<<< Updated upstream
                                 {{translate('Send_Mail_on_New_Delivery_Partner_Registration')}}
                                 <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('If_a_Deliveryman_registers_from_the_Customer_app_or_Website,_Admin_Landing_Page_or_Restaurant_app,_he_will_get_a_Registration_Confirmation_email.')}}">
                                     <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('show_hide_food_menu') }}">
-=======
-                                {{translate('Send_Mail_on_New_Deliveryman_Registration')}}
-                                <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('If_a_Deliveryman_registers_from_the_Customer_app_or_Website,_Admin_Landing_Page_or_Restaurant_app,_he_will_get_a_Registration_Confirmation_email.')}}">
-                                    <i class="tio-info-outined"></i>
->>>>>>> Stashed changes
                                 </span>
                             </h5>
                             <label class="toggle-switch toggle-switch-sm">
