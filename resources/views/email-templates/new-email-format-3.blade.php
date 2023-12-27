@@ -257,13 +257,31 @@
           <td>
             <span class="privacy" style="display: block;width: 100%;text-align: center;">
               @if(isset($data['privacy']) && $data['privacy'] == 1)
-                           <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a>
+                           <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a><span style="content: '';
+                           width: 6px;
+                           height: 6px;
+                           border-radius: 50%;
+                           background: #334257;
+                           display: inline-block;
+                           margin: 0 7px;"></span>
                        @endif
                        @if(isset($data['contact']) && $data['contact'] == 1)
-                           <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a>
+                           <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a><span style="content: '';
+                           width: 6px;
+                           height: 6px;
+                           border-radius: 50%;
+                           background: #334257;
+                           display: inline-block;
+                           margin: 0 7px;"></span>
                        @endif
                         @if(isset($data['refund']) && $data['refund'] == 1)
-                           <a href="{{ route('about-us') }}" id="refund-check">{{ translate('Refunnd_Policy')}}</a>
+                           <a href="{{ route('about-us') }}" id="refund-check">{{ translate('Refunnd_Policy')}}</a><span style="content: '';
+                           width: 6px;
+                           height: 6px;
+                           border-radius: 50%;
+                           background: #334257;
+                           display: inline-block;
+                           margin: 0 7px;"></span>
                        @endif
                        
 
