@@ -67,9 +67,9 @@
                                 <td>
                                     <div class="media gap-3 align-items-center ">
                                         <div class="avatar">
-                                            <img width="50" class="rounded"
+                                            <img width="50"  class="rounded"
                                             onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
-                                            src="{{asset('storage/app/public/branch')}}/{{$branch['image']}}" />
+                                            src="{{asset('storage/app/public/branch')}}/{{$branch['image']}}"  style="height:40px" />
                                         </div>
                                         <div class="media-body">
                                             <span> {{$branch['name']}}</span>
