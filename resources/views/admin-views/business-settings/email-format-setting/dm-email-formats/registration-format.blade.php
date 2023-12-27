@@ -29,9 +29,15 @@
                     <div class="card-body">
                         <div class="maintainance-mode-toggle-bar d-flex flex-wrap justify-content-between border rounded align-items-center p-2">
                             <h5 class="text-capitalize m-0 text--primary pl-2">
+<<<<<<< Updated upstream
                                 {{translate('Send_Mail_on_New_Delivery_Partner_Registration')}}
                                 <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('If_a_Deliveryman_registers_from_the_Customer_app_or_Website,_Admin_Landing_Page_or_Restaurant_app,_he_will_get_a_Registration_Confirmation_email.')}}">
                                     <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('show_hide_food_menu') }}">
+=======
+                                {{translate('Send_Mail_on_New_Deliveryman_Registration')}}
+                                <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('If_a_Deliveryman_registers_from_the_Customer_app_or_Website,_Admin_Landing_Page_or_Restaurant_app,_he_will_get_a_Registration_Confirmation_email.')}}">
+                                    <i class="tio-info-outined"></i>
+>>>>>>> Stashed changes
                                 </span>
                             </h5>
                             <label class="toggle-switch toggle-switch-sm">
@@ -96,8 +102,8 @@
                                     </div>
                                     <div>
                                         <h5 class="card-title mb-3">
-                                            {{translate('Icon')}}  <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Icon_must_be_1:1.')}}">
-                                                <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('show_hide_food_menu') }}">
+                                            {{translate('Icon')}}  <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('Icon_must_be_1:1.')}}">
+                                                <i class="tio-info-outined"></i>
                                             </span>
                                         </h5>
                                         <label class="custom-file">
@@ -115,8 +121,8 @@
                                             <div class="__bg-F8F9FC-card default-form lang_form" id="default-form">
                                                 <div class="form-group">
                                                     <label class="form-label">{{translate('Main_Title')}}({{ translate('default') }})
-                                                        <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_main_title_within_45_characters')}}">
-                                                            <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('show_hide_food_menu') }}">
+                                                        <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_main_title_within_45_characters')}}">
+                                                            <i class="tio-info-outined"></i>
                                                         </span>
                                                     </label>
                                                     <input type="text" maxlength="45" name="title[]" value="{{ $data?->getRawOriginal('title') }}" data-id="mail-title" placeholder="{{ translate('Order_has_been_placed_successfully.') }}" class="form-control">
@@ -124,7 +130,7 @@
                                                 <div class="form-group mb-0">
                                                     <label class="form-label">
                                                         {{ translate('Mail_Body_Message') }}({{ translate('default') }})
-                                                        <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_mail_body_message_within_75_words')}}">
+                                                        <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_mail_body_message_within_75_words')}}">
                                                             <i class="tio-info-outined"></i>
                                                         </span>
                                                     </label>
@@ -152,8 +158,8 @@
                                                 <div class="__bg-F8F9FC-card d-none lang_form" id="{{$lang->code}}-form">
                                                     <div class="form-group">
                                                        <label class="form-label">{{translate('Main_Title')}}({{strtoupper($lang->code)}})
-                                                            <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_title_within_45_characters')}}">
-                                                                <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('show_hide_food_menu') }}">
+                                                            <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_title_within_45_characters')}}">
+                                                                <i class="tio-info-outined"></i>
                                                             </span>
                                                         </label>
                                                         <input type="text" maxlength="45" name="title[]"  placeholder="{{ translate('Order_has_been_placed_successfully.') }}" class="form-control" value="{{$translate[$lang->code]['title']??''}}">
@@ -161,7 +167,7 @@
                                                     <div class="form-group mb-0">
                                                        <label class="form-label">
                                                             {{ translate('Mail_Body_Message') }}({{strtoupper($lang->code)}})
-                                                            <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_mail_body_message_within_75_words')}}">
+                                                            <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_mail_body_message_within_75_words')}}">
                                                                 <i class="tio-info-outined"></i>
                                                             </span>
                                                         </label>
@@ -176,15 +182,15 @@
                                             <div class="__bg-F8F9FC-card default-form">
                                                 <div class="form-group">
                                                     <label class="form-label">{{translate('Main_Title')}}
-                                                    <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_title_within_45_characters')}}">
-                                                                <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('show_hide_food_menu') }}">
+                                                    <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_title_within_45_characters')}}">
+                                                                <i class="tio-info-outined"></i>
                                                             </span></label>
                                                     <input type="text" maxlength="45" name="title[]" placeholder="{{ translate('Order_has_been_placed_successfully.') }}"class="form-control">
                                                 </div>
                                                 <div class="form-group mb-0">
                                                       <label class="form-label">
                                                         {{ translate('Mail_Body_Message') }}
-                                                         <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_mail_body_message_within_75_words')}}">
+                                                         <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_mail_body_message_within_75_words')}}">
                                                                 <i class="tio-info-outined"></i>
                                                             </span>
                                                     </label>
@@ -208,7 +214,7 @@
                                                         <div class="form-group lang_form default-form">
                                                             <label class="form-label">
                                                                 {{translate('Section_Text')}}({{ translate('default') }})
-                                                                <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_footer_text_within_75_characters')}}">
+                                                                <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_footer_text_within_75_characters')}}">
                                                                     <i class="tio-info-outined"></i>
                                                                 </span>
                                                             </label>
@@ -229,7 +235,7 @@
                                                         <div class="form-group d-none lang_form" id="{{$lang->code}}-form2">
                                                            <label class="form-label">
                                                                 {{translate('Section_Text')}}({{strtoupper($lang->code)}})
-                                                                <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_footer_text_within_75_characters')}}">
+                                                                <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_footer_text_within_75_characters')}}">
                                                                     <i class="tio-info-outined"></i>
                                                                 </span>
                                                             </label>
@@ -240,7 +246,7 @@
                                                 <div class="form-group">
                                                   <label class="form-label">
                                                         {{translate('Section_Text')}}
-                                                        <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_footer_text_within_75_characters')}}">
+                                                        <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_footer_text_within_75_characters')}}">
                                                             <i class="tio-info-outined"></i>
                                                         </span>
                                                     </label>
@@ -320,7 +326,7 @@
                                                        <div class="form-group lang_form default-form">
                                                             <label class="form-label">
                                                                 {{translate('Copyright_Content')}}({{ translate('default') }})
-                                                                <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_Copyright_Content_within_50_characters')}}">
+                                                                <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_Copyright_Content_within_50_characters')}}">
                                                                     <i class="tio-info-outined"></i>
                                                                 </span>
                                                             </label>
@@ -341,7 +347,7 @@
                                                         <div class="form-group d-none lang_form" id="{{$lang->code}}-form3">
                                                             <label class="form-label">
                                                                 {{translate('Copyright_Content')}}({{strtoupper($lang->code)}})
-                                                                <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_Copyright_Content_within_50_characters')}}">
+                                                                <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_Copyright_Content_within_50_characters')}}">
                                                                     <i class="tio-info-outined"></i>
                                                                 </span>
                                                             </label>
@@ -352,7 +358,7 @@
                                                 <div class="form-group">
                                                      <label class="form-label">
                                                         {{translate('Copyright_Content')}}
-                                                        <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_Copyright_Content_within_50_characters')}}">
+                                                        <span class="input-label-secondary text--title" data-toggle="tooltip" data-placement="right" title="{{ translate('Write_the_Copyright_Content_within_50_characters')}}">
                                                             <i class="tio-info-outined"></i>
                                                         </span>
                                                     </label>
