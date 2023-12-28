@@ -29,17 +29,17 @@
             <div id="all_running_order">
                 <div class="card py-4">
                     <div class="row align-items-center mb-3">
-                        <div class="col-6"></div>
-                        <div class="col-3 ">
+                        <div class="col-3 col-md-3 col-lg-6"></div>
+                        <div class="col-3 col-md-3 col-lg-3">
                             <!-- Select -->
                             <div id="invoice_btn" class="{{ is_null($table_id) ? 'd-none' : '' }}">
                                 <a class="btn btn-sm btn-white float-right" href="{{ route('branch.table.order.running.invoice', ['table_id' => $table_id]) }}"><i class="tio-print"></i> {{translate('invoice')}}</a>
                             </div>
                             <!-- End Select -->
                         </div>
-                        <div class="col-3" >
+                        <div class="col-6 col-md-6 col-lg-3" >
                             <!-- Select -->
-                            <select style="margin-right:20px" class="custom-select custom-select-sm text-capitalize" name="table" id="select_table">
+                            <select style="margin-right:20px;position:relative;right:20px" class="custom-select custom-select-sm text-capitalize" name="table" id="select_table">
                                 <option disabled selected>--- {{translate('select')}} {{translate('table')}} ---</option>
                                 @foreach($tables as $table)
                                     <option value="{{$table['id']}}" {{$table_id==$table['id'] ? 'selected' : ''}}>{{translate('Table')}} - {{$table['number']}}</option>
@@ -140,6 +140,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <hr/>
                         <div class="table-responsive mt-4 px-3 pagination-style">
                             <div class="d-flex justify-content-lg-end justify-content-sm-end">
                                 <!-- Pagination -->

@@ -101,7 +101,7 @@
                 </div>
             </div>
 
-            <div class="set_table new-responsive ">
+            <div class="set_table new-responsive pb-4">
                 <div class="table-responsive datatable_wrapper_row  " id="set-rows" style="padding-right: 10px;">
                     <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">

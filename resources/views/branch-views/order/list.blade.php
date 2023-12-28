@@ -64,7 +64,7 @@
                                     <img src="{{asset('public/assets/admin/img/icons/pending.png')}}" alt="dashboard" class="oder--card-icon">
                                     <span>{{translate('pending')}}</span>
                                 </h6>
-                                <span class="card-title text-0661CB">
+                                <span class="card-title ">
                                     {{$order_count['pending']}}
                             </span>
                             </div>
@@ -78,7 +78,7 @@
                                     <img src="{{asset('public/assets/admin/img/icons/confirmed.png')}}" alt="dashboard" class="oder--card-icon">
                                     <span>{{translate('confirmed')}}</span>
                                 </h6>
-                                <span class="card-title text-107980">
+                                <span class="card-title ">
                                     {{$order_count['confirmed']}}
                             </span>
                             </div>
@@ -92,7 +92,7 @@
                                     <img src="{{asset('public/assets/admin/img/icons/packaging.png')}}" alt="dashboard" class="oder--card-icon">
                                     <span>{{translate('processing')}}</span>
                                 </h6>
-                                <span class="card-title text-danger">
+                                <span class="card-title ">
                                     {{$order_count['processing']}}
                             </span>
                             </div>
@@ -106,7 +106,7 @@
                                     <img src="{{asset('public/assets/admin/img/icons/out_for_delivery.png')}}" alt="dashboard" class="oder--card-icon">
                                     <span>{{translate('out_for_delivery')}}</span>
                                 </h6>
-                                <span class="card-title text-00B2BE">
+                                <span class="card-title ">
                                     {{$order_count['out_for_delivery']}}
                             </span>
                             </div>
@@ -120,7 +120,7 @@
                                     <img src="{{asset('public/assets/admin/img/icons/delivered.png')}}" alt="dashboard" class="oder--card-icon">
                                     <span>{{translate('delivered')}}</span>
                                 </h6>
-                                <span class="card-title text-success">
+                                <span class="card-title ">
                                 {{$order_count['delivered']}}
                             </span>
                             </div>
@@ -135,7 +135,7 @@
                                     <img src="{{asset('public/assets/admin/img/icons/canceled.png')}}" alt="dashboard" class="oder--card-icon">
                                     <span>{{translate('cancelled')}}</span>
                                 </h6>
-                                <span class="card-title text-danger">
+                                <span class="card-title ">
                                     {{$order_count['canceled']}}
                             </span>
                             </div>
@@ -150,7 +150,7 @@
                                     <img src="{{asset('public/assets/admin/img/icons/returned.png')}}" alt="dashboard" class="oder--card-icon">
                                     <span>{{translate('returned')}}</span>
                                 </h6>
-                                <span class="card-title text-warning">
+                                <span class="card-title ">
                                     {{$order_count['returned']}}
                             </span>
                             </div>
@@ -163,7 +163,7 @@
                                     <img src="{{asset('public/assets/admin/img/icons/failed_to_deliver.png')}}" alt="dashboard" class="oder--card-icon">
                                     <span>{{translate('failed_to_deliver')}}</span>
                                 </h6>
-                                <span class="card-title text-danger">
+                                <span class="card-title ">
                                     {{$order_count['failed']}}
                             </span>
                             </div>
