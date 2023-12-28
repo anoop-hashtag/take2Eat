@@ -125,7 +125,7 @@
                                 <th>{{translate('Total_Amount')}}</th>
                                 <th>{{translate('Order_Status')}}</th>
                                 <th>{{translate('Order_Type')}}</th>
-                                <th class="text-center">{{translate('actions')}}</th>
+                                <th>{{translate('actions')}}</th>
                             </tr>
                         </thead>
 
@@ -178,7 +178,7 @@
                                     <span class="badge-soft-success px-2 py-1 rounded">{{translate($order['order_type']== 'pos' ? 'POS' : '')}}</span>
                                 </td>
                                 <td>
-                                    <div class="d-flex justify-content-center gap-2">
+                                    <div class="d-flex  gap-2">
                                         <a class="btn btn-sm btn-outline-primary square-btn" href="{{route('admin.pos.order-details',['id'=>$order['id']])}}">
                                             <i class="tio-invisible"></i>
                                         </a>

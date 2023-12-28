@@ -146,7 +146,7 @@
                                         <img src="{{asset('public/assets/admin/img/icons/out_for_delivery.png')}}" alt="dashboard" class="oder--card-icon">
                                         <span>{{translate('running')}}</span>
                                     </h6>
-                                    <span class="card-title">
+                                    <span class="card-title" >
                                     {{\App\Model\Order::with('table_order')->whereHas('table_order', function($q){
                                         $q->where('branch_table_token_is_expired', 0);
                                     })->count()}}
@@ -215,7 +215,7 @@
                         <th>{{translate('total_Amount')}}</th>
                         <th>{{translate('order')}} {{translate('status')}}</th>
                         <th>{{translate('order')}} {{translate('type')}}</th>
-                        <th class="text-center">{{translate('actions')}}</th>
+                        <th>{{translate('actions')}}</th>
                     </tr>
                     </thead>
 
@@ -280,7 +280,7 @@
                                 @endif
                             </td>
                             <td>
-                                <div class="d-flex justify-content-center gap-2 category-mid">
+                                <div class="d-flex gap-2">
                                     <a class="btn btn-sm btn-outline-primary square-btn" href="{{route('admin.table.order.details',['id'=>$order['id']])}}">
                                         <i class="tio-invisible"></i>
                                     </a>
