@@ -142,7 +142,7 @@
                                  
                             </table>
                             <div class="table-responsive datatable-custom" style="padding:0 10px">
-                                <div id="no-data-message" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+                                <div id="no-data-message" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 30vh;">
                                     <img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                                     <p class="mb-0">{{translate('No data to show')}}</p>
                                 </div>
