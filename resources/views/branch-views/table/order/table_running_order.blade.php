@@ -151,7 +151,7 @@
                 </div>
             </div>
         </div>
-        <div class="table-responsive datatable" style="padding:0 10px">
+        <div class="table-responsive datatable-custom" style="padding:0 10px">
             <div id="no-data-message" style="display: none;">
                 <img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                 <p class="mb-0">{{translate('No data to show')}}</p>
