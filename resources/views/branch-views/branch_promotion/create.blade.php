@@ -176,6 +176,7 @@
     <script>
         $(function() {
             $('#banner_type').change(function(){
+               
                 if ($(this).val() === 'video'){
                     $('#video_section').show();
                     $('#image_section').hide();
