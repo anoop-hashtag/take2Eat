@@ -42,7 +42,7 @@
                         @csrf
                         <div class="rest-part">
                             <div class="d-flex flex-wrap justify-content-center gap-3">
-                                <h4 class="mb-0">{{translate('Do_not_have_the_template')}}?</h4>
+                                <h4 class="mb-0">{{translate('Do_not_have_the_template')}}</h4>
                                 <a href="{{asset('public/assets/product_bulk_format.xlsx')}}" download=""
                                 class="fz-16 btn-link">{{translate('Download_Here')}}</a>
                             </div>
