@@ -158,7 +158,7 @@
                 <div class="card-footer">
                     <!-- Pagination -->
                     <div class="table-responsive pagination-style">
-                        <div class="d-flex  justify-content-lg-end">
+                        <div class="d-flex justify-content-sm-end  justify-content-lg-end">
                                 {!! $orders->links() !!}
                         </div>                        
                     </div>

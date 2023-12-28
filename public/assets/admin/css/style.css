@@ -2966,6 +2966,7 @@ body > #printableAreaContent {
 } */
 
 .custom-radio input[type=radio]:checked {
+  accent-color: var(--c1);
   border-color: var(--c1);
   background-color: var(--c1);
 }
