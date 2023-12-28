@@ -3,6 +3,7 @@
 @section('title', translate('Order List'))
 
 @push('css_or_js')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
@@ -150,8 +151,49 @@
                 </div>
             </div>
         </div>
-
+        <div class="table-responsive datatable" style="padding:0 10px">
+            <div id="no-data-message" style="display: none;">
+                <img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                <p class="mb-0">{{translate('No data to show')}}</p>
+            </div>
+            <!-- ... existing table code ... -->
+        </div>
+        
         @endsection
+        @push('script_2')
+    <script>
+        $(document).on('ready', function () {
+            // INITIALIZATION OF SELECT2
+            // =======================================================
+            $('.js-select2-custom').each(function () {
+                var select2 = $.HSCore.components.HSSelect2.init($(this));
+            });
+        });
+
+        $(document).ready(function () {
+            $('#select_table').on('change', function () {
+                location.href = '{{route('branch.table.order.running')}}' + '?table_id=' + $(this).val();
+            });
+        });
+
+        // Function to show/hide the no data message
+        function toggleNoDataMessage() {
+            var hasData = $('#set-rows tr').length > 0;
+            $('#no-data-message').toggle(!hasData);
+        }
+
+        // Initial check when the document is ready
+        $(document).ready(function () {
+            toggleNoDataMessage();
+        });
+
+        // Check when the table content is updated (e.g., after AJAX request)
+        $(document).ajaxComplete(function () {
+            toggleNoDataMessage();
+        });
+    </script>
+@endpush
+
 
 @push('script_2')
     <script>
@@ -190,4 +232,5 @@
         });
 
     </script>
+    
 @endpush
