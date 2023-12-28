@@ -2171,4 +2171,6 @@
   'The system will not display the filter, on any categories based on Veg/ Non veg/ Egg, if this option is disabled.' => 'The system will not display the filter, on any categories based on Veg/ Non veg/ Egg, if this option is disabled.',
   'Delivery Partner Self Registration' => 'Delivery Partner Self Registration',
   'Assign_Delivery Partner' => 'Assign Delivery Partner',
+  'Add New' => 'Add New',
+  'Reviews' => 'Reviews',
 );
