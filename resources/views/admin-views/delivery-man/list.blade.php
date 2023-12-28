@@ -125,7 +125,7 @@
 
                         </div>
                         <div class="table-responsive px-3 mt-3 pagination-style">
-                            <div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end justify-content-sm-end">
                                 {!! $delivery_men->links() !!}
                             </div>
                         </div>
