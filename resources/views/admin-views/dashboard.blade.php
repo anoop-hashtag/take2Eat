@@ -405,14 +405,14 @@
                         height: 328,
                         type: 'line',
                         zoom: {
-                        enabled: false
+                            enabled: false
                         },
                         toolbar: {
                             show: false,
                         },
                     },
                     stroke: {
-                        curve: 'straight',
+                        curve: 'smooth',
                         width: 3
                     },
                     colors: ['rgba(255, 111, 112, 0.5)', '#107980'],
@@ -420,8 +420,7 @@
                         name: "Earning",
                         data: [{{$earning[1]}}, {{$earning[2]}}, {{$earning[3]}}, {{$earning[4]}}, {{$earning[5]}}, {{$earning[6]}},
                             {{$earning[7]}}, {{$earning[8]}}, {{$earning[9]}}, {{$earning[10]}}, {{$earning[11]}}, {{$earning[12]}}],
-                        },
-                    ],
+                    }],
                     markers: {
                         size: 2,
                         strokeWidth: 0,
@@ -455,10 +454,11 @@
                         offsetY: 10
                     }
                 }
-
+            
                 var chartLine = new ApexCharts(document.querySelector('#line-adwords'), earningOptions);
                 chartLine.render();
             </script>
+            
 
             <script>
                 function order_stats_update(type) {
@@ -608,23 +608,26 @@
                                     toolbar: {
                                         show: false,
                                     },
+                                    markers: {
+                                        size: 5,
+                                    }
                                 },
                                 stroke: {
-                                    curve: 'straight',
-                                    width: 2
+                                    curve: 'smooth',
+                                    width: 3
                                 },
                                 colors: ['rgba(255, 111, 112, 0.5)', '#107980'],
                                 series: [{
                                     name: "Earning",
                                     data: response_data.earning,
                                 }],
-                                markers: {
-                                    size: 6,
-                                    strokeWidth: 0,
-                                    hover: {
-                                        size: 9
-                                    }
-                                },
+                                // markers: {
+                                //     size: 6,
+                                //     strokeWidth: 0,
+                                //     hover: {
+                                //         size: 9
+                                //     }
+                                // },
                                 grid: {
                                     show: true,
                                     padding: {
