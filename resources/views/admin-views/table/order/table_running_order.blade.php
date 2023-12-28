@@ -157,12 +157,10 @@
                
                 <div class="card-footer">
                     <!-- Pagination -->
-                    <div class="row justify-content-center justify-content-sm-between align-items-sm-center pagination-style">
-                        <div class="col-sm-auto">
-                            <div class="d-flex justify-content-center justify-content-sm-end">
+                    <div class="table-responsive pagination-style">
+                        <div class="d-flex  justify-content-lg-end">
                                 {!! $orders->links() !!}
-                            </div>
-                        </div>
+                        </div>                        
                     </div>
                     <!-- End Pagination -->
                 </div>

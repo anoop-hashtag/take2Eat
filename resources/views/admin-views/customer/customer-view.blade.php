@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="table-responsive px-3 pagination-style">
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-lg-end justify-content-sm-end">
                             <!-- Pagination -->
                             {!! $orders->links() !!}
                         </div>

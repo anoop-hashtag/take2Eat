@@ -333,8 +333,8 @@
             <!-- Footer -->
             <div class="card-footer">
                 <!-- Pagination -->
-                <div class="row justify-content-center justify-content-sm-between align-items-sm-center pagination-style">
-                    <div class="col-12">
+                <div class=" table-responsive pagination-style">
+                    <div class=" d-flex justify-content-lg-end justify-content-sm-end">
                         {!! $reviews->links() !!}
                     </div>
                 </div>

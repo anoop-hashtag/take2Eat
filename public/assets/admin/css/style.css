@@ -7,6 +7,12 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+.dataTables_wrapper .dataTables_filter {
+  float: right;
+  text-align: right;
+  position: relative;
+  right: 10px;
+}
 .order-stats__title{
   color:#000!important;
 }
@@ -116,9 +122,7 @@ div#country-dropdown {
   border: none;
 }
 .custom-file-input {
-  
   z-index: 1 !important;
- 
 }
 .pagination-style{
   justify-content: end!important;
@@ -428,7 +432,6 @@ div#country-dropdown {
   }
 }
 @media   (min-width:580px) and (max-width: 640px) {
-  
   .dataTables_wrapper .dataTables_filter {
     margin: 2.5em 0 0 1.3rem!important;
   }
@@ -460,7 +463,7 @@ div#country-dropdown {
     margin-top:30px!important; 
   } 
   .search-style .dataTables_wrapper .dataTables_filter{
-    margin: 1rem 0 0 1rem!important;
+    margin: 1rem 0 0 2rem!important;
   }
   .addon-list .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important;  
@@ -469,7 +472,7 @@ div#country-dropdown {
     margin-top:30px!important;
   } 
   .dataTables_wrapper .dataTables_filter {
-    margin: 1em 0 0 0.8rem!important;
+    margin: 1em 0 0 2rem!important;
 }
 .order_id{
   font-size: 11px;
@@ -546,7 +549,7 @@ table.dataTable tbody td {
   white-space: break-spaces!important;
 }
 
-/* Redesign CSS */
+/*-------------- Redesign CSS --------------------*/
 .navbar-dropdown-lg {
   width: 16rem;
 }
