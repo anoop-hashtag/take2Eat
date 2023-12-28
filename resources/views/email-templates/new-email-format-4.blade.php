@@ -180,14 +180,28 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                     </div>
                 </td>
             </tr>
+            <br>
+            <br>
             <tr>
-                <td>
+                <td style="text-align: center;"
                     <span class="privacy">
                     @if(isset($data['privacy']) && $data['privacy'] == 1)
-                            <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a>
+                            <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a><span style="content: '';
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 50%;
+                            background: #334257;
+                            display: inline-block;
+                            margin: 0 7px;"></span>
                         @endif
                         @if(isset($data['contact']) && $data['contact'] == 1)
-                            <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a>
+                            <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a><span style="content: '';
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 50%;
+                            background: #334257;
+                            display: inline-block;
+                            margin: 0 7px;"></span>
                         @endif
                 </span>
                 <tr>
