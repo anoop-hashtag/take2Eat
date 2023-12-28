@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Mail;
-
+use Illuminate\Support\Facades\DB;
 use App\CentralLogics\Helpers;
 use App\Model\BusinessSetting;
 use App\Models\EmailTemplate;
@@ -41,6 +41,7 @@ class PasswordResetMail extends Mailable
 
         $data= EmailTemplate::with('translations')->where('type','user')->where('email_type', 'forget_password')->first();
         $local = $this->language_code ?? 'en';
+        $socialMediaData = DB::table('social_medias')->get();
 
         $content = [
             'title' => $data->title,
@@ -67,7 +68,7 @@ class PasswordResetMail extends Mailable
         $body = Helpers::text_variable_data_format( value:$content['body']??'',user_name:$customer_name??'');
         $footer_text = Helpers::text_variable_data_format( value:$content['footer_text']??'',user_name:$customer_name??'');
         $copyright_text = Helpers::text_variable_data_format( value:$content['copyright_text']??'',user_name:$customer_name??'');
-        return $this->subject(translate('Customer_Password_Reset_mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'title'=>$title,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'url'=>$url, 'code'=>$code]);
+        return $this->subject(translate('Customer_Password_Reset_mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'socialMediaData' => $socialMediaData,'title'=>$title,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'url'=>$url, 'code'=>$code]);
 
     }
 }

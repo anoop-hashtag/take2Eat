@@ -190,22 +190,44 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                             <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a>
                         @endif
                 </span>
-                    {{--                <span class="social" style="text-align:center">--}}
-                    {{--                    @php($social_media = \App\Model\SocialMedia::active()->get())--}}
-                    {{--                    @dd($social_media, $data)--}}
-                    {{--                    @if (isset($social_media))--}}
-                    {{--                        @foreach ($social_media as $social)--}}
-                    {{--                            <a href="{{ $social->link }}" target=”_blank” id="{{ $social->name  }}-check" style="margin: 0 5px;text-decoration:none;{{ (isset($data[$social->name]) && $data[$social->name] == 1)?'':'display:none;' }}">--}}
-                    {{--                                <img src="{{asset('/public/assets/admin/img/img/')}}/{{ $social->name }}.png" alt="">--}}
-                    {{--                            </a>--}}
-                    {{--                        @endforeach--}}
-                    {{--                    @endif--}}
-                    {{--                </span>--}}
-                    <span class="copyright" id="mail-copyright">
-                        {{ $copyright_text?? translate('Copyright_2023_eFood._All_right_reserved') }}
-                    </span>
-                </td>
-            </tr>
+                <tr>
+                    <td style="text-align: center;">
+                          <span class="social" style="text-align:center">
+                    @foreach ($socialMediaData as $value)
+                        @if(isset($value->name) && $value->name == 'facebook')
+                            <a href="https://{{ $value->link }}" id="facebook-check" style="margin: 0 5px;text-decoration:none;">
+                                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/facebook.png" alt="">
+                            </a>
+                        @endif
+                
+                        @if(isset($value->name) && $value->name == 'instagram')
+                            <a href="https://{{ $value->link }}" id="instagram-check" style="margin: 0 5px;text-decoration:none;">
+                                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/instagram.png" alt="">
+                            </a>
+                        @endif
+                
+                        @if(isset($value->name) && $value->name == 'twitter')
+                            <a href="https://{{ $value->link }}" id="twitter-check" style="margin: 0 5px;text-decoration:none;">
+                                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/twitter.png" alt="">
+                            </a>
+                        @endif
+                
+                        @if(isset($value->name) && $value->name == 'linkedin')
+                            <a href="https://{{ $value->link }}" id="linkedin-check" style="margin: 0 5px;text-decoration:none;">
+                                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/linkedin.png" alt="">
+                            </a>
+                        @endif
+                
+                        <!-- Add similar blocks for other social media platforms as needed -->
+                    @endforeach
+                </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">
+                      <span class="copyright" id="mail-copyright"> Copyright 2023 take2eat. All right reserved </span>
+                    </td>
+                  </tr>
         </tbody>
     </table>
 
