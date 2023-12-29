@@ -411,8 +411,9 @@
                                         </a>
                                     </li>
                                     <!-- REVIEWS -->
-                                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/reviews*')?'active':''}}">
+                                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/reviews*') || Request::is('admin/product/view*') ?'active':''}}">
                                         <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.reviews.list')}}">
+                                           
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                         {{translate('product')}} {{translate('reviews')}}
