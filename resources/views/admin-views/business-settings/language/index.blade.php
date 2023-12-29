@@ -241,14 +241,14 @@
                                                     <a class="btn btn-sm btn-outline-success btn-action"
                                                     href="{{route('admin.business-settings.web-app.system-setup.language.translate',[$data['code']])}}">{{translate('Translate')}}</a>
                                                     @if($data['code']!='en')
-                                                        <a class="btn btn-sm btn-outline-info btn-action" data-toggle="modal"
+                                                        <a class="btn btn-outline-info btn-sm edit square-btn" data-toggle="modal"
                                                             data-target="#lang-modal-update-{{$data['code']}}">
                                                             <i class="tio-edit"></i>
                                                         </a>
                                                         @if($data['default'] != true)
-                                                            <button class="btn btn-sm btn-outline-danger btn-action" id="delete"
+                                                            <button class="btn btn-outline-danger btn-sm delete square-btn" id="delete"
                                                                 onclick="delete_language('{{ route('admin.business-settings.web-app.system-setup.language.delete',[$data['code']]) }}')">
-                                                                <i class="tio-delete-outlined"></i>
+                                                                <i class="tio-delete"></i>
                                                             </button>
                                                         @endif
                                                     @endif
