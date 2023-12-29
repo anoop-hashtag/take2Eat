@@ -23,7 +23,7 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/table.png')}}" alt="">
                 <span class="page-header-title">
-                    {{translate('Table_Availability')}}
+                    {{translate('Table_Availability_test')}}
                 </span>
             </h2>
         </div>
@@ -138,7 +138,12 @@
                     @endforeach
                 @else
                     <div class="col-md-12 text-center">
-                        <h4 class="">{{translate('This branch has no table')}}</h4>
+                        <div class="branch-no-data">
+                            <div class="branch-image">
+                                <img  class="" src="{{asset('public/assets/admin/img/slider-2.png')}}" alt="" />
+                            </div>
+                            <h3 class="mt-5">{{translate('This branch has no table')}}</h3>
+                        </div>
                     </div>
                 @endif
             </div>

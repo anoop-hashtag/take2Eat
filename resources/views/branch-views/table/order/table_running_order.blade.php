@@ -55,9 +55,7 @@
                                    style="width: 100%;">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th class="">
-                                        {{translate('SL')}}
-                                    </th>
+                                    <th class="">{{translate('SL')}}</th>
                                     <th class="table-column-pl-0">{{translate('order')}}</th>
                                     <th>{{translate('date')}}</th>
                                     <th>{{translate('branch')}}</th>
@@ -65,7 +63,7 @@
                                     <th>{{translate('payment')}} {{translate('status')}}</th>
                                     <th>{{translate('total')}}</th>
                                     <th>{{translate('order')}} {{translate('status')}}</th>
-                                    <th>{{translate('number of people')}}</th>
+                                    <th>{{translate('no. of people')}}</th>
                                     <th>{{translate('actions')}}</th>
                                 </tr>
                                 </thead>

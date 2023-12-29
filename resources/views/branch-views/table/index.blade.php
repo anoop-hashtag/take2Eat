@@ -51,6 +51,7 @@
                 @endforeach
             @else
                 <div class="col-md-12 text-center">
+                    <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/all_orders.png')}}" alt=""/>
                     <h4 class="">This branch has no table</h4>
                 </div>
             @endif
