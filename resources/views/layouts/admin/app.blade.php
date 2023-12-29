@@ -7,7 +7,6 @@
     <!-- Title -->
     <title>@yield('title')</title>
     <!-- Favicon -->
-
     @php($icon = \App\Model\BusinessSetting::where(['key' => 'fav_icon'])->first()->value??'')
     <link rel="shortcut icon" href="">
     <link rel="icon" type="image/x-icon" href="{{ asset('storage/app/public/restaurant/' . $icon ?? '') }}">
@@ -20,7 +19,6 @@
     <link rel="stylesheet" href="{{asset('public/assets/admin/css/owl.min.css')}}">
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme.minc619.css?v=2.0">
-
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/style.css?v=1.0">  
   
     @stack('css_or_js')
@@ -132,7 +130,7 @@
 <script src="{{asset('public/assets/admin')}}/js/theme.min.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/toastr.js"></script>
-    <script src="{{asset('public/assets/admin/js/owl.min.js')}}"></script>
+<script src="{{asset('public/assets/admin/js/owl.min.js')}}"></script>
 {!! Toastr::message() !!}
 
 @if ($errors->any())
@@ -577,11 +575,6 @@
         
     </script>
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-
-<!-- Include jQuery UI library -->
-<!-- Include flatpickr CSS and JS from CDN -->
-
-<!-- Include ClockPicker stylesheet and script -->
 <link rel="stylesheet" href="https://cdn.rawgit.com/weareoutman/clockpicker/v0.0.7/dist/bootstrap-clockpicker.min.css">
 <script src="https://cdn.rawgit.com/weareoutman/clockpicker/v0.0.7/dist/jquery-clockpicker.min.js"></script>
 
@@ -599,10 +592,6 @@
         });
     });
 </script>
-
-
-
-
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
 <link rel="stylesheet" href="{{asset('public/assets/admin/css/demo.css')}}">
@@ -659,10 +648,6 @@
     });
     
 </script>
-
-
-
-
 <script>
     $('#from_date, #to_date').change(function () {
         let fr = $('#from_date').val();
@@ -694,7 +679,6 @@
         return new Date(parts[2], parts[1] - 1, parts[0]);
     }
 </script>
-
 <script>
     // Function to disallow special characters
     function disallowSpecialCharacters(input) {
