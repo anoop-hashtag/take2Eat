@@ -1,6 +1,27 @@
 @extends('layouts.branch.app')
 @section('title', translate('POS'))
-
+<style>
+    /* #location_map_div #pac-input{
+        height: 40px;
+        border: 1px solid #fbc1c1;
+        outline: none;
+        box-shadow: none;
+        top: 7px !important;
+        transform: translateX(7px);
+        padding-left: 10px;
+    } */
+    #location_map_div #pac-input {
+    height: 40px;
+    border: 1px solid #fbc1c1;
+    outline: none;
+    width: 100%;
+    box-shadow: none;
+    position: relative;
+    top: 5px !important;
+    /* transform: translateX(7px); */
+    padding-left: 10px;
+}
+</style>
     <!-- END ONLY DEV -->
 @section('content')
     <div class="container">
@@ -336,11 +357,11 @@
                                     <input id="pac-input" class="controls rounded initial-8"
                                            title="{{ translate('search_your_location_here') }}" type="text"
                                            placeholder="{{ translate('search_here') }}" />
-                                    <div id="location_map_canvas" class="overflow-hidden rounded" style="height: 100%"></div>
+                                    <div id="location_map_canvas" class="overflow-hidden rounded" style="height: 80%;position: relative;top: 20px;"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 mt-2">
+                        <div class="col-md-12 mt-5">
                             <div class="btn--container justify-content-end">
                                 <button class="btn btn-sm btn-primary w-100" type="button" onclick="deliveryAdressStore()" data-dismiss="modal">
                                     {{  translate('Update') }} {{ translate('Delivery address') }}
