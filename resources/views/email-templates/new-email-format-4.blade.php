@@ -1,250 +1,108 @@
 <!DOCTYPE html>
-<?php
-$lang = \App\CentralLogics\Helpers::get_default_language();
-//    $site_direction = \App\CentralLogics\Helpers::system_default_direction();
-?>
-<html lang="{{ $lang }}" class="">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ translate('Email_Template') }}</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
-
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            font-size: 13px;
-            line-height: 21px;
-            color: #737883;
-            background: #e9ecef;
-            padding: 0;
-            display: flex;align-items: center;justify-content: center;
-            min-height: 100vh;
-        }
-        h1,h2,h3,h4,h5,h6 {
-            color: #334257;
-        }
-        * {
-            box-sizing: border-box
-        }
-
-        :root {
-           --base: #ffa726
-        }
-
-        .main-table {
-            width: 500px;
-            background: #FFFFFF;
-            margin: 0 auto;
-            padding: 40px;
-        }
-        .main-table-td {
-        }
-        img {
-            max-width: 100%;
-        }
-        .cmn-btn{
-            background: var(--base);
-            color: #fff;
-            padding: 8px 20px;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .mb-1 {
-            margin-bottom: 5px;
-        }
-        .mb-2 {
-            margin-bottom: 10px;
-        }
-        .mb-3 {
-            margin-bottom: 15px;
-        }
-        .mb-4 {
-            margin-bottom: 20px;
-        }
-        .mb-5 {
-            margin-bottom: 25px;
-        }
-        hr {
-            border-color : rgba(0, 170, 109, 0.3);
-            margin: 16px 0
-        }
-        .border-top {
-            border-top: 1px solid rgba(0, 170, 109, 0.3);
-            padding: 15px 0 10px;
-            display: block;
-        }
-        .d-block {
-            display: block;
-        }
-        .privacy {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-        }
-        .privacy a {
-            text-decoration: none;
-            color: #334257;
-            position: relative;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .privacy a span {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #334257;
-            display: inline-block;
-            margin: 0 7px;
-        }
-        .social {
-            margin: 15px 0 8px;
-            display: block;
-        }
-        .copyright{
-            text-align: center;
-            display: block;
-        }
-        div {
-            display: block;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .w-100 {
-            width: 100%;
-        }
-        a {
-            text-decoration: none;
-        }
-        .text-base {
-            color: var(--base);
-            font-weight: 700
-        }
-        .mail-img-1 {
-            width: 140px;
-            height: 60px;
-            object-fit: contain
-        }
-        .mail-img-2 {
-            width: 130px;
-            height: 45px;
-            object-fit: contain
-        }
-        .mail-img-3 {
-            width: 100%;
-            height: 172px;
-            object-fit: cover
-        }
-        .social img {
-        width: 24px;
-        }
-    </style>
-
+<title>Forgot Password</title>
 </head>
+<body>
 
 
-<body style="background-color: #e9ecef;padding:15px">
-
-    <table  dir="" class="main-table">
-        <tbody>
-            <tr>
-                <td class="main-table-td">
-                    <div class="text-center">
-                    <img onerror="this.src='{{ asset('/public/assets/admin/img/blank3.png') }}'" class="mail-img-2"
-                    src="{{ asset('storage/app/public/email_template/') }}/{{ $data['icon']??'' }}" id="iconViewer" alt="">
-                        <h2 id="mail-title" class="mt-2">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
-                        <div class="mb-1" id="mail-body">{!! $body?? translate('Hi_Sabrina,') !!}</div>
-                        <h2 style="font-size: 26px;margin: 0;letter-spacing:4px">
-                            {{ $code??'' }}
-                        </h2>
-                    </div>
-                    @if ($data?->button_url)
-                    <span class="d-block text-center" style="margin-top: 16px">
-                    <a href="{{ $data['button_url']??'#' }}" class="cmn-btn" id="mail-button">{{ $data['button_name']??'Submit' }}</a>
-                    </span>
-                    @endif
-                    <hr>
-                    <div class="mb-2" id="mail-footer">
-                        {{ $footer_text ?? translate('Please_contact_us_for_any_queries,_we’re_always_happy_to_help.') }}
-                    </div>
-                    <div>
-                        {{ translate('Thanks_&_Regards') }},
-                    </div>
-                    <div class="mb-4">
-                        {{ $company_name }}
-                    </div>
-                </td>
-            </tr>
-            <br>
-            <br>
-            <tr>
-                <td style="text-align: center;"
-                    <span class="privacy">
+<table class="main-table" style="width: 600px; background: #fff; margin: 0 auto; padding: 8px; font-family: Roboto, sans-serif;
+  font-size: 11.5207px; line-height: 21px;  color: #737883;border: 1px solid #f4f4f4;">
+    <tbody>
+        <tr>
+            <td class="main-table-td">
+                <h2 class="mb-3" id="mail-title" style="color: #000; text-align: center;">
+                    <img style="width:100px" src="{{ asset('storage/app/public/email_template/') }}/{{ $data['icon']??'' }}" />
+                </h2>
+                <h2 class="mb-3" id="mail-title" style="color: #5b6777; text-align: center;font-size: 22px;margin-bottom: 0;">
+                    {{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}
+                </h2>
+                <div class="mb-1" id="mail-body" style="text-align:center; margin-top: 0;"><p style="text-align:center; margin-top: 5px;">Please enter 4 digit code.</p>
+                    <h2 class="mb-3" style="color: #5b6777; text-align: center;font-size: 26px;margin-bottom: 0;">
+                    {{ $code??'' }}
+                </h2>
+                </div>
+                
+                
+                
+                <div class="mb-2" id="mail-footer" style="border-top: 1px solid #e2f5ee;padding-top: 15px;margin-top: 15px;">
+                     Please contact us for any queries, we’re always happy to help. 
+                </div>
+                <div>
+                    Thanks &amp; Regards,
+                </div>
+                <div class="mb-4">
+                    Take2Eat
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="privacy" style="display: block;width: 100%;text-align: center;">
                     @if(isset($data['privacy']) && $data['privacy'] == 1)
                             <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a><span style="content: '';
-                            width: 6px;
-                            height: 6px;
-                            border-radius: 50%;
-                            background: #334257;
-                            display: inline-block;
-                            margin: 0 7px;"></span>
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: #334257;
+display: inline-block;
+margin: 0 7px;"></span>
                         @endif
                         @if(isset($data['contact']) && $data['contact'] == 1)
                             <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a><span style="content: '';
-                            width: 6px;
-                            height: 6px;
-                            border-radius: 50%;
-                            background: #334257;
-                            display: inline-block;
-                            margin: 0 7px;"></span>
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: #334257;
+display: inline-block;
+margin: 0 7px;"></span>
                         @endif
                 </span>
-                <tr>
-                    <td style="text-align: center;">
-                          <span class="social" style="text-align:center">
-                    @foreach ($socialMediaData as $value)
-                        @if(isset($value->name) && $value->name == 'facebook')
-                            <a href="https://{{ $value->link }}" id="facebook-check" style="margin: 0 5px;text-decoration:none;">
-                                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/facebook.png" alt="">
-                            </a>
-                        @endif
-                
-                        @if(isset($value->name) && $value->name == 'instagram')
-                            <a href="https://{{ $value->link }}" id="instagram-check" style="margin: 0 5px;text-decoration:none;">
-                                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/instagram.png" alt="">
-                            </a>
-                        @endif
-                
-                        @if(isset($value->name) && $value->name == 'twitter')
-                            <a href="https://{{ $value->link }}" id="twitter-check" style="margin: 0 5px;text-decoration:none;">
-                                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/twitter.png" alt="">
-                            </a>
-                        @endif
-                
-                        @if(isset($value->name) && $value->name == 'linkedin')
-                            <a href="https://{{ $value->link }}" id="linkedin-check" style="margin: 0 5px;text-decoration:none;">
-                                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/linkedin.png" alt="">
-                            </a>
-                        @endif
-                
-                        <!-- Add similar blocks for other social media platforms as needed -->
-                    @endforeach
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <span class="social" style="text-align:center">
+                   @foreach ($socialMediaData as $value)
+        @if(isset($value->name) && $value->name == 'facebook')
+            <a href="https://{{ $value->link }}" id="facebook-check" style="margin: 0 5px;text-decoration:none;">
+                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/facebook.png" alt="">
+            </a>
+        @endif
+
+        @if(isset($value->name) && $value->name == 'instagram')
+            <a href="https://{{ $value->link }}" id="instagram-check" style="margin: 0 5px;text-decoration:none;">
+                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/instagram.png" alt="">
+            </a>
+        @endif
+
+        @if(isset($value->name) && $value->name == 'twitter')
+            <a href="https://{{ $value->link }}" id="twitter-check" style="margin: 0 5px;text-decoration:none;">
+                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/twitter.png" alt="">
+            </a>
+        @endif
+
+        @if(isset($value->name) && $value->name == 'linkedin')
+            <a href="https://{{ $value->link }}" id="linkedin-check" style="margin: 0 5px;text-decoration:none;">
+                <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/linkedin.png" alt="">
+            </a>
+        @endif
+
+        <!-- Add similar blocks for other social media platforms as needed -->
+    @endforeach
                 </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center;">
-                      <span class="copyright" id="mail-copyright"> Copyright 2023 take2eat. All right reserved </span>
-                    </td>
-                  </tr>
-        </tbody>
-    </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <span class="copyright" id="mail-copyright">
+                    Copyright 2023 eFood. All right reserved
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 </body>
-</html>
+</html> 
