@@ -37,7 +37,7 @@
                                     <label class="text-dark">{{ translate('Start Date') }}</label>
                                     <input type="text" name="from"
                                            value="{{$from}}"
-                                           id="from_date" autocomplete="off" placeholder="DD-MM-YYYY" style="position: relative; z-index: 4" class="form-control">
+                                           id="from_date" autocomplete="off" placeholder="DD-MM-YYYY" readonly style="position: relative; z-index: 4" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4">
@@ -45,7 +45,7 @@
                                     <label class="text-dark">{{ translate('End Date') }}</label>
                                     <input type="text"
                                            value="{{$to}}"
-                                           name="to" id="to_date" placeholder="DD-MM-YYYY" class="form-control">
+                                           name="to" id="to_date" placeholder="DD-MM-YYYY" readonly class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-4 d-flex gap-2">

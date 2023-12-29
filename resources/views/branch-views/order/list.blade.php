@@ -36,13 +36,13 @@
                             <div class="col-md-6 col-lg-4">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('Start Date') }}</label>
-                                    <input type="text" name="from" value="{{$from}}" id="from_date" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
+                                    <input type="text" name="from" value="{{$from}}" id="from_date" readonly placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">{{ translate('End Date') }}</label>
-                                    <input type="text" value="{{$to}}" name="to" id="to_date" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
+                                    <input type="text" value="{{$to}}" name="to" id="to_date" readonly placeholder="DD-MM-YYYY" autocomplete="off" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-4 d-flex gap-2">
