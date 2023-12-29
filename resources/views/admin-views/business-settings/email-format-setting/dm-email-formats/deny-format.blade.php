@@ -29,13 +29,13 @@
                     <div class="card-body">
                         <div class="maintainance-mode-toggle-bar d-flex flex-wrap justify-content-between border rounded align-items-center p-2">
                             <h5 class="text-capitalize m-0 text--primary pl-2">
-                                {{translate('Send_Mail_on_New_Deliveryman_Rejection')}}
-                                <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('If_Admin_rejects_a_Deliveryman’s_self-registration,_the_Deliveryman_will_get_an_automatic_rejection_mail.')}}">
+                                {{translate('Send_Mail_on_New_Delivery_Partner_Rejection')}}
+                                <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('If_Admin_rejects_a_Delivery_Partner’s_self-registration,_the_Delivery_Partner_will_get_an_automatic_rejection_mail.')}}">
                                     <i class="tio-info-outined"></i>
                                 </span>
                             </h5>
                             <label class="toggle-switch toggle-switch-sm">
-                                <input type="checkbox" class="status toggle-switch-input" onclick="toogleStatusModal(event,'mail-status','place-order-on.png','place-order-off.png','{{translate('Want_to_enable_the')}} <strong>{{translate('New_Deliveryman_Rejection')}}</strong> {{translate('mail')}} ?','{{translate('Want_to_disable_the')}} <strong>{{translate('New_Deliveryman_Rejection')}}</strong> {{translate('mail')}} ?',`<p>{{translate('If_enabled,_Deliverymen_will_receive_an_email_when_the_admin_rejects_their_registration_request.')}}</p>`,`<p>{{translate('If_disabled,_Deliverymen_will_not_receive_any_email_upon_rejection_for_registration.')}}</p>`)" id="mail-status" {{$mail_status == '1'?'checked':''}}>
+                                <input type="checkbox" class="status toggle-switch-input" onclick="toogleStatusModal(event,'mail-status','place-order-on.png','place-order-off.png','{{translate('Want_to_enable_the')}} <strong>{{translate('New_Delivery_Partner_Rejection')}}</strong> {{translate('mail')}} ?','{{translate('Want_to_disable_the')}} <strong>{{translate('New_Delivery_Partner_Rejection')}}</strong> {{translate('mail')}} ?',`<p>{{translate('If_enabled,_Delivery_Partner_will_receive_an_email_when_the_admin_rejects_their_registration_request.')}}</p>`,`<p>{{translate('If_disabled,_Delivery_Partner_will_not_receive_any_email_upon_rejection_for_registration.')}}</p>`)" id="mail-status" {{$mail_status == '1'?'checked':''}}>
                                 <span class="toggle-switch-label text mb-0">
                                     <span class="toggle-switch-indicator"></span>
                                 </span>

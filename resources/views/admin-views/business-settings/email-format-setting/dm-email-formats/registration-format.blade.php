@@ -29,13 +29,13 @@
                     <div class="card-body">
                         <div class="maintainance-mode-toggle-bar d-flex flex-wrap justify-content-between border rounded align-items-center p-2">
                             <h5 class="text-capitalize m-0 text--primary pl-2">
-                                {{translate('Send_Mail_on_New_Deliveryman_Registration')}}
-                                <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('If_a_Deliveryman_registers_from_the_Customer_app_or_Website,_Admin_Landing_Page_or_Restaurant_app,_he_will_get_a_Registration_Confirmation_email.')}}">
+                                {{translate('Send_Mail_on_New_Delivery_Partner_Registration')}}
+                                <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('If_a_Delivery_Partner_registers_from_the_Customer_app_or_Website,_Admin_Landing_Page_or_Restaurant_app,_he_will_get_a_Registration_Confirmation_email.')}}">
                                     <i class="tio-info-outined"></i>
                                 </span>
                             </h5>
                             <label class="toggle-switch toggle-switch-sm">
-                                <input type="checkbox" class="status toggle-switch-input" onclick="toogleStatusModal(event,'mail-status','place-order-on.png','place-order-off.png','{{translate('Want_to_enable_the')}} <strong>{{translate('New_Deliveryman_Registration')}}</strong> {{translate('mail')}} ?','{{translate('Want_to_disable_the')}} <strong>{{translate('New_Deliveryman_Registration')}}</strong> {{translate('mail')}} ?',`<p>{{translate('If_enabled,_Deliverymen_will_receive_an_automated_mail_from_the_system_when_their_registration_is_successful.')}}</p>`,`<p>{{translate('If_disabled,_Deliverymen_will_not_receive_any_registration_confirmation_email.')}}</p>`)"  id="mail-status" {{$mail_status == '1'?'checked':''}}>
+                                <input type="checkbox" class="status toggle-switch-input" onclick="toogleStatusModal(event,'mail-status','place-order-on.png','place-order-off.png','{{translate('Want_to_enable_the')}} <strong>{{translate('New_Delivery_Partner_Registration')}}</strong> {{translate('mail')}} ?','{{translate('Want_to_disable_the')}} <strong>{{translate('New_Delivery_Partner_Registration')}}</strong> {{translate('mail')}} ?',`<p>{{translate('If_enabled,_Delivery_Partner_will_receive_an_automated_mail_from_the_system_when_their_registration_is_successful.')}}</p>`,`<p>{{translate('If_disabled,_Delivery_Partner_will_not_receive_any_registration_confirmation_email.')}}</p>`)"  id="mail-status" {{$mail_status == '1'?'checked':''}}>
                                 <span class="toggle-switch-label text mb-0">
                                     <span class="toggle-switch-indicator"></span>
                                 </span>
