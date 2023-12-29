@@ -72,8 +72,8 @@
                                 </div>
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
-                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
-                                           placeholder="{{translate('Ex')}} : 88017********" pattern="\(\d{3}\) \d{3}-\d{4}" required style="border-radius:0 .3125rem  .3125rem 0">
+                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone1"
+                                           placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7"  required style="border-radius:0 .3125rem  .3125rem 0">
                                
                                 </div>
                                </div>
@@ -139,7 +139,7 @@
                                 <div class="form-group">
                                     <div class="custom-file text-left">
                                         <input type="file" name="image" id="customFileUpload" class="custom-file-input"
-                                               accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
+                                               accept=".jpg, .png, .jpeg, , .tiff|image/*" required>
                                         <label class="custom-file-label" for="customFileUpload">{{translate('choose')}} {{translate('file')}}</label>
                                     </div>
                                 </div>
@@ -192,37 +192,43 @@
             width: 'resolve'
         });
     </script>
-    <script>
-        function isNumber(evt) {
-  evt = (evt) ? evt : window.event;
-  var charCode = (evt.which) ? evt.which : evt.keyCode;
-  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-    alert("Please enter only Numbers.");
-    return false;
-  }
-  if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
-    alert("Please enter 10 Digit only Numbers.");
-    return false;
-  }
-
-  return true;
-}
-
-var phoneInput = document.getElementById('phone');
-var myForm = document.forms.myForm;
-var result = document.getElementById('result');  // only for debugging purposes
-
-phoneInput.addEventListener('input', function (e) {
-  var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-  e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-});
-
-myForm.addEventListener('submit', function(e) {
-  phoneInput.value = phoneInput.value.replace(/\D/g, '');
-  result.innerText = phoneInput.value;  // only for debugging purposes
+   <script>
+    function isNumber(evt) {
+      evt = evt || window.event;
+      var charCode = evt.which || evt.keyCode;
+      
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        alert("Please enter only Numbers.");
+        return false;
+      }
   
-  e.preventDefault(); // You wouldn't prevent it
-});
-
-        </script>
+      // Validate the length of the phone number
+      var phoneNo = document.getElementById('phone');
+      if (phoneNo.value.length < 7 || phoneNo.value.length > 15) {
+        alert("Please enter a phone number between 7 and 15 digits.");
+        return false;
+      }
+  
+      return true;
+    }
+  
+    var phoneInput = document.getElementById('phone');
+    var myForm = document.forms.myForm;
+    var result = document.getElementById('result');  // only for debugging purposes
+  
+    phoneInput.addEventListener('input', function (e) {
+      var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+      e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+  
+    myForm.addEventListener('submit', function(e) {
+      phoneInput.value = phoneInput.value.replace(/\D/g, '');
+      result.innerText = phoneInput.value;  // only for debugging purposes
+      
+      // You may add additional validation here if needed
+      
+      // e.preventDefault(); // You might want to prevent the form submission based on your requirements
+    });
+  </script>
+  
 @endpush
