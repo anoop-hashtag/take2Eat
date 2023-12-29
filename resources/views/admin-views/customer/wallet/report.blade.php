@@ -33,12 +33,12 @@
                     <div class="row">
                         <div class="col-sm-6 col-12">
                             <div class="mb-3">
-                                <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" value="{{request()->get('from')}}" autocomplete="off" class="form-control h--45px" title="{{translate('from')}} {{translate('date')}}">
+                                <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" readonly value="{{request()->get('from')}}" autocomplete="off" class="form-control h--45px" title="{{translate('from')}} {{translate('date')}}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-12">
                             <div class="mb-3">
-                                <input type="text" name="to" id="to_date" placeholder="DD-MM-YYYY" value="{{request()->get('to')}}" autocomplete="off" class="form-control h--45px" title="{{ucfirst(translate('to'))}} {{translate('date')}}">
+                                <input type="text" name="to" id="to_date" placeholder="DD-MM-YYYY" readonly value="{{request()->get('to')}}" autocomplete="off" class="form-control h--45px" title="{{ucfirst(translate('to'))}} {{translate('date')}}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-12">
