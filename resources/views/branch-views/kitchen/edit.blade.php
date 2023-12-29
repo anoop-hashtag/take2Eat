@@ -41,7 +41,7 @@
                                 <input type="text" name="l_name" value="{{$chef['l_name']}}" class="form-control" id="l_name"
                                         placeholder="{{translate('Ex')}} : {{translate('Doe')}}">
                             </div>
-                            <div class="row">
+                           
                             <div class="col-md-6 mb-3 ">
                                <div class="content-row">
                                 <div class="col-area-2">
@@ -56,8 +56,8 @@
                                 </div>
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
-                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
-                                           placeholder="{{translate('Ex')}} : 88017********" pattern="\(\d{3}\) \d{3}-\d{4}" required style="border-radius:0 .3125rem  .3125rem 0">
+                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone1"
+                                           placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7"  required style="border-radius:0 .3125rem  .3125rem 0">
                                
                                 </div>
                                </div>
@@ -69,35 +69,8 @@
                                     <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"
                                            placeholder="{{translate('Ex')}} : ex@gmail.com" required>
                                 </div>
-                            </div> <div class="row">
-                            <div class="col-md-6 mb-3 ">
-                               <div class="content-row">
-                                <div class="col-area-2">
-                                <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
-                                    {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
-                                           placeholder="{{translate('Ex')}} : +91" required> --}}
-                                          
-                                        <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
-
-                                        <input type="hidden"  id="hidden-country-code"    name="country_code">
-                                       
-                                </div>
-                                <div class="col-area-10">
-                                <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
-                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
-                                           placeholder="{{translate('Ex')}} : 88017********" pattern="\(\d{3}\) \d{3}-\d{4}" required style="border-radius:0 .3125rem  .3125rem 0">
-                               
-                                </div>
-                               </div>
-                             
-                                
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
-                                    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"
-                                           placeholder="{{translate('Ex')}} : ex@gmail.com" required>
-                                </div>
-                            </div>
+                            
+                        
 
                             <div class="col-md-6 mb-3">
                                 <label for="name">{{translate('Password')}}</label><small> ( {{translate('input if you want to change')}} )</small>
