@@ -15,6 +15,7 @@
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/vendor.min.css">
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/vendor/icon-set/style.css">
+    
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/theme.minc619.css?v=1.0">
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/style.css?v=1.0">
@@ -81,12 +82,12 @@
 
 <main id="content" role="main" class="main pointer-event">
     <!-- Content -->
-@yield('content')
-<!-- End Content -->
+    @yield('content')
+    <!-- End Content -->
 
     <!-- Footer -->
-@include('layouts.branch.partials._footer')
-<!-- End Footer -->
+    @include('layouts.branch.partials._footer')
+    <!-- End Footer -->
 
     <div class="modal fade" id="popup-modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -125,7 +126,7 @@
 <script src="{{asset('public/assets/admin')}}/js/theme.min.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
 <script src="{{asset('public/assets/admin')}}/js/toastr.js"></script>
-    <script src="{{asset('public/assets/admin/js/owl.min.js')}}"></script>
+<script src="{{asset('public/assets/admin/js/owl.min.js')}}"></script>
 {!! Toastr::message() !!}
 
 @if ($errors->any())
@@ -179,9 +180,12 @@
 
 
 <!-- JS Plugins Init. -->
-<script>
-    $(document).on('ready', function () {
 
+<script>
+    // INITIALIZATION OF NAVBAR VERTICAL NAVIGATION
+    // =======================================================
+    var sidebar = $('.js-navbar-vertical-aside').hsSideNav();
+    $(document).on('ready', function () {
         // BUILDER TOGGLE INVOKER
         // =======================================================
         $('.js-navbar-vertical-aside-toggle-invoker').click(function () {
@@ -192,15 +196,17 @@
         $('.js-hs-unfold-invoker').each(function () {
             var unfold = new HSUnfold($(this)).init();
         });
-
-
-        // INITIALIZATION OF NAVBAR VERTICAL NAVIGATION
+        // INITIALIZATION OF TOOLTIP IN NAVBAR VERTICAL MENU
         // =======================================================
-        var sidebar = $('.js-navbar-vertical-aside').hsSideNav();
+        $('.js-nav-tooltip-link').tooltip({boundary: 'window'})
 
+        $(".js-nav-tooltip-link").on("show.bs.tooltip", function (e) {
+            if (!$("body").hasClass("navbar-vertical-aside-mini-mode")) {
+                return false;
+            }
+        });
     });
 </script>
-
 @stack('script_2')
 <audio id="myAudio">
     <source src="{{asset('public/assets/admin/sound/notification.mp3')}}" type="audio/mpeg">
@@ -350,47 +356,12 @@
 </script>
 
 
-
-<script>
-    $('#from_date, #to_date').change(function () {
-        let fr = $('#from_date').val();
-        let to = $('#to_date').val();
-        
-        if (fr !== '' && to !== '') {
-            // Parse dates in the format dd-mm-yy
-            let fromDate = parseDate(fr);
-            let toDate = parseDate(to);
-
-            if (isNaN(fromDate) || isNaN(toDate) || fromDate >= toDate) {
-                $('#from_date').val('');
-                $('#to_date').val('');
-                toastr.error('Invalid date range! Start date must be less than end date.', 'Error', {
-                    closeButton: true,
-                    progressBar: true
-                });
-            }
-        }
-    });
-
-    $('#reset_btn').click(function () {
-        $('#customer').val(null).trigger('change');
-    });
-
-    // Function to parse date in the format dd-mm-yy
-    function parseDate(dateString) {
-        let parts = dateString.split("-");
-        return new Date(parts[2], parts[1] - 1, parts[0]);
-    }
-</script>
 <!-- Include jQuery UI library -->
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
-
 <link rel="stylesheet" href="{{asset('public/assets/admin/css/demo.css')}}">
 <link href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css" rel="stylesheet" />
-<!-- Include jQuery UI CSS for styling -->
-
 <!-- Include jQuery UI CSS for styling -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript">
@@ -443,6 +414,38 @@
     });
     
 </script>
+<script>
+    $('#from_date, #to_date').change(function () {
+        let fr = $('#from_date').val();
+        let to = $('#to_date').val();
+        
+        if (fr !== '' && to !== '') {
+            // Parse dates in the format dd-mm-yy
+            let fromDate = parseDate(fr);
+            let toDate = parseDate(to);
+
+            if (isNaN(fromDate) || isNaN(toDate) || fromDate >= toDate) {
+                $('#from_date').val('');
+                $('#to_date').val('');
+                toastr.error('Invalid date range! Start date must be less than end date.', 'Error', {
+                    closeButton: true,
+                    progressBar: true
+                });
+            }
+        }
+    });
+
+    $('#reset_btn').click(function () {
+        $('#customer').val(null).trigger('change');
+    });
+
+    // Function to parse date in the format dd-mm-yy
+    function parseDate(dateString) {
+        let parts = dateString.split("-");
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+</script>
+
 <!-- IE Support -->
 <script>
     if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public/assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');

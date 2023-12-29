@@ -20,16 +20,17 @@
 
                     <!-- Navbar Vertical Toggle -->
                     <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-vertical-aside-toggle btn btn-icon btn-xs btn-ghost-dark">
-                        <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip" data-placement="right" title="" data-original-title="Collapse"></i>
-                        <i class="tio-last-page navbar-vertical-aside-toggle-full-align" data-template="<div class=&quot;tooltip d-none d-sm-block&quot; role=&quot;tooltip&quot;><div class=&quot;arrow&quot;></div><div class=&quot;tooltip-inner&quot;></div></div>" data-toggle="tooltip" data-placement="right" title="" data-original-title="Expand"></i>
+                        <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip" data-placement="right" title="" data-original-title=""></i>
+                        <i class="tio-last-page navbar-vertical-aside-toggle-full-align" data-template="<div class=&quot;tooltip d-none d-sm-block&quot; role=&quot;tooltip&quot;><div class=&quot;arrow&quot;></div><div class=&quot;tooltip-inner&quot;></div></div>" data-toggle="tooltip" data-placement="right" title="" data-original-title=""></i>
+                    
                     </button>
                     <!-- End Navbar Vertical Toggle -->
 
                     <div class="navbar-nav-wrap-content-left d-none d-xl-block">
                         <!-- Navbar Vertical Toggle -->
-                        <button type="button" class="js-navbar-vertical-aside-toggle-invoker close">
-                            <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip" data-placement="right" title="" data-original-title="Collapse"></i>
-                            <i class="tio-last-page navbar-vertical-aside-toggle-full-align" title="Expand"></i>
+                      <button type="button" class="js-navbar-vertical-aside-toggle-invoker close">
+                            <i class="tio-first-page navbar-vertical-aside-toggle-short-align" title=""></i>
+                            <i class="tio-last-page navbar-vertical-aside-toggle-full-align" title=""></i>
                         </button>
                         <!-- End Navbar Vertical Toggle -->
                     </div>
