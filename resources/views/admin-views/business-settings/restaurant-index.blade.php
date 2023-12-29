@@ -78,7 +78,7 @@
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
                                 <label class="input-label text-capitalize">{{translate('address')}}</label>
-                                <textarea name="address" class="form-control" placeholder="{{translate('Ex: ABC Company')}}">{{$address}}</textarea>
+                                <textarea name="address" class="form-control" placeholder="{{translate('Ex: ABC Company')}}" style="resize: none;">{{$address}}</textarea>
                             </div>
                         </div>
 

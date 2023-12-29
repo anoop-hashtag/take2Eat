@@ -302,7 +302,7 @@
                         @foreach($data['recent_orders'] as $recent)
                             <li class="pt-0 d-flex flex-wrap gap-2 align-items-center justify-content-between">
                                 <div class="order-info ">
-                                    <h5><a href="{{route('branch.orders.details', ['id' => $recent->id])}}" class="text-dark" >{{translate('Order')}}# {{$recent->id}}</a></h5>
+                                    <h5><a href="{{route('branch.orders.details', ['id' => $recent->id])}}" class="text-dark" >{{translate('Order')}} #{{$recent->id}}</a></h5>
                                     <p>{{\Illuminate\Support\Carbon::parse($recent->created_at)->format('d-m-y, h:m A')}}</p>
                                 </div>
                                 @if($recent['order_status'] == 'pending')
@@ -432,7 +432,7 @@
                 },
             },
             stroke: {
-                curve: 'straight',
+                curve: 'smooth',
                 width: 3
             },
             colors: ['rgba(255, 111, 112, 0.5)', '#107980'],
@@ -622,9 +622,12 @@
                             toolbar: {
                                 show: false,
                             },
+                            markers: {
+                                size: 5,
+                            },
                         },
                         stroke: {
-                            curve: 'straight',
+                            curve: 'smooth',
                             width: 2
                         },
                         colors: ['rgba(255, 111, 112, 0.5)', '#107980'],
@@ -632,13 +635,7 @@
                             name: "Earning",
                             data: response_data.earning,
                         }],
-                        markers: {
-                            size: 6,
-                            strokeWidth: 0,
-                            hover: {
-                                size: 9
-                            }
-                        },
+                       
                         grid: {
                             show: true,
                             padding: {
