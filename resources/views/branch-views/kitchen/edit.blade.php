@@ -73,7 +73,7 @@
                         
 
                             <div class="col-md-6 mb-3">
-                                <label for="name">{{translate('Password')}}</label><small> ( {{translate('input if you want to change')}} )</small>
+                                <label for="name">{{translate('Password')}}</label><small class="badge badge-soft-danger" style="background:white;font-weight:400"> ( {{translate('input if you want to change')}} )</small>
                                 <input type="password" name="password" class="form-control" id="password"
                                         placeholder="{{translate('Password')}}">
                             </div>

@@ -89,7 +89,7 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="name">{{translate('Password')}}</label><small> ( {{translate('input if you want to change')}} )</small>
+                                <label for="name">{{translate('Password')}}</label><small class="badge badge-soft-danger" style="background:white;font-weight:400"> ( {{translate('input if you want to change')}} )</small>
                                 <div class="input-group input-group-merge">
                                     <input type="password" name="password" class="js-toggle-password form-control form-control input-field" id="password"
                                            placeholder="{{translate('Password')}}"
