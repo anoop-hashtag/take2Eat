@@ -69,7 +69,7 @@ margin: 0 7px;"></span>
                    
 
                 @if(isset($data['cancelation']) && $data['cancelation'] == 1)
-                    <a href="{{ route('cancellation-page') }}" id="return-check">{{ translate('Cancelation_Policy')}}</a><span style="content: '';
+                    <a href="{{ route('return-page') }}" id="return-check">{{ translate('Cancelation_Policy')}}</a><span style="content: '';
                     width: 6px;
                     height: 6px;
                     border-radius: 50%;
