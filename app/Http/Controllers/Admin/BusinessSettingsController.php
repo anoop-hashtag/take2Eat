@@ -839,6 +839,7 @@ class BusinessSettingsController extends Controller
      */
     public function return_page_index(Request $request): Renderable
     {
+       
         $data = $this->business_setting->where(['key' => 'return_page'])->first();
 
         if ($data == false) {

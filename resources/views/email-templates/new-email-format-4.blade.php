@@ -57,6 +57,26 @@ background: #334257;
 display: inline-block;
 margin: 0 7px;"></span>
                         @endif
+                        @if(isset($data['refund']) && $data['refund'] == 1)
+                        <a href="{{ route('refund-page') }}" id="refund-check">{{ translate('Refund_Policy')}}</a><span style="content: '';
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: #334257;
+                        display: inline-block;
+                        margin: 0 7px;"></span>
+                    @endif
+                   
+
+                @if(isset($data['cancelation']) && $data['cancelation'] == 1)
+                    <a href="{{ route('cancellation-page') }}" id="return-check">{{ translate('Cancelation_Policy')}}</a><span style="content: '';
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background: #334257;
+                    display: inline-block;
+                    margin: 0 7px;"></span>
+                @endif 
                 </span>
             </td>
         </tr>

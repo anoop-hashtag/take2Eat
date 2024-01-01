@@ -28,6 +28,10 @@ Route::get('/', function () {
 Route::get('about-us', 'HomeController@about_us')->name('about-us');
 Route::get('terms-and-conditions', 'HomeController@terms_and_conditions')->name('terms-and-conditions');
 Route::get('privacy-policy', 'HomeController@privacy_policy')->name('privacy-policy');
+Route::get('return-page', 'HomeController@return_policy')->name('return-page');
+Route::get('refund-page', 'HomeController@refund_policy')->name('refund-page');
+Route::get('cancellation-page', 'HomeController@cancellation_page')->name('cancellation_page');
+
 
 /**
  * Auth

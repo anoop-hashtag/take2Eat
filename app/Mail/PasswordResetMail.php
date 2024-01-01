@@ -40,6 +40,7 @@ class PasswordResetMail extends Mailable
        // return $this->view('email-templates.customer-password-reset', ['token' => $token]);
 
         $data= EmailTemplate::with('translations')->where('type','user')->where('email_type', 'forget_password')->first();
+       
         $local = $this->language_code ?? 'en';
         $socialMediaData = DB::table('social_medias')->get();
 

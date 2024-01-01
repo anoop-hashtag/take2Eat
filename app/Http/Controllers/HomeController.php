@@ -53,5 +53,26 @@ class HomeController extends Controller
     {
         return view('privacy-policy');
     }
+     /**
+     * @return Factory|View|Application
+     */
+    public function return_policy(): Factory|View|Application
+    {
+        return view('returns-page');
+    }
+    public function refund_policy(): Factory|View|Application
+    {
+       
+        return view('refund-policy');
+    }
+     /**
+     * @return Factory|View|Application
+     */
+    public function cancellation_page(): Factory|View|Application
+
+    {
+      
+        return view('cancellation-page');
+    }
 }
 

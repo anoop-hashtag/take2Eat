@@ -272,7 +272,7 @@
                                                             <i class="tio-info-outined"
                                                                data-toggle="tooltip"
                                                                data-placement="top"
-                                                               title="{{ translate('When this field is active  delivery men can register themself using the delivery man app.') }}">
+                                                               title="{{ translate('When this field is active  delivery Partner can register themself using the delivery Partner app.') }}">
                                                             </i>
                                                         </label>
                                                         <select name="stock_type" class="form-control js-select2-custom" id="stock_type">
@@ -286,7 +286,7 @@
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('Product Stock')}}
                                                         </label>
-                                                        <input id="product_stock" type="number" min="1" name="product_stock" class="form-control"
+                                                        <input id="product_stock" type="number" minlength="1" maxlength="4"  name="product_stock" class="form-control"
                                                               value="{{ $product->main_branch_product?->stock }}" placeholder="{{translate('Ex : 10')}}">
                                                     </div>
                                                 </div>
