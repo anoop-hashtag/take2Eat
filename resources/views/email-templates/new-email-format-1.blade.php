@@ -170,7 +170,7 @@
                         {{ $footer_text?? translate('Please_contact_us_for_any_queries,_we’re_always_happy_to_help.') }}
                     </div>
                     <div>
-                        {{ translate('Thanks_&_Regards') }},
+                        {{ translate('Thanks_&_Regards_test') }},
                     </div>
                     <div class="mb-4">
                         {{ $company_name }}
