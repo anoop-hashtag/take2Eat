@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="">
-                            <div class="row">
+                        <div class="row">
                             <div class="col-md-6 mb-3 ">
                                <div class="content-row">
                                 <div class="col-area-2">
@@ -79,7 +79,7 @@
                                </div>
                              
                                 
-                                   </div>
+                                </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
                                     <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"

@@ -41,25 +41,36 @@
                                 <input type="text" name="l_name" value="{{$chef['l_name']}}" class="form-control" id="l_name"
                                         placeholder="{{translate('Ex')}} : {{translate('Doe')}}">
                             </div>
-                            <div class="col-md-1 mb-3">
+                           
+                            <div class="col-md-6 mb-3 ">
+                               <div class="content-row">
+                                <div class="col-area-2">
                                 <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
-                               
-                                       <br>
-                                       <input type="text" id="country-dropdown"  value="{{$chef['country_code'];}}"  style=" width: 70px; " class="form-control" name="country_code" placeholder="e.g. +1 702 123 4567">
-                                       {{-- <div  id="country-dropdown" value="{{$chef['country_code'];}}" class="form-control"></div> --}}
+                                    {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
+                                           placeholder="{{translate('Ex')}} : +91" required> --}}
+                                          
+                                        <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
 
-                                       <input type="hidden"  id="hidden-country-code" sonu="{{$chef['country_code'];}}" name="country_code">
-                            </div>
-                        <div class="col-md-5 mb-3">
-                            <label for="name">{{translate('Phone')}} <span class="text-danger">*</span></label>
-                            <input type="text" value="{{substr($chef['phone'],3)}}" required name="phone"  class="form-control" id="phone"
-                                   placeholder="{{translate('Ex')}} : 88017********" maxlength="10">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
-                            <input type="email" value="{{$chef['email']}}" name="email" class="form-control" id="email"
-                                   placeholder="{{translate('Ex')}} : ex@gmail.com" required>
-                        </div>
+                                        <input type="hidden"  id="hidden-country-code"    name="country_code">
+                                       
+                                </div>
+                                <div class="col-area-10">
+                                <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
+                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone1"
+                                           placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7"  required style="border-radius:0 .3125rem  .3125rem 0">
+                               
+                                </div>
+                               </div>
+                             
+                                
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
+                                    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"
+                                           placeholder="{{translate('Ex')}} : ex@gmail.com" required>
+                                </div>
+                            
+                        
 
                             <div class="col-md-6 mb-3">
                                 <label for="name">{{translate('Password')}}</label><small> ( {{translate('input if you want to change')}} )</small>
@@ -70,7 +81,7 @@
                                 <div class="form-group">
                                     <label for="name">{{translate('image')}}</label>
                                     <span class="text-danger">*</span>
-                                    <span class="badge badge-soft-danger">( {{translate('ratio')}} 1:1 )</span>
+                                    <span class="badge badge-soft-danger" style="background:white;font-weight:400">( {{translate('ratio')}} 1:1 )</span>
                                     <div class="custom-file text-left">
                                         <input type="file" name="image" id="customFileUpload" class="custom-file-input"
                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
