@@ -390,7 +390,7 @@ class ProductController extends Controller
             'name' => 'required|unique:products,name,' . $id,
             'category_id' => 'required',
             'price' => 'required|numeric',
-            'product_type' => 'required|in:veg,non_veg',
+            'product_type' => 'required|in:veg,non_veg,egg',
             'item_type' => 'required',
             'discount_type' => 'required',
             'tax_type' => 'required',
