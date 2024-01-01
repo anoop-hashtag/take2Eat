@@ -162,7 +162,7 @@
                     </span>
                     @endif                   <hr>
                     <div class="mb-2" id="mail-footer">
-                        {{ $footer_text?? translate('Please_contact_us_for_any_queries,_we’re_always_happy_to_help_test.') }}
+                        {{ $footer_text?? translate('Please_contact_us_for_any_queries,_we’re_always_happy_to_help.') }}
                     </div>
                     <div>
                         {{ translate('Thanks_&_Regards') }},

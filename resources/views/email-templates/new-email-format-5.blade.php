@@ -135,16 +135,16 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                 @if ($logo)
                 <img style="width:120px;display:block;margin:10px auto" src="{{ asset('storage/app/public/restaurant/' . $logo) }}" alt="public/img">
                 @else
-                <img style="width:120px;display:block;margin:10px auto"  src="{{asset('/public/assets/admin/img/favicon.png')}}" alt="public/img">
+                {{-- <img style="width:120px;display:block;margin:10px auto"  src="{{asset('/public/assets/admin/img/favicon.png')}}" alt="public/img"> --}}
                 @endif
-                <span class="privacy">
+                {{-- <span class="privacy">
                     @if(isset($data['privacy']) && $data['privacy'] == 1)
                         <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a>
                     @endif
                     @if(isset($data['contact']) && $data['contact'] == 1)
                         <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a>
                     @endif
-                </span>
+                </span> --}}
 {{--                <span class="social" style="text-align:center">--}}
 {{--                    @php($social_media = \App\Model\SocialMedia::active()->get())--}}
 {{--                    @dd($social_media, $data)--}}
@@ -156,6 +156,50 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
 {{--                        @endforeach--}}
 {{--                    @endif--}}
 {{--                </span>--}}
+<tr>
+    <td>
+        <span class="privacy" style="display: block;width: 100%;text-align: center;">
+            @if(isset($data['privacy']) && $data['privacy'] == 1)
+                    <a href="{{ route('privacy-policy') }}" id="privacy-check">{{ translate('Privacy_Policy')}}</a><span style="content: '';
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: #334257;
+display: inline-block;
+margin: 0 7px;"></span>
+                @endif
+                @if(isset($data['contact']) && $data['contact'] == 1)
+                    <a href="{{ route('about-us') }}" id="contact-check">{{ translate('About_Us')}}</a><span style="content: '';
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: #334257;
+display: inline-block;
+margin: 0 7px;"></span>
+                @endif
+                @if(isset($data['refund']) && $data['refund'] == 1)
+                <a href="{{ route('refund-page') }}" id="refund-check">{{ translate('Refund_Policy')}}</a><span style="content: '';
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: #334257;
+                display: inline-block;
+                margin: 0 7px;"></span>
+            @endif
+           
+
+        @if(isset($data['cancelation']) && $data['cancelation'] == 1)
+            <a href="{{ route('return-page') }}" id="return-check">{{ translate('Cancelation_Policy')}}</a><span style="content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #334257;
+            display: inline-block;
+            margin: 0 7px;"></span>
+        @endif 
+        </span>
+    </td>
+</tr>
                 <span class="copyright" id="mail-copyright">
                     {{ $copyright_text?? translate('Copyright_2023_eFood._All_right_reserved') }}
                 </span>
