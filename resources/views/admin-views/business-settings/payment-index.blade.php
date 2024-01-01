@@ -91,14 +91,14 @@
             @endif
         </div>
 
-        <div class="row digital_payment_methods mt-3 g-3" id="payment-gatway-cards">
+        <div class="row digital_payment_methods mt-3" id="payment-gatway-cards">
             @foreach($data_values as $payment)
-                <div class="col-md-6" style="margin-bottom: 30px">
+                <div class="col-md-6 mt-3">
                     <div class="card">
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.web-app.payment-config-update'):'javascript:'}}" method="POST"
                               id="{{$payment->key_name}}-form" enctype="multipart/form-data">
                             @csrf
-                            <div class="card-header d-flex flex-wrap align-content-around">
+                            <div class="card-header card-radius d-flex flex-wrap align-content-around">
                                 <h5>
                                     <span class="text-uppercase">{{str_replace('_',' ',$payment->key_name)}}</span>
                                 </h5>
