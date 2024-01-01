@@ -98,7 +98,7 @@
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.web-app.payment-config-update'):'javascript:'}}" method="POST"
                               id="{{$payment->key_name}}-form" enctype="multipart/form-data">
                             @csrf
-                            <div class="card-header d-flex flex-wrap align-content-around">
+                            <div class="card-header card-radius d-flex flex-wrap align-content-around">
                                 <h5>
                                     <span class="text-uppercase">{{str_replace('_',' ',$payment->key_name)}}</span>
                                 </h5>

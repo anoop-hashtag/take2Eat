@@ -7,6 +7,9 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+.card-header{
+  border-radius: 0.75rem;
+}
 .dataTables_wrapper .dataTables_filter {
   float: right;
   text-align: right;
