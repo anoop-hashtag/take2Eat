@@ -131,7 +131,7 @@
                                         {{$detail['quantity']}}
                                     </td>
                                     <td class="">
-                                        <span style="word-break: break-all;"> {{ Str::limit($detail->product['name'], 200) }}</span><br>
+                                        <span > {{ Str::limit($detail->product['name'], 200) }}</span><br>
                                         @if (count(json_decode($detail['variation'], true)) > 0)
                                             <strong><u>{{ translate('variation') }} : </u></strong>
                                             @foreach(json_decode($detail['variation'],true) as  $variation)
@@ -140,9 +140,9 @@
                                                     <strong>{{  $variation['name']}} - </strong>
                                                 </span>
                                                     @foreach ($variation['values'] as $value)
-                                                        <span class="d-block text-capitalize">
+                                                        <span class="d-block text-capitalize font-size-sm">
                                                         {{ $value['label']}} :
-                                                        <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
+                                                        <strong class="font-size-sm">{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
                                                     </span>
                                                     @endforeach
                                                 @else
