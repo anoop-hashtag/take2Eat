@@ -131,10 +131,11 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                         Please contact us for any queries, we’re always happy to help. 
                    </div>
                    <br>
-                   <br>
+                  
                    <div>
                        Thanks &amp; Regards,
                    </div>
+                   <br>
                    <div class="mb-4">
                     {{ $company_name }}
                    </div>
