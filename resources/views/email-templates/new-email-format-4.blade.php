@@ -32,7 +32,7 @@
                     Thanks &amp; Regards,
                 </div>
                 <div class="mb-4">
-                    Take2Eat
+                    {{ $company_name }}
                 </div>
             </td>
         </tr>

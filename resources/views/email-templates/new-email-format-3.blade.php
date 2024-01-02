@@ -250,7 +250,7 @@
             <hr>
             <div class="mb-2" id="mail-footer"> order Placement </div>
             <div> Thanks &amp; Regards, </div>
-            <div class="mb-4"> Take2Eat </div>
+            <div class="mb-4"> {{ $company_name }} </div>
           </td>
         </tr>
         <tr>
