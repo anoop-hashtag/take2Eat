@@ -71,8 +71,9 @@
                                 </div>
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
-                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
-                                           placeholder="{{translate('Ex')}} : 88017********" pattern="\(\d{3}\) \d{3}-\d{4}" required style="border-radius:0 .3125rem  .3125rem 0">
+                                <input type="text" name="phone" value="{{substr($chef['phone'],3)}}" class="form-control" id="phone"
+                                placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7" required style="border-radius:0 .3125rem .3125rem 0">
+                         
                                
                                 </div>
                                </div>
@@ -81,7 +82,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
-                                    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"
+                                    <input type="email" name="email" value="{{$chef['email']}}" class="form-control" id="email"
                                            placeholder="{{translate('Ex')}} : ex@gmail.com" required>
                                 </div>
                             </div>
