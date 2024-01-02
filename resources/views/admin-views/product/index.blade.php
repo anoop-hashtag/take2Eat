@@ -259,8 +259,9 @@
                                                         <label class="input-label">{{translate('Product Stock')}}
                                                         </label>
                                                         <input id="product_stock" type="number" min="1" maxlength="4" name="product_stock" class="form-control"
-                                                               placeholder="{{translate('Ex : 10')}}">
+                                                               placeholder="{{translate('Ex : 10')}}" oninput="checkInputValue(this.value)">
                                                     </div>
+                                                    <p id="error-message" class="text-danger"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -298,14 +299,14 @@
                                             <div class="row g-2">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="input-label">{{translate('available_From')}}</label>
+                                                        <label class="input-label">{{translate('available_From')}}<span class="text-danger">*</span></label>
                                                         <input type="text" id="datetimepicker1" name="available_time_starts" class="form-control" placeholder="{{translate('--:--')}}" required data-input>
                                                         <i class="tio-time-1"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="input-label">{{translate('available_Till')}}</label>
+                                                        <label class="input-label">{{translate('available_Till')}}<span class="text-danger">*</span></label>
                                                         <input type="text" id="datetimepicker2" name="available_time_ends" class="form-control" placeholder="{{translate('--:--')}}" required data-input>
                                                         <i class="tio-time-1"></i>
                                                     </div>
@@ -384,7 +385,7 @@
 
                     <div class="d-flex justify-content-end gap-3 mt-4">
                         <button type="reset" class="btn btn-secondary">{{translate('reset')}}</button>
-                        <button type="submit" class="btn btn-primary">{{translate('submit')}}</button>
+                        <button type="submit" id="submitBtn" class="btn btn-primary" >{{translate('submit')}}</button>
                     </div>
                 </form>
             </div>
@@ -398,6 +399,21 @@
 @endpush
 
 @push('script_2')
+<script>
+    document.getElementById('product_stock').addEventListener('input', function () {
+        const input = this.value;
+        const errorMessageElement = document.getElementById('error-message');
+        const submitButton = document.getElementById('submitBtn');
+
+        if (/^\d{4}$/.test(input)) {
+            errorMessageElement.textContent = ''; // Clear error message
+            submitButton.removeAttribute('disabled'); // Enable submit button
+        } else {
+            errorMessageElement.textContent = 'Please enter a valid 4-digit number.';
+            submitButton.setAttribute('disabled', 'disabled'); // Disable submit button
+        }
+    });
+</script>
     <script src="{{asset('public/assets/admin/js/spartan-multi-image-picker.js')}}"></script>
 
 
