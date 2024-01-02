@@ -375,7 +375,7 @@ div#country-dropdown {
   }
  
   .badge-soft-c1 {
-    min-width: 86px!important;
+    /* min-width: 86px!important; */
     text-align: center;
     color: var(--c1);
     background-color: rgba(255, 103, 103, 0.1);
@@ -664,7 +664,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 .badge-soft-c1 {
   color: var(--c1);
   background-color: rgba(255, 103, 103, 0.1);
-  min-width: 65px;
+  /* min-width: 65px; */
 }
 
 .text-c1,
