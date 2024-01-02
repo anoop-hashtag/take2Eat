@@ -70,7 +70,7 @@
                                             <i class="tio-info-outined"
                                                data-toggle="tooltip"
                                                data-placement="top"
-                                               title="{{ translate('When this field is active  delivery men can register themself using the delivery man app.') }}">
+                                               title="{{ translate('When this field is active  delivery Partner can register themself using the delivery Partner app.') }}">
                                             </i>
                                         </label>
                                         <select name="stock_type" class="form-control js-select2-custom" id="stock_type">
