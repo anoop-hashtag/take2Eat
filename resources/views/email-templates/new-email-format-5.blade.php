@@ -136,7 +136,7 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                        Thanks &amp; Regards,
                    </div>
                    <div class="mb-4">
-                       {{-- Take2Eat --}}
+                    {{ $company_name }}
                    </div>
                 <span class="d-block" style="margin-bottom:20px">{{ $company_name }}</span>
            
