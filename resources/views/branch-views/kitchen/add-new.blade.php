@@ -41,7 +41,7 @@
                                         placeholder="{{translate('Ex')}} : {{translate('Doe')}}" value="{{old('l_name')}}" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                            <div class="content-row">
+                          <div class="content-row">
                                 <div class="col-area-2">
                                 <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
                                     {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
@@ -55,9 +55,28 @@
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger" >*</span></label>
                                 <input type="text"  name="phone"  value="{{old('phone')}}" class="form-control" id="phone"
-                                onkeypress="return isNumber(event)"   pattern="\(\d{3}\) \d{3}-\d{4}"   placeholder="{{translate('Ex')}} : +88017********" style="border-radius:0 .3125rem  .3125rem 0" required>
+                                onkeypress="return isNumber(event)"   pattern="\(\d{3}\) \d{3}-\d{4}"   placeholder="{{translate('Ex')}} : +88017********" style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()" required>
                              </div>
-</div>
+                             <script>
+                                function validatePhone() {
+                                    var phoneInput = document.getElementById('phone');
+                                    var phoneValue = phoneInput.value;
+                            
+                                    // Remove non-numeric characters
+                                    var numericValue = phoneValue.replace(/\D/g, '');
+                            
+                                    // Update the input value with the numeric-only value
+                                    phoneInput.value = numericValue;
+                            
+                                    // Check if the numeric value is within the desired range
+                                    if (numericValue.length < 7 || numericValue.length > 15) {
+                                        phoneInput.setCustomValidity('Phone number must be between 7 and 15 numeric characters.');
+                                    } else {
+                                        phoneInput.setCustomValidity('');
+                                    }
+                                }
+                            </script>
+                          </div>
                              </div>
                             <div class="col-md-6  mb-3">
                                 <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
@@ -107,6 +126,7 @@
 @endsection
 
 @push('script')
+
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="{{asset('public/assets/admin')}}/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>

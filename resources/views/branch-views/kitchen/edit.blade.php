@@ -61,7 +61,25 @@
                                
                                 </div>
                                </div>
-                             
+                               <script>
+                                function validatePhone() {
+                                    var phoneInput = document.getElementById('phone');
+                                    var phoneValue = phoneInput.value;
+                            
+                                    // Remove non-numeric characters
+                                    var numericValue = phoneValue.replace(/\D/g, '');
+                            
+                                    // Update the input value with the numeric-only value
+                                    phoneInput.value = numericValue;
+                            
+                                    // Check if the numeric value is within the desired range
+                                    if (numericValue.length < 7 || numericValue.length > 15) {
+                                        phoneInput.setCustomValidity('Phone number must be between 7 and 15 numeric characters.');
+                                    } else {
+                                        phoneInput.setCustomValidity('');
+                                    }
+                                }
+                            </script>
                                 
                                 </div>
                                 <div class="col-md-6 mb-3">

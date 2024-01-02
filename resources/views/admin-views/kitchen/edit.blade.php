@@ -72,10 +72,29 @@
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
                                 <input type="text" name="phone" value="{{substr($chef['phone'],3)}}" class="form-control" id="phone"
-                                placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7" required style="border-radius:0 .3125rem .3125rem 0">
+                                placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7" required style="border-radius:0 .3125rem .3125rem 0" oninput="validatePhone()">
                          
                                
                                 </div>
+                                <script>
+                                    function validatePhone() {
+                                        var phoneInput = document.getElementById('phone');
+                                        var phoneValue = phoneInput.value;
+                                
+                                        // Remove non-numeric characters
+                                        var numericValue = phoneValue.replace(/\D/g, '');
+                                
+                                        // Update the input value with the numeric-only value
+                                        phoneInput.value = numericValue;
+                                
+                                        // Check if the numeric value is within the desired range
+                                        if (numericValue.length < 7 || numericValue.length > 15) {
+                                            phoneInput.setCustomValidity('Phone number must be between 7 and 15 numeric characters.');
+                                        } else {
+                                            phoneInput.setCustomValidity('');
+                                        }
+                                    }
+                                </script>
                                </div>
                              
                                 
