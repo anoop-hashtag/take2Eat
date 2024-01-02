@@ -563,8 +563,8 @@
                     <div class="col-sm-2 max-sm-absolute">
                         <label class="d-none d-sm-block">&nbsp;</label>
                         <div class="mt-1">
-                            <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(this)"title="{{ translate('Delete') }}">
-                                    <i class="tio-add-to-trash"></i>
+                            <button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="deleteRow(this)"title="{{ translate('Delete') }}">
+                                    <i class="tio-delete"></i>
                             </button>
                         </div>
                     </div>

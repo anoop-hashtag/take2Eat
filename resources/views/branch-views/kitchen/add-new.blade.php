@@ -158,7 +158,20 @@
         });
     </script>
     <script>
-     
+        function isNumber(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    // alert("Please enter only Numbers.");
+    return false;
+  }
+  if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
+    alert("Please enter 10 Digit only Numbers.");
+    return false;
+  }
+
+  return true;
+}
 
 var phoneInput = document.getElementById('phone');
 var myForm = document.forms.myForm;
