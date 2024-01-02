@@ -206,7 +206,7 @@
                                             <div class="media-body text-dark fz-12">
                                                 {{--<h6 class="text-capitalize">{{$detail->product?->name}}</h6>--}}
                                                 <h6 class="text-capitalize product-style">{{$product_details['name']}}</h6>
-                                                <div class="d-flex gap-2">
+                                                <div class=" gap-2">
                                                     @if (isset($detail['variation']))
                                                         @foreach(json_decode($detail['variation'],true) as  $variation)
                                                             @if (isset($variation['name'])  && isset($variation['values']))
