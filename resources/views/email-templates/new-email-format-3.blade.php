@@ -324,6 +324,11 @@ margin: 0 7px;"></span>
                           <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/linkedin.png" alt="">
                       </a>
                   @endif
+                  @if(isset($value->name) && $value->name == 'pinterest')
+                  <a href="https://{{ $value->link }}" id="pinterest-check" style="margin: 0 5px;text-decoration:none;">
+                      <img style="width:30px" src="https://food.progocrm.com/public/assets/admin/img/img/pinterest.png" alt="">
+                  </a>
+              @endif
           
                   <!-- Add similar blocks for other social media platforms as needed -->
               @endforeach
