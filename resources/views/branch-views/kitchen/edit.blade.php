@@ -57,7 +57,7 @@
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
                                     <input type="text" name="phone" value="{{substr($chef['phone'],3)}}" class="form-control" id="phone1"
-                                           placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7"  required style="border-radius:0 .3125rem  .3125rem 0" oninput="validatephone()">
+                                           placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7"  required style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()">
                                
                                 </div>
                                </div>
