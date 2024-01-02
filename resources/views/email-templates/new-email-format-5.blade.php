@@ -138,7 +138,7 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                    <div class="mb-4">
                     {{ $company_name }}
                    </div>
-                <span class="d-block" style="margin-bottom:20px">{{ $company_name }}</span>
+                
            
                 @if ($logo)
                 <img style="width:120px;display:block;margin:10px auto" src="{{ asset('storage/app/public/restaurant/' . $logo) }}" alt="public/img">
