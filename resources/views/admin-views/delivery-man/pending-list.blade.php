@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <div class="set_table responsive-ui">
+                    <div class="set_table responsive-ui new-ui">
                         <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
@@ -128,7 +128,7 @@
                                                 @if ($dm->application_status != 'denied')
                                                     <a class="btn btn-outline-danger btn-sm square-btn" data-toggle="tooltip" data-placement="top" 
                                                     onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'denied']) }}','{{ translate('you_want_to_deny_this_application') }}')" href="javascript:">
-                                                        <i class="tio-delete" title="{{translate('Deny')}}"></i>
+                                                        <i class="tio-add-circle-outlined" style="transform:rotate(45deg);font-size:16px" title="{{translate('Deny')}}" ></i>
                                                     </a>
                                                 @endif
 

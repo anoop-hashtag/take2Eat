@@ -51,7 +51,7 @@
                         </div> --}}
                     </div>
 
-                    <div class="set_table new-ui responsive-ui">
+                    <div class="set_table">
                         <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
@@ -129,7 +129,7 @@
                                                     <a class="btn btn-sm btn--danger btn-outline-danger action-btn" data-toggle="tooltip" data-placement="top" title="{{translate('Deny')}}"
                                                        onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'denied']) }}','{{ translate('you_want_to_deny_this_application') }}')"
                                                        href="javascript:"><i
-                                                            class="tio-add-circle-outlined" style="transform:rotate(45deg);font-size:16px"></i></a>
+                                                            class="tio-clear"></i></a>
                                                 @endif
 
                                             </div>
@@ -170,7 +170,7 @@
     <script>
         function request_alert(url, message) {
             Swal.fire({
-                // title: '{{ translate('are_you_sure') }}',
+                title: '{{ translate('are_you_sure') }}',
                 text: message,
                 type: 'warning',
                 showCancelButton: true,
