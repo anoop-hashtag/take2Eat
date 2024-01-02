@@ -51,7 +51,7 @@
                         </div> --}}
                     </div>
 
-                    <div class="set_table">
+                    <div class="set_table new-ui responsive-ui">
                         <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
                             <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                 <thead class="thead-light">
@@ -108,7 +108,7 @@
                                                 @foreach(json_decode($dm['identity_image'], true) as $identification_image)
                                                     @php($image_full_path = asset('storage/app/public/delivery-man'). '/' .$identification_image)
                                                     <div class="overflow-hidden">
-                                                        <img class="cursor-pointer rounded img-fit" style="max-height: 60px; width: 100px; min-width: 100px;"
+                                                        <img class="cursor-pointer rounded img-fit" style="height:60px;max-height: 60px; width: 100px; min-width: 100px;"
                                                              onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                              src="{{$image_full_path}}"
                                                              onclick="show_modal('{{$image_full_path}}')">
@@ -129,7 +129,7 @@
                                                     <a class="btn btn-sm btn--danger btn-outline-danger action-btn" data-toggle="tooltip" data-placement="top" title="{{translate('Deny')}}"
                                                        onclick="request_alert('{{ route('admin.delivery-man.application', [$dm['id'], 'denied']) }}','{{ translate('you_want_to_deny_this_application') }}')"
                                                        href="javascript:"><i
-                                                            class="tio-clear"></i></a>
+                                                            class="tio-add-circle-outlined" style="transform:rotate(45deg);font-size:16px"></i></a>
                                                 @endif
 
                                             </div>
