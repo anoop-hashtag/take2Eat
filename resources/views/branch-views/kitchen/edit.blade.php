@@ -63,7 +63,7 @@
                                </div>
                                <script>
                                 function validatePhone() {
-                                    var phoneInput = document.getElementById('phone');
+                                    var phoneInput = document.getElementById('phone1');
                                     var phoneValue = phoneInput.value;
                             
                                     // Remove non-numeric characters
