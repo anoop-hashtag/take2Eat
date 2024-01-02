@@ -121,7 +121,7 @@ margin: 0 7px;"></span>
         <tr>
             <td style="text-align: center;">
                 <span class="copyright" id="mail-copyright">
-                    Copyright 2023 eFood. All right reserved
+                    Copyright 2023 take2eat. All right reserved
                 </span>
             </td>
         </tr>

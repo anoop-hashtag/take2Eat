@@ -103,7 +103,7 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
     <table dir="" style="width:100%;max-width:500px;margin:0 auto;text-align:center;background:#fff">
         <tr>
             <td style="padding:30px 30px 0">
-                <img class="mail-img-2" style="width: 100%"
+                <img class="mail-img-2" style="width:100px"
                 @if ($data['icon'])
                 src="{{ asset('storage/app/public/email_template/') }}/{{ $data['icon']??'' }}"
                 @else
@@ -127,12 +127,17 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                     <a href="{{ $data['button_url']??'#' }}" class="cmn-btn" id="mail-button">{{ $data['button_name']??'Submit' }}</a>
                     </span>
                     @endif
-                <span class="border-top"></span>
-                <span class="d-block" style="margin-bottom:14px" id="mail-footer">{{ $data['footer_text'] ?? translate('Please_contact_us_for_any_queries,_we’re_always_happy_to_help.') }}</span>
-                <br>
-                <span class="d-block">{{ translate('Thanks_&_Regards') }},</span>
+                    <div class="mb-2" id="mail-footer" style="border-top: 1px solid #e2f5ee;padding-top: 15px;margin-top: 15px;">
+                        Please contact us for any queries, we’re always happy to help. 
+                   </div>
+                   <div>
+                       Thanks &amp; Regards,
+                   </div>
+                   <div class="mb-4">
+                       Take2Eat
+                   </div>
                 <span class="d-block" style="margin-bottom:20px">{{ $company_name }}</span>
-
+           
                 @if ($logo)
                 <img style="width:120px;display:block;margin:10px auto" src="{{ asset('storage/app/public/restaurant/' . $logo) }}" alt="public/img">
                 @else
@@ -238,12 +243,13 @@ margin: 0 7px;"></span>
         </span>
     </td>
 </tr>
-
-                <span class="copyright" id="mail-copyright">
-                    {{ $copyright_text?? translate('Copyright_2023_eFood._All_right_reserved') }}
-                </span>
-            </td>
-        </tr>
+<tr>
+    <td style="text-align: center;">
+        <span class="copyright" id="mail-copyright">
+            Copyright 2023 take2eat. All right reserved
+        </span>
+    </td>
+</tr>
     </table>
 </body>
 
