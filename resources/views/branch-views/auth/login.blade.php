@@ -8,6 +8,10 @@
     <title>{{translate('Branch')}} | {{translate('Login')}}</title>
 
     <!-- Favicon -->
+     <!-- Favicon -->
+     @php($icon = \App\Model\BusinessSetting::where(['key' => 'fav_icon'])->first()?->value??'')
+     <link rel="shortcut icon" href="">
+     <link rel="icon" type="image/x-icon" href="{{ asset('storage/app/public/restaurant/' . $icon ?? '') }}">
     <link rel="shortcut icon" href="favicon.ico">
 
     <!-- Font -->
