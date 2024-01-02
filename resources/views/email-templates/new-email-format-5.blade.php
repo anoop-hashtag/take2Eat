@@ -103,11 +103,11 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
     <table dir="" style="width:100%;max-width:500px;margin:0 auto;text-align:center;background:#fff">
         <tr>
             <td style="padding:30px 30px 0">
-                <img class="mail-img-2"
+                <img class="mail-img-2" style="width: 100%"
                 @if ($data['icon'])
                 src="{{ asset('storage/app/public/email_template/') }}/{{ $data['icon']??'' }}"
                 @else
-                src='{{ asset('/public/assets/admin/img/email-template-img.png') }}'
+                {{-- src='{{ asset('/public/assets/admin/img/email-template-img.png') }}' --}}
                 @endif
                 id="iconViewer" alt="">
                 <h3 style="font-size:17px;font-weight:500" class="mt-2" id="mail-title">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h3>
