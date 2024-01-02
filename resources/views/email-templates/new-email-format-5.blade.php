@@ -130,6 +130,8 @@ $lang = \App\CentralLogics\Helpers::get_default_language();
                     <div class="mb-2" id="mail-footer" style="border-top: 1px solid #e2f5ee;padding-top: 15px;margin-top: 15px;">
                         Please contact us for any queries, we’re always happy to help. 
                    </div>
+                   <br>
+                   <br>
                    <div>
                        Thanks &amp; Regards,
                    </div>
@@ -246,7 +248,7 @@ margin: 0 7px;"></span>
 <tr>
     <td style="text-align: center;">
         <span class="copyright" id="mail-copyright">
-            Copyright 2023 take2eat. All right reserved
+            {{ $copyright_text ?? translate('Copyright_2023_eFood._All_right_reserved') }}
         </span>
     </td>
 </tr>
