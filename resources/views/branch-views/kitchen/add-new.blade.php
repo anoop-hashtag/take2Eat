@@ -54,12 +54,12 @@
                                 </div>
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger" >*</span></label>
-                                <input type="text"  name="phone"  value="{{old('phone')}}" class="form-control" id="phone"
-                                onkeypress="return isNumber(event)"   pattern="\(\d{3}\) \d{3}-\d{4}"   placeholder="{{translate('Ex')}} : +88017********" style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()" required>
+                                <input type="text"  name="phone"  value="{{old('phone')}}" class="form-control" id="phone1"
+                                onkeypress="return isNumber(event)"   min="7" maxlength="15" minlength="7"   placeholder="{{translate('Ex')}} : +88017********" style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()" required>
                              </div>
                              <script>
                                 function validatePhone() {
-                                    var phoneInput = document.getElementById('phone');
+                                    var phoneInput = document.getElementById('phone1');
                                     var phoneValue = phoneInput.value;
                             
                                     // Remove non-numeric characters
