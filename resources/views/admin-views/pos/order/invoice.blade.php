@@ -144,8 +144,7 @@
             <dl class="row text-right" style="color: black!important;">
                 <dt class="col-8">{{translate('Items Price')}}:</dt>
                 <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($item_price)}}</dd>
-                <dt class="col-8">{{translate('Tax')}} / {{translate('GST')}}:</dt>
-                <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost)}}</dd>
+               
                 <dt class="col-8">{{translate('Addon Cost')}}:</dt>
                 <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($add_ons_cost)}}
                     <hr>
@@ -160,8 +159,10 @@
                 <dt class="col-8">{{translate('Extra Discount')}}:</dt>
                 <dd class="col-4">
                     -{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</dd>
-
+                    <dt class="col-8">{{translate('Tax')}} / {{translate('GST')}}:</dt>
+                    <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost)}}</dd>
                 <dt class="col-8">{{translate('Delivery Fee:')}}</dt>
+                
                 <dd class="col-4">
                     @if($order['order_type']=='take_away')
                         @php($del_c=0)
