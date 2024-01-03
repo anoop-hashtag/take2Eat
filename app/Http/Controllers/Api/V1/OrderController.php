@@ -511,7 +511,7 @@ class OrderController extends Controller
                                     'order_status' => 'canceled'
                                 ]);
         if ($order) {
-            return response()->json(['message' => translate('order_canceled')], 200);
+            return response()->json(['message' => translate('order_cancelled')], 200);
         }
 
     // If the user is not authenticated or the order is not found, return an error response
