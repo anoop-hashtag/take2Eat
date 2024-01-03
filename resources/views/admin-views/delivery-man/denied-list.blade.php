@@ -170,7 +170,7 @@
     <script>
         function request_alert(url, message) {
             Swal.fire({
-                title: '{{ translate('are_you_sure') }}',
+                // title: '{{ translate('are_you_sure') }}',
                 text: message,
                 type: 'warning',
                 showCancelButton: true,
