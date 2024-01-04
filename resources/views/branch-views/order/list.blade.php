@@ -251,7 +251,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        {{date('d M Y',strtotime($order['created_at']))}}
+                                        {{date('d-m-Y',strtotime($order['created_at']))}}
                                     </div>
                                     <div>{{date('h:i A',strtotime($order['created_at']))}}</div>
                                 </td>
