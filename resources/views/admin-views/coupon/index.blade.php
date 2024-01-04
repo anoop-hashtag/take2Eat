@@ -170,7 +170,7 @@
                                         {{-- <td>{{$coupon['discount']}}</td> --}}
                                         <td>{{translate($coupon->discount_type)}}</td>
                                         {{-- <td>{{$coupon['discount_type']}}</td> --}}
-                                        <td><div class="text-muted">{{date('d M, Y', strtotime($coupon['start_date']))}} - {{date('d M, Y', strtotime($coupon['expire_date']))}}</div></td>
+                                        <td><div class="text-muted">{{date('d-m-Y', strtotime($coupon['start_date']))}} - {{date('d-m-Y', strtotime($coupon['expire_date']))}}</div></td>
                                         <td>
                                             <label class="switcher category-mid">
                                                 <input id="{{$coupon['id']}}" class="switcher_input" type="checkbox" onchange="status_change(this)" {{$coupon['status']==1? 'checked': '' }}

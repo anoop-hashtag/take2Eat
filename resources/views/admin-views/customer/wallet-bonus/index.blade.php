@@ -165,8 +165,8 @@
 
                                             {{ $bonus->bonus_type == 'percentage' ? translate('maximum_bonus') .' - '. \App\CentralLogics\Helpers::set_symbol($bonus['maximum_bonus_amount']) : ''}}</td>
                                         <td>{{$bonus->bonus_type == 'amount'?\App\CentralLogics\Helpers::set_symbol($bonus['bonus_amount']): $bonus['bonus_amount'].'%'}}</td>
-                                        <td>{{ \Carbon\Carbon::parse($bonus->start_date)->format('d M Y') }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($bonus->end_date)->format('d M Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($bonus->start_date)->format('d-m-Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($bonus->end_date)->format('d-m-Y') }}</td>
                                         <td>
                                             <label class="switcher category-mid">
                                                 <input id="{{$bonus['id']}}" class="switcher_input" type="checkbox" onchange="status_change(this)" {{$bonus['status']==1? 'checked': '' }}
