@@ -423,8 +423,8 @@
             // Parse dates in the format dd-mm-yy
             let fromDate = parseDate(fr);
             let toDate = parseDate(to);
-
-            if (isNaN(fromDate) || isNaN(toDate) || fromDate >= toDate) {
+            if (isNaN(fromDate) || isNaN(toDate) || fromDate > toDate) {
+            // if (isNaN(fromDate) || isNaN(toDate) || fromDate >= toDate) {
                 $('#from_date').val('');
                 $('#to_date').val('');
                 toastr.error('Invalid date range! Start date must be less than end date.', 'Error', {

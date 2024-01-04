@@ -127,7 +127,7 @@
                                 <div class="col-sm-12">
                                     @foreach ($data as $lang)
                                         <div class="form-group {{ $lang['default'] == false ? 'd-none' : '' }} lang_form" id="{{ $lang['code'] }}-form">
-                                            <label class="input-label" for="exampleFormControlInput1">{{ translate('name') }} ({{ strtoupper($lang['code']) }})</label>
+                                            <label class="input-label" for="exampleFormControlInput1">{{ translate('name') }}<span class="text-danger">*</span> ({{ strtoupper($lang['code']) }})</label>
                                             <input type="text" name="name[]" class="form-control" placeholder="{{translate('New addon')}}"
                                                 {{$lang['status'] == true ? 'required':''}} maxlength="255"
                                                 @if($lang['status'] == true) oninvalid="document.getElementById('{{$lang['code']}}-link').click()" @endif>
@@ -146,13 +146,13 @@
                                             <input name="position" value="0" style="display: none">
                                         </div>
                                         <div class="col-sm-6 from_part_2 mb-4">
-                                            <label class="input-label" for="exampleFormControlInput1">{{translate('price')}}</label>
+                                            <label class="input-label" for="exampleFormControlInput1">{{translate('price')}}<span class="text-danger">*</span></label>
                                             <input type="number" min="0" name="price" step="any" class="form-control"
                                                 placeholder="100" required
                                                 oninvalid="document.getElementById('en-link').click()">
                                         </div>
                                         <div class="col-sm-6 from_part_2 mb-4">
-                                            <label class="input-label" for="exampleFormControlInput1">{{translate('tax')}} (%)</label>
+                                            <label class="input-label" for="exampleFormControlInput1">{{translate('tax')}} (%)<span class="text-danger">*</span></label>
                                             <input type="number" min="0" name="tax" step="any" class="form-control"
                                                    placeholder="5" required
                                                    oninvalid="document.getElementById('en-link').click()">
