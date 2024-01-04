@@ -87,7 +87,7 @@
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $order['id'] }}</td>
                                                 <td>{{\App\CentralLogics\Helpers::currency_symbol()}} {{ number_format((float)$order['order_amount'], 2, '.', '') }}</td>
-                                                <td>{{ date('d M Y',strtotime($order['created_at'])) .' '. date(config('time_format'), strtotime($order['created_at'])) }}</td>
+                                                <td>{{ date('d-m-Y',strtotime($order['created_at'])) .' '. date(config('time_format'), strtotime($order['created_at'])) }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
