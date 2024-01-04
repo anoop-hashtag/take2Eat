@@ -88,7 +88,7 @@
                                     <td class="table-column-pl-0">
                                         <a href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order['id']}}</a>
                                     </td>
-                                    <td>{{date('d M Y',strtotime($order['created_at']))}}</td>
+                                    <td>{{date('d-m-Y',strtotime($order['created_at']))}}</td>
                                     <td>
                                         <label class="badge badge-soft-primary">{{$order->branch?$order->branch->name:'Branch deleted!'}}</label>
                                     </td>
