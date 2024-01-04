@@ -179,7 +179,7 @@
                                                            value="1" id="delivery_boy_assign" {{$assign_deliveryman_data['status']==1?'checked':''}}>
                                                     <span class="switcher_control"></span>
                                                 </label>
-                                                <span class="text-dark">{{translate('deliveryman assign message')}}</span>
+                                                <span class="text-dark">{{translate('delivery partner assign message')}}</span>
                                             </div>
 
                                             <textarea name="delivery_boy_assign_message"
@@ -196,7 +196,7 @@
                                                            value="1" id="customer_notify" {{isset($customer_notify_data) && $customer_notify_data['status']==1?'checked':''}}>
                                                     <span class="switcher_control"></span>
                                                 </label>
-                                                <span class="text-dark">{{translate('Customer notify message for deliveryman')}}</span>
+                                                <span class="text-dark">{{translate('Customer notify message for delivery partner')}}</span>
                                             </div>
 
                                             <textarea name="customer_notify_message"
@@ -232,7 +232,7 @@
                                                            value="1" id="delivery_boy_start_status" {{$dm_start_data['status']==1?'checked':''}}>
                                                     <span class="switcher_control"></span>
                                                 </label>
-                                                <span class="text-dark">{{translate('deliveryman start message')}}</span>
+                                                <span class="text-dark">{{translate('Delivery Partner start message')}}</span>
                                             </div>
 
                                             <textarea name="delivery_boy_start_message"
@@ -250,7 +250,7 @@
                                                            value="1" id="delivery_boy_delivered" {{$dm_delivered_data['status']==1?'checked':''}}>
                                                     <span class="switcher_control"></span>
                                                 </label>
-                                                <span class="text-dark">{{translate('deliveryman delivered message')}}</span>
+                                                <span class="text-dark">{{translate('Delivery Partner delivered message')}}</span>
                                             </div>
 
                                             <textarea name="delivery_boy_delivered_message"
