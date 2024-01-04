@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3 d-flex gap-2">
-                                <button type="clear" class="btn btn-secondary flex-grow-1">{{ translate('Clear') }}</button>
+                                <button type="reset" class="btn btn-secondary flex-grow-1" onclick="window.location.assign('all')">{{ translate('Clear') }}</button>
                                 <button type="submit" class="btn btn-primary text-nowrap flex-grow-1">{{ translate('Show Data') }}</button>
                             </div>
                         </div>
