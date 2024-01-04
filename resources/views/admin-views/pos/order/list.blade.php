@@ -50,13 +50,13 @@
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">Start Date</label>
-                                    <input type="text" name="from" id="from_date" readonly placeholder="DD-MM-YYYY" style="position: relative; z-index: 4" autocomplete="off" class="form-control" value="{{$from}}" >
+                                    <input type="text" name="from" id="from_date" placeholder="DD-MM-YYYY" style="position: relative; z-index: 4" autocomplete="off" class="form-control" value="{{$from}}" >
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group mb-0">
                                     <label class="text-dark">End Date</label>
-                                    <input type="text" name="to" id="to_date" readonly placeholder="DD-MM-YYYY" autocomplete="off" class="form-control" value="{{$to}}" >
+                                    <input type="text" name="to" id="to_date" placeholder="DD-MM-YYYY" autocomplete="off" class="form-control" value="{{$to}}" >
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
@@ -125,7 +125,7 @@
                                 <th>{{translate('Total_Amount')}}</th>
                                 <th>{{translate('Order_Status')}}</th>
                                 <th>{{translate('Order_Type')}}</th>
-                                <th>{{translate('actions')}}</th>
+                                <th class="text-center">{{translate('actions')}}</th>
                             </tr>
                         </thead>
 
@@ -137,7 +137,7 @@
                                     <a class="text-dark" href="{{route('admin.pos.order-details',['id'=>$order['id']])}}">{{$order['id']}}</a>
                                 </td>
                                 <td>
-                                    <div>{{date('d M Y',strtotime($order['created_at']))}}</div>
+                                    <div>{{date('d-m-Y',strtotime($order['created_at']))}}</div>
                                     <div>{{date("h:i A",strtotime($order['created_at']))}}</div>
                                 </td>
                                 <td>
@@ -178,7 +178,7 @@
                                     <span class="badge-soft-success px-2 py-1 rounded">{{translate($order['order_type']== 'pos' ? 'POS' : '')}}</span>
                                 </td>
                                 <td>
-                                    <div class="d-flex  gap-2">
+                                    <div class="d-flex justify-content-center gap-2">
                                         <a class="btn btn-sm btn-outline-primary square-btn" href="{{route('admin.pos.order-details',['id'=>$order['id']])}}">
                                             <i class="tio-invisible"></i>
                                         </a>
@@ -197,8 +197,8 @@
             </div>
             <!-- End Table -->
 
-            <div class="table-responsive mt-4 px-3 pagination-style">
-                <div class="d-flex justify-content-lg-end justify-content-sm-end">
+            <div class="table-responsive mt-4 px-3">
+                <div class="d-flex justify-content-lg-end pagination-style">
                     <!-- Pagination -->
                     {!! $orders->links() !!}
                 </div>
@@ -322,7 +322,26 @@
 
     </script>
 
-    
+    <script>
+        $('#from_date, #to_date').change(function () {
+            let from = $('#from_date').val();
+            let to = $('#to_date').val();
+            if(from != ''){
+                $('#to_date').attr('required','required');
+            }
+            if(to != ''){
+                $('#from_date').attr('required','required');
+            }
+            if (from != '' && to != '') {
+                if (from > to) {
+                    $('#from_date').val('');
+                    $('#to_date').val('');
+                    toastr.error('{{\App\CentralLogics\translate('Invalid date range')}}!');
+                }
+            }
+
+        })
+    </script>
 @push('script_2')
 <script>
     $(document).on('ready', function () {
@@ -398,7 +417,20 @@
 
 
 <script>
-   
+    $('#from_date,#to_date').change(function () {
+        let fr = $('#from_date').val();
+        let to = $('#to_date').val();
+        if (fr != '' && to != '') {
+            if (fr > to) {
+                $('#from_date').val('');
+                $('#to_date').val('');
+                toastr.error('{{translate('Invalid date range!')}}', Error, {
+                    CloseButton: true,
+                    ProgressBar: true
+                });
+            }
+        }
+    });
     $('#datatable').dataTable({
 destroy: true,
 ...

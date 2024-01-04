@@ -229,7 +229,7 @@
                                 <a class="text-dark" href="{{route('admin.table.order.details',['id'=>$order['id']])}}">{{$order['id']}}</a>
                             </td>
                             <td>
-                                <div>{{date('d M Y',strtotime($order['created_at']))}}</div>
+                                <div>{{date('d-m-Y',strtotime($order['created_at']))}}</div>
                                 <div>{{date('h:m A',strtotime($order['created_at']))}}</div>
                             </td>
                             <td>
