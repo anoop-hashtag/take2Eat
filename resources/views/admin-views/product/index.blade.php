@@ -333,7 +333,16 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="input-label">{{translate('Select_Attributes')}}</label>
+                                                <select name="attribute_id[]" class="form-control" id="choose_attributes" multiple="multiple">
+                                                    @foreach(\App\Model\Attribute::orderBy('name')->get() as $attribute)
+                                                        <option value="{{$attribute['id']}}">{{$attribute['name']}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
+                                       
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -405,15 +414,16 @@
         const errorMessageElement = document.getElementById('error-message');
         const submitButton = document.getElementById('submitBtn');
 
-        if (/^\d{4}$/.test(input)) {
+        if (/^\d{1,4}$/.test(input)) {
             errorMessageElement.textContent = ''; // Clear error message
             submitButton.removeAttribute('disabled'); // Enable submit button
         } else {
-            errorMessageElement.textContent = 'Please enter a valid 4-digit number.';
+            errorMessageElement.textContent = 'Please enter a valid number with a length between 1 and 4 digits.';
             submitButton.setAttribute('disabled', 'disabled'); // Disable submit button
         }
     });
 </script>
+
     <script src="{{asset('public/assets/admin/js/spartan-multi-image-picker.js')}}"></script>
 
 
@@ -623,7 +633,11 @@
             placeholder: "Select Addons",
             allowClear: true
         });
-
+      
+        $("#choose_attributes").select2({
+            placeholder: "Select  Attributes",
+            allowClear: true
+        });
     </script>
 
     <script>

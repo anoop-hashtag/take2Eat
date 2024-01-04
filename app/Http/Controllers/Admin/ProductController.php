@@ -554,6 +554,7 @@ class ProductController extends Controller
         $product->attributes = $request->has('attribute_id') ? json_encode($request->attribute_id) : json_encode([]);
         $product->add_ons = $request->has('addon_ids') ? json_encode($request->addon_ids) : json_encode([]);
         $product->status = $request->status == 'on' ? 1 : 0;
+        // dd($product);
         $product->save();
 
         $product->tags()->sync($tag_ids);

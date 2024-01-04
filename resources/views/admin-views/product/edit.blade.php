@@ -365,7 +365,16 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="input-label">{{translate('Select_Attributes')}}</label>
+                                                <select name="attribute_id[]" class="form-control" id="choose_attributes" multiple="multiple">
+                                                    @foreach(\App\Model\Attribute::orderBy('name')->get() as $attribute)
+                                                        <option value="{{$attribute['id']}}" {{in_array($attribute->id,json_decode($product['attributes'],true))?'selected':''}} >{{$attribute['name']}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
+                                       
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -445,12 +454,12 @@
             const input = this.value;
             const errorMessageElement = document.getElementById('error-message');
             const submitButton = document.getElementById('submitBtn');
-
-            if (/^\d{4}$/.test(input)) {
+    
+            if (/^\d{1,4}$/.test(input)) {
                 errorMessageElement.textContent = ''; // Clear error message
                 submitButton.removeAttribute('disabled'); // Enable submit button
             } else {
-                errorMessageElement.textContent = 'Please enter a valid 4-digit number.';
+                errorMessageElement.textContent = 'Please enter a valid number with a length between 1 and 4 digits.';
                 submitButton.setAttribute('disabled', 'disabled'); // Disable submit button
             }
         });
@@ -459,6 +468,10 @@
         //Select 2
         $("#choose_addons").select2({
             placeholder: "Select Addons",
+            allowClear: true
+        });
+        $("#choose_attributes").select2({
+            placeholder: "Select  Attributes",
             allowClear: true
         });
        /* $("#choice_attributes").select2({
