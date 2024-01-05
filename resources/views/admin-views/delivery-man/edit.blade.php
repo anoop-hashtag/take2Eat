@@ -121,16 +121,20 @@
                                                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                 src="{{asset('storage/app/public/delivery-man').'/'.$delivery_man['image']}}" alt="delivery-man image"/>
                                         </center>
+                                       
                                     </div>
 
-                                    @foreach(json_decode($delivery_man['identity_image'],true) as $img)
-                                    <!-- <div class="form-group">
-                                        <img height="150"
-                                            onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
-                                            src="{{asset('storage/app/public/delivery-man').'/'.$img}}">
-                                    </div> -->
-                                    @endforeach
+                                   
                                 </div>
+                                @foreach(json_decode($delivery_man['identity_image'],true) as $img)
+                                <div class="col-sm-2">
+                                   
+                                   <img height="150"
+                                       onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
+                                       src="{{asset('storage/app/public/delivery-man').'/'.$img}}">
+                                   
+                               </div>
+                               @endforeach
                             </div>
                         </div>
                     </div>
