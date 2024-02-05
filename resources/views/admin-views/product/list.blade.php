@@ -98,7 +98,11 @@
                                         <td>
                                             <div><span class="">{{ translate('Stock Type') }} : {{ ucfirst($product->main_branch_product?->stock_type) }}</span></div>
                                             @if(isset($product->main_branch_product) && $product->main_branch_product->stock_type != 'unlimited')
-                                                <div><span class="">{{ translate('Stock') }} : {{ $product->main_branch_product->stock - $product->main_branch_product->sold_quantity }}</span></div>
+                                            @php
+                                              $remainstock = $product->main_branch_product->stock - \App\Model\OrderDetail::whereHas('order', function ($q) use ($product) {$q->where('order_status', 'delivered');})->where('product_id', $product->id)->sum('quantity');
+                                           
+                                            @endphp
+                                                <div><span class="">{{ translate('Stock') }} : {{$remainstock }}</span></div>
                                             @endif
                                         </td>
                                         <td>
