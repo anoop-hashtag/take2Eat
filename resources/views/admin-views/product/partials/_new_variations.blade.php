@@ -91,7 +91,7 @@
                                            value="{{ $value['label'] }}">
                                 </div>
                                 <div class="col-md-4 col-sm-6">
-                                    <label for="">{{ translate('Additional_price') }}</label>
+                                    <label for="">{{ translate('Additional price(in ₹)') }}</label>
                                     <input class="form-control" required type="number" min="0" step="0.01"
                                            name="options[{{ $key }}][values][{{ $key_value }}][optionPrice]"
                                            value="{{ $value['optionPrice'] }}">
