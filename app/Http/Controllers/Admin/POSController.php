@@ -892,19 +892,22 @@ class POSController extends Controller
             })->get();
 
         } else {
-            $branch_id = $request->branch_id != null ? $request->branch_id : 'all';
-            $to = $request->to;
-            $from = $request->from;
+        $branch_id = $request->branch_id != null ? $request->branch_id : 'all';
+        $from = $request->from;
+        $to = $request->to;
 
-            $orders = $query->when($from && $to && $branch_id == 'all', function ($q) use ($from, $to) {
-                $q->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
-            })
-                ->when($from && $to && $branch_id != 'all', function ($q) use ($from, $to, $branch_id) {
-                    $q->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()])
-                        ->whereHas('branch', function ($q) use ($branch_id) {
-                            $q->where('id', $branch_id);
-                        });
-                })
+        $orders = $query->when($from && $to && $branch_id == 'all', function ($q) use ($from, $to) {
+        $q->whereBetween('created_at', [Carbon::parse($from)->startOfDay(), Carbon::parse($to)->endOfDay()]);
+        })
+             ->when($from && $to && $branch_id != 'all', function ($q) use ($from, $to, $branch_id) {
+              $q->whereBetween('created_at', [Carbon::parse($from)->startOfDay(), Carbon::parse($to)->endOfDay()])
+              ->whereHas('branch', function ($q) use ($branch_id) {
+              $q->where('id', $branch_id);
+        });
+      })
+// ... (remaining conditions)
+
+
                 ->when($from == null && $to == null && $branch_id != 'all', function ($q) use ($from, $to, $branch_id) {
                     $q->whereHas('branch', function ($q) use ($branch_id) {
                         $q->where('id', $branch_id);
@@ -923,7 +926,8 @@ class POSController extends Controller
                 'SL' => ++$key,
                 'Order ID' => $order->id,
                 'Order Date' => date('d M Y', strtotime($order['created_at'])) . ' ' . date("h:i A", strtotime($order['created_at'])),
-                'Customer Info' => $order['user_id'] == null ? 'Walk in Customer' : $order->customer['f_name'] . ' ' . $order->customer['l_name'],
+                'Customer Info' => $order['user_id'] == '' ? 'Walk in Customer' : ($order->customer ? $order->customer['f_name'] . ' ' . $order->customer['l_name'] : 'Customer Not Available'),
+
                 'Branch' => $order->branch ? $order->branch->name : 'Branch Deleted',
                 'Total Amount' => Helpers::set_symbol($order['order_amount']),
                 'Payment Status' => $order->payment_status == 'paid' ? 'Paid' : 'Unpaid',

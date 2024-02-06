@@ -206,7 +206,7 @@
                                     </select>
                                     <button class="btn btn-success rounded text-nowrap" id="add_new_customer" type="button" data-toggle="modal" data-target="#add-customer" title="Add Customer">
                                         <i class="tio-add"></i>
-                                        {{translate('Customer')}}
+                                        {{translate('Customer)')}}
                                     </button>
                                 </div>
                                 <div class="form-group">
@@ -307,7 +307,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">{{translate('Add_New_Customer')}}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="resetForm()">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
@@ -361,6 +361,11 @@
                             </div>
                         </form>
                     </div>
+                    <script>
+                        function resetForm() {
+                            document.getElementById("customer-form").reset();
+                        }
+                    </script>
                 </div>
             </div>
         </div>
