@@ -4,6 +4,7 @@
 
 @push('css_or_js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+
 @endpush
 
 @section('content')
@@ -19,10 +20,11 @@
             </h2>
         </div>
         <!-- End Page Header -->
-
+        <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+        <script src="https://unpkg.com/cropperjs"></script>
         <div class="row g-2">
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-                <form action="{{route('admin.banner.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.banner.store')}}" method="post" enctype="multipart/form-data" id="bannerForm">
                     @csrf
                     <div class="card">
                         <div class="card-body">
@@ -63,14 +65,14 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-center gap-1">
-                                            <label class="mb-0">{{translate('banner_Image')}}</label>
-                                            <small class="text-danger">* ( {{translate('ratio 3:1')}} )</small>
+                                            <label class="mb-0">{{ translate('banner_Image') }}</label>
+                                            <small class="text-danger">* ( {{ translate('ratio 3:1') }} )</small>
                                         </div>
                                         <div class="d-flex justify-content-center mt-4">
                                             <div class="upload-file">
-                                                <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
+                                                <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input" id="imageInput">
                                                 <div class="upload-file__img_drag upload-file__img">
-                                                    <img width="465" id="viewer" src="{{asset('public/assets/admin/img/icons/upload_img2.png')}}" alt="">
+                                                    <img width="465" id="viewer" src="{{ asset('public/assets/admin/img/icons/upload_img2.png') }}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -82,9 +84,93 @@
                                 <button type="reset" id="reset" class="btn btn-secondary">{{translate('reset')}}</button>
                                 <button type="submit" class="btn btn-primary">{{translate('submit')}}</button>
                             </div>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    // Initialize Cropper.js
+                                    var imageInput = document.getElementById('imageInput');
+                                    var viewer = document.getElementById('viewer');
+                                    var cropper;
+                            
+                                    imageInput.addEventListener('change', function () {
+                                        var file = this.files[0];
+                            
+                                        if (file) {
+                                            var reader = new FileReader();
+                            
+                                            reader.onload = function (e) {
+                                                viewer.src = e.target.result;
+                            
+                                                if (cropper) {
+                                                    cropper.destroy();
+                                                }
+                            
+                                                cropper = new Cropper(viewer, {
+                                                    aspectRatio: 3 / 1,
+                                                    viewMode: 3, // You can adjust this value based on your requirements
+                                                });
+                                            };
+                            
+                                            reader.readAsDataURL(file);
+                                        }
+                                    });
+                            
+                                    // Handle form submission
+                                    var bannerForm = document.getElementById('bannerForm');
+                            
+                                    bannerForm.addEventListener('submit', function (event) {
+                                        event.preventDefault();
+                            
+                                        // Get the cropped data
+                                        var croppedCanvas = cropper.getCroppedCanvas();
+                            
+                                        if (!croppedCanvas) {
+                                            alert('Please select an area to crop.');
+                                            return;
+                                        }
+                            
+                                        // Convert the canvas data to a blob
+                                        croppedCanvas.toBlob(function (blob) {
+                                            // Create a new FormData and append the cropped image blob
+                                            var formData = new FormData(bannerForm);
+                                            formData.set('image', blob, 'cropped_image.png');
+                            
+                                            // Use fetch API or AJAX to submit the cropped image data
+                                            // Use fetch API or AJAX to submit the cropped image data
+                                    fetch('{{ route('admin.banner.store') }}', {
+                                        method: 'POST',
+                                        body: formData,
+                                    })
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error('Network response was not ok');
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            // Handle the response if needed
+                                            console.log(data);
+                                            alert('Successfully uploaded Banner!');
+                                            // You can also reset the form or perform any other actions after a successful upload
+                                            bannerForm.reset();
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                            // Display an error message to the user if the upload fails
+                                            alert('Banner Added Successfully!.');
+                                            window.location.reload();
+                                            
+                                        });
+
+                                        });
+                                    });
+                                });
+                            </script>
+                            
+                            
                         </div>
                     </div>
                 </form>
+                
             </div>
         </div>
 
@@ -123,8 +209,8 @@
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('Banner_Image')}}</th>
-                                    <th>{{translate('Title')}}</th>
-                                    <th>{{translate('Banner_Type')}}</th>
+                                    <th>{{translate('Iteam_Type')}}</th>
+                                    <th>{{translate('Product')}}</th>
                                     <th>{{translate('status')}}</th>
                                     <th >{{translate('action')}}</th>
                                 </tr>
