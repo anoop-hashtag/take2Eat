@@ -161,9 +161,22 @@
                     -{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</dd>
                     <dt class="col-8">{{translate('Tax')}} / {{translate('GST')}}:</dt>
                     <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost)}}</dd>
-                <dt class="col-8">{{translate('Delivery Fee:')}}</dt>
+                    @if($order['order_type']=='delivery')
+                    <dt class="col-8">{{translate('Delivery Fee:')}}</dt>
                 
-                <dd class="col-4">
+                <dd class="col-4" >
+                    @if($order['order_type']=='take_away')
+                        @php($del_c=0)
+                    @else
+                        @php($del_c=$order['delivery_charge'])
+                    @endif
+                    {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
+                    <hr>
+                </dd>
+                    @endif
+                <dt class="col-8" style="display: none;">{{translate('Delivery Fee:')}}</dt>
+                
+                <dd class="col-4" style="display: none;">
                     @if($order['order_type']=='take_away')
                         @php($del_c=0)
                     @else

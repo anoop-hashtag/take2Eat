@@ -121,11 +121,16 @@
                                         @endif
                                     </div>
 
-
+                                    @if(isset($order['order_type']) && $order['order_type'] != 'dine_in')
                                     <div class="text-capitalize d-flex gap-3 justify-content-sm-end mb-3">
                                         <span>{{translate('payment')}} {{translate('method')}} :</span>
                                         <span class="text-dark">{{str_replace('_',' ',$order['payment_method'])}}</span>
                                     </div>
+                                  @else
+                                    
+                                  
+                                  @endif
+                                    
 
                                     @if($order['transaction_reference']==null && $order['order_type']!='pos')
                                     <div class="d-flex gap-3 justify-content-sm-end align-items-center mb-3">
@@ -431,27 +436,30 @@
                         <div class="card-body text-capitalize d-flex flex-column gap-4">
                             <h4 class="mb-0 text-center">{{translate('Order_Setup')}}</h4>
                             @if($order['order_type'] != 'pos')
-                                <div class="">
-                                    <label class="font-weight-bold text-dark fz-14">{{translate('Change_Order_Status')}}</label>
-                                    <select name="order_status" onchange="route_alert('{{route('admin.orders.status',['id'=>$order['id']])}}'+'&order_status='+ this.value,'{{translate("Change the order status to ") }}'+  this.value.replace(/_/g, ' '))" class="status custom-select">
-                                        @if($order['order_type'] != 'dine_in')
-                                            <option value="pending" {{$order['order_status'] == 'pending'? 'selected' : ''}}> {{translate('pending')}}</option>
-                                        @endif
-                                        <option value="confirmed" {{$order['order_status'] == 'confirmed'? 'selected' : ''}}> {{translate('confirmed')}}</option>
-                                        @if($order['order_type'] != 'dine_in')
-                                            <option value="processing" {{$order['order_status'] == 'processing'? 'selected' : ''}}> {{translate('processing')}}</option>
+                            <div class="">
+                                <label class="font-weight-bold text-dark fz-14">{{translate('Change_Order_Status')}}</label>
+                                <select name="order_status" onchange="route_alert('{{route('admin.orders.status',['id'=>$order['id']])}}'+'&order_status='+ this.value,'{{translate("Change the order status to ") }}'+  this.value.replace(/_/g, ' '))" class="status custom-select">
+                                    @if($order['order_type'] != 'dine_in')
+                                        <option value="pending" {{$order['order_status'] == 'pending'? 'selected' : ''}}> {{translate('pending')}}</option>
+                                    @endif
+                                    <option value="confirmed" {{$order['order_status'] == 'confirmed'? 'selected' : ''}}> {{translate('confirmed')}}</option>
+                                    @if($order['order_type'] != 'dine_in')
+                                        <option value="processing" {{$order['order_status'] == 'processing'? 'selected' : ''}}> {{translate('processing')}}</option>
+                                        @if($order['order_type'] != 'take_away')
                                             <option value="out_for_delivery" {{$order['order_status'] == 'out_for_delivery'? 'selected' : ''}}>{{translate('Out_For_Delivery')}} </option>
-                                            <option value="delivered" {{$order['order_status'] == 'delivered'? 'selected' : ''}}>{{translate('Delivered')}} </option><option value="returned" {{$order['order_status'] == 'returned'? 'selected' : ''}}> {{translate('Returned')}}</option>
                                             <option value="failed" {{$order['order_status'] == 'failed'? 'selected' : ''}}>{{translate('Failed_to_Deliver')}} </option>
                                         @endif
-                                        @if($order['order_type'] == 'dine_in')
-                                            <option value="cooking" {{$order['order_status'] == 'cooking'? 'selected' : ''}}> {{translate('cooking')}}</option>
-                                            <option value="completed" {{$order['order_status'] == 'completed'? 'selected' : ''}}> {{translate('completed')}}</option>
-                                        @endif
-                                        <option value="canceled" {{$order['order_status'] == 'canceled' ? 'selected' : ''}}>{{translate('cancelled')}}</option>
-
-                                    </select>
-                                </div>
+                                        <option value="delivered" {{$order['order_status'] == 'delivered'? 'selected' : ''}}>{{translate('Delivered')}} </option>
+                                        <option value="returned" {{$order['order_status'] == 'returned'? 'selected' : ''}}> {{translate('Returned')}}</option>
+                                    @endif
+                                    @if($order['order_type'] == 'dine_in')
+                                        <option value="cooking" {{$order['order_status'] == 'cooking'? 'selected' : ''}}> {{translate('cooking')}}</option>
+                                        <option value="completed" {{$order['order_status'] == 'completed'? 'selected' : ''}}> {{translate('completed')}}</option>
+                                    @endif
+                                    <option value="canceled" {{$order['order_status'] == 'canceled' ? 'selected' : ''}}>{{translate('cancelled')}}</option>
+                                </select>
+                            </div>
+                            
                                 <div class="">
 {{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
 {{--                                        <a class="dropdown-item"--}}
