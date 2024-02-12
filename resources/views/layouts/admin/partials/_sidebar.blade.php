@@ -543,7 +543,7 @@
                                     <li class="nav-item {{Request::is('admin/report/sale-report')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.report.sale-report')}}">
                                             <i class="tio-chart-bar-1 nav-icon"></i>
-                                            <span class="text-truncate">{{translate('sale')}} {{translate('report')}}</span>
+                                            <span class="text-truncate">{{translate('sales')}} {{translate('report')}}</span>
                                         </a>
                                     </li>
 {{--                                </ul>--}}

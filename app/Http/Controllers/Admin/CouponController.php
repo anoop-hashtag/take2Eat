@@ -135,7 +135,8 @@ class CouponController extends Controller
         ]);
 
         Toastr::success(translate('Coupon updated successfully!'));
-        return back();
+      
+        return redirect()->route('admin.coupon.add-new');
     }
 
     /**

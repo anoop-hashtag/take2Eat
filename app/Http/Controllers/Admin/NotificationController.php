@@ -108,7 +108,7 @@ class NotificationController extends Controller
         $notification->save();
 
         Toastr::success(translate('Notification updated successfully!'));
-        return back();
+        return redirect()->route('admin.notification.add-new');
     }
 
     /**

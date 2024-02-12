@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('title')}}</label>
+                                        <label class="input-label">{{translate('title')}} <span style="color: red">*</span> </label>
                                         <input type="text" name="title" value="{{$coupon['title']}}" class="form-control"
                                             placeholder="{{ translate('New coupon') }}" required>
                                     </div>
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-md-4 col-sm-6" id="limit-for-user" style="display: {{$coupon['coupon_type']=='first_order'?'none':'block'}}">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('limit_For_Same_User')}}</label>
+                                        <label class="input-label">{{translate('limit_For_Same_User')}}<span style="color: red">*</span></label>
                                         <input type="number" name="limit" value="{{$coupon['limit']}}" class="form-control"
                                             placeholder="{{ translate('EX: 10') }}">
                                     </div>
@@ -57,22 +57,22 @@
 
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('code')}}</label>
+                                        <label class="input-label">{{translate('code')}}<span style="color: red">*</span></label>
                                         <input type="text" name="code" class="form-control" value="{{$coupon['code']}}"
                                             placeholder="{{\Illuminate\Support\Str::random(8)}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="">{{translate('start_Date')}}</label>
-                                        <input id="start_date" type="text" name="start_date"  class="form-control" placeholder="DD-MM-YYYY" value="{{date('d-m-Y', strtotime($coupon['start_date']))}}"
+                                        <label class="input-label" for="">{{translate('start_Date')}}<span style="color: red">*</span></label>
+                                        <input id="from_date" type="text" name="start_date"  class="form-control" placeholder="DD-MM-YYYY" value="{{date('d-m-Y', strtotime($coupon['start_date']))}}"
                                            >
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="">{{translate('expire_Date')}}</label>
-                                        <input type="text"  name="expire_date" id="expire_date" class="form-control"  placeholder="DD-MM-YYYY" value="{{date('d-m-Y', strtotime($coupon['expire_date']))}}">
+                                        <label class="input-label" for="">{{translate('expire_Date')}}<span style="color: red">*</span></label>
+                                        <input type="text"  name="expire_date" id="to_date" class="form-control"  placeholder="DD-MM-YYYY" value="{{date('d-m-Y', strtotime($coupon['expire_date']))}}">
                                     </div>
                                 </div>
 
@@ -83,11 +83,12 @@
                                             min="0" max="100000" class="form-control"
                                             placeholder="{{ translate('100') }}">
                                     </div>
+                                    
                                 </div>
 
                                 <div class="col-md-3 col-sm-6" id="max_discount_div" style="@if($coupon['discount_type']=='amount') display: none; @endif">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('max_Discount')}}</label>
+                                        <label class="input-label">{{translate('Maximum_Discount')}}</label>
                                         <input type="number" min="0" max="1000000" step="any"
                                             value="{{$coupon['max_discount']}}" name="max_discount" class="form-control">
                                     </div>

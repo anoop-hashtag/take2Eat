@@ -316,20 +316,20 @@
         function updateStatus(route, code, default_status) {
             if(code == 'en') {
                 Swal.fire({
-                    title: '{{ translate("You can not change the status of English language") }}',
+                    title: '<span style="font-size: 19px; color:gray !important;">{{ translate("You can not change the status of English language!") }}</span>',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Okay',
+                    confirmButtonText: 'Ok',
                     denyButtonText: `cancel`,
                 }).then((result) => {
                     location.reload();
                 })
             } else if(default_status == 1) {
                 Swal.fire({
-                    title: '{{ translate("You can not change the status of default language") }}',
+                    title: '<span style="font-size:19px; color:gray !important;">{{ translate("You can not change the status of default language") }}</span>',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Okay',
+                    confirmButtonText: 'Ok',
                     denyButtonText: `cancel`,
                 }).then((result) => {
                     location.reload();

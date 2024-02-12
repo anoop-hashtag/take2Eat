@@ -448,7 +448,7 @@
 
                                 <div class="col-lg-3 col-md-6">
                                     <div class="form-group">
-                                        <label class="input-label text-capitalize d-flex alig-items-center"><span class="line--limit-1">{{ translate('selcetion_type') }} </span></label>
+                                        <label class="input-label text-capitalize d-flex alig-items-center"><span class="line--limit-1">{{ translate('selection_type') }} </span></label>
                                         <div class="resturant-type-group border">
                                             <label class="form-check form--check mr-2 mr-md-4">
                                                 <input class="form-check-input" type="radio" value="multi "name="options[` + count + `][type]" id="type` + count +

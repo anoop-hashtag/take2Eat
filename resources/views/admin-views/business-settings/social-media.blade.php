@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title', translate('Social_Media_Links'))
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
 @push('css_or_js')
 
 @endpush
@@ -27,7 +27,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-6 form-group">
-                            <label for="name" class="">{{translate('Social_Media_Name')}}</label>
+                            <label for="name" class="">{{translate('Social_Media_Name')}}<span style="color:red">*</span></label>
                             <select class="custom-select" name="name" id="name">
                                 <option selected disabled>---{{translate('select')}}---</option>
                                 <option value="instagram">{{translate('Instagram')}}</option>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-sm-6 form-group">
                             <input type="hidden" id="id">
-                            <label for="link" class="ml-1">{{ translate('social_media_link')}}</label>
+                            <label for="link" class="ml-1">{{ translate('social_media_link')}}<span style="color:red">*</span></label>
                             <input type="text" name="link" class="form-control" id="link"
                                     placeholder="{{translate('Enter Social Media Link')}}" required>
                         </div>
@@ -307,4 +307,87 @@
             )
         }
     </script>
+    @push('script')
+    <!-- Page level plugins -->
+    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
+       @push('script_2')
+       <script>
+           $(document).on('ready', function () {
+               // INITIALIZATION OF NAV SCROLLER
+               // =======================================================
+               $('.js-nav-scroller').each(function () {
+                   new HsNavScroller($(this)).init()
+               });
+   
+               // INITIALIZATION OF SELECT2
+               // =======================================================
+               $('.js-select2-custom').each(function () {
+                   var select2 = $.HSCore.components.HSSelect2.init($(this));
+               });
+   
+   
+               // INITIALIZATION OF DATATABLES
+               // =======================================================
+               var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                   dom: 'Bfrtip',
+                   buttons: [
+                       {
+                           extend: 'copy',
+                           className: 'd-none'
+                       },
+                       {
+                           extend: 'excel',
+                           className: 'd-none'
+                       },
+                       {
+                           extend: 'csv',
+                           className: 'd-none'
+                       },
+                       {
+                           extend: 'pdf',
+                           className: 'd-none'
+                       },
+                       {
+                           extend: 'print',
+                           className: 'd-none'
+                       },
+                   ],
+                   select: {
+                       style: 'multi',
+                       selector: 'td:first-child input[type="checkbox"]',
+                       classMap: {
+                           checkAll: '#datatableCheckAll',
+                           counter: '#datatableCounter',
+                           counterInfo: '#datatableCounterInfo'
+                       }
+                   },
+                   info: false,
+                   paging: false,
+                   language: {
+                       zeroRecords: '<div class="text-center p-4">' +
+                           '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                           '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                           '</div>'
+                   }
+               });
+   
+               // INITIALIZATION OF TAGIFY
+               // =======================================================
+               $('.js-tagify').each(function () {
+                   var tagify = $.HSCore.components.HSTagify.init($(this));
+               });
+           });
+   
+           function filter_branch_orders(id) {
+               location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+           }
+       </script>
+   
 @endpush

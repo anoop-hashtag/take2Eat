@@ -34,7 +34,7 @@
                                                title="{{ translate('not_more_than_100_characters') }}">
                                             </i>
                                         </label>
-                                        <input type="text" name="title" maxlength="100" class="form-control" placeholder="{{translate('New notification')}}" required>
+                                        <input type="text" name="title" maxlength="100" class="form-control" placeholder="{{translate('title')}}" required>
                                     </div>  
                                     <div class="form-group">
                                         <label class="input-label">{{translate('description')}}

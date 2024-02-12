@@ -617,7 +617,7 @@
                         @php($decimal_point_settings=\App\CentralLogics\Helpers::get_business_settings('decimal_point_settings'))
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label class="input-label text-capitalize">{{translate('digit_After_Decimal_Point ')}}({{translate(' ex: 0.00')}})</label>
+                                <label class="input-label text-capitalize">{{translate('digit_After_Decimal_Point ')}}({{translate(' ex: 0.00')}})<span style="color:red">*</span></label>
                                 <input type="number" value="{{$decimal_point_settings}}"
                                        name="decimal_point_settings" class="form-control" placeholder="{{translate('Ex: 2')}}"
                                        required>
@@ -626,7 +626,7 @@
                         @php($footer_text=\App\Model\BusinessSetting::where('key','footer_text')->first()->value)
                         <div class="col-sm-8">
                             <div class="form-group">
-                                <label class="input-label">{{translate('Company_Copyright_Text')}}</label>
+                                <label class="input-label">{{translate('Company_Copyright_Text')}}<span style="color:red">*</span></label>
                                 <input type="text" value="{{$footer_text}}" name="footer_text" class="form-control"
                                        placeholder="{{translate('Ex: Copyright@efood.com')}}" required>
                             </div>
@@ -634,7 +634,7 @@
                         @php($pagination_limit=\App\Model\BusinessSetting::where('key','pagination_limit')->first()->value)
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="input-label">{{translate('pagination')}}</label>
+                                <label class="input-label">{{translate('pagination')}} <span style="color:red">*</span></label>
                                 <input type="number" value="{{$pagination_limit}}" min="0"
                                        name="pagination_limit" class="form-control" placeholder="{{translate('Ex: 10')}}" required>
                             </div>

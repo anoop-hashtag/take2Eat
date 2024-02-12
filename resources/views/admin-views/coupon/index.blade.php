@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('coupon')}} {{translate('type')}}</label>
+                                        <label class="input-label">{{translate('')}} {{translate('type')}}</label>
                                         <select name="coupon_type" class="custom-select" onchange="coupon_type_change(this.value)">
                                             <option value="default">{{translate('default')}}</option>
                                             <option value="first_order">{{translate('first order')}}</option>
@@ -38,14 +38,14 @@
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('Coupon_Title')}}</label>
+                                        <label class="input-label">{{translate('Title')}}<span style="color: red">*</span></label>
                                         <input type="text" name="title" class="form-control" placeholder="{{ translate('New coupon') }}" required maxlength="100">
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <div class="d-flex justify-content-between">
-                                            <label class="input-label">{{translate('Coupon_Code')}}</label>
+                                            <label class="input-label">{{translate('Code')}}<span style="color: red">*</span></label>
                                             <a href="javascript:void(0)" class="float-right c1 fz-12" onclick="generateCode()">{{translate('generate_code')}}</a>
                                         </div>
                                         <input type="text" name="code" id="coupon-code" class="form-control" maxlength="15"
@@ -54,22 +54,22 @@
                                 </div>
                                 <div class="col-md-4 col-sm-6" id="limit-for-user">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('limit')}} {{translate('for')}} {{translate('same')}} {{translate('user')}}</label>
+                                        <label class="input-label">{{translate('limit')}} {{translate('for')}} {{translate('same')}} {{translate('user')}}<span style="color: red">*</span></label>
                                         <input type="text" name="limit" id="user-limit" class="form-control" placeholder="{{ translate('EX: 10') }}" required min="1">
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('discount_Type')}}</label>
+                                        <label class="input-label">{{translate('discount_Type')}}<span style="color: red">*</span></label>
                                         <select name="discount_type" id="discount_type" class="form-control">
                                             <option value="percent">{{translate('percent')}}</option>
-                                            <option value="amount">{{translate('amount')}}</option>
+                                            <option value="amount">{{translate('amount')}} (in ₹)</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label text-capitalize" id="discount_label">{{translate('discount_percent')}}</label>
+                                        <label class="input-label text-capitalize" id="discount_label">{{translate('discount')}}<span style="color: red">*</span></label>
                                         <input type="text" step="any" min="1" max="10000" placeholder="{{translate('Ex: 50%')}}" id="discount_input" name="discount" class="form-control" required>
                                     </div>
                                 </div>
@@ -88,16 +88,17 @@
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('start')}} {{translate('date')}}</label>
-                                        <input type="text" id="start_date" name="start_date" class="form-control"  placeholder="DD-MM-YYYY">
+                                        <label class="input-label">{{translate('start')}} {{translate('date')}}<span style="color: red">*</span></label>
+                                        <input type="text" id="from_date" name="start_date" class="form-control"  placeholder="DD-MM-YYYY">
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('expire')}} {{translate('date')}}</label>
-                                        <input type="text" id="expire_date"  name="expire_date" class="form-control" placeholder="DD-MM-YYYY" >
+                                        <label class="input-label">{{translate('expire')}} {{translate('date')}}<span style="color: red">*</span></label>
+                                        <input type="text" id="to_date"  name="expire_date" class="form-control" placeholder="DD-MM-YYYY" >
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="d-flex justify-content-end gap-3">
                                 <button type="reset" class="btn btn-secondary">{{translate('reset')}}</button>

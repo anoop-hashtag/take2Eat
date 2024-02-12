@@ -54,7 +54,8 @@
                                         <tr>
                                             <th>{{translate('SL')}}</th>
                                             <th>{{translate('name')}}</th>
-                                            <th>{{translate('price')}}</th>
+                                            <th>{{ translate('price') }} (in ₹)</th>
+
                                             <th>{{translate('tax')}} (%)</th>
                                             <th>{{translate('action')}}</th>
                                         </tr>
@@ -146,7 +147,7 @@
                                             <input name="position" value="0" style="display: none">
                                         </div>
                                         <div class="col-sm-6 from_part_2 mb-4">
-                                            <label class="input-label" for="exampleFormControlInput1">{{translate('price')}}<span class="text-danger">*</span></label>
+                                            <label class="input-label" for="exampleFormControlInput1">{{translate('price')}} (in ₹)<span class="text-danger">*</span></label>
                                             <input type="number" min="0" name="price" step="any" class="form-control"
                                                 placeholder="100" required
                                                 oninvalid="document.getElementById('en-link').click()">

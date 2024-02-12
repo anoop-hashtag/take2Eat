@@ -13,7 +13,7 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/sales.png')}}" alt="">
                 <span class="page-header-title">
-                    {{translate('Sale_Report')}}
+                    {{translate('Sales_Report')}}
                 </span>
             </h2>
         </div>
@@ -33,7 +33,7 @@
                     <div class="media-body">
                         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                             <div class="">
-                                <h2 class="page-header-title">{{translate('sale')}} {{translate('report')}} {{translate('overview')}}</h2>
+                                <h2 class="page-header-title">{{translate('sales')}} {{translate('report')}} {{translate('overview')}}</h2>
 
                                 <div class="row align-items-center">
                                     <div class="col-auto">

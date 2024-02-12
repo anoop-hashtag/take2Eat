@@ -87,39 +87,39 @@
                                 </div>
                                 <div class="row g-2">
                                     <div class="col-sm-6">
-                                        <label>{{translate('mailer_name')}}</label>
+                                        <label>{{translate('mailer_name')}}<span style="color:red">*</span></label>
                                         <input type="text" placeholder="{{translate('ex : Alex')}}" class="form-control" name="name"
                                             value="{{env('APP_MODE')!='demo'?$data['name']:''}}" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>{{translate('host')}}</label>
+                                        <label>{{translate('host')}}<span style="color:red">*</span></label>
                                         <input type="text" class="form-control" name="host" value="{{env('APP_MODE')!='demo'?$data['host']:''}}" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>{{translate('driver')}}</label>
+                                        <label>{{translate('driver')}}<span style="color:red">*</span></label>
                                         <input type="text" class="form-control" name="driver" value="{{env('APP_MODE')!='demo'?$data['driver']:''}}" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>{{translate('port')}}</label>
+                                        <label>{{translate('port')}}<span style="color:red">*</span></label>
                                         <input type="text" class="form-control" name="port" value="{{env('APP_MODE')!='demo'?$data['port']:''}}" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>{{translate('username')}}</label>
+                                        <label>{{translate('username')}}<span style="color:red">*</span></label>
                                         <input type="text" placeholder="{{translate('ex : ex@yahoo.com')}}" class="form-control" name="username"
                                             value="{{env('APP_MODE')!='demo'?$data['username']:''}}" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>{{translate('email')}} {{translate('id')}}</label>
+                                        <label>{{translate('email')}} {{translate('id')}}<span style="color:red">*</span></label>
                                         <input type="text" placeholder="{{translate('ex : ex@yahoo.com')}}" class="form-control" name="email"
                                             value="{{env('APP_MODE')!='demo'?$data['email_id']:''}}" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>{{translate('encryption')}}</label>
+                                        <label>{{translate('encryption')}}</label><span style="color:red">*</span>
                                         <input type="text" placeholder="{{translate('ex : tls')}}" class="form-control" name="encryption"
                                             value="{{env('APP_MODE')!='demo'?$data['encryption']:''}}" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>{{translate('password')}}</label>
+                                        <label>{{translate('password')}}<span style="color:red">*</span></label>
                                         <input type="text" class="form-control" name="password" value="{{env('APP_MODE')!='demo'?$data['password']:''}}" required>
                                     </div>
                                 </div>

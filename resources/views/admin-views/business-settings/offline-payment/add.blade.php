@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-end gap-3 mb-4">
                         <div class="flex-grow-1">
-                            <label class="input-label">{{translate('Payment Method Name')}}</label>
+                            <label class="input-label">{{translate('Payment Method Name')}}<span class="text-danger">*</label></label>
                             <input type="text" maxlength="255" name="method_name" id="method_name" class="form-control"
                                    placeholder="{{ translate('ABC Company') }}" required>
                         </div>
@@ -48,13 +48,13 @@
                     <div class="d-flex align-items-end gap-3 mb-4 flex-wrap">
                         <div class="flex-grow-1">
                             <div class="">
-                                <label class="input-label">{{translate('Title')}} </label>
+                                <label class="input-label">{{translate('Title')}} <span class="text-danger">*</label></label>
                                 <input type="text" name="field_name[]" class="form-control" maxlength="255" placeholder="{{ translate('bank_Name') }}" required>
                             </div>
                         </div>
                         <div class="flex-grow-1">
                             <div class="">
-                                <label class="input-label">{{translate('Data')}} </label>
+                                <label class="input-label">{{translate('Data')}} <span class="text-danger">*</label>
                                 <input type="text" name="field_data[]" class="form-control" maxlength="255" placeholder="{{ translate('ABC_Bank') }}" required>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-end gap-3 mb-4">
                         <div class="flex-grow-1">
-                            <label class="input-label">{{translate('Payment Note')}}</label>
+                            <label class="input-label">{{translate('Payment Note')}}<span class="text-danger">*</span></label>
                             <textarea name="payment_note" class="form-control" placeholder="{{ translate('payment_Note') }}" id="payment_note"></textarea>
                         </div>
                     </div>
