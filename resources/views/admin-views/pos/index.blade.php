@@ -4,6 +4,7 @@
 
 @push('css_or_js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+
 <style>
     /* #location_map_div #pac-input{
         height: 40px;
@@ -515,7 +516,8 @@
             @endforeach
         </script>
     @endif
-
+  
+    
     <!-- JS Plugins Init. -->
     <script>
         $(document).on('ready', function () {
@@ -554,13 +556,13 @@
         }
 
 
-        $('#search-form').on('submit', function (e) {
-            e.preventDefault();
-            var keyword= $('#datatableSearch').val();
-            var nurl = new URL('{!!url()->full()!!}');
-            nurl.searchParams.set('keyword', keyword);
-            location.href = nurl;
-        });
+        $('#datatableSearch').on('input', function () {
+    var keyword = $(this).val();
+    var nurl = new URL('{!!url()->full()!!}');
+    nurl.searchParams.set('keyword', keyword);
+    location.href = nurl;
+});
+
 
         function addon_quantity_input_toggle(e)
         {

@@ -198,7 +198,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <input id="discount_input" type="number" min="0" name="discount" class="form-control"
-                                                               placeholder="{{translate('Ex : 5%')}}" required>
+                                                               placeholder="{{translate('Ex : 5%')}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
