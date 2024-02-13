@@ -20,7 +20,7 @@
             <div class="text-primary d-flex align-items-center gap-3 font-weight-bolder" data-toggle="modal" data-target="#settingModal">
                 {{ translate('How the Setting Works') }}
                 <div class="ripple-animation" >
-                    <img src="{{asset('/public/assets/admin/img/info.svg')}}" class="svg" alt="">
+                    <a href=""><img src="{{asset('/public/assets/admin/img/info.svg')}}" class="svg" alt=""></a>
                 </div>
             </div>
         </div>

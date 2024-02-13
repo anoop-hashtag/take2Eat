@@ -10,7 +10,9 @@
     <div class="content container-fluid">
         <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
-                <img src="{{asset('/public/assets/admin/img/money.png')}}" alt="public">
+                
+                <img style="height:30px;" src="{{asset('/public/assets/admin/img/ruppee.png')}}" alt="public">
+              
                 <span>
                     {{translate('Add_Fund')}}
                 </span>
@@ -34,7 +36,7 @@
                         </div>
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="amount">{{translate('amount')}}</label>
+                                <label class="form-label" for="amount">{{translate('amount')}} (in ₹)<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control h--45px" name="amount" id="amount" step="0.01" min="1" required>
                             </div>
                         </div>

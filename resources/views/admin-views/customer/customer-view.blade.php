@@ -26,7 +26,9 @@
                     <h2 class="page-header-title h1">{{translate('customer_ID')}} #{{$customer['id']}}</h2>
                     <span class="">
                         <i class="tio-date-range"></i>
-                        {{translate('joined_at')}} : {{date('d M Y H:i:s',strtotime($customer['created_at']))}}
+                        {{ translate('joined_at') }}: {{ \Carbon\Carbon::parse($customer['created_at'])->format('d M Y h:i:s a') }}
+
+                         {{-- {{date('d-m-Y '. config('time_format'),strtotime($customer['created_at']))}} - {{date('d-m-Y '. config('$customer['created_at']),strtotime($customer['created_at']))}} ) --}}
                     </span>
                 </div>
 
@@ -109,21 +111,21 @@
                                 </thead>
 
                                 <tbody>
-                                @foreach($orders as $key=>$order)
-                                    <tr>
-                                        <td>{{$orders->firstItem() + $key}}</td>
-                                        <td class="table-column-pl-0 text-center">
-                                            <a class="text-dark" href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order['id']}}</a>
-                                        </td>
-                                        <td class="text-center">{{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</td>
-                                        <td>
-                                            <div class="d-flex justify-content-center gap-2">
-                                                <a class="btn btn-outline-primary btn-sm square-btn" href="{{route('admin.orders.details',['id'=>$order['id']])}}" title="View"><i class="tio-visible"></i></a>
-                                                <a class="btn btn-outline-success btn-sm square-btn" target="_blank" href="{{route('admin.orders.generate-invoice',[$order['id']])}}" title="Invoice"><i class="tio-print"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    @foreach($orders as $key=>$order)
+                                        <tr>
+                                            <td>{{$orders->firstItem() + $key}}</td>
+                                            <td class="table-column-pl-0 text-center">
+                                                <a class="text-dark" href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order['id']}}</a>
+                                            </td>
+                                            <td class="text-center">{{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-center gap-2">
+                                                    <a class="btn btn-outline-primary btn-sm square-btn" href="{{route('admin.orders.details',['id'=>$order['id']])}}" title="View"><i class="tio-visible"></i></a>
+                                                    <a class="btn btn-outline-success btn-sm square-btn" target="_blank" href="{{route('admin.orders.generate-invoice',[$order['id']])}}" title="Invoice"><i class="tio-print"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

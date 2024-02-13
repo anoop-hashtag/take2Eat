@@ -47,19 +47,19 @@
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('Bonus_Type')}}</label>
                                         <select name="bonus_type" class="form-control" id="bonus_type" required>
                                             <option value="percentage">{{translate('percentage')}} (%)</option>
-                                            <option value="amount">{{translate('amount')}}</option>
+                                            <option value="amount">{{translate('amount')}} (in ₹)</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{translate('Bonus_Amount')}}
+                                        <label class="input-label" for="exampleFormControlInput1">{{translate('Bonus')}}
                                             <span  class="d-none" id='currency_symbol'>({{ \App\CentralLogics\Helpers::currency_symbol() }})</span>
-                                            <span id="percentage">(%)</span>
+                                            {{-- <span id="percentage">(%)</span> --}}
                                             <span data-toggle="tooltip" data-placement="right" title="{{ translate('Set_the_bonus_amount/percentage_a_customer_will_receive_after_adding_money_to_his_wallet.') }}.">
                                                 <i class="tio-info-outined" ></i>
                                             </span>
-                                           
+                                           <span class="text-danger">*</span>
                                         </label>
                                         <input type="number" step="0.01" min="1" max="999999999999.99"  placeholder="{{ translate('Ex:_100') }}"  name="bonus_amount"
                                                id="bonus_amount" class="form-control" required>
@@ -71,8 +71,9 @@
                                             <span  data-toggle="tooltip" data-placement="right" title="{{ translate('Set_the_minimum_add_money_amount_for_a_customer_to_be_eligible_for_the_bonus.') }}.">
                                                 <i class="tio-info-outined" ></i>
                                             </span>
-                                          
+                                            <span class="text-danger">*</span> 
                                         </label>
+                                       
                                         <input type="number" step="0.01" min="1" max="999999999999.99" placeholder="{{ translate('Ex:_10') }}" name="minimum_add_amount"
                                                id="minimum_add_amount" class="form-control" required>
                                     </div>
@@ -84,20 +85,20 @@
                                                 <i class="tio-info-outined" ></i>
                                             </span>
                                            
-
+                                            <span class="text-danger">*</span>
                                         </label>
                                         <input type="number" step="0.01" min="1" max="999999999999.99"  placeholder="{{ translate('Ex:_1000') }}" name="maximum_bonus_amount" id="maximum_bonus_amount" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{translate('start_date')}}</label>
+                                        <label class="input-label" for="exampleFormControlInput1">{{translate('start_date')}} <span class="text-danger">*</span></label>
                                         <input type="text" name="start_date" class="form-control" placeholder="DD-MM-YYYY" id="from_date" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{translate('expire_date')}}</label>
+                                        <label class="input-label" for="exampleFormControlInput1">{{translate('expire_date')}} <span class="text-danger">*</span></label>
                                         <input type="text" name="end_date" class="form-control" placeholder="DD-MM-YYYY" id="to_date" required>
                                     </div>
                                 </div>

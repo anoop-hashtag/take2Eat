@@ -92,7 +92,7 @@
                     <span class="subtitle">
                         {{\App\CentralLogics\Helpers::set_symbol($debit)}}
                     </span>
-                    <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/3.png')}}" alt="dashboard">
+                    <img class="resturant-icon" src="{{asset('/public/assets/admin/img/ruppee.png')}}" alt="dashboard">
                 </div>
                 <!-- End Card -->
             </div>
@@ -177,9 +177,9 @@
                                 <td >{{$k+$transactions->firstItem()}}</td>
                                 <td>{{$wt->transaction_id}}</td>
                                 <td><a href="{{route('admin.customer.view',['user_id'=>$wt->user_id])}}">{{Str::limit($wt->user?$wt->user->f_name.' '.$wt->user->l_name:translate('not_found'),20,'...')}}</a></td>
-                                <td>{{$wt->credit}}</td>
-                                <td>{{$wt->debit}}</td>
-                                <td>{{$wt->balance}}</td>
+                                <td>₹{{$wt->credit}}</td>
+                                <td>₹{{$wt->debit}}</td>
+                                <td>₹{{$wt->balance}}</td>
                                 <td>
                                     <span class="badge badge-soft-{{$wt->transaction_type=='order_refund'
                                         ?'danger'

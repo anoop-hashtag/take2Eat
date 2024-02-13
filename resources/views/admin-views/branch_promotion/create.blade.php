@@ -61,7 +61,7 @@
                                     <label class="input-label">{{translate('Image')}} <span class="text-danger ml-1">*</span></label>
                                     <div class="custom-file">
                                         <input type="file" name="image" id="customFileEg" class="custom-file-input"
-                                               accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                                               accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required
                                                oninvalid="document.getElementById('en-link').click()">
                                         <label class="custom-file-label" for="customFileEg">{{ translate('choose file') }}</label>
                                     </div>
@@ -119,7 +119,7 @@
                         <tr>
                             <th>{{translate('SL')}}</th>
                             <th>{{translate('Branch')}}</th>
-                            <th>{{translate('Promotion type')}}</th>
+                            <th>{{translate('Banner type')}}</th>
                             <th>{{translate('Promotion_Banner')}}</th>
                             <th>{{translate('action')}}</th>
                         </tr>

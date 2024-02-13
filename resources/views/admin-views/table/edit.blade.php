@@ -55,7 +55,7 @@
                     </div>
                     <div class="d-flex justify-content-end gap-3">
                         <button type="reset" class="btn btn-secondary">{{translate('reset')}}</button>
-                        <button type="submit" class="btn btn-primary">{{translate('submit')}}</button>
+                        <button type="submit" class="btn btn-primary">{{translate('update')}}</button>
                     </div>
                 </form>
             </div>

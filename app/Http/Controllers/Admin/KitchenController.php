@@ -220,7 +220,8 @@ class KitchenController extends Controller
         }
 
         Toastr::success(translate('Chef updated successfully!'));
-        return back();
+        return redirect()->route('admin.kitchen.list');
+      
     }
 
     /**
