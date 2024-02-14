@@ -122,6 +122,7 @@ class BranchPromotionController extends Controller
         $promotion->update();
 
         Toastr::success(translate('Promotional campaign updated successfully!'));
+        return redirect()->route('admin.promotion.create');
         return back();
     }
 
