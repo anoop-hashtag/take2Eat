@@ -17,12 +17,14 @@
                     {{translate('System Addon')}}
                 </span>
             </h2>
+            <a href="">
             <div class="text-primary d-flex align-items-center gap-3 font-weight-bolder" data-toggle="modal" data-target="#settingModal">
                 {{ translate('How the Setting Works') }}
                 <div class="ripple-animation" >
                     <img src="{{asset('/public/assets/admin/img/info.svg')}}" class="svg" alt="">
                 </div>
             </div>
+            </a>
         </div>
 
         <!-- End Page Header -->
