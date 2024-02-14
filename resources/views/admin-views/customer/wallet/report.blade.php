@@ -177,9 +177,9 @@
                                 <td >{{$k+$transactions->firstItem()}}</td>
                                 <td>{{$wt->transaction_id}}</td>
                                 <td><a href="{{route('admin.customer.view',['user_id'=>$wt->user_id])}}">{{Str::limit($wt->user?$wt->user->f_name.' '.$wt->user->l_name:translate('not_found'),20,'...')}}</a></td>
-                                <td>₹{{$wt->credit}}</td>
-                                <td>₹{{$wt->debit}}</td>
-                                <td>₹{{$wt->balance}}</td>
+                                <td>₹{{ number_format($wt->credit, 2) }}</td>
+                                <td>₹{{number_format($wt->debit,2)}}</td>
+                                <td>₹{{ number_format($wt->balance,2)}}</td>
                                 <td>
                                     <span class="badge badge-soft-{{$wt->transaction_type=='order_refund'
                                         ?'danger'
