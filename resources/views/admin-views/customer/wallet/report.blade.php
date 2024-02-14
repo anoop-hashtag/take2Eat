@@ -172,30 +172,30 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($transactions as $k=>$wt)
-                            <tr scope="row">
-                                <td >{{$k+$transactions->firstItem()}}</td>
-                                <td>{{$wt->transaction_id}}</td>
-                                <td><a href="{{route('admin.customer.view',['user_id'=>$wt->user_id])}}">{{Str::limit($wt->user?$wt->user->f_name.' '.$wt->user->l_name:translate('not_found'),20,'...')}}</a></td>
-                                <td>₹{{ number_format($wt->credit, 2) }}</td>
-                                <td>₹{{number_format($wt->debit,2)}}</td>
-                                <td>₹{{ number_format($wt->balance,2)}}</td>
-                                <td>
-                                    <span class="badge badge-soft-{{$wt->transaction_type=='order_refund'
-                                        ?'danger'
-                                        :($wt->transaction_type=='loyalty_point'?'warning'
-                                            :($wt->transaction_type=='order_place'
-                                                ?'info'
-                                                :'success'))
-                                        }}">
-                                        {{ translate($wt->transaction_type)}}
-                                    </span>
-                                </td>
-{{--                                <td>{{$wt->reference}}</td>--}}
-                              <td>{{ date('d-m-Y', strtotime($wt->created_at)) }}</td>
+                            @foreach($transactions as $k=>$wt)
+                                <tr scope="row">
+                                    <td >{{$k+$transactions->firstItem()}}</td>
+                                    <td>{{$wt->transaction_id}}</td>
+                                    <td><a href="{{route('admin.customer.view',['user_id'=>$wt->user_id])}}">{{Str::limit($wt->user?$wt->user->f_name.' '.$wt->user->l_name:translate('not_found'),20,'...')}}</a></td>
+                                    <td>₹{{ number_format($wt->credit, 2) }}</td>
+                                    <td>₹{{number_format($wt->debit,2)}}</td>
+                                    <td>₹{{ number_format($wt->balance,2)}}</td>
+                                    <td>
+                                        <span class="badge badge-soft-{{$wt->transaction_type=='order_refund'
+                                            ?'danger'
+                                            :($wt->transaction_type=='loyalty_point'?'warning'
+                                                :($wt->transaction_type=='order_place'
+                                                    ?'info'
+                                                    :'success'))
+                                            }}">
+                                            {{ translate($wt->transaction_type)}}
+                                        </span>
+                                    </td>
+    {{--                                <td>{{$wt->reference}}</td>--}}
+                                <td>{{ date('d-m-Y', strtotime($wt->created_at)) }}</td>
 
-                            </tr>
-                        @endforeach
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     @if(!$transactions)
