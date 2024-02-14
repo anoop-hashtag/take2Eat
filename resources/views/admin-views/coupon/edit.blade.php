@@ -98,7 +98,7 @@
                                         <label class="input-label">{{translate('discount_Type')}}</label>
                                         <select name="discount_type" id="discount_type" class="form-control">
                                             <option value="percent" {{$coupon['discount_type']=='percent'?'selected':''}}>{{translate('percent')}}</option>
-                                            <option value="amount" {{$coupon['discount_type']=='amount'?'selected':''}}>{{translate('amount')}}</option>
+                                            <option value="amount" {{$coupon['discount_type']=='amount'?'selected':''}}>{{translate('amount')}}(in ₹)</option>
                                         </select>
                                     </div>
                                 </div>
