@@ -4,6 +4,8 @@
 
 @push('css_or_js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+
+
 @endpush
 
 @section('content')
@@ -89,13 +91,15 @@
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('start')}} {{translate('date')}}<span style="color: red">*</span></label>
-                                        <input type="text" id="from_date" name="start_date" class="form-control"  placeholder="DD-MM-YYYY">
+                                        <input type="text" id="from_date" name="start_date" class="form-control" autocomplete="off"  placeholder="DD-MM-YYYY">
                                     </div>
+                                    
                                 </div>
+                                
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('expire')}} {{translate('date')}}<span style="color: red">*</span></label>
-                                        <input type="text" id="to_date"  name="expire_date" class="form-control" placeholder="DD-MM-YYYY" >
+                                        <input type="text" id="to_date"  name="expire_date" class="form-control" autocomplete="off" placeholder="DD-MM-YYYY" >
                                     </div>
                                 </div>
                                 
@@ -393,5 +397,19 @@
       destroy: true,
       ...
   });
+      </script>
+      <script>
+        $(document).ready(function() {
+          // Set the minimum date to the current date
+          var currentDate = new Date();
+          $("#from_date").datepicker({
+            dateFormat: 'dd-mm-yy',
+            minDate: currentDate,
+            onSelect: function(selectedDate) {
+              // Optional: You can add additional logic when a date is selected
+              console.log('Selected date: ' + selectedDate);
+            }
+          });
+        });
       </script>
 @endpush

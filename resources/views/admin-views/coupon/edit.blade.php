@@ -152,4 +152,18 @@
             }
         }
     </script>
+    <script>
+        $(document).ready(function() {
+          // Set the minimum date to the current date
+          var currentDate = new Date();
+          $("#from_date").datepicker({
+            dateFormat: 'dd-mm-yy',
+            minDate: currentDate,
+            onSelect: function(selectedDate) {
+              // Optional: You can add additional logic when a date is selected
+              console.log('Selected date: ' + selectedDate);
+            }
+          });
+        });
+      </script>
 @endpush
