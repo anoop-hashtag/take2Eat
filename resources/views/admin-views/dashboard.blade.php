@@ -441,12 +441,20 @@
                             }
                         }
                     },
+                    yaxis: {
+                        labels: {
+                            formatter: function (val) {
+                                return Math.floor(val); // Display only integer values
+                            }
+                        }
+                    },
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                     xaxis: {
                         tooltip: {
                             enabled: false
                         }
                     },
+                    
                     legend: {
                         show: false,
                         position: 'top',
@@ -553,6 +561,7 @@
                                 xaxis: {
                                     categories: response_data.orders_label,
                                 },
+                                
                                 grid: {
                                     show: true,
                                     padding: {
@@ -567,8 +576,12 @@
                                     }
                                 },
                                 yaxis: {
-                                    tickAmount: 4,
-                                }
+                        labels: {
+                            formatter: function (val) {
+                                return Math.floor(val); // Display only integer values
+                            }
+                        }
+                    }
                             };
 
                             var chart = new ApexCharts(document.querySelector("#order-statistics-line-chart"), options);
@@ -647,6 +660,13 @@
                                         enabled: false
                                     }
                                 },
+                                yaxis: {
+                        labels: {
+                            formatter: function (val) {
+                                return Math.floor(val); // Display only integer values
+                            }
+                        }
+                    },
                                 legend: {
                                     position: 'top',
                                     horizontalAlign: 'right',
