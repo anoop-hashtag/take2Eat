@@ -61,7 +61,8 @@
         <div class="card mt-3">
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" id="dataTable" cellspacing="0">
+                    <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                    {{-- <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" id="datatable" cellspacing="0"> --}}
                         <thead class="thead-light">
                             <tr>
                                 <th class="border-top-0">{{ translate('SL')}}</th>
@@ -307,87 +308,80 @@
             )
         }
     </script>
-    @push('script')
-    <!-- Page level plugins -->
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <!-- Page level custom scripts -->
-    <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable();
-        });
-    </script>
-       @push('script_2')
-       <script>
-           $(document).on('ready', function () {
-               // INITIALIZATION OF NAV SCROLLER
-               // =======================================================
-               $('.js-nav-scroller').each(function () {
-                   new HsNavScroller($(this)).init()
-               });
-   
-               // INITIALIZATION OF SELECT2
-               // =======================================================
-               $('.js-select2-custom').each(function () {
-                   var select2 = $.HSCore.components.HSSelect2.init($(this));
-               });
-   
-   
-               // INITIALIZATION OF DATATABLES
-               // =======================================================
-               var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
-                   dom: 'Bfrtip',
-                   buttons: [
-                       {
-                           extend: 'copy',
-                           className: 'd-none'
-                       },
-                       {
-                           extend: 'excel',
-                           className: 'd-none'
-                       },
-                       {
-                           extend: 'csv',
-                           className: 'd-none'
-                       },
-                       {
-                           extend: 'pdf',
-                           className: 'd-none'
-                       },
-                       {
-                           extend: 'print',
-                           className: 'd-none'
-                       },
-                   ],
-                   select: {
-                       style: 'multi',
-                       selector: 'td:first-child input[type="checkbox"]',
-                       classMap: {
-                           checkAll: '#datatableCheckAll',
-                           counter: '#datatableCounter',
-                           counterInfo: '#datatableCounterInfo'
-                       }
-                   },
-                   info: false,
-                   paging: false,
-                   language: {
-                       zeroRecords: '<div class="text-center p-4">' +
-                           '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
-                           '<p class="mb-0">{{translate('No data to show')}}</p>' +
-                           '</div>'
-                   }
-               });
-   
-               // INITIALIZATION OF TAGIFY
-               // =======================================================
-               $('.js-tagify').each(function () {
-                   var tagify = $.HSCore.components.HSTagify.init($(this));
-               });
-           });
-   
-           function filter_branch_orders(id) {
-               location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
-           }
-       </script>
-   
+    @push('script_2')
+    
+  <script>
+    
+      $(document).on('ready', function () {
+          // INITIALIZATION OF NAV SCROLLER
+          // =======================================================
+          $('.js-nav-scroller').each(function () {
+              new HsNavScroller($(this)).init()
+          });
+  
+          // INITIALIZATION OF SELECT2
+          // =======================================================
+          $('.js-select2-custom').each(function () {
+              var select2 = $.HSCore.components.HSSelect2.init($(this));
+          });
+  
+  
+          // INITIALIZATION OF DATATABLES
+          // =======================================================
+          var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+              dom: 'Bfrtip',
+              buttons: [
+                  {
+                      extend: 'copy',
+                      className: 'd-none'
+                  },
+                  {
+                      extend: 'excel',
+                      className: 'd-none'
+                  },
+                  {
+                      extend: 'csv',
+                      className: 'd-none'
+                  },
+                  {
+                      extend: 'pdf',
+                      className: 'd-none'
+                  },
+                  {
+                      extend: 'print',
+                      className: 'd-none'
+                  },
+                  
+              ],
+              info: false,
+              paging: false,
+              select: {
+                  style: 'multi',
+                  selector: 'td:first-child input[type="checkbox"]',
+                  classMap: {
+                      checkAll: '#datatableCheckAll',
+                      counter: '#datatableCounter',
+                      counterInfo: '#datatableCounterInfo'
+                  }
+              },
+              language: {
+                  zeroRecords: '<div class="text-center p-4">' +
+                      '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                      '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                      '</div>'
+              }
+          });
+  
+          // INITIALIZATION OF TAGIFY
+          // =======================================================
+          $('.js-tagify').each(function () {
+              var tagify = $.HSCore.components.HSTagify.init($(this));
+          });
+      });
+  
+      function filter_branch_orders(id) {
+          location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+      }
+     
+  </script>
 @endpush
