@@ -87,6 +87,8 @@ Route::group(['namespace' => 'Api\V1', 'middleware' => 'localization'], function
         Route::get('/', 'NotificationController@get_notifications');
     });
 
+    
+
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/', 'CategoryController@get_categories');
         Route::get('childes/{category_id}', 'CategoryController@get_childes');
@@ -191,6 +193,12 @@ Route::group(['namespace' => 'Api\V1', 'middleware' => 'localization'], function
     Route::group(['prefix' => 'offline-payment-method'], function () {
         Route::get('/list', 'OfflinePaymentMethodController@list');
     });
+
+    Route::group(['prefix' => 'business_settings'], function () {
+       
+        Route::get('all-businessseting', 'BusinessSettingsController@get_business_settings');
+    });
+
 
 
 });
