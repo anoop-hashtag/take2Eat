@@ -207,7 +207,7 @@
                                     </select>
                                     <button class="btn btn-success rounded text-nowrap" id="add_new_customer" type="button" data-toggle="modal" data-target="#add-customer" title="Add Customer">
                                         <i class="tio-add"></i>
-                                        {{translate('Customer)')}}
+                                        {{translate('Customer')}}
                                     </button>
                                 </div>
                                 <div class="form-group">
