@@ -9,12 +9,13 @@ use App\Model\Currency;
 use App\Model\CustomerAddress;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-
+use App\Model\BusinessSetting;
 class TableConfigController extends Controller
 {
     public function __construct(
         private Branch          $branch,
         private Currency $currency,
+        private BusinessSetting $business_setting,
     )
     {
     }
@@ -42,6 +43,7 @@ class TableConfigController extends Controller
         return response()->json([
             'currency_symbol' => $currency_symbol,
             'time_format' => (string)(Helpers::get_business_settings('time_format') ?? '12'),
+            'restaurant_logo' => $this->business_setting->where(['key' => 'logo'])->first()->value,
             'decimal_point_settings' => (int)(Helpers::get_business_settings('decimal_point_settings') ?? 2),
             'maintenance_mode' => (boolean)Helpers::get_business_settings('maintenance_mode') ?? 0,
             'currency_symbol_position' => Helpers::get_business_settings('currency_symbol_position') ?? 'right',
