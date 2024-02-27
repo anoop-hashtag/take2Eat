@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title', translate('Social_Media_Links'))
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+
 @push('css_or_js')
 
 @endpush
@@ -27,7 +27,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-6 form-group">
-                            <label for="name" class="">{{translate('Social_Media_Name')}}<span style="color:red">*</span></label>
+                            <label for="name" class="">{{translate('Social_Media_Name')}}</label>
                             <select class="custom-select" name="name" id="name">
                                 <option selected disabled>---{{translate('select')}}---</option>
                                 <option value="instagram">{{translate('Instagram')}}</option>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-sm-6 form-group">
                             <input type="hidden" id="id">
-                            <label for="link" class="ml-1">{{ translate('social_media_link')}}<span style="color:red">*</span></label>
+                            <label for="link" class="ml-1">{{ translate('social_media_link')}}</label>
                             <input type="text" name="link" class="form-control" id="link"
                                     placeholder="{{translate('Enter Social Media Link')}}" required>
                         </div>
@@ -61,8 +61,7 @@
         <div class="card mt-3">
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                    {{-- <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" id="datatable" cellspacing="0"> --}}
+                    <table class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" id="dataTable" cellspacing="0">
                         <thead class="thead-light">
                             <tr>
                                 <th class="border-top-0">{{ translate('SL')}}</th>
@@ -105,15 +104,15 @@
                             html += '<tr>';
                             html += '<td class="column_name" data-column_name="sl" data-id="' + data[count].id + '">' + (count + 1) + '</td>';
                             html += '<td class="column_name" data-column_name="name" data-id="' + data[count].id + '">' + data[count].name + '</td>';
-                            html += '<td class="column_name link-style" data-column_name="slug" data-id="' + data[count].id + '">' + data[count].link + '</td>';
+                            html += '<td class="column_name" data-column_name="slug" data-id="' + data[count].id + '">' + data[count].link + '</td>';
                             html += `<td class="column_name" data-column_name="status" data-id="${data[count].id}">
-                                <label class="switcher category-mid">
+                                <label class="switcher">
                                     <input type="checkbox" onclick="status_change_sm(this)" class="switcher_input" id="${data[count].id}" ${data[count].status == 1 ? "checked" : ""} >
                                     <span class="switcher_control"></span>
                                 </label>
                             </td>`;
                             // html += '<td><a type="button" class="btn btn-primary btn-xs edit" id="' + data[count].id + '"><i class="fa fa-edit text-white"></i></a> <a type="button" class="btn btn-danger btn-xs delete" id="' + data[count].id + '"><i class="fa fa-trash text-white"></i></a></td></tr>';
-                            html += '<td><a type="button" class=" category-mid btn btn-outline-info btn-xs square-btn edit" id="' + data[count].id + '"> <i class="tio-edit"></i> </a> </td></tr>';
+                            html += '<td><a type="button" class="btn btn-outline-info btn-xs square-btn edit" id="' + data[count].id + '"> <i class="tio-edit"></i> </a> </td></tr>';
                         }
                         $('tbody').html(html);
                     }
@@ -308,80 +307,4 @@
             )
         }
     </script>
-    @push('script_2')
-    
-  <script>
-    
-      $(document).on('ready', function () {
-          // INITIALIZATION OF NAV SCROLLER
-          // =======================================================
-          $('.js-nav-scroller').each(function () {
-              new HsNavScroller($(this)).init()
-          });
-  
-          // INITIALIZATION OF SELECT2
-          // =======================================================
-          $('.js-select2-custom').each(function () {
-              var select2 = $.HSCore.components.HSSelect2.init($(this));
-          });
-  
-  
-          // INITIALIZATION OF DATATABLES
-          // =======================================================
-          var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
-              dom: 'Bfrtip',
-              buttons: [
-                  {
-                      extend: 'copy',
-                      className: 'd-none'
-                  },
-                  {
-                      extend: 'excel',
-                      className: 'd-none'
-                  },
-                  {
-                      extend: 'csv',
-                      className: 'd-none'
-                  },
-                  {
-                      extend: 'pdf',
-                      className: 'd-none'
-                  },
-                  {
-                      extend: 'print',
-                      className: 'd-none'
-                  },
-                  
-              ],
-              info: false,
-              paging: false,
-              select: {
-                  style: 'multi',
-                  selector: 'td:first-child input[type="checkbox"]',
-                  classMap: {
-                      checkAll: '#datatableCheckAll',
-                      counter: '#datatableCounter',
-                      counterInfo: '#datatableCounterInfo'
-                  }
-              },
-              language: {
-                  zeroRecords: '<div class="text-center p-4">' +
-                      '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
-                      '<p class="mb-0">{{translate('No data to show')}}</p>' +
-                      '</div>'
-              }
-          });
-  
-          // INITIALIZATION OF TAGIFY
-          // =======================================================
-          $('.js-tagify').each(function () {
-              var tagify = $.HSCore.components.HSTagify.init($(this));
-          });
-      });
-  
-      function filter_branch_orders(id) {
-          location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
-      }
-     
-  </script>
 @endpush
