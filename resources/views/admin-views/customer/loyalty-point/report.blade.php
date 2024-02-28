@@ -175,9 +175,9 @@
                                 <td >{{$k+$transactions->firstItem()}}</td>
                                 <td>{{$wt->transaction_id}}</td>
                                 <td><a href="{{route('admin.customer.view',['user_id'=>$wt->user_id])}}">{{Str::limit($wt->customer?$wt->customer->f_name.' '.$wt->customer->l_name:translate('not_found'),20,'...')}}</a></td>
-                                <td>{{$wt->credit}}</td>
-                                <td>{{$wt->debit}}</td>
-                                <td>{{$wt->amount}}</td>
+                                <td>₹{{number_format($wt->credit,2)}}</td>
+                                <td>₹{{number_format($wt->debit,2)}}</td>
+                                <td>₹{{number_format($wt->amount,2)}}</td>
                                 <td>
                                     <span class="badge badge-soft-{{$wt->type=='point_to_wallet'?'success':'dark'}}">
                                         {{translate($wt->type)}}
