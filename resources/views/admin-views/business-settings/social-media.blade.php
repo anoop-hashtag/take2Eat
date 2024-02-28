@@ -27,7 +27,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-6 form-group">
-                            <label for="name" class="">{{translate('Social_Media_Name')}}</label>
+                            <label for="name" class="">{{translate('Social_Media_Name')}}<span class="text-danger">*</span></label>
                             <select class="custom-select" name="name" id="name">
                                 <option selected disabled>---{{translate('select')}}---</option>
                                 <option value="instagram">{{translate('Instagram')}}</option>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-sm-6 form-group">
                             <input type="hidden" id="id">
-                            <label for="link" class="ml-1">{{ translate('social_media_link')}}</label>
+                            <label for="link" class="ml-1">{{ translate('social_media_link')}}<span class="text-danger">*</span></label>
                             <input type="text" name="link" class="form-control" id="link"
                                     placeholder="{{translate('Enter Social Media Link')}}" required>
                         </div>
