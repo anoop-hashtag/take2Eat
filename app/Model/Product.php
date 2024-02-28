@@ -57,6 +57,9 @@ class Product extends Model
         } elseif ($type == 'non_veg') {
             return $query->where('product_type', 'non_veg');
         }
+        elseif ($type == 'egg') {
+            return $query->where('product_type', 'egg');
+        }
     }
 
     public function reviews(): HasMany

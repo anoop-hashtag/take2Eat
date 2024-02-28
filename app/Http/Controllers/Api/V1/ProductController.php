@@ -27,6 +27,7 @@ class ProductController extends Controller
      */
     public function get_latest_products(Request $request): JsonResponse
     {
+        
         //update daily stock
         Helpers::update_daily_product_stock();
 
