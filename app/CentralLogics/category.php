@@ -19,7 +19,9 @@ class CategoryLogic
 
     public static function products($category_id, $type, $search)
     {
-        $product_type = ($type == 'veg') ? 'veg' : ($type == 'non_veg' ? 'non_veg' : 'all');
+        // $product_type = ($type == 'veg') ? 'veg' : ($type == 'non_veg' ? 'non_veg' : 'all');
+        $product_type = ($type == 'veg') ? 'veg' : (($type == 'non_veg') ? 'non_veg' : (($type == 'egg') ? 'egg' : 'all'));
+
 
         $products = Product::active()
             ->with(['branch_product'])
