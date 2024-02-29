@@ -52,30 +52,41 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <div class=" from_part_2 video_section d--none" id="video_section">
-                                    <label class="input-label">{{translate('youtube Video URL')}}<span class="text-danger ml-1">*</span></label>
-                                    <input type="text" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" id="url" oninput="validateUrl()">
-                                    <span id="urlValidationMessage"></span>
-                                </div>
+                                <!-- ... Your existing code ... -->
+                        <div class=" from_part_2 video_section d--none" id="video_section">
+                                                            <label class="input-label">{{translate('youtube Video URL')}}<span class="text-danger ml-1">*</span></label>
+                                                            <input type="text" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" id="url" oninput="validateUrl()">
+                                                            <span id="urlValidationMessage"></span>
+                                                        </div>
                                 <div class=" from_part_2 image_section d--none" id="image_section">
                                     <label class="input-label">{{translate('Image')}} <span class="text-danger ml-1">*</span></label>
                                     <div class="custom-file">
                                         <input type="file" name="image" id="customFileEg" class="custom-file-input"
                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required
-                                               oninvalid="document.getElementById('en-link').click()">
+                                               onchange="previewImage(this)">
                                         <label class="custom-file-label" for="customFileEg">{{ translate('choose file') }}</label>
                                     </div>
                                     <div class="col-12 from_part_2 mt-2">
                                         <div class="form-group">
                                             <div class="text-center">
-                                                <img style="height:170px;border: 1px solid; border-radius: 10px;" id="viewer"
-                                                     src="{{ asset('public/assets/admin/img/400x400/img2.jpg') }}" alt="image" />
+                                                <img style="height:170px;border: 1px solid; border-radius: 10px;" id="imagePreview" src="{{ asset('public/assets/admin/img/400x400/img2.jpg') }}" alt="image" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <script>
+                            function previewImage(input) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    document.getElementById('imagePreview').src = e.target.result;
+                                };
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        </script>
+                        
                     </div>
                     <!-- Include jQuery library if not already included -->
 
