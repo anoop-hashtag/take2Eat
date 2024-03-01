@@ -175,7 +175,7 @@ class OrderController extends Controller
                 'delivery_address' => json_encode(CustomerAddress::find($request->delivery_address_id) ?? null),
                 'delivery_charge' => $request['order_type'] != 'take_away' ? Helpers::get_delivery_charge($request['distance']) : 0,
                 'preparation_time' => 0,
-                'created_at' => $request['created_at'],
+                'created_at' => now(),
                 'updated_at' => now()
             ];
             $total_tax_amount = 0;
