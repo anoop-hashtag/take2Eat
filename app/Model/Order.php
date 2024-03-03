@@ -22,7 +22,7 @@ class Order extends Model
         'delivery_man_id' => 'integer',
         'delivery_charge' => 'float',
         'user_id' => 'integer',
-        'created_at' => 'datetime',
+        // 'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'delivery_address' => 'array',
         'table_id' => 'integer',
