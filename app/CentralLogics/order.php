@@ -22,16 +22,15 @@ class OrderLogic
         $response = Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating', 'order_partial_payments'])
         ->where(['id' => $order_id])
         ->first(), false);
-        print_r($response);
+        //print_r($response);
         // Customize the created_at timestamp format directly
         $response->created_at = Carbon::parse($response->created_at)->format('Y-m-d H:i:s');
         
-        print_r('==',$response->created_at);
-        die();
+        //print_r('==',$response->created_at);
+        
     // Now $response contains the formatted created_at timestamp
     return $response;
         
-        return $response;
     }
 
     public static function place_order($customer_id, $email, $customer_info, $cart, $payment_method, $discount, $coupon_code = null)
