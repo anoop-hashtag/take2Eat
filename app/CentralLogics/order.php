@@ -26,7 +26,7 @@ class OrderLogic
         // Customize the created_at timestamp format directly
         $response->created_at = Carbon::parse($response->created_at)->format('Y-m-d H:i:s');
         
-        print_r($response,$response->created_at);
+        print_r('==',$response->created_at);
         die();
     // Now $response contains the formatted created_at timestamp
     return $response;
