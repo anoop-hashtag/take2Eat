@@ -14,20 +14,20 @@ class OrderLogic
 {
     public static function track_order($order_id)
     {
-        // $response= Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
-        //     ->where(['id' => $order_id])
-        //     ->first(), false);
+        $response= Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
+            ->where(['id' => $order_id])
+            ->first(), false);
         // dd($response);
 
-        $response = Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating', 'order_partial_payments'])
-                    ->where(['id' => $order_id])
-                    ->first(), false);
+        // $response = Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating', 'order_partial_payments'])
+        //             ->where(['id' => $order_id])
+        //             ->first(), false);
 
-        // Map method to customize the created_at timestamp format
-        $response->map(function ($order) {
-            $order->created_at = Carbon::parse($order->created_at)->format('Y-m-d H:i:s');
-            return $order;
-        });
+        // // Map method to customize the created_at timestamp format
+        // $response->map(function ($order) {
+        //     $order->created_at = Carbon::parse($order->created_at)->format('Y-m-d H:i:s');
+        //     return $order;
+        // });
         
         return $response;
     }
