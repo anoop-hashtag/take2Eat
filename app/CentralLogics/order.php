@@ -17,6 +17,11 @@ class OrderLogic
         $orderdata = Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
             ->where(['id' => $order_id])
             ->first(), false);
+
+            $orderdata->map(function ($value, $key) {
+                $value['created_at'] = 'sonu';
+                return $value;
+            });
             return $orderdata;
     }
 
