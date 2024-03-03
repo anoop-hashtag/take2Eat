@@ -17,7 +17,7 @@ class OrderLogic
         $orderdata = Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
             ->where(['id' => $order_id])
             ->first(), false);
-            dd($orderdata);
+            return $orderdata;
     }
 
     public static function place_order($customer_id, $email, $customer_info, $cart, $payment_method, $discount, $coupon_code = null)
