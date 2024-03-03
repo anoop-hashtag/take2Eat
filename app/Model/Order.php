@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Order extends Model
 {
@@ -110,12 +109,5 @@ class Order extends Model
     public function order_partial_payments(): HasMany
     {
         return $this->hasMany(OrderPartialPayment::class)->orderBy('id', 'DESC');
-    }
-
-    public function createdAt(): Attribute
-    {
-        return new Attribute(
-            get: fn ($value) => $value->toDateTimeString(),
-        );
     }
 }

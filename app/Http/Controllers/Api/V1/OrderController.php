@@ -44,7 +44,7 @@ class OrderController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function track_order(Request $request)
+    public function track_order(Request $request): JsonResponse
     {
        
         $validator = Validator::make($request->all(), [
@@ -67,10 +67,7 @@ class OrderController extends Controller
             ], 404);
         }
 
-        $newdata =  OrderLogic::track_order($request['order_id']);
-        // $newdata->creatdataed_at =  OrderLogic::track_order($request['order_id'])->created_at->toDateTimeString();
-        // dd($newdata);
-        return response()->json($newdata, 200);
+        return response()->json(OrderLogic::track_order($request['order_id']), 200);
     }
 
     /**
