@@ -13,6 +13,7 @@ class OrderLogic
 {
     public static function track_order($order_id)
     {
+        dd(Order::with(['details', 'delivery_man.rating','order_partial_payments'])->where('order_id', $order_id )->first());
         return Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
             ->where(['id' => $order_id])
             ->first(), false);
