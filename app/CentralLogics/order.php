@@ -24,13 +24,18 @@ class OrderLogic
         ->first(), false);
         //print_r($response);
         // Customize the created_at timestamp format directly
-        $response->created_at = Carbon::parse($response->created_at)->format('Y-m-d H:i:s');
+        $responseArray = $response->toArray();
+
+        // Customize the created_at timestamp format directly in the array
+        $responseArray['created_at'] = Carbon::parse($response->created_at)->format('Y-m-d H:i:s');
         
+        // Now $responseArray contains the formatted created_at timestamp
+        return $responseArray;
         // print_r($response);
         // die();
         
     // Now $response contains the formatted created_at timestamp
-    return json_encode($response);
+    // return json_encode($response);
         
     }
 
