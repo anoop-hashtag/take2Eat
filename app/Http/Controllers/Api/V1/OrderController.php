@@ -44,8 +44,9 @@ class OrderController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function track_order(Request $request): JsonResponse
+    public function track_order(Request $request)
     {
+       
         $validator = Validator::make($request->all(), [
             'order_id' => 'required',
             'guest_id' => auth('api')->user() ? 'nullable' : 'required',
@@ -54,8 +55,7 @@ class OrderController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-
-        $user_id = (bool)auth('api')->user() ? auth('api')->user()->id : $request['guest_id'];
+        $user_id = (bool)auth('api')->user() ? auth('api')->user()->id : $request['uest_id'];
         $user_type = (bool)auth('api')->user() ? 0 : 1;
 
         $order = $this->order->where(['id' => $request['order_id'], 'user_id' => $user_id, 'is_guest' => $user_type])->first();
@@ -67,6 +67,8 @@ class OrderController extends Controller
             ], 404);
         }
 
+        $newdata=  OrderLogic::track_order($request['order_id'])->created_at;
+        dd($newdata);
         return response()->json(OrderLogic::track_order($request['order_id']), 200);
     }
 
