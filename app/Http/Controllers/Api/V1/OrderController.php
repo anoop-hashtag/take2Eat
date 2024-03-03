@@ -67,9 +67,10 @@ class OrderController extends Controller
             ], 404);
         }
 
-        $newdata=  OrderLogic::track_order($request['order_id'])->created_at->toDateTimeString();
-        dd($newdata);
-        return response()->json(OrderLogic::track_order($request['order_id']), 200);
+        $newdata =  OrderLogic::track_order($request['order_id']);
+        $newdata->created_at =  OrderLogic::track_order($request['order_id'])->created_at->toDateTimeString();
+        // dd($newdata);
+        return response()->json($newdata, 200);
     }
 
     /**
