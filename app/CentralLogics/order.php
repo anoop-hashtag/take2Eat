@@ -22,9 +22,9 @@ class OrderLogic
         $response = Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating', 'order_partial_payments'])
         ->where(['id' => $order_id])
         ->first(), false);
-    
-    // Customize the created_at timestamp format directly
-    $response->created_at = Carbon::parse($response->created_at)->format('Y-m-d H:i:s');
+        
+        // Customize the created_at timestamp format directly
+        $response->created_at = Carbon::parse($response->created_at)->format('Y-m-d H:i:s');
     
     // Now $response contains the formatted created_at timestamp
     return $response;
