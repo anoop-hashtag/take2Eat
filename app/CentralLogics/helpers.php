@@ -187,7 +187,6 @@ class Helpers
 
     public static function order_data_formatting($data, $multi_data = false)
     {
-        return $data;
         $storage = [];
         if ($multi_data) {
             foreach ($data as $item) {
@@ -197,7 +196,6 @@ class Helpers
             $data = $storage;
         } else {
             $data['add_on_ids'] = json_decode($data['add_on_ids']);
-            // $data['created_at'] = 'sonu';
 
             foreach ($data->details as $detail) {
                 $detail->product_details = gettype($detail->product_details) != 'array' ? json_decode($detail->product_details) : $detail->product_details;
