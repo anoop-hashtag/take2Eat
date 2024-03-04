@@ -17,7 +17,7 @@ class OrderLogic
         $response= Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
             ->where(['id' => $order_id])
             ->first(), false)->toArray();
-            $responseArray = $response->toArray();
+            $response = $response->toArray();
         // Customize the created_at timestamp format directly in the array
         $response['created_at'] = Carbon::parse($response['created_at'])->format('Y-m-d H:i:s');
         
