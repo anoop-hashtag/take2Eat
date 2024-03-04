@@ -18,13 +18,13 @@ class OrderLogic
             ->where(['id' => $order_id])
             ->first(), false)->toArray();
 
-            $localTimezone = 'Asia/Kolkata';
-
+            // $localTimezone = 'Asia/Kolkata';
+           
     // Convert the created_at timestamp to the local time zone
             //  $order->created_at = Carbon::parse($order->created_at)->setTimezone($localTimezone)->format('Y-m-d H:i:s');
 
         // Customize the created_at timestamp format directly in the array
-        $response['created_at'] = Carbon::parse($response['created_at'])->setTimezone($localTimezone)->format('Y-m-d H:i:s');
+        $response['created_at'] = Carbon::parse($response['created_at'])->config('app.timezone')->format('Y-m-d H:i:s');
         
         // Now $responseArray contains the formatted created_at timestamp
         return $response;
