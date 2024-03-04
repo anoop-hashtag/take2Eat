@@ -12,20 +12,33 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderLogic
 {
+    use Carbon\Carbon;
+
     public static function track_order($order_id)
     {
-        $response= Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
+        $order = Order::with(['details', 'delivery_man.rating', 'order_partial_payments'])
             ->where(['id' => $order_id])
-            ->first(), false)->toArray();
-
-        // Customize the created_at timestamp format directly in the array
-        $response['created_at'] = Carbon::parse($response['created_at'])->format('Y-m-d H:i:s');
-        
-        // Now $responseArray contains the formatted created_at timestamp
+            ->first();
+    
+        // Check if the order exists
+        if (!$order) {
+            // Handle the case where the order is not found
+            return null;
+        }
+    
+        // Set the desired time zone (replace 'UTC' with your actual time zone)
+        $timezone = 'UTC';
+    
+        // Format the created_at timestamp in the specified time zone
+        $order->created_at = Carbon::parse($order->created_at)->timezone($timezone)->format('Y-m-d H:i:s');
+    
+        // Use the order_data_formatting function if needed
+        $response = Helpers::order_data_formatting($order, false)->toArray();
+    
+        // Now $response contains the correctly formatted created_at timestamp
         return $response;
-      
-        
     }
+    
 
     public static function place_order($customer_id, $email, $customer_info, $cart, $payment_method, $discount, $coupon_code = null)
     {
