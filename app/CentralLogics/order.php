@@ -14,26 +14,18 @@ class OrderLogic
 {
     public static function track_order($order_id)
     {
-        $order = Order::with(['details', 'delivery_man.rating', 'order_partial_payments'])
+        $response= Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
             ->where(['id' => $order_id])
-            ->first();
-    
-        // Check if the order exists
-        if (!$order) {
-            // Handle the case where the order is not found
-            return null;
-        }
-    
-        // Format the created_at timestamp
-        $order->created_at = Carbon::parse($order->created_at)->format('Y-m-d H:i:s');
-    
-        // Use the order_data_formatting function if needed
-        $response = Helpers::order_data_formatting($order, false)->toArray();
-    
-        // Now $response contains the formatted created_at timestamp
+            ->first(), false)->toArray();
+
+        // Customize the created_at timestamp format directly in the array
+        $response['created_at'] = Carbon::parse($response['created_at'])->format('Y-m-d H:i:s');
+        
+        // Now $responseArray contains the formatted created_at timestamp
         return $response;
+      
+        
     }
-    
 
     public static function place_order($customer_id, $email, $customer_info, $cart, $payment_method, $discount, $coupon_code = null)
     {
