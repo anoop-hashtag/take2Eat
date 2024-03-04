@@ -65,7 +65,7 @@
                                         <label class="input-label">{{translate('discount_Type')}}<span style="color: red">*</span></label>
                                         <select name="discount_type" id="discount_type" class="form-control">
                                             <option value="percent">{{translate('percent')}}</option>
-                                            <option value="amount">{{translate('amount')}} (in ₹)</option>
+                                            <option value="amount">{{translate('amount')}} {{ __('(in :currency)', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}</option>
                                         </select>
                                     </div>
                                 </div>

@@ -505,7 +505,11 @@
                                         <input class="form-control" required type="text" name="options[` + count +`][values][0][label]" id="">
                                     </div>
                                     <div class="col-md-4 col-sm-6">
-                                        <label for="">{{ translate('Additional price (in ₹)') }}</label>
+                                        
+                                    <label for="">
+                                            {{ __('Additional price (in :currency)', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}
+                                    </label>
+
                                         <input class="form-control" required type="number" min="0" step="0.01" name="options[` + count + `][values][0][optionPrice]" id="">
                                     </div>
                                 </div>
@@ -567,7 +571,9 @@
                         <input class="form-control" required type="text" name="options[` + count + `][values][` + countRow + `][label]" id="">
                     </div>
                     <div class="col-md-4 col-sm-5">
-                        <label for="">{{ translate('Additional price (in ₹)') }}</label>
+                        <label for="">
+                                            {{ __('Additional price (in :currency)', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}
+                                    </label>
                         <input class="form-control"  required type="number" min="0" step="0.01" name="options[` + count + `][values][` + countRow + `][optionPrice]" id="">
                     </div>
                     <div class="col-sm-2 max-sm-absolute">
