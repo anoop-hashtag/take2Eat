@@ -14,12 +14,12 @@ class OrderLogic
 {
     public static function track_order($order_id)
     {
-        $data2= Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
+        $response= Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating','order_partial_payments'])
             ->where(['id' => $order_id])
             ->first(), false)->toArray();
-       dd($data2);
+
         // Customize the created_at timestamp format directly in the array
-        // $response['created_at'] = Carbon::parse($response['created_at'])->format('Y-m-d H:i:s');
+        $response['created_at'] = Carbon::parse($response['created_at'])->format('Y-m-d H:i:s');
         
         // Now $responseArray contains the formatted created_at timestamp
         return $response;
