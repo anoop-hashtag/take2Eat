@@ -90,7 +90,7 @@
                 <div class="resturant-card dashboard--card bg--2">
                     <h4 class="title">{{translate('debit')}}</h4>
                     <span class="subtitle">
-                        {{ number_format($debit, 2) }}
+                        {{ __(':currency', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}{{ number_format($debit, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/ruppee.png')}}" alt="dashboard">
                 </div>
@@ -101,7 +101,7 @@
                 <div class="resturant-card dashboard--card bg--3">
                     <h4 class="title">{{translate('credit')}}</h4>
                     <span class="subtitle">
-                        {{ number_format($credit, 2) }}
+                        {{ __(':currency', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}{{ number_format($credit, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/4.png')}}" alt="dashboard">
                 </div>
@@ -112,7 +112,7 @@
                 <div class="resturant-card dashboard--card bg--1">
                     <h4 class="title">{{translate('balance')}}</h4>
                     <span class="subtitle">
-                        {{ number_format($balance, 2) }}
+                        {{ __(':currency', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}{{ number_format($balance, 2) }}
                     </span>
                     <img class="resturant-icon" src="{{asset('/public/assets/admin/img/dashboard/1.png')}}" alt="dashboard">
                 </div>
@@ -175,9 +175,9 @@
                                 <td >{{$k+$transactions->firstItem()}}</td>
                                 <td>{{$wt->transaction_id}}</td>
                                 <td><a href="{{route('admin.customer.view',['user_id'=>$wt->user_id])}}">{{Str::limit($wt->customer?$wt->customer->f_name.' '.$wt->customer->l_name:translate('not_found'),20,'...')}}</a></td>
-                                <td>₹{{number_format($wt->credit,2)}}</td>
-                                <td>₹{{number_format($wt->debit,2)}}</td>
-                                <td>₹{{number_format($wt->amount,2)}}</td>
+                                <td>{{ __(':currency', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}{{number_format($wt->credit,2)}}</td>
+                                <td>{{ __(':currency', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}{{number_format($wt->debit,2)}}</td>
+                                <td>{{ __(':currency', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}{{number_format($wt->amount,2)}}</td>
                                 <td>
                                     <span class="badge badge-soft-{{$wt->type=='point_to_wallet'?'success':'dark'}}">
                                         {{translate($wt->type)}}
