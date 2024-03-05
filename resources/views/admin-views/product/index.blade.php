@@ -204,7 +204,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('tax_Type')}}
-                                                            <span class="text-danger">*</span>
+                                                            {{-- <span class="text-danger">*</span> --}}
                                                         </label>
                                                         <select name="tax_type" class="form-control js-select2-custom" id="tax_type">
                                                             <option selected disabled>---{{translate('select')}}---</option>
@@ -216,7 +216,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label id="tax_label" class="input-label" for="exampleFormControlInput1">{{translate('tax_Rate')}}
-                                                            <span class="text-danger">*</span>
+                                                            {{-- <span class="text-danger">*</span> --}}
                                                         </label>
                                                         <input id="tax_input" type="number" min="0" step="any" name="tax" class="form-control"
                                                                placeholder="{{translate('Ex : ₹100')}}" required>
