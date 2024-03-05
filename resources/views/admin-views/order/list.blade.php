@@ -57,11 +57,20 @@
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3 d-flex gap-2">
-                                <button type="reset" class="btn btn-secondary flex-grow-1"  onclick="window.location.assign('all')">{{ translate('Clear') }}</button>
+                                <button type="reset" class="btn btn-secondary flex-grow-1"  onclick="clearBranchFilter()">{{ translate('Clear') }}</button>
                                 <button type="submit" class="btn btn-primary text-nowrap flex-grow-1" onclick="formUrlChange(this)">{{ translate('Show Data') }}</button>
                             </div>
                         </div>
                     </form>
+                    <script>
+                        function clearBranchFilter() {
+                            // Unset branch session
+                            <?php session(['branch_filter' => null]); ?>
+                    
+                            // Reload the page
+                            window.location.assign('all');
+                        }
+                    </script>
                 </div>
             </div>
             <!-- End Filter Card -->
