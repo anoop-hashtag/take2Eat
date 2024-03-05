@@ -50,35 +50,35 @@
                         @php($restaurant_name=\App\CentralLogics\Helpers::get_business_settings('restaurant_name'))
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <label class="input-label text-capitalize">{{translate('Company Name')}}</label>
+                                <label class="input-label text-capitalize">{{translate('Company Name')}}<span class="text-danger">*</span></label>
                                 <input type="text" value="{{$restaurant_name}}"
-                                       name="restaurant_name" class="form-control" placeholder="{{translate('Ex: ABC Company')}}">
+                                       name="restaurant_name" class="form-control" required placeholder="{{translate('Ex: ABC Company')}}">
                             </div>
                         </div>
 
                         @php($phone=\App\CentralLogics\Helpers::get_business_settings('phone'))
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <label class="input-label text-capitalize">{{translate('phone')}}</label>
+                                <label class="input-label text-capitalize">{{translate('phone')}}<span class="text-danger">*</span></label>
                                 <input type="text" value="{{$phone}}"
-                                       name="phone" class="form-control" placeholder="{{translate('Ex: +9xxx-xxx-xxxx')}}">
+                                       name="phone" class="form-control" required placeholder="{{translate('Ex: +9xxx-xxx-xxxx')}}">
                             </div>
                         </div>
 
                         @php($email=\App\CentralLogics\Helpers::get_business_settings('email_address'))
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <label class="input-label text-capitalize">{{translate('email')}}</label>
+                                <label class="input-label text-capitalize">{{translate('email')}}<span class="text-danger">*</span></label>
                                 <input type="email" value="{{$email}}"
-                                       name="email" class="form-control" placeholder="{{translate('Ex: contact@company.com')}}">
+                                       name="email" class="form-control" required placeholder="{{translate('Ex: contact@company.com')}}">
                             </div>
                         </div>
 
                         @php($address=\App\CentralLogics\Helpers::get_business_settings('address'))
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <label class="input-label text-capitalize">{{translate('address')}}</label>
-                                <textarea name="address" class="form-control" placeholder="{{translate('Ex: ABC Company')}}" style="resize: none;">{{$address}}</textarea>
+                                <label class="input-label text-capitalize">{{translate('address')}}<span class="text-danger">*</span></label>
+                                <textarea name="address" class="form-control" required placeholder="{{translate('Ex: ABC Company')}}" style="resize: none;">{{$address}}</textarea>
                             </div>
                         </div>
 
