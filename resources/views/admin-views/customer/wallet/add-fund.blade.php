@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="amount">{{translate('amount')}} (in ₹)<span class="text-danger">*</span></label>
+                                <label class="form-label" for="amount">{{translate('amount')}}  {{ __('(in :currency)', ['currency' => \App\CentralLogics\Helpers::currency_symbol()]) }}<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control h--45px" name="amount" id="amount" step="0.01" min="1" required>
                             </div>
                         </div>
