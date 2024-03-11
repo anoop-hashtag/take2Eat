@@ -18,6 +18,15 @@
 
         <?php
             $pb = json_decode($product->branch_products, true);
+
+            // for($i = 0; $i < count($pb[0]['variations'][0]['values']); $i++) {
+            //     $optionPrice = $pb[0]['variations'][0]['values'][$i]['optionPrice'];
+            //    echo '<pre>'; print_r($pb[0]['variations'][0]['values'][$i]['optionPrice']);
+            //     die();
+                
+            // }
+                
+            
             $discount_data = [];
             if(isset($pb[0])){
                 $price = $pb[0]['price'];
@@ -40,24 +49,27 @@
             <div class="break-all">
                 <a href="#" class="d-block h3 mb-2 product-title">{{ Str::limit($product->name, 100) }}</a>
             </div>
-
+           
             <div class="mb-2 text-dark d-flex align-items-baseline gap-2">
-                <h3 class="font-weight-normal text-accent mb-0">
-                    {{ \App\CentralLogics\Helpers::set_symbol(($price - \App\CentralLogics\Helpers::discount_calculate($discount_data, $price))) }}
+                <h3 class="font-weight-normal text-accent mb-0" id="chosen_priceTop">
+                 {{ \App\CentralLogics\Helpers::set_symbol(($price - \App\CentralLogics\Helpers::discount_calculate($discount_data, $price))) }}
                 </h3>
+                
                 @if($discount_data['discount'] > 0)
-                    <strike class="fz-12">
-                        {{ \App\CentralLogics\Helpers::set_symbol($price) }}
+                    <strike class="fz-12" id="chosen_priceTopstrike">
+                       {{ \App\CentralLogics\Helpers::set_symbol($price) }}
                     </strike>
                 @endif
             </div>
-
+            
             @if($discount_data['discount'] > 0)
                 <div class="mb-3 text-dark">
-                    <strong>{{translate('Discount : ')}}</strong>
+                    <strong>{{translate('Discount: ')}}
                     <strong
-                        id="set-discount-amount">{{ \App\CentralLogics\Helpers::set_symbol(\App\CentralLogics\Helpers::discount_calculate($discount_data, $price)) }}</strong>
+                        id="set-discount-amount">{{ \App\CentralLogics\Helpers::set_symbol(\App\CentralLogics\Helpers::discount_calculate($discount_data,$price)) }}</strong>
                 </div>
+                <script>
+                    </script>
             @endif
             <!-- Product panels-->
         </div>
@@ -106,21 +118,31 @@
                                 @endif
 
                                 <div>
-                                    <input type="hidden"  name="variations[{{ $key }}][min]" value="{{ $choice['min'] }}" >
-                                    <input type="hidden"  name="variations[{{ $key }}][max]" value="{{ $choice['max'] }}" >
-                                    <input type="hidden"  name="variations[{{ $key }}][required]" value="{{ $choice['required'] }}" >
+                                    <input type="hidden" name="variations[{{ $key }}][min]" value="{{ $choice['min'] }}">
+                                    <input type="hidden" name="variations[{{ $key }}][max]" value="{{ $choice['max'] }}">
+                                    <input type="hidden" name="variations[{{ $key }}][required]" value="{{ $choice['required'] }}">
                                     <input type="hidden" name="variations[{{ $key }}][name]" value="{{ $choice['name'] }}">
+                                    
+                                    @php
+                                        $firstOption = reset($choice['values']); // Get the first option
+                                    @endphp
+                                    
+                                    <input type="hidden" name="variations[{{ $key }}][selected_option_price]" value="{{ $firstOption['optionPrice'] }}">
+                                    
                                     @foreach ($choice['values'] as $k => $option)
                                         <div class="form-check form--check d-flex pr-5 mr-6">
                                             <input class="form-check-input" type="{{ ($choice['type'] == "multi") ? "checkbox" : "radio"}}" id="choice-option-{{ $key }}-{{ $k }}"
-                                                   name="variations[{{ $key }}][values][label][]" value="{{ $option['label'] }}" autocomplete="off">
-
-                                            <label class="form-check-label"
-                                                   for="choice-option-{{ $key }}-{{ $k }}">{{ Str::limit($option['label'], 20, '...') }}</label>
+                                                name="variations[{{ $key }}][values][label][]" value="{{ $option['label'] }}" autocomplete="off"
+                                                {{ $k === 0 ? 'checked' : '' }}>
+                                                
+                                            <label class="form-check-label" for="choice-option-{{ $key }}-{{ $k }}">
+                                                {{ Str::limit($option['label'], 20, '...') }}
+                                            </label>
                                             <span class="ml-auto">{{ \App\CentralLogics\Helpers::set_symbol($option['optionPrice']) }}</span>
                                         </div>
                                     @endforeach
                                 </div>
+                                
 
                             @endif
                         @endforeach

@@ -179,6 +179,57 @@ class POSController extends Controller
         return array('price' => \App\CentralLogics\Helpers::set_symbol(($price * $request->quantity) + $addon_price));
     }
 
+    public function variant_price_new(Request $request): array
+    {
+        $product = $this->product->find($request->id);
+        $price = $product->price;
+        $addon_price = 0;
+
+        if ($request['addon_id']) {
+            foreach ($request['addon_id'] as $id) {
+                $addon_price += $request['addon-price' . $id] * $request['addon-quantity' . $id];
+            }
+        }
+
+        // $branch_product = $this->product_by_branch->where(['product_id' => $request->id, 'branch_id' => session()->get('branch_id')])->first();
+
+        if(empty(json_decode($product->variations))){
+            $branch_product = $this->product->where(['id' => $request->id])->first();
+        }
+        else{
+             $branch_product = $this->product_by_branch->where(['product_id' => $request->id, 'branch_id' => session()->get('branch_id')])->first();
+         }
+
+
+
+        if (isset($branch_product)) {
+            $branch_product_variations = $branch_product->variations;
+
+            $discount_data = [
+                'discount_type' => $branch_product['discount_type'],
+                'discount' => $branch_product['discount']
+            ];
+
+
+            $discount_amount=0;
+            if ($request->variations && count($branch_product_variations)) {
+                $price_total = Helpers::new_variation_price($branch_product_variations, $request->variations);
+                if($branch_product['discount_type']=='percent')
+                {
+                    $discount_amount =  Helpers::discount_calculate($discount_data, $price_total);
+                } else{
+                    $discount_amount = $branch_product['discount'];
+                }
+
+
+            } else {
+                $price_total = $price;
+                $discount_amount = $branch_product['discount'];
+            }
+        }
+        $mainPrice = \App\CentralLogics\Helpers::set_symbol(($price_total - \App\CentralLogics\Helpers::discount_calculate($discount_data, $price_total)));
+        return array('price' => $mainPrice, 'pricestrike'=>\App\CentralLogics\Helpers::set_symbol($price_total), 'discount_amount'=>\App\CentralLogics\Helpers::set_symbol($discount_amount));
+    }
     /**
      * @param Request $request
      * @return JsonResponse
@@ -345,8 +396,14 @@ class POSController extends Controller
                 'discount' => $branch_product['discount']
             ];
         }
-
-        $price = $branch_product_price + $variation_price;
+        
+        if (empty($variation_data)) {
+            $price = $branch_product_price + $variation_price;
+        } else {
+            $price = $variation_price;
+        }
+        
+        
         $data['variation_price'] = $variation_price;
 
         $discount_on_product = Helpers::discount_calculate($discount_data, $price);

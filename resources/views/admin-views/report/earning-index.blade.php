@@ -212,20 +212,46 @@
 
         <!-- Card -->
         <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between flex-wrap gap-2">
-                @php
-                    $total_sold=\App\Model\Order::where(['order_status'=>'delivered'])->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])->sum('order_amount')
-                @endphp
-                <h6 class="d-flex align-items-center gap-2 mb-0">
-                    {{translate('Total_Sale')}} ({{date('Y')}}) :
-                    <span class="h4 mb-0"> {{ \App\CentralLogics\Helpers::set_symbol($total_sold) }}</span>
-                </h6>
+            <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between flex-wrap gap-2">
+                    @php
+                        $total_sold = 0;
+                        if (isset($_GET['from'])) {
+                            $total_sold = \App\Model\Order::where(['order_status' => 'delivered'])
+                                ->whereBetween('created_at', [$from, $to])
+                                ->sum('order_amount');
+                        } else {
+                            $total_sold = \App\Model\Order::where(['order_status' => 'delivered'])
+                                ->whereBetween('created_at', [date('y-01-01'), date('y-12-31')])
+                                ->sum('order_amount');
+                        }
+                    @endphp
+                    
+                    <h6 class="d-flex align-items-center gap-2 mb-0">
+                       
+                    <?php 
+                        if (empty($_GET)) {
+                            echo translate('Total_Sale') . ' (' . date('Y') . '):';
+                        } else {
+                            echo 'Total Sale (' . date('d-m-Y ' . config('time_format'), strtotime(session('from_date'))) . ' - ' . date('d-m-Y ' . config('time_format'), strtotime(session('to_date'))) . ')';
 
-                <a class="js-hs-unfold-invoker btn btn-white"
-                    href="{{route('admin.orders.list',['status'=>'all'])}}">
-                    <i class="tio-shopping-cart-outlined"></i> {{translate('orders')}}
-                </a>
+                        
+                        }
+                        ?>
+
+                        
+                        <span class="h4 mb-0"> {{ \App\CentralLogics\Helpers::set_symbol($total_sold) }}</span>
+                    </h6>
+            
+                    <a class="js-hs-unfold-invoker btn btn-white"
+                        href="{{ route('admin.orders.list', ['status' => 'all']) }}">
+                        <i class="tio-shopping-cart-outlined"></i> {{ translate('orders') }}
+                    </a>
+                </div>
             </div>
+            
+        </div>
+        
 
             @php
                 $sold=[];
@@ -246,6 +272,8 @@
             @endphp
 
             <!-- Body -->
+
+            
             <div class="card-body">
                 <!-- Bar Chart -->
                 <div class="chartjs-custom" style="height: 360px">

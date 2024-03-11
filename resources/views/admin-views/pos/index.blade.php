@@ -709,7 +709,30 @@
                         }
                         else{
                             $('#add-to-cart-form #chosen_price_div').removeClass('d-none');
+                            // $('#add-to-cart-form #chosen_price_div #chosen_price').html(data.price);
+                        }
+                    }
+                });
+                
+                $.ajax({
+                    type: "POST",
+                    url: '{{ route('admin.pos.variant_price_new') }}',
+                    data: $('#add-to-cart-form').serializeArray(),
+                    success: function (data) {
+                        console.log(data);
+                        if(data.error == 'quantity_error'){
+                            toastr.error(data.message);
+                        }
+                        else{
+                            $('#add-to-cart-form #chosen_price_div').removeClass('d-none');
                             $('#add-to-cart-form #chosen_price_div #chosen_price').html(data.price);
+                            $('#chosen_priceTop').text(data.price);
+                           
+                            $('#chosen_priceTopdiscount').text(data.price);
+                           
+                            $('#set-discount-amount').text(data.discount_amount);
+
+                            $('#chosen_priceTopstrike').text(data.pricestrike);
                         }
                     }
                 });

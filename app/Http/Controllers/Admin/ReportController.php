@@ -43,6 +43,7 @@ class ReportController extends Controller
      */
     public function earning_index(Request $request): Renderable
     {
+        
         $from = Carbon::parse($request->from)->startOfDay();
         $to = Carbon::parse($request->to)->endOfDay();
 

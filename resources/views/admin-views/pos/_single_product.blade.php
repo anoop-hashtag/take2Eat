@@ -29,8 +29,8 @@
                 ];
             }
         ?>
-        <div class="pos-product-item_price">
+        {{-- <div class="pos-product-item_price">
             {{ \App\CentralLogics\Helpers::set_symbol(($price- \App\CentralLogics\Helpers::discount_calculate($discount_data, $price))) }}
-        </div>
+        </div> --}}
     </div>
 </div>
