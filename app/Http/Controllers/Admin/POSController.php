@@ -224,7 +224,8 @@ class POSController extends Controller
 
             } else {
                 $price_total = $price;
-                $discount_amount = $branch_product['discount'];
+                // $discount_amount = $branch_product['discount'];
+                $discount_amount =  Helpers::discount_calculate($discount_data, $price_total);
             }
         }
         $mainPrice = \App\CentralLogics\Helpers::set_symbol(($price_total - \App\CentralLogics\Helpers::discount_calculate($discount_data, $price_total)));
