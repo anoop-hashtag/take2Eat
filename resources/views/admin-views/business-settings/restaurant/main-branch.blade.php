@@ -4,17 +4,22 @@
 
 @push('css_or_js')
     <style>
-        #location_map_div #pac-input{
-            height: 40px;
-            border: 1px solid #fbc1c1;
-            outline: none;
-            width:100%;
-            box-shadow: none;
-            position: relative;
-            top: 5px !important;
-            /* transform: translateX(7px); */
-            padding-left: 10px;
-        }
+    #location_map_div {
+    position: relative;
+}
+
+#pac-input:focus {
+    border: 1px solid #fbc1c1;
+    /* You can add additional styling here if needed */
+}
+
+#location_map_canvas {
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    position: relative;
+    z-index: 1; /* Set a lower z-index for the map */
+}
+
     </style>
 @endpush
 
@@ -172,15 +177,23 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6" id="location_map_div">
-                                    <input id="pac-input" class="controls rounded" data-toggle="tooltip"
+                                    <label for="pac-input" class="sr-only">Search Location</label>
+                                    <input id="pac-input"  class="form-control" 
+                                           data-toggle="tooltip"
                                            data-placement="right"
                                            data-original-title="{{ translate('search_your_location_here') }}"
-                                           type="text" placeholder="{{ translate('search_here') }}" />
-                                    <div id="location_map_canvas" class="overflow-hidden rounded" style="height: 80%;position:relative;top:20px" ></div>
+                                           type="text" 
+                                           placeholder="{{ translate('search_here') }}" 
+                                           style="margin-bottom: 20px;" />
+                                           
+                                    <div id="location_map_canvas" class="map-container rounded">
+                                        <!-- Your map rendering code goes here -->
+                                    </div>
                                 </div>
-
+                                
+                                
+                               
                             </div>
 
                             <div class="d-flex justify-content-end gap-3 mt-5">
