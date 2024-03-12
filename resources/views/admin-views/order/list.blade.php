@@ -455,7 +455,34 @@
            }
        </script>
    
-      
+      <script>
+        $(document).on('ready', function () {
+            // ... Your existing initialization code
+
+            // Get the DataTable instance
+            var dataTable = $('#datatable').DataTable();
+
+            // Hide pagination on initial load
+            checkAndTogglePagination(dataTable);
+
+            // Event listener for DataTable search
+            dataTable.on('search.dt', function () {
+                checkAndTogglePagination(dataTable);
+            });
+        });
+
+        function checkAndTogglePagination(dataTable) {
+            var paginationSection = $('.pagination-style');
+
+            if (dataTable.search() && dataTable.search() !== '') {
+                // If search is active, hide pagination
+                paginationSection.hide();
+            } else {
+                // If no search or search is cleared, show pagination
+                paginationSection.show();
+            }
+        }
+        </script>
        <script>
            $('#from_date,#to_date').change(function () {
                let fr = $('#from_date').val();
