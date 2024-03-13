@@ -21,7 +21,7 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Support\Renderable;
-
+use DB;
 
 class OrderController extends Controller
 {
@@ -755,8 +755,9 @@ class OrderController extends Controller
         $search = $request['search'];
         $from = $request['from'];
         $to = $request['to'];
-
+       
         if ($request->has('search')) {
+
             $key = explode(' ', $request['search']);
             $query = $this->order->where(function ($q) use ($key) {
                 foreach ($key as $value) {
@@ -768,7 +769,10 @@ class OrderController extends Controller
                 ->when($from && $to, function ($query) use ($from, $to) {
                     $query->whereBetween('created_at', [$from, $to]);
                 });
+                dd($query->toSql()); 
         } else {
+           
+           
             if (session()->has('branch_filter') == false) {
                 session()->put('branch_filter', 0);
             }
@@ -782,7 +786,7 @@ class OrderController extends Controller
                         ->when($from && $to, function ($query) use ($from, $to) {
                             $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
                         });;
-
+                        dd($query->toSql()); 
                 } elseif ($status != 'all') {
                     $query = $this->order
                         ->with(['customer', 'branch'])
@@ -791,14 +795,30 @@ class OrderController extends Controller
                         ->when($from && $to, function ($query) use ($from, $to) {
                             $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
                         });;
-
+                        dd($query->toSql()); 
                 } else {
-
+                   
                     $query = $this->order
-                        ->with(['customer', 'branch'])
-                        ->when($from && $to, function ($query) use ($from, $to) {
-                            $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
-                        });;
+                    ->with(['customer', 'branch'])
+                    ->when($from && $to, function ($query) use ($from, $to) {
+                        $query->whereBetween('created_at', [
+                            date('Y-m-d', strtotime($from)) . " 00:00:00",
+                            Carbon::parse($to)->endOfDay()->format('Y-m-d') . " 23:59:59"
+                        ]);
+                        
+                    });
+                    
+                // Get the SQL query
+                // $sql = $query->toSql();
+                // $bindings = $query->getBindings();
+
+                // Now you can print SQL query with bindings
+                // echo vsprintf(str_replace('?', "'%s'", $sql), $bindings);
+                
+                // Now you can display or log the SQL query
+                // dd($sql);
+                
+                
                 }
             } //selected branch
             else {
@@ -827,6 +847,7 @@ class OrderController extends Controller
                         ->when($from && $to, function ($query) use ($from, $to) {
                             $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
                         });
+
                 }
             }
         }
