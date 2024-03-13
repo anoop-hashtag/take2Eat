@@ -769,7 +769,7 @@ class OrderController extends Controller
                 ->when($from && $to, function ($query) use ($from, $to) {
                     $query->whereBetween('created_at', [$from, $to]);
                 });
-                dd($query->toSql()); 
+               
         } else {
            
            
@@ -786,7 +786,7 @@ class OrderController extends Controller
                         ->when($from && $to, function ($query) use ($from, $to) {
                             $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
                         });;
-                        dd($query->toSql()); 
+                       
                 } elseif ($status != 'all') {
                     $query = $this->order
                         ->with(['customer', 'branch'])
@@ -795,7 +795,7 @@ class OrderController extends Controller
                         ->when($from && $to, function ($query) use ($from, $to) {
                             $query->whereBetween('created_at', [$from, Carbon::parse($to)->endOfDay()]);
                         });;
-                        dd($query->toSql()); 
+                     
                 } else {
                    
                     $query = $this->order
@@ -808,15 +808,6 @@ class OrderController extends Controller
                         
                     });
                     
-                // Get the SQL query
-                // $sql = $query->toSql();
-                // $bindings = $query->getBindings();
-
-                // Now you can print SQL query with bindings
-                // echo vsprintf(str_replace('?', "'%s'", $sql), $bindings);
-                
-                // Now you can display or log the SQL query
-                // dd($sql);
                 
                 
                 }
