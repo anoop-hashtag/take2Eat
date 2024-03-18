@@ -462,6 +462,7 @@ class OrderController extends Controller
      */
     public function get_order_details(Request $request): JsonResponse
     {
+        dd('sonu');
         $validator = Validator::make($request->all(), [
             'order_id' => 'required'
         ]);
