@@ -481,7 +481,7 @@ class OrderController extends Controller
                 $q->where([ 'user_id' => $user_id, 'is_guest' => $user_type ]);
             })
             ->get();
-            dd($details);
+           
 
         if ($details->count() < 1) {
             return response()->json([
