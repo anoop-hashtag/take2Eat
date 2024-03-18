@@ -462,7 +462,7 @@ class OrderController extends Controller
      */
     public function get_order_details(Request $request): JsonResponse
     {
-        dd('sonu');
+
         $validator = Validator::make($request->all(), [
             'order_id' => 'required'
         ]);
@@ -481,6 +481,7 @@ class OrderController extends Controller
                 $q->where([ 'user_id' => $user_id, 'is_guest' => $user_type ]);
             })
             ->get();
+            dd($details);
 
         if ($details->count() < 1) {
             return response()->json([
