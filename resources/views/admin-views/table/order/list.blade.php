@@ -106,7 +106,7 @@
                                     </h6>
                                     <span class="card-title">
                                 {{$order_count['done']}}
-                            </span>
+                                     </span>
                                 </div>
                             </a>
                         </div>
@@ -131,9 +131,9 @@
                                         <img src="{{asset('public/assets/admin/img/icons/canceled.png')}}" alt="dashboard" class="oder--card-icon">
                                         <span>{{translate('cancelled')}}</span>
                                     </h6>
-                                    <span class="card-title">
-                                {{$order_count['canceled']}}
-                            </span>
+                                <span class="card-title">
+                                   {{$order_count['canceled']}}
+                                </span>
                                 </div>
                             </a>
                         </div>
@@ -460,6 +460,35 @@
         function filter_branch_orders(id) {
             location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
         }
+
+
+        $(document).on('ready', function () {
+            // ... Your existing initialization code
+
+            // Get the DataTable instance
+            var dataTable = $('#datatable').DataTable();
+
+            // Hide pagination on initial load
+            checkAndTogglePagination(dataTable);
+
+            // Event listener for DataTable search
+            dataTable.on('search.dt', function () {
+                checkAndTogglePagination(dataTable);
+            });
+        });
+
+        function checkAndTogglePagination(dataTable) {
+            var paginationSection = $('.pagination-style');
+
+            if (dataTable.search() && dataTable.search() !== '') {
+                // If search is active, hide pagination
+                paginationSection.hide();
+            } else {
+                // If no search or search is cleared, show pagination
+                paginationSection.show();
+            }
+        }
+
     </script>
     
     

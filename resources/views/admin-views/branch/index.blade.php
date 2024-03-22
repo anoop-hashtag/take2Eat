@@ -11,8 +11,8 @@
             box-shadow: none;
             top: 7px !important;
             /* transform: translateX(5px); */
-            padding-left: 10px;
-            margin:32px 0 10px 0;
+            /* padding-left: 10px; */
+            /* margin:32px 0 10px 0; */
             width:100%;
         }
     </style>

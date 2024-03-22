@@ -197,10 +197,10 @@
             </div>
             <!-- End Table -->
 
-            <div class="table-responsive mt-4 px-3">
-                <div class="d-flex justify-content-lg-end pagination-style">
+            <div class="table-responsive mt-4 px-3 pagination-style">
+                <div class="d-flex justify-content-lg-end justify-content-sm-end">
                     <!-- Pagination -->
-                    {!! $orders->links() !!}
+                    {!!$orders->links()!!}
                 </div>
             </div>
 
@@ -343,6 +343,7 @@
         })
     </script>
 @push('script_2')
+
 <script>
     $(document).on('ready', function () {
         // INITIALIZATION OF NAV SCROLLER
@@ -413,6 +414,34 @@
     function filter_branch_orders(id) {
         location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
     }
+  
+        $(document).on('ready', function () {
+            // ... Your existing initialization code
+
+            // Get the DataTable instance
+            var dataTable = $('#datatable').DataTable();
+
+            // Hide pagination on initial load
+            checkAndTogglePagination(dataTable);
+
+            // Event listener for DataTable search
+            dataTable.on('search.dt', function () {
+                checkAndTogglePagination(dataTable);
+            });
+        });
+
+        function checkAndTogglePagination(dataTable) {
+            var paginationSection = $('.pagination-style');
+
+            if (dataTable.search() && dataTable.search() !== '') {
+                // If search is active, hide pagination
+                paginationSection.hide();
+            } else {
+                // If no search or search is cleared, show pagination
+                paginationSection.show();
+            }
+        }
+    
 </script>
 
 
