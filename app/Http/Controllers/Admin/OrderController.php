@@ -698,6 +698,7 @@ class OrderController extends Controller
      */
     public function generate_invoice($id): Renderable
     {
+       
         $order = $this->order->with(['order_partial_payments'])->where('id', $id)->first();
         return view('admin-views.order.invoice', compact('order'));
     }
