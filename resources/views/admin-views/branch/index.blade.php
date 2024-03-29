@@ -4,6 +4,10 @@
 
 @push('css_or_js')
     <style>
+        #pac-input:focus {
+    border: 1px solid #fbc1c1;
+    /* You can add additional styling here if needed */
+}
         #location_map_div #pac-input{
             height: 40px;
             border: 1px solid #e7eaf3;

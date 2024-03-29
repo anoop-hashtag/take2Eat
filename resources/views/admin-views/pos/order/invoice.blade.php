@@ -15,6 +15,10 @@
             {{translate('Phone')}}
             : {{\App\Model\BusinessSetting::where(['key'=>'phone'])->first()->value}}
         </h5>
+        <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
+            {{translate('GSTIN')}}
+            : {{\App\Model\BusinessSetting::where(['key'=>'gst_number'])->first()->value}}
+        </h5>
     </div>
 
     <span>--------------------------------------</span>
@@ -27,6 +31,7 @@
                 {{date('d/M/Y h:i a',strtotime($order['created_at']))}}
             </h5>
         </div>
+
         @if($order->customer)
             <div class="col-12">
                 <h5>{{translate('Customer Name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}</h5>
@@ -38,6 +43,17 @@
                 <h5>{{translate('Phone')}} : (XXX)-XXX-XXX </h5>
             </div>
         @endif
+
+        @if(isset($order->customer['gst_number']) && !empty($order->customer['gst_number']))
+    <div class="col-12">
+        <h5>{{translate('GSTIN')}} : {{$order->customer['gst_number']}}</h5>
+    </div>
+@else
+    <div class="col-12">
+       
+    </div>       
+    @endif
+
     </div>
     <h5 class="text-uppercase"></h5>
     <span>--------------------------------------</span>
@@ -157,14 +173,15 @@
                 <dd class="col-4">
                     -{{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</dd>
                 <dt class="col-8">{{translate('Extra Discount')}}:</dt>
-                <dd class="col-4">
-                    -{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</dd>
+                <dd class="col-4">-{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</dd>
                     <dt class="col-8">{{translate('Tax')}} / {{translate('GST')}}:</dt>
                     <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost)}}</dd>
+                    <dt class="col-8">{{translate('Packing Fee')}}:</dt>
+                <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee'])}}</dd>
                     @if($order['order_type']=='delivery')
                     <dt class="col-8">{{translate('Delivery Fee:')}}</dt>
                 
-                <dd class="col-4" >
+                <dd class="col-4">
                     @if($order['order_type']=='take_away')
                         @php($del_c=0)
                     @else
@@ -187,7 +204,7 @@
                 </dd>
 
                 <dt class="col-6" style="font-size: 20px">{{translate('Total')}}:</dt>
-                <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($subtotal-$order['coupon_discount_amount']-$order['extra_discount']+$del_c) }}</dd>
+                <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($subtotal-$order['coupon_discount_amount']-$order['extra_discount']+$del_c+$order['packing_fee']) }}</dd>
             </dl>
         </div>
     </div>
