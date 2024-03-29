@@ -383,17 +383,13 @@
                                         @endif
                                         {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
                                     </dd>
-                                    
                                     @if($order['packing_fee']==0.00)
-                                   
+                                    <dt class="col-8">{{ translate('') }}</dt>
+                                    <dd class="col-4"></dd>
                                    
                                 @else
                               
-                                <div class="col-6">
-                                    <span>
-                                        {{translate('Packing')}} {{translate('fee')}}</span>
-                                    <span>:</span>
-                                </div>
+                                <dt class="col-8">{{ translate('Packing Fee') }}:</dt>
                                 <dd class="col-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                                 @endif
                                     <dt class="col-6 border-top pt-2 fz-16 font-weight-bold">
