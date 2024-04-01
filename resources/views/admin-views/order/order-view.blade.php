@@ -286,7 +286,10 @@
                                         {{\App\CentralLogics\Helpers::set_symbol($tot_discount)}}
                                     </td>
                                     <td>
-                                        @php($product_tax = $detail['tax_amount']*$detail['quantity'])
+                                        @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
+                                        {{ \App\CentralLogics\Helpers::set_symbol($total_after_discount) }}
+                                        @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
+                                        @php($product_tax = ($total_after_discount / 100) * $detail->product['tax'])
                                         {{\App\CentralLogics\Helpers::set_symbol($product_tax + $add_ons_tax_cost)}}
                                     </td>
                                     <td class="text-right">{{\App\CentralLogics\Helpers::set_symbol($amount-$tot_discount + $product_tax)}}</td>

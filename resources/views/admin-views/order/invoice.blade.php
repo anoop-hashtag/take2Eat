@@ -122,6 +122,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                     @php($item_price=0)   
                     @php($sub_total=0)
                     @php($total_tax=0)
                     @php($total_dis_on_pro=0)
@@ -200,10 +201,25 @@
                                 <td style="width: 28%;padding-right:4px; text-align:right">
                                     @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
                                     {{ \App\CentralLogics\Helpers::set_symbol($amount) }}
+
+                                    @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
+                                   
                                 </td>
                             </tr>
                             @php($sub_total+=$amount)
-                            @php($total_tax+=($detail['tax_amount']*$detail['quantity']) )
+
+                            @php($item_price += $total_after_discount)
+
+                    @if($detail->product['tax_type'] == 'percent')
+                        @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
+                        @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
+                    @else
+                        @php($total_gst = $detail->product['tax'])
+                    @endif
+                    
+                    @php($total_tax += $total_gst);
+                    
+                    
                         @endif
                     @endforeach
                     </tbody>

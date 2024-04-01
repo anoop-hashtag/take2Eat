@@ -143,14 +143,27 @@
                         {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }}
                             </span>
                     </td>
-                    <td style="padding-right:4px; text-align:right">
-                        @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
-                        {{ \App\CentralLogics\Helpers::set_symbol($amount) }}
-                    </td>
-                </tr>
-                @php($item_price+=$amount)
-                @php($total_tax+=$detail['tax_amount']*$detail['quantity'])
+                    <tr>
+                        <td style="padding-right:4px; text-align:right">
+                            @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
+                            {{ \App\CentralLogics\Helpers::set_symbol($total_after_discount) }}
+                        </td>
+                    </tr>
+                    @php($item_price += $total_after_discount)
+
+                    @if($detail->product['tax_type'] == 'percent')
+                        @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
+                        @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
+                    @else
+                        @php($total_gst = $detail->product['tax'])
+                    @endif
+                    
+                    @php($total_tax += $total_gst);
+                    
+                    
+                    
             @endif
+                    
         @endforeach
         </tbody>
     </table>
