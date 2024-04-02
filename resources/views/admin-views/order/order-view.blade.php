@@ -314,13 +314,7 @@
                                     </dt>
                                     <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</dd>
 
-                                    <dt class="col-6">
-                                        <div class="d-flex max-w220 ml-auto">
-                                            <span>{{translate('tax')}} / {{translate('GST')}}</span>
-                                            <span>:</span>
-                                        </div>
-                                    </dt>
-                                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
+                                  
 
                                     <dt class="col-6">
 
@@ -393,6 +387,13 @@
                                 <dt class="col-8">{{ translate('Packing Fee') }}:</dt>
                                 <dd class="col-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                                 @endif
+                                <dt class="col-6">
+                                    <div class="d-flex max-w220 ml-auto">
+                                        <span>{{translate('tax')}} / {{translate('GST')}}</span>
+                                        <span>:</span>
+                                    </div>
+                                </dt>
+                                <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
                                     <dt class="col-6 border-top pt-2 fz-16 font-weight-bold">
                                         <div class="d-flex max-w220 ml-auto">
                                             <span>{{translate('total')}}</span>

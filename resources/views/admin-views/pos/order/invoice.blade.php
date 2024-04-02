@@ -138,20 +138,24 @@
                             @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
                             @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
                         @endforeach
-</span>
+                </span>
                         <span class="font-size-sm">
                         {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }}
                             </span>
+                          
                     </td>
-                    <tr>
-                        <td style="padding-right:4px; text-align:right">
-                            @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
-                            {{ \App\CentralLogics\Helpers::set_symbol($total_after_discount) }}
-                        </td>
-                    </tr>
+                     
+                    <td style="width: 28%;padding-right:4px; text-align:right">
+                        @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
+                        {{ \App\CentralLogics\Helpers::set_symbol($amount) }}
+
+                        @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
+                       
+                    </td>
+                </tr>
                     @php($item_price += $total_after_discount)
 
-                    @if($detail->product['tax_type'] == 'percent')
+                    @if($detail->product['tax'] == 'percent')
                         @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
                         @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
                     @else
@@ -163,7 +167,6 @@
                     
                     
             @endif
-                    
         @endforeach
         </tbody>
     </table>
