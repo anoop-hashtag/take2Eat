@@ -45,7 +45,7 @@
                     //tax calculation
                     $product = \App\Model\Product::find($cartItem['id']);
                     //  echo '<pre>'; print_r($product->id); 
-                        $total_tax += \App\CentralLogics\Helpers::tax_calculate($product, ($cartItem['price'] - $discount_on_product)) * $cartItem['quantity'];
+                        $total_tax += \App\CentralLogics\Helpers::tax_calculate($product, ($cartItem['price']-$cartItem['discount'] )) * $cartItem['quantity'];
 
 
 
@@ -164,7 +164,7 @@
                     <i class="tio-edit"></i>
                 </button> {{ \App\CentralLogics\Helpers::set_symbol($packing_fee) }}
             </dd>
-            <dt  class="col-6">{{translate('GST/TAX')}} : </dt>
+            <dt  class="col-6">{{translate('GST/TAX_test')}} : </dt>
             <dd class="col-6 text-right">{{ \App\CentralLogics\Helpers::set_symbol(round($total_tax + $addon_total_tax,2)) }}</dd>
             <dt  class="col-6 border-top font-weight-bold pt-2">{{translate('total')}} : </dt>
             <dd class="col-6 text-right border-top font-weight-bold pt-2">{{ \App\CentralLogics\Helpers::set_symbol(round($total+$total_tax+$addon_total_tax+$delivery_charge+$packing_fee, 2)) }}</dd>
