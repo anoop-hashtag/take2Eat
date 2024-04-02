@@ -314,12 +314,7 @@
                                     </dt>
                                     <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</dd>
 
-                                    <dt class="col-6">
-                                        <div class="d-flex max-w220 ml-auto">
-                                            {{translate('tax')}} / {{translate('Gst')}}:
-                                        </div>
-                                    </dt>
-                                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax+$add_ons_tax_cost) }}</dd>
+                                  
 
                                     <dt class="col-6">
                                         <div class="d-flex max-w220 ml-auto">
@@ -366,7 +361,12 @@
                                         @endif
                                         {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
                                     </dd>
-
+                                    <dt class="col-6">
+                                        <div class="d-flex max-w220 ml-auto">
+                                            {{translate('tax')}} / {{translate('Gst')}}:
+                                        </div>
+                                    </dt>
+                                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax+$add_ons_tax_cost) }}</dd>
                                     <dt class="col-6 border-top pt-2 fz-16 font-weight-bold">
                                         <div class="d-flex max-w220 ml-auto">{{translate('total')}}:</div>
                                     </dt>

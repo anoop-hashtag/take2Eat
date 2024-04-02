@@ -132,6 +132,7 @@
                     </thead>
 
                     <tbody>
+                    @php($item_price=0)
                     @php($sub_total=0)
                     @php($total_tax=0)
                     @php($total_dis_on_pro=0)
@@ -209,10 +210,25 @@
                                 <td style="width: 28%;padding-right:4px; text-align:right">
                                     @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
                                     {{ \App\CentralLogics\Helpers::set_symbol($amount) }}
+            
+                                    @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
+                                   
                                 </td>
                             </tr>
                             @php($sub_total+=$amount)
-                            @php($total_tax+=$detail['tax_amount']*$detail['quantity'])
+                                @php($item_price += $total_after_discount)
+            
+                                @if($detail->product['tax_type'] == 'percent')
+                                    @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
+                                    @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
+                                @else
+                                    @php($total_gst = $detail->product['tax'])
+                                @endif
+                                
+                                @php($total_tax += $total_gst);
+                                
+                                
+                                
                         @endif
                     @endforeach
                     </tbody>
@@ -223,8 +239,6 @@
                         <dl class="row text-right" style="color: black!important;">
                             <dt class="col-6">{{translate('Items Price')}}:</dt>
                             <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</dd>
-                            <dt class="col-6">{{translate('Tax')}} / {{translate('GST')}}:</dt>
-                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax+$add_ons_tax_cost) }}</dd>
                             <dt class="col-6">{{translate('Addon Cost')}}:</dt>
                             <dd class="col-6">
                                 {{ \App\CentralLogics\Helpers::set_symbol($add_ons_cost) }}
@@ -247,7 +261,8 @@
                                 {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
                                 <hr>
                             </dd>
-
+                            <dt class="col-6">{{translate('Tax')}} / {{translate('GST')}}:</dt>
+                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax+$add_ons_tax_cost) }}</dd>
                             <dt class="col-6" style="font-size: 20px">{{translate('Total')}}:</dt>
                             <dd class="col-6"
                                 style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']+$add_ons_tax_cost) }}</dd>
