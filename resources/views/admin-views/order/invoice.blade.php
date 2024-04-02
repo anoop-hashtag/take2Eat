@@ -240,7 +240,7 @@
 
                             <dt class="col-6">{{translate('Subtotal:')}}</dt>
                             <dd class="col-6">
-                                {{ \App\CentralLogics\Helpers::set_symbol($sub_total+$total_tax+$add_ons_cost+$add_ons_tax_cost) }}</dd>
+                                {{ \App\CentralLogics\Helpers::set_symbol($sub_total+$add_ons_cost+$add_ons_tax_cost) }}</dd>
                             <dt class="col-6">{{translate('Extra Discount')}}:</dt>
                             <dd class="col-6">
                                 - {{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</dd>

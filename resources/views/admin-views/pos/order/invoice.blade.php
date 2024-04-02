@@ -155,7 +155,7 @@
                 </tr>
                     @php($item_price += $total_after_discount)
 
-                    @if($detail->product['tax'] == 'percent')
+                    @if($detail->product['tax_type'] == 'percent')
                         @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
                         @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
                     @else
@@ -183,7 +183,7 @@
                 </dd>
 
                 <dt class="col-8">{{translate('Subtotal')}}:</dt>
-                @php($subtotal = $add_ons_cost + $item_price + $total_tax + $add_ons_tax_cost)
+                @php($subtotal = $add_ons_cost + $item_price)
                 <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($subtotal) }}</dd>
                 <dt class="col-8">{{translate('Coupon Discount')}}:</dt>
                 <dd class="col-4">
@@ -230,7 +230,7 @@
                 </dd>
 
                 <dt class="col-6" style="font-size: 20px">{{translate('Total')}}:</dt>
-                <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($subtotal-$order['coupon_discount_amount']-$order['extra_discount']+$del_c+$order['packing_fee']) }}</dd>
+                <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($subtotal+$total_tax + $add_ons_tax_cost-$order['coupon_discount_amount']-$order['extra_discount']+$del_c+$order['packing_fee']) }}</dd>
             </dl>
         </div>
     </div>
