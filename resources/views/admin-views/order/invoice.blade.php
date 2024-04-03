@@ -116,7 +116,7 @@
                 <table class="table table-bordered mt-3">
                     <thead>
                     <tr>
-                        <th style="width: 10%;font-weight:600" >{{translate('QTY')}}</th>
+                        <th style="width: 10%font-weight:600" >{{translate('QTY')}}</th>
                         <th style="font-weight:600">{{translate('DESCRIPTION')}}</th>
                         <th style="text-align:center;font-weight:600" >{{translate('PRICE')}}</th>
                     </tr>
@@ -217,7 +217,7 @@
                         @php($total_gst = $detail->product['tax'])
                     @endif
                     
-                    @php($total_tax += $total_gst);
+                    @php($total_tax += $total_gst)
                     
                     
                         @endif
