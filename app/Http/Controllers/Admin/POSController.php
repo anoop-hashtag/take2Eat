@@ -446,6 +446,7 @@ class POSController extends Controller
         $data['variation_price'] = $variation_price;
 
         $discount_on_product = Helpers::discount_calculate($discount_data, $price);
+        // dd($discount_on_product);
 
         $data['variations'] = $variations;
         $data['variant'] = $str;
@@ -530,6 +531,8 @@ class POSController extends Controller
      */
     public function place_order(Request $request): RedirectResponse
     {
+        // echo '<pre>'; print_r($request); die();
+        // dd($request);
         if ($request->session()->has('cart')) {
             if (count($request->session()->get('cart')) < 1) {
                 Toastr::error(translate('cart_empty_warning'));
@@ -598,6 +601,7 @@ class POSController extends Controller
         }
 
         $cart = $request->session()->get('cart');
+        
         $total_tax_amount = 0;
         $total_addon_price = 0;
         $total_addon_tax = 0;
@@ -676,7 +680,7 @@ class POSController extends Controller
                         'product_details' => $product,
                         'quantity' => $c['quantity'],
                         'price' => $price,
-                        'tax_amount' => Helpers::tax_calculate($product, $price),
+                        'tax_amount' => Helpers::tax_calculate($product, $price-$discount),
                         'discount_on_product' => $discount,
                         'discount_type' => 'discount_on_product',
                         //'variant' => json_encode($c['variant']),
@@ -690,6 +694,8 @@ class POSController extends Controller
                         'updated_at' => now()
                     ];
                     $total_tax_amount += $or_d['tax_amount'] * $c['quantity'];
+                    
+                   
                     $total_addon_price += $addon_data['total_add_on_price'];
 
                     $total_addon_tax += $c['addon_total_tax'];
@@ -719,7 +725,10 @@ class POSController extends Controller
             }
         }
         $tax = isset($cart['tax']) ? $cart['tax'] : 0;
+    //     $prod_id = $cart[0]['id'];
+    //    echo '<pre>'; print_r($cart[0]['id']); die();
         $total_tax_amount = ($tax > 0) ? (($total_price * $tax) / 100) : $total_tax_amount;
+        // echo '<pre>'; print_r($or_d['tax_amount']); die();
         try {
             $order->extra_discount = $extra_discount ?? 0;
             $order->packing_fee    = $packing_fee ?? 0;
@@ -856,7 +865,6 @@ class POSController extends Controller
      */
     public function order_list(Request $request): Renderable
     {
-
         $query_param = [];
         $search = $request['search'];
         $branch_id = $request['branch_id'];
