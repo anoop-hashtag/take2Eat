@@ -217,7 +217,6 @@ class CustomerAuthController extends Controller
 
             $otp_interval_time= Helpers::get_business_settings('otp_resend_time') ?? 60;// seconds
             $otp_verification_data= DB::table('email_verifications')->where('email', $request['email'])->first();
-            // dd($otp_verification_data);
 
             if(isset($otp_verification_data) &&  Carbon::parse($otp_verification_data->created_at)->DiffInSeconds() < $otp_interval_time){
                 $time= $otp_interval_time - Carbon::parse($otp_verification_data->created_at)->DiffInSeconds();
@@ -244,12 +243,11 @@ class CustomerAuthController extends Controller
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-
             try {
                 $lang_code = $request->header('X-localization') ?? 'en';
                 $emailServices = Helpers::get_business_settings('mail_config');
                 $mail_status = Helpers::get_business_settings('registration_otp_mail_status_user');
-               
+
                 if(isset($emailServices['status']) && $emailServices['status'] == 1 && $mail_status == 1){
                     Mail::to($request['email'])->send(new EmailVerification($token, $lang_code ));
                 }
@@ -258,7 +256,7 @@ class CustomerAuthController extends Controller
 
                 return response()->json([
                     'errors' => [
-                        ['code' => 'otp', 'message' => translate('Token sent failed!')]
+                        ['code' => 'otp', 'message' => translate('Token sent failed!'), 'catch_exception'=>$exception->getMessage()]
                     ]
                 ], 404);
 
