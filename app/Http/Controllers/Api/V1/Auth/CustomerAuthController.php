@@ -248,7 +248,7 @@ class CustomerAuthController extends Controller
                 $lang_code = $request->header('X-localization') ?? 'en';
                 $emailServices = Helpers::get_business_settings('mail_config');
                 $mail_status = Helpers::get_business_settings('registration_otp_mail_status_user');
-
+                dd($mail_status);
                 if(isset($emailServices['status']) && $emailServices['status'] == 1 && $mail_status == 1){
                     Mail::to($request['email'])->send(new EmailVerification($token, $lang_code ));
                 }
