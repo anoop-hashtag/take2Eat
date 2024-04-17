@@ -80,7 +80,7 @@ margin: 0 7px;"></span>
                 </span>
             </td>
         </tr>
-        {{-- <tr>
+        <tr>
             <td style="text-align: center;">
                 <span class="social" style="text-align:center">
                    @foreach ($socialMediaData as $value)
@@ -117,7 +117,7 @@ margin: 0 7px;"></span>
     @endforeach
                 </span>
             </td>
-        </tr> --}}
+        </tr>
         <tr>
             <td style="text-align: center;">
                 <span class="copyright" id="mail-copyright">
