@@ -217,7 +217,7 @@ class CustomerAuthController extends Controller
 
             $otp_interval_time= Helpers::get_business_settings('otp_resend_time') ?? 60;// seconds
             $otp_verification_data= DB::table('email_verifications')->where('email', $request['email'])->first();
-            dd($otp_verification_data);
+            // dd($otp_verification_data);
 
             if(isset($otp_verification_data) &&  Carbon::parse($otp_verification_data->created_at)->DiffInSeconds() < $otp_interval_time){
                 $time= $otp_interval_time - Carbon::parse($otp_verification_data->created_at)->DiffInSeconds();
