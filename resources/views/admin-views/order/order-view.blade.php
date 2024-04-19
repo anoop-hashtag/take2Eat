@@ -239,9 +239,9 @@
                                                             @endif
                                                         @endforeach
                                                     @else
-                                                        {{-- <div class="font-size-sm text-body">
+                                                        <div class="font-size-sm text-body">
                                                             <span class="text-dark">{{translate('price')}}  : {{\App\CentralLogics\Helpers::set_symbol($value['optionPrice'])}}</span>
-                                                        </div> --}}
+                                                        </div>
                                                     @endif
 
                                                     <div class="d-flex gap-2">
