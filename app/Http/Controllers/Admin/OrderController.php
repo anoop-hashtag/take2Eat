@@ -213,10 +213,10 @@ class OrderController extends Controller
      */
     public function details($id): Renderable|RedirectResponse
     {
+        
         $order = $this->order->with(['details', 'customer', 'delivery_address', 'branch', 'delivery_man', 'order_partial_payments'])
             ->where(['id' => $id])
             ->first();
-
         if (!isset($order)) {
             Toastr::info(translate('No order found!'));
             return back();
@@ -234,7 +234,7 @@ class OrderController extends Controller
         $ordered_time = Carbon::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", strtotime($delivery_date_time)));
         $remaining_time = $ordered_time->add($order['preparation_time'], 'minute')->format('Y-m-d H:i:s');
         $order['remaining_time'] = $remaining_time;
-
+        
         return view('admin-views.order.order-view', compact('order', 'delivery_man'));
     }
 
