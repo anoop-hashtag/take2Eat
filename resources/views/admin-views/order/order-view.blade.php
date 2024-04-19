@@ -239,9 +239,9 @@
                                                             @endif
                                                         @endforeach
                                                     @else
-                                                        <div class="font-size-sm text-body">
+                                                        {{-- <div class="font-size-sm text-body">
                                                             <span class="text-dark">{{translate('price')}}  : {{\App\CentralLogics\Helpers::set_symbol($value['optionPrice'])}}</span>
-                                                        </div>
+                                                        </div> --}}
                                                     @endif
 
                                                     <div class="d-flex gap-2">
@@ -336,17 +336,15 @@
                                         ?>
                                     </td>
                                     @if(isset($variation['values']) && is_array($variation['values']))
-    <td class="text-right">
-        {{ \App\CentralLogics\Helpers::set_symbol($totalOptionPrice - $tot_discount + $product_tax + $add_ons_tax_cost) }}
-    </td>
-@else
-    <td class="text-right">
-        {{ \App\CentralLogics\Helpers::set_symbol($amount - $tot_discount + $product_tax + $add_ons_tax_cost) }}
-    </td>
-@endif
+                                        <td class="text-right">
+                                            {{ \App\CentralLogics\Helpers::set_symbol($totalOptionPrice - $tot_discount + $product_tax + $add_ons_tax_cost) }}
+                                        </td>
+                                    @else
+                                        <td class="text-right">
+                                            {{ \App\CentralLogics\Helpers::set_symbol($amount - $tot_discount + $product_tax + $add_ons_tax_cost) }}
+                                        </td>
+                                    @endif
 
-
-                                    
                                 </tr>
                                 @php($total_dis_on_pro += $tot_discount)
                                 @if(isset($variation['values']) && is_array($variation['values']))
