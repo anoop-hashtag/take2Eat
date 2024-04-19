@@ -322,7 +322,7 @@
                                             if (isset($variation['values']) && is_array($variation['values'])) {
                                                 $total_after_discount = ($totalOptionPrice - $tot_discount) * $detail['quantity'];
                                             } else {
-                                             $total_after_discount = ($amount - $tot_discount) * $detail['quantity'];
+                                            //  $total_after_discount = ($amount - $tot_discount) * $detail['quantity'];
                                             }
                                     
                                             // Calculate product tax
