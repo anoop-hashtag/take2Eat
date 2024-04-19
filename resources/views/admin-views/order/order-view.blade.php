@@ -289,7 +289,7 @@
                                                 // Check if optionPrice exists in the current array
                                                 if (isset($value_variation['optionPrice'])) {
                                                     // Add optionPrice to totalOptionPrice
-                                                    $totalOptionPrice += (float)$value_variation['optionPrice']*$detail['quantity'];
+                                                    $totalOptionPrice += $value_variation['optionPrice']*$detail['quantity'];
                                                 }
                                             }
                                         }
