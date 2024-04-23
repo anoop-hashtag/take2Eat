@@ -176,7 +176,7 @@
                             <tr>
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('Item Details')}}</th>
-                                <th>{{translate('Price')}}</th>
+                                <th>{{translate('Item Price')}}</th>
                                 <th>{{translate('Discount')}}</th>
                                 <th>{{translate('Tax')}}</th>
                                 <th class="text-right">{{translate('Total_price')}}</th>
@@ -210,27 +210,32 @@
 
                                             <div class="media-body text-dark fz-12">
                                                 {{--<h6 class="text-capitalize">{{$detail->product?->name}}</h6>--}}
-                                                <h6 class="text-capitalize product-style">{{$product_details['name']}}</h6>
-                                                <div class=" gap-2">
+                                                <h6 class="text-capitalize">{{$product_details['name']}}</h6>
+                                                <div class="gap-2">
+                                                    <?php
+                                                        $amount = 0; 
+                                                        $addon_price = array();
+                                                    ?>
                                                     @if (isset($detail['variation']))
                                                         @foreach(json_decode($detail['variation'],true) as  $variation)
                                                             @if (isset($variation['name'])  && isset($variation['values']))
                                                                 <span class="d-block text-capitalize">
-                                                                <strong>{{  $variation['name']}} -</strong>
-                                                            </span>
-                                                                @foreach ($variation['values'] as $value)
-
-                                                                    <span class="d-block text-capitalize">
-                                                                     {{ $value['label']}} :
-                                                                    <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
+                                                                    <strong>{{  $variation['name']}} -</strong>
                                                                 </span>
+                                                                @foreach ($variation['values'] as $value)
+                                                                    <span class="d-block text-capitalize">
+                                                                        {{ $value['label']}} :
+                                                                        <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
+                                                                    </span>
+                                                                    <?php
+                                                                        $amount = $amount + $value['optionPrice']; 
+                                                                    ?>
                                                                 @endforeach
                                                             @else
                                                                 @if (isset(json_decode($detail['variation'],true)[0]))
                                                                     <strong><u> {{  translate('Variation') }} : </u></strong>
                                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                                         <div class="font-size-sm text-body">
-                                                                            
                                                                             <span>{{$key1}} :  </span>
                                                                             <span class="font-weight-bold">{{$variation}}</span>
                                                                         </div>
@@ -242,12 +247,17 @@
                                                         <div class="font-size-sm text-body">
                                                             <span class="text-dark">{{translate('price')}}  : {{\App\CentralLogics\Helpers::set_symbol($value['optionPrice'])}}</span>
                                                         </div>
+                                                        <?php
+                                                            $amount = $amount + $value['optionPrice']; 
+                                                        ?>
                                                     @endif
 
                                                     <div class="d-flex gap-2">
                                                         <div style="text-align: left">
                                                             <span class="">{{translate('Qty')}} :  </span>
                                                             <span>{{$detail['quantity']}}</span>
+
+                                                            {{-- @php($amount = $detail['price']) --}}
                                                         {{-- </div> --}}
                                                         <br/>
                                                         
@@ -261,15 +271,16 @@
                                                                     @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
 
                                                                     <div class="font-size-sm text-body" style="font-size:12px">
-                                                                            <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
-                                                                            <span class="font-weight-semibold">
-                                                                                {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2]) }}
-                                                                            </span>
-                                                                        
-                                                                        </div>
-                                                                        
+                                                                        <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
+                                                                        <span class="font-weight-semibold">
+                                                                            {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2]) }}
+                                                                        </span>
+                                                                    </div>
+
+                                                                    {{-- @php(array_push($addon_price, ($add_on_qty * $add_on_prices[$key2])))     --}}
                                                                     @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
-                                                                    @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
+                                                                    {{-- @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty) --}}
+                                                                    @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qtys[$key2])
                                                                 @endforeach
                                                             @endif
                                                         </div>
@@ -279,37 +290,51 @@
                                         </div>
                                     </td>
                                     <td>
-                                        @php($amount=$detail['price']*$detail['quantity'])
-                                      <?php
-                                           $totalOptionPrice = 0;
+                                        @if (!empty(json_decode($detail['variation'])))
+                                            @php($amount = $amount * $detail['quantity'])
+                                        @else
+                                            @php($amount = $detail['price'] * $detail['quantity'])
+                                        @endif
+                                        <?php 
+                                            // unset($addon_price);
+                                        ?>
+                                        <?php
+                                            $totalOptionPrice = 0;
 
-                                        if (isset($variation['values']) && is_array($variation['values'])) {
-                                            // Loop through each variation value
-                                            foreach ($variation['values'] as $value_variation) {
-                                                // Check if optionPrice exists in the current array
-                                                if (isset($value_variation['optionPrice'])) {
-                                                    // Add optionPrice to totalOptionPrice
-                                                    $totalOptionPrice += (float)$value_variation['optionPrice']*$detail['quantity'];
+                                            if (isset($variation['values']) && is_array($variation['values'])) {
+                                                // Loop through each variation value
+                                                foreach ($variation['values'] as $value_variation) {
+                                                    // Check if optionPrice exists in the current array
+                                                    if (isset($value_variation['optionPrice'])) {
+                                                        // Add optionPrice to totalOptionPrice
+                                                        $totalOptionPrice += (float)$value_variation['optionPrice']*$detail['quantity'];
+                                                    }
                                                 }
                                             }
-                                        }
-
-                                    ?>
+                                        ?>
                                      
-                                     <?php
-                                     if (isset($variation['values']) && is_array($variation['values'])) {
-                                         echo \App\CentralLogics\Helpers::set_symbol($totalOptionPrice);
-                                     } else {
-                                       echo   \App\CentralLogics\Helpers::set_symbol($amount);
-                                     }
-                                     ?>
-                                     
-                                         
+                                        <?php
+                                            // if (isset($variation['values']) && is_array($variation['values'])) {
+                                            //     echo \App\CentralLogics\Helpers::set_symbol($totalOptionPrice);
+                                            // } else {
+                                            //     echo   \App\CentralLogics\Helpers::set_symbol($amount);
+                                            // }
 
+                                            echo   \App\CentralLogics\Helpers::set_symbol($amount);
+                                        ?>
                                     </td>
                                     <td>
-                                        @php($tot_discount =($totalOptionPrice * $detail->product['discount'])/ 100)
-                                      
+                                        {{-- @php($tot_discount =($totalOptionPrice * $detail->product['discount'])/ 100) --}}
+
+                                        <?php 
+                                            //Shubham
+                                            $tot_discount = 0;
+                                            if(json_decode($detail['product_details'])->discount_type == 'percent') {
+                                                $tot_discount = ($amount * json_decode($detail['product_details'])->discount) / 100;
+                                            } else {
+                                                $tot_discount = json_decode($detail['product_details'])->discount;
+                                            }
+                                        ?>
                                       
                                         {{\App\CentralLogics\Helpers::set_symbol($tot_discount)}}
                                     </td>
@@ -318,44 +343,60 @@
                                             // Initialize variables for total price and discount
                                             $total_after_discount = 0;
                                     
-                                            // Calculate total price after discount
+                                            // // Calculate total price after discount
                                             if (isset($variation['values']) && is_array($variation['values'])) {
                                                 $total_after_discount = ($totalOptionPrice - $tot_discount) * $detail['quantity'];
                                             } else {
                                             //  $total_after_discount = ($amount - $tot_discount) * $detail['quantity'];
                                             }
                                     
-                                            // Calculate product tax
+                                            // // Calculate product tax
                                             $product_tax = ($total_after_discount * $detail->product['tax']) / 100;
                                            
-                                            // Calculate the total amount including add-ons tax cost
+                                            // // Calculate the total amount including add-ons tax cost
                                             $total_cost = $product_tax + $add_ons_tax_cost;
                                     
                                             // Display the final amount with the correct currency symbol
-                                            echo \App\CentralLogics\Helpers::set_symbol($total_cost);
+                                            // echo \App\CentralLogics\Helpers::set_symbol($total_cost);
+
+
+                                            //Shubham
+                                            $taxable_amt = 0;
+                                            $taxable_amt = $amount - $tot_discount;
+                                            if(json_decode($detail['product_details'])->tax_type == 'percent') {
+                                                $taxable_amt = ($taxable_amt * json_decode($detail['product_details'])->tax) / 100;
+                                            } else {
+                                                $taxable_amt = json_decode($detail['product_details'])->tax;
+                                            }
+                                            echo \App\CentralLogics\Helpers::set_symbol($taxable_amt);
+
+                                            $total_tax = $total_tax + $taxable_amt;
                                         ?>
                                     </td>
                                     @if(isset($variation['values']) && is_array($variation['values']))
                                         <td class="text-right">
-                                            {{ \App\CentralLogics\Helpers::set_symbol($totalOptionPrice - $tot_discount + $product_tax + $add_ons_tax_cost) }}
+                                            {{-- {{ \App\CentralLogics\Helpers::set_symbol($totalOptionPrice - $tot_discount + $product_tax + $add_ons_tax_cost) }} --}}
+                                            {{ \App\CentralLogics\Helpers::set_symbol(($amount - $tot_discount) + $taxable_amt) }}
                                         </td>
                                     @else
                                         <td class="text-right">
-                                            {{ \App\CentralLogics\Helpers::set_symbol($amount - $tot_discount + $product_tax + $add_ons_tax_cost) }}
+                                            {{-- {{ \App\CentralLogics\Helpers::set_symbol($amount - $tot_discount + $product_tax + $add_ons_tax_cost) }} --}}
+                                            {{ \App\CentralLogics\Helpers::set_symbol(($amount - $tot_discount) + $taxable_amt) }}
                                         </td>
                                     @endif
 
                                 </tr>
                                 @php($total_dis_on_pro += $tot_discount)
                                 @if(isset($variation['values']) && is_array($variation['values']))
-                                @php($sub_total += $totalOptionPrice)
+                                {{-- @php($sub_total += $totalOptionPrice) --}}
+                                @php($sub_total += $amount)
                                 @php($del_c=0)
                             @else
                             @php($sub_total += $amount)
                             @endif
                                 @php($del_c=$order['delivery_charge'])
                               
-                                @php($total_tax += $product_tax)
+                                {{-- @php($total_tax += $product_tax) --}}
 
                             @endforeach
                             </tbody>
