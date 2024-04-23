@@ -227,6 +227,17 @@
                                             $tot_discount = json_decode($detail['product_details'])->discount;
                                         }
 
+                                        // echo "<pre>"; print_r(json_decode($detail['product_details'])->tax_type); die;
+
+                                        $taxable_amt = 0;
+                                        $taxable_amt = $amount - $tot_discount;
+                                        if(json_decode($detail['product_details'])->tax_type == 'percent') {
+                                            $taxable_amt = ($taxable_amt * json_decode($detail['product_details'])->tax) / 100;
+                                        } else {
+                                            $taxable_amt = json_decode($detail['product_details'])->tax;
+                                        }
+
+                                        $total_tax = $total_tax + $taxable_amt;
                                     ?>
                                     @php($total_dis_on_pro += $tot_discount)
 
@@ -245,7 +256,7 @@
                         @php($total_gst = $detail->product['tax'])
                     @endif
                     
-                    @php($total_tax += $total_gst)
+                    {{-- @php($total_tax += $total_gst) --}}
                     
                     
                         @endif
@@ -253,7 +264,6 @@
                     
                     </tbody>
                 </table>
-
 
                 <div class="row justify-content-md-end mb-3 m-0" style="width: 99%">
                     <div class="col-md-10 p-0">
