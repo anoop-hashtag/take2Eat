@@ -176,7 +176,7 @@
                                             <span class="">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
                                         </div>
                                         <?php
-                                            $amount = $amount + $value['optionPrice']; 
+                                            $amount = $amount + $detail->price; 
                                         ?>
                                     @endif
 
@@ -227,8 +227,6 @@
                                             $tot_discount = json_decode($detail['product_details'])->discount;
                                         }
 
-                                        // echo "<pre>"; print_r(json_decode($detail['product_details'])->tax_type); die;
-
                                         $taxable_amt = 0;
                                         $taxable_amt = $amount - $tot_discount;
                                         if(json_decode($detail['product_details'])->tax_type == 'percent') {
@@ -238,6 +236,7 @@
                                         }
 
                                         $total_tax = $total_tax + $taxable_amt;
+
                                     ?>
                                     @php($total_dis_on_pro += $tot_discount)
 
@@ -264,6 +263,7 @@
                     
                     </tbody>
                 </table>
+
 
                 <div class="row justify-content-md-end mb-3 m-0" style="width: 99%">
                     <div class="col-md-10 p-0">
@@ -317,7 +317,7 @@
                             </dd>
                       
                             <dt class="col-6" style="font-size: 20px">{{translate('Total:')}}</dt>
-                            <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']) }}</dd>
+                            <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro) }}</dd>
 
                             <!-- partial payment-->
                             @if ($order->order_partial_payments->isNotEmpty())
