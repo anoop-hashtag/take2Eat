@@ -587,6 +587,7 @@
                                     <option value="confirmed" {{$order['order_status'] == 'confirmed'? 'selected' : ''}}> {{translate('confirmed')}}</option>
                                     @if($order['order_type'] != 'dine_in')
                                         <option value="processing" {{ ($order['order_status'] == 'processing' || $order['order_status'] == 'cooking') ? 'selected' : ''}}> {{translate('processing')}}</option>
+                                        <option value="done" {{ $order['order_status'] == 'done' ? 'selected' : ''}}> Cooking Done</option>
                                         @if($order['order_type'] != 'take_away')
                                             <option value="out_for_delivery" {{$order['order_status'] == 'out_for_delivery'? 'selected' : ''}}>{{translate('Out_For_Delivery')}} </option>
                                             <option value="failed" {{$order['order_status'] == 'failed'? 'selected' : ''}}>{{translate('Failed_to_Deliver')}} </option>
