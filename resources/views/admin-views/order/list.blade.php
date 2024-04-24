@@ -14,8 +14,14 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-1">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/all_orders.png')}}" alt="">
                 <span class="page-header-title">
-                {{$status =='canceled' ? 'cancelled':''}} {{translate('Orders')}}
-               
+                    @if ($status == 'Canceled')
+                        Cancelled
+                    @elseif ($status == 'Done')
+                        {{translate('Ready_For_Serve')}}
+                    @else
+                        {{translate($status)}}
+                    @endif
+                     {{translate('Orders')}}
                 </span>
             </h2>
             <span class="badge badge-soft-dark rounded-50 fz-14">{{ $orders->total() }}</span>
@@ -75,124 +81,122 @@
             </div>
             <!-- End Filter Card -->
 
-            @if($status == 'all')
-                <div class="px-4 mt-4">
-                    <div class="row g-2">
-                        <div class="col-sm-6 col-lg-3">
-                            <a class="order--card h-100" href="{{route('admin.orders.list', ['status' => 'pending'])}}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
-                                        <img src="{{asset('public/assets/admin/img/icons/pending.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('Pending')}}</span>
-                                    </h6>
-                                    <span class="card-title text-0661CB">
+          
+            <div class="px-4 mt-4">
+                <div class="row g-2">
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="order--card h-100 {{ $status=='pending'?'active-box':'' }}" href="{{route('admin.orders.list', ['status' => 'pending'])}}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
+                                    <img src="{{asset('public/assets/admin/img/icons/pending.png')}}" alt="dashboard" class="oder--card-icon">
+                                    <span>{{translate('Pending')}}</span>
+                                </h6>
+                                <span class="card-title text-0661CB">
                                     {{$order_count['pending']}}
-                            </span>
-                                </div>
-                            </a>
-                        </div>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
 
-                        <div class="col-sm-6 col-lg-3">
-                            <a class="order--card h-100" href="{{route('admin.orders.list', ['status' => 'confirmed'])}}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
-                                        <img src="{{asset('public/assets/admin/img/icons/confirmed.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('confirmed')}}</span>
-                                    </h6>
-                                    <span class="card-title">
-                                {{$order_count['confirmed']}}
-                            </span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="order--card h-100 {{ $status=='confirmed'?'active-box':'' }}" href="{{route('admin.orders.list', ['status' => 'confirmed'])}}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
+                                    <img src="{{asset('public/assets/admin/img/icons/confirmed.png')}}" alt="dashboard" class="oder--card-icon">
+                                    <span>{{translate('confirmed')}}</span>
+                                </h6>
+                                <span class="card-title">
+                                    {{$order_count['confirmed']}}
+                                </span>
+                            </div>
+                        </a>
+                    </div>
 
-                        <div class="col-sm-6 col-lg-3">
-                            <a class="order--card h-100" href="{{route('admin.orders.list', ['status' => 'processing'])}}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
-                                        <img src="{{asset('public/assets/admin/img/icons/packaging.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('processing')}}</span>
-                                    </h6>
-                                    <span class="card-title">
-                                        {{$order_count['processing']}}
-                                    </span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="order--card h-100 {{ $status=='processing'?'active-box':'' }}" href="{{route('admin.orders.list', ['status' => 'processing'])}}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
+                                    <img src="{{asset('public/assets/admin/img/icons/packaging.png')}}" alt="dashboard" class="oder--card-icon">
+                                    <span>{{translate('processing')}}</span>
+                                </h6>
+                                <span class="card-title">
+                                    {{$order_count['processing']}}
+                                </span>
+                            </div>
+                        </a>
+                    </div>
 
-                        <div class="col-sm-6 col-lg-3">
-                            <a class="order--card h-100" href="{{route('admin.orders.list', ['status' => 'out_for_delivery'])}}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
-                                        <img src="{{asset('public/assets/admin/img/icons/out_for_delivery.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('out_for_delivery')}}</span>
-                                    </h6>
-                                    <span class="card-title">
-                                {{$order_count['out_for_delivery']}}
-                            </span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="order--card h-100 {{ $status=='out_for_delivery'?'active-box':'' }}" href="{{route('admin.orders.list', ['status' => 'out_for_delivery'])}}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
+                                    <img src="{{asset('public/assets/admin/img/icons/out_for_delivery.png')}}" alt="dashboard" class="oder--card-icon">
+                                    <span>{{translate('out_for_delivery')}}</span>
+                                </h6>
+                                <span class="card-title">
+                                    {{$order_count['out_for_delivery']}}
+                                </span>
+                            </div>
+                        </a>
+                    </div>
 
-                        <div class="col-sm-6 col-lg-3">
-                            <a class="order--card h-100" href="{{route('admin.orders.list', ['status' => 'delivered'])}}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
-                                        <img src="{{asset('public/assets/admin/img/icons/delivered.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('delivered')}}</span>
-                                    </h6>
-                                    <span class="card-title">
-                                {{$order_count['delivered']}}
-                            </span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="order--card h-100 {{ $status=='delivered'?'active-box':'' }}" href="{{route('admin.orders.list', ['status' => 'delivered'])}}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
+                                    <img src="{{asset('public/assets/admin/img/icons/delivered.png')}}" alt="dashboard" class="oder--card-icon">
+                                    <span>{{translate('delivered')}}</span>
+                                </h6>
+                                <span class="card-title">
+                                    {{$order_count['delivered']}}
+                                </span>
+                            </div>
+                        </a>
+                    </div>
 
-                        <!-- Static Cancel -->
-                        <div class="col-sm-6 col-lg-3">
-                            <a class="order--card h-100" href="{{route('admin.orders.list', ['status' => 'canceled'])}}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
-                                        <img src="{{asset('public/assets/admin/img/icons/canceled.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('cancelled')}}</span>
-                                    </h6>
-                                    <span class="card-title">
-                                {{$order_count['canceled']}}
-                            </span>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Static Cancel -->
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="order--card h-100 {{ $status=='canceled'?'active-box':'' }}" href="{{route('admin.orders.list', ['status' => 'canceled'])}}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
+                                    <img src="{{asset('public/assets/admin/img/icons/canceled.png')}}" alt="dashboard" class="oder--card-icon">
+                                    <span>{{translate('cancelled')}}</span>
+                                </h6>
+                                <span class="card-title">
+                                    {{$order_count['canceled']}}
+                                </span>
+                            </div>
+                        </a>
+                    </div>
 
-                        <div class="col-sm-6 col-lg-3">
-                            <a class="order--card h-100" href="{{route('admin.orders.list', ['status' => 'returned'])}}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
-                                        <img src="{{asset('public/assets/admin/img/icons/returned.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('returned')}}</span>
-                                    </h6>
-                                    <span class="card-title">
-                                {{$order_count['returned']}}
-                            </span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <a class="order--card h-100" href="{{route('admin.orders.list', ['status' => 'failed'])}}">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
-                                        <img src="{{asset('public/assets/admin/img/icons/failed_to_deliver.png')}}" alt="dashboard" class="oder--card-icon">
-                                        <span>{{translate('failed_to_deliver')}}</span>
-                                    </h6>
-                                    <span class="card-title">
-                                {{$order_count['failed']}}
-                            </span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="order--card h-100 {{ $status=='returned'?'active-box':'' }}" href="{{route('admin.orders.list', ['status' => 'returned'])}}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
+                                    <img src="{{asset('public/assets/admin/img/icons/returned.png')}}" alt="dashboard" class="oder--card-icon">
+                                    <span>{{translate('returned')}}</span>
+                                </h6>
+                                <span class="card-title">
+                                    {{$order_count['returned']}}
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="order--card h-100 {{ $status=='failed'?'active-box':'' }}" href="{{route('admin.orders.list', ['status' => 'failed'])}}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
+                                    <img src="{{asset('public/assets/admin/img/icons/failed_to_deliver.png')}}" alt="dashboard" class="oder--card-icon">
+                                    <span>{{translate('failed_to_deliver')}}</span>
+                                </h6>
+                                <span class="card-title">
+                                    {{$order_count['failed']}}
+                                </span>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            @endif
+            </div>
+          
 
             <!-- Card Top -->
             <div class="card-top px-card ">

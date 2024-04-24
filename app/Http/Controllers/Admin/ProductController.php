@@ -163,7 +163,6 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'item_type' => 'required',
             'product_type' => 'required|in:veg,non_veg,egg',
-            'discount_type' => 'required',
             'tax_type' => 'required',
             'stock_type' => 'required|in:unlimited,daily,fixed',
             'product_stock' => 'required_if:stock_type,daily,fixed',
@@ -173,10 +172,28 @@ class ProductController extends Controller
             'category_id.required' => translate('category  is required!'),
         ]);
 
-        if ($request['discount_type'] == 'percent') {
-            $dis = ($request['price'] / 100) * $request['discount'];
+        $discount_type = '';
+        if(isset($request['discount_type'])) {
+            if($request['discount_type'] == '---Select---') {
+                $discount_type = 'amount';
+            } else {
+                $discount_type = $request['discount_type'];
+            }
         } else {
-            $dis = $request['discount'];
+            $discount_type = 'amount';
+        }
+
+        $discount = 0;
+        if(isset($request['discount'])) {
+            if($request['discount'] != '') {
+                $discount = $request['discount'];
+            }
+        }
+
+        if ($discount_type == 'percent') {
+            $dis = ($request['price'] / 100) * $discount;
+        } else {
+            $dis = $discount;
         }
 
 
@@ -288,8 +305,8 @@ class ProductController extends Controller
         $product->tax = $request->tax_type == 'amount' ? $request->tax : $request->tax;
         $product->tax_type = $request->tax_type;
 
-        $product->discount = $request->discount_type == 'amount' ? $request->discount : $request->discount;
-        $product->discount_type = $request->discount_type;
+        $product->discount = $discount_type == 'amount' ? $discount : $discount;
+        $product->discount_type = $discount_type;
 
         $product->attributes = $request->has('attribute_id') ? json_encode($request->attribute_id) : json_encode([]);
         $product->add_ons = $request->has('addon_ids') ? json_encode($request->addon_ids) : json_encode([]);
@@ -301,8 +318,8 @@ class ProductController extends Controller
         $main_branch_product = $this->product_by_branch;
         $main_branch_product->product_id = $product->id;
         $main_branch_product->price = $request->price;
-        $main_branch_product->discount_type = $request->discount_type;
-        $main_branch_product->discount = $request->discount;
+        $main_branch_product->discount_type = $discount_type;
+        $main_branch_product->discount = $discount;
         $main_branch_product->branch_id = 1;
         $main_branch_product->is_available = 1;
         $main_branch_product->variations = $variations;

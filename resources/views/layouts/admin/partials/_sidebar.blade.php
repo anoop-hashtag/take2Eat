@@ -66,11 +66,9 @@
                                     <i class="tio-shopping nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('POS')}}</span>
                                 </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                    style="display: {{Request::is('admin/pos*')?'block':'none'}}">
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/pos*')?'block':'none'}}">
                                     <li class="nav-item {{Request::is('admin/pos')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.pos.index')}}"
-                                           title="{{translate('pos')}}">
+                                        <a class="nav-link " href="{{route('admin.pos.index')}}" title="{{translate('pos')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('New Sale')}}</span>
                                         </a>
@@ -93,21 +91,19 @@
 
                         @if(Helpers::module_permission_check(MANAGEMENT_SECTION['order_management']))
                             <li class="nav-item">
-                                <small
-                                    class="nav-subtitle">{{translate('order')}} {{translate('management')}}</small>
+                                <small class="nav-subtitle">{{translate('order')}} {{translate('management')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
 
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/orders/list/*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
-                                    <i class="tio-shopping-cart nav-icon"></i>
+                                    <i class="tio-shopping nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                        {{translate('order')}}
+                                        {{translate('online_order')}}
                                     </span>
                                 </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                    style="display: {{Request::is('admin/order*')?'block':'none'}}">
-                                    <li class="nav-item {{Request::is('admin/orders/list/all')?'active':''}}">
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/order*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('admin/orders/list/all')||Request::is('admin/orders/list/pending')||Request::is('admin/orders/list/confirmed')||Request::is('admin/orders/list/processing')||Request::is('admin/orders/list/out_for_delivery')||Request::is('admin/orders/list/delivered')||Request::is('admin/orders/list/returned')||Request::is('admin/orders/list/failed')||Request::is('admin/orders/list/canceled')?'active':''}}">
                                         <a class="nav-link" href="{{route('admin.orders.list',['all'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate sidebar--badge-container">
@@ -118,7 +114,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/orders/list/pending')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('admin/orders/list/pending')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['pending'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate sidebar--badge-container">
@@ -207,7 +203,7 @@
                                                 </span>
                                             </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
 
                                     <li class="nav-item {{Request::is('admin/orders/list/schedule')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.orders.list',['schedule'])}}" title="">
@@ -235,9 +231,8 @@
                                     </span>
                                     <label class="badge badge-danger">{{translate('addon')}}</label>
                                 </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                    style="display: {{Request::is('admin/table/order*')?'block':'none'}}">
-                                    <li class="nav-item {{Request::is('admin/table/order/list/all')?'active':''}}">
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/table/order*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('admin/table/order/list/all')||Request::is('admin/table/order/list/confirmed')||Request::is('admin/table/order/list/cooking')||Request::is('admin/table/order/list/done')||Request::is('admin/table/order/list/completed')||Request::is('admin/table/order/list/canceled')?'active':''}}">
                                         <a class="nav-link" href="{{route('admin.table.order.list',['all'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate sidebar--badge-container">
@@ -248,7 +243,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/table/order/list/confirmed')?'active':''}}">
+                                    {{-- <li class="nav-item {{Request::is('admin/table/order/list/confirmed')?'active':''}}">
                                         <a class="nav-link" href="{{route('admin.table.order.list',['confirmed'])}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate sidebar--badge-container">
@@ -302,7 +297,7 @@
                                                 </span>
                                             </span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item {{Request::is('admin/table/order/running')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.table.order.running')}}" title="">
                                             <span class="tio-circle nav-indicator-icon"></span>

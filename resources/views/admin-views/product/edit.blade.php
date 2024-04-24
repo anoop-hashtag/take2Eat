@@ -201,15 +201,12 @@
                                                         <label class="input-label">{{translate('default_Price')}}
                                                             <span class="text-danger">*</span>
                                                         </label>
-                                                        <input type="number" value="{{$product['price']}}" min="0" name="price"
-                                                            class="form-control" step="0.01"
-                                                            placeholder="{{translate('Ex : 100')}}" required>
+                                                        <input type="number" value="{{$product['price']}}" min="0" name="price" class="form-control" step="0.01" placeholder="{{translate('Ex : 100')}}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="input-label">{{translate('discount_Type')}}
-                                                            <span class="text-danger">*</span></label>
+                                                        <label class="input-label">{{translate('discount_Type')}}</label>
                                                         <select name="discount_type" class="form-control js-select2-custom">
                                                             <option value="percent" {{$product['discount_type']=='percent'?'selected':''}}>
                                                                 {{translate('percent')}}
@@ -222,11 +219,8 @@
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="input-label">{{translate('discount')}}
-                                                            <span class="text-danger">*</span></label>
-                                                        <input type="number" min="0" value="{{$product['discount']}}"
-                                                            name="discount" class="form-control" required
-                                                            placeholder="Ex : 100">
+                                                        <label class="input-label">{{translate('discount')}}</label>
+                                                        <input type="number" min="0" value="{{$product['discount']}}" name="discount" class="form-control" required placeholder="Ex : 100">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -330,17 +324,13 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('available_From')}}</label>
-                                                        <input type="time" value="{{$product['available_time_starts']}}"
-                                                            name="available_time_starts" class="form-control"
-                                                            placeholder="{{translate('Ex : 10:30 am')}}" required>
+                                                        <input type="time" value="{{$product['available_time_starts']}}" name="available_time_starts" class="form-control" placeholder="{{translate('Ex : 10:30 am')}}" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('available_Till')}}</label>
-                                                        <input type="time" value="{{$product['available_time_ends']}}"
-                                                            name="available_time_ends" class="form-control" placeholder="{{translate('5:45 pm')}}"
-                                                            required>
+                                                        <input type="time" value="{{$product['available_time_ends']}}" name="available_time_ends" class="form-control" placeholder="{{translate('5:45 pm')}}" required>
                                                     </div>
                                                 </div>
                                             </div>

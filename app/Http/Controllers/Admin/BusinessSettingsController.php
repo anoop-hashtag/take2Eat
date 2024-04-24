@@ -1927,10 +1927,14 @@ class BusinessSettingsController extends Controller
     public function chat_update(Request $request, $name): RedirectResponse
     {
         if ($name == 'whatsapp') {
+            $whatsapp_no = '';
+            if($request['number'] != '') {
+                $whatsapp_no = $request['country_code'].$request['number'];
+            }
             $this->business_setting->updateOrInsert(['key' => 'whatsapp'], [
                 'value' => json_encode([
                     'status' => $request['status'] == 'on' ? 1 : 0,
-                    'number' => $request['number'],
+                    'number' => $whatsapp_no,
                 ]),
             ]);
         }

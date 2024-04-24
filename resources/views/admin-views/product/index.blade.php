@@ -64,8 +64,7 @@
                                         </div>
                                         <input type="hidden" name="lang[]" value="en">
                                         <div class="form-group">
-                                            <label class="input-label"
-                                                   for="exampleFormControlInput1">{{translate('short')}} {{translate('description')}} (EN)</label>
+                                            <label class="input-label" for="exampleFormControlInput1">{{translate('short')}} {{translate('description')}} (EN)</label>
                                             {{--<div id="editor" style="min-height: 15rem;"></div>--}}
                                             {{--<textarea name="description[]" style="display:none" id="hiddenArea"></textarea>--}}
                                             <textarea name="description[]" class="form-control textarea-h-100" id="hiddenArea"></textarea>
@@ -182,11 +181,9 @@
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label class="input-label">{{translate('discount_Type')}}
-                                                            <span class="text-danger">*</span>
-                                                        </label>
+                                                        <label class="input-label">{{translate('discount_Type')}}</label>
                                                         <select name="discount_type" class="form-control js-select2-custom" id="discount_type">
-                                                            <option selected disabled>---{{translate('select')}}---</option>
+                                                            <option >---{{translate('select')}}---</option>
                                                             <option value="percent">{{translate('percentage')}}</option>
                                                             <option value="amount">{{translate('amount')}}</option>
                                                         </select>
@@ -194,9 +191,7 @@
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label id="discount_label" class="input-label">{{translate('discount')}}
-                                                            <span class="text-danger">*</span>
-                                                        </label>
+                                                        <label id="discount_label" class="input-label">{{translate('discount')}}</label>
                                                         <input id="discount_input" type="number" min="0" name="discount" class="form-control"
                                                                placeholder="{{translate('Ex : 5%')}}">
                                                     </div>
@@ -204,7 +199,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('tax_Type')}}
-                                                            {{-- <span class="text-danger">*</span> --}}
+                                                            <span class="text-danger">*</span>
                                                         </label>
                                                         <select name="tax_type" class="form-control js-select2-custom" id="tax_type">
                                                             <option selected disabled>---{{translate('select')}}---</option>
@@ -216,7 +211,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label id="tax_label" class="input-label" for="exampleFormControlInput1">{{translate('tax_Rate')}}
-                                                            {{-- <span class="text-danger">*</span> --}}
+                                                            <span class="text-danger">*</span>
                                                         </label>
                                                         <input id="tax_input" type="number" min="0" step="any" name="tax" class="form-control"
                                                                placeholder="{{translate('Ex : ₹100')}}" required>
@@ -300,15 +295,13 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('available_From')}}<span class="text-danger">*</span></label>
-                                                        <input type="text" id="datetimepicker1" name="available_time_starts" class="form-control" placeholder="{{translate('--:--')}}" required data-input>
-                                                        <i class="tio-time-1"></i>
+                                                        <input type="time" name="available_time_starts" class="form-control" placeholder="{{translate('--:--')}}" required data-input value="00:00:00">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="input-label">{{translate('available_Till')}}<span class="text-danger">*</span></label>
-                                                        <input type="text" id="datetimepicker2" name="available_time_ends" class="form-control" placeholder="{{translate('--:--')}}" required data-input>
-                                                        <i class="tio-time-1"></i>
+                                                        <input type="time" name="available_time_ends" class="form-control" placeholder="{{translate('--:--')}}" required data-input value="23:59:00">
                                                     </div>
                                                 </div>
                                             </div>

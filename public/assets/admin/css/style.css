@@ -2655,7 +2655,12 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   padding: 18px 15px 15px 20px;
   min-height: 65px;
 }
-
+.order--card.h-100.active-box {
+	background-color: #ff611d30;
+}
+.active-box .card-subtitle span, .active-box .card-title {
+	color: #ff611d;
+}
 .order--card .card-title {
   font-weight: 700;
   font-size: 18px;

@@ -26,6 +26,16 @@
     <script
         src="{{asset('public/assets/admin')}}/vendor/hs-navbar-vertical-aside/hs-navbar-vertical-aside-mini-cache.js"></script>
     <link rel="stylesheet" href="{{asset('public/assets/admin')}}/css/toastr.css">
+
+    <script>
+        function validateForm() {
+            let whatsapp = document.getElementById('whatsapp').value;
+            if (whatsapp.length < 10 && whatsapp.length > 0) {
+                alert("Please enter 10 digits whatsapp number");
+                return false;
+            }
+        } 
+    </script>
 </head>
 
 <body class="footer-offset">
@@ -144,6 +154,22 @@
     </script>
 @endif
 
+<script type="text/javascript">
+
+    //validation for mobile no
+    function validateMobileNumber(input) {
+        var phoneNumber = input.value;
+    
+        phoneNumber = phoneNumber.replace(/\D/g, '');
+        input.value = phoneNumber;
+
+        if(phoneNumber.length > 10) {
+            input.value = phoneNumber.slice(0, 10);
+        }
+    }
+
+</script>
+
 <script>
     $(document).on('ready', function() {
         $('#datatable').css('font-size', '13px');
@@ -154,7 +180,9 @@
 
 <!-- Toggle Direction Init -->
 <script>
+    
     $(document).on('ready', function(){
+
 
         $(".direction-toggle").on("click", function () {
             setDirection(localStorage.getItem("direction"));

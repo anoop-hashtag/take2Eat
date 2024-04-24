@@ -28,7 +28,7 @@
                     @php($config=\App\CentralLogics\Helpers::get_business_settings('whatsapp'))
                     @if($config)
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.web-app.third-party.chat-update',['whatsapp']):'javascript:'}}"
-                            method="post">
+                            method="post" onsubmit="return validateForm()" >
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <h5 class="mb-4">{{translate('Whatsapp')}}</h5>
@@ -40,14 +40,20 @@
 
                                 @csrf
                                 <div class="form-group">
-                                    <label>{{translate('number')}} <small class="text-danger">({{ translate('without country code') }})</small></label><br>
-                                    <input type="text" class="form-control" name="number"
-                                           value="{{$config['number'] ?? ''}}" placeholder="{{ translate('WhatsApp Number') }}">
+                                    <div class="content-row">
+                                        <div class="col-area-2">
+                                            <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
+                                            <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
+                                            <input type="hidden"  id="hidden-country-code"  name="country_code">
+                                        </div>
+                                        <div class="col-area-10">
+                                            <label>{{translate('number')}}</label> <small class="text-danger">(With the Country code)</small><br>
+                                            <input type="number" class="form-control" name="number" value="{{$config['number'] ?? ''}}" placeholder="{{ translate('WhatsApp Number') }}" id="whatsapp" onkeyup="validateMobileNumber(this)">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="btn--container">
-                                    <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}"
-                                            onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}"
-                                            class="btn btn-primary mb-2">{{translate('save')}}
+                                    <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2">{{translate('save')}}
                                     </button>
                                 </div>
 
