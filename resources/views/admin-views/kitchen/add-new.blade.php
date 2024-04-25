@@ -66,9 +66,11 @@
                                            placeholder="{{translate('Ex')}} : +91" required> --}}
                                           
                                         <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
-
                                         <input type="hidden"  id="hidden-country-code"    name="country_code">
-                                       
+                                        <input type="hidden"  id="hidden-country-code-string"  name="country_code_string">
+
+                                            {{-- only for show store country code --}}
+                                        <input type="hidden"  id="hidden-country-code-string-db" value="">
                                 </div>
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>

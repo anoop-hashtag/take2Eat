@@ -136,7 +136,7 @@
 
                                                         <select name="item_type" class="form-control js-select2-custom">
                                                             <option selected disabled>---{{translate('select')}}---</option>
-                                                            <option value="0">{{translate('product')}} {{translate('item')}}</option>
+                                                            <option value="0">{{translate('popular')}} {{translate('items')}}</option>
                                                             <option value="1">{{translate('set_menu')}}</option>
                                                         </select>
                                                     </div>

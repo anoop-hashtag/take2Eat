@@ -2202,4 +2202,5 @@
   'This branch has no table' => 'This branch has no table',
   'Banner type' => 'Banner type',
   'table_setup' => 'Table Setup',
+  'popular' => 'Popular',
 );
