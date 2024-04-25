@@ -31,7 +31,10 @@
                             $number_country_code = $config['number'];
                             $number = substr($number_country_code, -10);
 
-                            $country_code = $config['code'];
+                            $country_code = '';
+                            if(isset($config['code'])) {
+                                $country_code = $config['code'];
+                            }
                         ?>
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.web-app.third-party.chat-update',['whatsapp']):'javascript:'}}"
                             method="post" onsubmit="return validateForm()" >
