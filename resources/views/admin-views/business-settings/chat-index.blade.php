@@ -27,6 +27,12 @@
                 <div class="card">
                     @php($config=\App\CentralLogics\Helpers::get_business_settings('whatsapp'))
                     @if($config)
+                        <?php 
+                            $number_country_code = $config['number'];
+                            $number = substr($number_country_code, -10);
+
+                            $country_code = $config['code'];
+                        ?>
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.web-app.third-party.chat-update',['whatsapp']):'javascript:'}}"
                             method="post" onsubmit="return validateForm()" >
                             <div class="card-body">
@@ -43,12 +49,16 @@
                                     <div class="content-row">
                                         <div class="col-area-2">
                                             <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
-                                            <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
+                                            <div id="country-dropdown" class="form-control" style="z-index: 1;"></div>
                                             <input type="hidden"  id="hidden-country-code"  name="country_code">
+                                            <input type="hidden"  id="hidden-country-code-string"  name="country_code_string">
+
+                                            {{-- only for show store country code --}}
+                                            <input type="hidden"  id="hidden-country-code-string-db" value="{{ $country_code ?? ''}}">
                                         </div>
                                         <div class="col-area-10">
                                             <label>{{translate('number')}}</label> <small class="text-danger">(With the Country code)</small><br>
-                                            <input type="number" class="form-control" name="number" value="{{$config['number'] ?? ''}}" placeholder="{{ translate('WhatsApp Number') }}" id="whatsapp" onkeyup="validateMobileNumber(this)">
+                                            <input type="number" class="form-control" name="number" value="{{ $number ?? ''}}" placeholder="{{ translate('WhatsApp Number') }}" id="whatsapp" onkeyup="validateMobileNumber(this)">
                                         </div>
                                     </div>
                                 </div>

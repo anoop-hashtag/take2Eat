@@ -628,51 +628,41 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript">
     $(document).ready(function() {
-      var countryDropdown = $("#country-dropdown");
-      var selectedCountryData = $("#selected-country-data");
-      var hiddenInput = $("#hidden-country-code"); // Add this line to select the hidden input
-     
-  
-      countryDropdown.intlTelInput({
-        preferredCountries: ['in'],
-        // initialCountry: "in", // Default initial country (change as needed)
-        separateDialCode: true,
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js",
-      });
+        var countryDropdown = $("#country-dropdown");
+        var selectedCountryData = $("#selected-country-data");
+        var hiddenInput = $("#hidden-country-code");
+        var hiddenInputString = $("#hidden-country-code-string");
+        var hiddenInputStringDB = $("#hidden-country-code-string-db").val();
 
-      // Set the initial country based on the value in the hidden input
-      var initialCountryCode = hiddenInput.val();
-      if (initialCountryCode) {
-        countryDropdown.intlTelInput('setCountry', initialCountryCode);
-      }
-      var countryData = countryDropdown.intlTelInput('getSelectedCountryData');
-      
-        if (countryData.dialCode==='91') {
-            hiddenInput.val("+" + countryData.dialCode);
-        }
-       
-       var update= $("#hidden-country-code").attr("sonu")
-       console.log(update);
-        if ("+" + countryData.dialCode==update) {
-            hiddenInput.val("+" + countryData.dialCode);
-        }
-        // Set the value of the hidden input field
-       
-      // Manually trigger the 'countrychange' event to update the hidden input
-      countryDropdown.trigger("countrychange");
+        let preferredCountries_data = 'in';
 
-      // Event listener for the change event
-      countryDropdown.on("countrychange", function() {
-        // Get selected country data
-        var countryData = countryDropdown.intlTelInput('getSelectedCountryData');
-        console.log(countryData);
-        // Set the value of the hidden input field
-        hiddenInput.val("+" + countryData.dialCode);
-       
-        // Display selected country data
-        selectedCountryData.text("Selected Country Data: " + JSON.stringify(countryData));
-      });
-      
+        if(hiddenInputStringDB != '') {
+            preferredCountries_data = hiddenInputStringDB;
+        }
+
+        // Initialize the country dropdown
+        countryDropdown.intlTelInput({
+            preferredCountries: [preferredCountries_data],
+            separateDialCode: true,
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js",
+        });
+
+        // Manually trigger the 'countrychange' event to update the hidden input
+        countryDropdown.trigger("countrychange");
+
+        // Event listener for the change event
+        countryDropdown.on("countrychange", function() {
+            // Get selected country data
+            var countryData = countryDropdown.intlTelInput('getSelectedCountryData');
+
+            // Set the value of the hidden input field
+            hiddenInput.val("+" + countryData.dialCode);
+            hiddenInputString.val(countryData.iso2);
+
+            // Display selected country data
+            selectedCountryData.text("Selected Country Data: " + JSON.stringify(countryData));
+        });
+
     });
     
 </script>
