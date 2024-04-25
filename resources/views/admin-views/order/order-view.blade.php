@@ -1245,5 +1245,13 @@
             });
         }
     </script>
-
+    <script>
+        // Function to reload the page
+        function reloadPage() {
+            location.reload();
+        }
+        
+        // Set timeout to reload the page every 10 seconds (10000 milliseconds)
+        setTimeout(reloadPage, 10000);
+    </script>
 @endpush
