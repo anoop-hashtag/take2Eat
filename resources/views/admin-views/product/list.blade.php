@@ -5,6 +5,12 @@
 @push('css_or_js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <style>
+        .dataTables_paginate {
+            margin-top: 20px; /* Adjust the top margin as needed */
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -17,7 +23,7 @@
                     {{translate('Product_List')}}
                 </span>
             </h2>
-            <span class="badge badge-soft-dark rounded-50 fz-14">{{ $products->total() }}</span>
+            <span class="badge badge-soft-dark rounded-50 fz-14">{{ count($products) }}</span>
         </div>
         <!-- End Page Header -->
 
@@ -73,9 +79,12 @@
                                 </thead>
 
                                 <tbody id="set-rows">
+                                    @php
+                                        $i=1
+                                    @endphp
                                 @foreach($products as $key=>$product)
                                     <tr>
-                                        <td>{{$products->firstitem()+$key}}</td>
+                                        <td>{{ $i++ }}</td>
                                         <td>
                                             <div class="category-mid media align-items-center gap-3">
                                                 <div class="avatar">
@@ -98,10 +107,10 @@
                                         <td>
                                             <div><span class="">{{ translate('Stock Type') }} : {{ ucfirst($product->main_branch_product?->stock_type) }}</span></div>
                                             @if(isset($product->main_branch_product) && $product->main_branch_product->stock_type != 'unlimited')
-                                            @php
-                                              $remainstock = $product->main_branch_product->stock - \App\Model\OrderDetail::whereHas('order', function ($q) use ($product) {$q->where('order_status', 'delivered');})->where('product_id', $product->id)->sum('quantity');
-                                           
-                                            @endphp
+                                                @php
+                                                    $remainstock = $product->main_branch_product->stock - \App\Model\OrderDetail::whereHas('order', function ($q) use ($product) {$q->where('order_status', 'delivered');})->where('product_id', $product->id)->sum('quantity');
+                                            
+                                                @endphp
                                                 <div><span class="">{{ translate('Stock') }} : {{$remainstock }}</span></div>
                                             @endif
                                         </td>
@@ -134,7 +143,7 @@
                         <div class="table-responsive mt-4 px-3 pagination-style">
                             <div class="d-flex justify-content-lg-end justify-content-sm-end">
                                 <!-- Pagination -->
-                                {!! $products->links() !!}
+                                {{-- {!! $products->links() !!} --}}
                             </div>
                         </div>
                     </div>
@@ -218,7 +227,7 @@
                         
                     ],
                     info: false,
-                    paging: false,
+                    paging: true,
                     select: {
                         style: 'multi',
                         selector: 'td:first-child input[type="checkbox"]',

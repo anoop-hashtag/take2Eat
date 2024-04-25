@@ -116,7 +116,8 @@ class ProductController extends Controller
             $query = $this->product;
         }
 
-        $products = $query->with('main_branch_product')->orderBy('id', 'DESC')->paginate(Helpers::getPagination())->appends($query_param);
+        // $products = $query->with('main_branch_product')->orderBy('id', 'DESC')->paginate(Helpers::getPagination())->appends($query_param);
+        $products = $query->with('main_branch_product')->orderBy('id', 'DESC')->get();
         return view('admin-views.product.list', compact('products', 'search'));
     }
 
