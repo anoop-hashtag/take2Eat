@@ -2198,4 +2198,8 @@
   'chat settings updated!' => 'Chat settings updated!',
   'With the Country code' => 'With the Country code',
   'Ex : 5' => 'Ex : 5',
+  'table_availability' => 'Table Availability',
+  'This branch has no table' => 'This branch has no table',
+  'Banner type' => 'Banner type',
+  'table_setup' => 'Table Setup',
 );
