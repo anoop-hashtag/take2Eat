@@ -2197,4 +2197,5 @@
   'You can not change the status of English language!' => 'You can not change the status of English language!',
   'chat settings updated!' => 'Chat settings updated!',
   'With the Country code' => 'With the Country code',
+  'Ex : 5' => 'Ex : 5',
 );

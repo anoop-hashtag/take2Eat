@@ -193,7 +193,7 @@
                                                     <div class="form-group">
                                                         <label id="discount_label" class="input-label">{{translate('discount')}}</label>
                                                         <input id="discount_input" type="number" min="0" name="discount" class="form-control"
-                                                               placeholder="{{translate('Ex : 5%')}}">
+                                                               placeholder="{{translate('Ex : 5')}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">

@@ -1927,7 +1927,7 @@ class BusinessSettingsController extends Controller
     public function chat_update(Request $request, $name): RedirectResponse
     {
         if ($name == 'whatsapp') {
-            $whatsapp_no = '';
+            $whatsapp_no = 0;
             if($request['number'] != '') {
                 $whatsapp_no = $request['country_code'].$request['number'];
             }
