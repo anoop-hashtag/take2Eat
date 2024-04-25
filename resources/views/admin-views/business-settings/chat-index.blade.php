@@ -60,7 +60,7 @@
                                             <input type="hidden"  id="hidden-country-code-string-db" value="{{ $country_code ?? ''}}">
                                         </div>
                                         <div class="col-area-10">
-                                            <label>{{translate('number')}}</label> <small class="text-danger">(With the Country code)</small><br>
+                                            <label>{{translate('number')}}</label> <br>
                                             <input type="number" class="form-control" name="number" value="{{ $number ?? ''}}" placeholder="{{ translate('WhatsApp Number') }}" id="whatsapp" onkeyup="validateMobileNumber(this)">
                                         </div>
                                     </div>
