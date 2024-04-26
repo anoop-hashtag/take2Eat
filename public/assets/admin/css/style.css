@@ -3464,4 +3464,35 @@ body > #printableAreaContent {
 .inputDnD .form-control-file:hover:before {
     border-style: solid;
 }
-
+tr.img-width td{
+  width:20% !important;
+}
+div#pos_datatable_filter label{
+  color:#fff !important;
+}
+div#pos_datatable_filter label input {
+  border: .0625rem solid #e7eaf3 !important;
+  height: 43px !important;
+  width: 150% !important;
+}
+div#pos_datatable_filter {
+  position: absolute;
+  top: -88px;
+  right: 59px;
+}
+div#pos_datatable_filter label input {
+  border: .0625rem solid #e7eaf3 !important;
+  padding-left: 15px !important;
+  height: 43px !important;
+  width: 119% !important;
+}
+tr.img-width.odd td {
+  padding: 5px !important;
+}
+tr.img-width.even td {
+  padding: 5px !important;
+}
+table.dataTable thead th, table.dataTable thead td {
+  padding: 10px 18px;
+  border-bottom:none !important;
+}

@@ -4,7 +4,11 @@
 
 @push('css_or_js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
-
+<style>
+    .dataTables_paginate {
+        margin-top: 15px; /* Adjust the top margin as needed */
+    }
+</style>
 <style>
     /* #location_map_div #pac-input{
         height: 40px;
@@ -157,7 +161,7 @@
                                     </select>
                                 </div>
                                 <div class="w-100 ml-xl-2">
-                                    <form id="search-form">
+                                    {{-- <form id="search-form">
                                         <!-- Search -->
                                         <div class="input-group input-group-merge input-group-flush border rounded">
                                             <div class="input-group-prepend pl-2">
@@ -169,23 +173,63 @@
                                             <input id="datatableSearch" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control border-0" placeholder="{{translate('Search here')}}" aria-label="Search here">
                                         </div>
                                         <!-- End Search -->
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </div>
                             <!-- End POS Filter -->
+
                             <!-- POS Products -->
                             <div class="card-body pt-0" id="items">
-                                <div class="pos-item-wrap justify-content-center">
-
-                                    @foreach($products as $product)
-                                        @include('admin-views.pos._single_product',['product'=>$product])
-                                    @endforeach
+                                <div class="">
+                                    <table id="pos_datatable" style="width: 100% !important">
+                                        <thead style="border: none" border="0">
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            $i = 0;
+                                        ?>
+                                        @foreach($products as $product)
+                                            <?php 
+                                                if($i == 0) {
+                                                   echo "<tr class='img-width'>"; 
+                                                }
+                                            ?>
+                                                <td>
+                                                    @include('admin-views.pos._single_product',['product'=>$product])
+                                                </td>
+                                            <?php 
+                                                $i++;
+                                                if($i == 4) {
+                                                   echo "</tr>"; 
+                                                   $i = 0;
+                                                }
+                                            ?>
+                                        @endforeach
+                                        <?php 
+                                            if($i == 1) {
+                                                echo "<td></td><td></td><td></td></tr>"; 
+                                            } elseif ($i == 2) {
+                                                echo "<td></td><td></td></tr>"; 
+                                            } elseif ($i == 3) {
+                                                echo "<td></td></tr>"; 
+                                            }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                    
+                                    
                                 </div>
                             </div>
                             <!-- End POS Products -->
 
                             <div class="p-3 d-flex justify-content-end">
-                                {!!$products->withQueryString()->links()!!}
+                                {{-- {!!$products->withQueryString()->links()!!} --}}
                             </div>
                         </div>
                     </div>
@@ -202,7 +246,7 @@
                                     <select onchange="store_key('customer_id',this.value)" id='customer' name="customer_id" data-placeholder="{{translate('Walk_In_Customer')}}" class="js-select2-custom-x form-ellipsis form-control">
                                     <option  disabled selected>{{translate('select Customer')}}</option>
                                     @foreach(\App\User::select('id', 'f_name', 'l_name')->get() as $customer)
-                                            <option value="{{$customer['id']}}" {{ session()->get('customer_id') == $customer['id'] ? 'selected' : '' }}>{{$customer['f_name']. ' '. $customer['l_name']; }}</option>
+                                            <option value="{{$customer['id']}}" {{ session()->get('customer_id') == $customer['id'] ? 'selected' : '' }}>{{$customer['f_name']. ' '. $customer['l_name'] }}</option>
                                         @endforeach
                                     </select>
                                     <button class="btn btn-success rounded text-nowrap" id="add_new_customer" type="button" data-toggle="modal" data-target="#add-customer" title="Add Customer">
@@ -1199,6 +1243,86 @@
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public/assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');
     </script>
 
+    <script>
+        $(document).on('ready', function () {
+            var datatable = $.HSCore.components.HSDatatables.init($('#pos_datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                    
+                ],
+                info: false,
+                paging: true,
+                ordering: false,
+                // header: false,
+                pageLength: 3,
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                }
+            });
+
+            $('#pos_datatable_wrapper .dataTables_filter label input').attr('placeholder', ' Search here');
+            $('#pos_datatable thead').css('border-bottom', '1px solid red');
+        }); 
+
+        $(document).on('ready', function () {
+                // ... Your existing initialization code
+    
+                // Get the DataTable instance
+                var dataTable = $('#pos_datatable').DataTable();
+    
+                // Hide pagination on initial load
+                checkAndTogglePagination(dataTable);
+    
+                // Event listener for DataTable search
+                dataTable.on('search.dt', function () {
+                    checkAndTogglePagination(dataTable);
+                });
+            });
+    
+            function checkAndTogglePagination(dataTable) {
+                var paginationSection = $('.pagination-style');
+    
+                if (dataTable.search() && dataTable.search() !== '') {
+                    // If search is active, hide pagination
+                    paginationSection.hide();
+                } else {
+                    // If no search or search is cleared, show pagination
+                    paginationSection.show();
+                }
+            }
+    </script>
 
 
     

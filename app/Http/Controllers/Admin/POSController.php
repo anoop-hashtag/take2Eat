@@ -81,7 +81,8 @@ class POSController extends Controller
             })
             ->active()
             ->latest()
-            ->paginate(Helpers::getPagination());
+            // ->paginate(Helpers::getPagination());
+            ->get();
 
         $current_branch = $this->admin->find(auth('admin')->id());
         $branches = $this->branch->select('id', 'name')->get();
