@@ -3496,3 +3496,6 @@ table.dataTable thead th, table.dataTable thead td {
   padding: 10px 18px;
   border-bottom:none !important;
 }
+.invoice-logo img{
+  margin: 5px 0 0 29px;
+}
