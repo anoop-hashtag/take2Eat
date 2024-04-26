@@ -371,7 +371,7 @@
                                             }
                                             echo \App\CentralLogics\Helpers::set_symbol($taxable_amt);
 
-                                            $total_tax = $total_tax + $taxable_amt;
+                                            $total_tax = $total_tax + ($taxable_amt * $detail['quantity'] );
                                         ?>
                                     </td>
                                     @if(isset($variation['values']) && is_array($variation['values']))
