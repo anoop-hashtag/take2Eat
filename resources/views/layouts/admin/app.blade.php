@@ -168,7 +168,7 @@
         }
     }
 
-    //validation for mobile no
+    //validation for identity number
     function validateIdentityNumber(input) {
         var IdentityNumber = input.value;
     
@@ -176,6 +176,17 @@
 
         if(IdentityNumber.length > 20) {
             input.value = IdentityNumber.slice(0, 20);
+        }
+    }
+
+    //validation for gst number
+    function validateGSTNumber(input) {
+        var GstNumber = input.value;
+    
+        input.value = GstNumber;
+
+        if(GstNumber.length > 15) {
+            input.value = GstNumber.slice(0, 15);
         }
     }
 </script>

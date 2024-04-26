@@ -1065,7 +1065,9 @@ class POSController extends Controller
             'email' => 'required|email',
         ]);
 
-        $user_phone = $this->user->where('phone', $request->phone)->first();
+        $phone = $request->country_code.$request->phone;
+
+        $user_phone = $this->user->where('phone', $phone)->first();
         if (isset($user_phone)){
             Toastr::error(translate('The phone is already taken'));
             return back();
@@ -1110,7 +1112,7 @@ class POSController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'contact_person_name' => 'required',
-            'contact_person_number' => 'required',
+            'contact_person_number' => 'required|min:10|max:10',
             'address' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',

@@ -31,6 +31,15 @@
     padding-left: 10px;
 }
 </style>
+<script>
+    function validateform() {
+        let phone = document.getElementById('phone').value;
+        if(phone.length > 0 && phone.length < 10) {
+            alert('Please enter a valid phone number');
+            return false;
+        }
+    }
+</script>
 @endpush
 
 @section('content')
@@ -357,7 +366,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('admin.pos.customer-store')}}" method="post" id="customer-form">
+                        <form action="{{route('admin.pos.customer-store')}}" method="post" id="customer-form" onsubmit="return validateform()">
                             @csrf
                             <div class="row pl-2">
                                 <div class="col-12 col-lg-6">
@@ -391,12 +400,21 @@
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <div class="form-group">
-                                        <label class="input-label">
-                                            {{translate('Phone')}}
-                                            <small class="text-danger" style="margin-top: 3px;">&nbsp;( {{translate('with_country_code')}} ) </small>
-                                            <span class="input-label-secondary text-danger">*</span>
-                                        </label>
-                                        <input type="text" name="phone" class="form-control" value="" placeholder="{{translate('Ex : +88017*****')}}" required="">
+                                        <div class="content-row">
+                                            <div class="col-area-2">
+                                                <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
+                                                <div id="country-dropdown" class="form-control" style="z-index: 1;"></div>
+                                                <input type="hidden"  id="hidden-country-code"  name="country_code">
+                                                <input type="hidden"  id="hidden-country-code-string"  name="country_code_string">
+    
+                                                {{-- only for show store country code --}}
+                                                <input type="hidden"  id="hidden-country-code-string-db">
+                                            </div>
+                                            <div class="col-area-10">
+                                                <label>{{translate('Phone')}} <span class="text-danger">*</span></label> <br>
+                                                <input type="number" name="phone" id="phone" class="form-control" value="" placeholder="{{translate('Ex : +88017*****')}}" required="" onkeyup="validateMobileNumber(this)">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -407,7 +425,7 @@
                                             <small class="text-danger" style="margin-top: 3px;"> </small>
                                             <span class="input-label-secondary text-danger"></span>
                                         </label>
-                                        <input type="text" name="gst_number" class="form-control" value="" placeholder="{{translate('GSTIN')}}">
+                                        <input type="text" name="gst_number" class="form-control" value="" placeholder="{{translate('GSTIN')}}" onkeyup="validateGSTNumber(this)">
                                     </div>
                                 </div>
                             </div>
@@ -488,8 +506,8 @@
                                 <div class="col-md-6">
                                     <label class="input-label" for="">{{ translate('Contact Number') }}
                                         <span class="input-label-secondary text-danger">*</span></label>
-                                    <input type="tel" class="form-control" name="contact_person_number"
-                                           value="{{ $old ? $old['contact_person_number'] : '' }}"  placeholder="{{ translate('Ex :') }} +3264124565" required>
+                                    <input type="number" class="form-control" name="contact_person_number" id="contact_person_number"
+                                           value="{{ $old ? $old['contact_person_number'] : '' }}"  placeholder="{{ translate('Ex :') }} +3264124565" onkeyup="validateMobileNumber(this)" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="input-label" for="">{{ translate('Road') }}</label>
@@ -1197,6 +1215,8 @@
         });
 
         function deliveryAdressStore(form_id = 'delivery_address_store') {
+            let contact_person_number = $('#contact_person_number').val();
+            if(contact_person_number.length )
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')

@@ -2209,4 +2209,5 @@
   'Analysis' => 'Analysis',
   'User management' => 'User management',
   'Management' => 'Management',
+  'The phone is already taken' => 'The phone is already taken',
 );
