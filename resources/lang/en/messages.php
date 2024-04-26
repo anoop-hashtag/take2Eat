@@ -2205,4 +2205,8 @@
   'popular' => 'Popular',
   'round' => 'Round',
   'grand' => 'Grand',
+  'Table manager' => 'Table manager',
+  'Analysis' => 'Analysis',
+  'User management' => 'User management',
+  'Management' => 'Management',
 );

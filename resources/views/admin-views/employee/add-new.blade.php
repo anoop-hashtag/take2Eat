@@ -5,6 +5,15 @@
 @push('css_or_js')
 {{--    <link href="{{asset('public/assets/back-end')}}/css/select2.min.css" rel="stylesheet"/>--}}
 {{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
+<script>
+    function validateform() {
+        let phone = document.getElementById('phone').value;
+        if(phone.length > 0 && phone.length < 10) {
+            alert('Please enter a valid phone number');
+            return false;
+        }
+    }
+</script>
 @endpush
 
 @section('content')
@@ -23,7 +32,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-md-12">
-            <form action="{{route('admin.employee.add-new')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin.employee.add-new')}}" method="post" enctype="multipart/form-data" onsubmit="return validateform()">
                 @csrf
                 <div class="card mb-3">
                     <div class="card-header">
@@ -39,8 +48,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">{{translate('Phone')}}</label>
-                                    <input type="tel" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
-                                        placeholder="{{translate('Ex')}} : (xx)-xxx-xxxx" required>
+                                    <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
+                                        placeholder="{{translate('Ex')}} : (xx)-xxx-xxxx" required onkeyup="validateMobileNumber(this)">
                                 </div>
 
                                 <div class="form-group">
@@ -64,7 +73,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="identity_number">{{translate('identity_Number')}}</label>
-                                    <input type="text" name="identity_number" class="form-control" id="identity_number" required value="{{old('identity_number')}}">
+                                    <input type="text" name="identity_number" class="form-control" id="identity_number" required value="{{old('identity_number')}}" onkeyup="validateIdentityNumber(this)">
                                 </div>
                             </div>
                             <div class="col-md-6">

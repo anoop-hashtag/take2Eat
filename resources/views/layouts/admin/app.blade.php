@@ -168,6 +168,16 @@
         }
     }
 
+    //validation for mobile no
+    function validateIdentityNumber(input) {
+        var IdentityNumber = input.value;
+    
+        input.value = IdentityNumber;
+
+        if(IdentityNumber.length > 20) {
+            input.value = IdentityNumber.slice(0, 20);
+        }
+    }
 </script>
 
 <script>
