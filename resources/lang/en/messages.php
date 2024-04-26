@@ -2203,4 +2203,6 @@
   'Banner type' => 'Banner type',
   'table_setup' => 'Table Setup',
   'popular' => 'Popular',
+  'round' => 'Round',
+  'grand' => 'Grand',
 );

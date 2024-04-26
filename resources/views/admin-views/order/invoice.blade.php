@@ -315,9 +315,12 @@
                             <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
                                 <hr>
                             </dd>
-                      
-                            <dt class="col-6" style="font-size: 20px">{{translate('Total:')}}</dt>
-                            <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro) }}</dd>
+                            
+                            <?php 
+                                $total = $sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro
+                            ?>
+                            <dt class="col-6" style="font-size: 18px">{{translate('Total:')}}</dt>
+                            <dd class="col-6" style="font-size: 18px">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd>
 
                             <!-- partial payment-->
                             @if ($order->order_partial_payments->isNotEmpty())
@@ -348,6 +351,12 @@
                                     {{ \App\CentralLogics\Helpers::set_symbol($due_amount) }}
                                 </dd>
                             @endif
+
+                            <dt class="col-6">{{translate('round')}} {{translate('off')}}:</dt>
+                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}</dd>
+
+                            <dt class="col-6" style="font-size: 20px">{{translate('Total:')}}</dt>
+                            <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</dd>
                         </dl>
                     </div>
                 </div>

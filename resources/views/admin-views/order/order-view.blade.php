@@ -503,7 +503,10 @@
                                         <span>:</span>
                                         </div>
                                     </dt>
-                                    <dd class="col-6 border-top pt-2 fz-16 font-weight-bold text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($sub_total - $order['coupon_discount_amount'] - $order['extra_discount'] + $del_c+$order['packing_fee']+$total_tax + $add_ons_tax_cost) }}</dd>
+                                    <?php 
+                                        $total = $sub_total - $order['coupon_discount_amount'] - $order['extra_discount'] + $del_c+$order['packing_fee']+$total_tax + $add_ons_tax_cost
+                                    ?>
+                                    <dd class="col-6 border-top pt-2 fz-16 font-weight-bold text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd>
 
                                     <!-- partial payment-->
                                     @if ($order->order_partial_payments->isNotEmpty())
@@ -534,6 +537,31 @@
                                                 {{ \App\CentralLogics\Helpers::set_symbol($due_amount) }}
                                             </dd>
                                     @endif
+                                </dl>
+                                <?php 
+                                    $total;
+                                ?>
+                                <dl class="row">
+                                    <dt class="col-6">
+                                        <div class="d-flex max-w220 ml-auto">
+                                            <span>{{translate('round')}} {{translate('off')}}</span>
+                                            <span>:</span>
+                                        </div>
+                                    </dt>
+                                    <dd class="col-6 text-dark text-right">
+                                        {{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}
+                                    </dd>
+                                </dl>
+                                <dl class="row"><dt class="col-12"><hr/></dt></dl>
+                                <dl class="row">
+                                    <dt class="col-6">
+                                        <div class="d-flex max-w220 ml-auto">
+                                            <h3>{{translate('grand')}} {{translate('total')}} :</h3>
+                                        </div>
+                                    </dt>
+                                    <dd class="col-6 text-dark text-right">
+                                        <h3>{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</h3>
+                                    </dd>
                                 </dl>
                             </div>
                         </div>
@@ -1247,11 +1275,11 @@
     </script>
     <script>
         // Function to reload the page
-        function reloadPage() {
-            location.reload();
-        }
+        // function reloadPage() {
+        //     location.reload();
+        // }
         
-        // Set timeout to reload the page every 10 seconds (10000 milliseconds)
-        setTimeout(reloadPage, 10000);
+        // // Set timeout to reload the page every 10 seconds (10000 milliseconds)
+        // setTimeout(reloadPage, 10000);
     </script>
 @endpush
