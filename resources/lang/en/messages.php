@@ -2210,4 +2210,8 @@
   'User management' => 'User management',
   'Management' => 'Management',
   'The phone is already taken' => 'The phone is already taken',
+  'If_disabled,_Delivery_Partner_will_not_receive_any_registration_confirmation_email.' => 'If disabled, Delivery Partner will not receive any registration confirmation email.',
+  'delivery fee' => 'Delivery fee',
+  'item_price' => 'Item price',
+  'Tax / GST' => 'Tax / GST',
 );

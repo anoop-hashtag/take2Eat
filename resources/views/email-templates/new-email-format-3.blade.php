@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Page Title</title>
+    <title>{{ translate('Email_Template') }}</title>
   </head>
   <body>
     <table class="main-table" style="width: 600px; background: #f4f4f4; margin: 0 auto; padding: 8px; font-family: Roboto, sans-serif;
@@ -9,11 +9,9 @@
       <tbody>
         <tr>
           <td class="main-table-td">
-            <h2 class="mb-3" id="mail-title" style="color: #000;">HashTag Labs Order Placements</h2>
-            <div class="mb-1" id="mail-body">
-              <p>hello users,</p>
-              <p>&nbsp;</p>
-            </div>
+            <h2 class="mb-3" id="mail-title" style="color: #000;">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
+            <div class="mb-1" id="mail-body">{!! $body?? translate('Hi_Sabrina,') !!}</div>
+            
             {{-- <span class="d-block text-center mb-3" style="text-align: center;display: block;">
               <a href="#" class="cmn-btn" id="mail-button" style="background: #ff7a00; color: #fff; padding: 8px 20px;  display: inline-block; text-decoration: none;"></a>
             </span> --}}
@@ -50,194 +48,224 @@
 
                             <span class="d-block">{{ $address['contact_person_number'] ?? null }}</span>
                           </td>
-                        </tr> @php($sub_total=0) @php($total_tax=0) @php($total_dis_on_pro=0) @php($add_ons_cost=0) @php($add_on_tax=0) @php($add_ons_tax_cost=0) <tr>
+                        </tr> 
+                        @php($sub_total=0) @php($total_tax=0) @php($total_dis_on_pro=0) @php($add_ons_cost=0) @php($add_on_tax=0) @php($add_ons_tax_cost=0) 
+                        <tr>
                           <td colspan="2">
                             <table class="order-table w-100" width="100%">
                               <thead class="bg-section-2" style="background-color: #cccccd;">
                                 <tr>
-                                  <th class="text-left p-1 px-3" style="text-align: left; padding-left: 5px; color: #000;">Product</th>
-                                  <th class="text-right p-1 px-3" style="text-align: right;  padding-right: 5px; color: #000;">Price</th>
+                                  <th class="text-left p-1 px-3" style="text-align: left; padding-left: 5px; color: #000; width:75%;">Product</th>
+                                  <th class="text-right p-1 px-3" style="text-align: right;  padding-right: 5px; color: #000; width:25%">Price</th>
                                 </tr>
                               </thead>
-                                <tbody>
-                                           <tr>
-                                                @foreach($order->details as $detail)
-                                                        @php($product_details = json_decode($detail['product_details'], true))
-                                                       <td class="text-left p-2 px-3" width="65%">
-                                                           {{$product_details['name']}}
-                                                       </td>
-                                                       <td class="text-right p-2 px-3" style="text-align: right;">
-                                                           <h4 style="margin: 0;color: #000;font-size: 18px;"> {{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</h4>
-                                                       </td>
-                                                   </tr>  
-                                            @php($sub_total=0)
-                                            @php($total_tax=0)
-                                            @php($total_dis_on_pro=0)
-                                            @php($add_ons_cost=0)
-                                            @php($add_on_tax=0)
-                                            @php($add_ons_tax_cost=0)
-                                            <td colspan="2">
-                                               <table class="w-100">
-                                                  <thead class="bg-section-2">
-                                                     
-                                                  </thead>
-                                                  <tbody>
-                                                     <tr>
-                                                       
-                                                        <td class="text-left p-2 px-3">
-                                                           <!--  1. The school of life - emotional baggage tote bag - canvas tote bag (navy) x 1 -->
-                                                           
-                                                        </td>
-                                                       
-                                                        <td>
-                                                           <div class="media gap-3 w-max-content">
-                                                              
-                                                              <div class="media-body text-dark fz-12">
-                                                                 {{--                                                
-                                                                 <h6 class="text-capitalize">{{$detail->product?->name}}</h6>
-                                                                 --}}
-                                                                 <!-- <h6 class="text-capitalize">{{$product_details['name']}}</h6> -->
-                                                                 <div class="d-flex gap-2">
-                                                                    @if (isset($detail['variation']))
-                                                                    @foreach(json_decode($detail['variation'],true) as  $variation)
-                                                                    @if (isset($variation['name'])  && isset($variation['values']))
-                                                                    <span class="d-block text-capitalize">
-                                                                    <strong>{{  $variation['name']}} -</strong>
-                                                                    </span>
-                                                                    @foreach ($variation['values'] as $value)
-                                                                    <span class="d-block text-capitalize">
-                                                                    {{ $value['label']}} :
-                                                                    <!-- <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong> -->
-                                                                    </span>
-                                                                    @endforeach
-                                                                    @else
-                                                                    @if (isset(json_decode($detail['variation'],true)[0]))
-                                                                    <strong><u> {{  translate('Variation') }} : </u></strong>
-                                                                    @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
-                                                                    <div class="font-size-sm text-body">
-                                                                       <span>{{$key1}} :  </span>
-                                                                       <span class="font-weight-bold">{{$variation}}</span>
-                                                                    </div>
-                                                                    @endforeach
-                                                                    @endif
-                                                                    @endif
-                                                                    @endforeach
-                                                                    @else
-                                                                   <!--  <div class="font-size-sm text-body">
-                                                                       <span class="text-dark">{{translate('price')}}  : {{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</span>
-                                                                    </div> -->
-                                                                    @endif
-                                                                    <!-- <div class="d-flex gap-2">
-                                                                       <span class="">{{translate('Qty')}} :  </span>
-                                                                       <span>{{$detail['quantity']}}</span>
-                                                                    </div> -->
-                                                                    <br>
-                                                                    @php($addon_ids = json_decode($detail['add_on_ids'],true))
-                                                                    @if ($addon_ids)
-                                                                    <span>
-                                                                       <u><strong>{{translate('addons')}}</strong></u>
-                                                                       @foreach($addon_ids as $key2 =>$id)
-                                                                       @php($addon=\App\Model\AddOn::find($id))
-                                                                       @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
-                                                                       <div class="font-size-sm text-body">
-                                                                          <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
-                                                                          <span class="font-weight-semibold">
-                                                                         <!--  {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2]) }} <br> -->
-                                                                          </span>
-                                                                       </div>
-                                                                       @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
-                                                                       @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
-                                                                       @endforeach
-                                                                    </span>
-                                                                    @endif
-                                                                 </div>
-                                                              </div>
-                                                           </div>
-                                                        </td>
-                                                        <!-- <td>
-                                                           @php($amount=$detail['price']*$detail['quantity'])
-                                                           {{\App\CentralLogics\Helpers::set_symbol($amount)}}
-                                                        </td>
-                                                        <td>
-                                                           @php($tot_discount = $detail['discount_on_product']*$detail['quantity'])
-                                                           {{\App\CentralLogics\Helpers::set_symbol($tot_discount)}}
-                                                        </td>
-                                                        <td>
-                                                           @php($product_tax = $detail['tax_amount']*$detail['quantity'])
-                                                           {{\App\CentralLogics\Helpers::set_symbol($product_tax + $add_ons_tax_cost)}}
-                                                        </td> -->
-                                                       <!--  <td class="text-right">{{\App\CentralLogics\Helpers::set_symbol($amount-$tot_discount + $product_tax)}}</td>
-                                                        @php($total_dis_on_pro += $tot_discount)
-                                                        @php($sub_total += $amount)
-                                                        @php($total_tax += $product_tax)
-                                                        @endforeach -->
-                                                     </tr>
-                                                     <tr>
-                                                       <td colspan="3"><hr class="mt-0"></td>
-                                                     </tr>
-                                                     <!-- <tr> -->
-                                                           
-                                                           <!-- <table class="order-table w-100" width="100%"> -->
-                                                               <tr>
-                                                                   <td style="width: 60%;"></td>
-                                                                   <td style="width: 30%;"></td>
-                                                                   <td style="width: 10%;"></td>
-                                                               </tr>
-                                                              <tr>
-                                                                 <td></td>
-                                                                 <td class="p-1 px-3">{{ translate('item_price') }}</td>
-                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                 <td></td>
-                                                                 <td class="p-1 px-3">{{translate('tax')}} / {{translate('GST')}}</td>
-                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax) }}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                 <td></td>
-                                                                 <td class="p-1 px-3">{{ translate('discount') }}</td>
-                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($total_dis_on_pro) }}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                 <td></td>
-                                                                 <td class="p-1 px-3">{{ translate('subtotal') }}</td>
-                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($sub_total =$sub_total+$total_tax+$add_ons_cost-$total_dis_on_pro + $add_ons_tax_cost) }}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                 <td></td>
-                                                                 <td class="p-1 px-3">{{translate('coupon')}} {{translate('discount')}}</td>
-                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                 <td></td>
-                                                                 <td class="p-1 px-3"> {{translate('extra discount')}}</td>
-                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                 <td></td>
-                                                                 <td class="p-1 px-3"> {{translate('delivery fee')}}</td>
-                                                                 @if($order['order_type']=='take_away')
-                                                                 @php($del_c=0)
-                                                                 @else
-                                                                 @php($del_c=$order['delivery_charge'])
-                                                                 @endif
-                                                                 <td class="text-right p-1 px-3" style="text-align:right">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                 <td></td>
-                                                                 <td class="p-1 px-3">
-                                                                   <h4 style="font-size: 18px;margin: 5px 0;color: #000000;">Total</h4>
-                                                                 </td>
-                                                                 <td class="text-right p-1 px-3">
-                                                                    <span class="text-base" style="font-size: 18px;color: #ff8a00;font-weight: 700;" >{{ \App\CentralLogics\Helpers::set_symbol($sub_total - $order['coupon_discount_amount'] - $order['extra_discount'] + $del_c) }}</span>
-                                                                 </td>
-                                                              </tr>
-                                                          <!--  </table> -->
-                                                     <!-- </tr> -->
-                                                  </tbody>
-                                               </table>
-                                            </td>
-                                         </tbody>
+                              <tbody>
+                                @php($item_price=0)   
+                                @php($sub_total=0)
+                                @php($total_tax=0)
+                                @php($total_dis_on_pro=0)
+                                @php($add_ons_cost=0)
+                                @php($add_on_tax=0)
+                                @php($add_ons_tax_cost=0)
+                                @foreach($order->details as $detail)
+                                  @php($product_details = json_decode($detail['product_details'], true))
+                                  @php($add_on_qtys=json_decode($detail['add_on_qtys'],true))
+                                  @php($add_on_prices=json_decode($detail['add_on_prices'],true))
+                                  @php($add_on_taxes=json_decode($detail['add_on_taxes'],true))
+                                  <?php
+                                    $amount = 0; 
+                                    $addon_price = array();
+                                  ?>
+                                  <tr>
+                                    <td class="text-left p-2 px-3" style="text-align: left;">
+                                      <b>{{$product_details['name']}}</b>
+                                      <div class="d-flex gap-2">
+                                        @if (isset($detail['variation']))
+                                          @foreach(json_decode($detail['variation'],true) as  $variation)
+                                            @if (isset($variation['name'])  && isset($variation['values']))
+                                              <span class="d-block text-capitalize">
+                                                <strong>{{  $variation['name']}} -</strong>
+                                              </span>
+                                              @foreach ($variation['values'] as $value)
+                                                <span class="d-block text-capitalize">
+                                                  {{ $value['label']}} :
+                                                  <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
+                                                  <?php
+                                                    $amount = $amount + $value['optionPrice']; 
+                                                  ?>
+                                                </span>
+                                              @endforeach
+                                            @else
+                                              @if (isset(json_decode($detail['variation'],true)[0]))
+                                                <strong><u> {{  translate('Variation') }} : </u></strong>
+                                                @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
+                                                  <div class="font-size-sm text-body">
+                                                    <span>{{$key1}} :  </span>
+                                                    <span class="font-weight-bold">{{$variation}}</span>
+                                                  </div>
+                                                @endforeach
+                                              @endif
+                                            @endif
+                                          @endforeach
+                                        @else
+                                          <div class="font-size-sm text-body">
+                                            <span class="text-dark">{{translate('price')}}  : {{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</span>
+                                          </div>
+                                          <?php
+                                            $amount = $amount + $detail->price; 
+                                          ?>
+                                        @endif
+
+                                        <div class="d-flex gap-2">
+                                          <span class="">{{translate('Qty')}} :  </span>
+                                          <span>{{$detail['quantity']}}</span>
+                                        </div>
+
+                                        <br>
+                                        @php($addon_ids = json_decode($detail['add_on_ids'],true))
+                                        @if ($addon_ids)
+                                          <span>
+                                            <u><strong>{{translate('addons')}}</strong></u>
+                                            @foreach($addon_ids as $key2 =>$id)
+                                              @php($addon=\App\Model\AddOn::find($id))
+                                              @php($add_on_qtys==null? $add_on_qty=1 : $add_on_qty=$add_on_qtys[$key2])
+
+                                                <div class="font-size-sm text-body">
+                                                  <span>{{$addon ? $addon['name'] : translate('addon deleted')}} :  </span>
+                                                  <span class="font-weight-semibold">
+                                                    {{$add_on_qty}} x {{ \App\CentralLogics\Helpers::set_symbol($add_on_prices[$key2]) }} <br>
+                                                  </span>
+                                                </div>
+                                              @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
+                                              {{-- @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty) --}}
+                                              @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qtys[$key2])
+                                            @endforeach
+                                          </span>
+                                        @endif
+                                      </div>
+                                    </td>
+                                    <td class="text-right p-2 px-3" style="text-align: right;">
+                                      @if (!empty(json_decode($detail['variation'])))
+                                        @php($amount = $amount * $detail['quantity'])
+                                      @else
+                                          @php($amount = $detail['price'] * $detail['quantity'])
+                                      @endif
+
+                                      {{-- @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity']) --}}
+                                      <b>{{ \App\CentralLogics\Helpers::set_symbol($amount) }}</b>
+
+                                      <?php 
+                                          $tot_discount = 0;
+                                          if(json_decode($detail['product_details'])->discount_type == 'percent') {
+                                              $tot_discount = ($amount * json_decode($detail['product_details'])->discount) / 100;
+                                          } else {
+                                              $tot_discount = json_decode($detail['product_details'])->discount;
+                                          }
+
+                                          $taxable_amt = 0;
+                                          $taxable_amt = $amount - $tot_discount;
+                                          if(json_decode($detail['product_details'])->tax_type == 'percent') {
+                                              $taxable_amt = ($taxable_amt * json_decode($detail['product_details'])->tax) / 100;
+                                          } else {
+                                              $taxable_amt = json_decode($detail['product_details'])->tax;
+                                          }
+
+                                          $total_tax = $total_tax + ($taxable_amt * $detail['quantity']) ;
+
+                                      ?>
+                                      @php($total_dis_on_pro += $tot_discount)
+
+                                      @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
+
+                                      @php($sub_total+=$amount)
+
+                                      @php($item_price += $total_after_discount)
+
+                                      @if($detail->product['tax_type'] == 'percent')
+                                          @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
+                                          @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
+                                      @else
+                                          @php($total_gst = $detail->product['tax'])
+                                      @endif
+                                    </td>
+                                  </tr>  
+                                  @endforeach         
+                                  <tr>
+                                    <td colspan="2">
+                                      <hr class="mt-0">
+                                        <table style="width: 100%">
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3">{{ translate('item_price') }}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</td>
+                                          </tr>
+                                          {{-- <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3">{{translate('tax')}} / {{translate('vat')}}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($total_tax) }}</td>
+                                          </tr> --}}
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3">{{translate('addon')}} {{translate('cost')}}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($add_ons_cost) }}</td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3">{{ translate('discount') }}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($total_dis_on_pro) }}</td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3">{{ translate('subtotal') }}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($sub_total + $add_ons_cost - $total_dis_on_pro) }}</td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3">{{translate('coupon')}} {{translate('discount')}}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3"> {{translate('extra discount')}}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3"> {{translate('delivery fee')}}</td>
+                                              @if($order['order_type']=='take_away')
+                                                @php($del_c=0)
+                                              @else
+                                                @php($del_c=$order['delivery_charge'])
+                                              @endif
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3"> {{translate('Tax / GST')}}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</td>
+                                          </tr>
+                                          <?php 
+                                              $total = $sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro
+                                          ?>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3"><h4>{{ translate('total') }}</h4></td>
+                                            <td class="text-right p-1 px-3"><h4>{{ \App\CentralLogics\Helpers::set_symbol($total) }}</h4></td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3">{{translate('round')}} {{translate('off')}}</td>
+                                            <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}</td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
+                                            <td class="p-1 px-3"><h3>{{ translate('total') }}</h3></td>
+                                            <td class="text-right p-1 px-3"><h3>{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</h3></td>
+                                          </tr>
+                                        </table>
+                                    </td>
+                                  </tr>
+                              </tbody>
                             </table>
                           </td>
                         </tr>

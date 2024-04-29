@@ -129,7 +129,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                     @php($item_price=0)   
+                    @php($item_price=0)   
                     @php($sub_total=0)
                     @php($total_tax=0)
                     @php($total_dis_on_pro=0)

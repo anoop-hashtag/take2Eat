@@ -361,22 +361,18 @@ class OrderController extends Controller
                     ];
                     Helpers::send_push_notif_to_device($fcm_token, $data);
                 }
-
                 //send email
                 $emailServices = Helpers::get_business_settings('mail_config');
-
+                
                 $order_mail_status = Helpers::get_business_settings('place_order_mail_status_user');
-               
+
+                
                 if (isset($emailServices['status']) && $emailServices['status'] == 1 && $order_mail_status == 1 && (bool)auth('api')->user()) {
-                  
+
                     Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id));
                   
-
-                    // Mail::to(auth('api')->user()->email)->send(new \App\Mail\OrderPlaced($order_id,'lucknow', 'test', 'en'));
-
-                    // Mail::to(auth('api')->user()->email)->send(new \App\Mail\PasswordResetMail(rand(1000, 9999), 'test', 'en' ));
                 }
-
+                
             } catch (\Exception $e) {
 
             }
