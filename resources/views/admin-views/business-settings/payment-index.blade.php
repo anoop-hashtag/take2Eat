@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row mb-3">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 @php($cod=\App\CentralLogics\Helpers::get_business_settings('cash_on_delivery'))
                                 <div class="form-control d-flex justify-content-between align-items-center gap-3">
                                     <label class="text-dark mb-0">{{translate('Cash On Delivery')}}</label>
@@ -38,7 +38,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 @php($dp=\App\CentralLogics\Helpers::get_business_settings('digital_payment'))
                                 <div class="form-control d-flex justify-content-between align-items-center gap-3">
                                     <label class="text-dark mb-0">{{translate('Digital Payment')}}</label>
@@ -48,7 +48,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="display: none">
                                 @php($op=\App\CentralLogics\Helpers::get_business_settings('offline_payment'))
                                 <div class="form-control d-flex justify-content-between align-items-center gap-3">
                                     <label class="text-dark mb-0">{{translate('Offline Payment')}}</label>
