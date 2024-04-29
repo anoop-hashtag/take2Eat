@@ -2214,4 +2214,12 @@
   'delivery fee' => 'Delivery fee',
   'item_price' => 'Item price',
   'Tax / GST' => 'Tax / GST',
+  'loyality_point_report' => 'Loyality point report',
+  'Bonus' => 'Bonus',
+  'add_Delivery_partner' => 'Add Delivery partner',
+  'Delivery_partner_Image' => 'Delivery partner Image',
+  'Denied Delivery_Partner' => 'Denied Delivery Partner',
+  'Delivery_Partner_Review_Table' => 'Delivery Partner Review Table',
+  'role_setup' => 'Role setup',
+  'add_fund_to_the_wallet' => 'Add fund to the wallet',
 );
