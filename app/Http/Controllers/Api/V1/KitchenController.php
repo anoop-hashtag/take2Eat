@@ -37,19 +37,27 @@ class KitchenController extends Controller
      */
     public function get_order_list(Request $request): JsonResponse
     {
-        $limit = is_null($request['limit']) ? 10 : $request['limit'];
-        $offset = is_null($request['offset']) ? 1 : $request['offset'];
+        $limit = $request->input('limit', 10);
+    $offset = $request->input('offset', 1);
+    $kitchen_id = $request->input('kitchen_id');
 
-        $chef_branch = $this->chef_branch->where('user_id', auth()->user()->id)->first();
-        $branch_id = $this->branch->where('id', $chef_branch->branch_id)->first();
+    $chef_branch = $this->chef_branch->where('user_id', auth()->user()->id)->first();
+    $branch_id = $chef_branch ? $chef_branch->branch_id : null;
 
-        $orders = $this->order->with('table')
-            ->whereIn('order_status', ['confirmed', 'cooking'])
-            ->where('branch_id', $branch_id->id)
-            ->latest()
-            ->paginate($limit, ['*'], 'page', $offset);
+    $query = $this->order->with('table')
+        ->where('branch_id', $branch_id)
+        ->whereIn('order_status', ['confirmed']);
 
-        return response()->json($orders, 200);
+    if ($kitchen_id) {
+        $query->orWhere(function($query) use ($kitchen_id) {
+            $query->where('order_status', 'cooking')
+                  ->where('kitchen_id', $kitchen_id);
+        });
+    }
+
+    $orders = $query->latest()->paginate($limit, ['*'], 'page', $offset);
+
+    return response()->json($orders, 200);
     }
 
     /**
@@ -146,6 +154,7 @@ class KitchenController extends Controller
     {
         $order = $this->order->find($request->order_id);
         $order->order_status = $request->order_status;
+        $order->kitchen_id = isset($request->kitchen_id) ? $request->kitchen_id : '';
 
         //send notification to deliveryman after done
         if ($request->order_status == 'done') {
