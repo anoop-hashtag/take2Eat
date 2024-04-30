@@ -167,7 +167,11 @@
             <dt  class="col-6">{{translate('GST/TAX')}} : </dt>
             <dd class="col-6 text-right">{{ \App\CentralLogics\Helpers::set_symbol(round($total_tax + $addon_total_tax,2)) }}</dd>
             <dt  class="col-6 border-top font-weight-bold pt-2">{{translate('total')}} : </dt>
-            <dd class="col-6 text-right border-top font-weight-bold pt-2">{{ \App\CentralLogics\Helpers::set_symbol(round($total+$total_tax+$addon_total_tax+$delivery_charge+$packing_fee, 2)) }}</dd>
+            <dd class="col-6 text-right border-top font-weight-bold pt-2">{{ \App\CentralLogics\Helpers::set_symbol($total = $total+$total_tax+$addon_total_tax+$delivery_charge+$packing_fee) }}</dd>
+            <dt  class="col-6">{{translate('round_off')}} : </dt>
+            <dd class="col-6 text-right">{{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}</dd>
+            <dt  class="col-6 border-top font-weight-bold pt-2">{{translate('total')}} : </dt>
+            <dd class="col-6 text-right border-top font-weight-bold pt-2">{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</dd>
         </dl>
 
         <form action="{{route('admin.pos.order')}}" id='order_place' method="post">

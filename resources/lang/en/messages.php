@@ -2222,4 +2222,5 @@
   'Delivery_Partner_Review_Table' => 'Delivery Partner Review Table',
   'role_setup' => 'Role setup',
   'add_fund_to_the_wallet' => 'Add fund to the wallet',
+  'round_off' => 'Round off',
 );
