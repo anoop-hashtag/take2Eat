@@ -39,6 +39,7 @@ class KitchenController extends Controller
     {
         $limit = $request->input('limit', 10);
         $offset = $request->input('offset', 1);
+
         $kitchen_id = isset($request->kitchen_id) ? $request->kitchen_id : '';
 
         $chef_branch = $this->chef_branch->where('user_id', auth()->user()->id)->first();

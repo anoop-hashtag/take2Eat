@@ -75,7 +75,6 @@ class Order extends Model
         return $query->where('order_type', '=', 'dine_in');
     }
 
-
     public function scopeNotDineIn($query)
     {
         return $query->where('order_type', '!=', 'dine_in');
