@@ -38,26 +38,26 @@ class KitchenController extends Controller
     public function get_order_list(Request $request): JsonResponse
     {
         $limit = $request->input('limit', 10);
-    $offset = $request->input('offset', 1);
-    $kitchen_id = $request->input('kitchen_id');
+        $offset = $request->input('offset', 1);
+        $kitchen_id = isset($request->kitchen_id) ? $request->kitchen_id : '';
 
-    $chef_branch = $this->chef_branch->where('user_id', auth()->user()->id)->first();
-    $branch_id = $chef_branch ? $chef_branch->branch_id : null;
+        $chef_branch = $this->chef_branch->where('user_id', auth()->user()->id)->first();
+        $branch_id = $chef_branch ? $chef_branch->branch_id : null;
 
-    $query = $this->order->with('table')
-        ->where('branch_id', $branch_id)
-        ->whereIn('order_status', ['confirmed']);
+        $query = $this->order->with('table')
+            ->where('branch_id', $branch_id)
+            ->whereIn('order_status', ['confirmed']);
 
-    if ($kitchen_id) {
-        $query->orWhere(function($query) use ($kitchen_id) {
-            $query->where('order_status', 'cooking')
-                  ->where('kitchen_id', $kitchen_id);
-        });
-    }
+        if ($kitchen_id != '') {
+            $query->orWhere(function($query) use ($kitchen_id) {
+                $query->where('order_status', 'cooking')
+                    ->where('kitchen_id', $kitchen_id);
+            });
+        }
 
-    $orders = $query->latest()->paginate($limit, ['*'], 'page', $offset);
+        $orders = $query->latest()->paginate($limit, ['*'], 'page', $offset);
 
-    return response()->json($orders, 200);
+        return response()->json($orders, 200);
     }
 
     /**
