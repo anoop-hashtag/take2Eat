@@ -50,6 +50,8 @@ class KitchenController extends Controller
             ->whereIn('order_status', ['confirmed']);
 
         if ($kitchen_id != '') {
+            echo $kitchen_id;
+            die();
             $query->orWhere(function($query) use ($kitchen_id) {
                 $query->where('order_status', 'cooking')
                     ->where('kitchen_id', $kitchen_id);
