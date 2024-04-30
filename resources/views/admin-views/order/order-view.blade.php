@@ -671,8 +671,9 @@
                                         <input onchange="changeDeliveryTimeDate(this)" name="delivery_date" type="text" id="from_date" class="form-control" value="{{ date('d-m-Y', strtotime($order['delivery_date'] ?? '')) }}" />
                                         <i class="tio-calendar position-icon"></i>
 
-                                        <input onchange="changeDeliveryTimeDate(this)" name="delivery_time" type="text" id="datetimepicker1" class="form-control" value="{{$order['delivery_time'] ?? ''}}">
-                                        <i class="tio-time position-icon"></i>
+                                        <input onchange="changeDeliveryTimeDate(this)" name="delivery_time" type="time" class="form-control" value="{{$order['delivery_time'] ?? ''}}">
+                                        {{-- <input onchange="changeDeliveryTimeDate(this)" name="delivery_time" type="text" id="datetimepicker1" class="form-control" value="{{$order['delivery_time'] ?? ''}}">
+                                        <i class="tio-time position-icon"></i> --}}
                                     </div>
                                 </div>
                                 @else
@@ -683,8 +684,9 @@
                                             <input onchange="changeDeliveryTimeDate(this)" name="delivery_date" type="text" id="from_date" class="form-control" value="{{ date('d-m-Y', strtotime($order['delivery_date'] ?? '')) }}" />
                                             <i class="tio-calendar position-icon"></i>
     
-                                            <input onchange="changeDeliveryTimeDate(this)" name="delivery_time" type="text" id="datetimepicker1" class="form-control" value="{{$order['delivery_time'] ?? ''}}">
-                                            <i class="tio-time position-icon"></i>
+                                            <input onchange="changeDeliveryTimeDate(this)" name="delivery_time" type="time" class="form-control" value="{{$order['delivery_time'] ?? ''}}">
+                                            {{-- <input onchange="changeDeliveryTimeDate(this)" name="delivery_time" type="text" id="datetimepicker1" class="form-control" value="{{$order['delivery_time'] ?? ''}}">
+                                            <i class="tio-time position-icon"></i> --}}
                                         </div>
                                     </div>
                                     @endif
