@@ -48,10 +48,8 @@ class KitchenController extends Controller
         $query = $this->order->with('table')
             ->where('branch_id', $branch_id)
             ->whereIn('order_status', ['confirmed']);
-        echo $kitchen_id.'Shubham';
-        die();
+        
         if ($kitchen_id != '') {
-            
             $query->orWhere(function($query) use ($kitchen_id) {
                 $query->where('order_status', 'cooking')
                     ->where('kitchen_id', $kitchen_id);
