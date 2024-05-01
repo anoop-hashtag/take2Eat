@@ -58,25 +58,18 @@
                         <div class="js-form-message form-group">
                             <label class="input-label text-capitalize" for="signinSrEmail">{{translate('your')}} {{translate('email')}}</label>
 
-                            <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail"
-                                tabindex="1" placeholder="{{translate('email')}}" aria-label="email@address.com"
-                                required data-msg="{{ translate('Please enter a valid email address') }}">
+                            <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail" placeholder="{{translate('email')}}" aria-label="email@address.com" required data-msg="{{ translate('Please enter a valid email address') }}">
                         </div>
                         <!-- End Form Group -->
 
                         <!-- Form Group -->
                         <div class="js-form-message form-group">
-                            <label class="input-label" for="signupSrPassword" tabindex="0">
-                                <span class="d-flex justify-content-between align-items-center">
-                                {{translate('password')}}
-                                </span>
+                            <label class="input-label" for="signupSrPassword">
+                                <span class="d-flex justify-content-between align-items-center"> {{translate('password')}} </span>
                             </label>
 
                             <div class="input-group input-group-merge">
-                                <input type="password" class="js-toggle-password form-control form-control-lg"
-                                    name="password" id="signupSrPassword" placeholder="{{translate('password')}}"
-                                    aria-label="8+ characters required" required
-                                    data-msg="{{ translate('Your password is invalid. Please try again.') }}"
+                                <input type="password" class="js-toggle-password form-control form-control-lg" name="password" id="signupSrPassword" placeholder="{{translate('password')}}" aria-label="8+ characters required" required data-msg="{{ translate('Your password is invalid. Please try again.') }}"
                                     data-hs-toggle-password-options='{
                                         "target": "#changePassTarget",
                                         "defaultClass": "tio-hidden-outlined",
