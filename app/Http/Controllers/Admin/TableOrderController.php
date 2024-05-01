@@ -171,7 +171,8 @@ class TableOrderController extends Controller
                 return $query->where('table_id', $table_id);
             })
             ->latest()
-            ->paginate(Helpers::getPagination());
+            // ->paginate(Helpers::getPagination());
+            ->get();
 
         return view('admin-views.table.order.table_running_order', compact('tables', 'orders', 'table_id'));
     }

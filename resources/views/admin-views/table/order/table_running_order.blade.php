@@ -3,7 +3,14 @@
 @section('title', translate('table order'))
 
 @push('css_or_js')
-
+    <style>
+        .dataTables_wrapper .dataTables_paginate {
+            float: right;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            margin-right: 50px;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -18,7 +25,8 @@
                     {{translate('running')}} {{translate('table')}} {{translate('orders')}}
                 </span>
                 </h2>
-                <span class="badge badge-soft-dark rounded-50 fz-14">{{$orders->total()}}</span>
+                {{-- <span class="badge badge-soft-dark rounded-50 fz-14">{{$orders->total()}}</span> --}}
+                <span class="badge badge-soft-dark rounded-50 fz-14">{{count($orders)}}</span>
             </div>
         </div>
         <div id="all_running_order">
@@ -44,7 +52,7 @@
                                 </div>
                                 <div class="col-5 col-md-5 col-lg-4">
                                     <!-- Select -->
-                                    <select class="form-control text-capitalize" name="table" id="select_table">
+                                    <select class="form-control text-capitalize" name="table" id="select_table" onchange="filter_by_table(this.value)">
                                         <option disabled selected>--- {{translate('select')}} {{translate('table')}} ---</option>
                                         @foreach($tables as $table)
                                             <option value="{{$table['id']}}" {{$table_id==$table['id'] ? 'selected' : ''}}>{{translate('Table')}} - {{$table['number']}}</option>
@@ -79,12 +87,14 @@
                             </thead>
 
                             <tbody id="set-rows">
+                                <?php $i = 1; ?>
                             @foreach($orders as $key=>$order)
 
                                 <tr class="status-{{$order['order_status']}} class-all">
-                                    <td class="">
+                                    {{-- <td class="">
                                         {{$orders->firstitem()+$key}}
-                                    </td>
+                                    </td> --}}
+                                    <td>{{ $i++ }}</td>
                                     <td class="table-column-pl-0">
                                         <a href="{{route('admin.orders.details',['id'=>$order['id']])}}">{{$order['id']}}</a>
                                     </td>
@@ -155,15 +165,15 @@
                     </div>
                     </div>
                
-                <div class="card-footer">
+                {{-- <div class="card-footer"> --}}
                     <!-- Pagination -->
-                    <div class="table-responsive pagination-style">
+                    {{-- <div class="table-responsive pagination-style">
                         <div class="d-flex justify-content-sm-end  justify-content-lg-end">
                                 {!! $orders->links() !!}
                         </div>                        
-                    </div>
+                    </div> --}}
                     <!-- End Pagination -->
-                </div>
+                {{-- </div> --}}
             </div>
         </div>
 
@@ -178,12 +188,19 @@
         }
     </script>
     <script>
-        $(document).ready(function (){
-            $('#select_table').on('change', function (){
-                location.href = '{{route('admin.table.order.running')}}' + '?table_id=' + $(this).val();
+        function filter_by_table(tableId) {
+            location.href = '{{route("admin.table.order.running")}}' + '?table_id=' + tableId;
+        }
+        // $(document).ready(function (){
+        //     $('#select_table').on('change', function (){
+        //         var tableId = $(this).val();
+        //         alert(tableId);
+        //         if (tableId) {
+        //             location.href = '{{route("admin.table.order.running")}}' + '?table_id=' + tableId;
+        //         }
 
-            });
-        });
+        //     });
+        // });
     </script>
    @push('script_2')
    <script>
@@ -237,7 +254,7 @@
                    }
                },
                info: false,
-               paging: false,
+               paging: true,
                language: {
                    zeroRecords: '<div class="text-center p-4">' +
                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
@@ -274,9 +291,5 @@
                }
            }
        });
-       $('#datatable').dataTable({
-   destroy: true,
-   ...
-   });
    </script>
 @endpush
