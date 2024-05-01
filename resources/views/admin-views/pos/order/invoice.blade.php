@@ -7,18 +7,26 @@
 
 <div style="width:320px;" id="printableAreaContent">
     <div class="text-center pt-4 mb-3 w-100">
-        <h2 style="line-height: 1">{{\App\Model\BusinessSetting::where(['key'=>'restaurant_name'])->first()->value}}</h2>
-        <h5 style="font-size: 20px;font-weight: lighter;line-height: 1">
-            {{\App\Model\BusinessSetting::where(['key'=>'address'])->first()->value}}
-        </h5>
-        <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
-            {{translate('Phone')}}
-            : {{\App\Model\BusinessSetting::where(['key'=>'phone'])->first()->value}}
-        </h5>
-        <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
-            {{translate('GSTIN')}}
-            : {{\App\Model\BusinessSetting::where(['key'=>'gst_number'])->first()->value}}
-        </h5>
+        <div class="row">
+            <div class="col-sm-3 p-0 invoice-logo">
+                @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
+                <img src="{{asset('storage/app/public/restaurant/'.$restaurant_logo)}}" onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'" alt="Logo"/>
+            </div>
+            <div class="col-sm-9">
+                <h2 style="line-height: 1">{{\App\Model\BusinessSetting::where(['key'=>'restaurant_name'])->first()->value}}</h2>
+                <h5 style="font-size: 20px;font-weight: lighter;line-height: 1">
+                    {{\App\Model\BusinessSetting::where(['key'=>'address'])->first()->value}}
+                </h5>
+                <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
+                    {{translate('Phone')}}
+                    : {{\App\Model\BusinessSetting::where(['key'=>'phone'])->first()->value}}
+                </h5>
+                <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
+                    {{translate('GSTIN')}}
+                    : {{\App\Model\BusinessSetting::where(['key'=>'gst_number'])->first()->value}}
+                </h5>
+            </div>
+        </div>
     </div>
 
     <span>--------------------------------------</span>

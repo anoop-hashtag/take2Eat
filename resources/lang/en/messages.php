@@ -2223,4 +2223,7 @@
   'role_setup' => 'Role setup',
   'add_fund_to_the_wallet' => 'Add fund to the wallet',
   'round_off' => 'Round off',
+  'add_New_Delivery_partner' => 'Add New Delivery partner',
+  'Delivery_Partner_Registration_Mail' => 'Delivery Partner Registration Mail',
+  'Iteam_Type' => 'Iteam Type',
 );
