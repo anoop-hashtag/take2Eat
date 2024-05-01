@@ -77,6 +77,6 @@ class DMSelfRegistration extends Mailable
         $body = Helpers::text_variable_data_format( value:$content['body']??'',delivery_man_name:$dm_name??'');
         $footer_text = Helpers::text_variable_data_format( value:$content['footer_text']??'',delivery_man_name:$dm_name??'');
         $copyright_text = Helpers::text_variable_data_format( value:$content['copyright_text']??'',delivery_man_name:$dm_name??'');
-        return $this->subject(translate('Deliveryman_Registration_Mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'title'=>$title,'socialMediaData' => $socialMediaData,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'url'=>$url]);
+        return $this->subject(translate('Delivery_Partner_Registration_Mail'))->view('email-templates.new-email-format-'.$template, ['company_name'=>$company_name,'data'=>$data,'title'=>$title,'socialMediaData' => $socialMediaData,'body'=>$body,'footer_text'=>$footer_text,'copyright_text'=>$copyright_text,'url'=>$url]);
     }
 }
