@@ -123,7 +123,7 @@
                                           <span>{{$detail['quantity']}}</span>
 
                                           <br/>
-                                          @if (isset($detail['variation']) && count($addon_ids) < 1)
+                                          @if (isset($detail['variation']) && count($addon_ids) < 0)
                                             <span class="">{{translate('price')}} :  </span>
                                             <span>{{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</span>
                                             <br/>
