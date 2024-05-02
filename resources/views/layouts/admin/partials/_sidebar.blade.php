@@ -1059,20 +1059,23 @@
                         @endif
                         <!--END SYSTEM SETTINGS -->
 
-                        <li class="nav-item">
-                            <small class="nav-subtitle">{{translate('system')}} {{translate('addon')}}</small>
-                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                        </li>
+                        @if (Helpers::module_permission_check(MANAGEMENT_SECTION['pos_management']) && Helpers::module_permission_check(MANAGEMENT_SECTION['order_management']) && Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']) && Helpers::module_permission_check(MANAGEMENT_SECTION['product_management']) && Helpers::module_permission_check(MANAGEMENT_SECTION['user_management']) && Helpers::module_permission_check(MANAGEMENT_SECTION['help_and_support_management']) && Helpers::module_permission_check(MANAGEMENT_SECTION['system_management']) && Helpers::module_permission_check(MANAGEMENT_SECTION['report_and_analytics_management']) && Helpers::module_permission_check(MANAGEMENT_SECTION['promotion_management']))
+                            <li class="nav-item">
+                                <small class="nav-subtitle">{{translate('system')}} {{translate('addon')}}</small>
+                                <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                            </li>
 
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/system-addon')?'active':''}}">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link"
-                               href="{{route('admin.system-addon.index')}}" title="{{translate('System Addons')}}">
-                                <i class="tio-add-circle-outlined nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    {{translate('System Addons')}}
-                                </span>
-                            </a>
-                        </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/system-addon')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                href="{{route('admin.system-addon.index')}}" title="{{translate('System Addons')}}">
+                                    <i class="tio-add-circle-outlined nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                        {{translate('System Addons')}}
+                                    </span>
+                                </a>
+                            </li>
+                        @endif
+
 
 
                         <li class="nav-item pt-10">
