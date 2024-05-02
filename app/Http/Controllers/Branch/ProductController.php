@@ -45,7 +45,11 @@ class ProductController extends Controller
         } else {
             $query = $this->product;
         }
-        $products = $query->with(['product_by_branch', 'sub_branch_product'])->orderBy('id', 'DESC')->paginate(Helpers::getPagination())->appends($query_param);
+        $products = $query->with(['product_by_branch', 'sub_branch_product'])
+                    ->orderBy('id', 'DESC')
+                    // ->paginate(Helpers::getPagination())
+                    // ->appends($query_param);
+                    ->get();
 
         return view('branch-views.product.list', compact('products', 'search'));
     }

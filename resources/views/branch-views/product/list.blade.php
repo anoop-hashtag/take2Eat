@@ -17,7 +17,8 @@
                     {{translate('Product_List')}}
                 </span>
             </h2>
-            <span class="badge badge-soft-dark rounded-50 fz-14">{{ $products->total() }}</span>
+            {{-- <span class="badge badge-soft-dark rounded-50 fz-14">{{ $products->total() }}</span> --}}
+            <span class="badge badge-soft-dark rounded-50 fz-14">{{ count($products) }}</span>
         </div>
         <!-- End Page Header -->
 
@@ -58,9 +59,11 @@
                                 </thead>
 
                                 <tbody id="set-rows">
+                                    @php($i = 1)
                                 @foreach($products as $key=>$product)
                                     <tr>
-                                        <td>{{$products->firstitem()+$key}}</td>
+                                        {{-- <td>{{$products->firstitem()+$key}}</td> --}}
+                                        <td>{{ $i++ }}</td>
                                         <td>
                                             <div class="media align-items-center gap-3 category-mid">
                                                 <div class="avatar">
@@ -113,12 +116,12 @@
                             </table>
                         </div>
 
-                        <div class="table-responsive mt-4 px-3 pagination-style">
+                        {{-- <div class="table-responsive mt-4 px-3 pagination-style">
                             <div class="d-flex justify-content-lg-end justify-content-sm-end">
                                 <!-- Pagination -->
                                 {!! $products->links() !!}
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!-- End Card -->
@@ -272,7 +275,7 @@
                       }
                   },
                   info: false,
-                  paging: false,
+                  paging: true,
                   language: {
                       zeroRecords: '<div class="text-center p-4">' +
                           '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
