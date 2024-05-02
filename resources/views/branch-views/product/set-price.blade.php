@@ -97,7 +97,7 @@
                                 <div class="col-sm-6 d-none" id="product_stock_div">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('Product Stock')}}</label>
-                                        <input id="product_stock" type="number" min="1" name="product_stock" class="form-control"
+                                        <input id="product_stock" type="text" min="1" name="product_stock" class="form-control"
                                                value="{{ $stock}}" placeholder="{{translate('Ex : 10')}}">
                                     </div>
                                 </div>
@@ -217,39 +217,41 @@
             $('#min_max2_'+data).attr("required","false");
         }
 
-        $('#set_price_form').on('submit', function () {
-            var formData = new FormData(this);
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.post({
-                url: '{{route('branch.product.set-price-update',[$product['id']])}}',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data.errors) {
-                        for (var i = 0; i < data.errors.length; i++) {
-                            toastr.error(data.errors[i].message, {
+        $(document).ready(function() {
+            $('#set_price_form').submit(function () {
+                var formData = new FormData(this);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.post({
+                    url: '{{route('branch.product.set-price-update',[$product['id']])}}',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data.errors) {
+                            for (var i = 0; i < data.errors.length; i++) {
+                                toastr.error(data.errors[i].message, {
+                                    CloseButton: true,
+                                    ProgressBar: true
+                                });
+                            }
+                        } else {
+                            toastr.success('{{translate("product updated successfully!")}}', {
                                 CloseButton: true,
                                 ProgressBar: true
                             });
+                            setTimeout(function () {
+                                location.href = '{{route('branch.product.list')}}';
+                            }, 2000);
                         }
-                    } else {
-                        toastr.success('{{translate("product updated successfully!")}}', {
-                            CloseButton: true,
-                            ProgressBar: true
-                        });
-                        setTimeout(function () {
-                            location.href = '{{route('branch.product.list')}}';
-                        }, 2000);
                     }
-                }
+                });
             });
+
         });
 
         @if($product->sub_branch_product)
