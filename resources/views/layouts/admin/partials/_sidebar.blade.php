@@ -221,7 +221,7 @@
                             <!-- End Pages -->
                         @endif
 
-                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['order_management']))
+                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['order_management']) || Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']))
 
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/table/order/list/*') || Request::is('admin/table/order/details/*') || Request::is('admin/table/index') ?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
@@ -312,14 +312,13 @@
                                         </a>
                                     </li>
 
-                                    @if(Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']))
-                                        <li class="nav-item {{Request::is('admin/table/index')?'active':''}}">
-                                            <a class="nav-link" href="{{route('admin.table.index')}}">
-                                                <span class="tio-circle nav-indicator-icon"></span>
-                                                <span class="text-truncate">{{translate('table_availability')}}</span>
-                                            </a>
-                                        </li>
-                                    @endif
+                                    
+                                    <li class="nav-item {{Request::is('admin/table/index')?'active':''}}">
+                                        <a class="nav-link" href="{{route('admin.table.index')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('table_availability')}}</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- End Pages -->
@@ -430,59 +429,58 @@
                         @endif
 
 {{--                        PROMOTION MANAGEMENT--}}
-                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['promotion_management']))
+                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['promotion_management']) || Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']))
+                            @php($j = 0)
                             <li class="nav-item">
                                 <small
                                     class="nav-subtitle">{{translate('promotion')}} {{translate('management')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
+                            @if (Helpers::module_permission_check(MANAGEMENT_SECTION['promotion_management']))
+                                <!-- BANNER -->
+                                <li class="navbar-vertical-aside-has-menu {{Request::is('admin/banner*')?'active':''}}">
+                                    <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.banner.list')}}"
+                                    >
+                                        <i class="tio-image nav-icon"></i>
+                                        <span
+                                            class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('banner')}}</span>
+                                    </a>
+                                    {{--                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"--}}
+                                    {{--                                    style="display: {{Request::is('admin/banner*')?'block':'none'}}">--}}
+                                    {{--                                    <li class="nav-item {{Request::is('admin/banner/add-new')?'active':''}}">--}}
+                                    {{--                                        <a class="nav-link " href="{{route('admin.banner.add-new')}}">--}}
+                                    {{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+                                    {{--                                            <span--}}
+                                    {{--                                                class="text-truncate">{{translate('add')}} {{translate('new')}}</span>--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                    <li class="nav-item {{Request::is('admin/banner/list')?'active':''}}">--}}
+                                    {{--                                        <a class="nav-link " href="{{route('admin.banner.list')}}">--}}
+                                    {{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+                                    {{--                                            <span class="text-truncate">{{translate('list')}}</span>--}}
+                                    {{--                                        </a>--}}
+                                    {{--                                    </li>--}}
+                                    {{--                                </ul>--}}
+                                </li>
 
-                            <!-- BANNER -->
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/banner*')?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.banner.list')}}"
-                                >
-                                    <i class="tio-image nav-icon"></i>
-                                    <span
-                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('banner')}}</span>
-                                </a>
-                                {{--                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub"--}}
-                                {{--                                    style="display: {{Request::is('admin/banner*')?'block':'none'}}">--}}
-                                {{--                                    <li class="nav-item {{Request::is('admin/banner/add-new')?'active':''}}">--}}
-                                {{--                                        <a class="nav-link " href="{{route('admin.banner.add-new')}}">--}}
-                                {{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                            <span--}}
-                                {{--                                                class="text-truncate">{{translate('add')}} {{translate('new')}}</span>--}}
-                                {{--                                        </a>--}}
-                                {{--                                    </li>--}}
-                                {{--                                    <li class="nav-item {{Request::is('admin/banner/list')?'active':''}}">--}}
-                                {{--                                        <a class="nav-link " href="{{route('admin.banner.list')}}">--}}
-                                {{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                            <span class="text-truncate">{{translate('list')}}</span>--}}
-                                {{--                                        </a>--}}
-                                {{--                                    </li>--}}
-                                {{--                                </ul>--}}
-                            </li>
+                                <!-- COUPON -->
+                                <li class="navbar-vertical-aside-has-menu {{Request::is('admin/coupon*')?'active':''}}">
+                                    <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.coupon.add-new')}}">
+                                        <i class="tio-gift nav-icon"></i>
+                                        <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('coupon')}}</span>
+                                    </a>
+                                </li>
 
-                            <!-- COUPON -->
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/coupon*')?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.coupon.add-new')}}">
-                                    <i class="tio-gift nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('coupon')}}</span>
-                                </a>
-                            </li>
+                                <!-- NOTIFICATION -->
+                                <li class="navbar-vertical-aside-has-menu {{Request::is('admin/notification*')?'active':''}}">
+                                    <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.notification.add-new')}}">
+                                        <i class="tio-notifications nav-icon"></i>
+                                        <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                            {{translate('send')}} {{translate('notification')}}
+                                        </span>
+                                    </a>
+                                </li>
 
-                            <!-- NOTIFICATION -->
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/notification*')?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.notification.add-new')}}">
-                                    <i class="tio-notifications nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                        {{translate('send')}} {{translate('notification')}}
-                                    </span>
-                                </a>
-                            </li>
-
-                            <!-- Table Promotion -->
-                            @if(Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']))
                                 <li class="navbar-vertical-aside-has-menu {{Request::is('admin/promotion/create') || Request::is('admin/promotion/edit*')?'active':''}}">
                                     <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.promotion.create')}}">
                                         <i class="tio-shopping-cart nav-icon"></i>
@@ -491,7 +489,23 @@
                                         </span>
                                     </a>
                                 </li>
+                                @php($j = 1)
                             @endif
+                            
+                            <!-- Table Promotion -->
+                            @if(Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']))
+                                @if ($j == 0)
+                                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/promotion/create') || Request::is('admin/promotion/edit*')?'active':''}}">
+                                        <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.promotion.create')}}">
+                                            <i class="tio-shopping-cart nav-icon"></i>
+                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                                {{translate('table')}} {{translate('promotion')}}
+                                            </span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endif
+
                         @endif
                     {{-- PROMOTION MANAGEMENT END--}}
 
@@ -760,9 +774,9 @@
                         @endif
 
 
+                        @php($i=0)
 
                         @if(Helpers::module_permission_check(MANAGEMENT_SECTION['user_management']))
-
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/kitchen*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -789,9 +803,6 @@
 
                                 </ul>
                             </li>
-                        @endif
-
-                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']))
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/table/list') || Request::is('admin/table/update*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                 href="{{route('admin.table.list')}}">
@@ -801,6 +812,21 @@
                                     </span>
                                 </a>
                             </li>
+                            @php($i=1)
+                        @endif
+
+                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']) || Helpers::module_permission_check(MANAGEMENT_SECTION['user_management']))
+                            @if ($i == 0)
+                                <li class="navbar-vertical-aside-has-menu {{Request::is('admin/table/list') || Request::is('admin/table/update*')?'active':''}}">
+                                    <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                    href="{{route('admin.table.list')}}">
+                                        <i class="tio-shopping-cart nav-icon"></i>
+                                        <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                            {{translate('table_setup')}}
+                                        </span>
+                                    </a>
+                                </li>
+                            @endif
                         @endif
 
                         <!-- User Management  End-->
