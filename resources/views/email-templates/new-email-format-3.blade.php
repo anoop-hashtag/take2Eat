@@ -123,7 +123,7 @@
                                           <span>{{$detail['quantity']}}</span>
 
                                           <br/>
-                                          @if (!isset($detail['variation']) && empty($addon_ids))
+                                          @if (isset($detail['variation']) && empty($addon_ids))
                                             <span class="">{{translate('price')}} :  </span>
                                             <span>{{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</span>
                                           @endif
@@ -147,6 +147,7 @@
                                               @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qtys[$key2])
                                             @endforeach
                                           </span>
+                                          <br/>
                                         @endif
                                       </div>
                                     </td>
