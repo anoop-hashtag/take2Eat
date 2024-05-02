@@ -99,13 +99,13 @@
                             @foreach(json_decode($detail['variation'],true) as  $variation)
                                 @if ( isset($variation['name'])  && isset($variation['values']))
                                     <span class="d-block text-capitalize">
-                                                        <strong>{{  $variation['name']}} - </strong>
-                                                </span>
+                                        <strong>{{  $variation['name']}} - </strong>
+                                    </span>
                                     @foreach ($variation['values'] as $value)
                                         <span class="d-block text-capitalize">
                                             {{ $value['label']}} :
-                                                    <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
-                                                    </span>
+                                            <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
+                                        </span>
                                     @endforeach
                                 @else
                                     @if (isset(json_decode($detail['variation'],true)[0]))
@@ -122,8 +122,9 @@
                         @else
                             <div class="font-size-sm text-body">
                                 <span>{{ translate('Price') }} : </span>
-                                <span
-                                    class="font-weight-bold">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
+                                <span class="font-weight-bold">
+                                    {{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}
+                                </span>
                             </div>
                         @endif
 
