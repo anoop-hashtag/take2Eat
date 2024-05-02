@@ -303,6 +303,9 @@
                                 - {{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}
                             </dd>
                                
+                            <dt class="col-6">{{translate('Tax / GST:')}}</dt>
+                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
+
                             <dt class="col-6">{{translate('Delivery Fee:')}}</dt>
                             <dd class="col-6">
                                 @if($order['order_type']=='take_away')
@@ -316,8 +319,6 @@
                                     <dt class="col-6">{{ translate('Packing Fee') }}:</dt>
                                     <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                                 @endif
-                                <dt class="col-6">{{translate('Tax / GST:')}}</dt>
-                                <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
                             </dd>
                             
                             <?php 

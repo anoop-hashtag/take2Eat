@@ -119,9 +119,12 @@
                                         <div class="d-flex gap-2">
                                           <span class="">{{translate('Qty')}} :  </span>
                                           <span>{{$detail['quantity']}}</span>
+
+                                          <br/>
+                                          <span class="">{{translate('price')}} :  </span>
+                                          <span>{{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</span>
                                         </div>
 
-                                        <br>
                                         @php($addon_ids = json_decode($detail['add_on_ids'],true))
                                         @if ($addon_ids)
                                           <span>
@@ -152,7 +155,7 @@
                                       @endif
 
                                       {{-- @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity']) --}}
-                                      <b>{{ \App\CentralLogics\Helpers::set_symbol($amount) }}</b>
+                                      {{-- <b>{{ \App\CentralLogics\Helpers::set_symbol($amount) }}</b> --}}
 
                                       <?php 
                                           $tot_discount = 0;
@@ -231,6 +234,11 @@
                                           </tr>
                                           <tr>
                                             <td style="width: 40%"></td>
+                                            <td class="p-1 px-3"> {{translate('Tax / GST')}}</td>
+                                            <td class="text-right p-1 px-3" style="text-align: right;">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</td>
+                                          </tr>
+                                          <tr>
+                                            <td style="width: 40%"></td>
                                             <td class="p-1 px-3"> {{translate('delivery fee')}}</td>
                                               @if($order['order_type']=='take_away')
                                                 @php($del_c=0)
@@ -238,11 +246,6 @@
                                                 @php($del_c=$order['delivery_charge'])
                                               @endif
                                             <td class="text-right p-1 px-3" style="text-align: right;">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
-                                          </tr>
-                                          <tr>
-                                            <td style="width: 40%"></td>
-                                            <td class="p-1 px-3"> {{translate('Tax / GST')}}</td>
-                                            <td class="text-right p-1 px-3" style="text-align: right;">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</td>
                                           </tr>
                                           <?php 
                                               $total = $sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro;
