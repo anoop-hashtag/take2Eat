@@ -14,8 +14,14 @@
             <h2 class="h1 mb-0 d-flex align-items-center gap-1">
                 <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/all_orders.png')}}" alt="">
                 <span class="page-header-title">
-                <!-- {{translate($status)}} {{translate('Orders')}} -->
-                {{$status =='canceled' ? 'cancelled' : ''}} {{translate('Orders')}}
+                    @if ($status == 'canceled')
+                        Cancelled
+                    @elseif ($status == 'Done')
+                        {{translate('Ready_For_Serve')}}
+                    @else
+                        {{translate($status)}}
+                    @endif
+                     {{translate('Orders')}}
                 </span>
             </h2>
             <span class="badge badge-soft-dark rounded-50 fz-14">{{ $orders->total() }}</span>
@@ -54,7 +60,9 @@
                 </div>
             </div>
             <!-- End Filter Card -->
-            @if($status == 'all')
+
+
+            {{-- @if($status == 'all') --}}
             <div class="px-4 mt-4">
                 <div class="row g-2">
                     <div class="col-sm-6 col-lg-3">
@@ -171,7 +179,9 @@
                     </div>
                 </div>
             </div>
-            @endif
+            {{-- @endif --}}
+
+
             <!-- Header -->
             <div class="card-top px-card ">
                 <div class="row justify-content-between align-items-center gy-2">

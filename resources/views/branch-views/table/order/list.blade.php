@@ -57,7 +57,9 @@
                 </div>
             </div>
             <!-- End Filter Card -->
-            @if($status == 'all')
+
+
+            {{-- @if($status == 'all') --}}
                 <div class="px-4 mt-4">
                     <div class="row g-2">
                         <div class="col-sm-6 col-lg-4">
@@ -147,7 +149,9 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            {{-- @endif --}}
+
+
             <!-- Header -->
             <div class="card-top px-card ">
                 <div class="row justify-content-between align-items-center gy-2">
@@ -247,9 +251,9 @@
                                         <span class="badge-soft-warning px-2 py-1 rounded">{{translate('out_for_delivery')}}</span>
                                     @elseif($order['order_status']=='delivered')
                                         <span class="badge-soft-success px-2 py-1 rounded">{{translate('delivered')}}</span>
-                                        @elseif($order['order_status']=='done')
+                                    @elseif($order['order_status']=='completed')
                                         <span class="badge-soft-success px-2 py-1 rounded">{{translate('Done')}}</span>
-                                        @elseif($order['order_status']=='cooking')
+                                    @elseif($order['order_status']=='cooking')
                                         <span class="badge-soft-success px-2 py-1 rounded">{{translate('Cooking')}}</span>
                                     @else
                                         <span class="badge-soft-danger px-2 py-1 rounded">{{str_replace('_',' ',$order['order_status']=='canceled' ? 'cancelled' : '')}}</span>

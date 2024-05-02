@@ -109,11 +109,10 @@
 
                         <!-- Pages -->
                         <li class="navbar-vertical-aside-has-menu {{Request::is('branch/orders/list*')?'active':''}}">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
-                               title="{{translate('order')}}">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:" title="{{translate('online_order')}}">
                                 <i class="tio-shopping-cart nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    {{translate('order')}}
+                                    {{translate('online_order')}}
                                 </span>
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
@@ -129,7 +128,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item {{Request::is('branch/orders/list/pending')?'active':''}}">
+                                {{-- <li class="nav-item {{Request::is('branch/orders/list/pending')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.orders.list',['pending'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
@@ -139,8 +138,8 @@
                                             </span>
                                         </span>
                                     </a>
-                                </li>
-                                <li class="nav-item {{Request::is('branch/orders/list/confirmed')?'active':''}}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{Request::is('branch/orders/list/confirmed')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.orders.list',['confirmed'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
@@ -150,8 +149,8 @@
                                             </span>
                                         </span>
                                     </a>
-                                </li>
-                                <li class="nav-item {{Request::is('branch/orders/list/processing')?'active':''}}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{Request::is('branch/orders/list/processing')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.orders.list',['processing'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
@@ -173,8 +172,8 @@
                                             </span>
                                         </span>
                                     </a>
-                                </li>
-                                <li class="nav-item {{Request::is('branch/orders/list/delivered')?'active':''}}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{Request::is('branch/orders/list/delivered')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.orders.list',['delivered'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
@@ -184,8 +183,8 @@
                                             </span>
                                         </span>
                                     </a>
-                                </li>
-                                <li class="nav-item {{Request::is('branch/orders/list/returned')?'active':''}}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{Request::is('branch/orders/list/returned')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.orders.list',['returned'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
@@ -206,9 +205,9 @@
                                             </span>
                                         </span>
                                     </a>
-                                </li>
+                                </li> --}}
 
-                                <li class="nav-item {{Request::is('branch/orders/list/canceled')?'active':''}}">
+                                {{-- <li class="nav-item {{Request::is('branch/orders/list/canceled')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.orders.list',['canceled'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
@@ -218,7 +217,7 @@
                                             </span>
                                         </span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="nav-item {{Request::is('branch/orders/list/schedule')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.orders.list',['schedule'])}}" title="">
@@ -257,7 +256,7 @@
                                             </span>
                                     </a>
                                 </li>
-                                <li class="nav-item {{Request::is('branch/table/order/list/confirmed')?'active':''}}">
+                                {{-- <li class="nav-item {{Request::is('branch/table/order/list/confirmed')?'active':''}}">
                                     <a class="nav-link" href="{{route('branch.table.order.list',['confirmed'])}}"
                                        title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
@@ -268,8 +267,8 @@
                                             </span>
                                         </span>
                                     </a>
-                                </li>
-                                <li class="nav-item {{Request::is('branch/table/order/list/cooking')?'active':''}}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{Request::is('branch/table/order/list/cooking')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.table.order.list',['cooking'])}}"
                                        title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
@@ -280,8 +279,8 @@
                                                 </span>
                                             </span>
                                     </a>
-                                </li>
-                                <li class="nav-item {{Request::is('branch/table/order/list/done')?'active':''}}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{Request::is('branch/table/order/list/done')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.table.order.list',['done'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
@@ -291,8 +290,8 @@
                                                 </span>
                                             </span>
                                     </a>
-                                </li>
-                                <li class="nav-item {{Request::is('branch/table/order/list/completed')?'active':''}}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{Request::is('branch/table/order/list/completed')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.table.order.list',['completed'])}}"
                                        title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
@@ -303,8 +302,8 @@
                                                 </span>
                                             </span>
                                     </a>
-                                </li>
-                                <li class="nav-item {{Request::is('branch/table/order/list/canceled')?'active':''}}">
+                                </li> --}}
+                                {{-- <li class="nav-item {{Request::is('branch/table/order/list/canceled')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.table.order.list',['canceled'])}}"
                                        title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
@@ -315,7 +314,7 @@
                                                 </span>
                                             </span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item {{Request::is('branch/table/order/running')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.table.order.running')}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
