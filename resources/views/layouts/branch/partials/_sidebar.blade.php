@@ -336,13 +336,13 @@
                         </li>
 
                         <li class="navbar-vertical-aside-has-menu {{Request::is('branch/product*')?'active':''}}">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('branch.product.list')}}">
                                 <i class="tio-premium-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                     {{translate('product')}}
                                 </span>
                             </a>
-                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                            {{-- <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                 style="display: {{Request::is('branch/product*')?'block':'none'}}">
                                 <li class="nav-item {{Request::is('branch/product/list')?'active':''}}">
                                     <a class="nav-link" href="{{route('branch.product.list')}}" title="">
@@ -352,7 +352,7 @@
                                         </span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </li>
 
 
