@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label for="identity_type">{{translate('Identity Type')}}</label>
                                     <select class="custom-select" name="identity_type" id="identity_type">
-                                        <option value="passport" {{$e->identity_type == 'passport'? 'selected' : ''}}>{{translate('passport')}}</option>
+                                        {{-- <option value="passport" {{$e->identity_type == 'passport'? 'selected' : ''}}>{{translate('passport')}}</option> --}}
                                         <option value="driving_license" {{$e->identity_type == 'driving_license'? 'selected' : ''}}>{{translate('driving_License')}}</option>
                                         <option value="nid" {{$e->identity_type == 'nid'? 'selected' : ''}}>{{translate('NID')}}</option>
                                     </select>

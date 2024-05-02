@@ -66,7 +66,7 @@
                                     <label for="identity_type">{{translate('Identity Type')}}</label>
                                     <select class="custom-select" name="identity_type" id="identity_type" required>
                                         <option selected disabled>---{{translate('select_Identity_Type')}}---</option>
-                                        <option value="passport">{{translate('passport')}}</option>
+                                        {{-- <option value="passport">{{translate('passport')}}</option> --}}
                                         <option value="driving_license">{{translate('driving_License')}}</option>
                                         <option value="nid">{{translate('NID')}}</option>
                                     </select>
