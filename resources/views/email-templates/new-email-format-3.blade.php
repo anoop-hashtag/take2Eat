@@ -116,16 +116,19 @@
                                           ?>
                                         @endif
 
+                                        @php($addon_ids = json_decode($detail['add_on_ids'],true))
+
                                         <div class="d-flex gap-2">
                                           <span class="">{{translate('Qty')}} :  </span>
                                           <span>{{$detail['quantity']}}</span>
 
                                           <br/>
-                                          <span class="">{{translate('price')}} :  </span>
-                                          <span>{{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</span>
+                                          @if (!isset($detail['variation']) && empty($addon_ids))
+                                            <span class="">{{translate('price')}} :  </span>
+                                            <span>{{\App\CentralLogics\Helpers::set_symbol($detail['price'])}}</span>
+                                          @endif
                                         </div>
 
-                                        @php($addon_ids = json_decode($detail['add_on_ids'],true))
                                         @if ($addon_ids)
                                           <span>
                                             <u><strong>{{translate('addons')}}</strong></u>
@@ -155,7 +158,7 @@
                                       @endif
 
                                       {{-- @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity']) --}}
-                                      {{-- <b>{{ \App\CentralLogics\Helpers::set_symbol($amount) }}</b> --}}
+                                      <b>{{ \App\CentralLogics\Helpers::set_symbol($amount) }}</b>
 
                                       <?php 
                                           $tot_discount = 0;
