@@ -3,16 +3,19 @@
     .font-size-sm{
         font-size:12px;
     }
+    .invoice-logo img {
+        max-width: 100px;
+    }
 </style>    
 
-<div style="width:320px;" id="printableAreaContent">
+<div style="width:360px;" id="printableAreaContent">
     <div class="text-center pt-4 mb-3 w-100">
         <div class="row">
-            <div class="col-sm-3 p-0 invoice-logo">
+            <div class="col-sm-4 p-0 invoice-logo">
                 @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
                 <img src="{{asset('storage/app/public/restaurant/'.$restaurant_logo)}}" onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'" alt="Logo"/>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
                 <h2 style="line-height: 1">{{\App\Model\BusinessSetting::where(['key'=>'restaurant_name'])->first()->value}}</h2>
                 <h5 style="font-size: 20px;font-weight: lighter;line-height: 1">
                     {{\App\Model\BusinessSetting::where(['key'=>'address'])->first()->value}}
@@ -29,14 +32,15 @@
         </div>
     </div>
 
-    <span>--------------------------------------</span>
+    {{-- <span>------------------------------------------</span> --}}
+    <div style="border:1px dashed gray"></div>
     <div class="row mt-3">
         <div class="col-6">
             <h5>{{translate('Order ID')}} : {{$order['id']}}</h5>
         </div>
-        <div class="col-6">
-            <h5 style="font-weight: lighter; " class="order_id font-size-sm">
-                {{date('d/M/Y h:i a',strtotime($order['created_at']))}}
+        <div class="col-6" style="text-align: right">
+            <h5 style="font-weight: lighter;" class="order_id font-size-sm">
+                {{date('d/M/Y h:i a', strtotime($order['created_at']))}}
             </h5>
         </div>
 
@@ -53,18 +57,15 @@
         @endif
 
         @if(isset($order->customer['gst_number']) && !empty($order->customer['gst_number']))
-    <div class="col-12">
-        <h5>{{translate('GSTIN')}} : {{$order->customer['gst_number']}}</h5>
+            <div class="col-12">
+                <h5>{{translate('GSTIN')}} : {{$order->customer['gst_number']}}</h5>
+            </div>
+        @endif
     </div>
-@else
-    <div class="col-12">
-       
-    </div>       
-    @endif
 
-    </div>
-    <h5 class="text-uppercase"></h5>
-    <span>--------------------------------------</span>
+    {{-- <span>------------------------------------------</span> --}}
+    <div style="border:1px dashed gray"></div>
+    
     <table class="table table-bordered mt-3" style="width: 98%">
         <thead>
         <tr>
@@ -143,13 +144,13 @@
                                 </span>
                             </div>
                             <span class="font-size-sm">
-                            @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
-                            @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
-                        @endforeach
-                </span>
-                        <span class="font-size-sm">
-                        {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }}
+                                @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
+                                @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
                             </span>
+                        @endforeach
+                        <span class="font-size-sm">
+                            {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }}
+                        </span>
                           
                     </td>
                      
@@ -170,35 +171,31 @@
                         @php($total_gst = $detail->product['tax'])
                     @endif
                     
-                    @php($total_tax += $total_gst);
-                    
-                    
+                    @php($total_tax += $total_gst)
                     
             @endif
         @endforeach
         </tbody>
     </table>
-    <span>--------------------------------------</span>
+
+    {{-- <span>------------------------------------------</span> --}}
+    <div style="border:1px dashed gray"></div>
+    <br/>
     <div class="row justify-content-md-end">
-        <div class="col-md-11 col-lg-11">
-            <dl class="row text-right" style="color: black!important;">
+        <div class="col-md-12 col-lg-12">
+            <dl class="row text-right" style="color: black !important;">
                 <dt class="col-8">{{translate('Items Price')}}:</dt>
-                <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($item_price)}}</dd>
+                <dd class="col-4" >{{\App\CentralLogics\Helpers::set_symbol($item_price)}}</dd>
                
                 <dt class="col-8">{{translate('Addon Cost')}}:</dt>
                 <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($add_ons_cost)}}</dd>
 
-                <div class="col-12">
-                    <hr style="margin: 0px 0px 15px 0px;"/>
-                </div>
-
                 @php($subtotal = $add_ons_cost + $item_price)
-                <dt class="col-8">{{translate('Subtotal')}}:</dt>
-                <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($subtotal) }}</dd>
+                <dt class="col-8" style="font-weight: bold">{{translate('Subtotal')}}:</dt>
+                <dd class="col-4" style="font-weight: bold">{{ \App\CentralLogics\Helpers::set_symbol($subtotal) }}</dd>
 
                 <dt class="col-8">{{translate('Coupon Discount')}}:</dt>
                 <dd class="col-4">-{{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</dd>
-
 
                 <dt class="col-8">{{translate('Extra Discount')}}:</dt>
                 <dd class="col-4">-{{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</dd>
@@ -206,16 +203,12 @@
                 <dt class="col-8">{{translate('Tax')}} / {{translate('GST')}}:</dt>
                 <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost)}}</dd>
 
-                @if($order['packing_fee']==0.00)
-                    <dt class="col-8">{{ translate('') }}</dt>
-                    <dd class="col-4"></dd>
-                @else
+                @if($order['packing_fee']!=0.00)
                     <dt class="col-8">{{ translate('Packing Fee') }}:</dt>
                     <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                 @endif
                 
                 
-
                 @if($order['order_type']=='delivery')
                     <dt class="col-8">{{translate('Delivery Fee:')}}</dt>
                     <dd class="col-4">
@@ -239,31 +232,34 @@
                     {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
                 </dd>
 
-                <div class="col-12">
+                {{-- <div class="col-12">
                     <hr style="margin: 0px 0px 15px 0px;"/>
-                </div>
+                </div> --}}
 
-                <dt class="col-8"><b>{{translate('Total')}}:</b></dt>
-                <dd class="col-4"><b>{{ \App\CentralLogics\Helpers::set_symbol($total = $subtotal+$total_tax + $add_ons_tax_cost-$order['coupon_discount_amount']-$order['extra_discount']+$del_c+$order['packing_fee']) }}</b></dd>
+                <?php $total = $subtotal+$total_tax + $add_ons_tax_cost-$order['coupon_discount_amount']-$order['extra_discount']+$del_c+$order['packing_fee'] ?>
+                {{-- <dt class="col-8"><b>{{translate('Total')}}:</b></dt>
+                <dd class="col-4"><b>{{ \App\CentralLogics\Helpers::set_symbol($total) }}</b></dd> --}}
 
                 <dt class="col-8">{{translate('round_off')}}:</dt>
                 <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}</dd>
 
                 <div class="col-12">
-                    <hr style="margin: 0px 0px 15px 0px;"/>
+                    <hr style="margin: 10px 0px 15px 0px;"/>
                 </div>
 
-                <dt class="col-8"><h4>{{translate('Total')}}:</h4></dt>
-                <dd class="col-4"><h4>{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</h4></dd>
+                <dt class="col-8" style="font-weight: bold;"><h4>{{translate('Total')}}:</h4></dt>
+                <dd class="col-4" style="font-weight: bold;"><h4>{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</h4></dd>
             </dl>
         </div>
     </div>
     <div class="d-flex flex-row justify-content-between border-top">
         <span>{{translate('Paid_by')}}: <span style="font-weight:bold">{{ translate($order->payment_method)}}</span></span>
     </div>
-    <span>--------------------------------------</span>
+    {{-- <span>------------------------------------------</span> --}}
+    <div style="border:1px dashed gray"></div>
     <h5 class="text-center pt-3">
         """{{translate('THANK YOU')}}"""
     </h5>
-    <span>--------------------------------------</span>
+    {{-- <span>------------------------------------------</span> --}}
+    <div style="border:1px dashed gray"></div>
 </div>

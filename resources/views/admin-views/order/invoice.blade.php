@@ -286,21 +286,23 @@
                             <dt class="col-6">{{translate('Item Discount:')}}</dt>
                             <dd class="col-6">
                                 {{ \App\CentralLogics\Helpers::set_symbol($total_dis_on_pro) }}
-                                <hr>
                             </dd>
 
-                            <dt class="col-6">{{translate('Subtotal:')}}</dt>
-                            <dd class="col-6">
-                                {{ \App\CentralLogics\Helpers::set_symbol($sub_total + $add_ons_cost - $total_dis_on_pro) }}</dd>
+                            <dt class="col-6" style="font-weight: bold">{{translate('Subtotal:')}}</dt>
+                            <dd class="col-6" style="font-weight: bold">
+                                {{ \App\CentralLogics\Helpers::set_symbol($sub_total + $add_ons_cost - $total_dis_on_pro) }}
+                            </dd>
+
                             <dt class="col-6">{{translate('Extra Discount')}}:</dt>
                             <dd class="col-6">
-                                - {{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</dd>
+                                - {{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}
+                            </dd>
+
                             <dt class="col-6">{{translate('Coupon Discount:')}}</dt>
-                            
                             <dd class="col-6">
-                                - {{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</dd>
+                                - {{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}
+                            </dd>
                                
-                                
                             <dt class="col-6">{{translate('Delivery Fee:')}}</dt>
                             <dd class="col-6">
                                 @if($order['order_type']=='take_away')
@@ -309,25 +311,20 @@
                                     @php($del_c=$order['delivery_charge'])
                                 @endif
                                 {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
-                                @if($order['packing_fee']==0.00)
-                                <dt class="col-8">{{ translate('') }}</dt>
-                                <dd class="col-4"></dd>
-                               
-                            @else
-                          
-                            <dt class="col-6">{{ translate('Packing Fee') }}:</dt>
-                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
-                            @endif
-                            <dt class="col-6">{{translate('Tax / GST:')}}</dt>
-                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
-                                <hr>
+                                
+                                @if($order['packing_fee']!=0.00)
+                                    <dt class="col-6">{{ translate('Packing Fee') }}:</dt>
+                                    <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
+                                @endif
+                                <dt class="col-6">{{translate('Tax / GST:')}}</dt>
+                                <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
                             </dd>
                             
                             <?php 
                                 $total = $sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro
                             ?>
-                            <dt class="col-6" style="font-size: 18px">{{translate('Total:')}}</dt>
-                            <dd class="col-6" style="font-size: 18px">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd>
+                            {{-- <dt class="col-6" style="font-size: 18px">{{translate('Total:')}}</dt>
+                            <dd class="col-6" style="font-size: 18px">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd> --}}
 
                             <!-- partial payment-->
                             @if ($order->order_partial_payments->isNotEmpty())
@@ -362,8 +359,12 @@
                             <dt class="col-6">{{translate('round')}} {{translate('off')}}:</dt>
                             <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}</dd>
 
-                            <dt class="col-6" style="font-size: 20px">{{translate('Total:')}}</dt>
-                            <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</dd>
+                            <div class="col-12">
+                                <hr style="margin: 10px 0px 15px 0px;"/>
+                            </div>
+
+                            <dt class="col-6" style="font-weight: bold"><h3>{{translate('Total:')}}</h3></dt>
+                            <dd class="col-6" style="font-weight: bold"><h3>{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</h3></dd>
                         </dl>
                     </div>
                 </div>
