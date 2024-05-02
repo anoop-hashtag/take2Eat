@@ -956,51 +956,54 @@
 
 
 
-                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['system_management']))
+                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['system_management']) || Helpers::module_permission_check(MANAGEMENT_SECTION['help_and_support_management']))
 
-                            <!-- 3rd Party -->
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/web-app/third-party*')?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
-                                    <i class="tio-running nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('3rd_Party')}}</span>
-                                </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/business-settings/web-app/third-party*')?'block':'none'}}">
+                            @if (Helpers::module_permission_check(MANAGEMENT_SECTION['system_management']))
+                                <!-- 3rd Party -->
+                                <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/web-app/third-party*')?'active':''}}">
+                                    <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
+                                        <i class="tio-running nav-icon"></i>
+                                        <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('3rd_Party')}}</span>
+                                    </a>
+                                    <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/business-settings/web-app/third-party*')?'block':'none'}}">
 
-                                    <!-- Page Setup -->
-                                    <li class="nav-item {{Request::is('admin/business-settings/web-app/third-party/payment-method') || Request::is('admin/business-settings/web-app/third-party/mail-config') || Request::is('admin/business-settings/web-app/third-party/sms-module')||
-                                                        Request::is('admin/business-settings/web-app/third-party/map-api-settings') || Request::is('admin/business-settings/web-app/third-party/recaptcha') ||
-                                                        Request::is('admin/business-settings/web-app/third-party/social-login') || Request::is('admin/business-settings/web-app/third-party/chat')?'active':''}}">
-                                        <a class="nav-link" href="{{route('admin.business-settings.web-app.payment-method')}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('3rd Party Configurations')}}</span>
-                                        </a>
-                                    </li>
+                                        <!-- Page Setup -->
+                                        <li class="nav-item {{Request::is('admin/business-settings/web-app/third-party/payment-method') || Request::is('admin/business-settings/web-app/third-party/mail-config') || Request::is('admin/business-settings/web-app/third-party/sms-module')||
+                                                            Request::is('admin/business-settings/web-app/third-party/map-api-settings') || Request::is('admin/business-settings/web-app/third-party/recaptcha') ||
+                                                            Request::is('admin/business-settings/web-app/third-party/social-login') || Request::is('admin/business-settings/web-app/third-party/chat')?'active':''}}">
+                                            <a class="nav-link" href="{{route('admin.business-settings.web-app.payment-method')}}">
+                                                <span class="tio-circle nav-indicator-icon"></span>
+                                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('3rd Party Configurations')}}</span>
+                                            </a>
+                                        </li>
 
-                                    {{-- <li class="nav-item {{Request::is('admin/business-settings/web-app/third-party/offline-payment*')?'active':''}}">
-                                        <a class="nav-link" href="{{route('admin.business-settings.web-app.third-party.offline-payment.list')}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('Offline Payment Method')}}</span>
-                                        </a>
-                                    </li> --}}
+                                        {{-- <li class="nav-item {{Request::is('admin/business-settings/web-app/third-party/offline-payment*')?'active':''}}">
+                                            <a class="nav-link" href="{{route('admin.business-settings.web-app.third-party.offline-payment.list')}}">
+                                                <span class="tio-circle nav-indicator-icon"></span>
+                                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('Offline Payment Method')}}</span>
+                                            </a>
+                                        </li> --}}
 
-                                    <li class="nav-item {{Request::is('admin/business-settings/web-app/third-party/fcm*')?'active':''}}">
-                                        <a class="nav-link" href="{{route('admin.business-settings.web-app.third-party.fcm-index')}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('Firebase Notification')}}</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- End 3rd Party -->
+                                        <li class="nav-item {{Request::is('admin/business-settings/web-app/third-party/fcm*')?'active':''}}">
+                                            <a class="nav-link" href="{{route('admin.business-settings.web-app.third-party.fcm-index')}}">
+                                                <span class="tio-circle nav-indicator-icon"></span>
+                                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('Firebase Notification')}}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- End 3rd Party -->
 
 
-                            <!-- SYSTEM SETTINGS -->
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/web-app/system-setup*')?'active':''}}">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.business-settings.web-app.system-setup.language.index')}}">
-                                    <i class="tio-security-on-outlined nav-icon"></i>
-                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('System Setup')}}</span>
-                                </a>
-                            </li>
+                                <!-- SYSTEM SETTINGS -->
+                                <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/web-app/system-setup*')?'active':''}}">
+                                    <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.business-settings.web-app.system-setup.language.index')}}">
+                                        <i class="tio-security-on-outlined nav-icon"></i>
+                                        <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('System Setup')}}</span>
+                                    </a>
+                                </li>
+                            @endif
+                            
 
                             {{-- HELP & SUPPORT MANAGEMENT --}}
                             @if(Helpers::module_permission_check(MANAGEMENT_SECTION['help_and_support_management']))
