@@ -1,4 +1,3 @@
-
 <div class="col-sm-6 col-lg-3">
     <a href="{{route('branch.orders.list',['pending'])}}" class="dashboard--card">
         <h5 class="dashboard--card__subtitle">{{translate('pending')}}</h5>
@@ -50,7 +49,7 @@
             <h6 class="order-stats__subtitle">{{translate('cancelled')}}</h6>
         </div>
         <span class="order-stats__title">
-            {{$data['all']}}
+            {{$data['canceled']}}
         </span>
     </a>
     <!-- End Card -->

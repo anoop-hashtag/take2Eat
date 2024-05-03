@@ -263,12 +263,13 @@ class DashboardController extends Controller
             ->count();
 
         $data = [
+            'all' => $all,
             'pending' => $pending,
             'confirmed' => $confirmed,
             'processing' => $processing,
             'out_for_delivery' => $out_for_delivery,
             'delivered' => $delivered,
-            'all' => $all,
+            'canceled' => $canceled,
             'returned' => $returned,
             'failed' => $failed
         ];
