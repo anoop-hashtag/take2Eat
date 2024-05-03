@@ -131,6 +131,11 @@
 
                         <tbody id="set-rows">
                         @foreach($orders as $key=>$order)
+                        <?php 
+                            // echo "<pre>"; 
+                            // print_r($order); 
+                            // die; 
+                        ?>
                             <tr class="status-{{$order['order_status']}} class-all">
                                 <td>{{$key+$orders->firstItem()}}</td>
                                 <td>
@@ -152,7 +157,7 @@
                                 </td>
                                 <td>{{ $order->branch->name }}</td>
                                 <td>
-                                    <div>{{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</div>
+                                    <div>{{ \App\CentralLogics\Helpers::set_symbol($order['order_amount'] + $order['packing_fee']) }}</div>
                                     @if($order->payment_status=='paid')
                                         <span class="text-success">{{translate('paid')}}</span>
                                     @else
