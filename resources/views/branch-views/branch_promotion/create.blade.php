@@ -41,18 +41,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <div class="col-12 from_part_2 video_section" id="video_section" style="display: none">
-                                            <label class="input-label">{{translate('youtube_Video_URL')}} <span class="text-danger">*</span></label>
-                                            <input type="text" id="url" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" oninput="validateUrl()">
-                                            <span id="urlValidationMessage"></span>
-                                        </div>
                                         <div class="col-12 from_part_2 image_section" id="image_section" style="display: none">
                                             <label class="input-label">{{translate('Image')}} <span class="text-danger">*</span></label>
                                             <div class="custom-file">
-                                                <input type="file" name="image" id="customFileEg" class="custom-file-input"
-                                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
-                                                    oninvalid="document.getElementById('en-link').click()">
-                                                <label class="custom-file-label" for="customFileEg">{{ translate('choose file') }}</label>
+                                                <input type="file" name="image" id="customFileUpload" class="custom-file-input"
+                                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" >
+                                                <label class="custom-file-label" for="customFileUpload">{{ translate('choose file') }}</label>
                                             </div>
                                             <div class="col-12 from_part_2 mt-2">
                                                 <div class="form-group">
@@ -63,6 +57,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        <div class="col-12 from_part_2 video_section" id="video_section" style="display: none">
+                                            <label class="input-label">{{translate('youtube_Video_URL')}} <span class="text-danger">*</span></label>
+                                            <input type="text" id="url" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" oninput="validateUrl()">
+                                            <span id="urlValidationMessage"></span>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -171,9 +172,27 @@
         </div>
     </div>
 @endsection
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-@push('script_2')
+@push('script')
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#viewer').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#customFileUpload").change(function () {
+            readURL(this);
+        })
+
+
         $(function() {
             $('#banner_type').change(function(){
                
@@ -186,17 +205,6 @@
                 }
             });
         });
-
-        function readURL(input, viewer_id) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#'+viewer_id).attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
 
         function validateUrl() {
             var urlInput = document.getElementById('url');
@@ -215,12 +223,8 @@
             }
         }
 
-        $("#customFileEg").change(function () {
-            readURL(this, 'viewer');
-        });
-
     </script>
- @push('script_2')
+
     <script>
         $(document).on('ready', function () {
             // INITIALIZATION OF NAV SCROLLER

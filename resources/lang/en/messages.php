@@ -2232,4 +2232,6 @@
   'Packing Fee' => 'Packing Fee',
   'Time_Start' => 'Time Start',
   'Addons Cost' => 'Addons Cost',
+  'campaign_Update' => 'Campaign Update',
+  'Promotional campaign updated successfully!' => 'Promotional campaign updated successfully!',
 );
