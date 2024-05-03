@@ -224,7 +224,7 @@
                         @csrf
                         <div class="form-group col-sm-6">
                             <label class="text-dark">{{translate('Packing_fee')}}</label>
-                            <input type="text" class="form-control" name="packing_fee" value="{{ session()->get('cart')['packing_fee'] ?? 0 }}">
+                            <input type="number" class="form-control" name="packing_fee" value="{{ session()->get('cart')['packing_fee'] ?? 0 }}" onkeyup="validatePinCode(this)">
                         </div>
                         
                         {{-- <div class="form-group col-sm-6">

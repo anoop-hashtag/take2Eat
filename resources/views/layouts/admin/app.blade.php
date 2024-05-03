@@ -189,6 +189,18 @@
             input.value = GstNumber.slice(0, 15);
         }
     }
+
+    //validation for pin cde
+    function validatePinCode(input) {
+        var pinCode = input.value;
+    
+        pinCode = pinCode.replace(/\D/g, '');
+        input.value = pinCode;
+
+        if(pinCode.length > 6) {
+            input.value = pinCode.slice(0, 6);
+        }
+    }
 </script>
 
 <script>
