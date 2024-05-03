@@ -166,13 +166,13 @@
                     @php($item_price += $total_after_discount)
 
                     @if($detail->product['tax_type'] == 'percent')
-                        @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
-                        @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
+                        @php($price_tax = (($detail->price / 100) * $detail->product['tax']) * $detail['quantity']) 
+                        @php($total_gst = (($total_after_discount / 100) * $detail->product['tax']) * $detail['quantity'])
                     @else
-                        @php($total_gst = $detail->product['tax'])
+                        @php($price_tax = $detail->product['tax'])
                     @endif
                     
-                    @php($total_tax += $total_gst)
+                    @php($total_tax += $price_tax * $detail['quantity'])
                     
             @endif
         @endforeach
@@ -188,7 +188,7 @@
                 <dt class="col-8">{{translate('Items Price')}}:</dt>
                 <dd class="col-4" >{{\App\CentralLogics\Helpers::set_symbol($item_price)}}</dd>
                
-                <dt class="col-8">{{translate('Addon Cost')}}:</dt>
+                <dt class="col-8">{{translate('Addons Cost')}}:</dt>
                 <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($add_ons_cost)}}</dd>
 
                 @php($subtotal = $add_ons_cost + $item_price)
@@ -204,7 +204,7 @@
                 <dt class="col-8">{{translate('Tax')}} / {{translate('GST')}}:</dt>
                 <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost)}}</dd>
 
-                @if($order['packing_fee']!=0.00)
+                @if($order['packing_fee']!=0)
                     <dt class="col-8">{{ translate('Packing Fee') }}:</dt>
                     <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                 @endif
