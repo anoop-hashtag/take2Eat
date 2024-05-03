@@ -2234,4 +2234,5 @@
   'Addons Cost' => 'Addons Cost',
   'campaign_Update' => 'Campaign Update',
   'Promotional campaign updated successfully!' => 'Promotional campaign updated successfully!',
+  'no. of people' => 'No. of people',
 );

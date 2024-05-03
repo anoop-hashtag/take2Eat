@@ -234,7 +234,7 @@
                         </li>
                         <!-- End Pages -->
 
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('branch/table/order/list/*')?'active':''}}">
+                        <li class="navbar-vertical-aside-has-menu {{Request::is('branch/table/order/list/*') || Request::is('branch/table/index')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
                                 <i class="tio-shopping-cart nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
@@ -243,17 +243,16 @@
                                 <label class="badge badge-danger">{{translate('addon')}}</label>
 {{--                                <label class="badge badge-danger">{{translate('addon')}}</label>--}}
                             </a>
-                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                style="display: {{Request::is('branch/table/order*')?'block':'none'}}">
+                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('branch/table/order*')||Request::is('branch/table/index')?'block':'none'}}">
                                 <li class="nav-item {{Request::is('branch/table/order/list/all')?'active':''}}">
                                     <a class="nav-link" href="{{route('branch.table.order.list',['all'])}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
-                                                {{translate('all')}}
-                                                <span class="badge badge-soft-info badge-pill ml-1">
-                                                    {{\App\Model\Order::dineIn()->where(['branch_id' => auth('branch')->id()])->count()}}
-                                                </span>
+                                            {{translate('all')}}
+                                            <span class="badge badge-soft-info badge-pill ml-1">
+                                                {{\App\Model\Order::dineIn()->where(['branch_id' => auth('branch')->id()])->count()}}
                                             </span>
+                                        </span>
                                     </a>
                                 </li>
                                 {{-- <li class="nav-item {{Request::is('branch/table/order/list/confirmed')?'active':''}}">
@@ -319,13 +318,22 @@
                                     <a class="nav-link " href="{{route('branch.table.order.running')}}" title="">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate sidebar--badge-container">
-                                                {{translate('On Table')}}
-                                                <span class="badge badge-soft-success badge-pill ml-1">
-                                                    {{\App\Model\Order::with('table_order')->whereHas('table_order', function($q){
-                                                                    $q->where('branch_table_token_is_expired', 0);
-                                                                })->where(['branch_id' => auth('branch')->id()])->count()}}
-                                                </span>
+                                            {{translate('On Table')}}
+                                            <span class="badge badge-soft-success badge-pill ml-1">
+                                                {{\App\Model\Order::with('table_order')->whereHas('table_order', function($q){
+                                                        $q->where('branch_table_token_is_expired', 0);
+                                                    })->where(['branch_id' => auth('branch')->id()])->count()}}
                                             </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item {{Request::is('branch/table/index')?'active':''}}">
+                                    <a class="nav-link " href="{{route('branch.table.index')}}" title="">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate sidebar--badge-container">
+                                            {{translate('table_availability')}}
+                                        </span>
                                     </a>
                                 </li>
                             </ul>
@@ -357,12 +365,26 @@
 
 
                         <li class="nav-item">
-                            <small class="nav-subtitle">{{translate('table')}} {{translate('section')}}</small>
-                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                            <small class="nav-subtitle">{{translate('promotion')}} {{translate('management')}}</small>
+                        </li>
+
+                        <li class="navbar-vertical-aside-has-menu {{Request::is('branch/promotion/*')?'active':''}}">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('branch.promotion.create')}}">
+                                <i class="tio-shopping-cart nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    {{translate('table_promotion')}}
+                                </span>
+                            </a>
                         </li>
 
 
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('branch/table/list') || Request::is('branch/branch-promotion/*') || Request::is('branch/table/index') ?'show':''}}">
+                        {{-- <li class="nav-item">
+                            <small class="nav-subtitle">{{translate('table')}} {{translate('section')}}</small>
+                            <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                        </li> --}}
+
+
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('branch/table/list') || Request::is('branch/branch-promotion/*') || Request::is('branch/table/index') ?'show':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
                                 <i class="tio-gift nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('table')}}</span>
@@ -389,11 +411,11 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item">
                             <small
-                                class="nav-subtitle">{{translate('kitchen')}} {{translate('section')}}</small>
+                                class="nav-subtitle">{{translate('user')}} {{translate('management')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{Request::is('branch/kitchen/*')?'active':''}}">
@@ -420,6 +442,15 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li class="navbar-vertical-aside-has-menu {{Request::is('branch/table/list')?'active':''}}">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('branch.table.list')}}">
+                                <i class="tio-shopping-cart nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    {{translate('table_setup')}}
+                                </span>
+                            </a>
                         </li>
                         <li class="nav-item pt-10"></li>
                     </ul>
