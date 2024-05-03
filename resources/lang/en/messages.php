@@ -2235,4 +2235,6 @@
   'campaign_Update' => 'Campaign Update',
   'Promotional campaign updated successfully!' => 'Promotional campaign updated successfully!',
   'no. of people' => 'No. of people',
+  'dob' => 'Dob',
+  ' With_country_code' => ' With country code',
 );

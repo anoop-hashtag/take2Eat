@@ -421,6 +421,17 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="form-group">
                                         <label class="input-label">
+                                            {{translate('dob')}}
+                                            <small class="text-danger" style="margin-top: 3px;"> </small>
+                                            <span class="input-label-secondary text-danger"></span>
+                                        </label>
+                                        <input type="date" name="dob" class="form-control" >
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label">
                                             {{translate('GSTIN')}}
                                             <small class="text-danger" style="margin-top: 3px;"> </small>
                                             <span class="input-label-secondary text-danger"></span>

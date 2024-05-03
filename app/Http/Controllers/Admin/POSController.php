@@ -1086,6 +1086,7 @@ class POSController extends Controller
             'phone' => $request->phone,
             'password' => bcrypt('password'),
             'gst_number'=>$request->gst_number,
+            'dob'=>$request->dob,
         ]);
 
         Toastr::success(translate('customer added successfully'));

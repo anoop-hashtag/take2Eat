@@ -159,9 +159,22 @@
                                         alt="Image Description">
                                 </div>
                                 <div class="media-body d-flex flex-column gap-1">
-                                    <div class="text-dark d-flex gap-2 align-items-center"><span class="tio-email"></span> <a class="text-dark" href="mailto:{{$customer['email']}}">{{$customer['email']}}</a></div>
-                                    <div class="text-dark d-flex gap-2 align-items-center"><span class="tio-call-talking-quiet"></span> <a class="text-dark" href="tel:{{$customer['phone']}}">{{$customer['phone']}}</a></div>
-                                    <div class="text-dark d-flex gap-2 align-items-center"><span class="tio-shopping-basket-outlined"></span> {{$customer->orders->count()}} {{translate('orders')}}</div>
+                                    <div class="text-dark d-flex gap-2 align-items-center">
+                                        <span class="tio-email"></span> 
+                                        <a class="text-dark" href="mailto:{{$customer['email']}}">{{$customer['email']}}</a>
+                                    </div>
+                                    <div class="text-dark d-flex gap-2 align-items-center">
+                                        <span class="tio-call-talking-quiet"></span> 
+                                        <a class="text-dark" href="tel:{{$customer['phone']}}">{{$customer['phone']}}</a>
+                                    </div>
+                                    <div class="text-dark d-flex gap-2 align-items-center">
+                                        <span class="tio-calendar-month"></span> 
+                                        {{ $customer->dob != '' ? date('d M Y', strtotime($customer->dob)) : '' }}
+                                    </div>
+                                    <div class="text-dark d-flex gap-2 align-items-center">
+                                        <span class="tio-shopping-basket-outlined"></span> 
+                                        {{$customer->orders->count()}} {{translate('orders')}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
