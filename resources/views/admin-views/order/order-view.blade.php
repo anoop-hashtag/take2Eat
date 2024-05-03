@@ -422,7 +422,7 @@
                                     <dt class="col-6">
 
                                         <div class="d-flex max-w220 ml-auto">
-                                            <span>{{translate('addon')}} {{translate('cost')}}</span>
+                                            <span>{{translate('addons')}} {{translate('cost')}}</span>
                                             <span>:</span>
                                         </div>
                                     </dt>

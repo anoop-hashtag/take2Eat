@@ -2229,4 +2229,7 @@
   'Deliveryman Partner can not assign/change in that status' => 'Deliveryman Partner can not assign/change in that status',
   'System management' => 'System management',
   'Report management' => 'Report management',
+  'Packing Fee' => 'Packing Fee',
+  'Time_Start' => 'Time Start',
+  'Addons Cost' => 'Addons Cost',
 );
