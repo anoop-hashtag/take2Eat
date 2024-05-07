@@ -2239,4 +2239,5 @@
   ' With_country_code' => ' With country code',
   'DOB' => 'DOB',
   'Delivery Partner successfully assigned/changed' => 'Delivery Partner successfully assigned/changed',
+  'Item_Type' => 'Item Type',
 );
