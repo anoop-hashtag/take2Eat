@@ -2237,4 +2237,5 @@
   'no. of people' => 'No. of people',
   'dob' => 'Dob',
   ' With_country_code' => ' With country code',
+  'DOB' => 'DOB',
 );
