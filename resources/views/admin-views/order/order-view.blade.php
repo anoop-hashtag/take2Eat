@@ -296,9 +296,6 @@
                                         @else
                                             @php($amount = $detail['price'] * $detail['quantity'])
                                         @endif
-                                        <?php 
-                                            // unset($addon_price);
-                                        ?>
                                         <?php
                                             $totalOptionPrice = 0;
 
@@ -481,22 +478,25 @@
                                         @endif
                                         {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
                                     </dd>
+
                                     @if($order['packing_fee']==0.00)
-                                    <dt class="col-8">{{ translate('') }}</dt>
-                                    <dd class="col-4"></dd>
+                                        <dt class="col-8">{{ translate('') }}</dt>
+                                        <dd class="col-4"></dd>
                                    
-                                @else
+                                    @else
                               
-                                <dt class="col-8">&nbsp;&nbsp;{{ translate('Packing Fee') }}:</dt>
-                                <dd class="col-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
-                                @endif
-                                <dt class="col-6">
-                                    <div class="d-flex max-w220 ml-auto">
-                                        <span>{{translate('tax')}} / {{translate('GST')}}</span>
-                                        <span>:</span>
-                                    </div>
-                                </dt>
-                                <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
+                                        <dt class="col-8">&nbsp;&nbsp;{{ translate('Packing Fee') }}:</dt>
+                                        <dd class="col-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
+                                    @endif
+
+                                    <dt class="col-6">
+                                        <div class="d-flex max-w220 ml-auto">
+                                            <span>{{translate('tax')}} / {{translate('GST')}}</span>
+                                            <span>:</span>
+                                        </div>
+                                    </dt>
+                                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
+                                    
                                     <dt class="col-6 border-top pt-2 fz-16 font-weight-bold">
                                         <div class="d-flex max-w220 ml-auto">
                                             <span>{{translate('total')}}</span>
