@@ -523,7 +523,8 @@
                                             </div>
                                         </dt>
                                         <dd class="col-6 text-dark text-right">
-                                            {{ \App\CentralLogics\Helpers::set_symbol($due_amount) }}
+                                            {{-- {{ \App\CentralLogics\Helpers::set_symbol($due_amount) }} --}}
+                                            {{ \App\CentralLogics\Helpers::set_symbol($total - $partial->paid_amount) }}
                                         </dd>
                                     @endif
                                 </dl>
@@ -912,8 +913,7 @@
                     <div class="modal-body">
                         <!-- Input Group -->
                         <div class="form-group">
-                            <input type="text" name="transaction_reference" class="form-control"
-                                   placeholder="{{translate('EX : Code123')}}" required>
+                            <input type="text" name="transaction_reference" class="form-control" placeholder="{{translate('EX : Code123')}}" required>
                         </div>
                         <!-- End Input Group -->
                         <button class="btn btn-primary">{{translate('submit')}}</button>
