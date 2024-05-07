@@ -496,7 +496,7 @@
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
-                                    
+
                                     <dt class="col-6 border-top pt-2 fz-16 font-weight-bold">
                                         <div class="d-flex max-w220 ml-auto">
                                             <span>{{translate('total')}}</span>
@@ -523,8 +523,8 @@
                                             </dd>
                                         @endforeach
                                             <?php
-                                                $due_amount = 0;
-                                                $due_amount = $order->order_partial_payments->first()?->due_amount;
+                                                // $due_amount = 0;
+                                                // $due_amount = $order->order_partial_payments->first()?->due_amount;
                                             ?>
                                             <dt class="col-6">
                                                 <div class="d-flex max-w220 ml-auto">
@@ -534,7 +534,8 @@
                                                 </div>
                                             </dt>
                                             <dd class="col-6 text-dark text-right">
-                                                {{ \App\CentralLogics\Helpers::set_symbol($due_amount) }}
+                                                {{-- {{ \App\CentralLogics\Helpers::set_symbol($due_amount) }} --}}
+                                                {{ \App\CentralLogics\Helpers::set_symbol($total - $partial->paid_amount) }}
                                             </dd>
                                     @endif
                                 </dl>
