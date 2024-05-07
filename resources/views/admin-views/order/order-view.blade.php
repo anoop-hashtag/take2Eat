@@ -368,7 +368,16 @@
                                             }
                                             echo \App\CentralLogics\Helpers::set_symbol($taxable_amt);
 
-                                            $total_tax = $total_tax + ($taxable_amt * $detail['quantity'] );
+                                            if(isset($order->branch)) {
+                                                if($order->branch->name == 'Main Branch') {
+                                                    $total_tax = $total_tax + ($taxable_amt * $detail['quantity'] );
+                                                } else {
+                                                    $total_tax = $total_tax + $taxable_amt;
+                                                }
+                                            } else {
+                                                $total_tax = $total_tax + ($taxable_amt * $detail['quantity'] );
+                                            }
+
                                         ?>
                                     </td>
                                     @if(isset($variation['values']) && is_array($variation['values']))
@@ -1278,11 +1287,11 @@
     </script>
     <script>
         // Function to reload the page
-        function reloadPage() {
-            location.reload();
-        }
+        // function reloadPage() {
+        //     location.reload();
+        // }
         
-        // Set timeout to reload the page every 10 seconds (10000 milliseconds)
-        setTimeout(reloadPage, 10000);
+        // // Set timeout to reload the page every 10 seconds (10000 milliseconds)
+        // setTimeout(reloadPage, 10000);
     </script>
 @endpush
