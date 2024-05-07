@@ -65,18 +65,16 @@
                     <div class="js-form-message form-group">
                         <label class="input-label text-capitalize" for="signinSrEmail">{{translate('your')}} {{translate('email')}}</label>
 
-                        <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail"
-                               tabindex="1" placeholder="{{translate('email')}}" aria-label="email@address.com"
-                               required data-msg="Please enter a valid email address.">
+                        <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail" placeholder="{{translate('email')}}" aria-label="email@address.com" required data-msg="Please enter a valid email address.">
                     </div>
                     <!-- End Form Group -->
 
                     <!-- Form Group -->
                     <div class="js-form-message form-group">
-                        <label class="input-label" for="signupSrPassword" tabindex="0">
-                                <span class="d-flex justify-content-between align-items-center">
+                        <label class="input-label" for="signupSrPassword">
+                            <span class="d-flex justify-content-between align-items-center">
                                 {{translate('password')}}
-                                </span>
+                            </span>
                         </label>
 
                         <div class="input-group input-group-merge">
@@ -102,8 +100,7 @@
                     <!-- Checkbox -->
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="termsCheckbox"
-                                   name="remember">
+                            <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="remember">
                             <label class="custom-control-label text-muted" for="termsCheckbox">
                                 {{translate('remember')}} {{translate('me')}}
                             </label>
