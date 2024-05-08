@@ -2242,4 +2242,6 @@
   'Item_Type' => 'Item Type',
   'Taste of Awadh' => 'Taste of Awadh',
   'partial_paid' => 'Partial paid',
+  'Enter captcha' => 'Enter captcha',
+  'Branch sign in' => 'Branch sign in',
 );
