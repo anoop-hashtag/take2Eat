@@ -3595,3 +3595,24 @@ a.btn.btn-danger.non-printable {
 .page-area.px-4.pb-3 {
   padding: 20px 0 !important;
 }
+
+/* for serach style */
+div#pos_datatable_filter label{
+  color:#fff !important;
+}
+div#pos_datatable_filter label input {
+  border: .0625rem solid #e7eaf3 !important;
+  height: 43px !important;
+  width: 150% !important;
+}
+div#pos_datatable_filter {
+  position: absolute;
+  top: -88px;
+  right: 59px;
+}
+div#pos_datatable_filter label input {
+  border: .0625rem solid #e7eaf3 !important;
+  padding-left: 15px !important;
+  height: 43px !important;
+  width: 119% !important;
+}
