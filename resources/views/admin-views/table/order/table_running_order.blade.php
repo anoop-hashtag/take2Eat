@@ -41,7 +41,7 @@
                                         <a class="form-control btn btn-sm btn-white float-right" href="{{ route('admin.table.order.running.invoice', ['table_id' => $table_id]) }}"><i class="tio-print"></i> {{translate('invoice')}}</a>
                                     </div>
                                 </div>
-                                <div class="col-5 col-md-5 col-lg-4">
+                                <div class="col-6 col-md-6 col-lg-4">
                                     <select class="form-control text-capitalize" name="branch" onchange="filter_branch_orders(this.value)">
                                         <option disabled>--- {{translate('select')}} {{translate('branch')}} ---</option>
                                         @foreach(\App\Model\Branch::all() as $branch)
@@ -50,7 +50,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-5 col-md-5 col-lg-4">
+                                <div class="col-6 col-md-6 col-lg-4">
                                     <!-- Select -->
                                     <select class="form-control text-capitalize" name="table" id="select_table" onchange="filter_by_table(this.value)">
                                         <option disabled selected>--- {{translate('select')}} {{translate('table')}} ---</option>
