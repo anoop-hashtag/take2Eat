@@ -3587,10 +3587,10 @@ select.custom-select.w-auto.min-width-170px {
 /* all phone */
 @media only screen and (max-width: 600px) {
   .dataTables_wrapper .dataTables_filter label {
-    margin: 2rem 2rem 0 2rem !important;
+    margin: 0rem 2rem 0 2rem !important;
 }
 .new-ui .dataTables_wrapper .dataTables_filter label {
-  margin: 0rem 0 0rem 1.4rem;
+  margin: 0rem 0 0rem 1.4rem !important;
 }
   .pos-product-item_thumb {
     height: 120px;
