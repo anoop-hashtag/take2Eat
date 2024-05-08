@@ -2613,6 +2613,9 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   .custom-control.custom-checkbox .custom-control-label.text-muted {
     color: #000 !important;
   }
+  .auth-wrapper-right .custom-control-label.text-muted {
+    color: #000 !important;
+  }
   .auth-wrapper-right .custom-control-label {
     font-size: 12px;
   }
