@@ -448,9 +448,7 @@ div#country-dropdown {
     right: 10px!important;
     top: 5px!important;
   }
-  .dataTables_wrapper .dataTables_filter {
-    margin: 2.5em 0 0 1.3rem!important;
-  }
+ 
   .addon-list .datatable_wrapper_row .dataTable{
     display: table;
     overflow-x: auto!important;
@@ -494,9 +492,7 @@ div#country-dropdown {
   .attribute-list .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important;
   } 
-  .dataTables_wrapper .dataTables_filter {
-    margin: 0rem 0 0 2rem!important;
-  }
+ 
 .order_id{
   font-size: 11px;
 }
