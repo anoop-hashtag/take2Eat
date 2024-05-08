@@ -3565,6 +3565,9 @@ table.dataTable thead th, table.dataTable thead td {
     max-width: 4.92188rem;
     max-height: 4.92188rem;
 }
+.swal2-popup{
+  font-size: 8px !important;
+} 
 @media only screen and (max-width: 480px) {
   .auth-wrapper-right {
     padding: 15px 15px;
@@ -3575,13 +3578,11 @@ table.dataTable thead th, table.dataTable thead td {
 }
 select.custom-select.w-auto.min-width-170px {
   margin-top: 15px;
-}  .swal2-popup{
-    font-size: 13px !important;
+}  
+.swal2-popup{
+    font-size: 5px !important;
   } 
 }
-.swal2-popup{
-  font-size: 14px !important;
-} 
 /* all phone */
 @media only screen and (max-width: 600px) {
   
