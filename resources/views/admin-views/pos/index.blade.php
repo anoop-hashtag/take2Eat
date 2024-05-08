@@ -160,8 +160,8 @@
                             <!-- End POS Title -->
 
                             <!-- POS Filter -->
-                            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between gap-3 gap-xl-4 px-4 py-4">
-                                <div class="w-100 mr-xl-2">
+                            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between gap-3 gap-xl-4 px-4 py-4 custom-paddingbt">
+                                <div class="w-100">
                                     <select name="category" id="category" class="form-control js-select2-custom-x mx-1" title="select category" onchange="set_category_filter(this.value)">
                                         <option value="">{{translate('All Categories')}}</option>
                                         @foreach ($categories as $item)
