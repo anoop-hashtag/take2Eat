@@ -493,7 +493,8 @@
                                         <div class="d-flex max-w220 ml-auto">{{translate('total')}}:</div>
                                     </dt>
                                     <?php 
-                                        $total = $sub_total - $order['coupon_discount_amount'] - $order['extra_discount'] + $del_c+$order['packing_fee']+$total_tax + $add_ons_tax_cost
+                                        $total_due_amount = 0;
+                                        $total_due_amount = $total = $sub_total - $order['coupon_discount_amount'] - $order['extra_discount'] + $del_c+$order['packing_fee']+$total_tax + $add_ons_tax_cost
                                     ?>
                                     <dd class="col-6 border-top pt-2 fz-16 font-weight-bold text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd>
 
@@ -524,7 +525,7 @@
                                         </dt>
                                         <dd class="col-6 text-dark text-right">
                                             {{-- {{ \App\CentralLogics\Helpers::set_symbol($due_amount) }} --}}
-                                            {{ \App\CentralLogics\Helpers::set_symbol($total - $partial->paid_amount) }}
+                                            {{ \App\CentralLogics\Helpers::set_symbol($total_due_amount = $total - $partial->paid_amount) }}
                                         </dd>
                                     @endif
                                 </dl>
@@ -536,7 +537,7 @@
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">
-                                        {{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}
+                                        {{ \App\CentralLogics\Helpers::set_symbol(round($total_due_amount) - $total_due_amount) }}
                                     </dd>
                                 </dl>
                                 <dl class="row"><dt class="col-12"><hr/></dt></dl>
@@ -547,7 +548,7 @@
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">
-                                        <h3>{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</h3>
+                                        <h3>{{ \App\CentralLogics\Helpers::set_symbol(round($total_due_amount)) }}</h3>
                                     </dd>
                                 </dl>
                             </div>
