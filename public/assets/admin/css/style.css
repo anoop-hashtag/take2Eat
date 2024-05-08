@@ -3642,7 +3642,9 @@ margin: 0;
 .custom-paddingbt {
   padding-bottom: 0 !important;
 }
-
+h2.h1.mb-0.d-flex.align-items-center.gap-2 span.page-header-title {
+  font-size: 16px;
+}
 ul#navbarSettings.navbar-nav.nav-tabs {
   padding: 10px 10px !important;
 }
