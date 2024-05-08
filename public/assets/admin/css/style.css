@@ -3566,7 +3566,7 @@ table.dataTable thead th, table.dataTable thead td {
     max-height: 4.92188rem;
 }
 .swal2-popup{
-  font-size: 8px !important;
+  font-size: 13px !important;
 } 
 @media only screen and (max-width: 480px) {
   .auth-wrapper-right {
@@ -3580,7 +3580,7 @@ select.custom-select.w-auto.min-width-170px {
   margin-top: 15px;
 }  
 .swal2-popup{
-    font-size: 5px !important;
+    font-size: 11px !important;
   } 
 }
 /* all phone */
