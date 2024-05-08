@@ -2463,6 +2463,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 	padding-bottom: 4px;
 	border-radius: 10px;
 	margin: 15px 0;
+  text-transform: capitalize;
 }
 .logo-on-top img {
 	width: 100px;
@@ -2663,7 +2664,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   }
   .auth-wrapper-right {
     padding: 25px 40px;
-    max-width: 100%;
+    max-width: 460px;
     text-align: center;
   }
   .auth-wrapper-right .form-group {
@@ -2673,7 +2674,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 @media (max-width: 767px) {
   .auth-wrapper-right {
     padding: 15px 30px;
-    max-width: 100%;
+    max-width: 360px;
   }
 }
 .delivery--information-single {
@@ -3592,6 +3593,10 @@ table.dataTable thead th, table.dataTable thead td {
     max-height: 4.92188rem;
 }
 @media only screen and (max-width: 480px) {
+  .auth-wrapper-right {
+    padding: 15px 15px;
+    max-width: 320px;
+}
   .email-format-wrapper .social img {
     width: 20px;
 }

@@ -1322,7 +1322,7 @@
   'settings updated!' => 'Settings updated!',
   '(Already Exists)' => '(Already Exists)',
   'want_to_login_your_admin' => 'Want to login your admin',
-  'admin_login' => 'Admin login',
+  'admin_login' => 'Admin sign in',
   'branch_sign_in' => 'Branch sign in',
   'Earning statistics for business analytics' => 'Earning statistics for business analytics',
   'Monthly Earning' => 'Monthly Earning',
