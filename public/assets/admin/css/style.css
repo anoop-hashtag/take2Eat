@@ -2553,12 +2553,15 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     font-size: 55px;
   }
   .auth-wrapper-right .auth-header {
-    font-size: 16px;
-    margin-bottom: 35px;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 300;
   }
   .auth-wrapper-right .auth-header .title {
-    font-size: 36px;
+    font-size: 20px;
     margin-bottom: 0;
+    margin-top: 15px;
   }
   .auth-wrapper-right .auth-header .badge {
     margin-top: 10px;
@@ -2598,7 +2601,14 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     font-size: 12px;
   }
   .auth-wrapper-right .btn-block {
-    height: 38px !important;
+    height: 45px !important;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 10px;
+    margin: 15px 0;
+  }
+  .custom-control.custom-checkbox .custom-control-label.text-muted {
+    color: #000 !important;
   }
   .auth-wrapper-right .custom-control-label {
     font-size: 12px;
