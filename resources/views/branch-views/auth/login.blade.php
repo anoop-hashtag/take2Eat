@@ -44,20 +44,25 @@
 
             <!-- Card -->
             <div class="auth-wrapper-form">
+                <div class="logo-on-top">
+                @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
+                <img width="310" src="{{asset('storage/app/public/restaurant/'.$restaurant_logo)}}"
+                     onerror="this.src='{{asset('public/assets/admin/img/logo.png')}}'">
+                </div>
                 <!-- Form -->
                 <form class="" id="form-id" action="{{route('branch.auth.login')}}" method="post">
                     @csrf
 
                     <div class="auth-header">
                         <div class="mb-5">
-                            <h2 class="title">{{translate('sign_in')}}</h2>
-                            <div class="text-capitalize">{{translate('welcome_back')}}</div>
+                            <h2 class="title">{{translate('admin_or_employee_sign_in')}}</h2>
+                            {{-- <div class="text-capitalize">{{translate('welcome_back')}}</div> --}}
                             <p class="mb-0 text-capitalize">{{translate('want_to_login_your_admin')}}?
                                 <a href="{{route('admin.auth.login')}}">
                                     {{translate('admin_login')}}
                                 </a>
                             </p>
-                            <span class="badge mt-2">( {{translate('branch_sign_in')}} )</span>
+                            {{-- <span class="badge mt-2">( {{translate('branch_sign_in')}} )</span> --}}
                         </div>
                     </div>
 
@@ -101,7 +106,7 @@
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="remember">
-                            <label class="custom-control-label text-muted" for="termsCheckbox">
+                            <label class="custom-control-label" for="termsCheckbox">
                                 {{translate('remember')}} {{translate('me')}}
                             </label>
                         </div>
@@ -117,7 +122,7 @@
                         <div class="row p-2">
                             <div class="col-5 pr-0">
                                 <input type="text" class="form-control form-control-lg border border-primary" name="default_captcha_value" value=""
-                                       placeholder="{{translate('Enter captcha value')}}" style="border: none" autocomplete="off">
+                                       placeholder="{{translate('Enter captcha')}}" style="border: none" autocomplete="off">
                             </div>
                             <div class="col-7 input-icons" class="bg-white rounded">
                                 <a onclick="javascript:re_captcha();">

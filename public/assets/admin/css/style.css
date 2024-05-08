@@ -482,9 +482,9 @@ div#country-dropdown {
     width: 100%;
     padding-top: 10px;
   }
-  .emp-style .dataTables_wrapper .dataTables_filter {
+  /* .emp-style .dataTables_wrapper .dataTables_filter {
     margin: 10px!important;
-  }
+  } */
   .customer-style .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important; 
   } 
@@ -498,7 +498,7 @@ div#country-dropdown {
     margin-top:30px!important;
   } 
   .dataTables_wrapper .dataTables_filter {
-    margin: 1em 0 0 2rem!important;
+    margin: 2.2em 0 0 2rem!important;
 }
 .order_id{
   font-size: 11px;
@@ -2360,9 +2360,11 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 }
 /*Login CSS*/
 .auth-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;  
+	background: url(../svg/components/tastybglogin.jpg) no-repeat bottom/cover;
+	height: 100vh;
 }
 
 .auth-wrapper * {
@@ -2370,23 +2372,42 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 }
 
 .auth-wrapper-right {
-  width: 100%;
-  max-width: 660px;
-  background: #fff;
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-}
+	width: 100%;
+	max-width: 460px;
+	background: #ffffffdb;
+	min-height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 0;
+	margin: auto;
+	height: auto;
+	box-shadow: 0 0 20px #000;
+} 
 
 .auth-wrapper-right .auth-wrapper-form {
-  max-width: 452px;
-  width: 100%;
-  margin: 0 auto;
+	max-width: 400px;
+	width: 100%;
+	margin: 0 auto;
+} 
+.logo-on-top {
+	text-align: center;
+	margin: 15px 0 0;
 }
-
+.auth-wrapper-right .auth-wrapper-form .form-group {
+	margin-bottom: 15px;
+}
+.auth-wrapper .col-7.input-icons img {
+  display: inline;
+   width: auto !important;
+   height: 54px !important;
+   border: 1px solid #ff611d !important;
+   border-radius: 6px !important;
+ }
+ .auth-wrapper-right .auth-wrapper-form .row.p-2 {
+	padding: 0 !important;
+}
 @media (min-width: 1550px) {
   .auth-wrapper-right .auth-wrapper-form {
     transform: translateX(-30px);
@@ -2396,7 +2417,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   font-size: 20px;
   line-height: 1.4;
   color: #a0a0a0;
-  margin-bottom: 60px;
+  margin-bottom: 35px;
   font-weight: 300;
 }
 
@@ -2437,12 +2458,16 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 }
 
 .auth-wrapper-right .btn-block {
-  height: 45px !important;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-radius: 10px;
+	height: 45px !important;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border-radius: 10px;
+	margin: 15px 0;
+  text-transform: capitalize;
 }
-
+.logo-on-top img {
+	width: 100px;
+}
 @media (min-width: 1550px) {
   .auth-wrapper-right {
     max-width: 718px;
@@ -2487,7 +2512,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   width: 0;
   flex-grow: 1;
   background: url(../svg/components/login-bg.png) no-repeat -95px bottom/cover;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -2533,11 +2558,14 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   }
   .auth-wrapper-right .auth-header {
     font-size: 16px;
-    margin-bottom: 35px;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 300;
   }
   .auth-wrapper-right .auth-header .title {
-    font-size: 36px;
+    font-size: 20px;
     margin-bottom: 0;
+    margin-top: 15px;
   }
   .auth-wrapper-right .auth-header .badge {
     margin-top: 10px;
@@ -2557,15 +2585,15 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     font-size: 45px;
   }
   .auth-wrapper-right {
-    max-width: 560px;
+    max-width: 460px;
   }
   .auth-wrapper-right .auth-header {
     font-size: 14px;
     margin-bottom: 1rem;
   }
   .auth-wrapper-right .auth-header .title {
-    font-size: 28px;
-  }
+    font-size: 20px;
+}
   .auth-wrapper-right .auth-header .badge {
     font-size: 11px;
   }
@@ -2577,7 +2605,17 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     font-size: 12px;
   }
   .auth-wrapper-right .btn-block {
-    height: 38px !important;
+    height: 45px !important;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 10px;
+    margin: 15px 0;
+  }
+  .custom-control.custom-checkbox .custom-control-label.text-muted {
+    color: #000 !important;
+  }
+  .auth-wrapper-right .custom-control-label.text-muted {
+    color: #000 !important;
   }
   .auth-wrapper-right .custom-control-label {
     font-size: 12px;
@@ -2589,6 +2627,11 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     width: 35px;
     height: 35px;
   }
+  .auth-wrapper .col-7.input-icons img {
+    height: 38px !important;
+    position: relative;
+    top: -3px;
+}
 }
 @media (max-width: 1199px) {
   .auth-wrapper-right {
@@ -2621,7 +2664,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   }
   .auth-wrapper-right {
     padding: 25px 40px;
-    max-width: 100%;
+    max-width: 460px;
     text-align: center;
   }
   .auth-wrapper-right .form-group {
@@ -2631,7 +2674,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 @media (max-width: 767px) {
   .auth-wrapper-right {
     padding: 15px 30px;
-    max-width: 100%;
+    max-width: 360px;
   }
 }
 .delivery--information-single {
@@ -3490,25 +3533,7 @@ body > #printableAreaContent {
 tr.img-width td{
   width:20% !important;
 }
-div#pos_datatable_filter label{
-  color:#fff !important;
-}
-div#pos_datatable_filter label input {
-  border: .0625rem solid #e7eaf3 !important;
-  height: 43px !important;
-  width: 150% !important;
-}
-div#pos_datatable_filter {
-  position: absolute;
-  top: -88px;
-  right: 59px;
-}
-div#pos_datatable_filter label input {
-  border: .0625rem solid #e7eaf3 !important;
-  padding-left: 15px !important;
-  height: 43px !important;
-  width: 119% !important;
-}
+
 tr.img-width.odd td {
   padding: 5px !important;
 }
@@ -3525,15 +3550,16 @@ table.dataTable thead th, table.dataTable thead td {
 .invoice-logo img{
   margin: 5px 0 0 15px;
 }
-.card-body.pt-0#items{
-  width: 100%;
-  overflow-x: auto;
-}
+
 .media.gap-3 .avatar-xl{
     max-width: 4.92188rem;
     max-height: 4.92188rem;
 }
 @media only screen and (max-width: 480px) {
+  .auth-wrapper-right {
+    padding: 15px 15px;
+    max-width: 320px;
+}
   .email-format-wrapper .social img {
     width: 20px;
 }
@@ -3565,4 +3591,29 @@ a.btn.btn-danger.non-printable {
 }
 .page-area.px-4.pb-3 {
   padding: 20px 0 !important;
+}
+
+/* for serach style */
+.card-body.pt-0#items{
+  width: 100%;
+  overflow-x: auto;
+}
+div#pos_datatable_filter label{
+  color:#fff !important;
+}
+div#pos_datatable_filter label input {
+  border: .0625rem solid #e7eaf3 !important;
+  height: 43px !important;
+  width: 150% !important;
+}
+div#pos_datatable_filter {
+  position: absolute;
+  top: -88px;
+  right: 59px;
+}
+div#pos_datatable_filter label input {
+  border: .0625rem solid #e7eaf3 !important;
+  padding-left: 15px !important;
+  height: 43px !important;
+  width: 119% !important;
 }
