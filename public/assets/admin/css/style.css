@@ -3533,41 +3533,7 @@ body > #printableAreaContent {
 tr.img-width td{
   width:20% !important;
 }
-div#pos_datatable_filter label{
-  color:#fff !important;
-}
-@media only screen and (min-width:1020px){
-  #pos_datatable_wrapper.dataTables_wrapper.no-footer{
-    position: static !important;
-  }
-div#pos_datatable_filter {
-  position: absolute;
-  top: 55px;
-  right: 26px !important;
-}
-div#pos_datatable_filter label input {
-  border: .0625rem solid #e7eaf3 !important;
-  padding-left: 15px !important;
-  height: 43px !important;
-  width: 98% !important;
-}
-}
-div#pos_datatable_filter label input {
-  border: .0625rem solid #e7eaf3 !important;
-  height: 43px !important;
-  width: 150% !important;
-}
-div#pos_datatable_filter {
-  position: absolute;
-  top: -88px;
-  right: 59px;
-}
-div#pos_datatable_filter label input {
-  border: .0625rem solid #e7eaf3 !important;
-  padding-left: 15px !important;
-  height: 43px !important;
-  width: 119% !important;
-}
+
 tr.img-width.odd td {
   padding: 5px !important;
 }
