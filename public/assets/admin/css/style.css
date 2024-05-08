@@ -3618,6 +3618,10 @@ div#pos_datatable_filter {
     margin: 0;
     width: 100%;
 }
+div#pos_datatable_filter label {
+  color: #fff !important;
+  width: 100%;
+}
 div#pos_datatable_filter label input {
   border: .0625rem solid #e7eaf3 !important;
   height: 43px !important;

@@ -169,21 +169,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="w-100 ml-xl-2">
-                                    {{-- <form id="search-form">
-                                        <!-- Search -->
-                                        <div class="input-group input-group-merge input-group-flush border rounded">
-                                            <div class="input-group-prepend pl-2">
-                                                <div class="input-group-text">
-                                                    <!-- <i class="tio-search"></i> -->
-                                                    <img width="13" src="{{asset('public/assets/admin/img/icons/search.png')}}" alt="">
-                                                </div>
-                                            </div>
-                                            <input id="datatableSearch" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control border-0" placeholder="{{translate('Search here')}}" aria-label="Search here">
-                                        </div>
-                                        <!-- End Search -->
-                                    </form> --}}
-                                </div>
+                                
                             </div>
                             <!-- End POS Filter -->
 
