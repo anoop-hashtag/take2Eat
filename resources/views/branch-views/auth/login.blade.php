@@ -106,7 +106,7 @@
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="remember">
-                            <label class="custom-control-label text-muted" for="termsCheckbox">
+                            <label class="custom-control-label" for="termsCheckbox">
                                 {{translate('remember')}} {{translate('me')}}
                             </label>
                         </div>
@@ -122,7 +122,7 @@
                         <div class="row p-2">
                             <div class="col-5 pr-0">
                                 <input type="text" class="form-control form-control-lg border border-primary" name="default_captcha_value" value=""
-                                       placeholder="{{translate('Enter captcha value')}}" style="border: none" autocomplete="off">
+                                       placeholder="{{translate('Enter captcha')}}" style="border: none" autocomplete="off">
                             </div>
                             <div class="col-7 input-icons" class="bg-white rounded">
                                 <a onclick="javascript:re_captcha();">
