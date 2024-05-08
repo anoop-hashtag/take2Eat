@@ -160,8 +160,8 @@
                             <!-- End POS Title -->
 
                             <!-- POS Filter -->
-                            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between gap-3 gap-xl-4 px-4 py-4">
-                                <div class="w-100 mr-xl-2">
+                            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between gap-3 gap-xl-4 px-4 py-4 custom-paddingbt">
+                                <div class="w-100">
                                     <select name="category" id="category" class="form-control js-select2-custom-x mx-1" title="select category" onchange="set_category_filter(this.value)">
                                         <option value="">{{translate('All Categories')}}</option>
                                         @foreach ($categories as $item)
@@ -169,21 +169,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="w-100 ml-xl-2">
-                                    {{-- <form id="search-form">
-                                        <!-- Search -->
-                                        <div class="input-group input-group-merge input-group-flush border rounded">
-                                            <div class="input-group-prepend pl-2">
-                                                <div class="input-group-text">
-                                                    <!-- <i class="tio-search"></i> -->
-                                                    <img width="13" src="{{asset('public/assets/admin/img/icons/search.png')}}" alt="">
-                                                </div>
-                                            </div>
-                                            <input id="datatableSearch" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control border-0" placeholder="{{translate('Search here')}}" aria-label="Search here">
-                                        </div>
-                                        <!-- End Search -->
-                                    </form> --}}
-                                </div>
+                                
                             </div>
                             <!-- End POS Filter -->
 
