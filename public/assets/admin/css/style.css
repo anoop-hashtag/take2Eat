@@ -2498,6 +2498,9 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     height: 45px !important;
     border-radius: 10px;
   }
+  .auth-wrapper .col-7.input-icons img{
+    height: 45px !important;
+  }
   .auth-wrapper-right .btn-block:not(.btn-white) {
     font-size: 20px;
   }
