@@ -2584,15 +2584,15 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     font-size: 45px;
   }
   .auth-wrapper-right {
-    max-width: 560px;
+    max-width: 460px;
   }
   .auth-wrapper-right .auth-header {
     font-size: 14px;
     margin-bottom: 1rem;
   }
   .auth-wrapper-right .auth-header .title {
-    font-size: 28px;
-  }
+    font-size: 20px;
+}
   .auth-wrapper-right .auth-header .badge {
     font-size: 11px;
   }
@@ -2626,6 +2626,11 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     width: 35px;
     height: 35px;
   }
+  .auth-wrapper .col-7.input-icons img {
+    height: 38px !important;
+    position: relative;
+    top: -3px;
+}
 }
 @media (max-width: 1199px) {
   .auth-wrapper-right {

@@ -190,7 +190,7 @@
   'sign_in' => 'Sign in',
   'welcome_back' => 'Welcome back',
   'want_to_login_your_branches' => 'Want to login your branches',
-  'branch_login' => 'Branch login',
+  'branch_login' => 'Branch Sign in',
   'admin_or_employee_sign_in' => 'Admin or employee sign in',
   'email@address.com' => 'Email@address.com',
   'password' => 'Password',
