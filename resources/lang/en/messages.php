@@ -2240,4 +2240,6 @@
   'DOB' => 'DOB',
   'Delivery Partner successfully assigned/changed' => 'Delivery Partner successfully assigned/changed',
   'Item_Type' => 'Item Type',
+  'Taste of Awadh' => 'Taste of Awadh',
+  'partial_paid' => 'Partial paid',
 );

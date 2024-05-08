@@ -298,7 +298,10 @@ class OrderController extends Controller
             }
 
             if ($request['is_partial'] == 1){
-                $total_order_amount = $or['order_amount'] + $or['delivery_charge'];
+                // $total_order_amount = $or['order_amount'] + $or['delivery_charge'];
+
+                //Shubham
+                $total_order_amount = $or['order_amount'];
                 $wallet_amount = $customer->wallet_balance;
                 $due_amount = $total_order_amount - $wallet_amount;
 
