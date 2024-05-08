@@ -253,22 +253,37 @@
                                             <td class="text-right p-1 px-3" style="text-align: right;">{{ \App\CentralLogics\Helpers::set_symbol($del_c) }}</td>
                                           </tr>
                                           <?php 
-                                              $total = $sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro;
+                                              $total_due_amount = 0;
+                                              $total_due_amount = $total = $sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro;
                                           ?>
                                           {{-- <tr>
                                             <td style="width: 40%"></td>
                                             <td class="p-1 px-3"><h4>{{ translate('total') }}</h4></td>
                                             <td class="text-right p-1 px-3" style="text-align: right;"><h4>{{ \App\CentralLogics\Helpers::set_symbol($total) }}</h4></td>
                                           </tr> --}}
+                                          @if ($order->order_partial_payments->isNotEmpty())
+                                            @foreach ($order->order_partial_payments as $partial)
+                                              <tr>
+                                                <td style="width: 40%"></td>
+                                                <td class="p-1 px-3"> {{translate('Paid By')}} ({{str_replace('_', ' ',$partial->paid_with)}})</td>
+                                                <td class="text-right p-1 px-3" style="text-align: right;">{{ \App\CentralLogics\Helpers::set_symbol($partial->paid_amount) }}</td>
+                                              </tr>
+                                            @endforeach
+                                            <tr>
+                                              <td style="width: 40%"></td>
+                                              <td class="p-1 px-3"> {{translate('Due Amount')}}</td>
+                                              <td class="text-right p-1 px-3" style="text-align: right;">{{ \App\CentralLogics\Helpers::set_symbol($total_due_amount = $total - $partial->paid_amount) }}</td>
+                                            </tr>
+                                          @endif
                                           <tr>
                                             <td style="width: 40%"></td>
                                             <td class="p-1 px-3">{{translate('round')}} {{translate('off')}}</td>
-                                            <td class="text-right p-1 px-3" style="text-align: right;">{{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}</td>
+                                            <td class="text-right p-1 px-3" style="text-align: right;">{{ \App\CentralLogics\Helpers::set_symbol(round($total_due_amount) - $total_due_amount) }}</td>
                                           </tr>
                                           <tr>
                                             <td style="width: 40%"></td>
                                             <td class="p-1 px-3" style="font-weight: bold;"><h3>{{ translate('total') }}</h3></td>
-                                            <td class="text-right p-1 px-3" style="text-align: right; font-weight: bold;"><h3>{{ \App\CentralLogics\Helpers::set_symbol(round($total)) }}</h3></td>
+                                            <td class="text-right p-1 px-3" style="text-align: right; font-weight: bold;"><h3>{{ \App\CentralLogics\Helpers::set_symbol(round($total_due_amount)) }}</h3></td>
                                           </tr>
                                         </table>
                                     </td>
