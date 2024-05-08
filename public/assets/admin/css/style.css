@@ -482,9 +482,9 @@ div#country-dropdown {
     width: 100%;
     padding-top: 10px;
   }
-  .emp-style .dataTables_wrapper .dataTables_filter {
+  /* .emp-style .dataTables_wrapper .dataTables_filter {
     margin: 10px!important;
-  }
+  } */
   .customer-style .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important; 
   } 
@@ -498,7 +498,7 @@ div#country-dropdown {
     margin-top:30px!important;
   } 
   .dataTables_wrapper .dataTables_filter {
-    margin: 1em 0 0 2rem!important;
+    margin: 2.2em 0 0 2rem!important;
 }
 .order_id{
   font-size: 11px;
@@ -2360,9 +2360,11 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 }
 /*Login CSS*/
 .auth-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;  
+	background: url(../svg/components/tastybglogin.jpg) no-repeat -95px bottom/cover;
+	height: 100vh;
 }
 
 .auth-wrapper * {
@@ -2370,22 +2372,39 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 }
 
 .auth-wrapper-right {
-  width: 100%;
-  max-width: 660px;
-  background: #fff;
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-}
+	width: 100%;
+	max-width: 460px;
+	background: #ffffffdb;
+	min-height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 0;
+	margin: auto;
+	height: auto;
+	box-shadow: 0 0 20px #000;
+} 
 
 .auth-wrapper-right .auth-wrapper-form {
-  max-width: 452px;
-  width: 100%;
-  margin: 0 auto;
+	max-width: 400px;
+	width: 100%;
+	margin: 0 auto;
+} 
+.logo-on-top {
+	text-align: center;
+	margin: 15px 0 0;
 }
+.auth-wrapper-right .auth-wrapper-form .form-group {
+	margin-bottom: 15px;
+}
+.auth-wrapper .col-7.input-icons img {
+  display: inline;
+   width: auto !important;
+   height: 54px !important;
+   border: 1px solid #ff611d !important;
+   border-radius: 6px !important;
+ }
 
 @media (min-width: 1550px) {
   .auth-wrapper-right .auth-wrapper-form {
@@ -2487,7 +2506,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   width: 0;
   flex-grow: 1;
   background: url(../svg/components/login-bg.png) no-repeat -95px bottom/cover;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -3492,6 +3511,22 @@ tr.img-width td{
 }
 div#pos_datatable_filter label{
   color:#fff !important;
+}
+@media only screen and (min-width:1020px){
+  #pos_datatable_wrapper.dataTables_wrapper.no-footer{
+    position: static !important;
+  }
+div#pos_datatable_filter {
+  position: absolute;
+  top: 55px;
+  right: 26px !important;
+}
+div#pos_datatable_filter label input {
+  border: .0625rem solid #e7eaf3 !important;
+  padding-left: 15px !important;
+  height: 43px !important;
+  width: 98% !important;
+}
 }
 div#pos_datatable_filter label input {
   border: .0625rem solid #e7eaf3 !important;

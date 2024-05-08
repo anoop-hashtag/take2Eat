@@ -40,6 +40,11 @@
         <div class="auth-wrapper-right">
             <!-- Card -->
             <div class="auth-wrapper-form">
+                <div class="logo-on-top">
+                    @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
+                <img width="310" src="{{asset('storage/app/public/restaurant/'.$restaurant_logo)}}"
+                     onerror="this.src='{{asset('public/assets/admin/img/logo.png')}}'">
+                </div>
                     <!-- Form -->
                     <form class="" id="form-id" action="{{route('admin.auth.login')}}" method="post">
                         @csrf
