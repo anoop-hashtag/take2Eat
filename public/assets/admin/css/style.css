@@ -2475,8 +2475,10 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 	margin: 15px 0;
   text-transform: capitalize;
 }
+
 .logo-on-top img {
-	width: 100px;
+	width: auto;
+	height: 100px;
 }
 @media (min-width: 1550px) {
   .auth-wrapper-right {
