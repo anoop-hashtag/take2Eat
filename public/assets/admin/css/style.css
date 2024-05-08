@@ -2363,7 +2363,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;  
-	background: url(../svg/components/tastybglogin.jpg) no-repeat -95px bottom/cover;
+	background: url(../svg/components/tastybglogin.jpg) no-repeat bottom/cover;
 	height: 100vh;
 }
 
@@ -2461,7 +2461,9 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   padding-bottom: 4px;
   border-radius: 10px;
 }
-
+.logo-on-top img {
+	width: 100px;
+}
 @media (min-width: 1550px) {
   .auth-wrapper-right {
     max-width: 718px;

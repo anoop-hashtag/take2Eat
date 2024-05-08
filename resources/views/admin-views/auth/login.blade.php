@@ -55,7 +55,7 @@
                                 <p class="mb-0 text-capitalize">{{translate('want_to_login_your_branches')}}?
                                     <a href="{{route('branch.auth.login')}}">{{translate('branch_login')}}</a>
                                 </p>
-                                <span class="badge mt-2">( {{translate('admin_or_employee_sign_in')}} )</span>
+                                {{-- <span class="badge mt-2">( {{translate('admin_or_employee_sign_in')}} )</span> --}}
                             </div>
                         </div>
 

@@ -187,7 +187,7 @@
   'your' => 'Your',
   'all_fresh_food' => 'All fresh food',
   'in_one_place' => 'In one place',
-  'sign_in' => 'Sign in',
+  'sign_in' => 'Admin / employee sign in',
   'welcome_back' => 'Welcome back',
   'want_to_login_your_branches' => 'Want to login your branches',
   'branch_login' => 'Branch login',
