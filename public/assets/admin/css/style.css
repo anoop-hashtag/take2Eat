@@ -2405,7 +2405,9 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
    border: 1px solid #ff611d !important;
    border-radius: 6px !important;
  }
-
+ .auth-wrapper-right .auth-wrapper-form .row.p-2 {
+	padding: 0 !important;
+}
 @media (min-width: 1550px) {
   .auth-wrapper-right .auth-wrapper-form {
     transform: translateX(-30px);
@@ -2415,7 +2417,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   font-size: 20px;
   line-height: 1.4;
   color: #a0a0a0;
-  margin-bottom: 60px;
+  margin-bottom: 35px;
   font-weight: 300;
 }
 
@@ -2456,10 +2458,11 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
 }
 
 .auth-wrapper-right .btn-block {
-  height: 45px !important;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-radius: 10px;
+	height: 45px !important;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border-radius: 10px;
+	margin: 15px 0;
 }
 .logo-on-top img {
 	width: 100px;
@@ -2553,7 +2556,7 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
     font-size: 55px;
   }
   .auth-wrapper-right .auth-header {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.4;
     color: #000;
     font-weight: 300;
