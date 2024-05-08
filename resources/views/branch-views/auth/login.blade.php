@@ -55,14 +55,14 @@
 
                     <div class="auth-header">
                         <div class="mb-5">
-                            <h2 class="title">{{translate('sign_in')}}</h2>
-                            <div class="text-capitalize">{{translate('welcome_back')}}</div>
+                            <h2 class="title">{{translate('admin_or_employee_sign_in')}}</h2>
+                            {{-- <div class="text-capitalize">{{translate('welcome_back')}}</div> --}}
                             <p class="mb-0 text-capitalize">{{translate('want_to_login_your_admin')}}?
                                 <a href="{{route('admin.auth.login')}}">
                                     {{translate('admin_login')}}
                                 </a>
                             </p>
-                            <span class="badge mt-2">( {{translate('branch_sign_in')}} )</span>
+                            {{-- <span class="badge mt-2">( {{translate('branch_sign_in')}} )</span> --}}
                         </div>
                     </div>
 
