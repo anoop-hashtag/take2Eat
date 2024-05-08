@@ -3642,6 +3642,16 @@ margin: 0;
 .custom-paddingbt {
   padding-bottom: 0 !important;
 }
- 
- 
-
+.dashboard-icon{
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+ul#navbarSettings.navbar-nav.nav-tabs {
+  padding: 10px 10px !important;
+}
