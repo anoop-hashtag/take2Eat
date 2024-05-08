@@ -2244,4 +2244,5 @@
   'partial_paid' => 'Partial paid',
   'Enter captcha' => 'Enter captcha',
   'Branch sign in' => 'Branch sign in',
+  'Jankipuram' => 'Jankipuram',
 );
