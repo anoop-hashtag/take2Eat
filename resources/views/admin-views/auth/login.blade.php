@@ -95,7 +95,7 @@
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="termsCheckbox"
                                     name="remember">
-                                <label class="custom-control-label text-muted" for="termsCheckbox">
+                                <label class="custom-control-label " for="termsCheckbox">
                                     {{translate('remember_me')}}
                                 </label>
                             </div>
