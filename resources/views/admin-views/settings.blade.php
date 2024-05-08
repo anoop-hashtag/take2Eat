@@ -12,13 +12,13 @@
         <!-- Page Header -->
         <div class="page-header">
             <div class="row align-items-end">
-                <div class="col-sm mb-2 mb-sm-0">
+                <div class="col-sm mb-2 col-10 mb-sm-0">
                     <h1 class="page-header-title">{{translate('Settings')}}</h1>
                 </div>
 
-                <div class="col-sm-auto">
-                    <a class="btn btn-primary" href="{{route('admin.dashboard')}}">
-                        <i class="tio-home mr-1"></i> 
+                <div class="col-sm-auto col-2">
+                    <a class="btn btn-icon btn-primary rounded-circle px-2" href="{{route('admin.dashboard')}}">
+                        <i class="tio-home-outlined"></i> 
                         {{-- {{translate('Dashboard')}} --}}
                     </a>
                 </div>

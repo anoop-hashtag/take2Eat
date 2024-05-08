@@ -3642,6 +3642,7 @@ margin: 0;
 .custom-paddingbt {
   padding-bottom: 0 !important;
 }
- 
- 
 
+ul#navbarSettings.navbar-nav.nav-tabs {
+  padding: 10px 10px !important;
+}
