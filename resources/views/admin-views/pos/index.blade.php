@@ -189,7 +189,7 @@
 
                             <!-- POS Products -->
                             <div class="card-body pt-0" id="items">
-                                <div class="">
+                                <div class="table-responsive">
                                     <table id="pos_datatable" style="width: 100% !important">
                                         <thead style="border: none" border="0">
                                             <tr>

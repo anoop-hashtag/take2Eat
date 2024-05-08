@@ -143,9 +143,6 @@ div#country-dropdown {
   position: relative;
   top: 27px;
 }
-.dataTables_wrapper .dataTables_filter input {
-  border: 2px solid #e1e1e1 !important;
-}
 
 .dataTables_wrapper .dataTables_filter label {
   font-weight: 600;
@@ -3568,10 +3565,7 @@ select.custom-select.w-auto.min-width-170px {
 }}
 /* all phone */
 @media only screen and (max-width: 600px) {
-  .card-body.pt-0#items{
-    width: 100%;
-    overflow-x: auto;
-  }
+
   .pos-product-item_thumb {
     height: 120px;
     width: 120px;
@@ -3595,7 +3589,13 @@ a.btn.btn-danger.non-printable {
 
 
 /* for serach style */
-
+/* .dataTables_wrapper .dataTables_filter input {
+  border: 2px solid #e1e1e1 !important;
+} */
+.dataTables_wrapper .dataTables_filter input {
+  border: .0625rem solid #e7eaf3 !important;
+  border-radius: .3125rem !important;
+}
 div#pos_datatable_filter label{
   color:#fff !important;
 }
