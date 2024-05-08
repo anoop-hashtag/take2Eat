@@ -236,7 +236,7 @@
                             $due_amount = $order->order_partial_payments->first()?->due_amount;
                         ?>
                     <dt class="col-6">{{translate('Due Amount')}}:</dt>
-                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_due_amount = $total_due_amount - $partial->paid_amount) }}</dd>
+                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_due_amount = $total - $partial->paid_amount) }}</dd>
                 @endif
 
                 <dt class="col-8">{{translate('round_off')}}:</dt>
