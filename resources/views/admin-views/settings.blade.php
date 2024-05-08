@@ -18,7 +18,8 @@
 
                 <div class="col-sm-auto">
                     <a class="btn btn-primary" href="{{route('admin.dashboard')}}">
-                        <i class="tio-home mr-1"></i> {{translate('Dashboard')}}
+                        <i class="tio-home mr-1"></i> 
+                        {{-- {{translate('Dashboard')}} --}}
                     </a>
                 </div>
             </div>
