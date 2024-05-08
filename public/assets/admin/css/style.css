@@ -3586,7 +3586,12 @@ select.custom-select.w-auto.min-width-170px {
 }
 /* all phone */
 @media only screen and (max-width: 600px) {
-  
+  .dataTables_wrapper .dataTables_filter label {
+    margin: 2rem 2rem 0 2rem !important;
+}
+.new-ui .dataTables_wrapper .dataTables_filter label {
+  margin: 0rem 0 0rem 1.4rem;
+}
   .pos-product-item_thumb {
     height: 120px;
     width: 120px;
@@ -3648,3 +3653,4 @@ h2.h1.mb-0.d-flex.align-items-center.gap-2 span.page-header-title {
 ul#navbarSettings.navbar-nav.nav-tabs {
   padding: 10px 10px !important;
 }
+
