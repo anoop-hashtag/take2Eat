@@ -452,7 +452,7 @@
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">
-                                        {{ \App\CentralLogics\Helpers::set_symbol($sub_total =$sub_total+$add_ons_cost-$total_dis_on_pro) }}</dd>
+                                        {{ \App\CentralLogics\Helpers::set_symbol($sub_total = $sub_total+$add_ons_cost-$total_dis_on_pro) }}</dd>
 
                                     <dt class="col-6">
 
