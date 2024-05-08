@@ -448,7 +448,9 @@ div#country-dropdown {
     right: 10px!important;
     top: 5px!important;
   }
- 
+  /* .dataTables_wrapper .dataTables_filter {
+    margin: 2.5em 0 0 1.3rem!important;
+  } */
   .addon-list .datatable_wrapper_row .dataTable{
     display: table;
     overflow-x: auto!important;
@@ -492,7 +494,9 @@ div#country-dropdown {
   .attribute-list .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important;
   } 
- 
+  .dataTables_wrapper .dataTables_filter {
+    margin: 0rem 0 0 2rem!important;
+  }
 .order_id{
   font-size: 11px;
 }
@@ -960,6 +964,9 @@ li.paginate_item.page-item span.ellipsis.page-link {
 }
 
 @media only screen and (max-width: 991px) {
+  .swal2-popup{
+    font-size: 13px !important;
+  } 
   .grid-chart > div {
     grid-column: 1/-1;
   }
@@ -1589,6 +1596,7 @@ ol.order-list {
   place-items: center;
   padding: 2px;
   cursor: pointer;
+  margin-inline-start: 0 !important;
 }
 
 .upload-img-view {
@@ -1773,6 +1781,14 @@ body {
   .check-item {
     max-width: 180px;
   }
+  #schedule .border.rounded.py-2.px-3 {
+    width: 100%;
+}
+}
+@media screen and (min-width: 400px) {
+  #schedule .border.rounded.py-2.px-3 {
+    width: 100%;
+}
 }
 @media screen and (max-width: 375px) {
   .check-item {
@@ -3569,7 +3585,7 @@ select.custom-select.w-auto.min-width-170px {
 .invoice_print {
   max-width: 320px;
 }
-div#printableArea {
+div#printableArea #printableAreaContent{
   max-width: 280px;
 }
 a.btn.btn-danger.non-printable {
@@ -3617,6 +3633,6 @@ margin: 0;
 .custom-paddingbt {
   padding-bottom: 0 !important;
 }
-@media only screen and (max-width: 992px) {
+ 
+ 
 
-}
