@@ -53,13 +53,21 @@
         
             <div class="invoice_print" id="printableAreaContent">
                 <div class="text-center pt-4 mb-3">
-                    <h2 style="line-height: 1">{{\App\Model\BusinessSetting::where(['key'=>'restaurant_name'])->first()->value}}</h2>
-                    <h5 style="font-size: 20px;font-weight: lighter;line-height: 1">
-                        {{\App\Model\BusinessSetting::where(['key'=>'address'])->first()->value}}
-                    </h5>
-                    <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
-                        {{translate('Phone')}} : {{\App\Model\BusinessSetting::where(['key'=>'phone'])->first()->value}}
-                    </h5>
+                    <div class="row">
+                        <div class="col-sm-3 p-0 invoice-logo">
+                            @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
+                            <img src="{{asset('storage/app/public/restaurant/'.$restaurant_logo)}}" onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'" alt="Logo"/>
+                        </div>
+                        <div class="col-sm-9">
+                            <h2 style="line-height: 1">{{\App\Model\BusinessSetting::where(['key'=>'restaurant_name'])->first()->value}}</h2>
+                            <h5 style="font-size: 20px;font-weight: lighter;line-height: 1">
+                                {{\App\Model\BusinessSetting::where(['key'=>'address'])->first()->value}}
+                            </h5>
+                            <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
+                                {{translate('Phone')}} : {{\App\Model\BusinessSetting::where(['key'=>'phone'])->first()->value}}
+                            </h5>
+                        </div>
+                    </div>
                 </div>
 
                 <hr class="text-dark hr-style-1">
@@ -125,9 +133,9 @@
                 <table class="table table-bordered mt-3">
                     <thead>
                     <tr>
-                        <th style="width: 10%">{{translate('QTY')}}</th>
-                        <th class="">{{translate('DESCRIPTION')}}</th>
-                        <th style="text-align:center;">{{translate('PRICE')}}</th>
+                        <th style="font-weight:600">{{translate('DESCRIPTION')}}</th>
+                        <th style="font-weight:600" >{{translate('QTY')}}</th>
+                        <th style="text-align:center; font-weight:600" >{{translate('PRICE')}}</th>
                     </tr>
                     </thead>
 
@@ -146,11 +154,15 @@
                             @php($add_on_taxes=json_decode($detail['add_on_taxes'],true))
 
                             <tr>
-                                <td class="">
+                                {{-- <td class="">
                                     {{$detail['quantity']}}
-                                </td>
+                                </td> --}}
                                 <td class="">
                                     <span style="word-break: break-all;" class="font-weight-bold text-capitalize" > {{ Str::limit($detail->product['name'], 200) }}</span><br>
+                                    <?php
+                                        $amount = 0; 
+                                        $addon_price = array();
+                                    ?>
                                     @if (count(json_decode($detail['variation'], true)) > 0)
                                         <strong>{{ translate('variation') }} :</strong>
                                         @foreach(json_decode($detail['variation'],true) as  $variation)
@@ -163,6 +175,9 @@
                                                     {{ $value['label']}} :
                                                         <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
                                                     </span>
+                                                    <?php
+                                                        $amount = $amount + $value['optionPrice']; 
+                                                    ?>
                                                 @endforeach
                                             @else
                                                 @if (isset(json_decode($detail['variation'],true)[0]))
@@ -179,11 +194,14 @@
                                     @else
                                         <div class="font-size-sm text-body ">
                                             <span>{{ translate('Price') }} : </span>
-                                            <span
-                                                class="">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
+                                            <span class="">{{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}</span>
                                         </div>
+                                        <?php
+                                            $amount = $amount + $detail->price; 
+                                        ?>
                                     @endif
-        <div class="">
+                                    
+                                    <div class="">
                                     @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                                         @php($addon=\App\Model\AddOn::find($id))
                                         @if($key2==0)Addons : @endif
@@ -201,33 +219,65 @@
                                             </span>
                                         </div>
                                         @php($add_ons_cost+=$add_on_prices[$key2] * $add_on_qty)
-                                        @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty)
+                                        {{-- @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qty) --}}
+                                        @php($add_ons_tax_cost +=  $add_on_taxes[$key2] * $add_on_qtys[$key2])
                                     @endforeach
 
-                                    {{translate('Discount')}}
-                                    : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']) }}
+                                    {{-- {{translate('Discount')}}
+                                    : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']) }} --}}
+                                </td>
+                                <td class="">
+                                    {{$detail['quantity']}}
                                 </td>
                                 <td style="width: 28%;padding-right:4px; text-align:right">
-                                    @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
+                                    {{-- @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
                                     {{ \App\CentralLogics\Helpers::set_symbol($amount) }}
             
+                                    @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity']) --}}
+                                    @if (!empty(json_decode($detail['variation'])))
+                                        @php($amount = $amount * $detail['quantity'])
+                                    @else
+                                        @php($amount = $detail['price'] * $detail['quantity'])
+                                    @endif
+
+                                    {{ \App\CentralLogics\Helpers::set_symbol($amount) }}
+
+                                    <?php 
+                                        $tot_discount = 0;
+                                        if(json_decode($detail['product_details'])->discount_type == 'percent') {
+                                            $tot_discount = ($amount * json_decode($detail['product_details'])->discount) / 100;
+                                        } else {
+                                            $tot_discount = json_decode($detail['product_details'])->discount;
+                                        }
+
+                                        $taxable_amt = 0;
+                                        $taxable_amt = $amount - $tot_discount;
+                                        if(json_decode($detail['product_details'])->tax_type == 'percent') {
+                                            $taxable_amt = ($taxable_amt * json_decode($detail['product_details'])->tax) / 100;
+                                        } else {
+                                            $taxable_amt = json_decode($detail['product_details'])->tax;
+                                        }
+
+                                        $total_tax = $total_tax + ($taxable_amt) ;
+
+                                    ?>
+                                    @php($total_dis_on_pro += $tot_discount)
+
                                     @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
-                                   
                                 </td>
                             </tr>
+
                             @php($sub_total+=$amount)
-                                @php($item_price += $total_after_discount)
-            
-                                @if($detail->product['tax_type'] == 'percent')
-                                    @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
-                                    @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
-                                @else
-                                    @php($total_gst = $detail->product['tax'])
-                                @endif
-                                
-                                @php($total_tax += $total_gst);
-                                
-                                
+                            @php($item_price += $total_after_discount)
+        
+                            @if($detail->product['tax_type'] == 'percent')
+                                @php($price_tax = ($detail->price / 100) * $detail->product['tax']) 
+                                @php($total_gst = ($total_after_discount / 100) * $detail->product['tax'])
+                            @else
+                                @php($total_gst = $detail->product['tax'])
+                            @endif
+                            
+                            {{-- @php($total_tax += $total_gst); --}}
                                 
                         @endif
                     @endforeach
@@ -237,20 +287,38 @@
                 <div class="row justify-content-md-end mb-3 m-0" style="width: 99%">
                     <div class="col-md-10 p-0">
                         <dl class="row text-right" style="color: black!important;">
+                            
                             <dt class="col-6">{{translate('Items Price')}}:</dt>
                             <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</dd>
+                            
                             <dt class="col-6">{{translate('Addon Cost')}}:</dt>
                             <dd class="col-6">
                                 {{ \App\CentralLogics\Helpers::set_symbol($add_ons_cost) }}
-                                <hr>
                             </dd>
 
-                            <dt class="col-6">{{translate('Subtotal')}}:</dt>
+                            <dt class="col-6">{{translate('Item Discount:')}}</dt>
                             <dd class="col-6">
-                                {{ \App\CentralLogics\Helpers::set_symbol($sub_total+$total_tax+$add_ons_cost+$add_ons_tax_cost) }}</dd>
+                                {{ \App\CentralLogics\Helpers::set_symbol($total_dis_on_pro) }}
+                            </dd>
+
+                            <dt class="col-6" style="font-weight: bold">{{translate('Subtotal')}}:</dt>
+                            <dd class="col-6" style="font-weight: bold"> 
+                                {{ \App\CentralLogics\Helpers::set_symbol($sub_total + $add_ons_cost - $total_dis_on_pro) }}
+                            </dd>
+
                             <dt class="col-6">{{translate('Coupon Discount')}}:</dt>
                             <dd class="col-6">
-                                - {{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</dd>
+                                - {{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}
+                            </dd>
+                            
+                            <dt class="col-6">{{translate('Extra Discount')}}:</dt>
+                            <dd class="col-6">
+                                - {{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}
+                            </dd>
+                            
+                            <dt class="col-6">{{translate('Tax')}} / {{translate('GST')}}:</dt>
+                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax+$add_ons_tax_cost) }}</dd>
+
                             <dt class="col-6">{{translate('Delivery Fee')}}:</dt>
                             <dd class="col-6">
                                 @if($order['order_type']=='take_away')
@@ -259,13 +327,20 @@
                                     @php($del_c=$order['delivery_charge'])
                                 @endif
                                 {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
-                                <hr>
+
+                                @if($order['packing_fee']!=0.00)
+                                    <dt class="col-6">{{ translate('Packing Fee') }}:</dt>
+                                    <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
+                                @endif
                             </dd>
-                            <dt class="col-6">{{translate('Tax')}} / {{translate('GST')}}:</dt>
-                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($total_tax+$add_ons_tax_cost) }}</dd>
-                            <dt class="col-6" style="font-size: 20px">{{translate('Total')}}:</dt>
-                            <dd class="col-6"
-                                style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']+$add_ons_tax_cost) }}</dd>
+
+                            <?php 
+                                $total_due_amount = 0;
+                                $total_due_amount = $total = $sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount']-$order['extra_discount']+$add_ons_tax_cost+$order['packing_fee']-$total_dis_on_pro
+                            ?>
+                            
+                            {{-- <dt class="col-6" style="font-size: 20px">{{translate('Total')}}:</dt>
+                            <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd> --}}
 
                             <!-- partial payment-->
                             @if ($order->order_partial_payments->isNotEmpty())
@@ -282,8 +357,8 @@
                                     </dd>
                                 @endforeach
                                     <?php
-                                    $due_amount = 0;
-                                    $due_amount = $order->order_partial_payments->first()?->due_amount;
+                                        $due_amount = 0;
+                                        $due_amount = $order->order_partial_payments->first()?->due_amount;
                                     ?>
                                 <dt class="col-6">
                                     <div class="">
@@ -293,10 +368,19 @@
                                     </div>
                                 </dt>
                                 <dd class="col-6 text-dark text-right">
-                                    {{ \App\CentralLogics\Helpers::set_symbol($due_amount) }}
+                                    {{ \App\CentralLogics\Helpers::set_symbol($total_due_amount = $total - $partial->paid_amount) }}
                                 </dd>
                             @endif
 
+                            <dt class="col-6">{{translate('round')}} {{translate('off')}}:</dt>
+                            <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol(round($total_due_amount) - $total_due_amount) }}</dd>
+
+                            <div class="col-12">
+                                <hr style="margin: 10px 0px 15px 0px;"/>
+                            </div>
+
+                            <dt class="col-6" style="font-weight: bold"><h3>{{translate('Total:')}}</h3></dt>
+                            <dd class="col-6" style="font-weight: bold"><h3>{{ \App\CentralLogics\Helpers::set_symbol(round($total_due_amount)) }}</h3></dd>
                         </dl>
                     </div>
                 </div>
