@@ -3550,10 +3550,7 @@ table.dataTable thead th, table.dataTable thead td {
 .invoice-logo img{
   margin: 5px 0 0 15px;
 }
-.card-body.pt-0#items{
-  width: 100%;
-  overflow-x: auto;
-}
+
 .media.gap-3 .avatar-xl{
     max-width: 4.92188rem;
     max-height: 4.92188rem;
@@ -3597,6 +3594,10 @@ a.btn.btn-danger.non-printable {
 }
 
 /* for serach style */
+.card-body.pt-0#items{
+  width: 100%;
+  overflow-x: auto;
+}
 div#pos_datatable_filter label{
   color:#fff !important;
 }
