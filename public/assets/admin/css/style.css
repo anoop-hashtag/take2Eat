@@ -3599,34 +3599,25 @@ a.btn.btn-danger.non-printable {
 div#pos_datatable_filter label{
   color:#fff !important;
 }
-div#pos_datatable_filter label input {
-  border: .0625rem solid #e7eaf3 !important;
-  height: 43px !important;
-  width: 150% !important;
-}
-div#pos_datatable_filter {
-  position: absolute;
-  top: -88px;
-  right: 59px;
-}
 
-@media only screen and (max-width: 992px) {
-  div#pos_datatable_filter {
-    position: relative;
-    top: 0;
-    right: 0;
-    margin: 0;
-    width: 100%;
-}
-div#pos_datatable_filter label {
-  color: #fff !important;
+div#pos_datatable_filter {
+  position: relative;
+  top: 0;
+  right: 0;
+  margin: 0;
   width: 100%;
 }
-div#pos_datatable_filter label input {
-  border: .0625rem solid #e7eaf3 !important;
-  height: 43px !important;
-  width: 100% !important;
-  outline-offset: 0;
-  margin: 0;
+div#pos_datatable_filter label {
+color: #fff !important;
+width: 100%;
 }
+div#pos_datatable_filter label input {
+border: .0625rem solid #e7eaf3 !important;
+height: 43px !important;
+width: 100% !important;
+outline-offset: 0;
+margin: 0;
+}
+@media only screen and (max-width: 992px) {
+
 }
