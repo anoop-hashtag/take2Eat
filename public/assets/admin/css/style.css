@@ -3644,6 +3644,11 @@ width: 100% !important;
 outline-offset: 0;
 margin: 0;
 }
+div#pos_datatable_filter {
+  margin: 0 !important;
+  right: 0 !important;
+  position:  relative !important;
+}
 .custom-paddingbt {
   padding-bottom: 0 !important;
 }
