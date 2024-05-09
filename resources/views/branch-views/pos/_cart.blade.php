@@ -215,7 +215,7 @@ if (session()->get('order_type') == 'home_delivery'){
                     @csrf
                     <div class="form-group col-sm-6">
                         <label class="text-dark">{{translate('Packing_fee')}}</label>
-                        <input type="text" class="form-control" name="packing_fee" value="{{ session()->get('cart')['packing_fee'] ?? 0 }}">
+                        <input type="number" class="form-control" name="packing_fee" value="{{ session()->get('cart')['packing_fee'] ?? 0 }}" onkeyup="validatePinCode(this)">
                     </div>
                     
                     {{-- <div class="form-group col-sm-6">
@@ -255,7 +255,7 @@ if (session()->get('order_type') == 'home_delivery'){
                     @csrf
                     <div class="form-group col-sm-6">
                         <label class="text-dark">{{translate('discount')}}</label>
-                        <input type="number" class="form-control" name="discount" value="{{ session()->get('cart')['extra_discount'] ?? 0 }}" min="0" step="0.1">
+                        <input type="number" class="form-control" name="discount" value="{{ session()->get('cart')['extra_discount'] ?? 0 }}" min="0" step="0.1" onkeyup="validatePinCode(this)">
                     </div>
                     <div class="form-group col-sm-6">
                         <label class="text-dark">{{translate('type')}}</label>

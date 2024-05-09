@@ -139,6 +139,57 @@
         @endforeach
     </script>
 @endif
+
+
+<script type="text/javascript">
+
+    //validation for mobile no
+    function validateMobileNumber(input) {
+        var phoneNumber = input.value;
+    
+        phoneNumber = phoneNumber.replace(/\D/g, '');
+        input.value = phoneNumber;
+
+        if(phoneNumber.length > 10) {
+            input.value = phoneNumber.slice(0, 10);
+        }
+    }
+
+    //validation for identity number
+    function validateIdentityNumber(input) {
+        var IdentityNumber = input.value;
+    
+        input.value = IdentityNumber;
+
+        if(IdentityNumber.length > 20) {
+            input.value = IdentityNumber.slice(0, 20);
+        }
+    }
+
+    //validation for gst number
+    function validateGSTNumber(input) {
+        var GstNumber = input.value;
+    
+        input.value = GstNumber;
+
+        if(GstNumber.length > 15) {
+            input.value = GstNumber.slice(0, 15);
+        }
+    }
+
+    //validation for pin cde
+    function validatePinCode(input) {
+        var pinCode = input.value;
+    
+        pinCode = pinCode.replace(/\D/g, '');
+        input.value = pinCode;
+
+        if(pinCode.length > 6) {
+            input.value = pinCode.slice(0, 6);
+        }
+    }
+</script>
+
 {{-- //--------- For datatable font size ----------// --}}
 
 
