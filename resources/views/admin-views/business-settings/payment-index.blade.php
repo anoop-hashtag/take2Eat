@@ -30,7 +30,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 @php($cod=\App\CentralLogics\Helpers::get_business_settings('cash_on_delivery'))
-                                <div class="form-control d-flex justify-content-between align-items-center gap-3">
+                                <div class="my-1 form-control d-flex justify-content-between align-items-center gap-3">
                                     <label class="text-dark mb-0">{{translate('Cash On Delivery')}}</label>
                                     <label class="switcher">
                                         <input class="switcher_input" type="checkbox" name="cash_on_delivery" {{$cod == null || $cod['status'] == 0? '' : 'checked'}} id="cash_on_delivery_btn">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-md-6">
                                 @php($dp=\App\CentralLogics\Helpers::get_business_settings('digital_payment'))
-                                <div class="form-control d-flex justify-content-between align-items-center gap-3">
+                                <div class="my-1 form-control d-flex justify-content-between align-items-center gap-3">
                                     <label class="text-dark mb-0">{{translate('Digital Payment')}}</label>
                                     <label class="switcher">
                                         <input class="switcher_input" type="checkbox" name="digital_payment" {{$dp == null || $dp['status'] == 0? '' : 'checked'}} id="digital_payment_btn">
