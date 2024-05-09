@@ -351,13 +351,13 @@
                                 <label class="input-label" for="">{{ translate('Floor') }}</label>
                                 <input type="text" class="form-control" name="floor" value="{{ $old ? $old['floor'] : '' }}"  placeholder="{{ translate('Ex :') }} 1A">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="display: none;">
                                 <label class="input-label" for="">{{ translate('longitude') }}<span
                                         class="input-label-secondary text-danger">*</span></label>
                                 <input type="text" class="form-control" id="longitude" name="longitude"
                                        value="{{ $old ? $old['longitude'] : '' }}" readonly required>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="display: none;">
                                 <label class="input-label" for="">{{ translate('latitude') }}<span
                                         class="input-label-secondary text-danger">*</span></label>
                                 <input type="text" class="form-control" id="latitude" name="latitude"
