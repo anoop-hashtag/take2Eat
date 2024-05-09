@@ -119,7 +119,7 @@
                 </form>
                 <hr>
                 <!-- Table -->
-                <div class="set_table new-responsive">
+                <div class="set_table new-responsive sale-report">
                     <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows" style="padding-right: 10px;">
                     @include('admin-views.report.partials._table',['data'=>[]])
                     </div>
