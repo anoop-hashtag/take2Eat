@@ -3482,6 +3482,9 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 }
 @media only screen and (max-width: 600px) {
+  .one-search .dataTables_wrapper .dataTables_filter label {
+    margin: 0 !important;
+}
   #pos_datatable_filter label {
     margin: 0 !important;
 }
