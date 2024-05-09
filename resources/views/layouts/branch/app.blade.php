@@ -58,17 +58,17 @@
     </div>
 
 {{--loader--}}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div id="loading" style="display: none;">
-                <div style="position: fixed;z-index: 9999; left: 40%;top: 37% ;width: 100%">
-                    <img width="200" src="{{asset('public/assets/admin/img/loader.gif')}}">
-                </div>
-            </div>
+<div id="loading" style="display: none;">
+    <div class="loader-copound">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
+        
+        @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
+        <img width="200" src="{{asset('storage/app/public/restaurant/'.$restaurant_logo)}}">
     </div>
 </div>
+       
 {{--loader--}}
 
 <!-- Builder -->
