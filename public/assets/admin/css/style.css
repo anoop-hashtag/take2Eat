@@ -2895,10 +2895,7 @@ ul#navbarSettings.navbar-nav.nav-tabs {
 .auth-wrapper-right-logo {
   display: none;
 }
-.d-flex.justify-content-lg-end.justify-content-sm-end {
-  display: flex;
-  justify-content: end !important;
-}
+
 
 /*loader css*/
 #loading {
