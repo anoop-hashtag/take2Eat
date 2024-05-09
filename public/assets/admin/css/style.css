@@ -3414,7 +3414,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 @media   (min-width:580px) and (max-width: 640px) {
   .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin: 2rem 0 0rem 2rem;
+    margin: 2rem 0 0rem 2rem !important;
 }
   .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
@@ -3486,7 +3486,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 @media only screen and (max-width: 600px) {
   .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin: 2rem 0 0rem 2rem;
+    margin: 2rem 0 0rem 2rem !important;
 }
 
   .one-search .dataTables_wrapper .dataTables_filter label {
