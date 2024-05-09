@@ -3489,7 +3489,7 @@ ul#navbarSettings.navbar-nav.nav-tabs {
     margin: 0 !important;
 }
   .dataTables_wrapper .dataTables_filter label {
-    margin: 0rem 2rem 0 1.9rem !important;
+    margin: 0rem 2rem 1rem 1.9rem !important;
 }
 .new-ui .dataTables_wrapper .dataTables_filter label {
   margin: 0rem 0 0rem 1.4rem !important;
@@ -3654,9 +3654,11 @@ select.custom-select.w-auto.min-width-170px {
   } 
 }
 @media only screen and  (max-width: 374px) { 
-  .new-responsive .dataTables_wrapper .dataTables_filter {
-    margin: 2rem 0 0 0;
+  .card-body label.control-label {
+    font-size: 16px !important;
+    font-weight: 700;
 }
+
   .print-btn-grp .btn-primary,
   .print-btn-grp .btn-secondary {
     padding-inline: 8px;
