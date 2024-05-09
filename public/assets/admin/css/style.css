@@ -3243,6 +3243,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   }
 }
 @media only screen and (min-width:992px) and (max-width:1040px){
+
   .responsive-ui.block-view .datatable_wrapper_row .dataTable{
     display: block!important;
     overflow-x: auto!important;
@@ -3281,6 +3282,14 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   width: 100%;
   padding-top: 10px;
 }
+}
+@media only screen and (max-width:992px){
+  .sale-report .datatable_wrapper_row .dataTable{
+    display: table !important;
+    overflow-x: auto !important;
+    width: 100%;
+    padding-top: 10px;
+  }
 }
 @media only screen and (max-width:992px){
   .outgoing_msg,
@@ -3453,11 +3462,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
-  }
-  /* .customer-style .dataTables_wrapper .dataTables_filter{
-    margin-top:30px!important; 
-  }  */
- 
+  } 
   .addon-list .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important;  
   }
@@ -3488,11 +3493,26 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 }
 @media only screen and (max-width: 600px) {
+  .set_table.new-responsive.sale-report .datatable_wrapper_row .dataTable{
+    display: table !important;
+    overflow-x: auto !important;
+    width: 100%;
+    padding-top: 10px;
+  }
+  .table-responsive.datatable_wrapper_row.mt-5.sale-report .datatable_wrapper_row .dataTable{
+    display: table !important;
+    overflow-x: auto !important;
+    width: 100%;
+    padding-top: 10px;
+  }
+  .sale-report .dataTables_wrapper .dataTables_filter label{
+    margin: 0 0 0 0.6rem !important;
+  }
   .set_table.customer-style .dataTables_wrapper .dataTables_filter label{
     margin: 0 !important;
   }
   .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin: 2rem 0 0rem 2rem !important;
+    margin: 0 0 0 2rem !important;
 }
 
   .one-search .dataTables_wrapper .dataTables_filter label {
@@ -3526,7 +3546,7 @@ a.btn.btn-danger.non-printable {
 }
 @media only screen and (min-width: 576px) {
   .set_table.responsive-ui.customer-style.table-css .dataTables_wrapper .dataTables_filter {
-    margin: 2rem 2rem 0 2rem;
+    margin: 0 0 0 2rem;
   }
   .gap-sm-2 {
     gap: 8px !important;
@@ -3572,6 +3592,9 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (min-width: 768px) {
+  .card-top.px-card {
+    margin-top: 15px !important;
+}
   .border-md-left {
     border-inline-start: 1px solid #e7eaf3;
   }

@@ -22,7 +22,7 @@
         <!-- End Page Header -->
         <!-- Card -->
         <div class="card">
-            <div class="card-top px-card pt-4">
+            <div class="card-top px-card ">
                 <div class="row justify-content-between align-items-center gy-2">
                     <div class="col-sm-4 col-md-6 col-lg-8">
                     </div>
@@ -39,8 +39,8 @@
                 </div>
             </div>
 
-            <div class="set_table new-responsive attribute-list">
-                <div class="table-responsive datatable_wrapper_row "  style="padding-right: 10px;">
+            <div class="set_table new-responsive">
+                <div class="table-responsive datatable_wrapper_row"  style="padding-right: 10px;">
                     <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                             <tr>
