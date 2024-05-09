@@ -3391,9 +3391,6 @@ ul#navbarSettings.navbar-nav.nav-tabs {
     width: 100%;
     padding-top: 10px;
   }
-  .new-responsive .dataTables_wrapper .dataTables_filter {
-    margin: 2rem 0 0 0;
-  }
   .attribute-list .datatable_wrapper_row .dataTable{
     display: table;
     overflow-x: auto!important;
