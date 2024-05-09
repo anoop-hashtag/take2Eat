@@ -26,8 +26,8 @@
         <div class="row g-2">
             <div class="col-12">
                 <div class="alert alert--danger alert-danger mb-3" role="alert">
-                    <i class="tio-info alert--icon"></i> <strong>{{translate('Note :')}}</strong>
-                    {{translate('This_page_contains_sensitive_information.Make_sure_before_changing.')}}
+                    <div class="w-0 flex-grow-1"><i class="tio-info alert--icon"></i> <strong>{{translate('Note :')}}</strong>
+                    {{translate('This_page_contains_sensitive_information.Make_sure_before_changing.')}}</div>
                 </div>
 
                 <form action="{{route('admin.business-settings.web-app.system-setup.clean-db')}}" method="post"

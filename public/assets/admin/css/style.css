@@ -1314,7 +1314,7 @@ body {
   color: var(--title-clr);
   padding-top: 22px;
   padding-bottom: 25px;
-  display: flex;
+  /* display: flex; */
 }
 
 [dir=rtl] .alert--danger {
@@ -1322,7 +1322,7 @@ body {
 }
 
 .alert--danger .alert--icon {
-  font-size: 22px;
+  font-size: 18px;
   color: rgb(255, 109, 109);
   line-height: 1;
   margin-inline-end: 5px;
