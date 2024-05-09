@@ -30,11 +30,11 @@
                     <!-- End Avatar -->
 
                     <div class="media-body">
-                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                            <div class="">
+                        <div class="row">
+                            <div class="col-lg-11 col-md-10 col-9">
                                 <h2 class="page-header-title mb-2">{{translate('order_Report_Overview')}}</h2>
 
-                                <div class="">
+                                <div>
                                     <div class="mb-1">
                                         <span>{{translate('admin')}}:</span>
                                         <a href="#">{{auth('admin')->user()->f_name.' '.auth('admin')->user()->l_name}}</a>
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex">
+                            <div class="col-lg-1 col-md-2 col-3">
                                 <a class="btn btn-icon btn-primary px-2 rounded-circle" href="{{route('admin.dashboard')}}">
                                     <i class="tio-home-outlined"></i>
                                 </a>
