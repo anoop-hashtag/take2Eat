@@ -3462,11 +3462,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     overflow-x: auto!important;
     width: 100%;
     padding-top: 10px;
-  }
-  /* .customer-style .dataTables_wrapper .dataTables_filter{
-    margin-top:30px!important; 
-  }  */
- 
+  } 
   .addon-list .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important;  
   }
@@ -3596,6 +3592,9 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (min-width: 768px) {
+  .card-top.px-card {
+    margin-top: 15px !important;
+}
   .border-md-left {
     border-inline-start: 1px solid #e7eaf3;
   }
