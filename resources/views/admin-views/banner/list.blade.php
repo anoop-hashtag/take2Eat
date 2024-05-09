@@ -209,8 +209,8 @@
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('Banner_Image')}}</th>
+                                    <th>{{translate('title')}}</th>
                                     <th>{{translate('Item_Type')}}</th>
-                                    <th>{{translate('Product')}}</th>
                                     <th>{{translate('status')}}</th>
                                     <th >{{translate('action')}}</th>
                                 </tr>
