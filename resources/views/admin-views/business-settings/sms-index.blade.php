@@ -159,7 +159,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="card sms-gatway-cards mt-3">
+                <div class="card sms-gatway-cards my-3">
                     <div class="card-body">
                         <div class="d-flex flex-wrap justify-content-between align-items-center text-uppercase mb-1">
                             <h5 class="mb-0">{{translate('signalwire_SMS')}}</h5>
