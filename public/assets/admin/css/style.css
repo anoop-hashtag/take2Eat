@@ -3493,6 +3493,11 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 }
 @media only screen and (max-width: 600px) {
+  .table-responsive.datatable_wrapper_row.branch-chef-style {
+    position: relative;
+    top: 30px !important;
+    right: 10px !important;
+}
   .set_table.new-responsive.attibute-list.emp-style .dataTables_wrapper .dataTables_filter {
     margin: 2rem 0 0 0 !important;
 }
