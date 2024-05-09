@@ -108,7 +108,7 @@
 
                 <hr>
                 
-                <div class="table-responsive datatable_wrapper_row mt-5" id="set-rows">
+                <div class="table-responsive datatable_wrapper_row mt-5 sale-report" id="set-rows">
                     @include('admin-views.report.partials._table',['data'=>[]])
                 </div>
             </div>
