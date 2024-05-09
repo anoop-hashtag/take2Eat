@@ -88,6 +88,9 @@
                 @php($add_on_qtys=json_decode($detail['add_on_qtys'],true))
                 @php($add_on_prices=json_decode($detail['add_on_prices'],true))
                 @php($add_on_taxes=json_decode($detail['add_on_taxes'],true))
+                <?php 
+                    $amount = 0;
+                ?>
                 <tr>
                     <td class="">
                         {{$detail['quantity']}}
@@ -95,24 +98,27 @@
                     <td class="" style="text-align:left">
                         <span class="word-break: break-all;"> {{ Str::limit($detail->product['name'], 200) }}</span><br>
                         @if (count(json_decode($detail['variation'], true)) > 0)
-                            <strong>{{ translate('variation') }} : </strong>
+                            <span style="font-size: 15px; font-weight: bold;">{{ translate('variation') }} : </span>
                             @foreach(json_decode($detail['variation'],true) as  $variation)
                                 @if ( isset($variation['name'])  && isset($variation['values']))
-                                    <span class="d-block text-capitalize">
+                                    <span class="d-block text-capitalize" style="font-size: 15px;">
                                         <strong>{{  $variation['name']}} - </strong>
                                     </span>
                                     @foreach ($variation['values'] as $value)
-                                        <span class="d-block text-capitalize">
+                                        <span class="d-block text-capitalize" style="font-size: 14px;">
                                             {{ $value['label']}} :
                                             <strong>{{\App\CentralLogics\Helpers::set_symbol( $value['optionPrice'])}}</strong>
                                         </span>
+                                        <?php 
+                                            $amount = $amount + $value['optionPrice'];
+                                        ?>
                                     @endforeach
                                 @else
                                     @if (isset(json_decode($detail['variation'],true)[0]))
                                         @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                             <div class="font-size-sm text-body">
-                                                <span>{{$key1}} :  </span>
-                                                <span class="font-weight-bold">{{$variation}}</span>
+                                                <span style="font-size: 14px;">{{$key1}} :  </span>
+                                                <span class="font-weight-bold" style="font-size: 14px;">{{$variation}}</span>
                                             </div>
                                         @endforeach
                                     @endif
@@ -126,6 +132,9 @@
                                     {{ \App\CentralLogics\Helpers::set_symbol($detail->price) }}
                                 </span>
                             </div>
+                            <?php 
+                                $amount = $amount + $detail->price;
+                            ?>
                         @endif
 
                         @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
@@ -151,20 +160,56 @@
                             </span>
                         @endforeach
 
+                        <?php 
+                            // if(count(json_decode($detail->add_on_taxes)) > 0) {
+                            //     for($i = 0; $i < count(json_decode($detail->add_on_taxes)); $i++) {
+                            //         $add_ons_tax_cost = $add_ons_tax_cost + (json_decode($detail->add_on_taxes)[$i] * json_decode($detail->add_on_qtys)[$i]);
+                            //     }
+                            // }
+                        
+                        ?>
+
+                        <?php 
+                            $discount_amt = 0;
+                            $discount_type = json_decode($detail->product_details)->discount_type;
+                            $discount = json_decode($detail->product_details)->discount;
+                            if($discount_type == 'percent') {
+                                $discount_amt = (($amount * $discount) / 100 );
+                            } else {
+                                $discount_amt = ($amount - $discount);
+                            }
+                        ?>
+
                         <span class="font-size-sm">
-                            {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }}
+                            {{translate('Discount')}} : 
+                            {{-- {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }} --}}
+                            {{ \App\CentralLogics\Helpers::set_symbol($discount_amt) }}
                         </span>
                     </td>
 
                     <td style="width: 28%;padding-right:4px; text-align:right">
-                        @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
-                        {{ \App\CentralLogics\Helpers::set_symbol($amount) }}
+                        {{-- @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity']) --}}
+
+                        @php($amount2=($amount-$discount_amt)*$detail['quantity'])
+                        {{ \App\CentralLogics\Helpers::set_symbol($amount2) }} 
+
                         @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
                     </td>
                 </tr>
                 {{-- @php($sub_total+=$amount) --}}
 
-                @php($item_price += $total_after_discount)
+                @php($item_price += $amount2)
+
+                <?php 
+                    $tax_amt = 0;
+                    $tax_type = json_decode($detail->product_details)->tax_type;
+                    $tax = json_decode($detail->product_details)->tax;
+                    if($tax_type == 'percent') {
+                        $tax_amt = (($amount2 * $tax) / 100 );
+                    } else {
+                        $tax_amt = ($amount2 - $tax);
+                    }
+                ?>
 
                 @if($detail->product['tax_type'] == 'percent')
                     @php($price_tax = ($detail->price / 100) * $detail->product['tax'] * $detail['quantity']) 
@@ -175,13 +220,16 @@
             
             {{-- @php($total_tax += $total_gst); --}}
             
-            @php($total_tax += $price_tax * $detail['quantity'])
+            @php($total_tax += $tax_amt * $detail['quantity'])
             
     @endif
         @endforeach
         </tbody>
     </table>
-    <span>--------------------------------------</span>
+    {{-- <span>--------------------------------------</span> --}}
+
+    <div style="border:1px dashed gray"></div>
+
     <div class="row justify-content-end">
         <div class="col-md-12 col-lg-12">
             <dl class="row text-right" style="color: black !important;">
@@ -220,7 +268,7 @@
                     {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
                 </dd>
 
-                <?php $total_due_amount = $total = $subtotal+$total_tax+$add_ons_tax_cost+$order['packing_fee']-$order['coupon_discount_amount']-$order['extra_discount']; ?>
+                <?php $total_due_amount = $total = $del_c+$subtotal+$total_tax+$add_ons_tax_cost+$order['packing_fee']-$order['coupon_discount_amount']-$order['extra_discount']; ?>
                 
                 {{-- <dt class="col-6" style="font-size: 20px">{{translate('Total')}}:</dt>
                 <dd class="col-6" style="font-size: 20px">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd> --}}
@@ -228,15 +276,15 @@
                 <!-- partial payment-->
                 @if ($order->order_partial_payments->isNotEmpty())
                     @foreach($order->order_partial_payments as $partial)
-                        <dt class="col-6">{{translate('Paid By')}} ({{str_replace('_', ' ',$partial->paid_with)}}):</dt>
-                        <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($partial->paid_amount) }}</dd>
+                        <dt class="col-8">{{translate('Paid By')}} ({{str_replace('_', ' ',$partial->paid_with)}}):</dt>
+                        <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($partial->paid_amount) }}</dd>
                     @endforeach
                         <?php
                             $due_amount = 0;
                             $due_amount = $order->order_partial_payments->first()?->due_amount;
                         ?>
-                    <dt class="col-6">{{translate('Due Amount')}}:</dt>
-                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_due_amount = $total - $partial->paid_amount) }}</dd>
+                    <dt class="col-8">{{translate('Due Amount')}}:</dt>
+                    <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($total_due_amount = $total - $partial->paid_amount) }}</dd>
                 @endif
 
                 <dt class="col-8">{{translate('round_off')}}:</dt>
@@ -254,9 +302,11 @@
     <div class="d-flex flex-row justify-content-between border-top">
         <span>{{translate('Paid_by')}}: <span style="font-weight:bold">{{\App\CentralLogics\translate($order->payment_method)}}</span></span>
     </div>
-    <span>--------------------------------------</span>
+    {{-- <span>--------------------------------------</span> --}}
+    <div style="border:1px dashed gray"></div>
     <h5 class="text-center pt-3">
         """{{translate('THANK YOU')}}"""
     </h5>
-    <span>--------------------------------------</span>
+    <div style="border:1px dashed gray"></div>
+    {{-- <span>--------------------------------------</span> --}}
 </div>
