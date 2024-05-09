@@ -2885,14 +2885,20 @@ ul#navbarSettings.navbar-nav.nav-tabs {
   margin-top: .5em;
   margin-right: 0;
   float: right;
+  display: flex;
+  justify-content: end;
 }
+
 .__social-media-login .switch--right {
   margin-inline-start: auto;
 }
 .auth-wrapper-right-logo {
   display: none;
 }
-
+.d-flex.justify-content-lg-end.justify-content-sm-end {
+  display: flex;
+  justify-content: end !important;
+}
 /*--------------------------------all media queries-------------------*/
 @media only screen and  (max-width: 1650px) {
   .check-item {
@@ -3350,9 +3356,7 @@ ul#navbarSettings.navbar-nav.nav-tabs {
     right: -17px!important;
     top: 15px;
 }
-  .search-style .dataTables_wrapper .dataTables_filter{
-    margin: 1em 0 0 0rem!important;
-  }
+
   .new-responsive .datatable_wrapper_row .dataTable{
     display: block;
     overflow-x: auto!important;
@@ -3420,9 +3424,7 @@ ul#navbarSettings.navbar-nav.nav-tabs {
   .customer-style .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important; 
   } 
-  .search-style .dataTables_wrapper .dataTables_filter{
-    margin: 1rem 0 0 2rem!important;
-  }
+ 
   .addon-list .dataTables_wrapper .dataTables_filter{
     margin-top:30px!important;  
   }
@@ -3457,7 +3459,7 @@ ul#navbarSettings.navbar-nav.nav-tabs {
     margin: 0 !important;
 }
   .dataTables_wrapper .dataTables_filter label {
-    margin: 0rem 2rem 0 2rem !important;
+    margin: 0rem 2rem 0 0.6rem !important;
 }
 .new-ui .dataTables_wrapper .dataTables_filter label {
   margin: 0rem 0 0rem 1.4rem !important;
@@ -3529,6 +3531,11 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (max-width: 767px) {
+  .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {
+    float: right !important;
+    text-align: center !important;
+    margin: 10px 0 !important;
+}
   .left-side,
   .right-side {
     width: 100%;
