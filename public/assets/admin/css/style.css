@@ -2320,11 +2320,7 @@ body > #printableAreaContent {
   width: 0;
 }
 
-/* .custom-radio input[type=radio] {
-  width: 30px;
-  height: 22px;
-  border: 1px solid var(--tc);
-} */
+
 
 .custom-radio input[type=radio]:checked {
   accent-color: var(--c1);
@@ -3457,8 +3453,8 @@ ul#navbarSettings.navbar-nav.nav-tabs {
 }
 }
 @media only screen and (max-width: 600px) {
-  .pos_datatable_filter label {
-    margin: 0rem 2rem 0 2rem !important;
+  #pos_datatable_filter label {
+    margin: 0 !important;
 }
   .dataTables_wrapper .dataTables_filter label {
     margin: 0rem 2rem 0 2rem !important;
@@ -3533,6 +3529,16 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (max-width: 767px) {
+  .left-side,
+  .right-side {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .auth-wrapper-right {
+    padding: 15px 30px;
+    max-width: 360px;
+  }
   .check-item {
     width: 100%;
   }
@@ -3616,18 +3622,7 @@ select.custom-select.w-auto.min-width-170px {
     padding-inline: 8px;
   }
 }
-@media only screen and  (max-width: 767px) {
-  .left-side,
-  .right-side {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  .auth-wrapper-right {
-    padding: 15px 30px;
-    max-width: 360px;
-  }
-}
+
 @media print {
   body > #printableAreaContent {
     opacity: 1;
