@@ -26,7 +26,7 @@
         <div class="row g-2">
             <div class="col-12">
                 <div class="alert alert--danger alert-danger mb-3" role="alert">
-                    <div class="w-0 flex-grow-1"><i class="tio-info alert--icon"></i> <strong>{{translate('Note :')}}</strong>
+                    <div class="flex-grow-1"><i class="tio-info alert--icon"></i> <strong>{{translate('Note :')}}</strong>
                     {{translate('This_page_contains_sensitive_information.Make_sure_before_changing.')}}</div>
                 </div>
 

@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="alert alert--danger alert-danger mb-3" role="alert">
-                    <div class="w-0 flex-grow-1"><i class="tio-info alert--icon"></i> <strong class="word-nobreak mr-1">{{translate('Note :')}}</strong> {{translate('changing_some_settings_will_take_time_to_show_effect_please_clear_session_or_wait_for_60_minutes_else_browse_from_incognito_mode')}}</div>
+                    <div class="flex-grow-1"><i class="tio-info alert--icon"></i> <strong class="word-nobreak mr-1">{{translate('Note :')}}</strong> {{translate('changing_some_settings_will_take_time_to_show_effect_please_clear_session_or_wait_for_60_minutes_else_browse_from_incognito_mode')}}</div>
                 </div>
 
                 <form class="card mb-3" action="{{route('admin.business-settings.web-app.system-setup.language.add-new')}}" method="post">

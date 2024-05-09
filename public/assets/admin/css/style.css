@@ -3493,6 +3493,12 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 }
 @media only screen and (max-width: 600px) {
+  .set_table.new-responsive.attibute-list.emp-style .dataTables_wrapper .dataTables_filter {
+    margin: 2rem 0 0 0 !important;
+}
+  .set_table.new-responsive.pb-4 .dataTables_wrapper .dataTables_filter {
+    margin: 2rem 0 0 0 !important;
+}
   .set_table.new-responsive.sale-report .datatable_wrapper_row .dataTable{
     display: table !important;
     overflow-x: auto !important;
@@ -3505,6 +3511,9 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     width: 100%;
     padding-top: 10px;
   }
+  .set_table.new-responsive.chef-list .dataTables_wrapper .dataTables_filter {
+    margin: 1.5rem 0 0 0 !important;
+}
   .sale-report .dataTables_wrapper .dataTables_filter label{
     margin: 0 0 0 0.6rem !important;
   }
@@ -3693,11 +3702,9 @@ select.custom-select.w-auto.min-width-170px {
   } 
 }
 @media only screen and  (max-width: 374px) { 
-  .card-body label.control-label {
-    font-size: 16px !important;
-    font-weight: 700;
+  .d-flex.flex-wrap.mb-3 label.control-label {
+    font-size: 16px;
 }
-
   .print-btn-grp .btn-primary,
   .print-btn-grp .btn-secondary {
     padding-inline: 8px;
