@@ -242,7 +242,8 @@
                                             $taxable_amt = json_decode($detail['product_details'])->tax;
                                         }
 
-                                        $total_tax = $total_tax + ($taxable_amt * $detail['quantity']) ;
+                                        // $total_tax = $total_tax + ($taxable_amt * $detail['quantity']) ;
+                                        $total_tax = $total_tax + ($taxable_amt) ;
 
                                     ?>
                                     @php($total_dis_on_pro += $tot_discount)

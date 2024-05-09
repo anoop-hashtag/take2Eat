@@ -368,16 +368,16 @@
                                             }
                                             echo \App\CentralLogics\Helpers::set_symbol($taxable_amt);
 
-                                            if(isset($order->branch)) {
-                                                if($order->branch->name == 'Main Branch') {
-                                                    $total_tax = $total_tax + ($taxable_amt * $detail['quantity'] );
-                                                } else {
-                                                    $total_tax = $total_tax + $taxable_amt;
-                                                }
-                                            } else {
-                                                $total_tax = $total_tax + ($taxable_amt * $detail['quantity'] );
-                                            }
-
+                                            // if(isset($order->branch)) {
+                                            //     if($order->branch->name == 'Main Branch') {
+                                            //         $total_tax = $total_tax + ($taxable_amt * $detail['quantity'] );
+                                            //     } else {
+                                            //         $total_tax = $total_tax + $taxable_amt;
+                                            //     }
+                                            // } else {
+                                            //     $total_tax = $total_tax + ($taxable_amt * $detail['quantity'] );
+                                            // }
+                                            $total_tax = $total_tax + $taxable_amt;
                                         ?>
                                     </td>
                                     @if(isset($variation['values']) && is_array($variation['values']))
@@ -488,14 +488,10 @@
                                         {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
                                     </dd>
 
-                                    @if($order['packing_fee']==0.00)
-                                        <dt class="col-8">{{ translate('') }}</dt>
-                                        <dd class="col-4"></dd>
-                                   
-                                    @else
-                              
-                                        <dt class="col-8">&nbsp;&nbsp;{{ translate('Packing Fee') }}:</dt>
-                                        <dd class="col-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
+                                    @if($order['packing_fee']!=0.00)
+                                        <dt class="col-6">
+                                            <div class="d-flex max-w220 ml-auto">{{ translate('Packing Fee') }}:</div></dt>
+                                        <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                                     @endif
 
                                     <dt class="col-6">
