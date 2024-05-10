@@ -3479,6 +3479,12 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 
 @media only screen and  (max-width:575px){
+  .set_table.new-responsive.table-search .dataTables_wrapper .dataTables_filter {
+    margin: 0 0 0 1.4rem !important;
+}
+  .set_table.new-responsive.table-search .dataTables_wrapper .dataTables_filter label {
+    margin: 0 !important;
+}
   .table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter label {
     margin: 0 2rem 0 1.4rem !important;
 }
@@ -3727,7 +3733,14 @@ a.btn.btn-danger.non-printable {
     margin-bottom: 0;
   }
 }
+@media (min-width: 600px) and (max-width: 992px) {
+  .set_table.search-set .datatable_wrapper_row .dataTable {
+    display: table !important;
+    width: 100% !important;
+}
+}
 @media (min-width: 768px) and (max-width: 900px) {
+ 
   .__social-media-login .btn--container .btn {
     font-size: 14px;
     font-size: 13px;

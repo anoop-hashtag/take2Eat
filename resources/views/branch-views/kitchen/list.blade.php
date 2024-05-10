@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="set_table" style="padding:0 10px;">
+                <div class="set_table search-set" style="padding:0 10px;">
                     <div class="table-responsive datatable_wrapper_row branch-chef-style">
                         <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
