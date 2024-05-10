@@ -3561,6 +3561,11 @@ a.btn.btn-danger.non-printable {
   max-width: 100px;
 }
 }
+@media only screen and (min-width: 600px){
+  .set_table.customer-style .dataTables_wrapper .dataTables_filter {
+    margin: 2rem 0 0rem 2rem !important;
+}
+}
 @media only screen and (min-width: 576px) {
   .set_table.responsive-ui.customer-style.table-css .dataTables_wrapper .dataTables_filter {
     margin: 0 0 0 2rem;
@@ -3609,6 +3614,10 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (min-width: 768px) {
+  .set_table.search-arrange.one-search .dataTables_wrapper .dataTables_filter input {
+    width: 165px!important;
+    height: 35px!important;
+}
   .table-responsive.datatable_wrapper_row.printable_btn .dataTables_wrapper .dataTables_filter {
     margin: 1rem 0 0 0;
 }
