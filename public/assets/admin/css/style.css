@@ -2931,17 +2931,17 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   height: 80px;
 }
 
-div#datatable_paginate .dataTables_wrapper .dataTables_paginate .paginate_button {
-  box-sizing: border-box;
-  display: inline-block;
-  min-width: 1.5em;
-  padding: .5em 1em;
-  margin-left: 2px;
-  text-align: center;
+ .dataTables_wrapper .dataTables_paginate .paginate_button {
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  min-width: 1.5em !important;
+  padding: .5em 1em !important;
+  margin-left: 2px !important;
+  text-align: center !important;
   text-decoration: none !important;
-  cursor: pointer;
+  cursor: pointer !important;
   color: #8c98a4 !important;
-  border: 1px solid transparent;
+  border: 1px solid transparent !important;
   border-radius: .3125rem !important;
 }
 .page-item.active .page-link {
@@ -3464,6 +3464,9 @@ div#datatable_paginate .dataTables_wrapper .dataTables_paginate .paginate_button
 }
 
 @media only screen and  (max-width:575px){
+  .card-top.px-card.pt-4 {
+    margin-top: -25px;
+}
   .set_table.customer-style .dataTables_wrapper .dataTables_filter {
     margin: 2rem 0 0 0 !important;
 }
