@@ -194,7 +194,7 @@
                     </div>
                 </div>
             </div>
-
+            <input type="hidden" name="order_amount" value="{{ $total }}" />
             <div class="row mt-4 gy-2">
                 <div class="col-md-6">
                     <a href="#" class="btn btn-outline-danger btn--danger btn-block" onclick="emptyCart({{ round($total+$total_tax+$addon_total_tax+$delivery_charge, 2) }})"><i

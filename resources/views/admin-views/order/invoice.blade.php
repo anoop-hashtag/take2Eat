@@ -239,7 +239,7 @@
                                         if(json_decode($detail['product_details'])->tax_type == 'percent') {
                                             $taxable_amt = ($taxable_amt * json_decode($detail['product_details'])->tax) / 100;
                                         } else {
-                                            $taxable_amt = json_decode($detail['product_details'])->tax;
+                                            $taxable_amt = json_decode($detail['product_details'])->tax * $detail['quantity'] ;
                                         }
 
                                         // $total_tax = $total_tax + ($taxable_amt * $detail['quantity']) ;

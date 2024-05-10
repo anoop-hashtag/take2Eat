@@ -83,6 +83,10 @@
         @php($add_on_tax=0)
         @php($add_ons_tax_cost=0)
         @foreach($order->details as $detail)
+        <?php 
+            echo "<pre>";
+                print_r(json_decode($detail->product_details)->discount_type);
+        ?>
             @if($detail->product)
                 @php($add_on_qtys=json_decode($detail['add_on_qtys'],true))
                 @php($add_on_prices=json_decode($detail['add_on_prices'],true))
@@ -159,33 +163,37 @@
                             </span>
                         @endforeach
                         <span class="font-size-sm">
-                            {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }}
+                            <?php 
+                                $discount_amt = 0;
+                                if(json_decode($detail->product_details)->discount_type == 'percent') {
+                                    $discount_amt = ($amount * json_decode($detail->product_details)->discount) / 100;
+                                } else {
+                                    $discount_amt = json_decode($detail->product_details)->discount * $detail['quantity'];
+                                }    
+                            ?>
+                            {{-- {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']*$detail['quantity']) }} --}}
+                            {{translate('Discount')}} : {{ \App\CentralLogics\Helpers::set_symbol($discount_amt) }}
                         </span>
                           
                     </td>
 
                     <td style="width: 28%;padding-right:4px; text-align:right">
-                        @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
+                        {{-- @php($amount=($amount-$detail['discount_on_product'])*$detail['quantity']) --}}
+                        @php($amount = ($amount - $discount_amt) * $detail['quantity'])
                         {{ \App\CentralLogics\Helpers::set_symbol($amount) }}
 
-                        @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity'])
+                        {{-- @php($total_after_discount = ($detail['price'] - $detail['discount_on_product']) * $detail['quantity']) --}}
+                        @php($total_after_discount = $amount)
                        
                     </td>
 
                     <?php 
-                        // $tot_discount = 0;
-                        // if(json_decode($detail['product_details'])->discount_type == 'percent') {
-                        //     $tot_discount = ($amount * json_decode($detail['product_details'])->discount) / 100;
-                        // } else {
-                        //     $tot_discount = json_decode($detail['product_details'])->discount;
-                        // }
-
                         // $taxable_amt = 0;
                         // echo $taxable_amt = $amount - $tot_discount;
                         if(json_decode($detail['product_details'])->tax_type == 'percent') {
                             $taxable_amt = ($amount * json_decode($detail['product_details'])->tax) / 100;
                         } else {
-                            $taxable_amt = json_decode($detail['product_details'])->tax;
+                            $taxable_amt = json_decode($detail['product_details'])->tax * $detail['quantity'];
                         }
 
                         // $total_tax = $total_tax + ($taxable_amt * $detail['quantity']) ;
