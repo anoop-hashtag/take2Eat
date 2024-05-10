@@ -3424,7 +3424,10 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     gap:0.5rem;
   }
 }
-@media   (min-width:580px) and (max-width: 640px) {
+@media (min-width:575px) and (max-width: 640px) {
+  .dataTables_wrapper .dataTables_filter label {
+    margin: 2rem 2rem 1rem 2rem !important;
+}
   .set_table.customer-style .dataTables_wrapper .dataTables_filter label{
     margin: 0 !important;
   }
@@ -3445,12 +3448,11 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     padding-top: 10px;
   } 
 }
-@media only screen and (max-width:640px){
+
+@media only screen and  (max-width:575px){
   .dataTables_wrapper .dataTables_filter label {
-    margin: 2rem 2rem 1rem 2rem !important;
+    margin: 0rem 2rem 1rem 2rem !important;
 }
-}
-@media only screen and  (max-width:580px){
   .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -3549,9 +3551,7 @@ table#pos_datatable {
   #pos_datatable_filter label {
     margin: 0 !important;
 }
-  .dataTables_wrapper .dataTables_filter label {
-    margin: 2rem 2rem 1rem 2rem !important;
-}
+  
 .new-ui .dataTables_wrapper .dataTables_filter label {
   margin: 0rem 0 0rem 1.4rem !important;
 }
