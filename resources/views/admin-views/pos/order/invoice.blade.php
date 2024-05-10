@@ -281,7 +281,17 @@
                 <dd class="col-4"><b>{{ \App\CentralLogics\Helpers::set_symbol($total) }}</b></dd> --}}
 
                 <dt class="col-8">{{translate('round_off')}}:</dt>
-                <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }}</dd>
+                <dd class="col-4">
+                    <?php 
+                        $round_off = round($total) - $total; 
+                        if($round_off > 0) {
+                            echo \App\CentralLogics\Helpers::set_symbol($round_off);
+                        } else {
+                            echo "- ".\App\CentralLogics\Helpers::set_symbol(str_replace("-","",$round_off));
+                        }   
+                    ?>
+                    {{-- {{ \App\CentralLogics\Helpers::set_symbol(round($total) - $total) }} --}}
+                </dd>
 
                 <div class="col-12">
                     <hr style="margin: 10px 0px 15px 0px;"/>

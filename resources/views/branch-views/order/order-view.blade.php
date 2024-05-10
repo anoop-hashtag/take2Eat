@@ -534,7 +534,15 @@
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">
-                                        {{ \App\CentralLogics\Helpers::set_symbol(round($total_due_amount) - $total_due_amount) }}
+                                        <?php 
+                                            $round_off = round($total_due_amount) - $total_due_amount; 
+                                            if($round_off > 0) {
+                                                echo \App\CentralLogics\Helpers::set_symbol($round_off);
+                                            } else {
+                                                echo "- ".\App\CentralLogics\Helpers::set_symbol(str_replace("-","",$round_off));
+                                            }   
+                                        ?>
+                                        {{-- {{ \App\CentralLogics\Helpers::set_symbol(round($total_due_amount) - $total_due_amount) }} --}}
                                     </dd>
                                 </dl>
                                 <dl class="row"><dt class="col-12"><hr/></dt></dl>
