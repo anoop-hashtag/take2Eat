@@ -193,7 +193,7 @@
             </div>
             <!-- End Header -->
 
-            <div class="set_table responsive-ui customer-style table-css ">
+            <div class="set_table responsive-ui customer-style table-css fixing-search">
                 <!-- Table -->
                 <div class=" datatable_wrapper_row " id="set-rows" style="padding: 0% 10px;">
                     <table id="datatable" class="table-responsive table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
