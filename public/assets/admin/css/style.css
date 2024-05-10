@@ -3424,20 +3424,12 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     gap:0.5rem;
   }
 }
-@media only screen and (min-width:600px){
-  .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin: 2rem 0 0rem 2rem !important;
-  }
-  .set_table.customer-style .dataTables_wrapper .dataTables_filter label {
-    margin: 0rem 2rem 1rem 2rem !important;
-}
-}
-@media   (min-width:580px) and (max-width: 640px){
+@media   (min-width:580px) and (max-width: 640px) {
   .set_table.customer-style .dataTables_wrapper .dataTables_filter label{
     margin: 0 !important;
   }
   .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin: 0rem 0 0rem 2rem !important;
+    margin: 2rem 0 0rem 2rem !important;
 }
   .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
@@ -3537,8 +3529,8 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     margin: 0 !important;
   }
   .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin: 0 0 0 2rem !important;
-}
+    margin:2rem 0 0 2rem !important;
+  }
 
   .one-search .dataTables_wrapper .dataTables_filter label {
     margin: 0 !important;
@@ -3547,7 +3539,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     margin: 0 !important;
 }
   .dataTables_wrapper .dataTables_filter label {
-    margin: 0rem 2rem 1rem 2rem !important;
+    margin: 0rem 2rem 1rem 2  rem !important;
 }
 .new-ui .dataTables_wrapper .dataTables_filter label {
   margin: 0rem 0 0rem 1.4rem !important;
@@ -3569,7 +3561,6 @@ a.btn.btn-danger.non-printable {
   max-width: 100px;
 }
 }
-
 @media only screen and (min-width: 576px) {
   .set_table.responsive-ui.customer-style.table-css .dataTables_wrapper .dataTables_filter {
     margin: 0 0 0 2rem;
@@ -3618,10 +3609,6 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (min-width: 768px) {
-  .set_table.search-arrange.one-search .dataTables_wrapper .dataTables_filter input {
-    width: 165px!important;
-    height: 35px!important;
-}
   .table-responsive.datatable_wrapper_row.printable_btn .dataTables_wrapper .dataTables_filter {
     margin: 1rem 0 0 0;
 }
@@ -3734,6 +3721,7 @@ select.custom-select.w-auto.min-width-170px {
     padding-inline: 8px;
   }
 }
+
 @media print {
   body > #printableAreaContent {
     opacity: 1;
