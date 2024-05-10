@@ -2940,12 +2940,13 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   text-align: center;
   text-decoration: none !important;
   cursor: pointer;
+  color: #8c98a4 !important;
   border: 1px solid transparent;
   border-radius: .3125rem;
 }
 .page-item.active .page-link {
   z-index: 3;
-  color: #fff;
+  color: #fff!important;
   background-color: #ff611d;
   border-color: #ff611d;
 }
