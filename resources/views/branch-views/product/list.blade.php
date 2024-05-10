@@ -28,7 +28,7 @@
                 <!-- Card -->
                 <div class="card">
                     <!-- Header -->
-                    <div class="card-top px-card ">
+                    <div class="card-top px-card pt-4">
                         <div class="row justify-content-between align-items-center gy-2">
                             <div class="col-lg-4">
                                 <form action="{{url()->current()}}" method="GET">
@@ -44,7 +44,7 @@
                     </div>
                     <!-- End Header -->
 
-                    <div class="set_table py-4">
+                    <div class="set_table">
                         <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding:0 10px;">
                             <table id="datatable" class="mt-3 table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table" style="padding-right: 10px">
                                 <thead class="thead-light">
