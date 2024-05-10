@@ -471,7 +471,17 @@
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">
-                                        - {{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}</dd>
+                                        - {{ \App\CentralLogics\Helpers::set_symbol($order['extra_discount']) }}
+                                    </dd>
+
+                                    <dt class="col-6">
+                                        <div class="d-flex max-w220 ml-auto">
+                                            <span>{{translate('tax')}} / {{translate('GST')}}</span>
+                                            <span>:</span>
+                                        </div>
+                                    </dt>
+                                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
+                                    
                                     <dt class="col-6">
                                         <div class="d-flex max-w220 ml-auto">
                                             <span>
@@ -493,14 +503,6 @@
                                             <div class="d-flex max-w220 ml-auto">{{ translate('Packing Fee') }}:</div></dt>
                                         <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                                     @endif
-
-                                    <dt class="col-6">
-                                        <div class="d-flex max-w220 ml-auto">
-                                            <span>{{translate('tax')}} / {{translate('GST')}}</span>
-                                            <span>:</span>
-                                        </div>
-                                    </dt>
-                                    <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total_tax + $add_ons_tax_cost) }}</dd>
 
                                     <dt class="col-6 border-top pt-2 fz-16 font-weight-bold">
                                         <div class="d-flex max-w220 ml-auto">
