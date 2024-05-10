@@ -364,7 +364,7 @@
                                             if(json_decode($detail['product_details'])->tax_type == 'percent') {
                                                 $taxable_amt = ($taxable_amt * json_decode($detail['product_details'])->tax) / 100;
                                             } else {
-                                                $taxable_amt = json_decode($detail['product_details'])->tax;
+                                                $taxable_amt = json_decode($detail['product_details'])->tax * $detail['quantity'] ;
                                             }
                                             echo \App\CentralLogics\Helpers::set_symbol($taxable_amt);
 
