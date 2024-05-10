@@ -685,7 +685,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
   flex-grow: 1;
 }
 
-.pos-product-item_title {
+/* .pos-product-item_title {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -693,6 +693,15 @@ li.paginate_item.page-item span.ellipsis.page-link {
   -webkit-box-orient: vertical;
   margin-bottom: 5px;
   color: #334257;
+} */
+.pos-product-item_title {
+  display: block;
+  margin-bottom: 5px;
+  color: #334257;
+  white-space: nowrap;
+  width: 112px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pos-product-item_price {
