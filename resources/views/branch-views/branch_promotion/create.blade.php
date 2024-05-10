@@ -106,7 +106,7 @@
                 </div>
             </div>
 
-            <div class="set_table ">
+            <div class="set_table search-set">
                 <div class="table-responsive datatable_wrapper_row" style="padding:0 10px">
                     <table id="datatable" class=" table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table" >
                         <thead class="thead-light">
