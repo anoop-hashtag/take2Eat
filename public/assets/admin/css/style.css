@@ -3444,6 +3444,9 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 
 @media only screen and  (max-width:575px){
+  .set_table.customer-style .dataTables_wrapper .dataTables_filter {
+    margin: 2rem 0 0 0 !important;
+}
   .dataTables_wrapper .dataTables_filter label {
     margin: 0rem 2rem 1rem 2rem !important;
 }
