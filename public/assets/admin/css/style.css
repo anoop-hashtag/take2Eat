@@ -3445,6 +3445,15 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   }
 }
 @media (min-width:575px) and (max-width: 640px) {
+  .table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter label {
+    margin: 0 2rem 0 1.4rem !important;
+}
+.table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter {
+  margin: 2rem 0 0 0 !important;
+}
+  .set_table.search-set .dataTables_wrapper .dataTables_filter label{
+    margin: 0 0 0 1.4rem !important;
+}
   .set_table.responsive-ui.customer-style.table-css.fixing-search .dataTables_wrapper .dataTables_filter label {
     margin: 0 !important;
 }
@@ -3470,6 +3479,12 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 }
 
 @media only screen and  (max-width:575px){
+  .table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter label {
+    margin: 0 2rem 0 1.4rem !important;
+}
+.table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter {
+  margin: 2rem 0 0 0 !important;
+}
   .set_table.responsive-ui.customer-style.table-css.fixing-search .dataTables_wrapper .dataTables_filter label {
     margin: 0 !important;
 }
@@ -3536,19 +3551,10 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   position: relative;
   right: 0;
 }
-.table-responsive.datatable_wrapper_row.branch-chef-style {
-  position: relative;
-  top: 20px;
-  right: 10px;
-}
+
 }
 
 @media only screen and (max-width: 600px) {
-  .table-responsive.datatable_wrapper_row.branch-chef-style {
-    position: relative;
-    top: 30px !important;
-    right: 0 !important;
-}
   .set_table.new-responsive.attibute-list.emp-style .dataTables_wrapper .dataTables_filter {
     margin: 2rem 0 0 0 !important;
 }
