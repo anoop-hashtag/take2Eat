@@ -2930,6 +2930,26 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   max-width: 100px;
   height: 80px;
 }
+
+ .dataTables_wrapper .dataTables_paginate .paginate_button {
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  min-width: 1.5em !important;
+  padding: .5em 1em !important;
+  margin-left: 2px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #8c98a4 !important;
+  border: 1px solid transparent !important;
+  border-radius: .3125rem !important;
+}
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff!important;
+  background-color: #ff611d;
+  border-color: #ff611d;
+}
 /*--------------------------------all media queries-------------------*/
 @media only screen and  (max-width: 1650px) {
   .check-item {
@@ -3424,14 +3444,11 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     gap:0.5rem;
   }
 }
-@media   (min-width:580px) and (max-width: 640px) {
-  .set_table.customer-style .dataTables_wrapper .dataTables_filter label{
-    margin: 0 !important;
-  }
-  .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin: 2rem 0 0rem 2rem !important;
+@media (min-width:575px) and (max-width: 640px) {
+  .dataTables_wrapper .dataTables_filter label {
+    margin: 2rem 2rem 1rem 2rem !important;
 }
-  .filter-style .dataTables_wrapper .dataTables_filter {
+ .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
     position: relative;
@@ -3445,7 +3462,17 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     padding-top: 10px;
   } 
 }
-@media only screen and  (max-width:580px){
+
+@media only screen and  (max-width:575px){
+  .card-top.px-card.pt-4 {
+    margin-top: -25px;
+}
+  .set_table.customer-style .dataTables_wrapper .dataTables_filter {
+    margin: 2rem 0 0 0 !important;
+}
+  .dataTables_wrapper .dataTables_filter label {
+    margin: 0rem 2rem 1rem 2rem !important;
+}
   .filter-style .dataTables_wrapper .dataTables_filter {
     float: right!important;
     text-align: right!important;
@@ -3495,6 +3522,12 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   right: 10px;
 }
 }
+@media only screen and (min-width: 600px) {
+table#pos_datatable {
+  display: block;
+  overflow-x: auto !important;
+  width: 100%;
+}}
 @media only screen and (max-width: 600px) {
   .table-responsive.datatable_wrapper_row.branch-chef-style {
     position: relative;
@@ -3525,12 +3558,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   .sale-report .dataTables_wrapper .dataTables_filter label{
     margin: 0 0 0 0.6rem !important;
   }
-  .set_table.customer-style .dataTables_wrapper .dataTables_filter label{
-    margin: 0 !important;
-  }
-  .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin:2rem 0 0 2rem !important;
-  }
+ 
 
   .one-search .dataTables_wrapper .dataTables_filter label {
     margin: 0 !important;
@@ -3538,9 +3566,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   #pos_datatable_filter label {
     margin: 0 !important;
 }
-  .dataTables_wrapper .dataTables_filter label {
-    margin: 0rem 2rem 1rem 2  rem !important;
-}
+  
 .new-ui .dataTables_wrapper .dataTables_filter label {
   margin: 0rem 0 0rem 1.4rem !important;
 }
