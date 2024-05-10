@@ -602,7 +602,7 @@ class POSController extends Controller
             $order->extra_discount = $extra_discount ?? 0;
             $order->packing_fee    = $packing_fee ?? 0;
             $order->total_tax_amount = $total_tax_amount;
-            $order->order_amount = $total_price + $total_tax_amount + $order->delivery_charge+$total_addon_tax;
+            $order->order_amount = isset($request->order_amount) ? $request->order_amount : $total_price + $total_tax_amount + $order->delivery_charge+$total_addon_tax;
 
             $order->coupon_discount_amount = 0.00;
             $order->branch_id = auth('branch')->id();

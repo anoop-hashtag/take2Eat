@@ -17,10 +17,13 @@
         $discount_on_product = 0;
         $total_tax = 0;
         $addon_total_tax =0;
+        $total_items_discount = 0;
         ?>
         @if(session()->has('cart') && count( session()->get('cart')) > 0)
                 <?php
                 $cart = session()->get('cart');
+                // echo "<pre>";
+                //     print_r($cart);
                 if(isset($cart['discount']))
                 {
                     $discount = $cart['discount'];
@@ -30,15 +33,44 @@
             @foreach(session()->get('cart') as $key => $cartItem)
                 @if(is_array($cartItem))
                         <?php
-                        $product_subtotal = ($cartItem['price'])*$cartItem['quantity'];
+                        if($cartItem['variation_price'] > 0){
+                            $product_subtotal = ($cartItem['variation_price'])*$cartItem['quantity'];
+                        } else {
+                            $product_subtotal = ($cartItem['price'])*$cartItem['quantity'];
+                        }
                         $discount_on_product += ($cartItem['discount']*$cartItem['quantity']);
                         $subtotal += $product_subtotal;
                         $addon_price += $cartItem['addon_price'];
                         $addon_total_tax += $cartItem['addon_total_tax'];
 
                         //tax calculation
+                        $discount_amt = $tax_amt = $product_price = 0;
                         $product = \App\Model\Product::find($cartItem['id']);
-                        $total_tax += \App\CentralLogics\Helpers::tax_calculate($product, $cartItem['price']-$cartItem['discount'])*$cartItem['quantity'];
+                        
+                        if($cartItem['variation_price'] > 0){
+                            $product_price = $cartItem['variation_price'];
+                        } else {
+                            $product_price = $cartItem['price'];
+                        }
+
+
+                        if($product->discount_type == 'percent') {
+                            $discount_amt = (($product_price * $product->discount) / 100) * $cartItem['quantity'];
+                        } else {
+                            $discount_amt = $product->discount * $cartItem['quantity'];
+                        }
+
+                        // $total_tax += \App\CentralLogics\Helpers::tax_calculate($product, $cartItem['price']-$cartItem['discount'])*$cartItem['quantity'];
+
+                        if($product->tax_type == 'percent') {
+                            $tax_amt = (($product_price - $discount_amt) * $product->tax) / 100;
+                        } else {
+                            $tax_amt = $product->tax;
+                        }
+
+                        $total_items_discount += $discount_amt;
+
+                        $total_tax += $tax_amt * $cartItem['quantity'];
 
                         ?>
                     <tr>
@@ -97,7 +129,7 @@
 $total = $subtotal+$addon_price;
 $discount_amount = ($discount_type=='percent' && $discount>0)?(($total * $discount)/100):$discount;
 $discount_amount += $discount_on_product;
-$total -= $discount_amount;
+$total -= $total_items_discount;
 
 $extra_discount = session()->get('cart')['extra_discount'] ?? 0;
 $packing_fee    = session()->get('cart')['packing_fee'] ?? 0;
@@ -138,7 +170,7 @@ if (session()->get('order_type') == 'home_delivery'){
         <dd class="col-6 text-right">{{\App\CentralLogics\Helpers::set_symbol($subtotal+$addon_price) }}</dd>
 
         <dt  class="col-6">{{translate('product')}} {{translate('discount')}} :</dt>
-        <dd class="col-6 text-right">- {{ \App\CentralLogics\Helpers::set_symbol(round($discount_amount,2)) }}</dd>
+        <dd class="col-6 text-right">- {{ \App\CentralLogics\Helpers::set_symbol(round($total_items_discount,2)) }}</dd>
 
         <dt  class="col-6">{{translate('extra')}} {{translate('discount')}} :</dt>
         <dd class="col-6 text-right">
@@ -181,9 +213,10 @@ if (session()->get('order_type') == 'home_delivery'){
                     <input type="radio" value="pay_after_eating" id="pay_after_eating" name="type" hidden="">
                     <label for="pay_after_eating" class="btn btn-bordered btn-block px-4 m-1">{{translate('pay_after_eating')}}</label>
                 </div>
-</div>
+            </div>
         </div>
 
+        <input type="hidden" name="order_amount" value="{{round($total+$total_tax+$addon_total_tax+$packing_fee, 2)}}" id="order_amount" />
         <div class="row mt-4 gy-2">
             <div class="col-md-6">
                 <a href="#" class="btn btn-outline-danger btn-block" onclick="emptyCart()"><i

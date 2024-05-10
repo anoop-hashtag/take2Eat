@@ -365,7 +365,7 @@
                                             if(json_decode($detail['product_details'])->tax_type == 'percent') {
                                                 $taxable_amt = ($taxable_amt * json_decode($detail['product_details'])->tax) / 100;
                                             } else {
-                                                $taxable_amt = json_decode($detail['product_details'])->tax;
+                                                $taxable_amt = json_decode($detail['product_details'])->tax * $detail['quantity'];
                                             }
                                             echo \App\CentralLogics\Helpers::set_symbol($taxable_amt);
 
@@ -471,14 +471,9 @@
                                         @endif
                                         {{ \App\CentralLogics\Helpers::set_symbol($del_c) }}
                                     </dd>
-                                    @if($order['packing_fee']==0.00)
-                                        <dt class="col-8">{{ translate('') }}</dt>
-                                        <dd class="col-4"></dd>
-                                   
-                                    @else
-                              
-                                        <dt class="col-8">&nbsp;&nbsp;{{ translate('Packing Fee') }}:</dt>
-                                        <dd class="col-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
+                                    @if($order['packing_fee']!=0.00)
+                                        <dt class="col-6"><div class="d-flex max-w220 ml-auto">{{ translate('Packing Fee') }}:</div></dt>
+                                        <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                                     @endif
 
                                     <dt class="col-6">
@@ -640,9 +635,9 @@
                                     <label class="font-weight-bold text-dark fz-14">{{translate('Food_Preparation_Time')}}</label>
                                     <div class="form-control justify-content-between">
                                         <span class="ml-2 ">
-                                        <i class="tio-timer d-none" id="timer-icon"></i>
-                                        <span id="counter" class="text-info"></span>
-                                        <i class="tio-edit p-2 d-none" id="edit-icon" style="cursor: pointer;" data-toggle="modal" data-target="#counter-change" data-whatever="@mdo"></i>
+                                            <i class="tio-timer d-none" id="timer-icon"></i>
+                                            <span id="counter" class="text-info"></span>
+                                            <i class="tio-edit p-2 d-none" id="edit-icon" style="cursor: pointer;" data-toggle="modal" data-target="#counter-change" data-whatever="@mdo"></i>
                                         </span>
                                     </div>
                                 @endif
@@ -655,8 +650,7 @@
                                         <i class="tio-user text-dark"></i>
                                     </span>
                                             <span>{{ translate('delivery_Partner') }}</span>
-                                            <a  href="#"  data-toggle="modal" data-target="#assignDeliveryMan"
-                                                class="text--base cursor-pointer ml-auto">
+                                            <a  href="#"  data-toggle="modal" data-target="#assignDeliveryMan" class="text--base cursor-pointer ml-auto">
                                                 {{translate('Change')}}
                                             </a>
                                         </h4>

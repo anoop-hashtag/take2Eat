@@ -84,6 +84,10 @@
         @php($add_on_tax=0)
         @php($add_ons_tax_cost=0)
         @foreach($order->details as $detail)
+            <?php 
+                // echo "<pre>";
+                //     print_r(json_decode($detail));
+            ?>
             @if($detail->product)
                 @php($add_on_qtys=json_decode($detail['add_on_qtys'],true))
                 @php($add_on_prices=json_decode($detail['add_on_prices'],true))
@@ -205,10 +209,11 @@
                     $tax_type = json_decode($detail->product_details)->tax_type;
                     $tax = json_decode($detail->product_details)->tax;
                     if($tax_type == 'percent') {
-                        $tax_amt = (($amount2 * $tax) / 100 );
+                        $tax_amt = ($amount2 * $tax) / 100;
                     } else {
-                        $tax_amt = ($amount2 - $tax);
+                        $tax_amt = ($tax * $detail['quantity']);
                     }
+
                 ?>
 
                 @if($detail->product['tax_type'] == 'percent')
@@ -220,7 +225,7 @@
             
             {{-- @php($total_tax += $total_gst); --}}
             
-            @php($total_tax += $tax_amt * $detail['quantity'])
+            @php($total_tax += $tax_amt)
             
     @endif
         @endforeach
@@ -241,8 +246,8 @@
                 </dd>
 
                 @php($subtotal = $add_ons_cost + $item_price)
-                <dt class="col-8">{{translate('Subtotal')}}:</dt>
-                <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($subtotal) }}</dd>
+                <dt class="col-8"><b>{{translate('Subtotal')}}:</b></dt>
+                <dd class="col-4"><b>{{ \App\CentralLogics\Helpers::set_symbol($subtotal) }}</b></dd>
 
                 <dt class="col-8">{{translate('Coupon Discount')}}:</dt>
                 <dd class="col-4">-{{ \App\CentralLogics\Helpers::set_symbol($order['coupon_discount_amount']) }}</dd>
