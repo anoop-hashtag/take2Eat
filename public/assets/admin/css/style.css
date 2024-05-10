@@ -2926,7 +2926,10 @@ ul#navbarSettings.navbar-nav.nav-tabs {
 a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-0 {
   padding: 10px !important;
 }
-
+#datatable .mx-80px {
+  max-width: 100px;
+  height: 80px;
+}
 /*--------------------------------all media queries-------------------*/
 @media only screen and  (max-width: 1650px) {
   .check-item {
@@ -3526,8 +3529,8 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     margin: 0 !important;
   }
   .set_table.customer-style .dataTables_wrapper .dataTables_filter {
-    margin: 0 0 0 2rem !important;
-}
+    margin:2rem 0 0 2rem !important;
+  }
 
   .one-search .dataTables_wrapper .dataTables_filter label {
     margin: 0 !important;
@@ -3536,7 +3539,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
     margin: 0 !important;
 }
   .dataTables_wrapper .dataTables_filter label {
-    margin: 0rem 2rem 1rem 1.4rem !important;
+    margin: 0rem 2rem 1rem 2  rem !important;
 }
 .new-ui .dataTables_wrapper .dataTables_filter label {
   margin: 0rem 0 0rem 1.4rem !important;
@@ -3606,8 +3609,11 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (min-width: 768px) {
+  .table-responsive.datatable_wrapper_row.printable_btn .dataTables_wrapper .dataTables_filter {
+    margin: 1rem 0 0 0;
+}
   .card-top.px-card {
-    margin-top: 15px !important;
+    margin-top: -10px !important;
 }
   .border-md-left {
     border-inline-start: 1px solid #e7eaf3;
