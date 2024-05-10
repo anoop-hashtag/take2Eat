@@ -2930,6 +2930,25 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   max-width: 100px;
   height: 80px;
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  box-sizing: border-box;
+  display: inline-block;
+  min-width: 1.5em;
+  padding: .5em 1em;
+  margin-left: 2px;
+  text-align: center;
+  text-decoration: none !important;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: .3125rem;
+}
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #ff611d;
+  border-color: #ff611d;
+}
 /*--------------------------------all media queries-------------------*/
 @media only screen and  (max-width: 1650px) {
   .check-item {
