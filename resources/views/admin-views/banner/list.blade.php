@@ -226,13 +226,43 @@
                                         </td>
                                         <td>
                                             <div class="max-w300 text-wrap">
-                                                {{$banner['title']}}
+                                                {{-- {{$banner['title']}} --}}
+                                                <?php 
+                                                    $title = $banner['title'];
+                                                    if (strlen($title) > 15) {
+                                                        echo substr($title, 0, 15)."...";
+                                                    } else {
+                                                        echo $title;
+                                                    }
+                                                ?>
                                             </div>
                                         </td>
                                         @if(isset($banner->category_id))
-                                            <td>{{translate('category')}}: {{substr(\App\Model\Category::find($banner->category_id)?->name, 0, 15)}}</td>
+                                            <td>
+                                                {{translate('category')}} : 
+                                                {{-- {{substr(\App\Model\Category::find($banner->category_id)?->name, 0, 15)}} --}}
+                                                <?php 
+                                                    $category_name = \App\Model\Category::find($banner->category_id)?->name;
+                                                    if (strlen($category_name) > 25) {
+                                                        echo substr($category_name, 0, 25)."...";
+                                                    } else {
+                                                        echo $category_name;
+                                                    }
+                                                ?>
+                                            </td>
                                         @elseif(isset($banner->product_id))
-                                            <td>{{translate('product')}}: {{ substr(\App\Model\Product::find($banner->product_id)?->name,0, 15) }}...</td>
+                                            <td>
+                                                {{translate('product')}} : 
+                                                {{-- {{ substr(\App\Model\Product::find($banner->product_id)?->name,0, 15) }} --}}
+                                                <?php 
+                                                    $product_name = \App\Model\Product::find($banner->product_id)?->name;
+                                                    if (strlen($product_name) > 25) {
+                                                        echo substr($product_name, 0, 25)."...";
+                                                    } else {
+                                                        echo $product_name;
+                                                    }
+                                                ?>
+                                            </td>
                                         @else
                                             <td></td>
                                         @endif
