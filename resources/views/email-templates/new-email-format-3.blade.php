@@ -167,7 +167,7 @@
                                           if(json_decode($detail['product_details'])->discount_type == 'percent') {
                                               $tot_discount = ($amount * json_decode($detail['product_details'])->discount) / 100;
                                           } else {
-                                              $tot_discount = json_decode($detail['product_details'])->discount;
+                                              $tot_discount = json_decode($detail['product_details'])->discount * $detail['quantity'];
                                           }
 
                                           $taxable_amt = 0;
@@ -299,7 +299,7 @@
               </tbody>
             </table>
             <hr>
-            <div class="mb-2" id="mail-footer"> order Placement </div>
+            <div class="mb-2" id="mail-footer"> Order Placement </div>
             <div> Thanks &amp; Regards, </div>
             <div class="mb-4"> {{ $company_name }} </div>
           </td>
@@ -388,7 +388,7 @@ margin: 0 7px;"></span>
         </tr>
         <tr>
           <td style="text-align: center;">
-            <span class="copyright" id="mail-copyright"> Copyright 2023 take2eat. All right reserved </span>
+            <span class="copyright" id="mail-copyright"> Copyright 2024 TastyThrust all rights reserved. </span>
           </td>
         </tr>
       </tbody>
