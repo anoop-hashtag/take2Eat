@@ -134,7 +134,7 @@
                                         {{$promotion['promotion_name']}}
                                     @else
                                         <div width="50">
-                                            <img width="100" src="{{asset('storage/app/public/promotion')}}/{{$promotion['promotion_name']}}"
+                                            <img class="mx-80px" width="100" src="{{asset('storage/app/public/promotion')}}/{{$promotion['promotion_name']}}"
                                                  onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'">
                                         </div>
                                     @endif

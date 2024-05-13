@@ -70,7 +70,7 @@
                                             <div class="upload-file">
                                                 <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
                                                 <div class="upload-file__img_drag upload-file__img">
-                                                    <img width="150" id="viewer" src="{{asset('public/assets/admin/img/icons/upload_img.png')}}" alt="">
+                                                    <img width="150" class="img-fitarea" id="viewer" src="{{asset('public/assets/admin/img/icons/upload_img.png')}}" alt="">
                                                 </div>
                                             </div>
                                         </div>

@@ -82,7 +82,7 @@
                                         <div class="upload-file">
                                             <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
                                             <div class="upload-file__img_drag upload-file__img">
-                                                <img width="176" src="{{asset('public/assets/admin/img/icons/upload_img.png')}}" alt="">
+                                                <img width="176"  style="height:176px; oject-fit:cover; border-radius:10px;" src="{{asset('public/assets/admin/img/icons/upload_img.png')}}" alt="">
                                             </div>
                                         </div>
                                     </div>
