@@ -70,7 +70,7 @@
                                     <div class="d-flex flex-wrap gap-2 justify-content-sm-end">
                                         @if($order['order_type']!='take_away' && $order['order_type'] != 'pos' && $order['order_type'] != 'dine_in')
 
-                                            <div class="hs-unfold ml-1">
+                                            <div class="hs-unfold">
                                                 @if($order['order_status']=='out_for_delivery')
                                                     @php($origin=\App\Model\DeliveryHistory::where(['deliveryman_id'=>$order['delivery_man_id'],'order_id'=>$order['id']])->first())
                                                     @php($current=\App\Model\DeliveryHistory::where(['deliveryman_id'=>$order['delivery_man_id'],'order_id'=>$order['id']])->latest()->first())
