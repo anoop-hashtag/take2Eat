@@ -55,7 +55,7 @@
                    
                     <tr>
                         <td>
-                            <div class="media align-items-center gap-10">
+                            <div class="media align-items-center gap-10 pos-width">
                                 <img class="avatar avatar-sm" src="{{asset('storage/app/public/product')}}/{{$cartItem['image']}}"
                                         onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'" alt="{{$cartItem['name']}} image">
                                 <div class="media-body">

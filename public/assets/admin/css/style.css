@@ -779,7 +779,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 }
 
 input.qty {
-  width: 50px;
+  width: 55px;
   height: 30px;
   text-align: center;
 }
@@ -2976,13 +2976,19 @@ span.orderidsd {
 }
 span.orderamountsd {
   display: block;
-  min-width: 85px;
+  min-width: 100px;
 }
 span.orderdeatesd {
   display: block;
   width: 88px;
 }
-
+.listStyle{
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+.pos-width{
+  width: 135px !important;
+}
 
 
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
