@@ -45,7 +45,7 @@ class KitchenController extends Controller
             'f_name' => 'required',
             'l_name' => 'required',
             'phone' => 'required|unique:users,phone',
-            'country_code' => 'required',
+            // 'country_code' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             'image' => 'required',
@@ -55,7 +55,7 @@ class KitchenController extends Controller
             'f_name.required' => translate('First name is required!'),
             'l_name.required' => translate('Last name is required!'),
             'phone.required' => translate('Phone is required'),
-            'country_code'   => translate('Country code is required'),
+            // 'country_code'   => translate('Country code is required'),
             'phone.unique' => translate('This phone is already taken! please try another one'),
             'email.required' => translate('Email is Required'),
             'email.email' => translate('Field type must be email'),
@@ -72,8 +72,9 @@ class KitchenController extends Controller
             $chef->f_name = $request->f_name;
             $chef->l_name = $request->l_name;
            
-            $chef->country_code = $request->country_code;
-            $chef->phone = $request->country_code . preg_replace("/\D/", "", $request->phone);
+            $chef->country_code = isset($request->country_code) ? $request->country_code : '+91';
+            $chef->phone = preg_replace("/\D/", "", $request->phone);
+            $chef->country_code_string = isset($request->country_code_string) ? $request->country_code_string : 'in';
             
             $chef->email = $request->email;
             $chef->user_type = 'kitchen';
@@ -162,7 +163,7 @@ class KitchenController extends Controller
         $request->validate([
             'f_name' => 'required',
             'l_name' => 'required',
-            'country_code' =>'required',
+            // 'country_code' =>'required',
             'phone' => 'required|unique:users,phone,' . $id,
             'email' => 'required|email|unique:users,email,' . $id,
             'branch_id' => 'required',
@@ -171,7 +172,7 @@ class KitchenController extends Controller
             'l_name.required' => translate('Last name is required!'),
             
             'phone.required' => translate('Phone is Required'),
-            'country_code'   => translate('Country code is required'),
+            // 'country_code'   => translate('Country code is required'),
             'phone.unique' => translate('This email is already taken! please try another one'),
             'email.required' => translate('Email is Required'),
             'email.email' => translate('Field type must be email'),
@@ -199,9 +200,15 @@ class KitchenController extends Controller
 
             $chef->f_name = $request->f_name;
             $chef->l_name = $request->l_name;
-            $chef->country_code = $request->country_code;
-            // $chef->phone = preg_replace("/\D/", "", $request->phone);
-            $chef->phone =  $request->country_code .$request->phone;
+
+            if(isset($request->country_code) && $request->country_code != '') {
+                $chef->country_code = $request->country_code;
+            }
+            $chef->phone =  $request->phone;
+            if(isset($request->country_code_string) && $request->country_code_string != '') {
+                $chef->country_code_string = $request->country_code_string ;
+            }
+
             $chef->email = $request->email;
             $chef->password = $password;
             $chef->image = $request->has('image') ? Helpers::update('kitchen/', $chef->image, 'png', $request->file('image')) : $chef->image;
