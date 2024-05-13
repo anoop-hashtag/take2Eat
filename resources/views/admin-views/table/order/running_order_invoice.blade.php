@@ -127,7 +127,7 @@
                                 @php($add_on_taxes=json_decode($detail['add_on_taxes'],true))
 
                                 <tr>
-                                    <td class="">
+                                    <td class="" style="text-align:center">
                                         {{$detail['quantity']}}
                                     </td>
                                     <td class="">

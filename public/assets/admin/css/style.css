@@ -2959,7 +2959,37 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   background-color: #ff611d;
   border-color: #ff611d;
 }
-/*--------------------------------all media queries-------------------*/
+.d-flex.align-items-center.justify-content-center.active.pos-image img {
+  max-width: 160px;
+  max-height: 106px;
+  height: 100%;
+  object-fit: cover;
+}
+
+span.snnumber {
+  display: block;
+  width: 38px;
+}
+span.orderidsd {
+  display: block;
+  width: 60px;
+}
+span.orderamountsd {
+  display: block;
+  min-width: 85px;
+}
+span.orderdeatesd {
+  display: block;
+  width: 88px;
+}
+
+
+
+/*---------------------------------------------------all media queries-------------------------------------------------------------*/
+
+
+
+
 @media only screen and  (max-width: 1650px) {
   .check-item {
     font-size: 12px;
@@ -3445,10 +3475,10 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
  .product-style{
   font-size: 10px;
  }
-  .table-style td,.table-style th{
+  /* .table-style td,.table-style th{
     padding: 1rem 0.2rem!important;
     font-size: 10px!important;
-  }
+  } */
   .table-style .gap-style{
     gap:0.5rem;
   }
@@ -3558,7 +3588,9 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 .order_id{
   padding-right: 0;
 }
-.date-order span{
+.date-order span {
+  top: -3px;
+  position: relative;
   font-size: 11px;
 }
 .right-font{
@@ -3605,18 +3637,15 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   margin: 0rem 0 0rem 1.4rem !important;
 }
   .pos-product-item_thumb {
-    height: 120px;
-    width: 120px;
+    height: 132px;
 }
 .invoice_print {
   max-width: 320px;
 }
 div#printableArea #printableAreaContent{
-  max-width: 280px;
+  max-width: 310px;
 }
-a.btn.btn-danger.non-printable {
-  margin-top: 5px;
-}
+
 .invoice-logo img {
   max-width: 100px;
 }
@@ -3630,6 +3659,9 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and (max-width: 575px) {
+  .set_table.responsive-ui.customer-style.table-css .dataTables_wrapper .dataTables_filter {
+    margin: 0.5rem 0 0 0 !important;
+}
   .grid-chart > div {
     grid-column: 1/-1 !important;
   }
@@ -3709,6 +3741,9 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (max-width: 400px) {
+  a.btn.btn-danger.non-printable {
+    margin-top: 5px;
+  }
   .check-item {
     max-width: 180px;
   }
@@ -3760,6 +3795,9 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and (max-width: 480px) {
+  .form-control.d-flex.flex-column-3.p-area label{
+  padding: 5px !important;
+} 
   .dataTables_wrapper .dataTables_paginate {
     margin-top: .5em;
     margin-right: 0;
@@ -3780,6 +3818,7 @@ select.custom-select.w-auto.min-width-170px {
   } 
 }
 @media only screen and  (max-width: 374px) { 
+ 
   .d-flex.flex-wrap.mb-3 label.control-label {
     font-size: 16px;
 }
@@ -3794,4 +3833,3 @@ select.custom-select.w-auto.min-width-170px {
     opacity: 1;
   }
 }
-

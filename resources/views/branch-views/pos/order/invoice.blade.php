@@ -96,7 +96,7 @@
                     $amount = 0;
                 ?>
                 <tr>
-                    <td class="">
+                    <td class="" style="text-align:center">
                         {{$detail['quantity']}}
                     </td>
                     <td class="" style="text-align:left">

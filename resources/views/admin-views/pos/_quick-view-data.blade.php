@@ -7,7 +7,7 @@
 <div class="modal-body">
     <div class="d-flex flex-wrap gap-3">
         <!-- Product gallery-->
-        <div class="d-flex align-items-center justify-content-center active">
+        <div class="d-flex align-items-center justify-content-center active pos-image">
             <img class="img-responsive rounded" width="160"
                  src="{{asset('storage/app/public/product')}}/{{$product['image']}}"
                  onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
@@ -205,10 +205,10 @@
                     </div>
                 @endif
                 <div class="row no-gutters mt-4 text-dark" id="chosen_price_div">
-                    <div class="col-2">
+                    <div class="col-4 col-sm-2 col-md-2 col-lg-2">
                         <div class="product-description-label">{{translate('Total_Price')}}:</div>
                     </div>
-                    <div class="col-10">
+                    <div class="col-8 col-sm-10 col-md-10 col-lg-10">
                         <div class="product-price">
                             <strong id="chosen_price"></strong>
                         </div>

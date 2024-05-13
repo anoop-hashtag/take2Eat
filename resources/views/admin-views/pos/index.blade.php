@@ -263,7 +263,7 @@
                                     <label class="input-label font-weight-semibold fz-16 text-dark">{{translate('Select Order Type')}}</label>
                                     <div class="">
                                         <!-- Custom Radio -->
-                                        <div class="form-control d-flex flex-column-3">
+                                        <div class="form-control d-flex flex-column-3 p-area">
                                             <label class="custom-radio d-flex gap-2 align-items-center m-0">
                                                 <input type="radio" class="" name="order_type" onclick="select_order_type('take_away')" {{ !session()->has('order_type') || session()->get('order_type') == 'take_away' ? 'checked' : '' }}>
                                                 <span class="media align-items-center mb-0">

@@ -96,7 +96,7 @@
                     $addon_price = array();
                 ?>
                 <tr>
-                    <td class="">
+                    <td class="" style="text-align:center">
                         {{$detail['quantity']}}
                     </td>
                     <td class="" style="text-align:left">

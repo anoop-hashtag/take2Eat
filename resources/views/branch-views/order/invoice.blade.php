@@ -226,7 +226,7 @@
                                     {{-- {{translate('Discount')}}
                                     : {{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']) }} --}}
                                 </td>
-                                <td class="">
+                                <td class="" style="text-align:center">
                                     {{$detail['quantity']}}
                                 </td>
                                 <td style="width: 28%;padding-right:4px; text-align:right">
