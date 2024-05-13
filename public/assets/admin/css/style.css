@@ -736,6 +736,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+  border: 1px solid  #e7eaf3 !important;
 }
 
 .form-ellipsis + .select2,
