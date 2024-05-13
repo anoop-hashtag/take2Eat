@@ -95,7 +95,7 @@
                     <div class="row">
                         <div class="col-12">
                             <center>
-                                <h2 style="color: rgba(96,96,96,0.68)">
+                                <h2 style="color: rgba(96,96,96,0.68);font-size:16px">
                                     <i class="tio-shopping-cart-outlined"></i> {{ translate('You have a new order, please check.') }}
                                 </h2>
                                 <hr>

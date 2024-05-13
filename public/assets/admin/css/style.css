@@ -1563,7 +1563,7 @@ body {
 }
 
 .btn {
-  padding: 0.54688rem 1.5rem;
+  padding: 0.54688rem 0.8rem;
 }
 
 .table_dropdown-menu {
@@ -2944,8 +2944,12 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   max-width: 100px;
   height: 80px;
   object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid  #e7eaf3;
 }
-
+.avatar img.rounded {
+  border: 1px solid  #e7eaf3;
+}
  .dataTables_wrapper .dataTables_paginate .paginate_button {
   box-sizing: border-box !important;
   display: inline-block !important;

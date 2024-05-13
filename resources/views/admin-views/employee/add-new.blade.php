@@ -79,7 +79,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="text-center mb-3">
-                                        <img width="180" class="rounded-10 border" id="viewer"
+                                        <img width="180" style="height:180px; max-width:180px; object-fit:cover" class="rounded-10 border" id="viewer"
                                             src="{{asset('public\assets\admin\img\400x400\img2.jpg')}}" alt="image"/>
                                     </div>
                                     <label for="name">{{translate('employee_image')}}</label>
