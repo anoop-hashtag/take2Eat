@@ -66,12 +66,17 @@
                                           
                                         <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
 
-                                        <input type="hidden"  id="hidden-country-code"    name="country_code">
+                                        <input type="hidden" id="hidden-country-code" name="country_code">
+
+                                        <input type="hidden"  id="hidden-country-code-string"  name="country_code_string">
+
+                                            {{-- only for show store country code --}}
+                                        <input type="hidden"  id="hidden-country-code-string-db" value="{{ $chef['country_code_string'] }}">
                                        
                                 </div>
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
-                                <input type="text" name="phone" value="{{substr($chef['phone'],3)}}" class="form-control" id="phone"
+                                <input type="number" name="phone" value="{{ $chef['phone'] }}" class="form-control" id="phone"
                                 placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7" required style="border-radius:0 .3125rem .3125rem 0" oninput="validatePhone()">
                          
                                

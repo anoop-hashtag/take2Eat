@@ -50,12 +50,14 @@
                                         <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
 
                                         <input type="hidden"  id="hidden-country-code"  name="country_code">
-                                       
+                                        <input type="hidden"  id="hidden-country-code-string"  name="country_code_string">
+
+                                            {{-- only for show store country code --}}
+                                        <input type="hidden"  id="hidden-country-code-string-db" value="">
                                 </div>
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger" >*</span></label>
-                                <input type="text"  name="phone"  value="{{old('phone')}}" class="form-control" id="phone1"
-                                onkeypress="return isNumber(event)"   min="7" maxlength="15" minlength="7"   placeholder="{{translate('Ex')}} : +88017********" style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()" required>
+                                <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone1" min="10" maxlength="10" minlength="10"  placeholder="{{translate('Ex')}} : +88017********" style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()" onkeyup="validateMobileNumber(this)" required>
                              </div>
                              <script>
                                 function validatePhone() {
@@ -157,37 +159,4 @@
             width: 'resolve'
         });
     </script>
-    <script>
-        function isNumber(evt) {
-  evt = (evt) ? evt : window.event;
-  var charCode = (evt.which) ? evt.which : evt.keyCode;
-  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-    // alert("Please enter only Numbers.");
-    return false;
-  }
-  if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
-    alert("Please enter 10 Digit only Numbers.");
-    return false;
-  }
-
-  return true;
-}
-
-var phoneInput = document.getElementById('phone');
-var myForm = document.forms.myForm;
-var result = document.getElementById('result');  // only for debugging purposes
-
-phoneInput.addEventListener('input', function (e) {
-  var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-  e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-});
-
-myForm.addEventListener('submit', function(e) {
-  phoneInput.value = phoneInput.value.replace(/\D/g, '');
-  result.innerText = phoneInput.value;  // only for debugging purposes
-  
-  e.preventDefault(); // You wouldn't prevent it
-});
-
-        </script>
 @endpush

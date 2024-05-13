@@ -74,8 +74,8 @@
                                 </div>
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
-                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control" id="phone1"
-                                           placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7"  required style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()">
+                                    <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone1"
+                                           placeholder="{{translate('Ex')}} : 88017********" min="10" maxlength="10" minlength="10"  required style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()">
                                
                                 </div>
                                </div>
@@ -91,8 +91,8 @@
                                     phoneInput.value = numericValue;
                             
                                     // Check if the numeric value is within the desired range
-                                    if (numericValue.length < 7 || numericValue.length > 15) {
-                                        phoneInput.setCustomValidity('Phone number must be between 7 and 15 numeric characters.');
+                                    if (numericValue.length < 10 || numericValue.length > 10) {
+                                        phoneInput.setCustomValidity('Phone number must be 10 numeric digits.');
                                     } else {
                                         phoneInput.setCustomValidity('');
                                     }
