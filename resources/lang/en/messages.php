@@ -2245,4 +2245,5 @@
   'Enter captcha' => 'Enter captcha',
   'Branch sign in' => 'Branch sign in',
   'Jankipuram' => 'Jankipuram',
+  'Promotion Banner' => 'Promotion Banner',
 );
