@@ -2989,7 +2989,14 @@ span.orderdeatesd {
 .pos-width{
   width: 135px !important;
 }
-
+.p-area{
+  padding: 5px ;
+}
+.p-area label{
+  padding: 0;
+  flex: none !important;
+  margin: 5px auto !important;
+}
 
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 
@@ -3481,10 +3488,7 @@ span.orderdeatesd {
  .product-style{
   font-size: 10px;
  }
-  /* .table-style td,.table-style th{
-    padding: 1rem 0.2rem!important;
-    font-size: 10px!important;
-  } */
+
   .table-style .gap-style{
     gap:0.5rem;
   }
@@ -3762,7 +3766,12 @@ div#printableArea #printableAreaContent{
     width: 100%;
 }
 }
+
 @media only screen and  (max-width: 375px) {
+  label.custom-radio.d-flex.gap-2.align-items-center.m-0 input {
+    height: 10px;
+    width: 10px;
+}
   .check-item {
     max-width: 100%;
   }
@@ -3773,7 +3782,7 @@ div#printableArea #printableAreaContent{
     padding: 3px !important;
     flex: none !important;
     display: flex;
-    font-size: 13px;
+    font-size: 12px !important;
     margin: auto !important;
 }
 }
@@ -3811,6 +3820,13 @@ div#printableArea #printableAreaContent{
   }
 }
 @media only screen and (max-width: 480px) {
+  label.custom-radio.d-flex.gap-2.align-items-center.m-0 input {
+    height: 10px;
+    width: 10px;
+}
+  .check-item {
+    max-width: 100%;
+  }
   .form-control.d-flex.flex-column-3.p-area label{
   padding: 5px !important;
 } 
