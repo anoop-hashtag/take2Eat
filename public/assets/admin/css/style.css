@@ -112,7 +112,8 @@
 }
 .product-label-half span:nth-child(1) {
   display: inline-block;
-  width: 50px;
+  min-width: 50px;
+  max-width: 85px;
   text-align: start;
 }
 .product-label-half span:nth-child(2){
