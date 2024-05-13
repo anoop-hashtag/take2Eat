@@ -30,11 +30,12 @@
                                     <a type="button" href="{{ route('admin.business-settings.restaurant.qrcode.print') }}" class="btn btn-primary pt-1"><i class="tio-print"></i> {{translate('Print')}}</a>
                                 </div>
                             </div>
-                            @php($restaurant_logo = \App\Models\EmailTemplate::get()[0]->logo)
+                            {{-- @php($restaurant_logo = \App\Models\EmailTemplate::get()[0]->logo) --}}
+                            @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
                             <div class="qr-wrapper" style="background: url({{asset('public/assets/admin/img/qr-bg.png')}}) no-repeat center center / 100% 100%">
                                 <a href="" class="qr-logo">
-                                    <img class="mb-2 mail-img-2" onerror="this.src='{{ asset('storage/app/public/qrcode/' . $restaurant_logo) }}'"
-                                    src="{{ asset('storage/app/public/qrcode/') }}/{{ $data['logo']??'' }}" id="logoViewer" alt="">
+                                    <img class="mb-2" onerror="this.src='{{ asset('storage/app/public/restaurant/' . $restaurant_logo) }}'"
+                                    src="{{ asset('storage/app/public/restaurant/') }}/{{ $data['logo']??'' }}" id="logoViewer" alt="">
 
                                 </a>
                                 <a class="view-menu" href="">
@@ -106,7 +107,7 @@
 {{--                                    </div>--}}
                                     <div class="col-12" id="branch_section">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Branch')}}</label>
+                                            <label class="input-label">{{translate('Branch')}} <span class="text-danger">*</span></label>
                                             <select class="form-control js-select2-custom" name="branch_id">
                                                 @foreach($branches as $branch)
                                                     <option value="{{ $branch['id'] }}">{{ $branch['name'] }}</option>
@@ -114,7 +115,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12" style="display: none">
                                         <div class="form-group">
                                             <label class="input-label">{{translate('Logo / Icon')}}</label>
                                             <label class="custom-file">
@@ -126,45 +127,45 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Title')}}</label>
+                                            <label class="input-label">{{translate('Title')}} <span class="text-danger">*</span></label>
                                             <input type="text" name="title" placeholder="{{ translate('Ex : Title') }}" class="form-control" value="{{old('title')}}" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Description')}}</label>
+                                            <label class="input-label">{{translate('Description')}} <span class="text-danger">*</span></label>
                                             <input type="text" name="description" placeholder="{{ translate('Ex : Description') }}" value="{{old('description')}}" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Opening Time')}}</label>
-                                            <input type="text" id="datetimepicker1" placeholder="--:--" class="form-control" name="opening_time" value="{{old('opening_time')}}" required>
-                                            <i class="tio-time-1"></i>
+                                            <label class="input-label">{{translate('Opening Time')}} <span class="text-danger">*</span></label>
+                                            <input type="time" class="form-control" name="opening_time" value="{{old('opening_time')}}" required>
+                                            {{-- <i class="tio-time-1"></i> --}}
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Closing Time')}}</label>
-                                            <input type="text" id="datetimepicker2" placeholder="--:--" class="form-control" name="closing_time" value="{{old('closing_time')}}" required>
-                                            <i class="tio-time-1"></i>
+                                            <label class="input-label">{{translate('Closing Time')}} <span class="text-danger">*</span></label>
+                                            <input type="time" class="form-control" name="closing_time" value="{{old('closing_time')}}" required>
+                                            {{-- <i class="tio-time-1"></i> --}}
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Phone')}}</label>
+                                            <label class="input-label">{{translate('Phone')}} <span class="text-danger">*</span></label>
                                             <input type="text" name="phone" id="phone" placeholder="{{ translate('Ex : +123456') }}" value="{{old('phone')}}" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Website Link')}}</label>
+                                            <label class="input-label">{{translate('Website Link')}} <span class="text-danger">*</span></label>
                                             <input type="text" name="website" value="{{old('website')}}" placeholder="{{ translate('Ex : www.website.com') }}" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Social Media Name')}}</label>
+                                            <label class="input-label">{{translate('Social Media Name')}} <span class="text-danger">*</span></label>
                                             <input type="text" placeholder="{{ translate('@social media name')  }}" name="social_media" value="{{old('social_media')}}" class="form-control" required>
                                         </div>
                                     </div>
