@@ -190,6 +190,9 @@ class OrderController extends Controller
                     $available_stock = $branch_product->stock - $branch_product->sold_quantity;
                     if ($available_stock < $c['quantity']){
                         return response()->json(['errors' => [['code' => 'stock', 'message' => translate('stock limit exceeded')]]], 403);
+                    } else {
+                        $product->discount = $branch_product->discount;
+                        $product->discount_type = $branch_product->discount_type;
                     }
                 }
 
