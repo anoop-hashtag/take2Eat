@@ -3766,6 +3766,16 @@ div#printableArea #printableAreaContent{
   .check-item {
     max-width: 100%;
   }
+  .form-control.d-flex.flex-column-3.p-area{
+    padding: 2px !important;
+  }
+  .form-control.d-flex.flex-column-3.p-area label {
+    padding: 3px !important;
+    flex: none !important;
+    display: flex;
+    font-size: 13px;
+    margin: auto !important;
+}
 }
 @media only screen and  (max-width: 430px) {
   .coupon__details-left {

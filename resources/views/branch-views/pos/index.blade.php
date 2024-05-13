@@ -10,6 +10,19 @@
         transform: translateX(7px);
         padding-left: 10px;
     } */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    min-width: 1.5em !important;
+    padding: .5em 1em !important;
+    margin-left: 2px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    color: #8c98a4 !important;
+    border: 1px solid transparent !important;
+    border-radius: .3125rem !important;
+}
     #location_map_div #pac-input {
     height: 40px;
     border: 1px solid #fbc1c1;
