@@ -1115,8 +1115,8 @@ class POSController extends Controller
             'contact_person_name' => 'required',
             'contact_person_number' => 'required|min:10|max:10',
             'address' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            // 'latitude' => 'required',
+            // 'longitude' => 'required',
         ]);
 
         if ($validator->fails()) {
