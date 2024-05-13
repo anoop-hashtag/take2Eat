@@ -23,6 +23,12 @@
     border: 1px solid transparent !important;
     border-radius: .3125rem !important;
 }
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff!important;
+    background-color: #ff611d;
+    border-color: #ff611d;
+}
     #location_map_div #pac-input {
     height: 40px;
     border: 1px solid #fbc1c1;
@@ -127,7 +133,7 @@
                                     <label class="input-label font-weight-semibold fz-16 text-dark">{{translate('Select Order Type')}}</label>
                                     <div class="">
                                         <!-- Custom Radio -->
-                                        <div class="form-control d-flex flex-column-3">
+                                        <div class="form-control d-flex flex-column-3 p-area">
                                             <label class="custom-radio d-flex gap-2 align-items-center m-0">
                                                 <input type="radio" class="" name="order_type" onclick="select_order_type('take_away')" {{ !session()->has('order_type') || session()->get('order_type') == 'take_away' ? 'checked' : '' }}>
                                                 <span class="media align-items-center mb-0">

@@ -21,6 +21,12 @@
     border: 1px solid transparent !important;
     border-radius: .3125rem !important;
 }
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff!important;
+    background-color: #ff611d;
+    border-color: #ff611d;
+}
     /* #location_map_div #pac-input{
         height: 40px;
         border: 1px solid #fbc1c1;
