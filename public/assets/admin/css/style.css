@@ -2959,7 +2959,13 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   background-color: #ff611d;
   border-color: #ff611d;
 }
-/*--------------------------------all media queries-------------------*/
+
+
+/*---------------------------------------------------all media queries-------------------------------------------------------------*/
+
+
+
+
 @media only screen and  (max-width: 1650px) {
   .check-item {
     font-size: 12px;
@@ -3605,8 +3611,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   margin: 0rem 0 0rem 1.4rem !important;
 }
   .pos-product-item_thumb {
-    height: 120px;
-    width: 120px;
+    height: 132px;
 }
 .invoice_print {
   max-width: 320px;
@@ -3760,6 +3765,9 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and (max-width: 480px) {
+  .form-control.d-flex.flex-column-3.p-area label{
+  padding: 5px !important;
+} 
   .dataTables_wrapper .dataTables_paginate {
     margin-top: .5em;
     margin-right: 0;
@@ -3780,6 +3788,7 @@ select.custom-select.w-auto.min-width-170px {
   } 
 }
 @media only screen and  (max-width: 374px) { 
+ 
   .d-flex.flex-wrap.mb-3 label.control-label {
     font-size: 16px;
 }
