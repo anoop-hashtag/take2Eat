@@ -72,10 +72,10 @@
                                 <table class="table  table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>S.No.</th>
-                                            <th>{{ translate('Order ID') }}</th>
-                                            <th>{{ translate('Order Amount') }}</th>
-                                            <th>{{ translate('Order Date') }}</th>
+                                            <th><span class="snnumber">S.No.</span></th>
+                                            <th><span class="orderidsd">{{ translate('Order ID') }}</th>
+                                            <th><span class="orderamountsd">{{ translate('Order Amount') }}</th>
+                                            <th><span class="orderdeatesd">{{ translate('Order Date') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
