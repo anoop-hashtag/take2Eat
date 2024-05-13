@@ -200,7 +200,7 @@
                                 @php($add_on_taxes=json_decode($detail['add_on_taxes'],true))
 
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td style="vertical-align: unset">{{ $loop->iteration }}</td>
                                     <td>
                                         <div class="media gap-3 w-max-content gap-style">
 
