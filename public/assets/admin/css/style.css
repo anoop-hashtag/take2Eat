@@ -1686,8 +1686,11 @@ aside .navbar-vertical-aside-has-menu .nav-sub .nav-link {
   border-radius: 5px;
   -o-object-fit: cover;
   object-fit: cover;
+  border: 1px solid #e7eaf3;
 }
-
+img.avatar-img.rounded {
+  border: 1px solid #e7eaf3;
+}
 /* coupon details */
 .coupon-details {
   border-radius: 10px;
