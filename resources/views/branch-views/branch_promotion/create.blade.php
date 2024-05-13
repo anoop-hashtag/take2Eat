@@ -114,7 +114,7 @@
                                 <th>{{translate('SL')}}</th>
                                 <th>{{translate('Branch')}}</th>
                                 <th>{{translate('Promotion type')}}</th>
-                                <th>{{translate('Promotion Name')}}</th>
+                                <th>{{translate('Promotion Banner')}}</th>
                                 <th>{{translate('action')}}</th>
                             </tr>
                         </thead>
