@@ -180,7 +180,7 @@
                             if($discount_type == 'percent') {
                                 $discount_amt = (($amount * $discount) / 100 );
                             } else {
-                                $discount_amt = ($amount - $discount);
+                                $discount_amt = ($discount);
                             }
                         ?>
 
