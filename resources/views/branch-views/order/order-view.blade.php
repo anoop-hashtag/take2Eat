@@ -321,7 +321,7 @@
                                             if(json_decode($detail['product_details'])->discount_type == 'percent') {
                                                 $tot_discount = ($amount * json_decode($detail['product_details'])->discount) / 100;
                                             } else {
-                                                $tot_discount = json_decode($detail['product_details'])->discount;
+                                                $tot_discount = json_decode($detail['product_details'])->discount * $detail['quantity'];
                                             }
                                         ?>
                                       
