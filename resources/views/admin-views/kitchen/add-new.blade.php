@@ -75,30 +75,10 @@
                                 <div class="col-area-10">
                                 <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
                                     <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone1"
-                                           placeholder="{{translate('Ex')}} : 88017********" min="10" maxlength="10" minlength="10"  required style="border-radius:0 .3125rem  .3125rem 0" oninput="validatePhone()">
+                                           placeholder="{{translate('Ex')}} : 88017********" required style="border-radius:0 .3125rem  .3125rem 0" onkeyup="validateMobileNumber(this)">
                                
                                 </div>
                                </div>
-                               <script>
-                                function validatePhone() {
-                                    var phoneInput = document.getElementById('phone1');
-                                    var phoneValue = phoneInput.value;
-                            
-                                    // Remove non-numeric characters
-                                    var numericValue = phoneValue.replace(/\D/g, '');
-                            
-                                    // Update the input value with the numeric-only value
-                                    phoneInput.value = numericValue;
-                            
-                                    // Check if the numeric value is within the desired range
-                                    if (numericValue.length < 10 || numericValue.length > 10) {
-                                        phoneInput.setCustomValidity('Phone number must be 10 numeric digits.');
-                                    } else {
-                                        phoneInput.setCustomValidity('');
-                                    }
-                                }
-                            </script>
-                                
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>

@@ -58,52 +58,26 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3 ">
-                               <div class="content-row">
+                              <div class="content-row">
                                 <div class="col-area-2">
-                                <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
+                                    <label for="name">{{translate('Code')}} <span class="text-danger">*</span></label>
                                     {{-- <input type="hidden" name="country_code" value="{{old('country_code')}}" class="form-control" id="country_code" 
                                            placeholder="{{translate('Ex')}} : +91" required> --}}
                                           
-                                        <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
+                                    <div  id="country-dropdown" class="form-control" style="z-index: 1;"></div>
+                                    <input type="hidden" id="hidden-country-code" name="country_code">
+                                    <input type="hidden"  id="hidden-country-code-string"  name="country_code_string">
 
-                                        <input type="hidden" id="hidden-country-code" name="country_code">
-
-                                        <input type="hidden"  id="hidden-country-code-string"  name="country_code_string">
-
-                                            {{-- only for show store country code --}}
-                                        <input type="hidden"  id="hidden-country-code-string-db" value="{{ $chef['country_code_string'] }}">
+                                        {{-- only for show store country code --}}
+                                    <input type="hidden"  id="hidden-country-code-string-db" value="{{ $chef['country_code_string'] }}">
                                        
                                 </div>
                                 <div class="col-area-10">
-                                <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
-                                <input type="number" name="phone" value="{{ $chef['phone'] }}" class="form-control" id="phone"
-                                placeholder="{{translate('Ex')}} : 88017********" min="7" maxlength="15" minlength="7" required style="border-radius:0 .3125rem .3125rem 0" oninput="validatePhone()">
-                         
-                               
+                                    <label for="name">{{translate('Phone')}} <span class="text-danger">*</span> </label>
+                                    <input type="number" name="phone" value="{{ $chef['phone'] }}" class="form-control" id="phone" placeholder="{{translate('Ex')}} : 88017********" required style="border-radius:0 .3125rem .3125rem 0" oninput="validatePhone()" onkeyup="validateMobileNumber(this)">
                                 </div>
-                                <script>
-                                    function validatePhone() {
-                                        var phoneInput = document.getElementById('phone');
-                                        var phoneValue = phoneInput.value;
-                                
-                                        // Remove non-numeric characters
-                                        var numericValue = phoneValue.replace(/\D/g, '');
-                                
-                                        // Update the input value with the numeric-only value
-                                        phoneInput.value = numericValue;
-                                
-                                        // Check if the numeric value is within the desired range
-                                        if (numericValue.length < 7 || numericValue.length > 15) {
-                                            phoneInput.setCustomValidity('Phone number must be between 7 and 15 numeric characters.');
-                                        } else {
-                                            phoneInput.setCustomValidity('');
-                                        }
-                                    }
-                                </script>
-                               </div>
-                             
-                                
-                                </div>
+                              </div>
+                            </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="name">{{translate('Email')}} <span class="text-danger">*</span></label>
                                     <input type="email" name="email" value="{{$chef['email']}}" class="form-control" id="email"
