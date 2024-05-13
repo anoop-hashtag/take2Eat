@@ -3763,6 +3763,10 @@ div#printableArea #printableAreaContent{
 }
 }
 @media only screen and  (max-width: 375px) {
+  label.custom-radio.d-flex.gap-2.align-items-center.m-0 input {
+    height: 10px;
+    width: 10px;
+}
   .check-item {
     max-width: 100%;
   }
@@ -3811,6 +3815,13 @@ div#printableArea #printableAreaContent{
   }
 }
 @media only screen and (max-width: 480px) {
+  label.custom-radio.d-flex.gap-2.align-items-center.m-0 input {
+    height: 10px;
+    width: 10px;
+}
+  .check-item {
+    max-width: 100%;
+  }
   .form-control.d-flex.flex-column-3.p-area label{
   padding: 5px !important;
 } 
