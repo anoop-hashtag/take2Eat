@@ -3451,10 +3451,10 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
  .product-style{
   font-size: 10px;
  }
-  .table-style td,.table-style th{
+  /* .table-style td,.table-style th{
     padding: 1rem 0.2rem!important;
     font-size: 10px!important;
-  }
+  } */
   .table-style .gap-style{
     gap:0.5rem;
   }
@@ -3564,7 +3564,9 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 .order_id{
   padding-right: 0;
 }
-.date-order span{
+.date-order span {
+  top: -3px;
+  position: relative;
   font-size: 11px;
 }
 .right-font{
@@ -3619,9 +3621,7 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 div#printableArea #printableAreaContent{
   max-width: 280px;
 }
-a.btn.btn-danger.non-printable {
-  margin-top: 5px;
-}
+
 .invoice-logo img {
   max-width: 100px;
 }
@@ -3635,6 +3635,9 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and (max-width: 575px) {
+  .set_table.responsive-ui.customer-style.table-css .dataTables_wrapper .dataTables_filter {
+    margin: 0.5rem 0 0 0 !important;
+}
   .grid-chart > div {
     grid-column: 1/-1 !important;
   }
@@ -3714,6 +3717,9 @@ a.btn.btn-danger.non-printable {
   }
 }
 @media only screen and  (max-width: 400px) {
+  a.btn.btn-danger.non-printable {
+    margin-top: 5px;
+  }
   .check-item {
     max-width: 180px;
   }
@@ -3803,4 +3809,3 @@ select.custom-select.w-auto.min-width-170px {
     opacity: 1;
   }
 }
-
