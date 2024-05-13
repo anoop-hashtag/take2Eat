@@ -2959,6 +2959,12 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   background-color: #ff611d;
   border-color: #ff611d;
 }
+.d-flex.align-items-center.justify-content-center.active.pos-image img {
+  max-width: 160px;
+  max-height: 106px;
+  height: 100%;
+  object-fit: cover;
+}
 
 
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
