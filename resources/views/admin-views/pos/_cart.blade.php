@@ -182,11 +182,11 @@
                 <div class="row">
                     <div class="col-md-6 col-6 pr-1">
                         <input type="radio" id="cash" value="cash" name="type" hidden="" checked="">
-                        <label for="cash" class="btn btn-block btn-bordered px-4 m-1">{{translate('Cash')}}</label>
+                        <label for="cash" class="btn btn-block btn-bordered px-4">{{translate('Cash')}}</label>
                     </div>
                     <div class="col-md-6 col-6 pl-1" id="card_payment_li" style="display: {{ session('order_type') == 'home_delivery' ?  'none' : '' }}">
                         <input type="radio" value="card" id="card" name="type" hidden="">
-                        <label for="card" class="btn btn-block btn-bordered px-4 m-1">{{translate('Card')}}</label>
+                        <label for="card" class="btn btn-block btn-bordered px-4">{{translate('Card')}}</label>
                     </div>
                     <div class="col-md-12 col-12" id="pay_after_eating_li" style="display: {{ session('order_type') == 'dine_in' ?  'block' : 'none' }}">
                         <input type="radio" value="pay_after_eating" id="pay_after_eating" name="type" hidden="">
