@@ -96,7 +96,7 @@
                     <thead>
 
                     <tr>
-                        <th >{{translate('QTY')}}</th>
+                        <th style="width: 10%">{{translate('QTY')}}</th>
                         <th class="">{{translate('DESC')}}</th>
                         <th style="text-align:right; padding-right:4px">{{translate('Price')}}</th>
                     </tr>
@@ -131,7 +131,6 @@
                                         {{$detail['quantity']}}
                                     </td>
                                     <td class="">
-                                        <span class="whole-area-td">
                                         <span > {{ Str::limit($detail->product['name'], 200) }}</span><br>
                                         @if (count(json_decode($detail['variation'], true)) > 0)
                                             <strong class="font-size-sm">{{ translate('variation') }} : </strong>
@@ -187,7 +186,6 @@
                                         @endforeach
 
                                         {{translate('Discount : ')}}{{ \App\CentralLogics\Helpers::set_symbol($detail['discount_on_product']) }}
-                                        </span>
                                     </td>
                                     <td style="width: 28%;padding-right:4px; text-align:right">
                                         @php($amount=($detail['price']-$detail['discount_on_product'])*$detail['quantity'])
