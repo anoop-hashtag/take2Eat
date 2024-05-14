@@ -278,7 +278,7 @@
         }
 
     </script>
-    @push('script_2')
+
     <script>
         $(document).on('ready', function () {
             // INITIALIZATION OF NAV SCROLLER
