@@ -12,7 +12,7 @@
         <!-- Page Header -->
         <div class="d-flex justify-content-between mb-4">
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
-                <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/icons/app.png')}}" alt="">
+                <img width="20" class="avatar-img fit-image" src="{{asset('public/assets/admin/img/icons/app.png')}}" alt="">
                 <span class="page-header-title">
                     {{translate('System Addon')}}
                 </span>
