@@ -3007,6 +3007,15 @@ span.orderdeatesd {
   flex: none !important;
   margin: 5px auto !important;
 }
+span.px-2.py-1.badge-soft-c1.font-weight-bold.fz-12.rounded.lh-1 {
+  min-width: 70px;
+}
+
+
+
+
+
+
 
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 
