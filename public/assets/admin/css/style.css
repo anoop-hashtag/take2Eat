@@ -3504,6 +3504,9 @@ span.orderdeatesd {
   }
 }
 @media (min-width:575px) and (max-width: 640px) {
+  .card-body.p-0.new-responsive.tb-margin.dataTables_wrapper .dataTables_filter label{
+    margin: 0rem 2rem 0rem 2rem !important;
+  }
   .table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter label {
     margin: 0 2rem 0 1.4rem !important;
 }
@@ -3538,6 +3541,9 @@ span.orderdeatesd {
 }
 
 @media only screen and  (max-width:575px){
+  .card-body.p-0.new-responsive.tb-margin.dataTables_wrapper .dataTables_filter label{
+    margin: 0rem 2rem 0rem 2rem !important;
+  }
   .set_table.new-responsive.table-search .dataTables_wrapper .dataTables_filter {
     margin: 0 0 0 1.4rem !important;
 }

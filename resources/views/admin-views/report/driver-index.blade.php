@@ -108,10 +108,10 @@
                 </div>
             </div>
             <!-- End Header -->
-            <div class="card-body p-0 new-responsive">
+            <div class="card-body p-0 new-responsive tb-margin">
                 <div class="table-responsive datatable_wrapper_row printable_btn" style="padding-right: 10px;">
                     <table id="datatable"
-                            class="py-4 table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
+                            class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table w-100">
                         <thead class="thead-light">
                             <tr>
                                 <th>
