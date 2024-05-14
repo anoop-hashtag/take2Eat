@@ -3564,7 +3564,14 @@ img.avatar-img.fit-image{
 }
 }
 @media (min-width:575px) and (max-width: 640px) {
+
+  .sale-report .dataTables_wrapper .dataTables_filter label{
+    margin: 0 0 0 0.6rem !important;
+  }
   .set_table.new-responsive.sale-report.search-fit .dataTables_wrapper .dataTables_filter{
+    margin: 0 2rem 0 1rem !important;
+  }
+  .set_table.new-responsive.sale-report.search-fit .dataTables_wrapper .dataTables_filter label{
     margin: 0 2rem 0 1rem !important;
   }
   .set_table.search-mr .dataTables_wrapper .dataTables_filter label {
@@ -3659,11 +3666,10 @@ img.avatar-img.fit-image{
   }
   .one-search .dataTables_wrapper .dataTables_filter label {
     margin: 0 !important;
-}
+  }
   #pos_datatable_filter label {
     margin: 0 !important;
 }
-  
 .new-ui .dataTables_wrapper .dataTables_filter label {
   margin: 0rem 0 0rem 1.4rem !important;
 }
@@ -3882,6 +3888,16 @@ select.custom-select.w-auto.min-width-170px {
 }
 }
 @media only screen and  (max-width: 375px) {
+  td.text-right.p-2.px-3 h4 {
+    font-size: 11px;
+    font-weight: 600;
+}
+.js-nav-scroller.hs-nav-scroller-horizontal.mt-2 ul li.nav-item a.nav-link {
+  padding: 5px;
+}
+  .email-format-wrapper .p-2 {
+    padding: 7px !important;
+}
   a.btn.btn-danger.non-printable {
     margin-top: 5px;
   }
