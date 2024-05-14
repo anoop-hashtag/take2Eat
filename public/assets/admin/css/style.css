@@ -3564,7 +3564,7 @@ img.avatar-img.fit-image{
 }
 }
 @media (min-width:575px) and (max-width: 640px) {
-  .set_table.new-responsive.search-fit .dataTables_wrapper .dataTables_filter{
+  .set_table.new-responsive.sale-report.search-fit .dataTables_wrapper .dataTables_filter{
     margin: 0 2rem 0 1rem !important;
   }
   .set_table.search-mr .dataTables_wrapper .dataTables_filter label {
@@ -3620,7 +3620,7 @@ img.avatar-img.fit-image{
   } 
 }
 @media only screen and (max-width: 600px) {
-  .set_table.new-responsive.search-fit .dataTables_wrapper .dataTables_filter{
+  .set_table.new-responsive.sale-report.search-fit .dataTables_wrapper .dataTables_filter{
     margin: 0 2rem 0 1rem !important;
   }
   .new-card-top {
