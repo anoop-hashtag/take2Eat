@@ -27,8 +27,8 @@
                     @php($mail_status=\App\Model\BusinessSetting::where('key','registration_mail_status_dm')->first())
                     @php($mail_status = $mail_status ? $mail_status->value : '0')
                     <div class="card-body">
-                        <div class="maintainance-mode-toggle-bar d-flex flex-wrap justify-content-between border rounded align-items-center p-2">
-                            <h5 class="text-capitalize m-0 text--primary pl-2">
+                        <div class="row maintainance-mode-toggle-bar d-flex flex-wrap justify-content-between border rounded align-items-center p-2">
+                            <h5 class="col-8 text-capitalize m-0 text--primary pl-2">
                                 {{translate('Send_Mail_on_New_Delivery_Partner_Registration')}}
                                 <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('If_a_Delivery_Partner_registers_from_the_Customer_app_or_Website,_Admin_Landing_Page_or_Restaurant_app,_he_will_get_a_Registration_Confirmation_email.')}}">
                                     <i class="tio-info-outined"></i>
