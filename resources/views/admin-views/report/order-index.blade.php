@@ -506,35 +506,49 @@
                             <div class="tab-pane fade show active" id="this-week" role="tabpanel"
                                  aria-labelledby="this-week-tab">
                                 <!-- Card -->
-                                @foreach($orders as $order)
-                                    <a class="card card-border-left border-left-primary shadow-none rounded-0"
-                                       href="{{route('admin.orders.details',['id'=>$order['id']])}}">
-                                        <div class="card-body py-0">
-                                            <div class="row">
-                                                <div class="col-sm mb-2 mb-sm-0">
-                                                    <h2 class="font-weight-normal mb-1">#{{$order['id']}} <small
-                                                            class="font-size-sm text-body text-uppercase"></small>
-                                                    </h2>
-                                                    <h5 class="text-hover-primary mb-0">{{translate('order')}} {{translate('amount')}}
-                                                        : {{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</h5>
-                                                    <small
-                                                        class="text-body">{{date('d M Y',strtotime($order['created_at']))}}</small>
-                                                </div>
+                                
+                                <table id="this_week_datatable" style="width: 100%">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($orders as $order)
+                                        <tr>
+                                            <td>
+                                                <a class="card card-border-left border-left-primary shadow-none rounded-0"
+                                                href="{{route('admin.orders.details',['id'=>$order['id']])}}">
+                                                    <div class="card-body py-0">
+                                                        <div class="row">
+                                                            <div class="col-sm mb-2 mb-sm-0">
+                                                                <h2 class="font-weight-normal mb-1">#{{$order['id']}} <small
+                                                                        class="font-size-sm text-body text-uppercase"></small>
+                                                                </h2>
+                                                                <h5 class="text-hover-primary mb-0">{{translate('order')}} {{translate('amount')}}
+                                                                    : {{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</h5>
+                                                                <small
+                                                                    class="text-body">{{date('d M Y',strtotime($order['created_at']))}}</small>
+                                                            </div>
 
-                                                <div class="col-sm-auto align-self-sm-end">
-                                                    <!-- Avatar Group -->
-                                                    <div class="">
-                                                        {{translate('status')}} <strong> : {{translate($order['order_status'])}} <br></strong>
+                                                            <div class="col-sm-auto align-self-sm-end">
+                                                                <!-- Avatar Group -->
+                                                                <div class="">
+                                                                    {{translate('status')}} <strong> : {{translate($order['order_status'])}} <br></strong>
+                                                                </div>
+                                                                <!-- End Avatar Group -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Row -->
                                                     </div>
-                                                    <!-- End Avatar Group -->
-                                                </div>
-                                            </div>
-                                            <!-- End Row -->
-                                        </div>
-                                    </a>
-                                    <!-- End Card -->
-                                    <hr>
-                                @endforeach
+                                                </a>
+                                                <!-- End Card -->
+                                                <hr>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
 
                             @php
@@ -542,35 +556,48 @@
                             @endphp
 
                             <div class="tab-pane fade" id="last-week" role="tabpanel" aria-labelledby="last-week-tab">
-                                @foreach($orders as $order)
-                                    <a class="card card-border-left border-left-primary shadow-none rounded-0"
-                                       href="{{route('admin.orders.details',['id'=>$order['id']])}}">
-                                        <div class="card-body py-0">
-                                            <div class="row">
-                                                <div class="col-sm mb-2 mb-sm-0">
-                                                    <h2 class="font-weight-normal mb-1">#{{$order['id']}} <small
-                                                            class="font-size-sm text-body text-uppercase"></small>
-                                                    </h2>
-                                                    <h5 class="text-hover-primary mb-0">{{translate('order')}} {{translate('amount')}}
-                                                        : {{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</h5>
-                                                    <small
-                                                        class="text-body">{{date('d M Y',strtotime($order['created_at']))}}</small>
-                                                </div>
+                                <table id="last_week_datatable" style="width: 100%">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($orders as $order)
+                                            <tr>
+                                                <td>
+                                                    <a class="card card-border-left border-left-primary shadow-none rounded-0"
+                                                    href="{{route('admin.orders.details',['id'=>$order['id']])}}">
+                                                        <div class="card-body py-0">
+                                                            <div class="row">
+                                                                <div class="col-sm mb-2 mb-sm-0">
+                                                                    <h2 class="font-weight-normal mb-1">#{{$order['id']}} <small
+                                                                            class="font-size-sm text-body text-uppercase"></small>
+                                                                    </h2>
+                                                                    <h5 class="text-hover-primary mb-0">{{translate('order')}} {{translate('amount')}}
+                                                                        : {{ \App\CentralLogics\Helpers::set_symbol($order['order_amount']) }}</h5>
+                                                                    <small
+                                                                        class="text-body">{{date('d M Y',strtotime($order['created_at']))}}</small>
+                                                                </div>
 
-                                                <div class="col-sm-auto align-self-sm-end">
-                                                    <!-- Avatar Group -->
-                                                    <div class="">
-                                                        {{translate('status')}} <strong> : {{$order['order_status']}} <br></strong>
-                                                    </div>
-                                                    <!-- End Avatar Group -->
-                                                </div>
-                                            </div>
-                                            <!-- End Row -->
-                                        </div>
-                                    </a>
-                                    <!-- End Card -->
-                                    <hr>
-                                @endforeach
+                                                                <div class="col-sm-auto align-self-sm-end">
+                                                                    <!-- Avatar Group -->
+                                                                    <div class="">
+                                                                        {{translate('status')}} <strong> : {{$order['order_status']}} <br></strong>
+                                                                    </div>
+                                                                    <!-- End Avatar Group -->
+                                                                </div>
+                                                            </div>
+                                                            <!-- End Row -->
+                                                        </div>
+                                                    </a>
+                                                    <!-- End Card -->
+                                                    <hr>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <!-- End Tab Content -->
@@ -778,6 +805,104 @@
                 var circle = $.HSCore.components.HSCircles.init($(this));
             });
         // });
+
+        $(document).ready(function () {
+            var this_week_datatable = $.HSCore.components.HSDatatables.init($('#this_week_datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                    
+                ],
+                info: false,
+                paging: true,
+                ordering: false,
+                // header: false,
+                pageLength: 3,
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                searching: false,
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                }
+            });
+
+            var last_week_datatable = $.HSCore.components.HSDatatables.init($('#last_week_datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                    
+                ],
+                info: false,
+                paging: true,
+                ordering: false,
+                // header: false,
+                pageLength: 3,
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                searching: false,
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                }
+            });
+        });
     </script>
 
    
