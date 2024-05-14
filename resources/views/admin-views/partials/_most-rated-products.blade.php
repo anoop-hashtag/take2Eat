@@ -21,7 +21,7 @@
                             {{isset($product)?substr($product->name,0,18) . (strlen($product->name)>18?'...':''):'not exists'}}
                         </span>
                     </div>
-                    <div class="">
+                    <div style="min-width:70px">
                         <span class="rating text-primary"><i class="tio-star"></i></span>
                         <span>{{ $avg_rating = count($product->rating)>0?number_format($product->rating[0]->average, 2, '.', ' '):0 }} </span>
                         ({{$item['total']}})
