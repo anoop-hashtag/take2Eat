@@ -32,7 +32,7 @@
 
                     <div class="media-body">
                         <div class="row">
-                            <div class="col-10 col-sm-10 col-md-11 col-lg-11 col-xl-11">
+                            <div class="col-9 col-sm-10 col-md-10 col-lg-11 col-xl-11">
                                 <h2 class="page-header-title mb-2">{{translate('earning_report_overview')}}</h2>
                               
                                 <div>
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1">
+                            <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
                                 <a class="btn btn-icon btn-primary px-2 rounded-circle" href="{{route('admin.dashboard')}}">
                                     <i class="tio-home-outlined"></i>
                                 </a>
