@@ -23,7 +23,7 @@
 
         <!-- Card -->
         <div class="card">
-            <div class="card-top px-card ">
+            <div class="card-top px-card new-card-top">
                 <div class="d-flex flex-column flex-md-row flex-wrap   align-items-md-center">
                     <form action="{{url()->current()}}" method="GET">
                         <div class="input-group">
