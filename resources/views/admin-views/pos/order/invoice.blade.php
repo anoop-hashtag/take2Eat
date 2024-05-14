@@ -8,8 +8,8 @@
     }
 </style>    
 
-<div style="width:360px;" id="printableAreaContent">
-    <div class="text-center pt-4 mb-3 w-100">
+<div style="width:300px;" id="printableAreaContent">
+    <div class="text-center mb-3 w-100">
         <div class="row">
             <div class="col-sm-4 p-0 invoice-logo">
                 @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
