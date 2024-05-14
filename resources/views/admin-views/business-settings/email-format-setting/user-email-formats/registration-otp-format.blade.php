@@ -27,7 +27,7 @@
                     @php($mail_status=\App\Model\BusinessSetting::where('key','registration_otp_mail_status_user')->first())
                     @php($mail_status = $mail_status ? $mail_status->value : '0')
                     <div class="card-body">
-                        <div class="row maintainance-mode-toggle-bar d-flex flex-wrap justify-content-between border rounded align-items-center p-2">
+                        <div class="maintainance-mode-toggle-bar d-flex flex-wrap justify-content-between border rounded align-items-center p-2">
                             <h5 class="col-8 text-capitalize m-0 text--primary pl-2">
                                 {{translate('Send_Mail_On_Registration_OTP')}}
                                 <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" title="{{ translate('Customers_will_receive_an_automated_email_with_an_OTP_to_confirm_their_registration.')}}">
