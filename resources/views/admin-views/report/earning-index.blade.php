@@ -31,8 +31,8 @@
                     <!-- End Avatar -->
 
                     <div class="media-body">
-                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                            <div class="">
+                        <div class="row">
+                            <div class="col-9 col-sm-10 col-md-10 col-lg-11 col-xl-11">
                                 <h2 class="page-header-title mb-2">{{translate('earning_report_overview')}}</h2>
                               
                                 <div>
@@ -46,9 +46,7 @@
                                 } else {
                                     ?>
                                     <div class="d-flex flex-wrap gap-2 align-items-center">
-                                        <div>{{translate('date')}} :</div>
-                                        <div>
-                                            ( {{date('d-m-Y '. config('time_format'),strtotime(session('from_date')))}} - {{date('d-m-Y '. config('time_format'),strtotime(session('to_date')))}} )
+                                        <div>{{translate('date')}} : ( {{date('d-m-Y '. config('time_format'),strtotime(session('from_date')))}} - {{date('d-m-Y '. config('time_format'),strtotime(session('to_date')))}} )
                                         </div>
                                     </div>
                               <?php } ?> 
@@ -57,7 +55,7 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex">
+                            <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
                                 <a class="btn btn-icon btn-primary px-2 rounded-circle" href="{{route('admin.dashboard')}}">
                                     <i class="tio-home-outlined"></i>
                                 </a>

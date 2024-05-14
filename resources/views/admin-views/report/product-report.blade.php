@@ -31,7 +31,7 @@
 
                     <div class="media-body">
                         <div class="row">
-                            <div class="col-lg-11 col-md-10 col-9">
+                            <div class="col-9 col-sm-10 col-md-10 col-lg-11 col-xl-11">
                                 <h2 class="page-header-title">{{translate('product_Report_Overview')}}</h2>
 
                                 <div class="">
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-1 col-md-2 col-3">
+                            <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
                                 <a class="btn btn-icon btn-primary px-2 rounded-circle" href="{{route('admin.dashboard')}}">
                                     <i class="tio-home-outlined"></i>
                                 </a>

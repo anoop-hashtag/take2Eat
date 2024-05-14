@@ -55,7 +55,7 @@
                 <hr class="non-printable">
             </div>
             <div class="invoice_print" id="printableAreaContent">
-                <div class="text-center pt-4 mb-3">
+                <div class="text-center  mb-3">
                     <div class="row">
                         <div class="col-sm-3 p-0 invoice-logo">
                             @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
