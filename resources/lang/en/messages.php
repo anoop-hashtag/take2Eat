@@ -2246,4 +2246,6 @@
   'Branch sign in' => 'Branch sign in',
   'Jankipuram' => 'Jankipuram',
   'Promotion Banner' => 'Promotion Banner',
+  'select Delivery Partner' => 'Select Delivery Partner',
+  'Sales_Report' => 'Sales Report',
 );
