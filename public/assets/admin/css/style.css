@@ -3013,7 +3013,11 @@ span.px-2.py-1.badge-soft-c1.font-weight-bold.fz-12.rounded.lh-1 {
 h6.text-capitalize{
   font-size: 14px !important;
 }
-
+img.avatar-img.fit-image{
+  max-width: 30px;
+  max-height: 30px;
+  width: 100%;
+}
 
 
 
@@ -3503,8 +3507,6 @@ h6.text-capitalize{
     gap:0.5rem;
   }
 }
-
-
 @media (min-width: 768px) and (max-width: 900px) {
   .__social-media-login .btn--container .btn {
     font-size: 14px;
@@ -3701,7 +3703,7 @@ div#printableArea #printableAreaContent{
 .set_table.responsive-ui.customer-style.table-css.fixing-search .dataTables_wrapper .dataTables_filter {
   margin: 0.5rem 0rem 0 1.4rem !important;
 }
-  .set_table.new-responsive.sale-report.searchfit .dataTables_wrapper .dataTables_filter {
+  .set_table.new-responsive.searchfit .dataTables_wrapper .dataTables_filter {
     margin: 0 0 0 1rem !important;
 }
   table#pos_datatable {
@@ -3804,6 +3806,11 @@ div#printableArea #printableAreaContent{
   padding-top: 40px;
 }
 }
+@media only screen and (max-width: 600px){
+  .d-flex.justify-content-lg-end.justify-content-sm-end {
+    justify-content: flex-end;
+}
+}
 @media only screen and (min-width: 576px) {
   .set_table.responsive-ui.customer-style.table-css .dataTables_wrapper .dataTables_filter {
     margin: 0 0 0 2rem;
@@ -3861,6 +3868,12 @@ select.custom-select.w-auto.min-width-170px {
 .swal2-popup{
     font-size: 11px !important;
   } 
+  .page-link {
+    cursor: pointer;
+    text-align: center;
+    min-width: 20px;
+    padding: 5px 10px;
+}
 }
 @media only screen and  (max-width: 375px) {
   a.btn.btn-danger.non-printable {
