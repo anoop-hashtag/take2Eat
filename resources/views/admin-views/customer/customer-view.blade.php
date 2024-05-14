@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <div class="set_table new-responsive pb-4">
+                    <div class="set_table new-responsive pb-4 top-margin">
                         <div class="datatable_wrapper_row" id="set-rows" style="padding-right: 10px;">
                             <table id="datatable" class="pb-3 table-responsive table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                                 data-hs-datatables-options='{
