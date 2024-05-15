@@ -84,7 +84,7 @@
                                     </td>
                                     <td>
                                         <div><a class="text-dark" href="mailto:{{$chef['email']}}"><strong>{{$chef['email']}}</strong></a></div>
-                                        <div><a href="tel:{{$chef['phone']}}" class="text-dark"><?php echo $chef['country_code'] != '' ? $chef['country_code']."-" : '+91-'; ?>{{$chef['phone']}}</a></div>
+                                        <div><a href="tel:{{$chef['phone']}}" class="text-dark"><?php echo $chef['country_code'] != '' ? "(".$chef['country_code'].")" : '(+91)'; ?>{{$chef['phone']}}</a></div>
                                     </td>
                                     <td>{{ \App\User::get_chef_branch_name($chef) }}</td>
                                     <td>
