@@ -41,7 +41,7 @@
         'excel', 'csv', 'pdf', 'print'
     ],
     info:false,
-    paging:false,
+    paging:true,
         "bDestroy": true,
         language: {
             zeroRecords: '<div class="text-center p-4">' +
