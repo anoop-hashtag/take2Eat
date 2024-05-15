@@ -241,7 +241,7 @@
                 <dt class="col-8">{{translate('Items Price')}}:</dt>
                 <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($item_price) }}</dd>
                
-                <dt class="col-8">{{translate('Addon Cost')}}:</dt>
+                <dt class="col-8">{{translate('Addon Price')}}:</dt>
                 <dd class="col-4">{{ \App\CentralLogics\Helpers::set_symbol($add_ons_cost) }}
                 </dd>
 

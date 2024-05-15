@@ -285,13 +285,13 @@
                 </table>
 
                 <div class="row justify-content-md-end mb-3 m-0" style="width: 99%">
-                    <div class="col-md-10 p-0">
+                    <div class="col-md-11 p-0">
                         <dl class="row text-right" style="color: black!important;">
                             
                             <dt class="col-6">{{translate('Items Price')}}:</dt>
                             <dd class="col-6">{{ \App\CentralLogics\Helpers::set_symbol($sub_total) }}</dd>
                             
-                            <dt class="col-6">{{translate('Addon Cost')}}:</dt>
+                            <dt class="col-6">{{translate('Addon Price')}}:</dt>
                             <dd class="col-6">
                                 {{ \App\CentralLogics\Helpers::set_symbol($add_ons_cost) }}
                             </dd>

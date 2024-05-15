@@ -227,7 +227,7 @@
                 <dt class="col-8">{{translate('Items Price')}}:</dt>
                 <dd class="col-4" >{{\App\CentralLogics\Helpers::set_symbol($item_price)}}</dd>
                
-                <dt class="col-8">{{translate('Addons Cost')}}:</dt>
+                <dt class="col-8">{{translate('Addons Price')}}:</dt>
                 <dd class="col-4">{{\App\CentralLogics\Helpers::set_symbol($add_ons_cost)}}</dd>
 
                 @php($subtotal = $add_ons_cost + $item_price)

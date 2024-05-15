@@ -2248,4 +2248,7 @@
   'Promotion Banner' => 'Promotion Banner',
   'select Delivery Partner' => 'Select Delivery Partner',
   'Sales_Report' => 'Sales Report',
+  'Addon Price' => 'Addon Price',
+  'Addon Price:' => 'Addon Price:',
+  'Addons Price' => 'Addons Price',
 );

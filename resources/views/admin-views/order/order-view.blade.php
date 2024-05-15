@@ -428,7 +428,7 @@
                                     <dt class="col-6">
 
                                         <div class="d-flex max-w220 ml-auto">
-                                            <span>{{translate('addons')}} {{translate('cost')}}</span>
+                                            <span>{{translate('addons')}} {{translate('price')}}</span>
                                             <span>:</span>
                                         </div>
                                     </dt>
@@ -446,13 +446,12 @@
 
                                     <dt class="col-6">
                                         <div class="d-flex max-w220 ml-auto">
-                                            <span>
-                                        {{translate('subtotal')}}</span>
-                                            <span>:</span>
+                                            <span style="font-weight: bold">{{translate('subtotal')}}:</span>
                                         </div>
                                     </dt>
-                                    <dd class="col-6 text-dark text-right">
-                                        {{ \App\CentralLogics\Helpers::set_symbol($sub_total = $sub_total+$add_ons_cost-$total_dis_on_pro) }}</dd>
+                                    <dd class="col-6 text-dark text-right" style="font-weight: bold">
+                                        {{ \App\CentralLogics\Helpers::set_symbol($sub_total = $sub_total+$add_ons_cost-$total_dis_on_pro) }}
+                                    </dd>
 
                                     <dt class="col-6">
 
@@ -504,17 +503,17 @@
                                         <dd class="col-6 text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($order['packing_fee']) }}</dd>
                                     @endif
 
-                                    <dt class="col-6 border-top pt-2 fz-16 font-weight-bold">
+                                    {{-- <dt class="col-6 border-top pt-2 fz-16 font-weight-bold">
                                         <div class="d-flex max-w220 ml-auto">
                                             <span>{{translate('total')}}</span>
                                         <span>:</span>
                                         </div>
-                                    </dt>
+                                    </dt> --}}
                                     <?php 
                                         $total_due_amount = 0;
                                         $total_due_amount = $total = $sub_total - $order['coupon_discount_amount'] - $order['extra_discount'] + $del_c+$order['packing_fee']+$total_tax + $add_ons_tax_cost;
                                     ?>
-                                    <dd class="col-6 border-top pt-2 fz-16 font-weight-bold text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd>
+                                    {{-- <dd class="col-6 border-top pt-2 fz-16 font-weight-bold text-dark text-right">{{ \App\CentralLogics\Helpers::set_symbol($total) }}</dd> --}}
 
                                     <!-- partial payment-->
                                     @if ($order->order_partial_payments->isNotEmpty())
@@ -573,7 +572,7 @@
                                 <dl class="row">
                                     <dt class="col-6">
                                         <div class="d-flex max-w220 ml-auto">
-                                            <h3>{{translate('grand')}} {{translate('total')}} :</h3>
+                                            <h3>{{translate('total')}} :</h3>
                                         </div>
                                     </dt>
                                     <dd class="col-6 text-dark text-right">
