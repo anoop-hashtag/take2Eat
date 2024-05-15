@@ -96,19 +96,21 @@ class KitchenController extends Controller
         $limit = is_null($request['limit']) ? 10 : $request['limit'];
         $offset = is_null($request['offset']) ? 1 : $request['offset'];
 
+        $kitchen_id = isset($request->kitchen_id) ? $request->kitchen_id : '';
+
         $chef_branch = $this->chef_branch->where('user_id', auth()->user()->id)->first();
         $branch_id = $this->branch->where('id', $chef_branch->branch_id)->first();
 
         $order_status = $request->order_status;
         if ($order_status == 'cooking') {
             $orders = $this->order
-                ->where(['order_status' => $order_status, 'branch_id' => $branch_id->id])
+                ->where(['order_status' => $order_status, 'branch_id' => $branch_id->id, 'kitchen_id' => $kitchen_id->id])
                 ->orderBy('created_at', 'ASC')
                 ->paginate($limit, ['*'], 'page', $offset);
 
         } else {
             $orders = $this->order
-                ->where(['order_status' => $order_status, 'branch_id' => $branch_id->id])
+                ->where(['order_status' => $order_status, 'branch_id' => $branch_id->id, 'kitchen_id' => $kitchen_id->id])
                 ->latest()
                 ->paginate($limit, ['*'], 'page', $offset);
         }
