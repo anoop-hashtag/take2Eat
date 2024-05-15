@@ -70,6 +70,8 @@ class KitchenController extends Controller
         $chef_branch = $this->chef_branch->where('user_id', auth()->user()->id)->first();
         $branch_id = $this->branch->where('id', $chef_branch->branch_id)->first();
 
+        $kitchen_id = isset($request->kitchen_id) ? $request->kitchen_id : '';
+
         $search = $request['search'];
         $key = explode(' ', $request['search']);
 
@@ -80,6 +82,10 @@ class KitchenController extends Controller
                 foreach ($key as $value) {
                     $query->Where('id', 'like', "%{$value}%");
                 }
+            })
+            ->where(function ($query) use ($kitchen_id) {
+                $query->where('kitchen_id', $kitchen_id)
+                      ->orWhereNull('kitchen_id');
             })
             ->latest()
             ->paginate(Helpers::getPagination());
