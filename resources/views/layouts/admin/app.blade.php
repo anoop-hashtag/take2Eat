@@ -604,34 +604,43 @@
     @php($date_format=\App\Model\BusinessSetting::where('key','date_format')->first()->value)
      <script>
               
-        $(function () {
+            $(function () {
+                // Get today's date
+                var today = new Date();
+                // Set maxDate option to today to hide future dates
+                var maxDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
 
-          
-            $("#expire_date").datepicker({
-                dateFormat: "dd-mm-yy", // Customize the date format
-                changeMonth:true,
-                changeYear:true, //
+                $("#expire_date").datepicker({
+                    dateFormat: "dd-mm-yy", // Customize the date format
+                    changeMonth: true,
+                    changeYear: true,
+                    maxDate: maxDate // Hide future dates
+                });
+
+                $("#start_date").datepicker({
+                    dateFormat: "dd-mm-yy", // Customize the date format
+                    changeMonth: true,
+                    changeYear: true,
+                    maxDate: maxDate // Hide future dates
+                });
+
+                // Initialize the datepicker for the "from_date" input field
+                $("#from_date").datepicker({
+                    dateFormat: "<?php echo $date_format ?>", // Customize the date format
+                    changeMonth: true,
+                    changeYear: true,
+                    maxDate: maxDate // Hide future dates
+                });
+
+                // Initialize the datepicker for the "to_date" input field
+                $("#to_date").datepicker({
+                    dateFormat: "<?php echo $date_format ?>", // Customize the date format
+                    changeMonth: true,
+                    changeYear: true,
+                    maxDate: maxDate // Hide future dates
+                });
             });
-           
-            $("#start_date").datepicker({
-                dateFormat: "dd-mm-yy", // Customize the date format
-                changeMonth:true,
-                changeYear:true, //
-            });
-            // Initialize the datepicker for the "from_date" input field
-            $("#from_date").datepicker({
-                dateFormat: "<?php echo $date_format ?>", // Customize the date format
-                changeMonth:true,
-                changeYear:true, //
-            });
-    
-            // Initialize the datepicker for the "to_date" input field
-            $("#to_date").datepicker({
-                dateFormat: "<?php echo $date_format ?>", // Customize the date format
-                changeMonth:true,
-                changeYear:true,
-            });
-        });
+
         
     </script>
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
