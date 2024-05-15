@@ -1180,4 +1180,38 @@ class POSController extends Controller
         return response()->json($request['order_type'], 200);
     }
 
+
+    public function pos_product_search(Request $request)
+    {
+        $selected_branch = session()->get('branch_id') ?? 1;
+        session()->put('branch_id', $selected_branch);
+
+        $keyword = $request->keyword;
+        $key = explode(' ', $keyword);
+
+
+        $products = $this->product
+            ->with(['branch_products' => function ($q) use ($selected_branch) {
+                $q->where(['is_available' => 1, 'branch_id' => $selected_branch]);
+            }])
+            ->whereHas('branch_products', function ($q) use ($selected_branch) {
+                $q->where(['is_available' => 1, 'branch_id' => $selected_branch]);
+            })
+            ->when($request->has('category_id') && $request['category_id'] != 0, function ($query) use ($request) {
+                $query->whereJsonContains('category_ids', [['id' => (string)$request['category_id']]]);
+            })
+            ->when($keyword, function ($query) use ($key) {
+                return $query->where(function ($q) use ($key) {
+                    foreach ($key as $value) {
+                        $q->orWhere('name', 'like', "%{$value}%");
+                    }
+                });
+            })
+            ->active()
+            ->latest()
+            ->get();
+
+        return response()->json($products);
+    }
+
 }

@@ -177,8 +177,8 @@
                             <!-- End POS Title -->
 
                             <!-- POS Filter -->
-                            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between gap-3 gap-xl-4 px-4 py-4 custom-paddingbt">
-                                <div class="w-100">
+                            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between gap-3 gap-xl-4 px-4 py-4">
+                                <div class="w-100 mr-xl-2">
                                     <select name="category" id="category" class="form-control js-select2-custom-x mx-1" title="select category" onchange="set_category_filter(this.value)">
                                         <option value="">{{translate('All Categories')}}</option>
                                         @foreach ($categories as $item)
@@ -186,56 +186,30 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                
+                                <div class="w-100 ml-xl-2">
+                                    {{-- <form id="search-form"> --}}
+                                        <!-- Search -->
+                                        <div class="input-group input-group-merge input-group-flush border rounded">
+                                            <div class="input-group-prepend pl-2">
+                                                <div class="input-group-text">
+                                                    <!-- <i class="tio-search"></i> -->
+                                                    <img width="13" src="{{asset('public/assets/admin/img/icons/search.png')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <input type="text" id="pos_search" onkeyup="PosSearch()" class="form-control border-0" placeholder="{{translate('Search here')}}" aria-label="Search here">
+                                        </div>
+                                        <!-- End Search -->
+                                    {{-- </form> --}}
+                                </div>
                             </div>
                             <!-- End POS Filter -->
 
                             <!-- POS Products -->
                             <div class="card-body pt-0" id="items">
-                                <div class="table-responsive">
-                                    <table id="pos_datatable" style="width: 100% !important">
-                                        <thead style="border: none" border="0">
-                                            <tr>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php 
-                                            $i = 0;
-                                        ?>
-                                        @foreach($products as $product)
-                                            <?php 
-                                                if($i == 0) {
-                                                   echo "<tr class='img-width'>"; 
-                                                }
-                                            ?>
-                                                <td>
-                                                    @include('admin-views.pos._single_product',['product'=>$product])
-                                                </td>
-                                            <?php 
-                                                $i++;
-                                                if($i == 4) {
-                                                   echo "</tr>"; 
-                                                   $i = 0;
-                                                }
-                                            ?>
-                                        @endforeach
-                                        <?php 
-                                            if($i == 1) {
-                                                echo "<td></td><td></td><td></td></tr>"; 
-                                            } elseif ($i == 2) {
-                                                echo "<td></td><td></td></tr>"; 
-                                            } elseif ($i == 3) {
-                                                echo "<td></td></tr>"; 
-                                            }
-                                        ?>
-                                        </tbody>
-                                    </table>
-                                    
-                                    
+                                <div class="pos-item-wrap justify-content-center" id="pos_item">
+                                    @foreach($products as $product)
+                                        @include('admin-views.pos._single_product',['product'=>$product])
+                                    @endforeach
                                 </div>
                             </div>
                             <!-- End POS Products -->
@@ -643,12 +617,76 @@
         }
 
 
-        $('#datatableSearch').on('input', function () {
-    var keyword = $(this).val();
-    var nurl = new URL('{!!url()->full()!!}');
-    nurl.searchParams.set('keyword', keyword);
-    location.href = nurl;
-});
+        // $('#datatableSearch').on('input', function () {
+        //     var keyword = $(this).val();
+        //     var nurl = new URL('{!!url()->full()!!}');
+        //     nurl.searchParams.set('keyword', keyword);
+        //     location.href = nurl;
+        // });
+
+        function PosSearch() {
+            var keyword = $('#pos_search').val();
+            var base_url = window.location.origin;
+            if(keyword.length > 0) {
+                $.ajax({
+                    url: base_url+'/admin/pos/pos-product-search',
+                    type: "POST",
+                    data: {
+                        keyword: keyword,
+                        _token:'{{ csrf_token() }}'
+                    },
+                    cache: false,
+                    success: function(data){
+                        let item = ''
+                        let length = data.length;
+ 
+                        for(let i = 0; i < length; i++) {
+                            item += '<div class="pos-product-item card" onclick="quickView(' + data[i].id + ')">' +
+                                        '<div class="pos-product-item_thumb">' +
+                                            '<img src="' + base_url + '/storage/app/public/product/' + data[i].image + '" onerror="this.src="public/assets/admin/img/160x160/img2.jpg"" class="img-fit">' +
+                                        '</div>' +
+                                        '<div class="pos-product-item_content clickable">' +
+                                            '<div class="pos-product-item_title">' + data[i].name + '</div>' +    
+                                        '</div>' +
+                                    '</div>';
+                        }
+                        $('#pos_item').html(item);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: base_url+'/admin/pos/pos-product-search',
+                    type: "POST",
+                    data: {
+                        keyword: keyword,
+                        _token:'{{ csrf_token() }}'
+                    },
+                    cache: false,
+                    success: function(data){
+                        let item = ''
+                        let length = data.length;
+ 
+                        for(let i = 0; i < length; i++) {
+                            item += '<div class="pos-product-item card" onclick="quickView(' + data[i].id + ')">' +
+                                        '<div class="pos-product-item_thumb">' +
+                                            '<img src="' + base_url + '/storage/app/public/product/' + data[i].image + '" onerror="this.src="public/assets/admin/img/160x160/img2.jpg"" class="img-fit">' +
+                                        '</div>' +
+                                        '<div class="pos-product-item_content clickable">' +
+                                            '<div class="pos-product-item_title">' + data[i].name + '</div>' +    
+                                        '</div>' +
+                                    '</div>';
+                        }
+                        $('#pos_item').html(item);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+        }
 
 
         function addon_quantity_input_toggle(e)
@@ -1277,89 +1315,6 @@
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public/assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');
     </script>
 
-    <script>
-        $(document).on('ready', function () {
-            var datatable = $.HSCore.components.HSDatatables.init($('#pos_datatable'), {
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'copy',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'excel',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'csv',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'pdf',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'print',
-                        className: 'd-none'
-                    },
-                    
-                ],
-                info: false,
-                paging: true,
-                ordering: false,
-                // header: false,
-                pageLength: 3,
-                select: {
-                    style: 'multi',
-                    selector: 'td:first-child input[type="checkbox"]',
-                    classMap: {
-                        checkAll: '#datatableCheckAll',
-                        counter: '#datatableCounter',
-                        counterInfo: '#datatableCounterInfo'
-                    }
-                },
-                language: {
-                    zeroRecords: '<div class="text-center p-4">' +
-                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
-                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
-                        '</div>'
-                }
-            });
-
-            $('#pos_datatable_wrapper .dataTables_filter label input').attr('placeholder', ' Search here');
-            $('#pos_datatable thead').css('border-bottom', '1px solid red');
-        }); 
-
-        $(document).on('ready', function () {
-                // ... Your existing initialization code
-    
-                // Get the DataTable instance
-                var dataTable = $('#pos_datatable').DataTable();
-    
-                // Hide pagination on initial load
-                checkAndTogglePagination(dataTable);
-    
-                // Event listener for DataTable search
-                dataTable.on('search.dt', function () {
-                    checkAndTogglePagination(dataTable);
-                });
-            });
-    
-            function checkAndTogglePagination(dataTable) {
-                var paginationSection = $('.pagination-style');
-    
-                if (dataTable.search() && dataTable.search() !== '') {
-                    // If search is active, hide pagination
-                    paginationSection.hide();
-                } else {
-                    // If no search or search is cleared, show pagination
-                    paginationSection.show();
-                }
-            }
-    </script>
-
-
-    
 @endpush
 {{-- </body>
 </html> --}}
