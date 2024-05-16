@@ -47,7 +47,7 @@ Route::group(['namespace' => 'Branch', 'as' => 'branch.'], function () {
             Route::post('add-delivery-address', 'POSController@addDeliveryInfo')->name('add-delivery-address');
             Route::get('get-distance', 'POSController@get_distance')->name('get-distance');
             Route::post('order_type/store', 'POSController@order_type_store')->name('order_type.store');
-
+            Route::post('pos-product-search', 'POSController@pos_product_search')->name('product_search');
         });
 
         Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {

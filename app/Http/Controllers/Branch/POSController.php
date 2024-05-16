@@ -51,8 +51,10 @@ class POSController extends Controller
     {
         $category = $request->query('category_id', 0);
         $categories = $this->category->active()->get();
+
         $keyword = $request->keyword;
         $key = explode(' ', $keyword);
+
         $selected_customer = $this->user->where('id', session('customer_id'))->first();
         $selected_table = $this->table->where('id', session('table_id'))->first();
 
@@ -76,7 +78,8 @@ class POSController extends Controller
             })
             ->active()
             ->latest()
-            ->paginate(Helpers::getPagination());
+            // ->paginate(Helpers::getPagination());
+            ->get();
 
         $branch = $this->branch->find(auth('branch')->id());
         $tables = $this->table->where(['branch_id' => auth('branch')->id()])->get();
@@ -927,5 +930,35 @@ class POSController extends Controller
     }
 
 
+    public function pos_product_search(Request $request)
+    {
+        $category = $request->query('category_id', 0);
 
+        $keyword = $request->keyword;
+        $key = explode(' ', $keyword);
+
+        $products = $this->product
+            ->with('product_by_branch')
+            ->with(['product_by_branch' => function ($q) {
+                $q->where(['is_available' => 1, 'branch_id' => auth('branch')->id()]);
+            }])
+            ->whereHas('product_by_branch', function ($q) {
+                $q->where(['is_available' => 1, 'branch_id' => auth('branch')->id()]);
+            })
+            ->when($request->has('category_id') && $request['category_id'] != 0, function ($query) use ($request) {
+                $query->whereJsonContains('category_ids', [['id' => (string)$request['category_id']]]);
+            })
+            ->when($keyword, function ($query) use ($key) {
+                return $query->where(function ($q) use ($key) {
+                    foreach ($key as $value) {
+                        $q->orWhere('name', 'like', "%{$value}%");
+                    }
+                });
+            })
+            ->active()
+            ->latest()
+            ->get();
+
+            return response()->json($products);
+    }
 }

@@ -78,7 +78,7 @@
                                     </select>
                                 </div>
                                 <div class="w-100 ml-xl-2">
-                                    <form id="search-form">
+                                    {{-- <form id="search-form"> --}}
                                         <!-- Search -->
                                         <div class="input-group input-group-merge input-group-flush border rounded">
                                             <div class="input-group-prepend pl-2">
@@ -87,15 +87,15 @@
                                                     <img width="13" src="{{asset('public/assets/admin/img/icons/search.png')}}" alt="">
                                                 </div>
                                             </div>
-                                            <input id="datatableSearch" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control border-0" placeholder="{{translate('Search_here')}}" aria-label="Search here">
+                                            <input type="text" id="pos_search" onkeyup="PosSearch()" class="form-control border-0" placeholder="{{translate('Search here')}}" aria-label="Search here">
                                         </div>
                                         <!-- End Search -->
-                                    </form>
+                                    {{-- </form> --}}
                                 </div>
 
                             </div>
                             <div class="card-body pt-0" id="items">
-                                <div class="pos-item-wrap justify-content-center">
+                                <div class="pos-item-wrap justify-content-center" id="pos_item">
                                     @foreach($products as $product)
                                         @include('branch-views.pos._single_product',['product'=>$product])
                                     @endforeach
@@ -103,7 +103,7 @@
                             </div>
 
                             <div class="p-3 d-flex justify-content-end">
-                                {!!$products->withQueryString()->links()!!}
+                                {{-- {!!$products->withQueryString()->links()!!} --}}
                             </div>
                         </div>
                     </div>
@@ -482,13 +482,77 @@
     }
 
 
-    $('#search-form').on('submit', function (e) {
-        e.preventDefault();
-        var keyword= $('#datatableSearch').val();
-        var nurl = new URL('{!!url()->full()!!}');
-        nurl.searchParams.set('keyword', keyword);
-        location.href = nurl;
-    });
+    // $('#search-form').on('submit', function (e) {
+    //     e.preventDefault();
+    //     var keyword= $('#datatableSearch').val();
+    //     var nurl = new URL('{!!url()->full()!!}');
+    //     nurl.searchParams.set('keyword', keyword);
+    //     location.href = nurl;
+    // });
+
+    function PosSearch() {
+        var keyword = $('#pos_search').val();
+        var base_url = window.location.origin;
+        if(keyword.length > 0) {
+            $.ajax({
+                url: base_url+'/branch/pos/pos-product-search',
+                type: "POST",
+                data: {
+                    keyword: keyword,
+                    _token:'{{ csrf_token() }}'
+                },
+                cache: false,
+                success: function(data){
+                    let item = ''
+                    let length = data.length;
+
+                    for(let i = 0; i < length; i++) {
+                        item += '<div class="pos-product-item card" onclick="quickView(' + data[i].id + ')">' +
+                                    '<div class="pos-product-item_thumb">' +
+                                        '<img src="' + base_url + '/storage/app/public/product/' + data[i].image + '" onerror="this.src="public/assets/admin/img/160x160/img2.jpg"" class="img-fit">' +
+                                    '</div>' +
+                                    '<div class="pos-product-item_content clickable">' +
+                                        '<div class="pos-product-item_title">' + data[i].name + '</div>' +    
+                                    '</div>' +
+                                '</div>';
+                    }
+                    $('#pos_item').html(item);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        } else {
+            $.ajax({
+                url: base_url+'/branch/pos/pos-product-search',
+                type: "POST",
+                data: {
+                    keyword: keyword,
+                    _token:'{{ csrf_token() }}'
+                },
+                cache: false,
+                success: function(data){
+                    let item = ''
+                    let length = data.length;
+
+                    for(let i = 0; i < length; i++) {
+                        item += '<div class="pos-product-item card" onclick="quickView(' + data[i].id + ')">' +
+                                    '<div class="pos-product-item_thumb">' +
+                                        '<img src="' + base_url + '/storage/app/public/product/' + data[i].image + '" onerror="this.src="public/assets/admin/img/160x160/img2.jpg"" class="img-fit">' +
+                                    '</div>' +
+                                    '<div class="pos-product-item_content clickable">' +
+                                        '<div class="pos-product-item_title">' + data[i].name + '</div>' +    
+                                    '</div>' +
+                                '</div>';
+                    }
+                    $('#pos_item').html(item);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    }
 
     function store_key(key, value) {
         $.ajaxSetup({
