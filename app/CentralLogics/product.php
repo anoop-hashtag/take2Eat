@@ -32,8 +32,8 @@ class ProductLogic
                     $q->orWhere('name', 'like', "%{$value}%");
                 }})
            ->when(isset($product_type) && in_array($product_type, ['veg', 'non_veg', 'egg']), function ($query) use ($product_type) {
-    return $query->productType($product_type);
-})
+                return $query->productType($product_type);
+            })
 
             ->when(isset($category_ids), function ($query) use ($category_ids) {
                 return $query->whereJsonContains('category_ids', ['id'=>$category_ids]);
@@ -42,6 +42,16 @@ class ProductLogic
             ->latest()
             ->paginate($limit, ['*'], 'page', $offset);
         /*$paginator->count();*/
+
+        for($i = 0; $i < count($paginator); $i++) {
+            if(count($paginator[$i]->rating) < 1) {
+                $rating = array();
+                $rating['average'] = "0.0";
+                $rating['product_id'] = $paginator[$i]->id;
+                $paginator[$i]['rating'][] = $rating;
+            }
+        }
+
         return [
             'total_size' => $paginator->total(),
             'limit' => $limit,
