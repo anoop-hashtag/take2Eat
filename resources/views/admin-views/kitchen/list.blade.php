@@ -46,7 +46,7 @@
                         </div>
                     </div>
                           <!-- Table -->
-                          <div class="set_table new-responsive chef-list">
+                          <div class="set_table new-responsive chef-list kitchen-tbl">
                 <div class="table-responsive datatable_wrapper_row customer-style" id="set-rows" style="padding-right: 10px;">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
