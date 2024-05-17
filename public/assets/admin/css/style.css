@@ -1251,8 +1251,10 @@ ol.order-list {
 .dt-400 dt {
   font-weight: 400 !important;
 }
+
 .__descripiton-txt {
   position: relative;
+  font-weight: 400 !important;
   padding-bottom: 24px;
 }
 
@@ -1267,6 +1269,7 @@ ol.order-list {
 .__descripiton-txt.__not-first-hidden .show-more {
   top: 73px;
   padding-top: 15px;
+  font-weight: 400 !important;
 }
 
 .__descripiton-txt.__not-first-hidden .show-more span {
