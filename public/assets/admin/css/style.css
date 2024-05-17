@@ -878,9 +878,12 @@ input.qty {
   column-gap: 10px;
   row-gap: 24px;
 }
-
+.outgoing_msg .row.g-2.mt-2 {
+  text-align: end;
+}
 .addon-wrap .addon-item .addon-input {
-  min-height: 40px;
+  padding: 0 !important;
+  min-height: 30px;
   border: 1px solid #d0dbe9;
   max-width: 160px;
   flex-direction: column;
@@ -1251,22 +1254,25 @@ ol.order-list {
 .dt-400 dt {
   font-weight: 400 !important;
 }
+
 .__descripiton-txt {
   position: relative;
+  font-weight: 400 !important;
   padding-bottom: 24px;
 }
 
 .__descripiton-txt.__not-first-hidden {
   margin-bottom: 25px;
-  /* min-height: 86px; */
   max-height: 110px;
   overflow: hidden;
   padding-bottom: 0;
+  font-weight: 400 !important;
 }
 
 .__descripiton-txt.__not-first-hidden .show-more {
   top: 73px;
   padding-top: 15px;
+  font-weight: 400 !important;
 }
 
 .__descripiton-txt.__not-first-hidden .show-more span {
@@ -2970,8 +2976,8 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
   border-color: #ff611d;
 }
 .d-flex.align-items-center.justify-content-center.active.pos-image img {
-  max-width: 160px;
-  max-height: 106px;
+  max-width: 100px;
+  max-height: 100px;
   height: 100%;
   object-fit: cover;
 }
@@ -3019,7 +3025,14 @@ img.avatar-img.fit-image{
   width: 100%;
 }
 
-
+.received_msg a img {
+  width: 120px;
+  height: auto;
+}
+.outgoing_msg a img {
+  width: 120px;
+  height: auto;
+}
 
 
 
@@ -3386,7 +3399,7 @@ img.avatar-img.fit-image{
 }
 }
 @media (min-width:657px) and (max-width:860px){
-  .set_table.new-responsive.chef-list.kitchen_tbl .datatable_wrapper_row .dataTable {
+  .set_table.new-responsive.chef-list.kitchen-tbl .datatable_wrapper_row .dataTable {
     display: block!important;
 }
 }
