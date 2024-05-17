@@ -3019,7 +3019,14 @@ img.avatar-img.fit-image{
   width: 100%;
 }
 
-
+.received_msg a img {
+  width: 120px;
+  height: auto;
+}
+.outgoing_msg a img {
+  width: 120px;
+  height: auto;
+}
 
 
 
@@ -3386,7 +3393,7 @@ img.avatar-img.fit-image{
 }
 }
 @media (min-width:657px) and (max-width:860px){
-  .set_table.new-responsive.chef-list.kitchen_tbl .datatable_wrapper_row .dataTable {
+  .set_table.new-responsive.chef-list.kitchen-tbl .datatable_wrapper_row .dataTable {
     display: block!important;
 }
 }
