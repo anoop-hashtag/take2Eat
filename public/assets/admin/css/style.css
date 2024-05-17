@@ -880,7 +880,8 @@ input.qty {
 }
 
 .addon-wrap .addon-item .addon-input {
-  min-height: 40px;
+  padding: 0 !important;
+  min-height: 30px;
   border: 1px solid #d0dbe9;
   max-width: 160px;
   flex-direction: column;

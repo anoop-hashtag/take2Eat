@@ -205,10 +205,10 @@
                     </div>
                 @endif
                 <div class="row no-gutters mt-4 text-dark" id="chosen_price_div">
-                    <div class="col-3 col-sm-2 col-md-2 col-lg-2">
+                    <div class="col-4 col-sm-2 col-md-2 col-lg-2">
                         <div class="product-description-label">{{translate('Total_Price')}}:</div>
                     </div>
-                    <div class="col-9 col-sm-10 col-md-10 col-lg-10">
+                    <div class="col-8 col-sm-10 col-md-10 col-lg-10">
                         <div class="product-price">
                             <strong id="chosen_price"></strong>
                         </div>
