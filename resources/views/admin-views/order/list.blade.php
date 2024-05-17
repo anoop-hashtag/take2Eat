@@ -68,15 +68,6 @@
                             </div>
                         </div>
                     </form>
-                    <script>
-                        function clearBranchFilter() {
-                            // Unset branch session
-                            <?php session(['branch_filter' => null]); ?>
-                    
-                            // Reload the page
-                            window.location.assign('all');
-                        }
-                    </script>
                 </div>
             </div>
             <!-- End Filter Card -->
@@ -221,15 +212,12 @@
                     <div class="col-sm-8 col-md-6 col-lg-4">
                         <form action="{{url()->current()}}" method="GET">
                             <div class="input-group">
-                                {{-- <input id="datatableSearch_" type="search" name="search"
-                                        class="form-control"
-                                        placeholder="{{translate('Search by Order ID, Order Status or Transaction Reference')}}" aria-label="Search"
-                                        value="{{$search}}" required autocomplete="off"> --}}
-                                <div class="input-group-append">
-                                    {{-- <button type="submit" class="btn btn-primary">
+                                <input type="text" id="order_details" onkeyup="searchOrder()" class="form-control" placeholder="{{translate('Search by Order ID, Order Status or Transaction Reference')}}" aria-label="Search">
+                                {{-- <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">
                                     {{translate('Search')}}
-                                    </button> --}}
-                                </div>
+                                    </button> 
+                                </div> --}}
                             </div>
                         </form>
                     </div>
@@ -238,8 +226,8 @@
             </div>
             <!-- End Card Top -->
             <!-- Table -->
-            <div class="set_table responsive-ui new-ui">
-                <div class="datatable_wrapper_row" id="set-rows" style="padding:0 10px;">
+            <div class="set_table responsive-ui new-ui" style="margin-top: 50px">
+                <div class="datatable_wrapper_row" style="padding:0 10px;">
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
@@ -342,7 +330,7 @@
             <!-- End Table -->
 
             <div class="table-responsive mt-4 px-3 pagination-style">
-                <div class="d-flex justify-content-lg-end justify-content-sm-end">
+                <div class="d-flex justify-content-lg-end justify-content-sm-end" id="pagination">
                     <!-- Pagination -->
                     {!!$orders->links()!!}
                 </div>
@@ -353,14 +341,141 @@
 @endsection
 
 @push('script_2')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script>
+        function searchOrder() {
+            let text = $('#order_details').val();
+            if(text.length > 0) {
+                $('#pagination').html('');
+                $.ajax({
+                    url: '{{ url('/')}}/admin/orders/order-list-search',
+                    type: "POST",
+                    data: {
+                        search: text,
+                        _token:'{{ csrf_token() }}'
+                    },
+                    cache: false,
+                    success: function(data){
+                        let item = ''
+                        let length = data.length;
+
+                        console.log(data);
+
+                        $('#set-rows').html('');
+                        let k = 1;
+                        for(let i = 0; i < length; i++) {
+
+                            // Parse delivery date and time strings into Moment objects
+                            let deliveryDate = moment(data[i].delivery_date);
+                            let deliveryTime = moment(data[i].delivery_time, 'HH:mm:ss');
+
+                            // Format date and time strings as desired
+                            let formattedDate = deliveryDate.format('DD-MM-YYYY'); // Format date as dd mm yyyy
+                            let formattedTime = deliveryTime.format('hh:mm A'); // Format time as HH:MM AM/PM
+
+                            let order_amount = Math.round(data[i].order_amount) + ".00";
+
+                            let payment_status = data[i].payment_status;
+                            if (payment_status == 'unpaid') {
+                                payment_status = '<span class="text-danger">Unpaid</span>';
+                            } else {
+                                payment_status = '<span class="text-success">Paid</span>';
+                            }
+
+                            let order_status = data[i].order_status;
+                            if (order_status == 'pending') {
+                                order_status = '<span class="badge-soft-info px-2 py-1 rounded">{{translate("pending")}}</span>';
+                            } else if (order_status == 'confirmed') {
+                                order_status = '<span class="badge-soft-info px-2 py-1 rounded">{{translate("confirmed")}}</span>';
+                            } else if (order_status == 'processing') {
+                                order_status = '<span class="badge-soft-warning px-2 py-1 rounded">{{translate("processing")}}</span>';
+                            } else if (order_status == 'out_for_delivery') {
+                                order_status = '<span class="badge-soft-warning px-2 py-1 rounded">{{translate("out_for_delivery")}}</span>';
+                            } else if (order_status == 'delivered') {
+                                order_status = '<span class="badge-soft-success px-2 py-1 rounded">{{translate("delivered")}}</span>';
+                            } else if (order_status == 'failed') {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("failed")}}</span>';
+                            } else if (order_status == 'returned') {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("returned")}}</span>';
+                            } else if (order_status == 'canceled') {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("cancelled")}}</span>';
+                            } else if (order_status == 'returned') {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("returned")}}</span>';
+                            } else {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("done")}}</span>';
+                            }
+
+                            let order_type = data[i].order_type;
+                            order_type = order_type.replace("_", " ");
+                            order_type = order_type.toLowerCase().charAt(0).toUpperCase() + order_type.toLowerCase().slice(1);
+                            order_type = '<span class="badge-soft-success px-2 py-1 rounded">' + order_type + '</span>';
+
+                            let contact_person_name = '';
+                            let contact_person_name_url = '';
+                            let contact_person_number = '';
+                            let is_guest = data[i].is_guest;
+                            let delivery_address = data[i].delivery_address;
+
+                            if(is_guest == 0) {
+                                if (delivery_address != null) {
+                                    contact_person_name = data[i].delivery_address.contact_person_name;
+                                    contact_person_name_url = '{{ url('/') }}/admin/customer/view/' + data[i].user_id;
+                                    contact_person_number = data[i].delivery_address.contact_person_number;
+                                    contact_person_name = '<h6 class="text-capitalize mb-1"><a class="text-dark" href="' + contact_person_name_url + '">'+contact_person_name+'</a></h6><a class="text-dark fz-12" href="' + contact_person_number + '">' + contact_person_number + '</a>';
+                                }
+                            } else {
+                                contact_person_name = '<h6 class="text-capitalize text-info">Guest Customer</h6>';
+                            }                          
+
+                            let order_id = data[i].id;
+                            let order_url = '{{ url('/') }}/admin/orders/details/' + order_id;
+                            let print_url = '{{ url('/') }}/admin/orders/generate-invoice/' + order_id;
+
+                            let branch_name = data[i].name;
+                            if (branch_name != 'Main Branch') {
+                                branch_name = 'Branch deleted!';
+                            }
+                            
+                            item += '<tr>' +
+                                        '<td>' + k + '</td>' +
+                                        '<td><a class="text-dark" href="' + order_url + '">' + order_id + '</a></td>' +
+                                        '<td><div>' + formattedDate + '</div> <div>' + formattedTime + '</div></td>' +
+                                        '<td><h6 class="text-capitalize mb-1">' + contact_person_name + '</h6></td>' +
+                                        '<td><span class="badge-soft-info px-2 py-1 rounded">' + branch_name + '</span></td>' +
+                                        '<td><div>₹' + order_amount + '</div>' + payment_status + '</td>' +
+                                        '<td>' + order_status + '</td>' +
+                                        '<td>' + order_type + '</td>' +
+                                        '<td>' + 
+                                            '<div class="d-flex gap-2">' +
+                                                '<a class="btn btn-sm btn-outline-primary square-btn" href="' + order_url + '">' +
+                                                    '<i class="tio-invisible"></i>' +
+                                                '</a>' +
+                                                '<a href="' + print_url + '" class="btn btn-sm btn-outline-success square-btn" target="_blank">' +
+                                                    '<i class="tio-print"></i>' +
+                                                '</a>' +
+                                            '</div>' +
+                                        '</td>' +
+                                    '</tr>';
+                            k++;
+                        }
+                        $('#set-rows').html(item);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            } else {
+                location.reload();
+            }
+        }
+    </script>
+    <script>
+
         function filter_branch_orders(id) {
             location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
         }
-    </script>
 
-    <script>
-        $('#search-form').on('submit', function () {
+        $('#search-form').on('input', function () {
             var formData = new FormData(this);
             $.ajaxSetup({
                 headers: {
@@ -385,81 +500,78 @@
                 },
             });
         });
-    </script>
-       @push('script_2')
-       <script>
-           $(document).on('ready', function () {
-               // INITIALIZATION OF NAV SCROLLER
-               // =======================================================
-               $('.js-nav-scroller').each(function () {
-                   new HsNavScroller($(this)).init()
-               });
+
+        $(document).on('ready', function () {
+            // INITIALIZATION OF NAV SCROLLER
+            // =======================================================
+            $('.js-nav-scroller').each(function () {
+                new HsNavScroller($(this)).init()
+            });
+
+            // INITIALIZATION OF SELECT2
+            // =======================================================
+            $('.js-select2-custom').each(function () {
+                var select2 = $.HSCore.components.HSSelect2.init($(this));
+            });
+
+
+            // INITIALIZATION OF DATATABLES
+            // =======================================================
+            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                ],
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                info: false,
+                paging: false,
+                searching: false,
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                }
+            });
+
+            // INITIALIZATION OF TAGIFY
+            // =======================================================
+            $('.js-tagify').each(function () {
+                var tagify = $.HSCore.components.HSTagify.init($(this));
+            });
+        });
    
-               // INITIALIZATION OF SELECT2
-               // =======================================================
-               $('.js-select2-custom').each(function () {
-                   var select2 = $.HSCore.components.HSSelect2.init($(this));
-               });
-   
-   
-               // INITIALIZATION OF DATATABLES
-               // =======================================================
-                var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
-                   dom: 'Bfrtip',
-                   buttons: [
-                       {
-                           extend: 'copy',
-                           className: 'd-none'
-                       },
-                       {
-                           extend: 'excel',
-                           className: 'd-none'
-                       },
-                       {
-                           extend: 'csv',
-                           className: 'd-none'
-                       },
-                       {
-                           extend: 'pdf',
-                           className: 'd-none'
-                       },
-                       {
-                           extend: 'print',
-                           className: 'd-none'
-                       },
-                   ],
-                   select: {
-                       style: 'multi',
-                       selector: 'td:first-child input[type="checkbox"]',
-                       classMap: {
-                           checkAll: '#datatableCheckAll',
-                           counter: '#datatableCounter',
-                           counterInfo: '#datatableCounterInfo'
-                       }
-                   },
-                   info: false,
-                   paging: false,
-                   language: {
-                       zeroRecords: '<div class="text-center p-4">' +
-                           '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
-                           '<p class="mb-0">{{translate('No data to show')}}</p>' +
-                           '</div>'
-                   }
-               });
-   
-               // INITIALIZATION OF TAGIFY
-               // =======================================================
-               $('.js-tagify').each(function () {
-                   var tagify = $.HSCore.components.HSTagify.init($(this));
-               });
-           });
-   
-           function filter_branch_orders(id) {
-               location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
-           }
-       </script>
-   
-      <script>
+        function filter_branch_orders(id) {
+            location.href = '{{url('/')}}/admin/orders/branch-filter/' + id;
+        }
+
         $(document).on('ready', function () {
             // ... Your existing initialization code
 
@@ -486,25 +598,33 @@
                 paginationSection.show();
             }
         }
-        </script>
-       <script>
-           $('#from_date,#to_date').change(function () {
-               let fr = $('#from_date').val();
-               let to = $('#to_date').val();
-               if (fr != '' && to != '') {
-                   if (fr > to) {
-                       $('#from_date').val('');
-                       $('#to_date').val('');
-                       toastr.error('{{translate('Invalid date range!')}}', Error, {
-                           CloseButton: true,
-                           ProgressBar: true
-                       });
-                   }
-               }
-           });
-           $('#datatable').dataTable({
-       destroy: true,
-       ...
-   });
-       </script> 
+
+        $('#from_date,#to_date').change(function () {
+            let fr = $('#from_date').val();
+            let to = $('#to_date').val();
+            if (fr != '' && to != '') {
+                if (fr > to) {
+                    $('#from_date').val('');
+                    $('#to_date').val('');
+                    toastr.error('{{translate('Invalid date range!')}}', Error, {
+                        CloseButton: true,
+                        ProgressBar: true
+                    });
+                }
+            }
+        });
+        $('#datatable').dataTable({
+            destroy: true,
+            ...
+        });
+
+        function clearBranchFilter() {
+            // Unset branch session
+            // <?php session(['branch_filter' => null]); ?>
+            @php(session(['branch_filter' => null]))
+    
+            // Reload the page
+            window.location.assign('all');
+        }
+    </script> 
 @endpush

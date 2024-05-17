@@ -200,6 +200,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::delete('delete/{id}', 'OrderController@delete')->name('delete');
             Route::get('export', 'OrderController@export_data')->name('export');
             Route::get('ajax-change-delivery-time-date/{order_id}', 'OrderController@ajax_change_delivery_time_date')->name('ajax-change-delivery-time-date');
+            Route::post('order-list-search', 'OrderController@order_list_search')->name('order_list_search');
         });
 
         Route::group(['prefix' => 'category', 'as' => 'category.', 'middleware' => ['module:product_management']], function () {
