@@ -3378,12 +3378,11 @@ img.avatar-img.fit-image{
   .table-responsive.datatable_wrapper_row.mt-5.sale-report.no-block-tbl .dataTable {
     display: table !important;
   }
-}
-@media (min-width:400) and (max-width:600px){
   .set_table.banner-tbl .datatable_wrapper_row .dataTable {
     display: table !important;
 }
 }
+
 @media only screen and (max-width:992px){
   .sale-report .datatable_wrapper_row .dataTable{
     display: table !important;
