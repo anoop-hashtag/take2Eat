@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Model\BusinessSetting;
 use App\Model\CustomerAddress;
 use App\Model\Order;
+use App\Model\Branch;
 use App\Models\OrderPartialPayment;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
@@ -25,6 +26,7 @@ class OrderController extends Controller
 {
     public function __construct(
         private Order           $order,
+        private Branch           $branch,
         private User            $user,
         private BusinessSetting $business_setting,
         private CustomerAddress $customer_addresses,
@@ -556,5 +558,37 @@ class OrderController extends Controller
 
         return response()->json(['status' => true]);
 
+    }
+
+
+    public function order_list_search(Request $request)
+    {
+        //update daily stock
+        Helpers::update_daily_product_stock();
+
+
+        $this->order->where(['checked' => 0, 'branch_id' => auth('branch')->id()])->update(['checked' => 1]);
+
+        if ($request->has('search')) {
+            $key = explode(' ', $request['search']);
+            $orders = $this->order
+                ->where(['branch_id' => auth('branch')->id()])
+                ->whereDate('delivery_date', '<=', Carbon::now()->format('Y-m-d'))
+                ->where(function ($q) use ($key) {
+                    foreach ($key as $value) {
+                        $q->orWhere('id', 'like', "%{$value}%")
+                            ->orWhere('order_status', 'like', "%{$value}%")
+                            ->orWhere('transaction_reference', 'like', "%{$value}%");
+                    }
+                });
+        }
+
+        $orders = $orders->notPos()->notDineIn()->latest()->get();
+        $branch_name = $this->branch->select('name')->where('id', '=', auth('branch')->id())->get();
+        $response = [
+            'orders' => $orders,
+            'branch_name' => $branch_name // Access the name attribute directly
+        ];
+        return response()->json($response);
     }
 }

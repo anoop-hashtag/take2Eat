@@ -209,19 +209,22 @@
                         </div>
                     </div>
                     <div class="col-sm-8 col-md-6 col-lg-4">
-                        <form action="{{url()->current()}}" method="GET">
-                            {{-- <div class="input-group">
-                                <input id="datatableSearch_" type="search" name="search"
-                                        class="form-control"
-                                        placeholder="{{translate('Search by ID, customer or payment status')}}" aria-label="Search"
-                                        value="{{$search}}" required autocomplete="off">
-                                <div class="input-group-append">
+                        {{-- <form action="{{url()->current()}}" method="GET"> --}}
+                            <div class="input-group">
+                                <div class="input-group-prepend pl-2">
+                                    <div class="input-group-text">
+                                        <!-- <i class="tio-search"></i> -->
+                                        <img width="13" src="{{asset('public/assets/admin/img/icons/search.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <input type="text" id="order_details" onkeyup="searchOrder()" class="form-control" placeholder="{{translate('Order ID, Order Status, Order Amount or Name')}}" aria-label="Search">
+                                {{-- <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary">
                                         {{translate('Search')}}
                                     </button>
-                                </div>
-                            </div> --}}
-                        </form>
+                                </div> --}}
+                            </div>
+                        {{-- </form> --}}
                     </div>
                     
                 </div>
@@ -229,7 +232,7 @@
             </div>
             <!-- End Header -->
 
-            <div class="set_table responsive-ui new-ui">
+            <div class="set_table responsive-ui new-ui" style="margin-top: 50px">
                 <!-- Table -->
                 <div class="table-responsive datatable_wrapper_row " style="padding:0 10px;">
                     <table id="datatable"
@@ -333,7 +336,7 @@
                 <!-- End Table -->
 
                 <div class="table-responsive mt-4 px-3 pagination-style">
-                    <div class="d-flex justify-content-lg-end justify-content-sm-end">
+                    <div class="d-flex justify-content-lg-end justify-content-sm-end" id="pagination">
                         <!-- Pagination -->
                         {!! $orders->links() !!}
                     </div>
@@ -372,6 +375,129 @@
 @endsection
 
 @push('script_2')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script>
+        function searchOrder() {
+            let text = $('#order_details').val();
+            if(text.length > 0) {
+                $('#pagination').html('');
+                $.ajax({
+                    url: '{{ url('/')}}/branch/orders/order-list-search',
+                    type: "POST",
+                    data: {
+                        search: text,
+                        _token:'{{ csrf_token() }}'
+                    },
+                    cache: false,
+                    success: function(data){
+                        // console.log(data.orders);
+
+                        let item = ''
+                        let length = data.orders.length;
+
+                        $('#set-rows').html('');
+                        let k = 1;
+                        for(let i = 0; i < length; i++) {
+
+                            // Parse delivery date and time strings into Moment objects
+                            let deliveryDate = moment(data.orders[i].delivery_date);
+                            let deliveryTime = moment(data.orders[i].delivery_time, 'HH:mm:ss');
+
+                            // Format date and time strings as desired
+                            let formattedDate = deliveryDate.format('DD-MM-YYYY'); // Format date as dd mm yyyy
+                            let formattedTime = deliveryTime.format('hh:mm A'); // Format time as HH:MM AM/PM
+
+                            let order_amount = Math.round(data.orders[i].order_amount) + ".00";
+
+                            let payment_status = data.orders[i].payment_status;
+                            if (payment_status == 'unpaid') {
+                                payment_status = '<span class="text-danger">Unpaid</span>';
+                            } else {
+                                payment_status = '<span class="text-success">Paid</span>';
+                            }
+
+                            let order_status = data.orders[i].order_status;
+                            if (order_status == 'pending') {
+                                order_status = '<span class="badge-soft-info px-2 py-1 rounded">{{translate("pending")}}</span>';
+                            } else if (order_status == 'confirmed') {
+                                order_status = '<span class="badge-soft-info px-2 py-1 rounded">{{translate("confirmed")}}</span>';
+                            } else if (order_status == 'processing') {
+                                order_status = '<span class="badge-soft-warning px-2 py-1 rounded">{{translate("processing")}}</span>';
+                            } else if (order_status == 'out_for_delivery') {
+                                order_status = '<span class="badge-soft-warning px-2 py-1 rounded">{{translate("out_for_delivery")}}</span>';
+                            } else if (order_status == 'delivered') {
+                                order_status = '<span class="badge-soft-success px-2 py-1 rounded">{{translate("delivered")}}</span>';
+                            } else if (order_status == 'failed') {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("failed")}}</span>';
+                            } else if (order_status == 'returned') {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("returned")}}</span>';
+                            } else if (order_status == 'canceled') {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("cancelled")}}</span>';
+                            } else if (order_status == 'returned') {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("returned")}}</span>';
+                            } else {
+                                order_status = '<span class="badge-soft-danger px-2 py-1 rounded">{{translate("done")}}</span>';
+                            }
+
+                            let order_type = data.orders[i].order_type;
+                            order_type = order_type.replace("_", " ");
+                            order_type = order_type.toLowerCase().charAt(0).toUpperCase() + order_type.toLowerCase().slice(1);
+                            order_type = '<span class="badge-soft-success px-2 py-1 rounded">' + order_type + '</span>';
+
+                            let contact_person_name = '';
+                            let contact_person_name_url = '';
+                            let is_guest = data.orders[i].is_guest;
+                            let delivery_address = data.orders[i].delivery_address;
+
+                            if(is_guest == 0) {
+                                if (delivery_address != null) {
+                                    contact_person_name = data.orders[i].delivery_address.contact_person_name;
+                                    contact_person_name_url = '{{ url('/') }}/branch/customer/view/' + data.orders[i].user_id;
+                                    contact_person_name = '<a class="text-dark text-capitalize" href="' + contact_person_name_url + '">'+contact_person_name+'</a>';
+                                }
+                            } else {
+                                contact_person_name = '<span class="text-capitalize text-info">Guest Customer</span>';
+                            }                          
+
+                            let order_id = data.orders[i].id;
+                            let order_url = '{{ url('/') }}/branch/orders/details/' + order_id;
+                            let print_url = '{{ url('/') }}/branch/orders/generate-invoice/' + order_id;
+
+                            let branch_name = data.branch_name[0].name;
+                            
+                            item += '<tr>' +
+                                        '<td>' + k + '</td>' +
+                                        '<td><a class="text-dark" href="' + order_url + '">' + order_id + '</a></td>' +
+                                        '<td><div>' + formattedDate + '</div> <div>' + formattedTime + '</div></td>' +
+                                        '<td>' + contact_person_name + '</td>' +
+                                        '<td><span class="badge-soft-info px-2 py-1 rounded">' + branch_name + '</span></td>' +
+                                        '<td><div>₹' + order_amount + '</div>' + payment_status + '</td>' +
+                                        '<td>' + order_status + '</td>' +
+                                        '<td>' + order_type + '</td>' +
+                                        '<td>' + 
+                                            '<div class="d-flex gap-2">' +
+                                                '<a class="btn btn-sm btn-outline-primary square-btn" href="' + order_url + '">' +
+                                                    '<i class="tio-invisible"></i>' +
+                                                '</a>' +
+                                                '<button type="button" class="btn btn-sm btn-outline-success square-btn" onclick="print_invoice('+order_id+')">' +
+                                                    '<i class="tio-print"></i>' +
+                                                '</button>' +
+                                            '</div>' +
+                                        '</td>' +
+                                    '</tr>';
+                            k++;
+                        }
+                        $('#set-rows').html(item);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            } else {
+                location.reload();
+            }
+        }
+    </script>
     <script>
         $('#search-form').on('submit', function () {
             var formData = new FormData(this);
@@ -631,6 +757,7 @@
                  },
                 info: false,
                 paging: false,
+                searching: false,
                  language: {
                      zeroRecords: '<div class="text-center p-4">' +
                          '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +

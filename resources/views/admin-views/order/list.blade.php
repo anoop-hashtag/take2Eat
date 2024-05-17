@@ -218,7 +218,7 @@
                                         <img width="13" src="{{asset('public/assets/admin/img/icons/search.png')}}" alt="">
                                     </div>
                                 </div>
-                                <input type="text" id="order_details" onkeyup="searchOrder()" class="form-control" placeholder="{{translate('Order ID, Order Status or Order Amount')}}" aria-label="Search">
+                                <input type="text" id="order_details" onkeyup="searchOrder()" class="form-control" placeholder="{{translate('Order ID, Order Status, Order Amount or Name')}}" aria-label="Search">
                                 {{-- <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary">
                                     {{translate('Search')}}
@@ -365,7 +365,7 @@
                         let item = ''
                         let length = data.length;
 
-                        console.log(data);
+                        // console.log(data);
 
                         $('#set-rows').html('');
                         let k = 1;
