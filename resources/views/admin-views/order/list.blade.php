@@ -210,16 +210,22 @@
                         </div>
                     </div>
                     <div class="col-sm-8 col-md-6 col-lg-4">
-                        <form action="{{url()->current()}}" method="GET">
-                            <div class="input-group">
-                                <input type="text" id="order_details" onkeyup="searchOrder()" class="form-control" placeholder="{{translate('Search by Order ID, Order Status or Transaction Reference')}}" aria-label="Search">
+                        {{-- <form action="{{url()->current()}}" method="GET"> --}}
+                            <div class="input-group input-group-merge input-group-flush border rounded">
+                                <div class="input-group-prepend pl-2">
+                                    <div class="input-group-text">
+                                        <!-- <i class="tio-search"></i> -->
+                                        <img width="13" src="{{asset('public/assets/admin/img/icons/search.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <input type="text" id="order_details" onkeyup="searchOrder()" class="form-control" placeholder="{{translate('Order ID, Order Status or Order Amount')}}" aria-label="Search">
                                 {{-- <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary">
                                     {{translate('Search')}}
                                     </button> 
                                 </div> --}}
                             </div>
-                        </form>
+                        {{-- </form> --}}
                     </div>
                    
                 </div>

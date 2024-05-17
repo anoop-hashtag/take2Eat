@@ -2252,4 +2252,5 @@
   'Addon Price:' => 'Addon Price:',
   'Addons Price' => 'Addons Price',
   'Delivery_Partner_Report_Overview' => 'Delivery Partner Report Overview',
+  'Order ID, Order Status or Order Amount' => 'Order ID, Order Status or Order Amount',
 );
