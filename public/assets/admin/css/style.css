@@ -878,7 +878,9 @@ input.qty {
   column-gap: 10px;
   row-gap: 24px;
 }
-
+.outgoing_msg .row.g-2.mt-2 {
+  text-align: end;
+}
 .addon-wrap .addon-item .addon-input {
   padding: 0 !important;
   min-height: 30px;
