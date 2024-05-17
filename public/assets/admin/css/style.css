@@ -3378,6 +3378,9 @@ img.avatar-img.fit-image{
   .table-responsive.datatable_wrapper_row.mt-5.sale-report.no-block-tbl .dataTable {
     display: table !important;
   }
+ 
+}
+@media (min-width:600px) and (max-width:992px){
   .set_table.banner-tbl .datatable_wrapper_row .dataTable {
     display: table !important;
 }
