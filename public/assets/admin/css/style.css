@@ -3374,6 +3374,23 @@ img.avatar-img.fit-image{
   padding-top: 10px;
 }
 }
+@media (min-width:400px) and (max-width:992px){
+  .table-responsive.datatable_wrapper_row.mt-5.sale-report.no-block-tbl .dataTable {
+    display: table !important;
+  }
+ 
+}
+@media (min-width:600px) and (max-width:992px){
+  .set_table.banner-tbl .datatable_wrapper_row .dataTable {
+    display: table !important;
+}
+}
+@media (min-width:657px) and (max-width:860px){
+  .set_table.new-responsive.chef-list.kitchen_tbl .datatable_wrapper_row .dataTable {
+    display: block!important;
+}
+}
+
 @media only screen and (max-width:992px){
   .sale-report .datatable_wrapper_row .dataTable{
     display: table !important;
@@ -3636,7 +3653,6 @@ img.avatar-img.fit-image{
   } 
 }
 @media only screen and (max-width: 600px) {
-  
   .set_table.new-responsive.sale-report.search-fit .dataTables_wrapper .dataTables_filter{
     margin: 0 2rem 0 1rem !important;
   }
