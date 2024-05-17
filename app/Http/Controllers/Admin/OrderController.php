@@ -884,4 +884,33 @@ class OrderController extends Controller
         return response()->json(['status' => true]);
     }
 
+    public function order_list_search(Request $request)
+    {
+        //update daily stock
+        Helpers::update_daily_product_stock();
+
+        $from = $request['from'];
+        $to = $request['to'];
+
+        if ($request->has('search')) {
+            $key = explode(' ', $request['search']);
+            $query = $this->order->select('orders.*', 'branches.name')
+            ->where(function ($q) use ($key) {
+                foreach ($key as $value) {
+                    $q->orWhere('orders.id', 'like', "%{$value}%")
+                        ->orWhere('order_status', 'like', "%{$value}%")
+                        ->orWhere('transaction_reference', 'like', "%{$value}%");
+                }
+            })
+            ->when($from && $to, function ($query) use ($from, $to) {
+                $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
+            })
+            ->join('branches', 'orders.branch_id', '=', 'branches.id');
+        }
+        
+        $orders = $query->notPos()->notDineIn()->latest()->get();
+        
+        return response()->json($orders);
+    }
+
 }
