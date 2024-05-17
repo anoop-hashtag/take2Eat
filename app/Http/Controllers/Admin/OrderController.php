@@ -898,14 +898,16 @@ class OrderController extends Controller
             ->where(function ($q) use ($key) {
                 foreach ($key as $value) {
                     $q->orWhere('orders.id', 'like', "%{$value}%")
-                        ->orWhere('order_status', 'like', "%{$value}%")
-                        ->orWhere('order_amount', 'like', "%{$value}%");
+                        ->orWhere('orders.order_status', 'like', "%{$value}%")
+                        ->orWhere('orders.order_amount', 'like', "%{$value}%")
+                        ->orWhere('users.f_name', 'like', "%{$value}%");
                 }
             })
             ->when($from && $to, function ($query) use ($from, $to) {
                 $query->whereBetween('created_at', [date('Y-m-d', strtotime($from)) . ' 00:00:00', date('Y-m-d', strtotime($to)) . ' 23:59:59']);
             })
-            ->join('branches', 'orders.branch_id', '=', 'branches.id');
+            ->join('branches', 'orders.branch_id', '=', 'branches.id')
+            ->join('users', 'orders.user_id', '=', 'users.id');
         }
         
         $orders = $query->notPos()->notDineIn()->latest()->get();
