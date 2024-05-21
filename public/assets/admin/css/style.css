@@ -267,10 +267,7 @@ table.dataTable tbody td {
 .gap-2 {
   gap: 0.5rem;
 }
-li.paginate_item.page-item span.ellipsis.page-link {
-  height: 33.28px;
-  padding: .5em 1em;
-}
+
 
 .gap-3 {
   gap: 1rem;
@@ -3048,6 +3045,13 @@ img.avatar-img.fit-image{
   width: 100%;
   max-width: 105px;
   object-fit: cover;
+}
+ul#last_week_datatable_pagination {
+  margin: 10px 0 20px 0;
+}
+li.paginate_item.page-item span.ellipsis.page-link {
+  height: auto;
+  padding: 5px 10px;
 }
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 
