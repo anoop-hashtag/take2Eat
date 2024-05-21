@@ -55,7 +55,7 @@
                                             <div class="upload-file">
                                                 <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
                                                 <div class="upload-file__img_drag upload-file__img">
-                                                    <img  style="width: 100% !important; height:auto !important;object-fit:cover; aspect-ratio:3/1" id="viewer" src="{{asset('public/assets/admin/img/icons/upload_img2.png')}}" alt="">
+                                                    <img  class="ratio-3-to-1" id="viewer" src="{{asset('public/assets/admin/img/icons/upload_img2.png')}}" alt="">
                                                 </div>
                                             </div>
                                         </div>
