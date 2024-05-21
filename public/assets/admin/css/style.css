@@ -3403,7 +3403,6 @@ img.avatar-img.fit-image{
     display: block!important;
 }
 }
-
 @media only screen and (max-width:992px){
   .sale-report .datatable_wrapper_row .dataTable{
     display: table !important;
@@ -3937,7 +3936,22 @@ select.custom-select.w-auto.min-width-170px {
     padding: 5px 10px;
 }
 }
-@media only screen and  (max-width: 375px) {
+@media only screen and  (max-width: 385px) {
+  a.d-block.h3.mb-2.product-title {
+    font-size: 16px;
+}
+  #quick-view-modal .d-flex.flex-wrap.gap-3 {
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: flex-start;
+    gap: 8px;
+}
+  .d-flex.align-items-center.justify-content-center.active.pos-image img {
+    max-width: 50px;
+    max-height: 50px;
+    height: 100%;
+    object-fit: cover;
+  }
   .email-format-section.email-format-wrapper.row .card .card-body {
     padding: 5px !important;
 }
