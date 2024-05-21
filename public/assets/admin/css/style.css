@@ -3035,7 +3035,7 @@ img.avatar-img.fit-image{
 }
 img#viewer2 {
   aspect-ratio: 8 / 1;
-  object-fit: contain;
+  object-fit: cover;
   max-width: 100%;
   min-height: 500px;
   width: 500px;
