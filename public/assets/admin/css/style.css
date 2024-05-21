@@ -3937,6 +3937,9 @@ select.custom-select.w-auto.min-width-170px {
 }
 }
 @media only screen and  (max-width: 385px) {
+  input#order_details::placeholder {
+    font-size: 12px;
+}
   a.d-block.h3.mb-2.product-title {
     font-size: 16px;
 }
