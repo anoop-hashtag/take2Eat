@@ -3033,24 +3033,9 @@ img.avatar-img.fit-image{
   width: 120px;
   height: auto;
 }
-img#viewer2 {
-  aspect-ratio: 8 / 1;
-  object-fit: cover;
-  max-width: 100%;
-  min-height: 500px;
-  width: 500px;
-}
-img#viewer{
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  height: 105px;
-  width: 105px;
-}
 
 
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
-
-
 
 
 @media only screen and  (max-width: 1650px) {
