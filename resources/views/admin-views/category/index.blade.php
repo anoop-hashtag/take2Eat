@@ -70,7 +70,7 @@
                                         <div class="from_part_2 mt-2">
                                             <div class="form-group">
                                                 <div class="text-center">
-                                                    <img width="105" class="rounded-10 border" id="img2"
+                                                    <img width="105" class="rounded-10 border ratio-1-to-1" id="img2"
                                                         src="{{ asset('public/assets/admin/img/400x400/img2.jpg') }}" alt="image" />
                                                 </div>
                                             </div>
@@ -90,7 +90,7 @@
                                         <div class="from_part_2 mb-4 px-4">
                                             <div class="form-group">
                                                 <div class="text-center">
-                                                    <img width="500" class="rounded-10 border" id="img"
+                                                    <img width="500" class="rounded-10 border ratio-8-to-1" id="img"
                                                         src="{{ asset('public/assets/admin/img/900x400/img1.jpg') }}" alt="image" />
                                                 </div>
                                             </div>

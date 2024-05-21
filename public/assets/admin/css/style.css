@@ -3033,8 +3033,22 @@ img.avatar-img.fit-image{
   width: 120px;
   height: auto;
 }
-
-
+.ratio-8-to-1 {
+  max-height: 175px;
+  width: 100%;
+  object-fit: cover;
+}
+.ratio-3-to-1 {
+  max-height: 144px;
+  width: 100%;
+  object-fit: cover;
+}
+.ratio-1-to-1 {
+  max-height: 105px;
+  width: 100%;
+  max-width: 105px;
+  object-fit: cover;
+}
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 
 

@@ -87,7 +87,7 @@
                                                 <div class="from_part_2 mt-2">
                                                     <div class="form-group">
                                                         <div class="text-center">
-                                                            <img width="105" class="rounded-10 border" id="viewer"
+                                                            <img width="105" class="rounded-10 border ratio-1-to-1" id="viewer"
                                                                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                                 src="{{asset('storage/app/public/category')}}/{{$category['image']}}" alt="image" />
                                                         </div>
@@ -108,7 +108,7 @@
                                                 <div class="from_part_2">
                                                     <div class="form-group">
                                                         <div class="text-center">
-                                                            <img width="500" class="rounded-10 border" id="viewer2"
+                                                            <img width="500" class="rounded-10 border ratio-8-to-1" id="viewer2"
                                                                 onerror="this.src='{{asset('public/assets/admin/img/1920x400/img2.jpg')}}'"
                                                                 src="{{asset('storage/app/public/category/banner')}}/{{$category['banner_image']}}" alt="image" />
                                                         </div>
