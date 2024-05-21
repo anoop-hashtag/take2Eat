@@ -2956,11 +2956,11 @@ a.card.card-border-left.border-left-primary.shadow-none.rounded-0 .card-body.py-
 .avatar img.rounded {
   border: 1px solid  #e7eaf3;
 }
- .dataTables_wrapper .dataTables_paginate .paginate_button {
+.dataTables_wrapper .dataTables_paginate .paginate_button {
   box-sizing: border-box !important;
   display: inline-block !important;
-  min-width: 1.5em !important;
-  padding: .5em 1em !important;
+  min-width: 20px !important;
+  padding: 5px 10px !important;
   margin-left: 2px !important;
   text-align: center !important;
   text-decoration: none !important;
