@@ -194,7 +194,7 @@
                                        autocomplete="off">
                                 <label class="d-flex align-items-center btn btn-sm check-label addon-input mb-0 h-100 break-all"
                                        for="addon{{ $key }}">{{ $add_on->name }}
-                                    {{ \App\CentralLogics\Helpers::set_symbol($add_on->price) }}
+                                <span class="addon-pricedw">{{ \App\CentralLogics\Helpers::set_symbol($add_on->price) }}</span>
                                 </label>
                                 <label class="input-group addon-quantity-input shadow bg-white rounded mb-0 d-flex align-items-center"
                                        for="addon{{ $key }}">
