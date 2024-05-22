@@ -3589,6 +3589,11 @@ li.paginate_item.page-item span.ellipsis.page-link {
   }
 }
 @media (min-width: 600px) and (max-width: 992px) {
+  .set_table.responsive-ui.branch-pos-order.table-view .datatable_wrapper_row .dataTable {
+    display: table !important;
+    width: 100%;
+    overflow-x: auto;
+}
   .set_table.search-set .datatable_wrapper_row .dataTable {
     display: table !important;
     width: 100% !important;
