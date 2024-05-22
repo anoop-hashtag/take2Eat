@@ -3728,7 +3728,7 @@ div#printableArea #printableAreaContent{
 }
 } 
 .__descripiton-txt.__not-first-hidden {
-  margin-bottom: 25px;
+  margin-bottom: 18px;
   max-height: 80px;
   overflow: hidden;
   padding-bottom: 0;
@@ -3741,7 +3741,7 @@ div#printableArea #printableAreaContent{
 }
 @media only screen and  (max-width:575px){
   .__descripiton-txt.__not-first-hidden {
-    margin-bottom: 25px;
+    margin-bottom: 18x;
     max-height: 55px;
     overflow: hidden;
     padding-bottom: 0;
