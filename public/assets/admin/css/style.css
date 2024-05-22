@@ -3595,6 +3595,12 @@ li.paginate_item.page-item span.ellipsis.page-link {
 }
 }
 @media (min-width:575px) and (max-width: 640px) {
+  .set_table.responsive-ui.branch-pos-order .dataTables_wrapper .dataTables_filter{
+    margin: 0.5rem 0 0 1.4rem !important;
+  }
+  .set_table.responsive-ui.branch-pos-order .dataTables_wrapper .dataTables_filter label{
+    margin: 0 !important;
+  }
   .set_table.new-responsive.pb-4.top-margin .datatable_wrapper_row .dataTable {
     display: table !important;
     width: 100%;
@@ -3667,6 +3673,12 @@ li.paginate_item.page-item span.ellipsis.page-link {
   } 
 }
 @media only screen and (max-width: 600px) {
+  .set_table.responsive-ui.branch-pos-order .dataTables_wrapper .dataTables_filter{
+    margin: 0.5rem 0 0 1.4rem !important;
+  }
+  .set_table.responsive-ui.branch-pos-order .dataTables_wrapper .dataTables_filter label{
+    margin: 0 !important;
+  }
   .set_table.new-responsive.sale-report.search-fit .dataTables_wrapper .dataTables_filter{
     margin: 0 2rem 0 1rem !important;
   }
