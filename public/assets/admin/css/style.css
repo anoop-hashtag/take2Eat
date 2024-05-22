@@ -3040,6 +3040,9 @@ li.paginate_item.page-item span.ellipsis.page-link {
   height: auto;
   padding: 5px 10px;
 }
+.avatar-xxl.avatar-4by3{
+  object-fit: cover;
+}
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 
 
