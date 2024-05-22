@@ -1258,19 +1258,6 @@ ol.order-list {
   padding-bottom: 24px;
 }
 
-.__descripiton-txt.__not-first-hidden {
-  margin-bottom: 25px;
-  max-height: 110px;
-  overflow: hidden;
-  padding-bottom: 0;
-  font-weight: 400 !important;
-}
-
-.__descripiton-txt.__not-first-hidden .show-more {
-  top: 73px;
-  padding-top: 15px;
-  font-weight: 400 !important;
-}
 
 .__descripiton-txt.__not-first-hidden .show-more span {
   cursor: pointer;
@@ -3742,13 +3729,13 @@ div#printableArea #printableAreaContent{
 } 
 .__descripiton-txt.__not-first-hidden {
   margin-bottom: 25px;
-  max-height: 55px;
+  max-height: 80px;
   overflow: hidden;
   padding-bottom: 0;
   font-weight: 400 !important;
 } 
 .__descripiton-txt.__not-first-hidden .show-more {
-  top: 23px;
+  top: 40px;
   padding-top: 15px;
   font-weight: 400 !important;
 }
