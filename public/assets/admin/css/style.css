@@ -3028,8 +3028,8 @@ img.avatar-img.fit-image{
   object-fit: cover;
 }
 .ratio-1-to-1 {
-  height: 176px;
-  width: 176px;
+  height: 105px;
+  width: 105px;
   max-width: 105px;
   object-fit: cover;
 }
