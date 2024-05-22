@@ -3965,7 +3965,7 @@ select.custom-select.w-auto.min-width-170px {
 @media only screen and  (max-width: 385px) {
   .pos-item-wrap {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 0 !important;
     max-block-size: 61vh;
     overflow-y: auto;
