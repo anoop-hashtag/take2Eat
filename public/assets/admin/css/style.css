@@ -3740,7 +3740,31 @@ div#printableArea #printableAreaContent{
   max-width: 100px;
 }
 } 
+.__descripiton-txt.__not-first-hidden {
+  margin-bottom: 25px;
+  max-height: 55px;
+  overflow: hidden;
+  padding-bottom: 0;
+  font-weight: 400 !important;
+} 
+.__descripiton-txt.__not-first-hidden .show-more {
+  top: 23px;
+  padding-top: 15px;
+  font-weight: 400 !important;
+}
 @media only screen and  (max-width:575px){
+  .__descripiton-txt.__not-first-hidden {
+    margin-bottom: 25px;
+    max-height: 55px;
+    overflow: hidden;
+    padding-bottom: 0;
+    font-weight: 400 !important;
+} 
+  .__descripiton-txt.__not-first-hidden .show-more {
+    top: 23px;
+    padding-top: 15px;
+    font-weight: 400 !important;
+  }
   .set_table.new-responsive.pb-4.top-margin .datatable_wrapper_row .dataTable {
     display: table !important;
     width: 100%;
