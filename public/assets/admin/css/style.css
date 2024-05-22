@@ -3963,6 +3963,15 @@ select.custom-select.w-auto.min-width-170px {
 }
 }
 @media only screen and  (max-width: 385px) {
+  .pos-product-item_title {
+    display: block;
+    margin-bottom: 5px;
+    color: #334257;
+    white-space: nowrap;
+    width: 98px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
   .pos-item-wrap {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -3975,7 +3984,7 @@ select.custom-select.w-auto.min-width-170px {
   overflow: hidden;
   border-radius: 5px !important;
   position: relative;
-  margin: 5px;
+  margin: 2px;
 }
   input#order_details::placeholder {
     font-size: 12px;

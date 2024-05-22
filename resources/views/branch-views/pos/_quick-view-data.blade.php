@@ -160,7 +160,7 @@
                 @endif
 
                 <!-- Quantity + Add to cart -->
-                <div class="d-flex align-items-center justify-content-between mb-3 mt-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
                     <h3 class="product-description-label mt-2 mb-0">{{translate('Quantity')}}:</h3>
 
                     <div class="product-quantity d-flex align-items-center">
