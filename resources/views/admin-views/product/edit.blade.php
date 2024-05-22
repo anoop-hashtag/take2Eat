@@ -112,7 +112,7 @@
                                             <div class="upload-file">
                                                 <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
                                                 <div class="upload-file__img_drag upload-file__img">
-                                                    <img width="176" src="{{asset('storage/app/public/product')}}/{{$product['image']}}"
+                                                    <img width="176" class="ratio-1-to-1" src="{{asset('storage/app/public/product')}}/{{$product['image']}}"
                                                         onerror="this.src='{{asset('public/assets/admin/img/400x400/img2.jpg')}}'" alt="">
                                                 </div>
                                             </div>
