@@ -4,10 +4,31 @@
 
 @push('css_or_js')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endpush
 
 @section('content')
+<style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    min-width: 20px !important;
+    padding: 5px 10px !important;
+    margin-left: 2px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    color: #8c98a4 !important;
+    border: 1px solid transparent !important;
+    border-radius: .3125rem !important;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff!important;
+    background-color: #ff611d;
+    border-color: #ff611d;
+}
+</style>
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
