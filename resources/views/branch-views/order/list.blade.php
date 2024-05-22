@@ -232,7 +232,7 @@
             </div>
             <!-- End Header -->
 
-            <div class="set_table responsive-ui new-ui" style="margin-top: 50px">
+            <div class="set_table responsive-ui new-ui" style="margin-top: 25px">
                 <!-- Table -->
                 <div class="table-responsive datatable_wrapper_row " style="padding:0 10px;">
                     <table id="datatable"

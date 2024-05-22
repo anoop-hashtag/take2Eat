@@ -68,7 +68,7 @@
                     </div>
                     <!-- End Header -->
 
-                    <div class="set_table responsive-ui branch-pos-order table-view">
+                    <div class="set_table ">
                         <div class="table-responsive datatable_wrapper_row " id="set-rows" style="padding:0 10px;">
                             <table id="datatable" class="mt-3 table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table" style="padding-right: 10px">
                                 <thead class="thead-light">

@@ -88,7 +88,7 @@
                         </h5>
                     </div>
                   
-                    <div class="col-md-8">
+                    {{-- <div class="col-md-8">
                         <form action="{{url()->current()}}" method="GET">
                             <div class="input-group">
                                 <!-- <input id="datatableSearch_" type="search" name="search"
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
