@@ -210,7 +210,7 @@
                     </div>
                     <div class="col-sm-8 col-md-6 col-lg-4">
                         {{-- <form action="{{url()->current()}}" method="GET"> --}}
-                            <div class="input-group">
+                            <div class="input-group input-group-merge input-group-flush border rounded">
                                 <div class="input-group-prepend pl-2">
                                     <div class="input-group-text">
                                         <!-- <i class="tio-search"></i> -->

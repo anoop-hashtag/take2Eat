@@ -3596,7 +3596,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
 }
 @media (min-width:575px) and (max-width: 640px) {
   .set_table.responsive-ui.branch-pos-order .dataTables_wrapper .dataTables_filter{
-    margin: 0.5rem 0 0 1.4rem !important;
+    margin: 2rem 0 0 1.4rem !important;
   }
   .set_table.responsive-ui.branch-pos-order .dataTables_wrapper .dataTables_filter label{
     margin: 0 !important;
