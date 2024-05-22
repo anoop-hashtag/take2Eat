@@ -3560,7 +3560,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
   }
 }
 @media only screen and  (max-width: 767px) {
-  .dataTables_wrapper .dataTables_paginate {
+  .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {
     float: right !important;
     text-align: center !important;
     margin: 10px 0 !important;

@@ -10,6 +10,29 @@
         .dataTables_paginate {
             margin-top: 20px; /* Adjust the top margin as needed */
         }
+        <style>
+    .dataTables_paginate.paging_simple_numbers {
+    margin: 10px;
+}
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    min-width: 20px !important;
+    padding: 5px 10px !important;
+    margin-left: 2px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    color: #8c98a4 !important;
+    border: 1px solid transparent !important;
+    border-radius: .3125rem !important;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff!important;
+    background-color: #ff611d;
+    border-color: #ff611d;
+}
     </style>
 @endpush
 

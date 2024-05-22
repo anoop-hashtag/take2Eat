@@ -9,6 +9,9 @@
 
 @section('content')
 <style>
+    .dataTables_paginate.paging_simple_numbers {
+    margin: 10px;
+}
     .dataTables_wrapper .dataTables_paginate .paginate_button {
     box-sizing: border-box !important;
     display: inline-block !important;
