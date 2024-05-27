@@ -232,7 +232,7 @@
             </div>
             <!-- End Card Top -->
             <!-- Table -->
-            <div class="set_table responsive-ui new-ui" style="margin-top: 25px">
+            <div class="set_table responsive-ui new-ui" style="margin-top: 50px">
                 <div class="datatable_wrapper_row" style="padding:0 10px;">
                 <div class="table-responsive">
                     <table id="datatable" class="table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
