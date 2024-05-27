@@ -30,7 +30,13 @@ class TableConfigController extends Controller
 
         $branch_table = $this->branch
             ->with(['table' => function ($q) {
-                $q->where('is_active', 1);
+                $q->where('is_active', 1)
+                // Get the order list at table. If no order means table is empty.
+                ->with(['order'=> function ($q){
+                    $q->whereHas('table_order', function($q){
+                        $q->where('branch_table_token_is_expired', 0);
+                    });
+                }]);
             }])
             ->where('status', 1)
             ->get();
