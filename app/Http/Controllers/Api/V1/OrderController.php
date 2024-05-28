@@ -644,32 +644,28 @@ class OrderController extends Controller
         return response()->json($details, 200);
     }
 
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function update_payment_status(Request $request): JsonResponse {
-        $validator = Validator::make($request->all(), [
-            'order_id' => 'required'
-        ]);
+    // public function update_payment_status(Request $request): JsonResponse {
+    //     $validator = Validator::make($request->all(), [
+    //         'order_id' => 'required'
+    //     ]);
 
-        if($validator->fails()) {
-            return response()->json(['errors' => Helpers::error_processor($validator)], 403);
-        }
+    //     if($validator->fails()) {
+    //         return response()->json(['errors' => Helpers::error_processor($validator)], 403);
+    //     }
 
-        $order_id = $request['order_id'];
+    //     $order_id = $request['order_id'];
 
-        if($this->order->where('id', $order_id)->first()) {
-            $this->order->where('id', $order_id)->update([
-                'payment_status' => 'paid'
-            ]);
-            return response()->json(['message' => translate('payment_status_updated')], 200);
-        }
+    //     if($this->order->where('id', $order_id)->first()) {
+    //         $this->order->where('id', $order_id)->update([
+    //             'payment_status' => 'paid'
+    //         ]);
+    //         return response()->json(['message' => translate('payment_status_updated')], 200);
+    //     }
 
-        return response()->json([
-            'errors' => [
-                ['code' => 'order', 'message' => translate('no_data_found')]
-            ]
-        ], 401);
-    }
+    //     return response()->json([
+    //         'errors' => [
+    //             ['code' => 'order', 'message' => translate('no_data_found')]
+    //         ]
+    //     ], 401);
+    // }
 }
