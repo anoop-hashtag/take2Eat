@@ -2254,4 +2254,6 @@
   'Delivery_Partner_Report_Overview' => 'Delivery Partner Report Overview',
   'Order ID, Order Status or Order Amount' => 'Order ID, Order Status or Order Amount',
   'Order ID, Order Status, Order Amount or Name' => 'Order ID, Order Status, Order Amount or Name',
+  'payment_method_updated' => 'Payment method updated',
+  'payment_status_updated' => 'Payment status updated',
 );

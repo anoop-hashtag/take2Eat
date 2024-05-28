@@ -122,6 +122,7 @@ Route::group(['namespace' => 'Api\V1', 'middleware' => 'localization'], function
             Route::put('payment-method', 'OrderController@update_payment_method')->withoutMiddleware(['auth:api', 'is_active']);
             Route::post('guest-track', 'OrderController@guset_track_order')->withoutMiddleware(['auth:api', 'is_active']);
             Route::post('details-guest', 'OrderController@get_guest_order_details')->withoutMiddleware(['auth:api', 'is_active']);
+            Route::put('update-payment-status', 'OrderController@update_payment_status')->withoutMiddleware(['auth:api', 'is_active']);
         });
         // Chatting
         Route::group(['prefix' => 'message'], function () {
