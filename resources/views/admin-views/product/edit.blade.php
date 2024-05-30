@@ -110,9 +110,9 @@
 
                                         <div class="d-flex justify-content-center mt-4">
                                             <div class="upload-file">
-                                                <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
+                                                <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input" id="imageInput">
                                                 <div class="upload-file__img_drag upload-file__img">
-                                                    <img width="176" class="ratio-1-to-1" src="{{asset('storage/app/public/product')}}/{{$product['image']}}"
+                                                    <img style="width: auto; height: 250px; object-fit: contain; max-height: unset" id="viewer"  class="ratio-3-to-1" src="{{asset('storage/app/public/product')}}/{{$product['image']}}"
                                                         onerror="this.src='{{asset('public/assets/admin/img/400x400/img2.jpg')}}'" alt="">
                                                 </div>
                                             </div>
@@ -439,6 +439,100 @@
 
 @push('script_2')
     <script src="{{asset('public/assets/admin/js/spartan-multi-image-picker.js')}}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Cropper.js
+            var imageInput = document.getElementById('imageInput');
+            var viewer = document.getElementById('viewer');
+            var cropper;
+
+            imageInput.addEventListener('change', function () {
+                var file = this.files[0];
+
+                if (file) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        viewer.src = e.target.result;
+
+                        if (cropper) {
+                            cropper.destroy();
+                        }
+
+                        cropper = new Cropper(viewer, {
+                            aspectRatio: 1/1,
+                            viewMode: 1, // You can adjust this value based on your requirements
+                        });
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            
+            // Handle form submission
+            var product_form = document.getElementById('product_form');
+
+            product_form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Get the cropped data
+                var croppedCanvas = cropper.getCroppedCanvas();
+
+                if (!croppedCanvas) {
+                    alert('Please select an area to crop.');
+                    return;
+                }
+
+                // Convert the canvas data to a blob
+                croppedCanvas.toBlob(function (blob) {
+                    // Create a new FormData and append the cropped image blob
+                    var formData = new FormData(product_form);
+                    formData.set('image', blob, 'cropped_image.png');
+
+                    // Use fetch API or AJAX to submit the cropped image data
+                    // Use fetch API or AJAX to submit the cropped image data
+                    fetch('{{ route('admin.product.update',[$product['id']])}}', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.errors) {
+                            for (var i = 0; i < data.errors.length; i++) {
+                                toastr.error(data.errors[i].message, {
+                                    CloseButton: true,
+                                    ProgressBar: true
+                                });
+                            }
+                        } else {
+                            toastr.success('{{translate("product updated successfully!")}}', {
+                                CloseButton: true,
+                                ProgressBar: true
+                            });
+                            setTimeout(function () {
+                                location.href = '{{route('admin.product.list')}}';
+                            }, 2000);
+                        }
+                    })
+                    .catch(error => {
+                        for (var i = 0; i < data.errors.length; i++) {
+                            toastr.error(data.errors[i].message, {
+                                CloseButton: true,
+                                ProgressBar: true
+                            });
+                        }
+                    });
+
+                });
+            });
+        });
+    </script>
     <script>
         document.getElementById('product_stock').addEventListener('input', function () {
             const input = this.value;
@@ -795,41 +889,41 @@
 
     <script>
 
-        $('#product_form').on('submit', function () {
-            var formData = new FormData(this);
+        // $('#product_form').on('submit', function () {
+        //     var formData = new FormData(this);
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.post({
-                url: '{{route('admin.product.update',[$product['id']])}}',
-                // data: $('#product_form').serialize(),
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data.errors) {
-                        for (var i = 0; i < data.errors.length; i++) {
-                            toastr.error(data.errors[i].message, {
-                                CloseButton: true,
-                                ProgressBar: true
-                            });
-                        }
-                    } else {
-                        toastr.success('{{translate("product updated successfully!")}}', {
-                            CloseButton: true,
-                            ProgressBar: true
-                        });
-                        setTimeout(function () {
-                            location.href = '{{route('admin.product.list')}}';
-                        }, 2000);
-                    }
-                }
-            });
-        });
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+        //     $.post({
+        //         url: '{{route('admin.product.update',[$product['id']])}}',
+        //         // data: $('#product_form').serialize(),
+        //         data: formData,
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         success: function (data) {
+        //             if (data.errors) {
+        //                 for (var i = 0; i < data.errors.length; i++) {
+        //                     toastr.error(data.errors[i].message, {
+        //                         CloseButton: true,
+        //                         ProgressBar: true
+        //                     });
+        //                 }
+        //             } else {
+        //                 toastr.success('{{translate("product updated successfully!")}}', {
+        //                     CloseButton: true,
+        //                     ProgressBar: true
+        //                 });
+        //                 setTimeout(function () {
+        //                     location.href = '{{route('admin.product.list')}}';
+        //                 }, 2000);
+        //             }
+        //         }
+        //     });
+        // });
 
         @if($product->main_branch_product?->stock_type == 'daily' || $product->main_branch_product?->stock_type == 'fixed')
             $("#product_stock_div").removeClass('d-none')
@@ -844,4 +938,6 @@
             }
         });
     </script>
+
+    
 @endpush

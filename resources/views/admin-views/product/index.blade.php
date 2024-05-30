@@ -1,12 +1,14 @@
 @extends('layouts.admin.app')
 @section('title', translate('Add new product'))
 
+
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{asset('public/assets/admin/css/tags-input.min.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')
+
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
@@ -80,10 +82,15 @@
                                     <small class="text-danger">* ( {{translate('ratio')}} 1:1 )</small>
                                     <div class="d-flex justify-content-center mt-4">
                                         <div class="upload-file">
-                                            <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
+
+                                            <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input" id="imageInput">
+                                            
                                             <div class="upload-file__img_drag upload-file__img">
-                                                <img width="176"  style="height:176px; oject-fit:cover; border-radius:10px;" src="{{asset('public/assets/admin/img/icons/upload_img.png')}}" alt="">
+                                                {{-- <img width="176"  style="height:176px; oject-fit:cover; border-radius:10px;" src="{{asset('public/assets/admin/img/icons/upload_img.png')}}" alt=""> --}}
+                                                
+                                                <img style="width: auto; height: 250px; object-fit: contain; max-height: unset" class="ratio-3-to-1" id="viewer" src="{{ asset('public/assets/admin/img/icons/upload_img.png') }}" alt="">
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -401,6 +408,7 @@
 @endpush
 
 @push('script_2')
+
 <script>
     document.getElementById('product_stock').addEventListener('input', function () {
         const input = this.value;
@@ -641,40 +649,39 @@
 
     <script>
 
-
-        $('#product_form').on('submit', function () {
-            var formData = new FormData(this);
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.post({
-                url: '{{route('admin.product.store')}}',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data.errors) {
-                        for (var i = 0; i < data.errors.length; i++) {
-                            toastr.error(data.errors[i].message, {
-                                CloseButton: true,
-                                ProgressBar: true
-                            });
-                        }
-                    } else {
-                        toastr.success('{{translate("product uploaded successfully!")}}', {
-                            CloseButton: true,
-                            ProgressBar: true
-                        });
-                        setTimeout(function () {
-                            location.href = '{{route('admin.product.list')}}';
-                        }, 2000);
-                    }
-                }
-            });
-        });
+        // $('#product_form').on('submit', function () {
+        //     var formData = new FormData(this);
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+        //     $.post({
+        //         url: '{{route('admin.product.store')}}',
+        //         data: formData,
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         success: function (data) {
+        //             if (data.errors) {
+        //                 for (var i = 0; i < data.errors.length; i++) {
+        //                     toastr.error(data.errors[i].message, {
+        //                         CloseButton: true,
+        //                         ProgressBar: true
+        //                     });
+        //                 }
+        //             } else {
+        //                 toastr.success('{{translate("product uploaded successfully!")}}', {
+        //                     CloseButton: true,
+        //                     ProgressBar: true
+        //                 });
+        //                 setTimeout(function () {
+        //                     location.href = '{{route('admin.product.list')}}';
+        //                 }, 2000);
+        //             }
+        //         }
+        //     });
+        // });
     </script>
 
     <script>
@@ -752,11 +759,105 @@
                 $("#product_stock_div").addClass('d-none')
             }
         });
+    </script>
 
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Cropper.js
+            var imageInput = document.getElementById('imageInput');
+            var viewer = document.getElementById('viewer');
+            var cropper;
 
+            imageInput.addEventListener('change', function () {
+                var file = this.files[0];
 
+                if (file) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        viewer.src = e.target.result;
+
+                        if (cropper) {
+                            cropper.destroy();
+                        }
+
+                        cropper = new Cropper(viewer, {
+                            aspectRatio: 1/1,
+                            viewMode: 1, // You can adjust this value based on your requirements
+                        });
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            
+            // Handle form submission
+            var product_form = document.getElementById('product_form');
+
+            product_form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Get the cropped data
+                var croppedCanvas = cropper.getCroppedCanvas();
+
+                if (!croppedCanvas) {
+                    alert('Please select an area to crop.');
+                    return;
+                }
+
+                // Convert the canvas data to a blob
+                croppedCanvas.toBlob(function (blob) {
+                    // Create a new FormData and append the cropped image blob
+                    var formData = new FormData(product_form);
+                    formData.set('image', blob, 'cropped_image.png');
+
+                    // Use fetch API or AJAX to submit the cropped image data
+                    // Use fetch API or AJAX to submit the cropped image data
+                    fetch('{{ route('admin.product.store')}}', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.errors) {
+                            for (var i = 0; i < data.errors.length; i++) {
+                                toastr.error(data.errors[i].message, {
+                                    CloseButton: true,
+                                    ProgressBar: true
+                                });
+                            }
+                        } else {
+                            toastr.success('{{translate("product uploaded successfully!")}}', {
+                                CloseButton: true,
+                                ProgressBar: true
+                            });
+                            setTimeout(function () {
+                                location.href = '{{route('admin.product.list')}}';
+                            }, 2000);
+                        }
+                    })
+                    .catch(error => {
+                        for (var i = 0; i < data.errors.length; i++) {
+                            toastr.error(data.errors[i].message, {
+                                CloseButton: true,
+                                ProgressBar: true
+                            });
+                        }
+                    });
+
+                });
+            });
+        });
     </script>
 @endpush
+
+
 
 
 
