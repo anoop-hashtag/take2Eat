@@ -82,7 +82,7 @@
 
                             <div class="d-flex justify-content-end gap-3 mt-4">
                                 <button type="reset" id="reset" class="btn btn-secondary">{{translate('reset')}}</button>
-                                <button type="submit" class="btn btn-primary">{{translate('submit')}}</button>
+                                <button type="submit" id="submit-btn" class="btn btn-primary">{{translate('submit')}}</button>
                             </div>
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {
@@ -118,7 +118,9 @@
                                     var bannerForm = document.getElementById('bannerForm');
                             
                                     bannerForm.addEventListener('submit', function (event) {
+                                        $("#submit-btn").attr("disabled", true);
                                         event.preventDefault();
+
                             
                                         // Get the cropped data
                                         var croppedCanvas = cropper.getCroppedCanvas();
@@ -152,11 +154,13 @@
                                             alert('Successfully uploaded Banner!');
                                             // You can also reset the form or perform any other actions after a successful upload
                                             bannerForm.reset();
+                                            $("#submit-btn").removeAttr("disabled");
                                         })
                                         .catch(error => {
                                             console.error('Error:', error);
                                             // Display an error message to the user if the upload fails
                                             alert('Banner Added Successfully!.');
+                                            $("#submit-btn").removeAttr("disabled");
                                             window.location.reload();
                                             
                                         });
