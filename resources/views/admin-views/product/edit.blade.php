@@ -163,7 +163,7 @@
                                                             <span class="text-danger">*</span>
                                                         </label>
                                                         <select name="item_type" class="form-control js-select2-custom">
-                                                            <option value="0" {{$product['set_menu']==0?'selected':''}}>{{translate('product')}} {{translate('item')}}</option>
+                                                            <option value="0" {{$product['set_menu']==0?'selected':''}}>{{translate('popular')}} {{translate('item')}}</option>
                                                             <option value="1" {{$product['set_menu']==1?'selected':''}}>{{translate('set_menu')}}</option>
                                                         </select>
                                                     </div>
