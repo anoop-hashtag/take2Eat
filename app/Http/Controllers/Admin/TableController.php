@@ -157,7 +157,7 @@ class TableController extends Controller
      */
     public function index(): Renderable
     {
-        $branches = $this->branch->orderBy('id', 'DESC')->get();
+        $branches = $this->branch->orderBy('name', 'ASC')->get();
         return view('admin-views.table.index2', compact('branches'));
     }
 
