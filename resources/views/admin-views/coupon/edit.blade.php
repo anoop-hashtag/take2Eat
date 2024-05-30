@@ -72,7 +72,7 @@
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="">{{translate('expire_Date')}}<span style="color: red">*</span></label>
-                                        <input type="text"  name="expire_date" id="to_date" class="form-control"  placeholder="DD-MM-YYYY" value="{{date('d-m-Y', strtotime($coupon['expire_date']))}}">
+                                        <input type="text"  name="expire_date" id="to_date" class="form-control allow-future-dates"  placeholder="DD-MM-YYYY" value="{{date('d-m-Y', strtotime($coupon['expire_date']))}}">
                                     </div>
                                 </div>
 

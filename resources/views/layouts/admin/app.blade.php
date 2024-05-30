@@ -602,47 +602,42 @@
 
     </script>
     @php($date_format=\App\Model\BusinessSetting::where('key','date_format')->first()->value)
-     <script>
-              
-            $(function () {
-                // Get today's date
-                var today = new Date();
-                // Set maxDate option to today to hide future dates
-                var maxDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-
-                $("#expire_date").datepicker({
-                    dateFormat: "dd-mm-yy", // Customize the date format
-                    changeMonth: true,
-                    changeYear: true,
-                    maxDate: maxDate // Hide future dates
-                });
-
-                $("#start_date").datepicker({
-                    dateFormat: "dd-mm-yy", // Customize the date format
-                    changeMonth: true,
-                    changeYear: true,
-                    maxDate: maxDate // Hide future dates
-                });
-
-                // Initialize the datepicker for the "from_date" input field
-                $("#from_date").datepicker({
-                    dateFormat: "<?php echo $date_format ?>", // Customize the date format
-                    changeMonth: true,
-                    changeYear: true,
-                    maxDate: maxDate // Hide future dates
-                });
-
-                // Initialize the datepicker for the "to_date" input field
-                $("#to_date").datepicker({
-                    dateFormat: "<?php echo $date_format ?>", // Customize the date format
-                    changeMonth: true,
-                    changeYear: true,
-                    maxDate: maxDate // Hide future dates
-                });
-            });
-
-        
+    <script>
+        $(function () {
+            // Get today's date
+            var today = new Date();
+            var maxDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+    
+            // Function to initialize datepicker with options
+            function initializeDatepicker(selector, options) {
+                $(selector).datepicker(options);
+            }
+    
+            // Common options for datepickers with maxDate restriction
+            var pastDateOptions = {
+                dateFormat: "<?php echo $date_format ?>",
+                changeMonth: true,
+                changeYear: true,
+                maxDate: maxDate
+            };
+    
+            // Common options for datepickers without maxDate restriction
+            var futureDateOptions = {
+                dateFormat: "<?php echo $date_format ?>",
+                changeMonth: true,
+                changeYear: true
+            };
+    
+            // Initialize datepickers with maxDate restriction
+            initializeDatepicker("#expire_date", pastDateOptions);
+            initializeDatepicker("#start_date", pastDateOptions);
+    
+            // Initialize datepickers based on the presence of 'allow-future-dates' class
+            initializeDatepicker("#from_date", $("#from_date").hasClass('allow-future-dates') ? futureDateOptions : pastDateOptions);
+            initializeDatepicker("#to_date", $("#to_date").hasClass('allow-future-dates') ? futureDateOptions : pastDateOptions);
+        });
     </script>
+    
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <link rel="stylesheet" href="https://cdn.rawgit.com/weareoutman/clockpicker/v0.0.7/dist/bootstrap-clockpicker.min.css">
 <script src="https://cdn.rawgit.com/weareoutman/clockpicker/v0.0.7/dist/jquery-clockpicker.min.js"></script>

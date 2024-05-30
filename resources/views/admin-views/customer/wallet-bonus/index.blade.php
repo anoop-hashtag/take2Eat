@@ -99,7 +99,7 @@
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('expire_date')}} <span class="text-danger">*</span></label>
-                                        <input type="text" name="end_date" class="form-control" placeholder="DD-MM-YYYY" id="to_date" required>
+                                        <input type="text" name="end_date" class="form-control allow-future-dates" placeholder="DD-MM-YYYY" id="to_date" required>
                                     </div>
                                 </div>
                             </div>

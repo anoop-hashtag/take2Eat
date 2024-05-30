@@ -98,7 +98,7 @@
                                 <div class="col-md-4 col-lg-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{translate('expire_date')}}</label>
-                                        <input type="text" name="end_date" class="form-control" id="to_date" value="{{date('d-m-Y',strtotime($bonus['end_date']))}}"  id="date_to" required>
+                                        <input type="text" name="end_date" class="form-control allow-future-dates" id="to_date" value="{{date('d-m-Y',strtotime($bonus['end_date']))}}"  id="date_to" required>
                                     </div>
                                 </div>
                             </div>

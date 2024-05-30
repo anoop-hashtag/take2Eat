@@ -99,7 +99,7 @@
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('expire')}} {{translate('date')}}<span style="color: red">*</span></label>
-                                        <input type="text" id="to_date"  name="expire_date" class="form-control" autocomplete="off" placeholder="DD-MM-YYYY" >
+                                        <input type="text" id="to_date"  name="expire_date" class="form-control allow-future-dates" autocomplete="off" placeholder="DD-MM-YYYY" >
                                     </div>
                                 </div>
                                 

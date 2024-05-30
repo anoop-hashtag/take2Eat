@@ -2256,4 +2256,5 @@
   'Order ID, Order Status, Order Amount or Name' => 'Order ID, Order Status, Order Amount or Name',
   'payment_method_updated' => 'Payment method updated',
   'payment_status_updated' => 'Payment status updated',
+  'Maximum_Discount' => 'Maximum Discount',
 );
