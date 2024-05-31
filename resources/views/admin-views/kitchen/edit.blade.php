@@ -24,7 +24,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('admin.kitchen.update',[$chef['id']])}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.kitchen.update',[$chef['id']])}}" id="upload-form" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -127,18 +127,16 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <div class="form-group">
-                                    <label for="name">{{translate('image')}} <span class="text-danger">*</span> </label>
+                                    <label for="name">{{translate('image')}} </label>
                                     <span class="badge badge-soft-danger" style="background:white;font-weight:400">( {{translate('ratio')}} 1:1 )</span>
                                     <div class="custom-file text-left">
-                                        <input type="file" name="image" id="customFileUpload" class="custom-file-input"
-                                               accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                        <input type="file" id="customFileUpload" class="custom-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                         <label class="custom-file-label" for="customFileUpload">{{translate('choose')}} {{translate('file')}}</label>
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <img class="upload-img-view" id="viewer"
-                                         onerror="this.src='{{asset('public/assets/admin/img/400x400/img2.jpg')}}'"
-                                         src="{{asset('storage/app/public/kitchen')}}/{{$chef['image']}}" alt="image"/>
+                                    <img class="upload-img-view" id="viewer" onerror="this.src='{{asset('public/assets/admin/img/400x400/img2.jpg')}}'" src="{{asset('storage/app/public/kitchen')}}/{{$chef['image']}}" alt="image"/>
+                                    <input type="hidden" name="image" id="cropped-image">
                                 </div>
                             </div>
                         </div>
@@ -204,5 +202,45 @@
         }
     });
 </script>
+<script>
+    let cropper;
+    const imageInput = document.getElementById('customFileUpload');
+    const image = document.getElementById('viewer');
+    const croppedImageInput = document.getElementById('cropped-image');
+    const preview = document.querySelector('.preview');
 
+    imageInput.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            image.src = url;
+            image.style.display = 'block';
+
+            if (cropper) {
+                cropper.destroy();
+            }
+
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 1,
+                preview: preview,
+                crop(event) {
+                    const canvas = cropper.getCroppedCanvas({
+                        width: 160,
+                        height: 160,
+                    });
+                    croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                },
+            });
+        }
+    });
+
+    // document.getElementById('upload-form').addEventListener('submit', function (e) {
+    //     if (!croppedImageInput.value) {
+    //         e.preventDefault();
+    //         alert('Please select and crop an image.');
+    //     }
+    // });
+</script>
 @endpush

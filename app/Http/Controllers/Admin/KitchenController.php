@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Support\Renderable;
 
 
@@ -80,7 +81,22 @@ class KitchenController extends Controller
             $chef->user_type = 'kitchen';
             $chef->is_active = 1;
             $chef->password = bcrypt($request->password);
-            $chef->image = Helpers::upload('kitchen/', 'png', $request->file('image'));
+
+            // $chef->image = Helpers::upload('kitchen/', 'png', $request->file('image'));
+
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image_name = uniqid() . '.png';
+            $dir = 'kitchen/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
+
+            $chef->image = $image_name;
             $chef->save();
 
             $chef_id = $chef->id;
@@ -211,7 +227,22 @@ class KitchenController extends Controller
 
             $chef->email = $request->email;
             $chef->password = $password;
-            $chef->image = $request->has('image') ? Helpers::update('kitchen/', $chef->image, 'png', $request->file('image')) : $chef->image;
+            if($request->image != '') {
+                $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+                $cropped_image = str_replace(' ', '+', $cropped_image);
+                $data = base64_decode($cropped_image);
+        
+                // Save the image to the server
+                $image_name = uniqid() . '.png';
+                $dir = 'kitchen/';
+                if (!Storage::disk('public')->exists($dir)) {
+                    Storage::disk('public')->makeDirectory($dir);
+                }
+                Storage::disk('public')->put($dir . $image_name, $data);
+
+                $chef->image = $image_name;
+            }
+            // $chef->image = $request->has('image') ? Helpers::update('kitchen/', $chef->image, 'png', $request->file('image')) : $chef->image;
             $chef->update();
 
             $chef_id = $chef->id;

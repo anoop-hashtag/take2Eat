@@ -26,7 +26,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('admin.kitchen.add-new')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.kitchen.add-new')}}" id="upload-form" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -138,14 +138,13 @@
                                 <span class="badge badge-soft-danger" style="background:white;font-weight:400">( {{translate('ratio')}} 1:1 )</span>
                                 <div class="form-group">
                                     <div class="custom-file text-left">
-                                        <input type="file" name="image" id="customFileUpload" class="custom-file-input"
-                                               accept=".jpg, .png, .jpeg, , .tiff|image/*" required>
+                                        <input type="file" id="customFileUpload" class="custom-file-input" accept=".jpg, .png, .jpeg, , .tiff|image/*" required >
                                         <label class="custom-file-label" for="customFileUpload">{{translate('choose')}} {{translate('file')}}</label>
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <img class="upload-img-view" id="viewer"
-                                         src="{{asset('public\assets\admin\img\400x400\img2.jpg')}}" alt="image"/>
+                                    <img class="upload-img-view" id="viewer" src="{{asset('public\assets\admin\img\400x400\img2.jpg')}}" alt="image"/>
+                                    <input type="hidden" name="image" id="cropped-image">
                                 </div>
                             </div>
                         </div>
@@ -168,29 +167,29 @@
 
     <script>
         
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // function readURL(input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#viewer').attr('src', e.target.result);
-                }
+        //         reader.onload = function (e) {
+        //             $('#viewer').attr('src', e.target.result);
+        //         }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
-        $("#customFileUpload").change(function () {
-            readURL(this);
-        });
+        // $("#customFileUpload").change(function () {
+        //     readURL(this);
+        // });
 
-        $(".js-example-theme-single").select2({
-            theme: "classic"
-        });
+        // $(".js-example-theme-single").select2({
+        //     theme: "classic"
+        // });
 
-        $(".js-example-responsive").select2({
-            width: 'resolve'
-        });
+        // $(".js-example-responsive").select2({
+        //     width: 'resolve'
+        // });
     </script>
    <script>
     function isNumber(evt) {
@@ -230,5 +229,45 @@
       // e.preventDefault(); // You might want to prevent the form submission based on your requirements
     });
   </script>
-  
+  <script>
+    let cropper;
+    const imageInput = document.getElementById('customFileUpload');
+    const image = document.getElementById('viewer');
+    const croppedImageInput = document.getElementById('cropped-image');
+    const preview = document.querySelector('.preview');
+
+    imageInput.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            image.src = url;
+            image.style.display = 'block';
+
+            if (cropper) {
+                cropper.destroy();
+            }
+
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 1,
+                preview: preview,
+                crop(event) {
+                    const canvas = cropper.getCroppedCanvas({
+                        width: 160,
+                        height: 160,
+                    });
+                    croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                },
+            });
+        }
+    });
+
+    document.getElementById('upload-form').addEventListener('submit', function (e) {
+        if (!croppedImageInput.value) {
+            e.preventDefault();
+            alert('Please select and crop an image.');
+        }
+    });
+</script>
 @endpush
