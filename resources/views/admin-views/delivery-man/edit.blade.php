@@ -21,8 +21,7 @@
 
         <div class="row g-2">
             <div class="col-12">
-                <form action="{{route('admin.delivery-man.update',[$delivery_man['id']])}}" method="post"
-                      enctype="multipart/form-data">
+                <form action="{{route('admin.delivery-man.update',[$delivery_man['id']])}}" id="upload-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header">
@@ -35,50 +34,40 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('first_Name')}}</label>
-                                        <input type="text" value="{{$delivery_man['f_name']}}" name="f_name"
-                                               class="form-control" placeholder="New delivery-man"
-                                               required>
+                                        <label class="input-label">{{translate('first_Name')}} <span class="text-danger">*</span></label>
+                                        <input type="text" value="{{$delivery_man['f_name']}}" name="f_name" class="form-control" placeholder="New delivery-man" required>
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('last_Name')}}</label>
-                                        <input type="text" value="{{$delivery_man['l_name']}}" name="l_name"
-                                               class="form-control" placeholder="Last Name"
-                                               required>
+                                        <label class="input-label">{{translate('last_Name')}} <span class="text-danger">*</span></label>
+                                        <input type="text" value="{{$delivery_man['l_name']}}" name="l_name" class="form-control" placeholder="Last Name" required>
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('identity_Type')}}</label>
+                                        <label class="input-label">{{translate('identity_Type')}} <span class="text-danger">*</span></label>
                                         <select name="identity_type" class="form-control">
-                                            <option
-                                                value="passport" {{$delivery_man['identity_type']=='passport'?'selected':''}}>
+                                            <option value="passport" {{$delivery_man['identity_type']=='passport'?'selected':''}}>
                                                 {{translate('passport')}}
                                             </option>
-                                            <option
-                                                value="driving_license" {{$delivery_man['identity_type']=='driving_license'?'selected':''}}>
+                                            <option value="driving_license" {{$delivery_man['identity_type']=='driving_license'?'selected':''}}>
                                                 {{translate('driving')}} {{translate('license')}}
                                             </option>
                                             <option value="nid" {{$delivery_man['identity_type']=='nid'?'selected':''}}>{{translate('nid')}}
                                             </option>
-                                            <option
-                                                value="restaurant_id" {{$delivery_man['identity_type']=='restaurant_id'?'selected':''}}>
+                                            <option value="restaurant_id" {{$delivery_man['identity_type']=='restaurant_id'?'selected':''}}>
                                                 {{translate('restaurant_Id')}}
                                             </option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('identity_Number')}}</label>
-                                        <input type="text" name="identity_number" value="{{$delivery_man['identity_number']}}"
-                                            class="form-control"
-                                            placeholder="Ex : DH-23434-LS"
-                                            required>
+                                        <label class="input-label">{{translate('identity_Number')}} <span class="text-danger">*</span></label>
+                                        <input type="text" name="identity_number" value="{{$delivery_man['identity_number']}}" class="form-control" placeholder="Ex : DH-23434-LS" required>
                                     </div>
 
                                     <div class="form-group">
@@ -92,14 +81,12 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('phone')}}</label>
-                                        <input type="text" name="phone" value="{{$delivery_man['phone']}}" class="form-control"
-                                            placeholder="Ex : 017********"
-                                            required>
+                                        <label class="input-label">{{translate('phone')}} <span class="text-danger">*</span></label>
+                                        <input type="text" name="phone" value="{{$delivery_man['phone']}}" class="form-control" placeholder="Ex : 017********" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('branch')}}</label>
+                                        <label class="input-label">{{translate('branch')}} <span class="text-danger">*</span></label>
                                         <select name="branch_id" class="form-control">
                                             <option value="0" {{$delivery_man['branch_id']==0?'selected':''}}>{{translate('all')}}</option>
                                             @foreach(\App\Model\Branch::all() as $branch)
@@ -112,14 +99,13 @@
                                         <label>{{translate('Delivery_partner_Image')}}</label>
                                         <small class="text-danger">* ( {{translate('ratio')}} 1:1 )</small>
                                         <div class="custom-file">
-                                            <input type="file" name="image" id="customFileEg1" class="custom-file-input"
-                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                            <input type="file" id="customFileEg1" class="custom-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                             <label class="custom-file-label" for="customFileEg1">{{translate('choose_File')}}</label>
                                         </div>
                                         <center class="mt-3">
-                                            <img class="upload-img-view" id="viewer"
-                                                onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
+                                            <img class="upload-img-view" id="viewer" onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                 src="{{asset('storage/app/public/delivery-man').'/'.$delivery_man['image']}}" alt="delivery-man image"/>
+                                                <input type="hidden" name="image" id="cropped-image">
                                         </center>
                                        
                                     </div>
@@ -128,11 +114,7 @@
                                 </div>
                                 @foreach(json_decode($delivery_man['identity_image'],true) as $img)
                                 <div class="col-sm-2">
-                                   
-                                   <img height="150"
-                                       onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
-                                       src="{{asset('storage/app/public/delivery-man').'/'.$img}}">
-                                   
+                                    <img height="150" onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'" src="{{asset('storage/app/public/delivery-man').'/'.$img}}">
                                </div>
                                @endforeach
                             </div>
@@ -149,10 +131,8 @@
                             <div class="row">
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('email')}}</label>
-                                        <input type="email" value="{{$delivery_man['email']}}" name="email" class="form-control"
-                                            placeholder="Ex : ex@example.com"
-                                            required>
+                                        <label class="input-label">{{translate('email')}} <span class="text-danger">*</span></label>
+                                        <input type="email" value="{{$delivery_man['email']}}" name="email" class="form-control" placeholder="Ex : ex@example.com" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
@@ -212,17 +192,17 @@
 
 @push('script_2')
     <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // function readURL(input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#viewer').attr('src', e.target.result);
-                }
+        //         reader.onload = function (e) {
+        //             $('#viewer').attr('src', e.target.result);
+        //         }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
         $("#customFileEg1").change(function () {
             readURL(this);
@@ -266,5 +246,46 @@
                 }
             });
         });
+    </script>
+    <script>
+        let cropper;
+        const imageInput = document.getElementById('customFileEg1');
+        const image = document.getElementById('viewer');
+        const croppedImageInput = document.getElementById('cropped-image');
+        const preview = document.querySelector('.preview');
+    
+        imageInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image.src = url;
+                image.style.display = 'block';
+    
+                if (cropper) {
+                    cropper.destroy();
+                }
+    
+                cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    preview: preview,
+                    crop(event) {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+    
+        // document.getElementById('upload-form').addEventListener('submit', function (e) {
+        //     if (!croppedImageInput.value) {
+        //         e.preventDefault();
+        //         alert('Please select and crop an image.');
+        //     }
+        // });
     </script>
 @endpush

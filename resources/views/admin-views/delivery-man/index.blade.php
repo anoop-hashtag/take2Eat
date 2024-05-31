@@ -22,7 +22,7 @@
 
         <div class="row g-2">
             <div class="col-12">
-                <form action="{{route('admin.delivery-man.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.delivery-man.store')}}" id="upload-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header">
@@ -35,21 +35,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('first_Name')}}</label>
+                                        <label class="input-label">{{translate('first_Name')}} <span class="text-danger">*</span></label>
                                         <input value="{{old('f_name')}}" type="text" name="f_name" class="form-control" placeholder="{{translate('first_Name')}}"
                                                required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('last_Name')}}</label>
+                                        <label class="input-label">{{translate('last_Name')}} <span class="text-danger">*</span></label>
                                         <input value="{{ old('l_name') }}" type="text" name="l_name" class="form-control" placeholder="{{translate('last_Name')}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('identity_Type')}}</label>
+                                        <label class="input-label">{{translate('identity_Type')}} <span class="text-danger">*</span></label>
                                         <select name="identity_type" class="form-control">
                                             <option value="passport">{{translate('passport')}}</option>
                                             <option value="driving_license">{{translate('driving')}} {{translate('license')}}</option>
@@ -59,7 +59,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('identity_Number')}}</label>
+                                        <label class="input-label">{{translate('identity_Number')}} <span class="text-danger">*</span></label>
                                         <input value="{{old('identity_number')}}" type="text" name="identity_number" class="form-control"
                                             placeholder="{{translate('Ex : DH-23434-LS')}}"
                                             required>
@@ -74,12 +74,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('phone')}}</label>
+                                        <label class="input-label">{{translate('phone')}} <span class="text-danger">*</span></label>
                                         <input value="{{old('phone')}}" type="text" name="phone" id="phone" class="form-control" placeholder="{{translate('Ex : (xxx)-xxx-xxxx')}}"
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('branch')}}</label>
+                                        <label class="input-label">{{translate('branch')}} <span class="text-danger">*</span></label>
                                         <select name="branch_id" class="form-control">
                                             <option value="0">{{translate('all')}}</option>
                                             @foreach(\App\Model\Branch::all() as $branch)
@@ -92,13 +92,12 @@
                                         <label>{{translate('Delivery_partner_Image')}}</label>
                                         <small class="text-danger">* ( {{translate('ratio')}} 1:1 )</small>
                                         <div class="custom-file">
-                                            <input type="file" name="image" id="customFileEg1" class="custom-file-input"
-                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
+                                            <input type="file" id="customFileEg1" class="custom-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
                                             <label class="custom-file-label" for="customFileEg1">{{translate('choose_File')}}</label>
                                         </div>
                                         <center class="mt-3">
-                                            <img class="upload-img-view" id="viewer"
-                                                src="{{asset('public/assets/admin/img/160x160/img1.jpg')}}" alt="delivery-man image"/>
+                                            <img class="upload-img-view" id="viewer" src="{{asset('public/assets/admin/img/160x160/img1.jpg')}}" alt="delivery-man image"/>
+                                            <input type="hidden" name="image" id="cropped-image">
                                         </center>
                                     </div>
                                 </div>
@@ -116,7 +115,7 @@
                             <div class="row g-2">
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('email')}}</label>
+                                        <label class="input-label">{{translate('email')}} <span class="text-danger">*</span></label>
                                         <input value="{{old('email')}}" type="email" name="email" class="form-control" placeholder="{{translate('Ex : ex@example.com')}}"
                                             required>
                                     </div>
@@ -124,7 +123,7 @@
 
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('password')}}</label>
+                                        <label class="input-label">{{translate('password')}} <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" name="password" class="js-toggle-password form-control form-control input-field" id="password"
                                                    placeholder="{{translate('Ex: 8+ Characters')}}" required
@@ -144,7 +143,7 @@
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label class="input-label">{{translate('confirm_password')}}</label>
+                                        <label class="input-label">{{translate('confirm_password')}} <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" name="confirm_password" class="js-toggle-password form-control form-control input-field"
                                                    id="confirm_password" placeholder="{{translate('confirm password')}}" required
@@ -179,17 +178,17 @@
 
 @push('script_2')
     <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // function readURL(input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#viewer').attr('src', e.target.result);
-                }
+        //         reader.onload = function (e) {
+        //             $('#viewer').attr('src', e.target.result);
+        //         }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
         $("#customFileEg1").change(function () {
             readURL(this);
@@ -258,37 +257,78 @@
             });
         });
     </script>
-      <script>
+    <script>
         function isNumber(evt) {
-  evt = (evt) ? evt : window.event;
-  var charCode = (evt.which) ? evt.which : evt.keyCode;
-  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-    alert("Please enter only Numbers.");
-    return false;
-  }
-  if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
-    alert("Please enter 10 Digit only Numbers.");
-    return false;
-  }
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                alert("Please enter only Numbers.");
+                return false;
+            }
+            if (phoneNo.value.length < 10 || phoneNo.value.length > 10) {
+                alert("Please enter 10 Digit only Numbers.");
+                return false;
+            }
 
-  return true;
-}
+            return true;
+        }
 
-var phoneInput = document.getElementById('phone');
-var myForm = document.forms.myForm;
-var result = document.getElementById('result');  // only for debugging purposes
+        var phoneInput = document.getElementById('phone');
+        var myForm = document.forms.myForm;
+        var result = document.getElementById('result');  // only for debugging purposes
 
-phoneInput.addEventListener('input', function (e) {
-  var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-  e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-});
+        phoneInput.addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
 
-myForm.addEventListener('submit', function(e) {
-  phoneInput.value = phoneInput.value.replace(/\D/g, '');
-  result.innerText = phoneInput.value;  // only for debugging purposes
-  
-  e.preventDefault(); // You wouldn't prevent it
-});
+        myForm.addEventListener('submit', function(e) {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+            result.innerText = phoneInput.value;  // only for debugging purposes
+            
+            e.preventDefault(); // You wouldn't prevent it
+        });
 
-        </script>
+    </script>
+    <script>
+        let cropper;
+        const imageInput = document.getElementById('customFileEg1');
+        const image = document.getElementById('viewer');
+        const croppedImageInput = document.getElementById('cropped-image');
+        const preview = document.querySelector('.preview');
+    
+        imageInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image.src = url;
+                image.style.display = 'block';
+    
+                if (cropper) {
+                    cropper.destroy();
+                }
+    
+                cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    preview: preview,
+                    crop(event) {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+    
+        document.getElementById('upload-form').addEventListener('submit', function (e) {
+            if (!croppedImageInput.value) {
+                e.preventDefault();
+                alert('Please select and crop an image.');
+            }
+        });
+    </script>
 @endpush

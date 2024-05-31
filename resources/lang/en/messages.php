@@ -2261,4 +2261,5 @@
   'Help management' => 'Help management',
   'Promotion manager' => 'Promotion manager',
   'Product manager' => 'Product manager',
+  'update_Delivery_partner' => 'Update Delivery partner',
 );

@@ -151,6 +151,7 @@ class DeliveryManController extends Controller
             $identity_image = json_encode([]);
         }
 
+
         $dm = $this->delivery_man;
         $dm->f_name = $request->f_name;
         $dm->l_name = $request->l_name;
@@ -160,7 +161,23 @@ class DeliveryManController extends Controller
         $dm->identity_type = $request->identity_type;
         $dm->branch_id = $request->branch_id;
         $dm->identity_image = $identity_image;
-        $dm->image = Helpers::upload('delivery-man/', 'png', $request->file('image'));
+
+        // $dm->image = Helpers::upload('delivery-man/', 'png', $request->file('image'));
+
+        $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+        $cropped_image = str_replace(' ', '+', $cropped_image);
+        $data = base64_decode($cropped_image);
+
+        // Save the image to the server
+        $image_name = uniqid() . '.png';
+        $dir = 'delivery-man/';
+        if (!Storage::disk('public')->exists($dir)) {
+            Storage::disk('public')->makeDirectory($dir);
+        }
+        Storage::disk('public')->put($dir . $image_name, $data);
+
+        $dm->image = $image_name;
+
         $dm->password = bcrypt($request->password);
         $dm->application_status= 'approved';
         $dm->language_code = $request->language_code ?? 'en';
@@ -261,7 +278,25 @@ class DeliveryManController extends Controller
         $delivery_man->identity_type = $request->identity_type;
         $delivery_man->branch_id = $request->branch_id;
         $delivery_man->identity_image = $identity_image;
-        $delivery_man->image = $request->has('image') ? Helpers::update('delivery-man/', $delivery_man->image, 'png', $request->file('image')) : $delivery_man->image;
+
+        // $delivery_man->image = $request->has('image') ? Helpers::update('delivery-man/', $delivery_man->image, 'png', $request->file('image')) : $delivery_man->image;
+
+        if($request->image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image_name = uniqid() . '.png';
+            $dir = 'delivery-man/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
+    
+            $delivery_man->image = $image_name;
+        }
+
         $delivery_man->password = strlen($request->password) > 1 ? bcrypt($request->password) : $delivery_man['password'];
         $delivery_man->save();
 
