@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Facades\Storage;
 
 
 class EmployeeController extends Controller
@@ -69,6 +70,18 @@ class EmployeeController extends Controller
             $identity_image = json_encode([]);
         }
 
+        $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+        $cropped_image = str_replace(' ', '+', $cropped_image);
+        $data = base64_decode($cropped_image);
+
+        // Save the image to the server
+        $image_name = uniqid() . '.png';
+        $dir = 'admin/';
+        if (!Storage::disk('public')->exists($dir)) {
+            Storage::disk('public')->makeDirectory($dir);
+        }
+        Storage::disk('public')->put($dir . $image_name, $data);
+
         $this->admin->insert([
             'f_name' => $request->name,
             'phone' => preg_replace("/\D/", "",$request->phone),
@@ -79,7 +92,7 @@ class EmployeeController extends Controller
             'identity_image' => $identity_image,
             'password' => bcrypt($request->password),
             'status' => 1,
-            'image' => Helpers::upload('admin/', 'png', $request->file('image')),
+            'image' => $image_name,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -167,8 +180,23 @@ class EmployeeController extends Controller
         }
 
 
-        if ($request->has('image')) {
-            $e['image'] = Helpers::update('admin/', $e['image'], 'png', $request->file('image'));
+        // if ($request->has('image')) {
+        //     $e['image'] = Helpers::update('admin/', $e['image'], 'png', $request->file('image'));
+        // }
+
+        $emp_img = '';
+        if($request->image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+
+            // Save the image to the server
+            $emp_img = $image_name = uniqid() . '.png';
+            $dir = 'admin/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
         }
 
         $id_img_names = [];
@@ -179,18 +207,23 @@ class EmployeeController extends Controller
             $identity_image = json_encode($id_img_names);
         }
 
-        $this->admin->where(['id' => $id])->update([
+        $updateData = [
             'f_name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
             'admin_role_id' => $request->role_id,
             'password' => $pass,
-            'image' => $e['image'],
             'updated_at' => now(),
             'identity_number' => $request->identity_number,
             'identity_type' => $request->identity_type,
             'identity_image' => $identity_image,
-        ]);
+        ];
+        
+        if ($emp_img != '') {
+            $updateData['image'] = $emp_img;
+        }
+        
+        $this->admin->where(['id' => $id])->update($updateData);
 
         Toastr::success(translate('Employee updated successfully!'));
         return back();

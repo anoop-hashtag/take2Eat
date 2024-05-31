@@ -32,7 +32,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-md-12">
-            <form action="{{route('admin.employee.add-new')}}" method="post" enctype="multipart/form-data" onsubmit="return validateform()">
+            <form action="{{route('admin.employee.add-new')}}" id="upload-form" method="post" enctype="multipart/form-data" onsubmit="return validateform()">
                 @csrf
                 <div class="card mb-3">
                     <div class="card-header">
@@ -42,18 +42,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">{{translate('full_Name')}}</label>
+                                    <label for="name">{{translate('full_Name')}} <span class="text-danger">*</span></label>
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="{{translate('Ex')}} : {{translate('Jhon_Doe')}}" value="{{old('name')}}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">{{translate('Phone')}}</label>
+                                    <label for="phone">{{translate('Phone')}} <span class="text-danger">*</span></label>
                                     <input type="number" name="phone" value="{{old('phone')}}" class="form-control" id="phone"
                                         placeholder="{{translate('Ex')}} : (xx)-xxx-xxxx" required onkeyup="validateMobileNumber(this)">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="role_id">{{translate('Role')}}</label>
+                                    <label for="role_id">{{translate('Role')}} <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="role_id">
                                         <option value="0" selected disabled>---{{translate('select_Role')}}---</option>
                                         @foreach($rls as $r)
@@ -63,7 +63,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="identity_type">{{translate('Identity Type')}}</label>
+                                    <label for="identity_type">{{translate('Identity Type')}} <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="identity_type" id="identity_type" required>
                                         <option selected disabled>---{{translate('select_Identity_Type')}}---</option>
                                         {{-- <option value="passport">{{translate('passport')}}</option> --}}
@@ -72,28 +72,27 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="identity_number">{{translate('identity_Number')}}</label>
+                                    <label for="identity_number">{{translate('identity_Number')}} <span class="text-danger">*</span></label>
                                     <input type="text" name="identity_number" class="form-control" id="identity_number" required value="{{old('identity_number')}}" onkeyup="validateIdentityNumber(this)">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="text-center mb-3">
-                                        <img width="180" style="height:180px; max-width:180px; object-fit:cover" class="rounded-10 border" id="viewer"
-                                            src="{{asset('public\assets\admin\img\400x400\img2.jpg')}}" alt="image"/>
+                                        <img width="180" style="height:180px; max-width:180px; object-fit:cover" class="rounded-10 border" id="viewer" src="{{asset('public\assets\admin\img\400x400\img2.jpg')}}" alt="image"/>
+                                        <input type="hidden" name="image" id="cropped-image">
                                     </div>
                                     <label for="name">{{translate('employee_image')}}</label>
-                                    <span class="text-danger">( {{translate('ratio')}} 1:1 )</span>
+                                    <span class="text-danger">( {{translate('ratio')}} 1:1 )</span> <span class="text-danger">*</span>
                                     <div class="form-group">
                                         <div class="custom-file text-left">
-                                            <input type="file" name="image" id="customFileUpload" class="custom-file-input"
-                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
+                                            <input type="file" id="customFileUpload" class="custom-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
                                             <label class="custom-file-label" for="customFileUpload">{{translate('choose')}} {{translate('file')}}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="input-label">{{translate('identity_Image')}}</label>
+                                    <label class="input-label">{{translate('identity_Image')}} <span class="text-danger">*</span></label>
                                     <div>
                                         <div class="row" id="coba"></div>
                                     </div>
@@ -112,14 +111,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="email">{{translate('Email')}}</label>
-                                    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email"
-                                        placeholder="{{translate('Ex')}} : ex@gmail.com" required>
+                                    <label for="email">{{translate('Email')}} <span class="text-danger">*</span></label>
+                                    <input type="email" name="email" value="{{old('email')}}" class="form-control" id="email" placeholder="{{translate('Ex')}} : ex@gmail.com" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="password">{{translate('password')}}</label>
+                                    <label for="password">{{translate('password')}} <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <input type="password" name="password" class="js-toggle-password form-control form-control input-field" id="password"
                                                placeholder="{{translate('Ex: 8+ Characters')}}" required
@@ -139,7 +137,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="confirm_password">{{translate('confirm_Password')}}</label>
+                                    <label for="confirm_password">{{translate('confirm_Password')}} <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <input type="password" name="confirm_password" class="js-toggle-password form-control form-control input-field"
                                                id="confirm_password" placeholder="{{translate('confirm password')}}" required
@@ -175,17 +173,17 @@
     <script src="{{asset('public/assets/admin/js/vendor.min.js')}}"></script>
     <script src="{{asset('public/assets/admin')}}/js/select2.min.js"></script>
     <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // function readURL(input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#viewer').attr('src', e.target.result);
-                }
+        //         reader.onload = function (e) {
+        //             $('#viewer').attr('src', e.target.result);
+        //         }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
         $("#customFileUpload").change(function () {
             readURL(this);
@@ -247,5 +245,46 @@
                 return false;
             }
         }
+    </script>
+    <script>
+        let cropper;
+        const imageInput = document.getElementById('customFileUpload');
+        const image = document.getElementById('viewer');
+        const croppedImageInput = document.getElementById('cropped-image');
+        const preview = document.querySelector('.preview');
+    
+        imageInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image.src = url;
+                image.style.display = 'block';
+    
+                if (cropper) {
+                    cropper.destroy();
+                }
+    
+                cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    preview: preview,
+                    crop(event) {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+    
+        document.getElementById('upload-form').addEventListener('submit', function (e) {
+            if (!croppedImageInput.value) {
+                e.preventDefault();
+                alert('Please select and crop an image.');
+            }
+        });
     </script>
 @endpush

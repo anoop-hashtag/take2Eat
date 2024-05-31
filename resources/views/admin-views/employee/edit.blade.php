@@ -32,7 +32,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-md-12">
-            <form action="{{route('admin.employee.update',[$e['id']])}}" method="post" enctype="multipart/form-data"  onsubmit="return validateform()">
+            <form action="{{route('admin.employee.update',[$e['id']])}}" id="upload-form" method="post" enctype="multipart/form-data"  onsubmit="return validateform()">
                 @csrf
                 <div class="card mb-3">
                     <div class="card-header">
@@ -42,17 +42,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">{{translate('Name')}}</label>
+                                    <label for="name">{{translate('Name')}} <span class="text-danger">*</span></label>
                                     <input type="text" name="name" value="{{$e['f_name'] . ' ' . $e['l_name']}}" class="form-control" id="name"
                                         placeholder="{{translate('Ex')}} : {{translate('Md. Al Imrun')}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">{{translate('Phone')}}</label>
+                                    <label for="phone">{{translate('Phone')}} <span class="text-danger">*</span></label>
                                     <input type="tel" value="{{$e['phone']}}" required name="phone" class="form-control" id="phone"
                                         placeholder="{{translate('Ex')}} : +88017********"  maxlength="10" onkeyup="validateMobileNumber(this)">
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">{{translate('Role')}}</label>
+                                    <label for="name">{{translate('Role')}} <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="role_id">
                                             <option value="0" selected disabled>---{{translate('select_Role')}}---</option>
                                             @foreach($rls as $r)
@@ -62,7 +62,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="identity_type">{{translate('Identity Type')}}</label>
+                                    <label for="identity_type">{{translate('Identity Type')}} <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="identity_type" id="identity_type">
                                         {{-- <option value="passport" {{$e->identity_type == 'passport'? 'selected' : ''}}>{{translate('passport')}}</option> --}}
                                         <option value="driving_license" {{$e->identity_type == 'driving_license'? 'selected' : ''}}>{{translate('driving_License')}}</option>
@@ -70,23 +70,21 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="identity_number">{{translate('identity_Number')}}</label>
+                                    <label for="identity_number">{{translate('identity_Number')}} <span class="text-danger">*</span></label>
                                     <input type="text" name="identity_number" class="form-control" id="identity_number" required value="{{$e->identity_number}}" onkeyup="validateIdentityNumber(this)">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="text-center mb-3">
-                                        <img width="180" class="rounded-10 border" id="viewer"
-                                        onerror="this.src='{{asset('public/assets/admin/img/400x400/img2.jpg')}}'"
-                                        src="{{asset('storage/app/public/admin')}}/{{$e['image']}}" alt="Employee thumbnail"/>
+                                        <img width="180" class="rounded-10 border" id="viewer" onerror="this.src='{{asset('public/assets/admin/img/400x400/img2.jpg')}}'" src="{{asset('storage/app/public/admin')}}/{{$e['image']}}" alt="Employee thumbnail"/>
+                                        <input type="hidden" name="image" id="cropped-image">
                                     </div>
                                     <div class="form-group">
                                         <label for="name">{{translate('employee_image')}}</label>
                                         <span class="text-danger">( {{translate('ratio')}} 1:1 )</span>
                                         <div class="custom-file text-left">
-                                            <input type="file" name="image" id="customFileUpload" class="custom-file-input"
-                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                            <input type="file" id="customFileUpload" class="custom-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                             <label class="custom-file-label" for="customFileUpload">{{translate('choose')}} {{translate('file')}}</label>
                                         </div>
                                     </div>
@@ -109,9 +107,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="email">{{translate('Email')}}</label>
-                                    <input type="email" value="{{$e['email']}}" name="email" class="form-control" id="email"
-                                        placeholder="{{translate('Ex')}} : ex@gmail.com" required>
+                                    <label for="email">{{translate('Email')}} <span class="text-danger">*</span></label>
+                                    <input type="email" value="{{$e['email']}}" name="email" class="form-control" id="email" placeholder="{{translate('Ex')}} : ex@gmail.com" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -176,17 +173,17 @@
 @push('script_2')
     <script src="{{asset('public/assets/back-end')}}/js/select2.min.js"></script>
     <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // function readURL(input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#viewer').attr('src', e.target.result);
-                }
+        //         reader.onload = function (e) {
+        //             $('#viewer').attr('src', e.target.result);
+        //         }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
         $("#customFileUpload").change(function () {
             readURL(this);
@@ -246,6 +243,47 @@
                     });
                 }
             });
+        });
+    </script>
+    <script>
+        let cropper;
+        const imageInput = document.getElementById('customFileUpload');
+        const image = document.getElementById('viewer');
+        const croppedImageInput = document.getElementById('cropped-image');
+        const preview = document.querySelector('.preview');
+    
+        imageInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image.src = url;
+                image.style.display = 'block';
+    
+                if (cropper) {
+                    cropper.destroy();
+                }
+    
+                cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    preview: preview,
+                    crop(event) {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+    
+        document.getElementById('upload-form').addEventListener('submit', function (e) {
+            if (!croppedImageInput.value) {
+                e.preventDefault();
+                alert('Please select and crop an image.');
+            }
         });
     </script>
 @endpush
