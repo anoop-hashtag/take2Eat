@@ -179,17 +179,17 @@
         //     }
         // }
 
-        // $("#customFileUpload").change(function () {
-        //     readURL(this);
-        // });
+        $("#customFileUpload").change(function () {
+            readURL(this);
+        });
 
-        // $(".js-example-theme-single").select2({
-        //     theme: "classic"
-        // });
+        $(".js-example-theme-single").select2({
+            theme: "classic"
+        });
 
-        // $(".js-example-responsive").select2({
-        //     width: 'resolve'
-        // });
+        $(".js-example-responsive").select2({
+            width: 'resolve'
+        });
     </script>
    <script>
     function isNumber(evt) {
