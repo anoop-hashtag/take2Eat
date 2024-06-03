@@ -9,6 +9,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Facades\Storage;
 
 
 class NotificationController extends Controller
@@ -61,7 +62,23 @@ class NotificationController extends Controller
         $notification = $this->notification;
         $notification->title = $request->title;
         $notification->description = $request->description;
-        $notification->image = Helpers::upload('notification/', 'png', $request->file('image'));
+
+        // $notification->image = Helpers::upload('notification/', 'png', $request->file('image'));
+
+        $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+        $cropped_image = str_replace(' ', '+', $cropped_image);
+        $data = base64_decode($cropped_image);
+
+        // Save the image to the server
+        $image_name = uniqid() . '.png';
+        $dir = 'notification/';
+        if (!Storage::disk('public')->exists($dir)) {
+            Storage::disk('public')->makeDirectory($dir);
+        }
+        Storage::disk('public')->put($dir . $image_name, $data);
+
+        $notification->image = $image_name;
+
         $notification->status = 1;
         $notification->save();
 
@@ -104,7 +121,25 @@ class NotificationController extends Controller
         $notification = $this->notification->find($id);
         $notification->title = $request->title;
         $notification->description = $request->description;
-        $notification->image = $request->has('image') ? Helpers::update('notification/', $notification->image, 'png', $request->file('image')) : $notification->image;
+
+        // $notification->image = $request->has('image') ? Helpers::update('notification/', $notification->image, 'png', $request->file('image')) : $notification->image;
+
+        if($request->image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image_name = uniqid() . '.png';
+            $dir = 'notification/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
+    
+            $notification->image = $image_name;
+        }
+
         $notification->save();
 
         Toastr::success(translate('Notification updated successfully!'));

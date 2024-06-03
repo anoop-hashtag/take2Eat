@@ -2262,4 +2262,5 @@
   'Promotion manager' => 'Promotion manager',
   'Product manager' => 'Product manager',
   'update_Delivery_partner' => 'Update Delivery partner',
+  'title is required!' => 'Title is required!',
 );

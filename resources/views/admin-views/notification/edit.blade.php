@@ -22,18 +22,18 @@
 
         <div class="row g-2">
             <div class="col-12">
-                <form action="{{route('admin.notification.update',[$notification['id']])}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.notification.update',[$notification['id']])}}" id="upload-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{translate('title')}}</label>
+                                        <label class="input-label" for="exampleFormControlInput1">{{translate('title')}} <span class="text-danger">*</span></label>
                                         <input type="text" value="{{$notification['title']}}" name="title" class="form-control" placeholder="{{translate('New notification')}}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{translate('description')}}</label>
+                                        <label class="input-label" for="exampleFormControlInput1">{{translate('description')}} <span class="text-danger">*</span></label>
                                         <textarea name="description" class="form-control" required>{{$notification['description']}}</textarea>
                                     </div>
                                 </div>
@@ -45,10 +45,11 @@
                                         </div>
                                         <div class="d-flex justify-content-center mt-4">
                                             <div class="upload-file">
-                                                <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
+                                                <input type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input" id="customFileUpload">
                                                 <div class="upload-file__img_drag upload-file__img">
                                                     <img class="ratio-3-to-1" onerror="this.src='{{asset('public/assets/admin/img/icons/upload_img2.png')}}'"
-                                                    src="{{asset('storage/app/public/notification')}}/{{$notification['image']}}" alt="">
+                                                    src="{{asset('storage/app/public/notification')}}/{{$notification['image']}}" alt="" id="viewer" style="width: auto; height: 140px; object-fit: contain; max-height: unset">
+                                                    <input type="hidden" name="image" id="cropped-image" />
                                                 </div>
                                             </div>
                                         </div>
@@ -86,5 +87,46 @@
         $("#customFileEg1").change(function () {
             readURL(this);
         });
+    </script>
+    <script>
+        let cropper;
+        const imageInput = document.getElementById('customFileUpload');
+        const image = document.getElementById('viewer');
+        const croppedImageInput = document.getElementById('cropped-image');
+        const preview = document.querySelector('.preview');
+    
+        imageInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image.src = url;
+                image.style.display = 'block';
+    
+                if (cropper) {
+                    cropper.destroy();
+                }
+    
+                cropper = new Cropper(image, {
+                    aspectRatio: 3/1,
+                    viewMode: 1,
+                    preview: preview,
+                    crop(event) {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+    
+        // document.getElementById('upload-form').addEventListener('submit', function (e) {
+        //     if (!croppedImageInput.value) {
+        //         e.preventDefault();
+        //         alert('Please select and crop an image.');
+        //     }
+        // });
     </script>
 @endpush
