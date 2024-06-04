@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <form action="{{route('admin.business-settings.restaurant.update-setup')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.business-settings.restaurant.update-setup')}}" id="upload-form" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card mb-3">
                 <div class="card-header">
@@ -87,9 +87,9 @@
                             @php($logo=\App\Model\BusinessSetting::where('key','logo')->first()->value)
                             <div class="form-group">
                                 <label class="text-dark">{{translate('logo')}}</label><small style="color: red">*
-                                    ( {{translate('ratio')}} 3:1 )</small>
+                                    ( {{translate('ratio')}} 1:1 )</small>
                                 <div class="custom-file">
-                                    <input type="file" name="logo" id="customFileEg1" class="custom-file-input"
+                                    <input type="file" id="customFileEg1" class="custom-file-input"
                                            accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                     <label class="custom-file-label"
                                            for="customFileEg1">{{translate('choose_File')}}</label>
@@ -99,6 +99,7 @@
                                     <img style="height: 100px;border: 1px solid; border-radius: 10px;" id="viewer"
                                          onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
                                          src="{{asset('storage/app/public/restaurant/'.$logo)}}" alt="logo image"/>
+                                    <input type="hidden" name="logo" id="cropped-image-1">
                                 </div>
                                 
                             </div>
@@ -110,16 +111,17 @@
                                 <label class="text-dark">{{translate('Fav Icon')}}</label><small style="color: red">*
                                     ( {{translate('ratio')}} 1:1 )</small>
                                 <div class="custom-file">
-                                    <input type="file" name="fav_icon" id="customFileEg2" class="custom-file-input"
+                                    <input type="file" id="customFileEg2" class="custom-file-input"
                                            accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                     <label class="custom-file-label"
                                            for="customFileEg2">{{translate('choose_File')}}</label>
                                 </div>
 
                                 <div class="text-center mt-3">
-                                    <img style="height: 100px;border: 1px solid; border-radius: 10px;" id="viewer_2"
+                                    <img style="height: 100px;border: 1px solid; border-radius: 10px;" id="viewer2"
                                          onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
                                          src="{{asset('storage/app/public/restaurant/'.$fav_icon)}}" alt="fav"/>
+                                    <input type="hidden" name="fav_icon" id="cropped-image-2">
                                 </div>
                             </div>
                         </div>
@@ -891,6 +893,76 @@
 @endsection
 
 @push('script_2')
+<script>
+    let cropper;
+    const imageInput = document.getElementById('customFileEg1');
+    const image = document.getElementById('viewer');
+    const croppedImageInput = document.getElementById('cropped-image-1');
+    const preview = document.querySelector('.preview');
+
+    imageInput.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            image.src = url;
+            image.style.display = 'block';
+
+            if (cropper) {
+                cropper.destroy();
+            }
+
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 1,
+                preview: preview,
+                crop(event) {
+                    const canvas = cropper.getCroppedCanvas({
+                        width: 160,
+                        height: 160,
+                    });
+                    croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                },
+            });
+        }
+    });
+</script>
+
+<script>
+    let cropper2;
+    const imageInput2 = document.getElementById('customFileEg2');
+    const image2 = document.getElementById('viewer2');
+    const croppedImageInput2 = document.getElementById('cropped-image-2');
+    const preview2 = document.querySelector('.preview');
+
+    imageInput2.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            image2.src = url;
+            image2.style.display = 'block';
+
+            if (cropper2) {
+                cropper2.destroy();
+            }
+
+            cropper2 = new Cropper(image2, {
+                aspectRatio: 1,
+                viewMode: 1,
+                preview: preview2,
+                crop(event) {
+                    const canvas = cropper2.getCroppedCanvas({
+                        width: 160,
+                        height: 160,
+                    });
+                    croppedImageInput2.value = canvas.toDataURL('image/jpeg');
+                },
+            });
+        }
+    });
+</script>
+
     <script>
         $(document).on('ready', function () {
             $('.js-select2-custom').each(function () {
@@ -909,15 +981,15 @@
         let language = <?php echo($language); ?>;
         $('[id=language]').val(language);
 
-        function readURL(input, viewer) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#' + viewer).attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        // function readURL(input, viewer) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
+        //         reader.onload = function(e) {
+        //             $('#' + viewer).attr('src', e.target.result);
+        //         }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
         $("#customFileEg1").change(function() {
             readURL(this, 'viewer');
@@ -1012,4 +1084,5 @@
             });
         });
     </script>
+    
 @endpush

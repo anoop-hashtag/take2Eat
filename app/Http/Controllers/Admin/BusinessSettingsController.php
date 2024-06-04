@@ -22,7 +22,7 @@ use Illuminate\Contracts\Support\Renderable;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Validator;
 use App\Model\Translation;
-
+use Illuminate\Support\Facades\Storage;
 
 
 class BusinessSettingsController extends Controller
@@ -154,9 +154,28 @@ class BusinessSettingsController extends Controller
         ]);
 
         $curr_logo = $this->business_setting->where(['key' => 'logo'])->first();
+        $logo = $curr_logo->value;
+        if($request->logo != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->logo);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image_name = uniqid() . '.png';
+            $dir = 'restaurant/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
+
+            $logo = $image_name;
+        }
         $this->business_setting->updateOrInsert(['key' => 'logo'], [
-            'value' => $request->has('logo') ? Helpers::update('restaurant/', $curr_logo->value, 'png', $request->file('logo')) : $curr_logo->value
+            'value' => $logo
         ]);
+        // $this->business_setting->updateOrInsert(['key' => 'logo'], [
+        //     'value' => $request->has('logo') ? Helpers::update('restaurant/', $curr_logo->value, 'png', $request->file('logo')) : $curr_logo->value
+        // ]);
 
         $this->business_setting->updateOrInsert(['key' => 'phone'], [
             'value' => $request['phone'],
@@ -198,9 +217,28 @@ class BusinessSettingsController extends Controller
         ]);
 
         $curr_fav_icon = $this->business_setting->where(['key' => 'fav_icon'])->first();
+        $fav_icon = $curr_fav_icon->value;
+        if($request->fav_icon != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->fav_icon);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image_name = uniqid() . '.png';
+            $dir = 'restaurant/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
+
+            $fav_icon = $image_name;
+        }
         $this->business_setting->updateOrInsert(['key' => 'fav_icon'], [
-            'value' => $request->has('fav_icon') ? Helpers::update('restaurant/', $curr_fav_icon->value, 'png', $request->file('fav_icon')) : $curr_fav_icon->value
+            'value' => $fav_icon
         ]);
+        // $this->business_setting->updateOrInsert(['key' => 'fav_icon'], [
+        //     'value' => $request->has('fav_icon') ? Helpers::update('restaurant/', $curr_fav_icon->value, 'png', $request->file('fav_icon')) : $curr_fav_icon->value
+        // ]);
 
         $this->business_setting->updateOrInsert(['key' => 'dm_self_registration'], [
             'value' => $request['dm_self_registration'],
