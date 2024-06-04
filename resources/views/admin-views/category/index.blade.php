@@ -25,7 +25,7 @@
         <div class="row g-3">
             <div class="col-12">
                 <div class="card card-body">
-                    <form action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.category.store')}}" id="upload-form" method="post" enctype="multipart/form-data">
                         @csrf
                         @php($data = Helpers::get_business_settings('language'))
                         @php($default_lang = Helpers::get_default_language())
@@ -70,8 +70,9 @@
                                         <div class="from_part_2 mt-2">
                                             <div class="form-group">
                                                 <div class="text-center">
-                                                    <img width="105" class="rounded-10 border ratio-1-to-1" id="img2"
+                                                    <img width="105" class="rounded-10 border ratio-1-to-1" id="viewer"
                                                         src="{{ asset('public/assets/admin/img/400x400/img2.jpg') }}" alt="image" />
+                                                    <input type="hidden" name="image" id="cropped-image-1">
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +80,7 @@
                                             <label>{{ translate('category_Image') }}</label>
                                             <small class="text-danger">* ( {{ translate('ratio') }} 1:1 )</small>
                                             <div class="custom-file">
-                                                <input type="file" name="image" id="customFileEg1" onchange="readURL2(this)" class="custom-file-input"
+                                                <input type="file" id="customFileEg1" class="custom-file-input"
                                                     accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required
                                                     oninvalid="document.getElementById('en-link').click()">
                                                 <label class="custom-file-label" for="customFileEg1">{{ translate('choose file') }}</label>
@@ -90,8 +91,9 @@
                                         <div class="from_part_2 mb-4 px-4">
                                             <div class="form-group">
                                                 <div class="text-center">
-                                                    <img width="500" class="rounded-10 border ratio-8-to-1" id="img"
+                                                    <img width="500" class="rounded-10 border ratio-8-to-1" id="viewer2"
                                                         src="{{ asset('public/assets/admin/img/900x400/img1.jpg') }}" alt="image" />
+                                                    <input type="hidden" name="banner_image" id="cropped-image-2">
                                                 </div>
                                             </div>
                                         </div>
@@ -99,37 +101,11 @@
                                             <label>{{ translate('banner image') }}</label>
                                             <small class="text-danger">* ( {{ translate('ratio') }} 8:1 )</small>
                                             <div class="custom-file">
-                                                <input type="file" name="banner_image" id="customFileEg2" onchange="readURL(this)" class="custom-file-input"
+                                                <input type="file" id="customFileEg2" class="custom-file-input"
                                                     accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required
                                                     oninvalid="document.getElementById('en-link').click()">
                                                 <label class="custom-file-label" for="customFileEg2">{{ translate('choose file') }}</label>
                                             </div>
-                                            <script>
-                                                function readURL(input) {
-                                                  if (input.files && input.files[0]) {
-                                                  
-                                                    var reader = new FileReader();
-                                                    reader.onload = function (e) { 
-                                                      document.querySelector("#img").setAttribute("src",e.target.result);
-                                                     
-                                                    };
-                                              
-                                                    reader.readAsDataURL(input.files[0]); 
-                                                  }
-                                                }
-                                                function readURL2(input) {
-                                                  if (input.files && input.files[0]) {
-                                                  
-                                                    var reader = new FileReader();
-                                                    reader.onload = function (e) { 
-                                                      document.querySelector("#img2").setAttribute("src",e.target.result);
-                                                     
-                                                    };
-                                              
-                                                    reader.readAsDataURL(input.files[0]); 
-                                                  }
-                                                }
-                                                </script>
                                         </div>
                                     </div>
                                 </div>
@@ -195,14 +171,14 @@
                                             </div>
                                         </td>
                                         <td>
-                                                <div class="category-mid ">
-                                                    <label class="switcher ">
-                                                        <input class="switcher_input" type="checkbox" {{$category['status']==1? 'checked' : ''}} id="{{$category['id']}}"
-                                                        onchange="status_change(this)" data-url="{{route('admin.category.status',[$category['id'],1])}}"
-                                                        >
-                                                        <span class="switcher_control"></span>
-                                                    </label>
-                                                </div>
+                                            <div class="category-mid ">
+                                                <label class="switcher ">
+                                                    <input class="switcher_input" type="checkbox" {{$category['status']==1? 'checked' : ''}} id="{{$category['id']}}"
+                                                    onchange="status_change(this)" data-url="{{route('admin.category.status',[$category['id'],1])}}"
+                                                    >
+                                                    <span class="switcher_control"></span>
+                                                </label>
+                                            </div>
 
                                         </td>
                                         <td>
@@ -254,6 +230,89 @@
 
 @push('script_2')
     <script>
+        let cropper;
+        const imageInput = document.getElementById('customFileEg1');
+        const image = document.getElementById('viewer');
+        const croppedImageInput = document.getElementById('cropped-image-1');
+        const preview = document.querySelector('.preview');
+
+        imageInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image.src = url;
+                image.style.display = 'block';
+
+                if (cropper) {
+                    cropper.destroy();
+                }
+
+                cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    preview: preview,
+                    crop(event) {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+
+        document.getElementById('upload-form').addEventListener('submit', function (e) {
+            if (!croppedImageInput.value) {
+                e.preventDefault();
+                alert('Please select and crop an image.');
+            }
+        });
+    </script>
+
+    <script>
+        let cropper2;
+        const imageInput2 = document.getElementById('customFileEg2');
+        const image2 = document.getElementById('viewer2');
+        const croppedImageInput2 = document.getElementById('cropped-image-2');
+        const preview2 = document.querySelector('.preview');
+
+        imageInput2.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image2.src = url;
+                image2.style.display = 'block';
+
+                if (cropper2) {
+                    cropper2.destroy();
+                }
+
+                cropper2 = new Cropper(image2, {
+                    aspectRatio: 3/1,
+                    viewMode: 1,
+                    preview: preview2,
+                    crop(event) {
+                        const canvas = cropper2.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput2.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+        document.getElementById('upload-form').addEventListener('submit', function (e) {
+        if (!croppedImageInput2.value) {
+            e.preventDefault();
+            alert('Please select and crop an image.');
+        }
+    });
+    </script>
+
+    <script>
         $(".lang_link").click(function(e){
             e.preventDefault();
             $(".lang_link").removeClass('active');
@@ -274,66 +333,35 @@
             }
         });
     </script>
+
+    
+
     <script>
-        $(document).on('ready', function () {
-            // INITIALIZATION OF DATATABLES
-            // =======================================================
-            // var datatable = $.HSCore.components.HSDatatables.init($('#columnSearchDatatable'));
+        $(document).ready(function () {
+            // Function to show selected image
+            // function readURL(input, targetId) {
+            //     if (input.files && input.files[0]) {
+            //         var reader = new FileReader();
 
-            var datatable = $('.table').DataTable({
-                "paging": false
+            //         reader.onload = function (e) {
+            //             $(targetId).attr('src', e.target.result);
+            //         };
+
+            //         reader.readAsDataURL(input.files[0]);
+            //     }
+            // }
+
+            // Trigger when a file is selected for category image
+            $('#customFileEg1').on('change', function () {
+                readURL(this, '#viewer');
             });
 
-            $('#column1_search').on('keyup', function () {
-                datatable
-                    .columns(1)
-                    .search(this.value)
-                    .draw();
-            });
-
-
-            $('#column3_search').on('change', function () {
-                datatable
-                    .columns(2)
-                    .search(this.value)
-                    .draw();
-            });
-
-
-            // INITIALIZATION OF SELECT2
-            // =======================================================
-            $('.js-select2-custom').each(function () {
-                var select2 = $.HSCore.components.HSSelect2.init($(this));
+            // Trigger when a file is selected for banner image
+            $('#customFileEg2').on('change', function () {
+                readURL(this, '#viewer2');
             });
         });
     </script>
-
-<script>
-    $(document).ready(function () {
-        // Function to show selected image
-        function readURL(input, targetId) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $(targetId).attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        // Trigger when a file is selected for category image
-        $('#customFileEg1').on('change', function () {
-            readURL(this, '#viewer');
-        });
-
-        // Trigger when a file is selected for banner image
-        $('#customFileEg2').on('change', function () {
-            readURL(this, '#viewer2');
-        });
-    });
-</script>
 
 
     <script>
@@ -382,7 +410,7 @@
            })
        }
     </script>
- @push('script_2')
+
   <script>
       $(document).on('ready', function () {
           // INITIALIZATION OF NAV SCROLLER
@@ -457,4 +485,38 @@
       }
      
   </script>
+
+    <script>
+        // $(document).on('ready', function () {
+        //     // INITIALIZATION OF DATATABLES
+        //     // =======================================================
+        //     // var datatable = $.HSCore.components.HSDatatables.init($('#columnSearchDatatable'));
+
+        //     var datatable = $('.table').DataTable({
+        //         "paging": false
+        //     });
+
+        //     $('#column1_search').on('keyup', function () {
+        //         datatable
+        //             .columns(1)
+        //             .search(this.value)
+        //             .draw();
+        //     });
+
+
+        //     $('#column3_search').on('change', function () {
+        //         datatable
+        //             .columns(2)
+        //             .search(this.value)
+        //             .draw();
+        //     });
+
+
+        //     // INITIALIZATION OF SELECT2
+        //     // =======================================================
+        //     $('.js-select2-custom').each(function () {
+        //         var select2 = $.HSCore.components.HSSelect2.init($(this));
+        //     });
+        // });
+    </script>
 @endpush

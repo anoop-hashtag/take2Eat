@@ -11,6 +11,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -151,11 +152,42 @@ class CategoryController extends Controller
         } else {
             $image_name = 'def.png';
         }
-        if (!empty($request->file('banner_image'))) {
-            $banner_image_name = Helpers::upload('category/banner/', 'png', $request->file('banner_image'));
-        } else {
-            $banner_image_name = 'def.png';
-        }
+        
+        $image_name = 'def.png';
+        if($request->image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image_name = uniqid() . '.png';
+            $dir = 'category/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
+        } 
+        
+        // if (!empty($request->file('banner_image'))) {
+        //     $banner_image_name = Helpers::upload('category/banner/', 'png', $request->file('banner_image'));
+        // } else {
+        //     $banner_image_name = 'def.png';
+        // }
+
+        $banner_image_name = 'def.png';
+        if($request->banner_image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->banner_image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $banner_image_name = uniqid() . '.png';
+            $dir = 'category/banner/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $banner_image_name, $data);
+        } 
 
         //into db
         $category = $this->category;
@@ -231,8 +263,39 @@ class CategoryController extends Controller
 
         $category = $this->category->find($id);
         $category->name = $request->name[array_search('en', $request->lang)];
-        $category->image = $request->has('image') ? Helpers::update('category/', $category->image, 'png', $request->file('image')) : $category->image;
-        $category->banner_image = $request->has('banner_image') ? Helpers::update('category/banner/', $category->banner_image, 'png', $request->file('banner_image')) : $category->banner_image;
+
+        // $category->image = $request->has('image') ? Helpers::update('category/', $category->image, 'png', $request->file('image')) : $category->image;
+        if($request->image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image = uniqid() . '.png';
+            $dir = 'category/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image, $data);
+            $category->image = $image;
+        } 
+
+        // $category->banner_image = $request->has('banner_image') ? Helpers::update('category/banner/', $category->banner_image, 'png', $request->file('banner_image')) : $category->banner_image;
+        if($request->banner_image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->banner_image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $banner_image_name = uniqid() . '.png';
+            $dir = 'category/banner/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $banner_image_name, $data);
+            $category->banner_image = $banner_image_name;
+        } 
+
         $category->save();
 
         foreach ($request->lang as $index => $key) {

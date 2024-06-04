@@ -27,8 +27,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-body">
-                    <form action="{{route('admin.category.update',[$category['id']])}}" method="post"
-                        enctype="multipart/form-data">
+                    <form action="{{route('admin.category.update',[$category['id']])}}" id="upload-form" method="post" enctype="multipart/form-data">
                         @csrf
                         @php($data = Helpers::get_business_settings('language'))
                         @php($default_lang = Helpers::get_default_language())
@@ -90,6 +89,7 @@
                                                             <img width="105" class="rounded-10 border ratio-1-to-1" id="viewer"
                                                                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                                                 src="{{asset('storage/app/public/category')}}/{{$category['image']}}" alt="image" />
+                                                                <input type="hidden" name="image" id="cropped-image-1">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -97,7 +97,7 @@
                                                     <label>{{ translate('category_Image') }}</label>
                                                     <small class="text-danger">* ( {{ translate('ratio') }} 1:1 )</small>
                                                     <div class="custom-file">
-                                                        <input type="file" name="image" id="customFileEg1" class="custom-file-input"
+                                                        <input type="file" id="customFileEg1" class="custom-file-input"
                                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
                                                             oninvalid="document.getElementById('en-link').click()">
                                                         <label class="custom-file-label" for="customFileEg1">{{ translate('choose file') }}</label>
@@ -111,6 +111,7 @@
                                                             <img width="500" class="rounded-10 border ratio-8-to-1" id="viewer2"
                                                                 onerror="this.src='{{asset('public/assets/admin/img/1920x400/img2.jpg')}}'"
                                                                 src="{{asset('storage/app/public/category/banner')}}/{{$category['banner_image']}}" alt="image" />
+                                                            <input type="hidden" name="banner_image" id="cropped-image-2">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -118,7 +119,7 @@
                                                     <label>{{ translate('banner image') }}</label>
                                                     <small class="text-danger">* ( {{ translate('ratio') }} 8:1 )</small>
                                                     <div class="custom-file">
-                                                        <input type="file" name="banner_image" id="customFileEg2" class="custom-file-input"
+                                                        <input type="file" id="customFileEg2" class="custom-file-input"
                                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
                                                             oninvalid="document.getElementById('en-link').click()">
                                                         <label class="custom-file-label" for="customFileEg2">{{ translate('choose file') }}</label>
@@ -163,17 +164,17 @@
         });
     </script>
     <script>
-        function readURL(input, viewer_id) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // function readURL(input, viewer_id) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#'+viewer_id).attr('src', e.target.result);
-                }
+        //         reader.onload = function (e) {
+        //             $('#'+viewer_id).attr('src', e.target.result);
+        //         }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
         $("#customFileEg1").change(function () {
             readURL(this, 'viewer');
@@ -182,4 +183,74 @@
             readURL(this, 'viewer2');
         });
     </script>
+
+<script>
+    let cropper;
+    const imageInput = document.getElementById('customFileEg1');
+    const image = document.getElementById('viewer');
+    const croppedImageInput = document.getElementById('cropped-image-1');
+    const preview = document.querySelector('.preview');
+
+    imageInput.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            image.src = url;
+            image.style.display = 'block';
+
+            if (cropper) {
+                cropper.destroy();
+            }
+
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 1,
+                preview: preview,
+                crop(event) {
+                    const canvas = cropper.getCroppedCanvas({
+                        width: 160,
+                        height: 160,
+                    });
+                    croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                },
+            });
+        }
+    });
+</script>
+
+<script>
+    let cropper2;
+    const imageInput2 = document.getElementById('customFileEg2');
+    const image2 = document.getElementById('viewer2');
+    const croppedImageInput2 = document.getElementById('cropped-image-2');
+    const preview2 = document.querySelector('.preview');
+
+    imageInput2.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            image2.src = url;
+            image2.style.display = 'block';
+
+            if (cropper2) {
+                cropper2.destroy();
+            }
+
+            cropper2 = new Cropper(image2, {
+                aspectRatio: 3/1,
+                viewMode: 1,
+                preview: preview2,
+                crop(event) {
+                    const canvas = cropper2.getCroppedCanvas({
+                        width: 160,
+                        height: 160,
+                    });
+                    croppedImageInput2.value = canvas.toDataURL('image/jpeg');
+                },
+            });
+        }
+    });
+</script>
 @endpush
