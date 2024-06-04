@@ -22,7 +22,7 @@
 
         <div class="row gx-2 gx-lg-3">
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-                <form action="{{route('admin.banner.update',[$banner['id']])}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.banner.update',[$banner['id']])}}" id="upload-form" method="post" enctype="multipart/form-data">
                     @csrf @method('put')
 
                     <div class="card">
@@ -66,9 +66,10 @@
                                         </div>
                                         <div class="d-flex justify-content-center mt-4">
                                             <div class="upload-file">
-                                                <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
+                                                <input type="file" id="customFileUpload" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
                                                 <div class="upload-file__img_drag upload-file__img">
-                                                    <img width="465" class="ratio-3-to-1" src="{{asset('storage/app/public/banner')}}/{{$banner['image']}}" onerror="this.src='{{asset('public/assets/admin/img/icons/upload_img2.png')}}'" alt="">
+                                                    <img width="465" class="ratio-3-to-1" src="{{asset('storage/app/public/banner')}}/{{$banner['image']}}" onerror="this.src='{{asset('public/assets/admin/img/icons/upload_img2.png')}}'" alt="" id="viewer">
+                                                    <input type="hidden" name="image" id="cropped-image" />
                                                 </div>
                                             </div>
                                         </div>
@@ -116,5 +117,46 @@
                 $("#type-category").show();
             }
         }
+    </script>
+    <script>
+        let cropper;
+        const imageInput = document.getElementById('customFileUpload');
+        const image = document.getElementById('viewer');
+        const croppedImageInput = document.getElementById('cropped-image');
+        const preview = document.querySelector('.preview');
+    
+        imageInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image.src = url;
+                image.style.display = 'block';
+    
+                if (cropper) {
+                    cropper.destroy();
+                }
+    
+                cropper = new Cropper(image, {
+                    aspectRatio: 3/1,
+                    viewMode: 1,
+                    preview: preview,
+                    crop(event) {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+    
+        // document.getElementById('upload-form').addEventListener('submit', function (e) {
+        //     if (!croppedImageInput.value) {
+        //         e.preventDefault();
+        //         alert('Please select and crop an image.');
+        //     }
+        // });
     </script>
 @endpush

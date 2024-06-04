@@ -269,5 +269,5 @@
             alert('Please select and crop an image.');
         }
     });
-</script>
+  </script>
 @endpush
