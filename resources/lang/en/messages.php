@@ -2263,4 +2263,5 @@
   'Product manager' => 'Product manager',
   'update_Delivery_partner' => 'Update Delivery partner',
   'title is required!' => 'Title is required!',
+  ' * (input_if_you_want_to_reset)' => ' * (input if you want to reset)',
 );

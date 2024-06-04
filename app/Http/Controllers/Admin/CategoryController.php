@@ -147,11 +147,11 @@ class CategoryController extends Controller
         }
 
         //image upload
-        if (!empty($request->file('image'))) {
-            $image_name = Helpers::upload('category/', 'png', $request->file('image'));
-        } else {
-            $image_name = 'def.png';
-        }
+        // if (!empty($request->file('image'))) {
+        //     $image_name = Helpers::upload('category/', 'png', $request->file('image'));
+        // } else {
+        //     $image_name = 'def.png';
+        // }
         
         $image_name = 'def.png';
         if($request->image != '') {

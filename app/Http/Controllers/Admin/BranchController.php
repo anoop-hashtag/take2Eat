@@ -38,23 +38,53 @@ class BranchController extends Controller
             'name' => 'required|max:255|unique:branches',
             'email' => 'required|max:255|unique:branches',
             'password' => 'required|min:8|max:255',
-            'image' => 'required|max:255',
+            'image' => 'required',
         ], [
             'name.required' => translate('Name is required!'),
         ]);
 
         //image upload
-        if (!empty($request->file('image'))) {
-            $image_name = Helpers::upload('branch/', 'png', $request->file('image'));
-        } else {
-            $image_name = 'def.png';
+        // if (!empty($request->file('image'))) {
+        //     $image_name = Helpers::upload('branch/', 'png', $request->file('image'));
+        // } else {
+        //     $image_name = 'def.png';
+        // }
+
+        $image_name = 'def.png';
+        if($request->image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image_name = uniqid() . '.png';
+            $dir = 'branch/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
         }
 
-        if (!empty($request->file('cover_image'))) {
-            $cover_image_name = Helpers::upload('branch/', 'png', $request->file('cover_image'));
-        } else {
-            $cover_image_name = 'def.png';
-        }
+        // if (!empty($request->file('cover_image'))) {
+        //     $cover_image_name = Helpers::upload('branch/', 'png', $request->file('cover_image'));
+        // } else {
+        //     $cover_image_name = 'def.png';
+        // }
+
+        $cover_image_name = 'def.png';
+        if($request->cover_image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->cover_image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $cover_image_name = uniqid() . '.png';
+            $dir = 'branch/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $cover_image_name, $data);
+        } 
 
         $branch = $this->branch;
         $branch->name = $request->name;
@@ -131,6 +161,22 @@ class BranchController extends Controller
         }
 
         $branch->cover_image = $request->has('cover_image') ? Helpers::update('branch/', $branch->cover_image, 'png', $request->file('cover_image')) : $branch->cover_image;
+
+        if($request->cover_image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->cover_image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $cover_image_name = uniqid() . '.png';
+            $dir = 'branch/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $cover_image_name, $data);
+            $branch->cover_image = $cover_image_name;
+        } 
+
         if ($request['password'] != null) {
             $branch->password = bcrypt($request->password);
         }

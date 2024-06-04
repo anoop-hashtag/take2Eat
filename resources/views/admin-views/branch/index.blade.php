@@ -37,7 +37,7 @@
 
         <div class="row g-2">
             <div class="col-12">
-                <form action="{{route('admin.branch.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.branch.store')}}" id="upload-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header">
@@ -68,9 +68,10 @@
                                         </div>
                                         <div class="d-flex justify-content-center mt-4">
                                             <div class="upload-file">
-                                                <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
+                                                <input type="file" id="customFileEg1" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
                                                 <div class="upload-file__img_drag upload-file__img">
                                                     <img width="150" style="height:150px; oject-fit:cover;" class="img-fitarea" id="viewer" src="{{asset('public/assets/admin/img/icons/upload_img.png')}}" alt="">
+                                                    <input type="hidden" name="image" id="cropped-image-1">
                                                 </div>
                                             </div>
                                         </div>
@@ -118,9 +119,10 @@
                                         </div>
                                         <div class="d-flex justify-content-center mt-4">
                                             <div class="upload-file">
-                                                <input type="file" name="cover_image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
+                                                <input type="file" id="customFileEg2" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
                                                 <div class="upload-file__img_drag upload-file__img">
-                                                    <img width="150" class="ratio-3-to-1" id="viewer_2" src="{{asset('public/assets/admin/img/icons/upload_img.png')}}" alt="">
+                                                    <img width="150" class="ratio-3-to-1" id="viewer2" src="{{asset('public/assets/admin/img/icons/upload_img2.png')}}" alt="">
+                                                    <input type="hidden" name="cover_image" id="cropped-image-2">
                                                 </div>
                                             </div>
                                         </div>
@@ -218,18 +220,18 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key={{ \App\Model\BusinessSetting::where('key', 'map_api_client_key')->first()?->value }}&libraries=places&v=3.51"></script>
     <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // function readURL(input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#viewer').attr('src', e.target.result);
-                    $('#viewer_2').attr('src', e.target.result);
-                }
+        //         reader.onload = function (e) {
+        //             $('#viewer').attr('src', e.target.result);
+        //             $('#viewer_2').attr('src', e.target.result);
+        //         }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
         $("#customFileEg1").change(function () {
             readURL(this);
@@ -384,4 +386,87 @@ e.preventDefault(); // You wouldn't prevent it
 });
 
     </script>
+
+<script>
+    let cropper;
+    const imageInput = document.getElementById('customFileEg1');
+    const image = document.getElementById('viewer');
+    const croppedImageInput = document.getElementById('cropped-image-1');
+    const preview = document.querySelector('.preview');
+
+    imageInput.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            image.src = url;
+            image.style.display = 'block';
+
+            if (cropper) {
+                cropper.destroy();
+            }
+
+            cropper = new Cropper(image, {
+                aspectRatio: 1,
+                viewMode: 1,
+                preview: preview,
+                crop(event) {
+                    const canvas = cropper.getCroppedCanvas({
+                        width: 160,
+                        height: 160,
+                    });
+                    croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                },
+            });
+        }
+    });
+
+    document.getElementById('upload-form').addEventListener('submit', function (e) {
+        if (!croppedImageInput.value) {
+            e.preventDefault();
+            alert('Please select and crop an image.');
+        }
+    });
+</script>
+
+<script>
+    let cropper2;
+    const imageInput2 = document.getElementById('customFileEg2');
+    const image2 = document.getElementById('viewer2');
+    const croppedImageInput2 = document.getElementById('cropped-image-2');
+    const preview2 = document.querySelector('.preview');
+
+    imageInput2.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            image2.src = url;
+            image2.style.display = 'block';
+
+            if (cropper2) {
+                cropper2.destroy();
+            }
+
+            cropper2 = new Cropper(image2, {
+                aspectRatio: 3/1,
+                viewMode: 1,
+                preview: preview2,
+                crop(event) {
+                    const canvas = cropper2.getCroppedCanvas({
+                        width: 160,
+                        height: 160,
+                    });
+                    croppedImageInput2.value = canvas.toDataURL('image/jpeg');
+                },
+            });
+        }
+    });
+    document.getElementById('upload-form').addEventListener('submit', function (e) {
+        if (!croppedImageInput2.value) {
+            e.preventDefault();
+            alert('Please select and crop an image.');
+        }
+    });
+</script>
 @endpush
