@@ -9,6 +9,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BranchController extends Controller
 {
@@ -110,7 +111,25 @@ class BranchController extends Controller
         $branch->latitude = $request->latitude;
         $branch->coverage = $request->coverage ?? 0;
         $branch->address = $request->address;
-        $branch->image = $request->has('image') ? Helpers::update('branch/', $branch->image, 'png', $request->file('image')) : $branch->image;
+
+        // $branch->image = $request->has('image') ? Helpers::update('branch/', $branch->image, 'png', $request->file('image')) : $branch->image;
+
+        if($request->image != '') {
+            $cropped_image = str_replace('data:image/jpeg;base64,', '', $request->image);
+            $cropped_image = str_replace(' ', '+', $cropped_image);
+            $data = base64_decode($cropped_image);
+    
+            // Save the image to the server
+            $image_name = uniqid() . '.png';
+            $dir = 'branch/';
+            if (!Storage::disk('public')->exists($dir)) {
+                Storage::disk('public')->makeDirectory($dir);
+            }
+            Storage::disk('public')->put($dir . $image_name, $data);
+
+            $branch->image = $image_name;
+        }
+
         $branch->cover_image = $request->has('cover_image') ? Helpers::update('branch/', $branch->cover_image, 'png', $request->file('cover_image')) : $branch->cover_image;
         if ($request['password'] != null) {
             $branch->password = bcrypt($request->password);

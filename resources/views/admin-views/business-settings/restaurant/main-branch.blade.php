@@ -41,7 +41,7 @@
 
         <div class="row g-2">
             <div class="col-12">
-                <form action="{{route('admin.branch.update', ['id' => $branch['id']])}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.branch.update', ['id' => $branch['id']])}}" id="upload-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header">
@@ -73,11 +73,12 @@
 
                                         <div class="d-flex justify-content-center mt-4">
                                             <div class="upload-file">
-                                                <input type="file" name="image" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input">
+                                                <input type="file" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" class="upload-file__input" id="customFileUpload">
                                                 <div class="upload-file__img_drag upload-file__img">
-                                                    <img width="150" class="ratio-1-to-1"
+                                                    <img width="150" id="viewer" class="ratio-1-to-1"
                                                          onerror="this.src='{{asset('public/assets/admin/img/160x160/img3.jpg')}}'"
                                                          src="{{asset('storage/app/public/branch')}}/{{$branch['image']}}" alt="">
+                                                    <input type="hidden" name="image" id="cropped-image">
                                                 </div>
                                             </div>
                                         </div>
@@ -215,17 +216,17 @@
     <script src="https://maps.googleapis.com/maps/api/js?key={{ \App\Model\BusinessSetting::where('key', 'map_api_client_key')->first()?->value }}&libraries=places&v=3.45.8"></script>
 
     <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        // function readURL(input) {
+        //     if (input.files && input.files[0]) {
+        //         var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#viewer').attr('src', e.target.result);
-                }
+        //         reader.onload = function (e) {
+        //             $('#viewer').attr('src', e.target.result);
+        //         }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
 
         $("#customFileEg1").change(function () {
             readURL(this);
@@ -336,5 +337,45 @@
 
 
     </script>
-
+    <script>
+        let cropper;
+        const imageInput = document.getElementById('customFileUpload');
+        const image = document.getElementById('viewer');
+        const croppedImageInput = document.getElementById('cropped-image');
+        const preview = document.querySelector('.preview');
+    
+        imageInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                image.src = url;
+                image.style.display = 'block';
+    
+                if (cropper) {
+                    cropper.destroy();
+                }
+    
+                cropper = new Cropper(image, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    preview: preview,
+                    crop(event) {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 160,
+                            height: 160,
+                        });
+                        croppedImageInput.value = canvas.toDataURL('image/jpeg');
+                    },
+                });
+            }
+        });
+    
+        document.getElementById('upload-form').addEventListener('submit', function (e) {
+            if (!croppedImageInput.value) {
+                e.preventDefault();
+                alert('Please select and crop an image.');
+            }
+        });
+    </script>
 @endpush
