@@ -216,7 +216,7 @@
                                     <th>{{translate('title')}}</th>
                                     <th>{{translate('Item_Type')}}</th>
                                     <th>{{translate('status')}}</th>
-                                    <th >{{translate('action')}}</th>
+                                    <th>{{translate('action')}}</th>
                                 </tr>
                                 </thead>
 

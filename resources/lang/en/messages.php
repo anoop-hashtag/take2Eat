@@ -2276,4 +2276,8 @@
   'Return_purchase' => 'Return purchase',
   'Recipie' => 'Recipie',
   'recipe' => 'Recipe',
+  'ingredient_name' => 'Ingredient name',
+  'select_quantity_type' => 'Select quantity type',
+  'ingredient_quantity' => 'Ingredient quantity',
+  'quantity_type' => 'Quantity type',
 );
