@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end gap-3 mt-4">
-                                <button type="reset" id="reset" class="btn btn-secondary">reset</button>
+                                <button type="reset" id="reset" class="btn btn-secondary">Reset</button>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </div>
                         </div>
@@ -105,9 +105,7 @@
                                         <div class="d-flex  gap-2">
                                             <a class="btn btn-outline-info btn-sm edit square-btn"
                                                 href="#"><i class="tio-edit"></i></a>
-                                            <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"
-                                                onclick="('Want to delete this inventory')"><i class="tio-delete"></i></button>
-                                        </div>
+                                         </div>
                                         
                                     </td>
                                 </tr>
