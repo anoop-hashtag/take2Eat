@@ -2280,4 +2280,12 @@
   'select_quantity_type' => 'Select quantity type',
   'ingredient_quantity' => 'Ingredient quantity',
   'quantity_type' => 'Quantity type',
+  'Ingredient name is already taken' => 'Ingredient name is already taken',
+  'Oil' => 'Oil',
+  'ltr' => 'Ltr',
+  'gm' => 'Gm',
+  'kg' => 'Kg',
+  'Salt' => 'Salt',
+  'Rice' => 'Rice',
+  'Jeera' => 'Jeera',
 );

@@ -98,7 +98,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => 'ingredient', 'as' => 'ingredient.', 'middleware' => ['module:inventory_management']], function () {
             Route::get('/', 'IngredientController@index')->name('dashboard');
-            // Route::post('store', 'BannerController@store')->name('store');
+            Route::post('store', 'IngredientController@store')->name('store');
             // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
             // Route::put('update/{id}', 'BannerController@update')->name('update');
             // Route::get('list', 'BannerController@list')->name('list');
