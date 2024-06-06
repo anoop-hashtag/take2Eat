@@ -2271,4 +2271,8 @@
   'return_purchase' => 'Return purchase',
   'ingredient' => 'Ingredient',
   'Ingredient' => 'Ingredient',
+  'vendor' => 'Vendor',
+  'Vendor' => 'Vendor',
+  'Return_purchase' => 'Return purchase',
+  'Recipie' => 'Recipie',
 );

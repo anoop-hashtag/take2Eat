@@ -436,47 +436,47 @@
                             </li>
 
                             <!-- Pages -->
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/ingredient*')?'active':''}}">
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/ingredient*') || Request::is('admin/vendor*') || Request::is('admin/purchase*') || Request::is('admin/return-purchase*') || Request::is('admin/recipie*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
                                     <i class="tio-shopping-cart nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('inventory')}}</span>
                                 </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/ingredient*')?'block':'none'}}">
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/ingredient*') || Request::is('admin/vendor*') || Request::is('admin/purchase*') || Request::is('admin/return-purchase*') || Request::is('admin/recipie*')?'block':'none'}}">
                                     
-                                    <li class="nav-item {{Request::is('admin/ingredient')?'active':''}}">
+                                    <li class="nav-item {{Request::is('admin/ingredient*')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.ingredient.dashboard')}}" title="{{translate('ingredient')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('ingredient')}}</span>
                                         </a>
                                     </li>
 
-                                    {{-- <li class="nav-item {{Request::is('admin/category/add')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.category.add')}}" title="{{translate('vendor')}}">
+                                    <li class="nav-item {{Request::is('admin/vendor*')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.vendor.dashboard')}}" title="{{translate('vendor')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('vendor')}}</span>
                                         </a>
-                                    </li> --}}
+                                    </li>
 
-                                    {{-- <li class="nav-item {{Request::is('admin/category/add')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.category.add')}}" title="{{translate('purchase')}}">
+                                    <li class="nav-item {{Request::is('admin/purchase*')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.purchase.dashboard')}}" title="{{translate('purchase')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('purchase')}}</span>
                                         </a>
-                                    </li> --}}
+                                    </li>
 
-                                    {{-- <li class="nav-item {{Request::is('admin/category/add')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.category.add')}}" title="{{translate('return_purchase')}}">
+                                    <li class="nav-item {{Request::is('admin/return-purchase*')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.return-purchase.dashboard')}}" title="{{translate('return_purchase')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('return_purchase')}}</span>
                                         </a>
-                                    </li> --}}
+                                    </li>
 
-                                    {{-- <li class="nav-item {{Request::is('admin/category/add')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.category.add')}}" title="{{translate('recipie')}}">
+                                    <li class="nav-item {{Request::is('admin/recipie*')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.recipie.dashboard')}}" title="{{translate('recipie')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('recipie')}}</span>
                                         </a>
-                                    </li> --}}
+                                    </li>
 
                                 </ul>
                             </li>

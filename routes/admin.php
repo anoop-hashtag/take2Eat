@@ -106,6 +106,46 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });
 
+        Route::group(['prefix' => 'vendor', 'as' => 'vendor.', 'middleware' => ['module:inventory_management']], function () {
+            Route::get('/', 'VendorController@index')->name('dashboard');
+            // Route::post('store', 'BannerController@store')->name('store');
+            // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
+            // Route::put('update/{id}', 'BannerController@update')->name('update');
+            // Route::get('list', 'BannerController@list')->name('list');
+            // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
+            // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
+        });
+
+        Route::group(['prefix' => 'purchase', 'as' => 'purchase.', 'middleware' => ['module:inventory_management']], function () {
+            Route::get('/', 'PurchaseController@index')->name('dashboard');
+            // Route::post('store', 'BannerController@store')->name('store');
+            // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
+            // Route::put('update/{id}', 'BannerController@update')->name('update');
+            // Route::get('list', 'BannerController@list')->name('list');
+            // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
+            // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
+        });
+
+        Route::group(['prefix' => 'return-purchase', 'as' => 'return-purchase.', 'middleware' => ['module:inventory_management']], function () {
+            Route::get('/', 'ReturnPurchaseController@index')->name('dashboard');
+            // Route::post('store', 'BannerController@store')->name('store');
+            // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
+            // Route::put('update/{id}', 'BannerController@update')->name('update');
+            // Route::get('list', 'BannerController@list')->name('list');
+            // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
+            // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
+        });
+
+        Route::group(['prefix' => 'recipie', 'as' => 'recipie.', 'middleware' => ['module:inventory_management']], function () {
+            Route::get('/', 'RecipieController@index')->name('dashboard');
+            // Route::post('store', 'BannerController@store')->name('store');
+            // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
+            // Route::put('update/{id}', 'BannerController@update')->name('update');
+            // Route::get('list', 'BannerController@list')->name('list');
+            // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
+            // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
+        });
+
         Route::group(['prefix' => 'banner', 'as' => 'banner.', 'middleware' => ['module:promotion_management']], function () {
             Route::get('add-new', 'BannerController@index')->name('add-new');
             Route::post('store', 'BannerController@store')->name('store');
