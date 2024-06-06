@@ -136,7 +136,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });
 
-        Route::group(['prefix' => 'recipie', 'as' => 'recipie.', 'middleware' => ['module:inventory_management']], function () {
+        Route::group(['prefix' => 'recipe', 'as' => 'recipe.', 'middleware' => ['module:inventory_management']], function () {
             Route::get('/', 'RecipieController@index')->name('dashboard');
             // Route::post('store', 'BannerController@store')->name('store');
             // Route::get('edit/{id}', 'BannerController@edit')->name('edit');

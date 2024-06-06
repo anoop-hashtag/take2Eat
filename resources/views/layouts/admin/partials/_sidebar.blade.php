@@ -436,12 +436,12 @@
                             </li>
 
                             <!-- Pages -->
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/ingredient*') || Request::is('admin/vendor*') || Request::is('admin/purchase*') || Request::is('admin/return-purchase*') || Request::is('admin/recipie*')?'active':''}}">
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/ingredient*') || Request::is('admin/vendor*') || Request::is('admin/purchase*') || Request::is('admin/return-purchase*') || Request::is('admin/recipe*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
                                     <i class="tio-shopping-cart nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('inventory')}}</span>
                                 </a>
-                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/ingredient*') || Request::is('admin/vendor*') || Request::is('admin/purchase*') || Request::is('admin/return-purchase*') || Request::is('admin/recipie*')?'block':'none'}}">
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/ingredient*') || Request::is('admin/vendor*') || Request::is('admin/purchase*') || Request::is('admin/return-purchase*') || Request::is('admin/recipe*')?'block':'none'}}">
                                     
                                     <li class="nav-item {{Request::is('admin/ingredient*')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.ingredient.dashboard')}}" title="{{translate('ingredient')}}">
@@ -471,10 +471,10 @@
                                         </a>
                                     </li>
 
-                                    <li class="nav-item {{Request::is('admin/recipie*')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.recipie.dashboard')}}" title="{{translate('recipie')}}">
+                                    <li class="nav-item {{Request::is('admin/recipe*')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.recipe.dashboard')}}" title="{{translate('recipe')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">{{translate('recipie')}}</span>
+                                            <span class="text-truncate">{{translate('recipe')}}</span>
                                         </a>
                                     </li>
 

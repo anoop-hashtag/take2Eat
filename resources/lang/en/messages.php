@@ -2275,4 +2275,5 @@
   'Vendor' => 'Vendor',
   'Return_purchase' => 'Return purchase',
   'Recipie' => 'Recipie',
+  'recipe' => 'Recipe',
 );
