@@ -124,53 +124,53 @@
   
             // INITIALIZATION OF DATATABLES
             var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
-    dom: 'Bfrtip',
-    buttons: [
-        {
-            extend: 'copy',
-            className: 'd-none'
-        },
-        {
-            extend: 'excel',
-            text: 'Excel',
-            className: 'btn btn-primary'
-        },
-        {
-            extend: 'csv',
-            className: 'd-none'
-        },
-        {
-            extend: 'pdf',
-            text: 'PDF',
-            className: 'btn btn-primary'
-        },
-        {
-            extend: 'print',
-            className: 'd-none'
-        },
-    ],
-    select: {
-        style: 'multi',
-        selector: 'td:first-child input[type="checkbox"]',
-        classMap: {
-            checkAll: '#datatableCheckAll',
-            counter: '#datatableCounter',
-            counterInfo: '#datatableCounterInfo'
-        }
-    },
-    info: false,
-    paging: true,
-    language: {
-        zeroRecords: '<div class="text-center p-4">' +
-            '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
-            '<p class="mb-0">{{translate('No data to show')}}</p>' +
-            '</div>'
-    },
-    order: [], // Add this line to enable sorting on all columns
-    columnDefs: [
-        { orderable: true, targets: '_all' } // Ensure all columns are orderable
-    ]
-});
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        text: 'Excel',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'PDF',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                ],
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                info: false,
+                paging: true,
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                },
+                order: [], // Add this line to enable sorting on all columns
+                columnDefs: [
+                    { orderable: true, targets: '_all' } // Ensure all columns are orderable
+                ]
+            });
 
         });
     </script>
