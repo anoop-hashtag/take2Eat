@@ -27,6 +27,7 @@ const MANAGEMENT_SECTION = [
     'user_management' => 'user_management',
     'table_management' => 'table_management',
     'system_management' => 'system_management',
+    'inventory_management' => 'inventory_management',
 ];
 
 //order status

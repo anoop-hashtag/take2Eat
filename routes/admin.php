@@ -96,6 +96,16 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
 
         });
 
+        Route::group(['prefix' => 'ingredient', 'as' => 'ingredient.', 'middleware' => ['module:inventory_management']], function () {
+            Route::get('/', 'IngredientController@index')->name('dashboard');
+            // Route::post('store', 'BannerController@store')->name('store');
+            // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
+            // Route::put('update/{id}', 'BannerController@update')->name('update');
+            // Route::get('list', 'BannerController@list')->name('list');
+            // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
+            // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
+        });
+
         Route::group(['prefix' => 'banner', 'as' => 'banner.', 'middleware' => ['module:promotion_management']], function () {
             Route::get('add-new', 'BannerController@index')->name('add-new');
             Route::post('store', 'BannerController@store')->name('store');

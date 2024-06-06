@@ -428,6 +428,62 @@
                             <!-- End Pages -->
                         @endif
 
+
+                        @if(Helpers::module_permission_check(MANAGEMENT_SECTION['inventory_management']))
+                            <li class="nav-item">
+                                <small class="nav-subtitle">{{translate('inventory')}} {{translate('management')}}</small>
+                                <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                            </li>
+
+                            <!-- Pages -->
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/ingredient*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
+                                    <i class="tio-shopping-cart nav-icon"></i>
+                                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('inventory')}}</span>
+                                </a>
+                                <ul class="js-navbar-vertical-aside-submenu nav nav-sub" style="display: {{Request::is('admin/ingredient*')?'block':'none'}}">
+                                    
+                                    <li class="nav-item {{Request::is('admin/ingredient')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.ingredient.dashboard')}}" title="{{translate('ingredient')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('ingredient')}}</span>
+                                        </a>
+                                    </li>
+
+                                    {{-- <li class="nav-item {{Request::is('admin/category/add')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.category.add')}}" title="{{translate('vendor')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('vendor')}}</span>
+                                        </a>
+                                    </li> --}}
+
+                                    {{-- <li class="nav-item {{Request::is('admin/category/add')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.category.add')}}" title="{{translate('purchase')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('purchase')}}</span>
+                                        </a>
+                                    </li> --}}
+
+                                    {{-- <li class="nav-item {{Request::is('admin/category/add')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.category.add')}}" title="{{translate('return_purchase')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('return_purchase')}}</span>
+                                        </a>
+                                    </li> --}}
+
+                                    {{-- <li class="nav-item {{Request::is('admin/category/add')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.category.add')}}" title="{{translate('recipie')}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{translate('recipie')}}</span>
+                                        </a>
+                                    </li> --}}
+
+                                </ul>
+                            </li>
+                            <!-- End Pages -->
+                        @endif
+
+
 {{--                        PROMOTION MANAGEMENT--}}
                         @if(Helpers::module_permission_check(MANAGEMENT_SECTION['promotion_management']) || Helpers::module_permission_check(MANAGEMENT_SECTION['table_management']))
                             @php($j = 0)

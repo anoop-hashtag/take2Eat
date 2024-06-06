@@ -2264,4 +2264,11 @@
   'update_Delivery_partner' => 'Update Delivery partner',
   'title is required!' => 'Title is required!',
   ' * (input_if_you_want_to_reset)' => ' * (input if you want to reset)',
+  'inventory' => 'Inventory',
+  'inventory_management' => 'Inventory management',
+  'ingredients' => 'Ingredients',
+  'recipie' => 'Recipie',
+  'return_purchase' => 'Return purchase',
+  'ingredient' => 'Ingredient',
+  'Ingredient' => 'Ingredient',
 );
