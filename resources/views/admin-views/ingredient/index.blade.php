@@ -2,6 +2,11 @@
 
 @section('title', translate('Ingredient'))
 
+@push('css_or_js')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+
+@endpush
+
 @section('content')
 <div class="content container-fluid">
     <!-- Page Header -->
@@ -17,8 +22,8 @@
 
     <div class="row g-2">
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-            <form action="" method="post" enctype="multipart/form-data">
-                @csrf
+            <form>
+                
                 <div class="card">
                     <div class="card-body">
                             <div class="row">
