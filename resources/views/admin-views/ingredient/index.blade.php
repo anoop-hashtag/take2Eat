@@ -2,11 +2,38 @@
 
 @section('title', translate('Ingredient'))
 
-@push('css_or_js')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-@endpush
+<style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    min-width: 1.5em !important;
+    padding: .5em 1em !important;
+    margin-left: 2px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    color: #8c98a4 !important;
+    border: 1px solid transparent !important;
+    border-radius: .3125rem !important;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff!important;
+    background-color: #ff611d;
+    border-color: #ff611d;
+}
+    .datatable_wrapper_row .dt-buttons {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 0 !important;
+}
+table.dataTable.no-footer {
+    border-bottom: 1px solid #111;
+}
+</style>
 
 @section('content')
+
 <div class="content container-fluid">
     <!-- Page Header -->
     <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
