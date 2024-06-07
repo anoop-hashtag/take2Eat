@@ -1,7 +1,35 @@
 @extends('layouts.admin.app')
 
 @section('title', translate('Vendor'))
-
+<style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    min-width: 1.5em !important;
+    padding: .5em 1em !important;
+    margin-left: 2px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    color: #8c98a4 !important;
+    border: 1px solid transparent !important;
+    border-radius: .3125rem !important;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff!important;
+    background-color: #ff611d;
+    border-color: #ff611d;
+}
+    .datatable_wrapper_row .dt-buttons {
+    display: inline-flex;
+    gap: 8px;
+    margin-top: 0 !important;
+}
+table.dataTable.no-footer {
+    border-bottom: 1px solid #111;
+}
+</style>
 @section('content')
         
 <div class="content container-fluid">
@@ -68,10 +96,10 @@
                 <div class="new-top px-card ">
                     <div class="row align-items-center gy-2">
                         <div class="col-sm-4 col-md-6 col-lg-8">
-                            <h5 class="d-flex align-items-center gap-2 mb-0">
+                            {{-- <h5 class="d-flex align-items-center gap-2 mb-0">
                                 {{translate('Supplier_List')}}
                                 <span class="badge badge-soft-dark rounded-50 fz-12">10</span>
-                            </h5>
+                            </h5> --}}
                         </div>
                         <div class="col-sm-8 col-md-6 col-lg-4">
                             <form action="" method="GET">
