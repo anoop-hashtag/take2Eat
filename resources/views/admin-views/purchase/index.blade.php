@@ -55,9 +55,9 @@
 </form>
             </div>
         </div>
-        <div class="card-body">
+       
                     <!-- Table -->
-                    <div class="set_table banner-tbl">
+                    <div class="set_table banner-tbl mt-4">
                     <div class="table-responsive datatable_wrapper_row " >
                         <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" >
                             <thead class="thead-light">
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                     </div>
-                </div>
+                
             <!-- End Card -->
             <div class="d-flex justify-content-end gap-3 m-4">
                 <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
