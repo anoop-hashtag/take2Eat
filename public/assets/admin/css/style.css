@@ -3043,6 +3043,13 @@ li.paginate_item.page-item span.ellipsis.page-link {
 .avatar-xxl.avatar-4by3{
   object-fit: cover;
 }
+.width-inventory-secondary{
+  min-width:200px;
+}
+
+.width-inventory-primary{
+  min-width:100px;
+}
 
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 @media only screen and (min-width:640px){
