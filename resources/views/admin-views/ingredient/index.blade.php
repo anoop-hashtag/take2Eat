@@ -73,9 +73,10 @@
                 </div> --}}
 
                 <!-- Table -->
+                <div class="card-body">
                 <div class="set_table banner-tbl">
                     <div class="table-responsive datatable_wrapper_row">
-                        <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                        <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" style="padding-left:0!important">
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
@@ -96,9 +97,7 @@
                                         <td>{{ $ingredient->quantity.' '.translate($ingredient->quantity_type) }}</td>
                                         <td>
                                             <div class="d-flex  gap-2">
-                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="{{ route('admin.ingredient.edit', [$ingredient->id])}}">
-                                                    <i class="tio-edit"></i>
-                                                </a>
+                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>                                    
@@ -106,6 +105,7 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
                 </div>
                 <!-- End Table -->
             </div>
@@ -143,7 +143,8 @@
                     },
                     {
                         extend: 'pdf',
-                        className: 'd-none'
+                        text: 'PDF',
+                        className: 'btn btn-primary'
                     },
                     {
                         extend: 'print',
