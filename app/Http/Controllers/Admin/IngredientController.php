@@ -10,9 +10,8 @@ use Brian2694\Toastr\Facades\Toastr;
 class IngredientController extends Controller
 {
     public function index() {
-        // $ingredients = Ingredient::all();
-        return view('admin-views.ingredient.index');
-        // return view('admin-views.ingredient.index', compact('ingredients'));
+        $ingredients = Ingredient::all();
+        return view('admin-views.ingredient.index', compact('ingredients'));
     }
 
     public function store(Request $request) {

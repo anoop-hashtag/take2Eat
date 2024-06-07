@@ -86,7 +86,7 @@
                             </thead>
 
                             <tbody>
-                                {{-- @php
+                                @php
                                     $i = 1;
                                 @endphp
                                 @foreach ($ingredients as $ingredient)
@@ -100,7 +100,7 @@
                                             </div>
                                         </td>
                                     </tr>                                    
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
