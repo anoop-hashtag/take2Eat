@@ -14,15 +14,13 @@
         </h2>
     </div>
     <!-- End Page Header -->
-
-    <div class="row g-2">
-        <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-            <form>
-                
-                <div class="card">
-                    <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-6">
+    <div class="card">
+       
+            <div class="card">
+                <div class="card-body">
+<form>
+            <div class="row">
+                        <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('Supplier list')}}<span
                                                 class="input-label-secondary">*</span></label>
@@ -36,14 +34,11 @@
                                             <label class="input-label">{{translate('Purchase_Date')}}</label>
                                             <input type="text" name="email" class="form-control" placeholder="{{translate('ABC@gmail.com')}}" required>
                                         </div>
-                                   
-
                                     <div class="form-group">
                                         <label class="input-label">{{translate('Note')}}</label>
                                         <textarea name="address" class="form-control" required="" placeholder="{{translate('Ex: ABC')}}" style="resize: none;"></textarea>
                                 </div>
-
-                                </div>
+                        </div>       
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('Invoice')}} </label>
@@ -54,49 +49,17 @@
                                         <input type="text" name="purchase_type" class="form-control" placeholder="{{translate('Purchase_type')}}" required>
                                     </div>
                                 </div>
+                                
                             </div>
-
-                            <div class="d-flex justify-content-end gap-3 mt-4">
-                                <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
-                                <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
-                            </div>
-                        </div>
-                    </div>
-            </form>
+                    
+</form>
+            </div>
         </div>
-    </div>
-
-    <div class="row g-2">
-        <div class="col-12">
-            <!-- Card -->
-            <div class="card">
-                <div class="new-top px-card" style="display:none">
-                    <div class="row align-items-center gy-2">
-                        <div class="col-sm-4 col-md-6 col-lg-8">
-                            <h5 class="d-flex align-items-center gap-2 mb-0">
-                                {{translate('Purchase_List')}}
-                                <span class="badge badge-soft-dark rounded-50 fz-12">10</span>
-                            </h5>
-                        </div>
-                        <div class="col-sm-8 col-md-6 col-lg-4">
-                            <form action="" method="GET">
-                                <div class="input-group">
-                                    {{-- <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search_by_Title')}}" aria-label="Search" value="" required="" autocomplete="off"> --}}
-                                    <div class="input-group-append">
-                                        {{-- <button type="submit" class="btn btn-primary">
-                                            {{translate('Search')}}
-                                        </button> --}}
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Table -->
-                <div class="set_table banner-tbl">
+        <div class="card-body">
+                    <!-- Table -->
+                    <div class="set_table banner-tbl">
                     <div class="table-responsive datatable_wrapper_row " >
-                        <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" style="margin-top:0!important">
+                        <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" >
                             <thead class="thead-light">
                             <tr>
                                 <th class="width-inventory-secondary">{{translate('Purchase Item')}}</th>
@@ -153,14 +116,16 @@
                           
                         </div>
                     </div>
+                    </div>
                 </div>
-                <!-- End Table -->
-            </div>
             <!-- End Card -->
+            <div class="d-flex justify-content-end gap-3 m-4">
+                <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
+                <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
+            </div>
         </div>
-    </div>
 
-    
+
 </div>
 
 
