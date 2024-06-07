@@ -2289,4 +2289,12 @@
   'Rice' => 'Rice',
   'Jeera' => 'Jeera',
   'ml' => 'Ml',
+  'Supplier 2' => 'Supplier 2',
+  'Soyabean' => 'Soyabean',
+  'lucknow' => 'Lucknow',
+  'Supplier_List' => 'Supplier List',
+  'Supplier 1' => 'Supplier 1',
+  'Ginger' => 'Ginger',
+  'Select any ingredient' => 'Select any ingredient',
+  'ABC@gmail.com' => 'ABC@gmail.com',
 );

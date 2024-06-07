@@ -120,7 +120,7 @@
                                         </select></div>
                                     </td>
                                     <td>
-                                        <div >  <input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required>
+                                        <div > <input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required>
                                         </div>
                                         </td>
                                    <td>
@@ -159,6 +159,8 @@
             <!-- End Card -->
         </div>
     </div>
+
+    
 </div>
 
 
