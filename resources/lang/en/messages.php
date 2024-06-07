@@ -2288,4 +2288,5 @@
   'Salt' => 'Salt',
   'Rice' => 'Rice',
   'Jeera' => 'Jeera',
+  'ml' => 'Ml',
 );
