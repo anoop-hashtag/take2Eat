@@ -53,7 +53,7 @@ table.dataTable.no-footer {
                 <div class="card-top px-card">
                     <div class="d-flex flex-column flex-md-row flex-wrap  align-items-md-center">
                         <div class="d-flex flex-wrap align-items-center">
-                            <a href="{{ route('admin.return-purchase.add') }}" type="button" class="btn btn-primary btn-attribute" >
+                            <a href="{{ route('admin.recipe.add') }}" type="button" class="btn btn-primary btn-attribute" >
                                 <i class="tio-add"></i>
                                 {{translate('Add_Recipe')}}
                             </a>
