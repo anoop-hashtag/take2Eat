@@ -93,47 +93,46 @@ table.dataTable.no-footer {
         <div class="col-12">
             <!-- Card -->
             <div class="card">
-                
-<div class="card-body">
-                <!-- Table -->
-                <div class="set_table banner-tbl">
-                    <div class="table-responsive datatable_wrapper_row">
-                        <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>{{translate('SL')}}</th>
-                                    <th>{{translate('name')}}</th>
-                                    <th>{{translate('contact_info')}}</th>
-                                    <th>{{translate('GST')}}</th>
-                                    <th>{{translate('address')}}</th>
-                                    <th>{{translate('action')}}</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($vendors as $vendor)
+                <div class="card-body">
+                    <!-- Table -->
+                    <div class="set_table banner-tbl">
+                        <div class="table-responsive datatable_wrapper_row">
+                            <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                                <thead class="thead-light">
                                     <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $vendor->name }}</td>
-                                        <td>{{ $vendor->mobile }} <br/> {{ $vendor->email }}</td>
-                                        <td>{{ $vendor->gst }}</td>
-                                        <td>{{ $vendor->address }}</td>
-                                        <td>
-                                            <div class="d-flex  gap-2">
-                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
-                                             </div>
-                                        </td>
+                                        <th>{{translate('SL')}}</th>
+                                        <th>{{translate('name')}}</th>
+                                        <th>{{translate('contact_info')}}</th>
+                                        <th>{{translate('GST')}}</th>
+                                        <th>{{translate('address')}}</th>
+                                        <th>{{translate('action')}}</th>
                                     </tr>
-                                @endforeach                        
-                            </tbody>
-                        </table>
+                                </thead>
+
+                                <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @foreach ($vendors as $vendor)
+                                        <tr>
+                                            <td>{{ $i++ }}</td>
+                                            <td>{{ $vendor->name }}</td>
+                                            <td>{{ $vendor->mobile }} <br/> {{ $vendor->email }}</td>
+                                            <td>{{ $vendor->gst }}</td>
+                                            <td>{{ $vendor->address }}</td>
+                                            <td>
+                                                <div class="d-flex  gap-2">
+                                                    <a href="{{ route('admin.vendor.edit', [$vendor->id]) }}" class="btn btn-outline-info btn-sm edit square-btn"><i class="tio-edit"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach                        
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    <!-- End Table -->
                 </div>
-                <!-- End Table -->
-            </div>
             </div>
             <!-- End Card -->
         </div>
