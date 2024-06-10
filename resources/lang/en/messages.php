@@ -2308,4 +2308,8 @@
   'Supplier' => 'Supplier',
   'Add_Return_Purchase' => 'Add Return Purchase',
   'Ingredient list' => 'Ingredient list',
+  'Add_Purchase' => 'Add Purchase',
+  'Purchase list' => 'Purchase list',
+  'Return Purchase list' => 'Return Purchase list',
+  'Add Return Purchase' => 'Add Return Purchase',
 );

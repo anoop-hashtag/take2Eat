@@ -10,4 +10,8 @@ class PurchaseController extends Controller
     public function index() {
         return view('admin-views.purchase.index');
     }
+
+    public function add() {
+        return view('admin-views.purchase.add');
+    }
 }

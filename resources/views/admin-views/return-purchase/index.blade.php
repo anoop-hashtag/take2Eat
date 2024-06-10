@@ -22,12 +22,11 @@
             <div class="card">
                 <div class="card-top px-card">
                     <div class="d-flex flex-column flex-md-row flex-wrap  align-items-md-center">
-                        <div class="d-flex flex-wrap align-items-center ">
-                            <form action="#" method="GET"></form>
-                            <button type="button" class="btn btn-primary btn-attribute" >
+                        <div class="d-flex flex-wrap align-items-center">
+                            <a href="{{ route('admin.return-purchase.add') }}" type="button" class="btn btn-primary btn-attribute" >
                                 <i class="tio-add"></i>
                                 {{translate('Add_Return_Purchase')}}
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
