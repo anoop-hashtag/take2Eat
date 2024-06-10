@@ -107,8 +107,8 @@ table.dataTable.no-footer {
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
-                                    <th>{{translate('ingredient_name')}}</th>
-                                    <th>{{translate('ingredient_quantity')}}</th>
+                                    <th>{{translate('name')}}</th>
+                                    <th>{{translate('quantity')}}</th>
                                     <th>{{translate('action')}}</th>
                                 </tr>
                             </thead>

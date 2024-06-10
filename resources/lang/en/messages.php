@@ -2303,4 +2303,9 @@
   'abc@gmail.com' => 'Abc@gmail.com',
   'Email is already exists' => 'Email is already exists',
   'Mobile is already exists' => 'Mobile is already exists',
+  'gst' => 'Gst',
+  'contact_info' => 'Contact info',
+  'Supplier' => 'Supplier',
+  'Add_Return_Purchase' => 'Add Return Purchase',
+  'Ingredient list' => 'Ingredient list',
 );
