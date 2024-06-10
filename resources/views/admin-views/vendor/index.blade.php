@@ -38,7 +38,7 @@ table.dataTable.no-footer {
         <h2 class="h1 mb-0 d-flex align-items-center gap-2">
             <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/inventory/supplier.png')}}" alt="">
             <span class="page-header-title">
-                {{translate('Supplier')}} 
+                {{translate('vendor')}} 
             </span>
         </h2>
     </div>
@@ -46,46 +46,46 @@ table.dataTable.no-footer {
 
     <div class="row g-2">
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-            <form>
-                
-                <div class="card">
-                    <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Name')}}</label>
-                                        <input type="text" name="name" class="form-control" placeholder="{{translate('Ingredients')}}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Mobile')}} </label>
-                                        <input type="text" name="mobile" class="form-control" placeholder="{{translate('Mobile')}}" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Address')}}</label>
-                                        <textarea name="address" class="form-control" required="" placeholder="{{translate('Ex: ABC')}}" style="resize: none;"></textarea>
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('admin.vendor.store') }}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="input-label">{{translate('Name')}} <span class="text-danger">*</span></label>
+                                    <input type="text" name="name" class="form-control" placeholder="{{translate('vendor')}}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-label">{{translate('Mobile')}} <span class="text-danger">*</span></label>
+                                    <input type="text" name="mobile" class="form-control" placeholder="{{translate('Mobile')}}" required>
                                 </div>
 
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Email')}}</label>
-                                        <input type="text" name="email" class="form-control" placeholder="{{translate('ABC@gmail.com')}}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('GST')}}</label>
-                                        <input type="text" name="gst" class="form-control" placeholder="{{translate('GST')}}" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label class="input-label">{{translate('Address')}} <span class="text-danger">*</span></label>
+                                    <textarea name="address" class="form-control"  placehder="{{translate('Ex: ABC')}}" style="resize: none;"></textarea>
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-end gap-3 mt-4">
-                                <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
-                                <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="input-label">{{translate('Email')}} <span class="text-danger">*</span></label>
+                                    <input type="text" name="email" class="form-control" placeholder="{{translate('abc@gmail.com')}}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-label">{{translate('GST')}}</label>
+                                    <input type="text" name="gst" class="form-control" placeholder="{{translate('GST')}}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-            </form>
+
+                        <div class="d-flex justify-content-end gap-3 mt-4">
+                            <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
+                            <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

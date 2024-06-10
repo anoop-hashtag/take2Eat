@@ -2297,4 +2297,10 @@
   'Ginger' => 'Ginger',
   'Select any ingredient' => 'Select any ingredient',
   'ABC@gmail.com' => 'ABC@gmail.com',
+  'Ex: ABC' => 'Ex: ABC',
+  'Mobile' => 'Mobile',
+  'Ingredients' => 'Ingredients',
+  'abc@gmail.com' => 'Abc@gmail.com',
+  'Email is already exists' => 'Email is already exists',
+  'Mobile is already exists' => 'Mobile is already exists',
 );
