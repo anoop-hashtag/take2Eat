@@ -2312,4 +2312,10 @@
   'Purchase list' => 'Purchase list',
   'Return Purchase list' => 'Return Purchase list',
   'Add Return Purchase' => 'Add Return Purchase',
+  'Food_Name' => 'Food Name',
+  'Recipe list' => 'Recipe list',
+  'Add_Recipe' => 'Add Recipe',
+  'Recipe' => 'Recipe',
+  'Vendor email is already taken' => 'Vendor email is already taken',
+  'Vendor mobile is already taken' => 'Vendor mobile is already taken',
 );
