@@ -1,111 +1,97 @@
 @extends('layouts.admin.app')
 
 @section('title', translate('Purchase'))
-
+<style>
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+box-sizing: border-box !important;
+display: inline-block !important;
+min-width: 20px !important;
+padding: 5px 10px !important;
+margin-left: 2px !important;
+text-align: center !important;
+text-decoration: none !important;
+cursor: pointer !important;
+color: #8c98a4 !important;
+border: 1px solid transparent !important;
+border-radius: .3125rem !important;
+}
+.page-item.active .page-link {
+z-index: 3;
+color: #fff!important;
+background-color: #ff611d;
+border-color: #ff611d;
+}
+</style>
 @section('content')
 <div class="content container-fluid">
     <!-- Page Header -->
     <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
         <h2 class="h1 mb-0 d-flex align-items-center gap-2">
-            <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/inventory/purchase.png')}}" alt="">
+            <img width="20" class="avatar-img " src="{{asset('public/assets/admin/img/icons/attribute.png')}}" alt="">
             <span class="page-header-title">
-                {{translate('Purchase')}} 
-            </span>
+                {{translate('Purchase list')}}
+            </span>     <span class="badge badge-soft-dark rounded-50 fz-12">12</span>
+           
         </h2>
     </div>
     <!-- End Page Header -->
-    <div class="card">
-       
+
+
+    <div class="row g-3">
+        <div class="col-12">
             <div class="card">
-                <div class="card-body">
-<form>
-            <div class="row">
-                        <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Supplier list')}}<span
-                                                class="input-label-secondary">*</span></label>
-                                        <select name="qty_type" class="custom-select" >
-                                            <option selected disabled>Select any supplier</option>
-                                            <option value="kg">{{translate('Supplier 1')}}</option>
-                                            <option value="litre">{{translate('Supplier 2')}}</option>
-                                        </select>
-                                    </div>
-                                        <div class="form-group">
-                                            <label class="input-label">{{translate('Purchase_Date')}}</label>
-                                            <input type="text" name="email" class="form-control" placeholder="{{translate('ABC@gmail.com')}}" required>
-                                        </div>
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Note')}}</label>
-                                        <textarea name="address" class="form-control" required="" placeholder="{{translate('Ex: ABC')}}" style="resize: none;"></textarea>
-                                </div>
-                        </div>       
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Invoice')}} </label>
-                                        <input type="text" name="mobile" class="form-control" placeholder="{{translate('invoice')}}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Purchase_Type')}}</label>
-                                        <input type="text" name="purchase_type" class="form-control" placeholder="{{translate('Purchase_type')}}" required>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                    
-</form>
-            </div>
-        </div>
-       
-                    <!-- Table -->
-                    <div class="set_table banner-tbl mt-4">
-                    <div class="table-responsive datatable_wrapper_row " >
-                        <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" >
+                <div class="card-top px-card">
+                    <div class="d-flex flex-column flex-md-row flex-wrap  align-items-md-center">
+                        <div class="d-flex flex-wrap align-items-center ">
+                            <form action="#" method="GET"></form>
+                            <button type="button" class="btn btn-primary btn-attribute">
+                                <i class="tio-add"></i>
+                                {{translate('Add_Purchase')}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="set_table new-responsive attribute-list" style="margin-top:50px">
+                    <div class="table-responsive datatable_wrapper_row" >
+                        <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">
-                            <tr>
-                                <th class="width-inventory-secondary">{{translate('Purchase Item')}}</th>
-                                <th class="width-inventory-primary">{{translate('Quantity')}}</th>
-                                <th class="width-inventory-primary">{{translate('Rate')}}</th>
-                                <th class="width-inventory-primary">{{translate('Total')}}</th>
-                                <th> <button  type="button" onclick="addfaqs();" class="btn btn-primary btn-sm delete square-btn"
-                                    ><i class="tio-add"></i></button>
-                               </th>
-                            </tr>
+                                <tr>
+                                    <th>{{translate('SL')}}</th>
+                                    <th>{{translate('Invoice')}}</th>
+                                    <th>{{translate('Supplier')}}</th>
+                                    <th>{{translate('Date')}}</th>
+                                    <th>{{translate('Price')}}</th>
+                                    <th>{{translate('Status')}}</th>
+                                    <th>{{translate('Action')}}</th>
+                                </tr>
                             </thead>
 
                             <tbody>
+                          
                                 <tr>
+                                    <td>1</td>
+                                    <td>invoice 1</td>
+                                    <td>Supplier 1</td>
+                                    <td>02-04-2024</td>
+                                    <td>23432</td>
                                     <td>
-                                  <div >
-                                        <select name="qty_type" class="custom-select" >
-                                            <option selected disabled>Select any supplier</option>
-                                            <option value="kg">{{translate('Supplier 1')}}</option>
-                                            <option value="litre">{{translate('Supplier 2')}}</option>
-                                        </select></div>
-                                    </td>
-                                    <td>
-                                        <div > <input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required>
-                                        </div>
-                                        </td>
-                                   <td>
-                                    <div> <input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <div > <input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required disabled>
+                                        <div class="">
+                                            <label class="switcher">
+                                                <input  class="switcher_input" type="checkbox" >
+                                                <span class="switcher_control"></span>
+                                            </label>
                                         </div>
                                     </td>
                                     <td>
+                                        <!-- Dropdown -->
                                         <div class="d-flex  gap-2">
-                                            <a href="#">
-                                                <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"
-                                                onclick="'{{translate('Want to delete this banner')}}')"><i class="tio-delete"></i></button>
-                                            </a>
-
-                                         </div>
-                                        
+                                            <a class="btn btn-outline-info btn-sm edit square-btn"
+                                               href="#"><i class="tio-edit"></i></a>
+                                        </div>
                                     </td>
                                 </tr>
-                        
                             </tbody>
                         </table>
                     </div>
@@ -113,37 +99,13 @@
                     <div class="table-responsive mt-4 px-3 pagination-style">
                         <div class="d-flex justify-content-lg-end justify-content-sm-end">
                             <!-- Pagination -->
-                          
+                       
                         </div>
                     </div>
-                    </div>
-                
-            <!-- End Card -->
-            <div class="d-flex justify-content-end gap-3 m-4">
-                <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
-                <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
+                </div>
             </div>
         </div>
-
-
+        <!-- End Table -->
+    </div>
 </div>
-
-
-<script>
-    var faqs_row = 0;
-function addfaqs() {
-html = '<tr>';
-html += '<td><select name="qty_type" class="custom-select"><option selected disabled>Select any supplier</option><option value="kg">{{translate('Supplier 1')}}</option><option value="litre">{{translate('Supplier 2')}}</option></select></td>';
-html += '<td><input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required></td>';
-html += '<td><input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required></td>';
-html += '<td><input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required disabled></td>';
-html += '<td><div class="d-flex  gap-2"><a href="#"><button type="button" class="btn btn-outline-danger btn-sm delete square-btn"><i class="tio-delete"></i></button></a></div></td>';
-html += '</tr>';
-$('#datatable tbody').append(html);
-
-faqs_row++;
-}
-</script>
-
-
 @endsection
