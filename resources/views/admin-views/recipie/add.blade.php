@@ -42,117 +42,120 @@ table.dataTable.no-footer {
         </h2>
     </div>
     <!-- End Page Header -->
-
     <div class="row g-2">
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
             <form>
-                
                 <div class="card">
-                    <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Food_Name')}}<span
-                                                class="input-label-secondary">*</span></label>
-                                        <select name="qty_type" class="custom-select" >
-                                            <option selected disabled>Food Name</option>
-                                            <option value="kg">{{translate('Supplier 1')}}</option>
-                                            <option value="litre">{{translate('Supplier 2')}}</option>
-                                        </select>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="input-label">{{translate('Food_Name')}}<span
+                                                    class="input-label-secondary">*</span></label>
+                                            <select name="qty_type" class="custom-select" >
+                                                <option selected disabled>Food Name</option>
+                                                <option value="kg">{{translate('Supplier 1')}}</option>
+                                                <option value="litre">{{translate('Supplier 2')}}</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Variation')}}<span
-                                                class="input-label-secondary">*</span></label>
-                                        <select name="qty_type" class="custom-select" >
-                                            <option selected disabled>Variation</option>
-                                            <option value="kg">{{translate('Supplier 1')}}</option>
-                                            <option value="litre">{{translate('Supplier 2')}}</option>
-                                        </select>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="input-label">{{translate('Variation')}}<span
+                                                    class="input-label-secondary">*</span></label>
+                                            <select name="qty_type" class="custom-select" >
+                                                <option selected disabled>Variation</option>
+                                                <option value="kg">{{translate('Supplier 1')}}</option>
+                                                <option value="litre">{{translate('Supplier 2')}}</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="d-flex justify-content-end gap-3 mt-4">
+                        </div>
+                        
+                            <div class="set_table banner-tbl mt-4">
+                                <div class="table-responsive datatable_wrapper_row">
+                                    <table id="datatable"   class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th>{{translate('SL')}}</th>
+                                            <th>{{translate('Ingredient list')}}</th>
+                                            <th> {{translate('Qty')}}</th>
+                                            <th> {{translate('Action')}}</th>
+                                            <th> <button  type="button" onclick="addRecipeTbl();" class="btn btn-primary btn-sm delete square-btn"
+                                                ><i class="tio-add"></i></button>
+                                           </th>
+                                        </tr>
+                                        </thead>
+            
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><div>
+                                                    <select name="qty_type" class="custom-select" >
+                                                        <option selected disabled>Select Ingredient List</option>
+                                                        <option value="kg">{{translate('Oil')}}</option>
+                                                        <option value="litre">{{translate('Gram')}}</option>
+                                                    </select></div>
+                                                </td>
+                                                <td> <div>
+                                                    <select name="qty_type" class="custom-select" >
+                                                        <option selected disabled>1</option>
+                                                        <option value="kg">{{translate('2')}}</option>
+                                                        <option value="litre">{{translate('3')}}</option>
+                                                    </select></div></td>
+                                                <td>
+                                                    <div class="d-flex  gap-2">
+                                                        <a class="btn btn-outline-info btn-sm edit square-btn"
+                                                            href="#"><i class="tio-edit"></i></a>
+                                                     </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex  gap-2">
+                                                        <a href="#">
+                                                            <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"
+                                                            onclick="'{{translate('Want to delete this banner')}}')"><i class="tio-delete"></i></button>
+                                                        </a>
+            
+                                                     </div>
+                                                    
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+            
+                                <div class="table-responsive mt-4 px-3 pagination-style">
+                                    <div class="d-flex justify-content-lg-end justify-content-sm-end">
+                                        <!-- Pagination -->
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end gap-3 m-4">
                                 <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
                                 <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
                             </div>
-                        </div>
+                     
                     </div>
             </form>
         </div>
     </div>
-
-    <div class="row g-2">
-        <div class="col-12">
-            <!-- Card -->
-            <div class="card">
-                <div class="new-top px-card ">
-                    <div class="row align-items-center gy-2">
-                        <div class="col-sm-4 col-md-6 col-lg-8">
-                            {{-- <h5 class="d-flex align-items-center gap-2 mb-0">
-                                {{translate('Supplier_List')}}
-                                <span class="badge badge-soft-dark rounded-50 fz-12">10</span>
-                            </h5> --}}
-                        </div>
-                        <div class="col-sm-8 col-md-6 col-lg-4">
-                            <form action="" method="GET">
-                                <div class="input-group">
-                                    {{-- <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{translate('Search_by_Title')}}" aria-label="Search" value="" required="" autocomplete="off"> --}}
-                                    <div class="input-group-append">
-                                        {{-- <button type="submit" class="btn btn-primary">
-                                            {{translate('Search')}}
-                                        </button> --}}
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Table -->
-                <div class="set_table banner-tbl">
-                    <div class="table-responsive datatable_wrapper_row">
-                        <table id="datatable"   class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                            <thead class="thead-light">
-                            <tr>
-                                <th>{{translate('SL')}}</th>
-                                <th>{{translate('Ingredient list')}}</th>
-                                <th> {{translate('Qty')}}</th>
-                                <th> {{translate('Action')}}</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Stock 1</td>
-                                   <td>2</td>
-                                    <td>
-                                        <div class="d-flex  gap-2">
-                                            <a class="btn btn-outline-info btn-sm edit square-btn"
-                                                href="#"><i class="tio-edit"></i></a>
-                                         </div>
-                                        
-                                    </td>
-                                </tr>
-                        
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="table-responsive mt-4 px-3 pagination-style">
-                        <div class="d-flex justify-content-lg-end justify-content-sm-end">
-                            <!-- Pagination -->
-                          
-                        </div>
-                    </div>
-                </div>
-                <!-- End Table -->
-            </div>
-            <!-- End Card -->
-        </div>
-    </div>
 </div>
+<script>
+    var faqs_row = 0;
+function addRecipeTbl() {
+html = '<tr>';
+html += '<td>1</td>';
+html += '<td><div><select name="qty_type" class="custom-select"><option selected disabled>Select Ingredient List</option><option value="kg">{{translate('Oil')}}</option><option value="litre">{{translate('Gram')}}</option></select></div></td>';
+html += '<td><div><select name="qty_type" class="custom-select"><option selected disabled>1</option><option value="kg">{{translate('2')}}</option><option value="litre">{{translate('3')}}</option></select></div></td>';
+html += '<td><div><a class="btn btn-outline-info btn-sm edit square-btn"href="#"><i class="tio-edit"></i></a></div></td>';
+html += '<td><div><a href="#"><button type="button" class="btn btn-outline-danger btn-sm delete square-btn"><i class="tio-delete"></i></button></a></div></td>';
+html += '</tr>';
+$('#datatable tbody').append(html);
+faqs_row++;
+}
+</script>
 @endsection
