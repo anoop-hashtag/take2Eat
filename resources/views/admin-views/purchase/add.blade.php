@@ -100,12 +100,9 @@
                                                 <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"
                                                 onclick="'{{translate('Want to delete this banner')}}')"><i class="tio-delete"></i></button>
                                             </a>
-
                                          </div>
-                                        
                                     </td>
                                 </tr>
-                        
                             </tbody>
                         </table>
                     </div>
@@ -130,18 +127,18 @@
 
 
 <script>
-    var faqs_row = 0;
+    var addPurchase_row = 0;
 function addPurchaseTbl() {
-html = '<tr>';
+html = '<tr id="faqs-row' + addPurchase_row + '">';
 html += '<td><select name="qty_type" class="custom-select"><option selected disabled>Select any supplier</option><option value="kg">{{translate('Supplier 1')}}</option><option value="litre">{{translate('Supplier 2')}}</option></select></td>';
 html += '<td><input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required></td>';
 html += '<td><input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required></td>';
 html += '<td><input type="text" name="text" class="form-control" placeholder="{{translate('1')}}" required disabled></td>';
-html += '<td><div class="d-flex  gap-2"><a href="#"><button type="button" class="btn btn-outline-danger btn-sm delete square-btn"><i class="tio-delete"></i></button></a></div></td>';
+html += '<td><div class="d-flex gap-2"><button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="$(\'#faqs-row' + addPurchase_row + '\').remove();"><i class="tio-delete"></i></button></div></td>';
 html += '</tr>';
 $('#datatable tbody').append(html);
 
-faqs_row++;
+addPurchase_row++;
 }
 </script>
 

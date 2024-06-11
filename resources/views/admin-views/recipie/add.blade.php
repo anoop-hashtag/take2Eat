@@ -145,17 +145,17 @@ table.dataTable.no-footer {
     </div>
 </div>
 <script>
-    var faqs_row = 0;
+    var addRecipe_row= 0;
 function addRecipeTbl() {
-html = '<tr>';
+html = '<tr  id="faqs-row' + addRecipe_row+ '">';
 html += '<td>1</td>';
 html += '<td><div><select name="qty_type" class="custom-select"><option selected disabled>Select Ingredient List</option><option value="kg">{{translate('Oil')}}</option><option value="litre">{{translate('Gram')}}</option></select></div></td>';
 html += '<td><div><select name="qty_type" class="custom-select"><option selected disabled>1</option><option value="kg">{{translate('2')}}</option><option value="litre">{{translate('3')}}</option></select></div></td>';
 html += '<td><div><a class="btn btn-outline-info btn-sm edit square-btn"href="#"><i class="tio-edit"></i></a></div></td>';
-html += '<td><div><a href="#"><button type="button" class="btn btn-outline-danger btn-sm delete square-btn"><i class="tio-delete"></i></button></a></div></td>';
+html += '<td><div><button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="$(\'#faqs-row' + addRecipe_row+ '\').remove();"><i class="tio-delete"></i></button></div></td>';
 html += '</tr>';
 $('#datatable tbody').append(html);
-faqs_row++;
+addRecipe_row++;
 }
 </script>
 @endsection
