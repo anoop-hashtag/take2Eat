@@ -124,7 +124,7 @@ table.dataTable.no-footer {
                                         <td>{{ $ingredient->quantity.' '.translate($ingredient->quantity_type) }}</td>
                                         <td>
                                             <div class="d-flex  gap-2">
-                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
+                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="{{ route('admin.ingredient.edit', [$ingredient->id]) }}"><i class="tio-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>                                    
