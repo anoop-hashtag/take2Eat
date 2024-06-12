@@ -56,4 +56,16 @@ class IngredientController extends Controller
         Toastr::success('Ingredient updated successfully');
         return redirect('admin/ingredient');
     }
+
+    public function quantity_type($id) {
+        $ingredient = Ingredient::find($id);
+        $response = [];
+        if(!empty($ingredient)) {
+            $response['status'] = 'success';
+            $response['data'] = $ingredient->quantity_type;
+        } else {
+            $response['status'] = 'error';
+        }
+        return $response;
+    }
 }

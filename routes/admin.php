@@ -101,7 +101,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('store', 'IngredientController@store')->name('store');
             Route::get('edit/{id}', 'IngredientController@edit')->name('edit');
             Route::post('update/{id}', 'IngredientController@update')->name('update');
-            // Route::get('list', 'BannerController@list')->name('list');
+            Route::get('quantity_type/{id}', 'IngredientController@quantity_type')->name('quantity_type');
             // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
             // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });
@@ -119,7 +119,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => 'purchase', 'as' => 'purchase.', 'middleware' => ['module:inventory_management']], function () {
             Route::get('/', 'PurchaseController@index')->name('dashboard');
             Route::get('add', 'PurchaseController@add')->name('add');
-            // Route::post('store', 'BannerController@store')->name('store');
+            Route::post('store', 'PurchaseController@store')->name('store');
             // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
             // Route::put('update/{id}', 'BannerController@update')->name('update');
             // Route::get('list', 'BannerController@list')->name('list');
