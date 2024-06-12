@@ -2337,4 +2337,6 @@
   'Add Purchase' => 'Add Purchase',
   'Want to delete this row data' => 'Want to delete this row data',
   'invoice_2' => 'Invoice 2',
+  'purchse_date' => 'Purchse date',
+  'Purchase Details' => 'Purchase Details',
 );

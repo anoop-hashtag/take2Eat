@@ -120,6 +120,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('/', 'PurchaseController@index')->name('dashboard');
             Route::get('add', 'PurchaseController@add')->name('add');
             Route::post('store', 'PurchaseController@store')->name('store');
+            Route::get('view/{id}', 'PurchaseController@view')->name('view');
             // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
             // Route::put('update/{id}', 'BannerController@update')->name('update');
             // Route::get('list', 'BannerController@list')->name('list');

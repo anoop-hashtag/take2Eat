@@ -18,3 +18,4 @@ yarn-error.log
 .htaccess
 .htaccess
 composer.lock
+.rnd
