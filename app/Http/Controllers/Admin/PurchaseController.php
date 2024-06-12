@@ -13,8 +13,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class PurchaseController extends Controller
 {
     public function index() {
-        $purchases = Purchase::with('vendorDetails')->get();
-        return view('admin-views.purchase.index', compact('purchases'));
+        return view('admin-views.purchase.index');
     }
 
     public function add() {
@@ -61,9 +60,5 @@ class PurchaseController extends Controller
 
         Toastr::success('Purchase added successfully');
         return redirect('admin/purchase');
-    }
-
-    public function view($id) {
-        return view('admin-views.purchase.view');
     }
 }

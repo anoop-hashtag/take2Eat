@@ -58,36 +58,49 @@ border-color: #ff611d;
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
-                                    <th>{{translate('invoice')}}</th>
-                                    <th>{{translate('supplier')}}</th>
-                                    <th>{{translate('purchse_date')}}</th>
-                                    <th>{{translate('payment_type')}}</th>
-                                    <th>{{translate('action')}}</th>
+                                    <th>{{translate('Invoice')}}</th>
+                                    <th>{{translate('Supplier')}}</th>
+                                    <th>{{translate('Date')}}</th>
+                                    <th>{{translate('Price')}}</th>
+                                    <th>{{translate('Status')}}</th>
+                                    <th>{{translate('Action')}}</th>
                                 </tr>
                             </thead>
+
                             <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($purchases as $purchase)
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td><a href="{{ route('admin.purchase.view', [$purchase->id]) }}">{{ $purchase->invoice }}</a></td>
-                                        <td>{{ ucwords($purchase->vendorDetails->name) }} <br/> {{ $purchase->vendorDetails->mobile }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($purchase->purchase_date)) }}</td>
-                                        <td>{{ ucwords($purchase->payment_type) }}</td>
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                <a class="btn btn-sm btn-outline-primary square-btn" href="{{ route('admin.purchase.view', [$purchase->id]) }}"><i class="tio-invisible"></i></a>
-                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                          
+                                <tr>
+                                    <td>1</td>
+                                    <td>invoice 1</td>
+                                    <td>Supplier 1</td>
+                                    <td>02-04-2024</td>
+                                    <td>23432</td>
+                                    <td>
+                                        <div class="">
+                                            <label class="switcher">
+                                                <input  class="switcher_input" type="checkbox" >
+                                                <span class="switcher_control"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <!-- Dropdown -->
+                                        <div class="d-flex  gap-2">
+                                            <a class="btn btn-outline-info btn-sm edit square-btn"
+                                               href="#"><i class="tio-edit"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
 
+                    <div class="table-responsive mt-4 px-3 pagination-style">
+                        <div class="d-flex justify-content-lg-end justify-content-sm-end">
+                            <!-- Pagination -->
+                       
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,66 +108,3 @@ border-color: #ff611d;
     </div>
 </div>
 @endsection
-
-@push('script_2')
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js"></script>
-    <script type="text/javascript">
-        $(document).on('ready', function () { 
-
-            // INITIALIZATION OF DATATABLES
-            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'copy',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'excel',
-                        text: 'Excel',
-                        className: 'btn btn-primary'
-                    },
-                    {
-                        extend: 'csv',
-                        className: 'd-none'
-                    },
-                    {
-                        extend: 'pdf',
-                        text: 'PDF',
-                        className: 'btn btn-primary'
-                    },
-                    {
-                        extend: 'print',
-                        className: 'd-none'
-                    },
-                ],
-                select: {
-                    style: 'multi',
-                    selector: 'td:first-child input[type="checkbox"]',
-                    classMap: {
-                        checkAll: '#datatableCheckAll',
-                        counter: '#datatableCounter',
-                        counterInfo: '#datatableCounterInfo'
-                    }
-                },
-                info: false,
-                paging: true,
-                language: {
-                    zeroRecords: '<div class="text-center p-4">' +
-                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
-                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
-                        '</div>'
-                },
-                order: [], // Add this line to enable sorting on all columns
-                columnDefs: [
-                    { orderable: true, targets: '_all' } // Ensure all columns are orderable
-                ]
-            });
-
-        });
-    </script>
-@endpush
