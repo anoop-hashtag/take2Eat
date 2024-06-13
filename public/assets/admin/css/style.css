@@ -3043,7 +3043,22 @@ li.paginate_item.page-item span.ellipsis.page-link {
 .avatar-xxl.avatar-4by3{
   object-fit: cover;
 }
-
+.bottom-line{
+  border-bottom: 1px solid #111;
+}
+.bottom-new-line{
+  border-bottom: 1px solid  rgba(231, 234, 243, .7); 
+}
+.vendor-data span{
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.vendor-data{
+  margin-bottom: 10px;
+}
+.vendor-data span.vendor-title{
+  font-weight: 600;
+}
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 @media only screen and (min-width:640px){
   span.status {
