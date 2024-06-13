@@ -80,18 +80,18 @@ table.dataTable.no-footer {
                                     <table id="datatable"   class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th>{{translate('SL')}}</th>
-                                            <th>{{translate('Ingredient list')}}</th>
-                                            <th> {{translate('Qty')}}</th>
-                                            <th> {{translate('Action')}}</th>
-                                            <th> <button  type="button" onclick="addRecipeTbl();" class="btn btn-primary btn-sm delete square-btn"
+                                            <th style="width: 10%;">{{translate('SL')}}</th>
+                                            <th style="width: 40%;">{{translate('Ingredient list')}}</th>
+                                            <th style="width: 20%;"> {{translate('Qty')}}</th>
+                                            <th style="width: 20%;"> {{translate('Action')}}</th>
+                                            <th style="width: 10%;"> <button  type="button" onclick="addRecipeTbl();" class="btn btn-primary btn-sm delete square-btn"
                                                 ><i class="tio-add"></i></button>
                                            </th>
                                         </tr>
                                         </thead>
             
                                         <tbody>
-                                            <tr>
+                                            <tr id="addRecipe_row">
                                                 <td>1</td>
                                                 <td><div>
                                                     <select name="qty_type" class="custom-select" >
@@ -112,11 +112,11 @@ table.dataTable.no-footer {
                                                             href="#"><i class="tio-edit"></i></a>
                                                      </div>
                                                 </td>
-                                                <td>
+                                                <td >
                                                     <div class="d-flex  gap-2">
                                                         <a href="#">
                                                             <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"
-                                                            onclick="'{{translate('Want to delete this banner')}}')"><i class="tio-delete"></i></button>
+                                                            onclick="$('#addRecipe_row').remove();"><i class="tio-delete"></i></button>
                                                         </a>
             
                                                      </div>

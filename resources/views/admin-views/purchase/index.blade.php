@@ -53,7 +53,7 @@ border-color: #ff611d;
 
                 <!-- Table -->
                 <div class="card-body">
-                <div class="set_table new-responsive attribute-list" style="margin-top:50px">
+                <div class="set_table new-responsive attribute-list" style="margin-top:30px">
                     <div class="table-responsive datatable_wrapper_row" >
                         <table id="datatable" class="mt-2 table table-borderless table-thead-bordered table-nowrap table-align-middle card-table bottom-line">
                             <thead class="thead-light">

@@ -77,7 +77,7 @@
                                 </tr>
                             </thead>
                             <tbody id="purchase-table">
-                                <tr>
+                                <tr id="addPurchase_row">
                                     <td>
                                         <select name="items[]" class="custom-select items">
                                             <option selected disabled>{{translate('select_item')}}</option>
@@ -100,7 +100,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex gap-2">
-                                            <button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="'{{translate('Want to delete this row data')}}')"><i class="tio-delete"></i></button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="$('#addPurchase_row').remove();"><i class="tio-delete"></i></button>
                                         </div>
                                     </td>
                                 </tr>
