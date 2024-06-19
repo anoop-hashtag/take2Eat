@@ -40,37 +40,31 @@
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('Invoice')}}</th>
                                     <th>{{translate('Supplier')}}</th>
-                                    <th>{{translate('Date')}}</th>
-                                    <th>{{translate('Price')}}</th>
-                                    <th>{{translate('Status')}}</th>
+                                    <th>{{translate('return_date')}}</th>
                                     <th>{{translate('Action')}}</th>
                                 </tr>
                             </thead>
-
                             <tbody>
-                          
-                                <tr>
-                                    <td>1</td>
-                                    <td>invoice 1</td>
-                                    <td>Supplier 1</td>
-                                    <td>12-10-2024</td>
-                                    <td>23432</td>
-                                    <td>
-                                        <div class="">
-                                            <label class="switcher">
-                                                <input  class="switcher_input" type="checkbox" >
-                                                <span class="switcher_control"></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <!-- Dropdown -->
-                                        <div class="d-flex  gap-2">
-                                            <a class="btn btn-outline-info btn-sm edit square-btn"
-                                               href="#"><i class="tio-edit"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @php
+                                    $i = 1;
+                                @endphp
+                                @foreach ($returnPurchases as $returnPurchase)
+                                    @php
+                                        // echo "<pre>";
+                                        //     print_r($returnPurchase->purchaseDetails->invoice);
+                                    @endphp
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $returnPurchase->purchaseDetails->invoice }}</td>
+                                        <td>Supplier 1</td>
+                                        <td>12-10-2024</td>
+                                        <td>
+                                            <div class="d-flex  gap-2">
+                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -12,4 +12,7 @@ class Purchase extends Model
     public function vendorDetails() {
         return $this->belongsTo(Vendor::class, 'vendor_id');
     }
+    public function returnPurchaseDetails() {
+        return $this->hasMany(ReturnPurchase::class, 'purchase_id');
+    }
 }

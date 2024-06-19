@@ -7,11 +7,18 @@ use App\Model\Vendor;
 use Illuminate\Http\Request;
 use App\Model\Purchase;
 use App\Model\Ingredient;
+use App\Model\ReturnPurchase;
+use App\Model\ReturnPurchaseIngredientItem;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ReturnPurchaseController extends Controller
 {
     public function index() {
-        return view('admin-views.return-purchase.index');
+        $returnPurchases = ReturnPurchase::with('purchaseDetails')->get();
+        // echo "<pre>";
+        // print_r($returnPurchases);
+        // die;
+        return view('admin-views.return-purchase.index', compact('returnPurchases'));
     }
 
     public function add() {
@@ -39,16 +46,41 @@ class ReturnPurchaseController extends Controller
         return view('admin-views.return-purchase.add', compact('vendors', 'purchaseIngredients', 'ingredients', 'vendor_id', 'invoice'));
     }
 
-    public function store(Request $request) {
-        echo "<pre>";
-        print_r($request->all());
-        
+    public function store(Request $request) {        
         if(isset($request->return_ingredients)) {
             if(count($request->return_ingredients) > 0) {
                 $purchase_id = $request->purchase_id;
 
-                
+                $return_purchase = new ReturnPurchase();
+                $return_purchase->purchase_id = $purchase_id;
+                $return_purchase->note = isset($request->note) ? $request->note : '';
+                $return_purchase->save();
+                $return_purchase_id = $return_purchase->id;
+
+                for($i = 0; $i < count($request->return_ingredients); $i++) {
+                   $index = array_keys($request->return_ingredients)[$i];
+                   $return_ingredients_id = $items = $quantitys = '';
+
+                   $return_ingredients_id = $request->return_ingredients[$index];
+                   $items = $request->items[$index];
+                   $quantitys = $request->quantitys[$index];
+
+                   $return_purchase_ingredient_item = new ReturnPurchaseIngredientItem();
+                   $return_purchase_ingredient_item->return_purchase_id = $return_purchase_id;
+                   $return_purchase_ingredient_item->purchase_ingredient_id = $return_ingredients_id;
+                   $return_purchase_ingredient_item->return_quantity = $quantitys;
+                   $return_purchase_ingredient_item->save();
+
+                   $ingredient = Ingredient::find($items);
+                   $ingredient->quantity = $ingredient->quantity - $quantitys;
+                   $ingredient->update();
+                }
             } 
+            Toastr::success('Return Purchase added successfully');
+            return redirect('admin/return-purchase');
+        } else {
+            Toastr::error('Please select atleast one ingredient');
+            return redirect('admin/return-purchase/add');
         }
     }
 }

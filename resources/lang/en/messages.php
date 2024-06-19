@@ -2358,4 +2358,5 @@
   'Item' => 'Item',
   'return' => 'Return',
   'Rajat' => 'Rajat',
+  'return_date' => 'Return date',
 );
