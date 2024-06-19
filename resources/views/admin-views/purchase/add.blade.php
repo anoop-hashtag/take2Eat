@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="input-label">{{translate('vendor_list')}}<span class="text-danger">*</span></label>
+                                    <label class="input-label">{{translate('vendor')}}<span class="text-danger">*</span></label>
                                     <select name="vendor_id" class="custom-select" >
                                         <option selected disabled>{{ translate('select_vendor') }}</option>
                                         @foreach ($vendors as $vendor)

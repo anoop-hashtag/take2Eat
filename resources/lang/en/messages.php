@@ -2350,4 +2350,12 @@
   'Tarun Dubey' => 'Tarun Dubey',
   'vendor_name' => 'Vendor name',
   'Payment by UPI' => 'Payment by UPI',
+  'invoice_1' => 'Invoice 1',
+  'Supplier_Name' => 'Supplier Name',
+  'Shubham' => 'Shubham',
+  123456 => '123456',
+  'Ex: ABC123' => 'Ex: ABC123',
+  'Item' => 'Item',
+  'return' => 'Return',
+  'Rajat' => 'Rajat',
 );

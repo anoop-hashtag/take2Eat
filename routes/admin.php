@@ -131,8 +131,8 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => 'return-purchase', 'as' => 'return-purchase.', 'middleware' => ['module:inventory_management']], function () {
             Route::get('/', 'ReturnPurchaseController@index')->name('dashboard');
             Route::get('add', 'ReturnPurchaseController@add')->name('add');
-            // Route::post('store', 'BannerController@store')->name('store');
-            // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
+            Route::post('edit/', 'ReturnPurchaseController@edit')->name('edit');
+            Route::post('store', 'ReturnPurchaseController@store')->name('store');
             // Route::put('update/{id}', 'BannerController@update')->name('update');
             // Route::get('list', 'BannerController@list')->name('list');
             // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
