@@ -14,10 +14,10 @@ use Brian2694\Toastr\Facades\Toastr;
 class ReturnPurchaseController extends Controller
 {
     public function index() {
-        $returnPurchases = ReturnPurchase::with('purchaseDetails')->get();
-        // echo "<pre>";
-        // print_r($returnPurchases);
-        // die;
+        $returnPurchases = ReturnPurchase::select('return_purchase.*', 'purchases.invoice', 'vendors.name', 'vendors.mobile')
+                                            ->leftJoin('purchases', 'return_purchase.purchase_id', '=', 'purchases.id')
+                                            ->leftJoin('vendors', 'purchases.vendor_id', '=', 'vendors.id')
+                                            ->get();
         return view('admin-views.return-purchase.index', compact('returnPurchases'));
     }
 
@@ -82,5 +82,20 @@ class ReturnPurchaseController extends Controller
             Toastr::error('Please select atleast one ingredient');
             return redirect('admin/return-purchase/add');
         }
+    }
+
+    public function view($id) {
+        $returnPurchaseIngredientItems = ReturnPurchaseIngredientItem::select('return_purchase_ingredient_items.*', 'purchases_ingredient_items.ingredient_details')
+            ->leftJoin('purchases_ingredient_items', 'purchases_ingredient_items.id', '=', 'return_purchase_ingredient_items.purchase_ingredient_id')
+            ->where('return_purchase_ingredient_items.return_purchase_id', $id)
+            ->get(); 
+
+        $returnPurchase = ReturnPurchase::select('purchases.invoice', 'vendors.name', 'return_purchase.created_at')
+                                    ->leftJoin('purchases', 'purchases.id', '=', 'return_purchase.purchase_id')
+                                    ->leftJoin('vendors', 'vendors.id', '=', 'purchases.vendor_id')
+                                    ->where('return_purchase.id', $id)
+                                    ->get();
+
+        return view('admin-views.return-purchase.view', compact('returnPurchaseIngredientItems', 'returnPurchase'));
     }
 }

@@ -133,7 +133,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('add', 'ReturnPurchaseController@add')->name('add');
             Route::post('edit/', 'ReturnPurchaseController@edit')->name('edit');
             Route::post('store', 'ReturnPurchaseController@store')->name('store');
-            // Route::put('update/{id}', 'BannerController@update')->name('update');
+            Route::get('view/{id}', 'ReturnPurchaseController@view')->name('view');
             // Route::get('list', 'BannerController@list')->name('list');
             // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
             // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');

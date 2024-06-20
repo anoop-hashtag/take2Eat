@@ -2,6 +2,28 @@
 
 @section('title', translate('Return_purchase')) 
 
+<style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        box-sizing: border-box !important;
+        display: inline-block !important;
+        min-width: 20px !important;
+        padding: 5px 10px !important;
+        margin-left: 2px !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        color: #8c98a4 !important;
+        border: 1px solid transparent !important;
+        border-radius: .3125rem !important;
+    }
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff!important;
+        background-color: #ff611d;
+        border-color: #ff611d;
+    }
+</style>
+
 @section('content')
 <div class="content container-fluid">
     <!-- Page Header -->
@@ -32,9 +54,9 @@
                 </div>
 
                 <!-- Table -->
-                <div class="set_table new-responsive attribute-list" style="margin-top:50px">
+                <div class="set_table new-responsive attribute-list" style="margin-top:30px">
                     <div class="table-responsive datatable_wrapper_row"  >
-                        <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                        <table id="datatable" class="mt-2 table table-borderless table-thead-bordered table-nowrap table-align-middle card-table bottom-line">
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
@@ -49,17 +71,18 @@
                                     $i = 1;
                                 @endphp
                                 @foreach ($returnPurchases as $returnPurchase)
-                                    @php
-                                        // echo "<pre>";
-                                        //     print_r($returnPurchase->purchaseDetails->invoice);
-                                    @endphp
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td>{{ $returnPurchase->purchaseDetails->invoice }}</td>
-                                        <td>Supplier 1</td>
-                                        <td>12-10-2024</td>
+                                        <td>
+                                            <a href="{{ route('admin.return-purchase.view', [$returnPurchase->id]) }}">{{ $returnPurchase->invoice }}</a>
+                                        </td>
+                                        <td>{{ $returnPurchase->name }} <br/> {{ $returnPurchase->mobile }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($returnPurchase->created_at)) }}</td>
                                         <td>
                                             <div class="d-flex  gap-2">
+                                                <a class="btn btn-outline-primary btn-sm edit square-btn" href="{{ route('admin.return-purchase.view', [$returnPurchase->id]) }}">
+                                                    <i class="tio-invisible"></i>
+                                                </a>
                                                 <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
                                             </div>
                                         </td>
@@ -68,13 +91,6 @@
                             </tbody>
                         </table>
                     </div>
-
-                    <div class="table-responsive mt-4 px-3 pagination-style">
-                        <div class="d-flex justify-content-lg-end justify-content-sm-end">
-                            <!-- Pagination -->
-                       
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -82,3 +98,66 @@
     </div>
 </div>
 @endsection
+
+@push('script_2')
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function () { 
+
+            // INITIALIZATION OF DATATABLES
+            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        text: 'Excel',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'PDF',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                ],
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                info: false,
+                paging: true,
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                },
+                order: [], // Add this line to enable sorting on all columns
+                columnDefs: [
+                    { orderable: true, targets: '_all' } // Ensure all columns are orderable
+                ]
+            });
+
+        });
+    </script>
+@endpush
