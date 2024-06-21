@@ -51,19 +51,18 @@ table.dataTable.no-footer {
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Food_Name')}}<span
-                                                    class="input-label-secondary">*</span></label>
-                                            <select name="qty_type" class="custom-select" >
-                                                <option selected disabled>Food Name</option>
-                                                <option value="kg">{{translate('Supplier 1')}}</option>
-                                                <option value="litre">{{translate('Supplier 2')}}</option>
+                                            <label class="input-label">{{ translate('product') }}<span class="text-danger">*</span></label>
+                                            <select name="qty_type" class="custom-select">
+                                                <option selected disabled>{{ translate('Select_Product') }}</option>
+                                                @foreach ($products as $product)
+                                                    <option value="{{ $product->id }}">{{ translate($product->name)}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="input-label">{{translate('Variation')}}<span
-                                                    class="input-label-secondary">*</span></label>
+                                            <label class="input-label">{{translate('Variation')}}<span class="input-label-secondary">*</span></label>
                                             <select name="qty_type" class="custom-select" >
                                                 <option selected disabled>Variation</option>
                                                 <option value="kg">{{translate('Supplier 1')}}</option>

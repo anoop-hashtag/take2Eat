@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\Product;
 use Illuminate\Http\Request;
 
 class RecipieController extends Controller
@@ -12,6 +13,7 @@ class RecipieController extends Controller
     }
 
     public function add() {
-        return view('admin-views.recipie.add');
+        $products = Product::orderBy('name', 'ASC')->get();
+        return view('admin-views.recipie.add', compact('products'));
     }
 }
