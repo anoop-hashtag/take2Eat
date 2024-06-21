@@ -83,7 +83,7 @@
                                                 <a class="btn btn-outline-primary btn-sm edit square-btn" href="{{ route('admin.return-purchase.view', [$returnPurchase->id]) }}">
                                                     <i class="tio-invisible"></i>
                                                 </a>
-                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
+                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="{{ route('admin.return-purchase.return-edit', [$returnPurchase->id]) }}"><i class="tio-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>

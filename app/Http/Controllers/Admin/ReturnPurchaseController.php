@@ -98,4 +98,9 @@ class ReturnPurchaseController extends Controller
 
         return view('admin-views.return-purchase.view', compact('returnPurchaseIngredientItems', 'returnPurchase'));
     }
+
+    public function returnEdit($id) {
+        $returnPurchase = ReturnPurchase::find($id);
+        return view('admin-views.return-purchase.return-edit', compact('returnPurchase'));
+    }
 }
