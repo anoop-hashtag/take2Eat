@@ -58,7 +58,7 @@ table.dataTable.no-footer {
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label">{{translate('Mobile')}} <span class="text-danger">*</span></label>
-                                    <input type="text" name="mobile" class="form-control" value="{{ $vendor->mobile }}" placeholder="{{translate('Mobile')}}" required>
+                                    <input type="text" name="mobile" class="form-control" value="{{ $vendor->mobile }}" placeholder="{{translate('Mobile')}}" required onkeyup="validateMobileNumber(this)">
                                 </div>
 
                                 <div class="form-group">
