@@ -101,7 +101,7 @@ table.dataTable.no-footer {
 
                 <!-- Table -->
                 <div class="card-body">
-                <div class="set_table banner-tbl">
+                <div class="set_table banner-tbl mt-22">
                     <div class="table-responsive datatable_wrapper_row">
                         <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" style="padding-left:0!important">
                             <thead class="thead-light">

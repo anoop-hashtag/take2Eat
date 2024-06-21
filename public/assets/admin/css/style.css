@@ -7,6 +7,10 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
+
+.mt-22{
+  margin-top: 22px;
+}
 .card-header{
   border-radius: 0.75rem;
 }
@@ -3805,42 +3809,41 @@ div#printableArea #printableAreaContent{
 .set_table.new-responsive.pb-4.top-margin .dataTables_wrapper .dataTables_filter {
   margin: 0 !important;
 }
-
-  .set_table.search-mr .dataTables_wrapper .dataTables_filter label {
+.set_table.search-mr .dataTables_wrapper .dataTables_filter label {
     margin: 0 0 0 1.4rem!important;
 }
 .set_table.search-mr .dataTables_wrapper .dataTables_filter {
   margin: 0 !important;
 }
-  .card-body.p-0.new-responsive.tb-margin.dataTables_wrapper .dataTables_filter label{
+.card-body.p-0.new-responsive.tb-margin.dataTables_wrapper .dataTables_filter label{
     margin: 0rem 2rem 0rem 2rem !important;
   }
-  .set_table.new-responsive.table-search .dataTables_wrapper .dataTables_filter {
+.set_table.new-responsive.table-search .dataTables_wrapper .dataTables_filter {
     margin: 0 0 0 1.4rem !important;
 }
-  .set_table.new-responsive.table-search .dataTables_wrapper .dataTables_filter label {
+.set_table.new-responsive.table-search .dataTables_wrapper .dataTables_filter label {
     margin: 0 !important;
 }
-  .table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter label {
+.table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter label {
     margin: 0 2rem 0 1.4rem !important;
 }
 .table-responsive.datatable_wrapper_row.branch-chef-style .dataTables_wrapper .dataTables_filter {
   margin: 2rem 0 0 0 !important;
 }
-  .set_table.responsive-ui.customer-style.table-css.fixing-search .dataTables_wrapper .dataTables_filter label {
+.set_table.responsive-ui.customer-style.table-css.fixing-search .dataTables_wrapper .dataTables_filter label {
     margin: 0 !important;
 }
 .set_table.responsive-ui.customer-style.table-css.fixing-search .dataTables_wrapper .dataTables_filter {
   margin: 0.5rem 0rem 0 1.4rem !important;
 }
-  .set_table.new-responsive.searchfit .dataTables_wrapper .dataTables_filter {
+.set_table.new-responsive.searchfit .dataTables_wrapper .dataTables_filter {
     margin: 0 0 0 1rem !important;
 }
-  table#pos_datatable {
+table#pos_datatable {
     display: block !important;
     overflow-x: auto !important;
     width: 100% !important;
-  }
+}
   .card-top.px-card.pt-4 {
     margin-top: -25px;
 }
