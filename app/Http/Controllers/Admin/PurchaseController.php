@@ -68,4 +68,9 @@ class PurchaseController extends Controller
         $purchasesIngredientItem = PurchasesIngredientItem::where('purchase_id', $id)->get();
         return view('admin-views.purchase.view', compact('purchase', 'purchasesIngredientItem'));
     }
+
+    public function edit($id) {
+        $purchase = Purchase::find($id);
+        return view('admin-views.purchase.edit', compact('purchase'));
+    }
 }

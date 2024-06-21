@@ -121,7 +121,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('add', 'PurchaseController@add')->name('add');
             Route::post('store', 'PurchaseController@store')->name('store');
             Route::get('view/{id}', 'PurchaseController@view')->name('view');
-            // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
+            Route::get('edit/{id}', 'PurchaseController@edit')->name('edit');
             // Route::put('update/{id}', 'BannerController@update')->name('update');
             // Route::get('list', 'BannerController@list')->name('list');
             // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
@@ -134,7 +134,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('edit/', 'ReturnPurchaseController@edit')->name('edit');
             Route::post('store', 'ReturnPurchaseController@store')->name('store');
             Route::get('view/{id}', 'ReturnPurchaseController@view')->name('view');
-            // Route::get('list', 'BannerController@list')->name('list');
+            Route::get('return-edit/{id}', 'ReturnPurchaseController@returnEdit')->name('return-edit');
             // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
             // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });

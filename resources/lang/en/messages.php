@@ -2361,4 +2361,7 @@
   'return_date' => 'Return date',
   'Return Purchase Details' => 'Return Purchase Details',
   3 => '3',
+  2 => '2',
+  'Edit Purchase' => 'Edit Purchase',
+  'Edit_Return_Purchase' => 'Edit Return Purchase',
 );

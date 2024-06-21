@@ -80,7 +80,7 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <a class="btn btn-sm btn-outline-primary square-btn" href="{{ route('admin.purchase.view', [$purchase->id]) }}"><i class="tio-invisible"></i></a>
-                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
+                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="{{ route('admin.purchase.edit', [$purchase->id]) }}"><i class="tio-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>
