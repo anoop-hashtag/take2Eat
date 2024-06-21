@@ -2364,4 +2364,12 @@
   2 => '2',
   'Edit Purchase' => 'Edit Purchase',
   'Edit_Return_Purchase' => 'Edit Return Purchase',
+  'Gram' => 'Gram',
+  'Baby Cerelac' => 'Baby Cerelac',
+  'vegetable noodles' => 'Vegetable noodles',
+  'veg panner pizza' => 'Veg panner pizza',
+  'vanila ice cream' => 'Vanila ice cream',
+  'uttpam' => 'Uttpam',
+  'Ingredient_List' => 'Ingredient List',
+  'Vendor_List' => 'Vendor List',
 );

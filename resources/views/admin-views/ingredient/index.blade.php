@@ -86,18 +86,18 @@ table.dataTable.no-footer {
         <div class="col-12">
             <!-- Card -->
             <div class="card">
-                {{-- <div class="new-top px-card ">
+                <div class="new-top px-card ">
                     <div class="row align-items-center gy-2">
                         <div class="col-sm-4 col-md-6 col-lg-8">
                             <h5 class="d-flex align-items-center gap-2 mb-0">
-                                Inventory List
-                                <span class="badge badge-soft-dark rounded-50 fz-12">10</span>
+                                {{ translate('Ingredient_List') }}
+                                <span class="badge badge-soft-dark rounded-50 fz-12">{{ count($ingredients) }}</span>
                             </h5>
                         </div>
                         <div class="col-sm-8 col-md-6 col-lg-4">
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
                 <!-- Table -->
                 <div class="card-body">

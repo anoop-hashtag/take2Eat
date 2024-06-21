@@ -93,6 +93,20 @@ table.dataTable.no-footer {
         <div class="col-12">
             <!-- Card -->
             <div class="card">
+
+                <div class="new-top px-card ">
+                    <div class="row align-items-center gy-2">
+                        <div class="col-sm-4 col-md-6 col-lg-8">
+                            <h5 class="d-flex align-items-center gap-2 mb-0">
+                                {{ translate('Vendor_List') }}
+                                <span class="badge badge-soft-dark rounded-50 fz-12">{{ count($vendors) }}</span>
+                            </h5>
+                        </div>
+                        <div class="col-sm-8 col-md-6 col-lg-4">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card-body">
                     <!-- Table -->
                     <div class="set_table banner-tbl">

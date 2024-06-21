@@ -30,8 +30,8 @@
             <img width="20" class="avatar-img " src="{{asset('public/assets/admin/img/icons/attribute.png')}}" alt="">
             <span class="page-header-title">
                 {{translate('Purchase list')}}
-            </span>     <span class="badge badge-soft-dark rounded-50 fz-12">12</span>
-           
+            </span>     
+            <span class="badge badge-soft-dark rounded-50 fz-12">{{ count($purchases) }}</span>
         </h2>
     </div>
     <!-- End Page Header -->
