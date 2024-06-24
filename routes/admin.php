@@ -143,7 +143,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('/', 'RecipieController@index')->name('dashboard');
             Route::get('add', 'RecipieController@add')->name('add');
             Route::get('product-variation/{id}', 'RecipieController@productVarition')->name('product-variation');
-            // Route::post('store', 'BannerController@store')->name('store');
+            Route::post('store', 'RecipieController@store')->name('store');
             // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
             // Route::put('update/{id}', 'BannerController@update')->name('update');
             // Route::get('list', 'BannerController@list')->name('list');

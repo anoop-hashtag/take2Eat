@@ -44,7 +44,8 @@ table.dataTable.no-footer {
     <!-- End Page Header -->
     <div class="row g-2">
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-            <form>
+            <form action="{{ route('admin.recipe.store') }}" method="post">
+                @csrf
                 <div class="card">
                     <div class="card">
                         <div class="card-body">
@@ -52,7 +53,7 @@ table.dataTable.no-footer {
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="input-label">{{ translate('product') }}<span class="text-danger">*</span></label>
-                                        <select name="food" id="food" class="js-select2-custom-x form-ellipsis custom-select">
+                                        <select name="product" id="food" class="js-select2-custom-x form-ellipsis custom-select">
                                             <option selected disabled>{{ translate('Select_Product') }}</option>
                                             @foreach ($products as $product)
                                                 <option value="{{ $product->id }}">{{ translate($product->name)}}</option>
@@ -98,10 +99,10 @@ table.dataTable.no-footer {
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="text" name="quantity[]" class="form-control" required />
+                                            <input type="text" name="quantitys[]" class="form-control" required />
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control quantity_type" readonly>
+                                            <input type="text" class="form-control quantity_type" name="quantity_types[]" readonly>
                                         </td>
                                         <td >
                                             <div class="d-flex  gap-2">
@@ -141,7 +142,7 @@ table.dataTable.no-footer {
                         '</select>' +
                     '</td>';
             html += '<td><input type="text" name="quantitys[]" class="form-control quantity" required></td>';
-            html += '<td><input type="text" class="form-control quantity_type" readonly></td>';
+            html += '<td><input type="text" class="form-control quantity_type" name="quantity_types[]" readonly></td>';
             html += '<td>' +
                         '<button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="$(\'#faqs-row' + addRecipe_row+ '\').remove();"><i class="tio-delete"></i></button>' +
                     '</td>';

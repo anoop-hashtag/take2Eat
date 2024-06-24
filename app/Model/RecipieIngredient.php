@@ -5,10 +5,9 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Recipie extends Model
+class RecipieIngredient extends Model
 {
     use HasFactory;
-
-    protected $table = 'recipie';
+    protected $table = 'recipie_ingredient';
     protected $primaryKey = 'id';
 }

@@ -2398,4 +2398,5 @@
   'Select_Product' => 'Select Product',
   'Add Recipe' => 'Add Recipe',
   'Edit_Purchase' => 'Edit Purchase',
+  'Milk' => 'Milk',
 );
