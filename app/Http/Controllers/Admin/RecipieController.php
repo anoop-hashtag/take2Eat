@@ -13,7 +13,8 @@ use Brian2694\Toastr\Facades\Toastr;
 class RecipieController extends Controller
 {
     public function index() {
-        return view('admin-views.recipie.index');    
+        $recipies = Recipie::all();
+        return view('admin-views.recipie.index', compact('recipies'));    
     }
 
     public function add() {

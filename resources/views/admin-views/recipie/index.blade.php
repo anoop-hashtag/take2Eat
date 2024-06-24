@@ -68,39 +68,25 @@ table.dataTable.no-footer {
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{translate('SL')}}</th>
-                                    <th>{{translate('Invoice')}}</th>
-                                    <th>{{translate('Supplier')}}</th>
-                                    <th>{{translate('Date')}}</th>
-                                    <th>{{translate('Price')}}</th>
-                                    <th>{{translate('Status')}}</th>
+                                    <th>{{translate('recipe')}}</th>
+                                    <th>{{translate('variation')}}</th>
                                     <th>{{translate('Action')}}</th>
                                 </tr>
                             </thead>
-
                             <tbody>
-                          
-                                <tr>
-                                    <td>1</td>
-                                    <td>invoice 1</td>
-                                    <td>Supplier 1</td>
-                                    <td>12-10-2024</td>
-                                    <td>23432</td>
-                                    <td>
-                                        <div class="">
-                                            <label class="switcher">
-                                                <input  class="switcher_input" type="checkbox" >
-                                                <span class="switcher_control"></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <!-- Dropdown -->
-                                        <div class="d-flex  gap-2">
-                                            <a class="btn btn-outline-info btn-sm edit square-btn"
-                                               href="#"><i class="tio-edit"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($recipies as $recipie)
+                                    <tr>
+                                        <td>{{ ++$recipie->iteration }}</td>
+                                        <td>{{ json_decode($recipie->product_details)->name }}</td>
+                                        <td>{{ $recipie->variation }}</td>
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                <a class="btn btn-sm btn-outline-primary square-btn" href="#"><i class="tio-invisible"></i></a>
+                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -118,3 +104,66 @@ table.dataTable.no-footer {
     </div>
 </div>
 @endsection
+
+@push('script_2')
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function () { 
+
+            // INITIALIZATION OF DATATABLES
+            var datatable = $.HSCore.components.HSDatatables.init($('#datatable'), {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'excel',
+                        text: 'Excel',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'csv',
+                        className: 'd-none'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'PDF',
+                        className: 'btn btn-primary'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'd-none'
+                    },
+                ],
+                select: {
+                    style: 'multi',
+                    selector: 'td:first-child input[type="checkbox"]',
+                    classMap: {
+                        checkAll: '#datatableCheckAll',
+                        counter: '#datatableCounter',
+                        counterInfo: '#datatableCounterInfo'
+                    }
+                },
+                info: false,
+                paging: true,
+                language: {
+                    zeroRecords: '<div class="text-center p-4">' +
+                        '<img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">' +
+                        '<p class="mb-0">{{translate('No data to show')}}</p>' +
+                        '</div>'
+                },
+                order: [], // Add this line to enable sorting on all columns
+                columnDefs: [
+                    { orderable: true, targets: '_all' } // Ensure all columns are orderable
+                ]
+            });
+
+        });
+    </script>
+@endpush
