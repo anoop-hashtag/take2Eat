@@ -46,115 +46,161 @@ table.dataTable.no-footer {
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
             <form>
                 <div class="card">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="input-label">{{ translate('product') }}<span class="text-danger">*</span></label>
-                                            <select name="qty_type" class="custom-select">
-                                                <option selected disabled>{{ translate('Select_Product') }}</option>
-                                                @foreach ($products as $product)
-                                                    <option value="{{ $product->id }}">{{ translate($product->name)}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="input-label">{{ translate('product') }}<span class="text-danger">*</span></label>
+                                        <select name="food" id="food" class="js-select2-custom-x form-ellipsis custom-select">
+                                            <option selected disabled>{{ translate('Select_Product') }}</option>
+                                            @foreach ($products as $product)
+                                                <option value="{{ $product->id }}">{{ translate($product->name)}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="input-label">{{translate('Variation')}}<span class="input-label-secondary">*</span></label>
-                                            <select name="qty_type" class="custom-select" >
-                                                <option selected disabled>Variation</option>
-                                                <option value="kg">{{translate('Supplier 1')}}</option>
-                                                <option value="litre">{{translate('Supplier 2')}}</option>
-                                            </select>
-                                        </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group" id="variationDiv" style="display: none;">
+                                        <label class="input-label">{{translate('Variation')}}<span class="text-danger">*</span></label>
+                                        <select name="variation" id="variation" class="custom-select">
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                            <div class="set_table banner-tbl mt-4">
-                                <div class="table-responsive datatable_wrapper_row">
-                                    <table id="datatable"   class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                                        <thead class="thead-light">
-                                        <tr>
-                                            <th style="width: 10%;">{{translate('SL')}}</th>
-                                            <th style="width: 40%;">{{translate('Ingredient list')}}</th>
-                                            <th style="width: 20%;"> {{translate('Qty')}}</th>
-                                            <th style="width: 20%;"> {{translate('Action')}}</th>
-                                            <th style="width: 10%;"> <button  type="button" onclick="addRecipeTbl();" class="btn btn-primary btn-sm delete square-btn"
-                                                ><i class="tio-add"></i></button>
-                                           </th>
-                                        </tr>
-                                        </thead>
-            
-                                        <tbody>
-                                            <tr id="addRecipe_row">
-                                                <td>1</td>
-                                                <td><div>
-                                                    <select name="qty_type" class="custom-select" >
-                                                        <option selected disabled>Select Ingredient List</option>
-                                                        <option value="kg">{{translate('Oil')}}</option>
-                                                        <option value="litre">{{translate('Gram')}}</option>
-                                                    </select></div>
-                                                </td>
-                                                <td> <div>
-                                                    <select name="qty_type" class="custom-select" >
-                                                        <option selected disabled>1</option>
-                                                        <option value="kg">{{translate('2')}}</option>
-                                                        <option value="litre">{{translate('3')}}</option>
-                                                    </select></div></td>
-                                                <td>
-                                                    <div class="d-flex  gap-2">
-                                                        <a class="btn btn-outline-info btn-sm edit square-btn"
-                                                            href="#"><i class="tio-edit"></i></a>
-                                                     </div>
-                                                </td>
-                                                <td >
-                                                    <div class="d-flex  gap-2">
-                                                        <a href="#">
-                                                            <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"
-                                                            onclick="$('#addRecipe_row').remove();"><i class="tio-delete"></i></button>
-                                                        </a>
-            
-                                                     </div>
-                                                    
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-            
-                                <div class="table-responsive mt-4 px-3 pagination-style">
-                                    <div class="d-flex justify-content-lg-end justify-content-sm-end">
-                                        <!-- Pagination -->
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end gap-3 m-4">
-                                <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
-                                <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
-                            </div>
-                     
                     </div>
+                    
+                    <div class="set_table banner-tbl mt-4">
+                        <div class="table-responsive datatable_wrapper_row">
+                            <table id="datatable"   class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th style="width: 40%;">{{translate('item')}}</th>
+                                        <th style="width: 25%;">{{translate('quantity')}}</th>
+                                        <th style="width: 25%;">{{translate('quantity_type')}}</th>
+                                        <th style="width: 10%;">
+                                            <button type="button" onclick="addRecipeTbl();" class="btn btn-primary btn-sm delete square-btn">
+                                                <i class="tio-add"></i>
+                                            </button>
+                                        </th>
+                                    </tr>
+                                </thead>
+    
+                                <tbody>
+                                    <tr id="addRecipe_row">
+                                        <td>
+                                            <select name="items[]" class="custom-select items">
+                                                <option selected disabled>{{translate('select_item')}}</option>
+                                                @foreach ($ingredients as $ingredient)
+                                                    <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="quantity[]" class="form-control" required />
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control quantity_type" readonly>
+                                        </td>
+                                        <td >
+                                            <div class="d-flex  gap-2">
+                                                <a href="#">
+                                                    <button type="button" class="btn btn-outline-danger btn-sm delete square-btn"
+                                                    onclick="$('#addRecipe_row').remove();"><i class="tio-delete"></i></button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end gap-3 m-4">
+                        <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
+                        <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
-<script>
-    var addRecipe_row= 0;
-function addRecipeTbl() {
-html = '<tr  id="faqs-row' + addRecipe_row+ '">';
-html += '<td>1</td>';
-html += '<td><div><select name="qty_type" class="custom-select"><option selected disabled>Select Ingredient List</option><option value="kg">{{translate('Oil')}}</option><option value="litre">{{translate('Gram')}}</option></select></div></td>';
-html += '<td><div><select name="qty_type" class="custom-select"><option selected disabled>1</option><option value="kg">{{translate('2')}}</option><option value="litre">{{translate('3')}}</option></select></div></td>';
-html += '<td><div><a class="btn btn-outline-info btn-sm edit square-btn"href="#"><i class="tio-edit"></i></a></div></td>';
-html += '<td><div><button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="$(\'#faqs-row' + addRecipe_row+ '\').remove();"><i class="tio-delete"></i></button></div></td>';
-html += '</tr>';
-$('#datatable tbody').append(html);
-addRecipe_row++;
-}
-</script>
 @endsection
+
+@push('script_2')
+    <script>
+        var addRecipe_row= 0;
+        function addRecipeTbl() {
+            html = '<tr  id="faqs-row' + addRecipe_row+ '">';
+            html += '<td>' +
+                        '<select name="items[]" class="custom-select items">' +
+                            '<option selected disabled>Select item</option>' +
+                            '@foreach ($ingredients as $ingredient)' +
+                                '<option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>' +
+                            '@endforeach' +
+                        '</select>' +
+                    '</td>';
+            html += '<td><input type="text" name="quantitys[]" class="form-control quantity" required></td>';
+            html += '<td><input type="text" class="form-control quantity_type" readonly></td>';
+            html += '<td>' +
+                        '<button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="$(\'#faqs-row' + addRecipe_row+ '\').remove();"><i class="tio-delete"></i></button>' +
+                    '</td>';
+            html += '</tr>';
+            $('#datatable tbody').append(html);
+            addRecipe_row++;
+        }
+
+        $('#food').on('change', function() {
+            var id = $(this).val();
+            var url = '{{ route("admin.recipe.product-variation", ":id") }}';
+            url = url.replace(':id', id);
+
+            $("#variation").empty();
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if(response.status == 200) {
+                        $('#variationDiv').show();
+                        $("#variation").append('<option selected disabled>Select Variation</option>');
+                        response.data.forEach(function(value) {
+                            $("#variation").append('<option>'+ value + '</option>');
+                        })
+                    } else {
+                        $('#variationDiv').css('display', 'none');
+                    }
+                }
+            });
+        });
+
+        $(document).on('ready', function () {
+            $('.js-select2-custom-x').each(function () {
+                var select2 = $.HSCore.components.HSSelect2.init($(this));
+            });
+        });
+
+        $(document).on('change', '.items', function() {
+            var $row = $(this).closest('tr');
+            var item_id = $(this).val();
+            var url = '{{ route("admin.ingredient.quantity_type", ":id") }}';
+            url = url.replace(':id', item_id);
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if(response.status == 'success') {
+                        $row.find('.quantity_type').val(response.data);
+                    }
+                }
+            });
+        });
+    </script>
+@endpush
