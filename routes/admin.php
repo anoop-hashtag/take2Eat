@@ -144,9 +144,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('add', 'RecipieController@add')->name('add');
             Route::get('product-variation/{id}', 'RecipieController@productVarition')->name('product-variation');
             Route::post('store', 'RecipieController@store')->name('store');
-            // Route::get('edit/{id}', 'BannerController@edit')->name('edit');
+            Route::get('view/{id}', 'RecipieController@view')->name('view');
+            Route::get('edit/{id}', 'RecipieController@edit')->name('edit');
             // Route::put('update/{id}', 'BannerController@update')->name('update');
-            // Route::get('list', 'BannerController@list')->name('list');
             // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
             // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });

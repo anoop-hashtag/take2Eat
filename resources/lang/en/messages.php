@@ -2399,4 +2399,8 @@
   'Add Recipe' => 'Add Recipe',
   'Edit_Purchase' => 'Edit Purchase',
   'Milk' => 'Milk',
+  'Edit Recipe' => 'Edit Recipe',
+  'quanity_type' => 'Quanity type',
+  'recipe_name' => 'Recipe name',
+  'Recipe Details' => 'Recipe Details',
 );

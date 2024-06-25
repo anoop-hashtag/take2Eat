@@ -11,4 +11,8 @@ class Recipie extends Model
 
     protected $table = 'recipie';
     protected $primaryKey = 'id';
+
+    public function recipieIngredients() {
+        return $this->hasMany(RecipieIngredient::class, 'recipie_id');
+    }
 }

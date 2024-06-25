@@ -76,26 +76,19 @@ table.dataTable.no-footer {
                             <tbody>
                                 @foreach ($recipies as $recipie)
                                     <tr>
-                                        <td>{{ ++$recipie->iteration }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ json_decode($recipie->product_details)->name }}</td>
                                         <td>{{ $recipie->variation }}</td>
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <a class="btn btn-sm btn-outline-primary square-btn" href="#"><i class="tio-invisible"></i></a>
-                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="#"><i class="tio-edit"></i></a>
+                                                <a class="btn btn-sm btn-outline-primary square-btn" href="{{ route('admin.recipe.view', [$recipie->id]) }}"><i class="tio-invisible"></i></a>
+                                                <a class="btn btn-outline-info btn-sm edit square-btn" href="{{ route('admin.recipe.edit', [$recipie->id]) }}"><i class="tio-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
-
-                    <div class="table-responsive mt-4 px-3 pagination-style">
-                        <div class="d-flex justify-content-lg-end justify-content-sm-end">
-                            <!-- Pagination -->
-                       
-                        </div>
                     </div>
                 </div>
             </div>

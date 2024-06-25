@@ -77,4 +77,15 @@ class RecipieController extends Controller
             return back();
         }        
     }
+
+    public function edit($id) {
+        $products = Product::orderBy('name', 'ASC')->get();
+        $ingredients = Ingredient::orderBy('name', 'ASC')->get();
+        return view('admin-views.recipie.edit', compact('products', 'ingredients'));
+    }
+
+    public function view($id) {
+        $recipie = Recipie::with('recipieIngredients')->where('id', $id)->get();
+        return view('admin-views.recipie.view', compact('recipie'));
+    }
 }
