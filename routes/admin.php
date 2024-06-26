@@ -146,7 +146,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('store', 'RecipieController@store')->name('store');
             Route::get('view/{id}', 'RecipieController@view')->name('view');
             Route::get('edit/{id}', 'RecipieController@edit')->name('edit');
-            // Route::put('update/{id}', 'BannerController@update')->name('update');
+            Route::post('update/{id}', 'RecipieController@update')->name('update');
             // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
             // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });

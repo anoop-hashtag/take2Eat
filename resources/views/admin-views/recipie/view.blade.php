@@ -20,13 +20,13 @@
         <div class="card-body bottom-new-line">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="vendor-data " >
+                    <div class="vendor-data">
                         <span class="vendor-title">{{ translate('recipe_name') }} : </span>
                         <span>{{ json_decode($recipie[0]->product_details)->name }}</span>
                     </div>
                 </div>       
                 <div class="col-lg-6">
-                    <div class="vendor-data" >
+                    <div class="vendor-data">
                         <span class="vendor-title">{{ translate('variation') }} : </span>
                         <span>{{ $recipie[0]->variation }}</span>
                     </div>
