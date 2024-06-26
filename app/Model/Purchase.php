@@ -16,4 +16,8 @@ class Purchase extends Model
     public function returnPurchaseDetails() {
         return $this->hasMany(ReturnPurchase::class, 'purchase_id');
     }
+
+    public function purchaseIngredientList() {
+        return $this->hasMany(PurchasesIngredientItem::class, 'purchase_id');
+    }
 }

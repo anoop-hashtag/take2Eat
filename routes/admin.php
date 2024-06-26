@@ -122,10 +122,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('store', 'PurchaseController@store')->name('store');
             Route::get('view/{id}', 'PurchaseController@view')->name('view');
             Route::get('edit/{id}', 'PurchaseController@edit')->name('edit');
-            // Route::put('update/{id}', 'BannerController@update')->name('update');
-            // Route::get('list', 'BannerController@list')->name('list');
-            // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
-            // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
+            Route::post('update/{id}', 'PurchaseController@update')->name('update');
         });
 
         Route::group(['prefix' => 'return-purchase', 'as' => 'return-purchase.', 'middleware' => ['module:inventory_management']], function () {
@@ -135,8 +132,6 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('store', 'ReturnPurchaseController@store')->name('store');
             Route::get('view/{id}', 'ReturnPurchaseController@view')->name('view');
             Route::get('return-edit/{id}', 'ReturnPurchaseController@returnEdit')->name('return-edit');
-            // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
-            // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });
 
         Route::group(['prefix' => 'recipe', 'as' => 'recipe.', 'middleware' => ['module:inventory_management']], function () {
@@ -147,8 +142,6 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('view/{id}', 'RecipieController@view')->name('view');
             Route::get('edit/{id}', 'RecipieController@edit')->name('edit');
             Route::post('update/{id}', 'RecipieController@update')->name('update');
-            // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
-            // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });
 
         Route::group(['prefix' => 'banner', 'as' => 'banner.', 'middleware' => ['module:promotion_management']], function () {
