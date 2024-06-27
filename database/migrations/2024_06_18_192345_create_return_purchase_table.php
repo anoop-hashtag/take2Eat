@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer(('purchase_id'));
             $table->text('note')->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

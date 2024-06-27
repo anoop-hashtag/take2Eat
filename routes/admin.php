@@ -111,7 +111,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('store', 'VendorController@store')->name('store');
             Route::get('edit/{id}', 'VendorController@edit')->name('edit');
             Route::post('update/{id}', 'VendorController@update')->name('update');
-            // Route::get('list', 'BannerController@list')->name('list');
+            Route::get('list/{id}', 'VendorController@list')->name('list');
             // Route::get('status/{id}/{status}', 'BannerController@status')->name('status');
             // Route::delete('delete/{id}', 'BannerController@delete')->name('delete');
         });

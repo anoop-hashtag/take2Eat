@@ -26,12 +26,16 @@
                                 <div class="col-lg-5 col-sm-5">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('vendor')}}<span class="text-danger">*</span></label>
-                                        <select name="vendor_id" class="custom-select" >
+                                        <select name="vendor_id" id="vendor_id" class="custom-select" >
                                             <option selected disabled>{{ translate('select_vendor') }}</option>
                                             @foreach ($vendors as $vendor)
-                                                <option value="{{ $vendor->id }}" @if (isset($vendor_id))
-                                                    {{ $vendor_id == $vendor->id ? 'selected' : '' }}
-                                                @endif>{{ $vendor->name }}</option>
+                                                @if (isset($vendor_id))
+                                                    @if ($vendor_id == $vendor->id)
+                                                        <option value="{{ $vendor->id }}" selected>{{ $vendor->name }}</option>
+                                                    @endif
+                                                @else
+                                                    <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -39,7 +43,12 @@
                                 <div class="col-lg-5 col-sm-5">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('Invoice')}}<span class="text-danger">*</span></label>
-                                        <input type="number" name="invoice" class="form-control" placeholder="{{ translate('Ex: ABC123') }}" value="{{ isset($invoice) ? $invoice : '' }}" required>
+                                        <select class="form-control" name="invoice" id="invoice">
+                                            @if (isset($invoice))
+                                                <option value="{{$invoice}}" selected>{{$invoice}}</option>
+                                            @endif
+                                        </select>
+                                        {{-- <input type="number" name="invoice" class="form-control" placeholder="{{ translate('Ex: ABC123') }}" value="{{ isset($invoice) ? $invoice : '' }}" required> --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-sm-2">
@@ -149,3 +158,35 @@
     </div>
 </div>
 @endsection
+
+@push('script_2')
+    <script>
+        $('#vendor_id').on('change', function() {
+            let vendor_id = $(this).val();
+            var url = '{{ route("admin.vendor.list", ":id") }}';
+            url = url.replace(':id', vendor_id);
+
+            $("#invoice").empty();
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    response = JSON.parse(response);
+                    console.log(response);
+                    if(response.status == 200) {
+                        $('#invoice').append('<option selected disable>Select invoice</option>');
+                        response.data.forEach(function(value) {
+                            $('#invoice').append('<option value="'+ value +'">'+ value +'</option>');
+                        });
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            });
+        });
+    </script>
+@endpush

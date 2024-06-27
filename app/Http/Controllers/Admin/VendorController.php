@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\Purchase;
+use App\Model\ReturnPurchase;
 use Illuminate\Http\Request;
 use App\Model\Vendor;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class VendorController extends Controller
 {
@@ -69,5 +72,24 @@ class VendorController extends Controller
 
         Toastr::success('Vendor updated successfully');
         return redirect('admin/vendor');
+    }
+
+    public function list($vendor_id) {
+        $invoices = $response = [];
+        $purchases = Purchase::where('vendor_id', '=', $vendor_id)->get();
+        foreach($purchases as $purchase) {
+            $returnPurchase = ReturnPurchase::where('purchase_id', '=', $purchase->id)->where('status', '=', 0)->get();
+            if(count($returnPurchase) == 0) {
+                array_push($invoices, $purchase->invoice);
+            }
+        }
+        if(count($invoices) > 0) {
+            $response['status'] = 200;
+            $response['data'] = $invoices;
+        } else {
+            $response['status'] = 404;
+            $response['message'] = 'No invoice found';
+        }
+        return json_encode($response);
     }
 }
