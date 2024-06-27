@@ -18,11 +18,11 @@
     <div class="row g-2">
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
             <div class="card">
-                <form action="{{ route('admin.return-purchase.edit') }}" method="post">
-                    @csrf
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <form action="{{ route('admin.return-purchase.edit') }}" method="post">
+                                @csrf
                                 <div class="col-lg-5 col-sm-5">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('vendor')}}<span class="text-danger">*</span></label>
@@ -53,13 +53,16 @@
                                 </div>
                                 <div class="col-lg-2 col-sm-2">
                                     <div class="form-group mt-5">
-                                        <button type="submit" class="btn btn-primary">{{translate('Search')}}</button>
+                                        @if (isset($vendor_id) && isset($invoice))
+                                            <button type="submit" class="btn btn-primary">{{translate('Search')}}</button>
+                                        @endif
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
-                </form>
+                </div>
+
                 <!-- Table -->
                 <form action="{{ route('admin.return-purchase.store') }}" method="post">
                     <!-- for note -->
