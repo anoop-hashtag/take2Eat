@@ -105,46 +105,20 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end gap-3 m-4">
-                                <button type="button" class="btn btn-outline-danger"
-                                onclick="form_alert('return_purchase-{{$returnPurchaseIngredientItems[0]->return_purchase_id}}','{{translate('Are you sure you want to cancel this return purchase')}}')">{{translate('Cancel Return Purchase')}}</button>
+                               
+
                                 <button type="submit" class="btn btn-primary">{{translate('Update')}}</button>
                             </div>
                         </form>
-                            <form id="return_purchase-{{$returnPurchaseIngredientItems[0]->return_purchase_id}}" action="{{ route('admin.return-purchase.returncancel', [$returnPurchaseIngredientItems[0]->return_purchase_id]) }}" method="post">
-                                @csrf 
-                            </form> 
-                        @else
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="text" class="form-control">
-                                    </td>
-                                    <td>
-                                        <select name="items[]" class="custom-select items">
-                                            <option selected disabled>{{translate('select_item')}}</option>
-                                            {{-- @foreach ($ingredients as $ingredient)
-                                                <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
-                                            @endforeach --}}
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="quantitys[]" class="form-control quantity" required>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control quantity_type" readonly>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="rates[]" class="form-control rate" required>
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control total" required readonly>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            
                     @endif
                 </div>
             </div>
+            <form id="return_purchase-{{$returnPurchaseIngredientItems[0]->return_purchase_id}}" action="{{ route('admin.return-purchase.returncancel', [$returnPurchaseIngredientItems[0]->return_purchase_id]) }}" method="post">
+                @csrf 
+            </form> 
+            <button type="button" class="btn btn-outline-danger"
+            onclick="form_alert('return_purchase-{{$returnPurchaseIngredientItems[0]->return_purchase_id}}','{{translate('Are you sure you want to cancel this return purchase')}}')">{{translate('Cancel Return Purchase')}}</button>
             <!-- End Table -->
                 
             </div>
