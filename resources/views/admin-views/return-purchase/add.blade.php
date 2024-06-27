@@ -18,11 +18,11 @@
     <div class="row g-2">
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
             <div class="card">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <form action="{{ route('admin.return-purchase.edit') }}" method="post">
-                                @csrf
+                <form action="{{ route('admin.return-purchase.edit') }}" method="post">
+                    @csrf
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
                                 <div class="col-lg-5 col-sm-5">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('vendor')}}<span class="text-danger">*</span></label>
@@ -52,17 +52,18 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-sm-2">
-                                    <div class="form-group mt-5">
-                                        @if (isset($vendor_id) && isset($invoice))
+                                    @if (isset($vendor_id) && isset($invoice))
+                                        
+                                    @else
+                                        <div class="form-group mt-5">
                                             <button type="submit" class="btn btn-primary">{{translate('Search')}}</button>
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                </form>
                 <!-- Table -->
                 <form action="{{ route('admin.return-purchase.store') }}" method="post">
                     <!-- for note -->
