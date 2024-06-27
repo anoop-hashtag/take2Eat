@@ -24,19 +24,19 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-5 col-sm-6">
+                                <div class="col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('vendor')}}<span class="text-danger">*</span></label>
                                         <input type="text" readonly name="vendor_id" value="{{  $returnPurchase[0]->name }}" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-lg-2 col-sm-6">
+                                <div class="col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('Invoice')}}<span class="text-danger">*</span></label>
                                         <input type="number" readonly name="invoice" value="{{ $returnPurchase[0]->invoice }}" class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-lg-5">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="input-label">{{translate('Note')}}</label>
                                         <textarea name="note" class="form-control">{{ $returnPurchase[0]->note }}</textarea>
@@ -86,7 +86,7 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)" class="form-control quantity qty" value="{{ $purchaseIngredient->return_quantity }}" required>
+                                                <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)" class="form-control quantity " value="{{ $purchaseIngredient->return_quantity }}" required>
                                                 {{-- <input type="hidden" class="main_quantity qty" onkeyup="calculateTotal(this)" value="{{ $purchaseIngredient->return_quantity }}" /> --}}
                                                 {{-- <span class="max-error" style="color: red; font-size:12px; display: none;">Please valid quantity</span> --}}
                                             </td>
@@ -105,8 +105,6 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end gap-3 m-4">
-                               
-
                                 <button type="submit" class="btn btn-primary">{{translate('Update')}}</button>
                             </div>
                         </form>
@@ -117,10 +115,20 @@
             <form id="return_purchase-{{$returnPurchaseIngredientItems[0]->return_purchase_id}}" action="{{ route('admin.return-purchase.returncancel', [$returnPurchaseIngredientItems[0]->return_purchase_id]) }}" method="post">
                 @csrf 
             </form> 
-            <button type="button" class="btn btn-outline-danger"
-            onclick="form_alert('return_purchase-{{$returnPurchaseIngredientItems[0]->return_purchase_id}}','{{translate('Are you sure you want to cancel this return purchase')}}')">{{translate('Cancel Return Purchase')}}</button>
+            <div class="card-body">
+                <div class="note-area">
+                    <h5>Notes :-</h5>
+                    <ol class="note-list" >
+                        <li>After uploading products you need to edit them and set product s images and choices.</li>
+                        <li>You can get category and sub-category id from their list, please input the right ids.</li>
+                    </ol>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-danger"
+                    onclick="form_alert('return_purchase-{{$returnPurchaseIngredientItems[0]->return_purchase_id}}','{{translate('Are you sure you want to cancel this return purchase')}}')">{{translate('Cancel Return Purchase')}}</button>        
+                </div>
+           </div>
             <!-- End Table -->
-                
             </div>
             <!-- End Card -->
         </div>

@@ -60,7 +60,7 @@ table.dataTable.no-footer {
                         </div>
                     </div>
                 </div>
-
+                <div class="card-body">
                 <!-- Table -->
                 <div class="set_table new-responsive attribute-list" style="margin-top:50px">
                     <div class="table-responsive datatable_wrapper_row"  >
@@ -90,6 +90,7 @@ table.dataTable.no-footer {
                             </tbody>
                         </table>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

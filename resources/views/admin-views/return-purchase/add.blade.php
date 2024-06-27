@@ -61,24 +61,26 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        
+                    
                 </form>
                 <!-- Table -->
                 <form action="{{ route('admin.return-purchase.store') }}" method="post">
                     <!-- for note -->
                     @if (isset($vendor_id) && isset($invoice))
                         <div class="row">
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-10">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label class="input-label">{{translate('Note')}}</label>
                                     <textarea name="note" class="form-control" placeholder="{{translate('Ex: ABC')}}" style="resize: none;"></textarea>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endif
-                    
+                </div>
+                
+               
                     <div class="set_table banner-tbl mt-4" >
                         <div class="table-responsive datatable_wrapper_row">
                             <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
@@ -112,7 +114,7 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}"  value="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)"  class="form-control quantity qty" required>
+                                                        <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}"  value="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)"  class="form-control quantity" required>
                                                         <input type="hidden" class="main_quantity" value="{{ $purchaseIngredient->quantity }}" />
                                                     </td>
                                                     <td>
@@ -164,6 +166,7 @@
                             @endif
                         </div>
                     </div>
+                </div>
                 </form>
                 <!-- End Table -->
                 

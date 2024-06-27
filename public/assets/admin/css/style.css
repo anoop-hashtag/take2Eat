@@ -7,7 +7,9 @@
 }
 /* ------ For tablat view fo design -------- */
 /* ---For Button -------- */
-
+.note-area ul.note-list{
+  padding-left: 15px;
+}
 .mt-22{
   margin-top: 22px;
 }

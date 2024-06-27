@@ -87,7 +87,7 @@
                                                 @if ($returnPurchase->status == 0)
                                                     <a class="btn btn-outline-info btn-sm edit square-btn" href="{{ route('admin.return-purchase.return-edit', [$returnPurchase->id]) }}"><i class="tio-edit"></i></a>
                                                 @else
-                                                    <button type="button" class="btn btn-danger btn-sm">Cancelled</button>
+                                                    <button type="button" class="btn btn-danger btn-sm " style="padding:5px">Cancelled</button>
                                                 @endif
                                             </div>
                                         </td>
