@@ -8,6 +8,7 @@ use App\Model\Vendor;
 use App\Model\Ingredient;
 use App\Model\Purchase;
 use App\Model\PurchasesIngredientItem;
+use App\Model\ReturnPurchase;
 use Brian2694\Toastr\Facades\Toastr;
 
 class PurchaseController extends Controller
@@ -88,12 +89,7 @@ class PurchaseController extends Controller
         return view('admin-views.purchase.edit', compact('vendors', 'purchase', 'ingredients'));
     }
 
-    public function update(Request $request, $purchase_id) {
-        // echo $purchase_id;
-        // echo "<pre>";
-        // print_r($puchase_details);
-        // die;
-        
+    public function update(Request $request, $purchase_id) {        
         $puchase_details = Purchase::find($purchase_id);
         $vendor_id = $request->vendor_id;
         $purchase_date = $request->purchase_date;
@@ -101,56 +97,62 @@ class PurchaseController extends Controller
         $invoice = $request->invoice;
         $payment_type = $request->payment_type;
         if(!empty($puchase_details) > 0) {
-            if(isset($request->items)) {
-                $purchases = Purchase::where('vendor_id', '=', $vendor_id)->where('invoice', '=', $invoice)->where('id', '<>', $purchase_id)->get();
-                if(count($purchases) == 0) {
-                    $puchase_details->vendor_id = $vendor_id;
-                    $puchase_details->purchase_date = $purchase_date;
-                    $puchase_details->note = $note;
-                    $puchase_details->invoice = $invoice;
-                    $puchase_details->payment_type = $payment_type;
-                    $puchase_details->save();
-
-                    $purchaseIngredientItems_db = PurchasesIngredientItem::where('purchase_id', '=', $purchase_id)->get();
-                    foreach($purchaseIngredientItems_db as $ingredientItem_db) {
-                        $purchases_ingredient_items_id = $ingredientItem_db->id;
-                        $purchases_ingredient_items_ingredient_id = json_decode($ingredientItem_db->ingredient_details)->id;
-                        $purchases_ingredient_items_quantity = $ingredientItem_db->quantity;
-
-                        $ingredint_detail = Ingredient::find($purchases_ingredient_items_ingredient_id);
-                        $ingredint_detail->quantity = $ingredint_detail->quantity - $purchases_ingredient_items_quantity;
-                        $ingredint_detail->save();
-
-                        PurchasesIngredientItem::where('id','=',$purchases_ingredient_items_id)->delete();
+            $returnPurchase = ReturnPurchase::where('purchase_id', '=', $purchase_id)->get();
+            if(empty($returnPurchase)) {
+                if(isset($request->items)) {
+                    $purchases = Purchase::where('vendor_id', '=', $vendor_id)->where('invoice', '=', $invoice)->where('id', '<>', $purchase_id)->get();
+                    if(count($purchases) == 0) {
+                        $puchase_details->vendor_id = $vendor_id;
+                        $puchase_details->purchase_date = $purchase_date;
+                        $puchase_details->note = $note;
+                        $puchase_details->invoice = $invoice;
+                        $puchase_details->payment_type = $payment_type;
+                        $puchase_details->save();
+    
+                        $purchaseIngredientItems_db = PurchasesIngredientItem::where('purchase_id', '=', $purchase_id)->get();
+                        foreach($purchaseIngredientItems_db as $ingredientItem_db) {
+                            $purchases_ingredient_items_id = $ingredientItem_db->id;
+                            $purchases_ingredient_items_ingredient_id = json_decode($ingredientItem_db->ingredient_details)->id;
+                            $purchases_ingredient_items_quantity = $ingredientItem_db->quantity;
+    
+                            $ingredint_detail = Ingredient::find($purchases_ingredient_items_ingredient_id);
+                            $ingredint_detail->quantity = $ingredint_detail->quantity - $purchases_ingredient_items_quantity;
+                            $ingredint_detail->save();
+    
+                            PurchasesIngredientItem::where('id','=',$purchases_ingredient_items_id)->delete();
+                        }
+    
+                        for($i = 0; $i < count($request->items); $i++) {
+                            $ingredient_id = $request->items[$i];
+                            $quantity = $request->quantitys[$i];
+                            $rate = $request->rates[$i];
+                
+                            $ingredient_details = Ingredient::find($ingredient_id);
+                
+                            $purchase_ingredient_item = new PurchasesIngredientItem();
+                            $purchase_ingredient_item->purchase_id = $purchase_id;
+                            $purchase_ingredient_item->ingredient_details = json_encode($ingredient_details);
+                            $purchase_ingredient_item->quantity = $quantity;
+                            $purchase_ingredient_item->rate = $rate;
+                            $purchase_ingredient_item->save();
+                
+                            $ingredient_details->quantity = $ingredient_details->quantity + $quantity;
+                            $ingredient_details->update();
+                        }
+    
+                        Toastr::success('Purchase update successfully');
+                        return redirect('admin/purchase');
+    
+                    } else {
+                        Toastr::error('Vendor and invoice is already exists');
+                        return back();
                     }
-
-                    for($i = 0; $i < count($request->items); $i++) {
-                        $ingredient_id = $request->items[$i];
-                        $quantity = $request->quantitys[$i];
-                        $rate = $request->rates[$i];
-            
-                        $ingredient_details = Ingredient::find($ingredient_id);
-            
-                        $purchase_ingredient_item = new PurchasesIngredientItem();
-                        $purchase_ingredient_item->purchase_id = $purchase_id;
-                        $purchase_ingredient_item->ingredient_details = json_encode($ingredient_details);
-                        $purchase_ingredient_item->quantity = $quantity;
-                        $purchase_ingredient_item->rate = $rate;
-                        $purchase_ingredient_item->save();
-            
-                        $ingredient_details->quantity = $ingredient_details->quantity + $quantity;
-                        $ingredient_details->update();
-                    }
-
-                    Toastr::success('Purchase update successfully');
-                    return redirect('admin/purchase');
-
                 } else {
-                    Toastr::error('Vendor and invoice is already exists');
+                    Toastr::error('Please select atleast one ingredient');
                     return back();
                 }
             } else {
-                Toastr::error('Please select atleast one ingredient');
+                Toastr::error('You can not edit this purchase becuase you have already created return purchase for this purchase.');
                 return back();
             }
         } else {
