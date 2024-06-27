@@ -35,6 +35,12 @@
                         <span>{{ date('d-m-Y', strtotime($returnPurchase[0]->created_at)) }}</span>
                     </div>
                 </div>
+                <div class="col-lg-12">
+                    <div class="vendor-data" >
+                        <span class="vendor-title">{{ translate('note') }} : </span>
+                        <span>{{ $returnPurchase[0]->note }}</span>
+                    </div>
+                </div>
             </div>
         </div>
         

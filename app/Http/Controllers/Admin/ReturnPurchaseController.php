@@ -90,7 +90,7 @@ class ReturnPurchaseController extends Controller
             ->where('return_purchase_ingredient_items.return_purchase_id', $id)
             ->get(); 
 
-        $returnPurchase = ReturnPurchase::select('purchases.invoice', 'vendors.name', 'return_purchase.created_at')
+        $returnPurchase = ReturnPurchase::select('purchases.invoice', 'vendors.name', 'return_purchase.created_at', 'return_purchase.note')
                                     ->leftJoin('purchases', 'purchases.id', '=', 'return_purchase.purchase_id')
                                     ->leftJoin('vendors', 'vendors.id', '=', 'purchases.vendor_id')
                                     ->where('return_purchase.id', $id)
@@ -99,8 +99,126 @@ class ReturnPurchaseController extends Controller
         return view('admin-views.return-purchase.view', compact('returnPurchaseIngredientItems', 'returnPurchase'));
     }
 
+    
     public function returnEdit($id) {
-        $returnPurchase = ReturnPurchase::find($id);
-        return view('admin-views.return-purchase.return-edit', compact('returnPurchase'));
+        $returnPurchase_id = ReturnPurchase::find($id);
+        $editpurchasedetail = Purchase::find($returnPurchase_id->purchase_id);
+         
+        $returnPurchaseIngredientItems = ReturnPurchaseIngredientItem::select('return_purchase_ingredient_items.*', 'purchases_ingredient_items.ingredient_details'
+        ,'purchases_ingredient_items.rate','purchases_ingredient_items.quantity')
+        ->leftJoin('purchases_ingredient_items', 'purchases_ingredient_items.id', '=', 'return_purchase_ingredient_items.purchase_ingredient_id')
+        ->where('return_purchase_ingredient_items.return_purchase_id', $id)
+        ->get(); 
+
+        $returnPurchase = ReturnPurchase::select('purchases.invoice','vendors.name','return_purchase.created_at','return_purchase.note','purchases_ingredient_items.rate')
+        ->leftJoin('purchases', 'purchases.id', '=', 'return_purchase.purchase_id')
+        ->leftJoin('vendors', 'vendors.id', '=', 'purchases.vendor_id')
+        ->leftJoin('purchases_ingredient_items', 'purchases_ingredient_items.purchase_id', '=', 'return_purchase.purchase_id')
+        ->where('return_purchase.id', $id)
+        ->get();
+        //return $returnPurchase;
+       // $vendors = Vendor::where('status', '1')->orderBy('name', 'asc')->get();
+        $ingredients = Ingredient::where('status', '1')->orderBy('name', 'asc')->get();
+
+        return view('admin-views.return-purchase.return-edit', compact('editpurchasedetail','ingredients','returnPurchaseIngredientItems', 'returnPurchase'));
     }
+
+    public function update(Request $request, $id) {
+        
+        $return_purchase = ReturnPurchase::where('purchase_id', $id)->firstOrFail();
+       
+        if(isset($request->return_ingredients)) {
+            if(count($request->return_ingredients) > 0) {
+                $purchase_id = $request->purchase_id;
+                $return_purchase = ReturnPurchase::where('purchase_id', $id)->firstOrFail();
+                $return_purchase_id = $return_purchase->id;
+
+                for($i = 0; $i < count($request->return_ingredients); $i++) {
+                    $index = array_keys($request->return_ingredients)[$i];
+                    $return_ingredients_id = $items = $quantitys = '';
+                    
+                    $return_ingredients_id = $request->return_ingredients[$index];
+                    $items = $request->items[$index];
+                    $quantitys = $request->quantitys[$index];
+
+                    $return_purchase_ingredient_item = ReturnPurchaseIngredientItem::where('return_purchase_id', $return_purchase_id)
+                    ->where('purchase_ingredient_id', $return_ingredients_id)
+                    ->first();
+
+                    if (!$return_purchase_ingredient_item) {
+                        $return_purchase_ingredient_item = new ReturnPurchaseIngredientItem();
+                        $return_purchase_ingredient_item->return_purchase_id = $return_purchase_id;
+                        $return_purchase_ingredient_item->purchase_ingredient_id = $return_ingredients_id;
+                    }
+                    
+                    // Update return_quantity
+                    $return_purchase_ingredient_item->return_quantity = $quantitys;
+                    
+                    $Check_quantity_return_purchase_ingredient_item = ReturnPurchaseIngredientItem::where('return_purchase_id', $return_purchase_id)
+                    ->where('purchase_ingredient_id', $return_ingredients_id)
+                    ->first();
+                    $ingredient = Ingredient::find($items);
+                    
+                    $check_quantity = $Check_quantity_return_purchase_ingredient_item->return_quantity;
+
+                    if ($quantitys < $check_quantity) {
+                        $final_qty = $check_quantity - $quantitys;
+                        $ingredient->quantity = $ingredient->quantity + $final_qty;
+                         $ingredient->update();
+                        //return $ingredient->quantity;
+                    } elseif ($quantitys == $check_quantity) {
+                        $ingredient->quantity = $ingredient->quantity;
+                         $ingredient->update();
+                        //return $ingredient->quantity;
+                    } else {
+                        $final_qty = $quantitys - $check_quantity;
+                        $ingredient->quantity = $ingredient->quantity - $final_qty;
+                         $ingredient->update();
+                       // return $ingredient->quantity;
+                    }
+
+                   $return_purchase_ingredient_item->save();
+                    
+                 }
+            } 
+            Toastr::success('Return Purchase Update successfully');
+            return redirect('admin/return-purchase');
+        } else {
+            Toastr::error('Please select atleast one ingredient');
+            return back();
+        }
+    }
+
+    public function CancelReturnPurchase($id)
+    {
+        $returnPurchase = ReturnPurchase::findOrFail($id);
+        $returnPurchase->status = 1;
+        $returnPurchase->update();
+
+       $returnPurchaseIngredientItems = ReturnPurchaseIngredientItem::select('return_purchase_ingredient_items.*', 'purchases_ingredient_items.ingredient_details')
+            ->leftJoin('purchases_ingredient_items', 'purchases_ingredient_items.id', '=', 'return_purchase_ingredient_items.purchase_ingredient_id')
+            ->where('return_purchase_ingredient_items.return_purchase_id', $id)
+            ->get(); 
+
+        foreach ($returnPurchaseIngredientItems as $item) {
+           
+           $ingredientDetails = $item->ingredient_details;
+           $decodedIngredient = json_decode($ingredientDetails, true);
+           $ingredientId = $decodedIngredient['id'];
+            $returnedQuantity = $item->return_quantity; 
+            $ingredient = Ingredient::find($ingredientId);
+           
+            if ($ingredient) {
+                $sub_total_qty= $ingredient->quantity;
+                $ingredient->quantity = $sub_total_qty + $returnedQuantity;
+              //  return $ingredient->quantity;
+                $ingredient->update();
+            }
+        }
+
+        Toastr::success('Return purchase cancelled successfully');
+        return redirect('admin/return-purchase');
+
+    }
+
 }

@@ -2403,4 +2403,6 @@
   'quanity_type' => 'Quanity type',
   'recipe_name' => 'Recipe name',
   'Recipe Details' => 'Recipe Details',
+  'Cancel Return Purchase' => 'Cancel Return Purchase',
+  'Are you sure you want to cancel this return purchase' => 'Are you sure you want to cancel this return purchase',
 );

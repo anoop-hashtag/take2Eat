@@ -132,6 +132,10 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('store', 'ReturnPurchaseController@store')->name('store');
             Route::get('view/{id}', 'ReturnPurchaseController@view')->name('view');
             Route::get('return-edit/{id}', 'ReturnPurchaseController@returnEdit')->name('return-edit');
+            Route::post('return-edit/{id}', 'ReturnPurchaseController@update')->name('update');
+            //Cancel Return Purchase 
+            Route::post('return-purchase-cancel/{id}', 'ReturnPurchaseController@CancelReturnPurchase')->name('returncancel');
+          
         });
 
         Route::group(['prefix' => 'recipe', 'as' => 'recipe.', 'middleware' => ['module:inventory_management']], function () {
