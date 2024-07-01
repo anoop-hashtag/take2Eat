@@ -63,7 +63,7 @@ table.dataTable.no-footer {
 
                                 <div class="form-group">
                                     <label class="input-label">{{translate('Address')}} <span class="text-danger">*</span></label>
-                                    <textarea name="address" class="form-control" placehder="{{translate('Ex: ABC')}}" style="resize: none;">{{ $vendor->address }}</textarea>
+                                    <textarea name="address" class="form-control" placehder="{{translate('Ex: ABC')}}" style="resize: none;" required>{{ $vendor->address }}</textarea>
                                 </div>
                             </div>
 

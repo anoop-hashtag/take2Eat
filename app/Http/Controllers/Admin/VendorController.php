@@ -23,6 +23,7 @@ class VendorController extends Controller
             'name' => 'required',
             'mobile' => 'required | min: 10 | max: 10 | unique:vendors,mobile',
             'email' => 'required | email | unique:vendors,email',
+            'address' => 'required'
         ],[
             'mobile.unique' => translate('Mobile is already exists'),
             'email.unique' => translate('Email is already exists')
