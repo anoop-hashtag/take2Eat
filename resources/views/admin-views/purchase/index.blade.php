@@ -76,7 +76,7 @@
                                         <td><a href="{{ route('admin.purchase.view', [$purchase->id]) }}">{{ $purchase->invoice }}</a></td>
                                         <td>{{ ucwords($purchase->vendorDetails->name) }} <br/> {{ $purchase->vendorDetails->mobile }}</td>
                                         <td>{{ date('d-m-Y', strtotime($purchase->purchase_date)) }}</td>
-                                        <td>{{ ucwords($purchase->payment_type) }}</td>
+                                        <td>{{ $purchase->payment_type }}</td>
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <a class="btn btn-sm btn-outline-primary square-btn" href="{{ route('admin.purchase.view', [$purchase->id]) }}"><i class="tio-invisible"></i></a>

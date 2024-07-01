@@ -62,7 +62,7 @@
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ translate(ucwords(json_decode($returnPurchaseIngredientItem->ingredient_details)->name)) }}</td>
-                            <td>{{ $returnPurchaseIngredientItem->return_quantity }} {{ ucwords(json_decode($returnPurchaseIngredientItem->ingredient_details)->quantity_type) }}</td>
+                            <td>{{ $returnPurchaseIngredientItem->return_quantity }} {{ json_decode($returnPurchaseIngredientItem->ingredient_details)->quantity_type }}</td>
                         </tr>
                     @endforeach
                 </tbody>

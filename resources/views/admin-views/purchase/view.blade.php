@@ -67,7 +67,7 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ translate(json_decode($IngredientItem->ingredient_details)->name) }}</td>
-                                        <td>{{ $IngredientItem->quantity }} {{ translate(json_decode($IngredientItem->ingredient_details)->quantity_type) }}</td>
+                                        <td>{{ $IngredientItem->quantity }} {{ json_decode($IngredientItem->ingredient_details)->quantity_type }}</td>
                                         <td>{{ \App\CentralLogics\Helpers::set_symbol($IngredientItem->rate) }}</td>
                                         <td>{{ \App\CentralLogics\Helpers::set_symbol($IngredientItem->quantity * $IngredientItem->rate) }}</td>
                                     </tr>
