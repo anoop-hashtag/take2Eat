@@ -58,7 +58,7 @@ table.dataTable.no-footer {
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label">{{translate('Mobile')}} <span class="text-danger">*</span></label>
-                                    <input type="text" name="mobile" class="form-control" placeholder="{{translate('Mobile')}}" required onkeyup="validateMobileNumber(this)">
+                                    <input type="number" name="mobile" class="form-control" placeholder="{{translate('Mobile')}}" required onkeyup="validateMobileNumber(this)">
                                 </div>
 
                                 <div class="form-group">
@@ -70,7 +70,7 @@ table.dataTable.no-footer {
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="input-label">{{translate('Email')}} <span class="text-danger">*</span></label>
-                                    <input type="text" name="email" class="form-control" placeholder="{{translate('abc@gmail.com')}}" required>
+                                    <input type="email" name="email" class="form-control" placeholder="{{translate('abc@gmail.com')}}" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label">{{translate('GST')}}</label>

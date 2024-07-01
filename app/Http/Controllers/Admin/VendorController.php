@@ -21,8 +21,8 @@ class VendorController extends Controller
     public function store(Request $request) {
         $request->validate([
             'name' => 'required',
-            'mobile' => 'required | unique:vendors,mobile',
-            'email' => 'required | unique:vendors,email',
+            'mobile' => 'required | min: 10 | max: 10 | unique:vendors,mobile',
+            'email' => 'required | email | unique:vendors,email',
         ],[
             'mobile.unique' => translate('Mobile is already exists'),
             'email.unique' => translate('Email is already exists')
@@ -49,12 +49,15 @@ class VendorController extends Controller
         $request->validate([
             'mobile' => [
                 'required',
+                'min: 10',
+                'max: 10',
                 Rule::unique('vendors', 'mobile')->ignore($id)
             ],
             'name' => 'required',
             'address' => 'required',
             'email' => [
                 'required',
+                'email',
                 Rule::unique('vendors', 'email')->ignore($id)
             ],
         ],[
