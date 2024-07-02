@@ -196,7 +196,7 @@
                     response = JSON.parse(response);
                     console.log(response);
                     if(response.status == 200) {
-                        $('#invoice').append('<option selected disable>Select invoice</option>');
+                        $('#invoice').append('<option selected disabled>Select invoice</option>');
                         response.data.forEach(function(value) {
                             $('#invoice').append('<option value="'+ value +'">'+ value +'</option>');
                         });
