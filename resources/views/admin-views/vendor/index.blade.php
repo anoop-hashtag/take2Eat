@@ -176,7 +176,23 @@ table.dataTable.no-footer {
                     {
                         extend: 'excel',
                         text: 'Excel',
-                        className: 'btn btn-primary'
+                        className: 'btn btn-primary',
+                        exportOptions: {
+                            columns: ':not(:nth-child(6))',
+                            format: {
+                                header: function (data, columnIdx) {
+                                    // Define new column names here
+                                    var columnNames = {
+                                        0: 'SL',
+                                        1: 'Name',
+                                        2: 'Contact Info',
+                                        3: 'GST',
+                                        4: 'Address'
+                                    };
+                                    return columnNames[columnIdx] !== undefined ? columnNames[columnIdx] : data;
+                                }
+                            }
+                        }
                     },
                     {
                         extend: 'csv',
@@ -185,7 +201,23 @@ table.dataTable.no-footer {
                     {
                         extend: 'pdf',
                         text: 'PDF',
-                        className: 'btn btn-primary'
+                        className: 'btn btn-primary',
+                        exportOptions: {
+                            columns: ':not(:nth-child(6))',
+                            format: {
+                                header: function (data, columnIdx) {
+                                    // Define new column names here
+                                    var columnNames = {
+                                        0: 'SL',
+                                        1: 'Name',
+                                        2: 'Contact Info',
+                                        3: 'GST',
+                                        4: 'Address'
+                                    };
+                                    return columnNames[columnIdx] !== undefined ? columnNames[columnIdx] : data;
+                                }
+                            }
+                        }
                     },
                     {
                         extend: 'print',
