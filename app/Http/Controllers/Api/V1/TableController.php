@@ -317,12 +317,12 @@ class TableController extends Controller
             $update_order_payment_method->save();
     
             return response()->json([
-                'message' => translate('Payment method updated successfully'),
+                'message' => translate('order updated successfully'),
                 'data' => $update_order_payment_method
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => translate('Failed to update payment method'),
+                'message' => translate('order not update'),
                 'error' => $e->getMessage()  
             ], 500);  
         }
