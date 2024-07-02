@@ -58,30 +58,31 @@ table.dataTable.no-footer {
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label">{{translate('Mobile')}} <span class="text-danger">*</span></label>
-                                    <input type="number" name="mobile" class="form-control" value="{{ $vendor->mobile }}" placeholder="{{translate('Mobile')}}" required onkeyup="validateMobileNumber(this)">
+                                    <input type="number" name="mobile" class="form-control" value="{{ $vendor->mobile }}" required onkeyup="validateMobileNumber(this)">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="input-label">{{translate('Address')}} <span class="text-danger">*</span></label>
-                                    <textarea name="address" class="form-control" placehder="{{translate('Ex: ABC')}}" style="resize: none;" required>{{ $vendor->address }}</textarea>
+                                    <textarea name="address" class="form-control" placehder="{{translate('Ex: ABC')}}" style="resize: none;">{{ $vendor->address }}</textarea>
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="input-label">{{translate('Email')}} <span class="text-danger">*</span></label>
-                                    <input type="email" name="email" class="form-control" value="{{ $vendor->email }}" placeholder="{{translate('abc@gmail.com')}}" required>
+                                    <input type="email" name="email" class="form-control" value="{{ $vendor->email }}" mailto:placeholder="{{translate('abc@gmail.com')}}" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label">{{translate('GST')}}</label>
-                                    <input type="text" name="gst" class="form-control" value="{{ $vendor->gst }}" placeholder="{{translate('GST')}}">
+                                    <input type="text" name="gst" id="gst" class="form-control" value="{{ $vendor->gst }}" placeholder="{{translate('GST')}}">
+                                    <p class="error-message" id="gstError" style="display: none; color:red">Invalid GST Number</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-end gap-3 mt-4">
                             <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
-                            <button type="submit" class="btn btn-primary">{{translate('Update')}}</button>
+                            <button type="submit" id="submit" class="btn btn-primary">{{translate('Update')}}</button>
                         </div>
                     </form>
                 </div>
@@ -91,3 +92,26 @@ table.dataTable.no-footer {
 </div>
 
 @endsection
+
+
+
+@push('script_2')
+    <script>
+        document.getElementById('gst').addEventListener('input', function() {
+            var gstNumber = this.value.trim();
+            var gstRegex = /^(\d{2})([A-Z]{5})(\d{4})([A-Z]{1})([1-9]{1})([Z]{1})([A-Z\d]{1})$/;
+
+            if (gstRegex.test(gstNumber)) {
+                document.getElementById('gstError').style.display = 'none';
+                $('#submit').removeAttr('disabled');
+            } else {
+                document.getElementById('gstError').style.display = 'block';
+                $('#submit').attr('disabled','disabled');
+            }
+        });
+        $('#reset').on('click', function() {
+            document.getElementById('gstError').style.display = 'none';
+            $('#submit').removeAttr('disabled');
+        });
+    </script>
+@endpush
