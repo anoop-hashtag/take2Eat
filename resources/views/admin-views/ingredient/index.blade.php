@@ -162,7 +162,10 @@ table.dataTable.no-footer {
                     {
                         extend: 'excel',
                         text: 'Excel',
-                        className: 'btn btn-primary'
+                        className: 'btn btn-primary',
+                        exportOptions: {
+                            columns: ':not(:nth-child(4))'
+                        }
                     },
                     {
                         extend: 'csv',
@@ -171,7 +174,10 @@ table.dataTable.no-footer {
                     {
                         extend: 'pdf',
                         text: 'PDF',
-                        className: 'btn btn-primary'
+                        className: 'btn btn-primary',
+                        exportOptions: {
+                            columns: ':not(:nth-child(4))'
+                        }
                     },
                     {
                         extend: 'print',

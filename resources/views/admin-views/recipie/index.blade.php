@@ -119,7 +119,7 @@ table.dataTable.no-footer {
                     {
                         extend: 'excel',
                         text: 'Excel',
-                        className: 'btn btn-primary'
+                        className: 'd-none'
                     },
                     {
                         extend: 'csv',
@@ -128,7 +128,7 @@ table.dataTable.no-footer {
                     {
                         extend: 'pdf',
                         text: 'PDF',
-                        className: 'btn btn-primary'
+                        className: 'd-none'
                     },
                     {
                         extend: 'print',
