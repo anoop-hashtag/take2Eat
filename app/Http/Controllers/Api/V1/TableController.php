@@ -311,7 +311,9 @@ class TableController extends Controller
     {
         try {
             $update_order_payment_method = Order::findOrFail($id);
-            $update_order_payment_method->payment_method = $request->payment_method;
+            $update_order_payment_method->payment_method = isset($request->payment_method) ? $request->payment_method : '';
+            $update_order_payment_method->payment_status = isset($request->payment_status) ? $request->payment_status : '';
+            $update_order_payment_method->order_amount = isset($request->order_amount) ? $request->order_amount : '';
             $update_order_payment_method->save();
     
             return response()->json([
