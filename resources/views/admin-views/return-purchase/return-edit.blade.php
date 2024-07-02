@@ -53,7 +53,7 @@
                     <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                         <thead class="thead-light">
                         <tr>
-                            <th><input type="checkbox" name="text" required></th>
+                            <th></th>
                             <th style="width: 35%;">{{translate('Item')}}</th>
                             <th style="width: 15%;">{{translate('quantity')}}</th>
                             <th style="width: 15%;">{{translate('quantity_type')}}</th>
