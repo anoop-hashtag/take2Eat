@@ -783,11 +783,11 @@ table.dataTable tbody td {
   padding: 7px !important;
 }
 
-input.qty {
+/* input.qty {
   width: 55px;
   height: 30px;
   text-align: center;
-}
+} */
 
 #printableArea dd,
 .pos-data-table dd {
