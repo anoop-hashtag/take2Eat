@@ -86,7 +86,7 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)" class="form-control quantity " value="{{ $purchaseIngredient->return_quantity }}" required>
+                                                <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)" class="form-control quantity qty" value="{{ $purchaseIngredient->return_quantity }}" required>
                                                 {{-- <input type="hidden" class="main_quantity qty" onkeyup="calculateTotal(this)" value="{{ $purchaseIngredient->return_quantity }}" /> --}}
                                                 {{-- <span class="max-error" style="color: red; font-size:12px; display: none;">Please valid quantity</span> --}}
                                             </td>
@@ -134,9 +134,10 @@
         </div>
     </div>
 </div>
+@endsection
 
+@push('script_2') 
     <script>
-
         function calculateMax(input) {
             var enteredValue = parseInt(input.value);
             var maxValue = parseInt(input.getAttribute('max'));
@@ -187,5 +188,4 @@
             });
         });
     </script>
-
-@endsection
+@endpush

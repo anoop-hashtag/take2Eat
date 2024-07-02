@@ -74,14 +74,15 @@ table.dataTable.no-footer {
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label">{{translate('GST')}}</label>
-                                    <input type="text" name="gst" class="form-control" placeholder="{{translate('GST')}}">
+                                    <input type="text" name="gst" id="gst" class="form-control" placeholder="{{translate('GST')}}">
+                                    <p class="error-message" id="gstError" style="display: none; color:red">Invalid GST Number</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-end gap-3 mt-4">
                             <button type="reset" id="reset" class="btn btn-secondary">{{translate('Reset')}}</button>
-                            <button type="submit" class="btn btn-primary">{{translate('Add')}}</button>
+                            <button type="submit" class="btn btn-primary" id="submit">{{translate('Add')}}</button>
                         </div>
                     </form>
                 </div>
@@ -214,6 +215,25 @@ table.dataTable.no-footer {
                 ]
             });
 
+        });
+    </script>
+    
+    <script>
+        document.getElementById('gst').addEventListener('input', function() {
+            var gstNumber = this.value.trim();
+            var gstRegex = /^(\d{2})([A-Z]{5})(\d{4})([A-Z]{1})([1-9]{1})([Z]{1})([A-Z\d]{1})$/;
+
+            if (gstRegex.test(gstNumber)) {
+                document.getElementById('gstError').style.display = 'none';
+                $('#submit').removeAttr('disabled');
+            } else {
+                document.getElementById('gstError').style.display = 'block';
+                $('#submit').attr('disabled','disabled');
+            }
+        });
+        $('#reset').on('click', function() {
+            document.getElementById('gstError').style.display = 'none';
+            $('#submit').removeAttr('disabled');
         });
     </script>
 @endpush

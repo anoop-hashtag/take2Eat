@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', translate('Return_purchase')) 
+@section('title', translate('Return_Purchase')) 
 
 <style>
     .dataTables_wrapper .dataTables_paginate .paginate_button {
