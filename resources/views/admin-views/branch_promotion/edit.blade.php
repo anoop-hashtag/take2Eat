@@ -43,12 +43,22 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="input-label">{{translate('Select Banner Type')}}<span class="text-danger">*</span></label>
-                                <select name="banner_type" id="banner_type" class="form-control" required>
+                                {{-- <select name="banner_type" id="banner_type" class="form-control" required>
                                     <option value="" selected>{{ translate('--select--') }}</option>
                                     <option value="bottom_banner" {{ $promotion->promotion_type == 'bottom_banner' ? 'selected' : '' }}>{{ translate('Bottom Banner (1110*380 px)') }}</option>
                                     <option value="top_right_banner" {{ $promotion->promotion_type == 'top_right_banner' ? 'selected' : '' }}>{{ translate('Top Right Banner (280*450 px)') }}</option>
                                     <option value="bottom_right_banner" {{ $promotion->promotion_type == 'bottom_right_banner' ? 'selected' : '' }}>{{ translate('Bottom Right Banner (280*350 px)') }}</option>
                                     <option value="video" {{ $promotion->promotion_type == 'video' ? 'selected' : '' }}>{{ translate('Video') }}</option>
+                                </select> --}}
+                                <select name="banner_type" id="banner_type" class="form-control" required>
+                                    {{-- <option value="" selected>{{ translate('--select--') }}</option> --}}
+                                    @if($promotion->promotion_type == 'video')
+                                    <option value="video" {{ $promotion->promotion_type == 'video' ? 'selected' : '' }}>{{ translate('Video') }}</option>
+                                    @else
+                                    <option value="bottom_banner" {{ $promotion->promotion_type == 'bottom_banner' ? 'selected' : '' }}>{{ translate('Bottom Banner (1110*380 px)') }}</option>
+                                    <option value="top_right_banner" {{ $promotion->promotion_type == 'top_right_banner' ? 'selected' : '' }}>{{ translate('Top Right Banner (280*450 px)') }}</option>
+                                    <option value="bottom_right_banner" {{ $promotion->promotion_type == 'bottom_right_banner' ? 'selected' : '' }}>{{ translate('Bottom Right Banner (280*350 px)') }}</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -57,7 +67,7 @@
                                 @if($promotion->promotion_type == 'video')
                                 <div class="from_part_2 video_section" id="video_section">
                                     <label class="input-label" for="exampleFormControlSelect1">{{translate('youtube Video URL')}} <span class="text-danger">*</span></label>
-                                    <input type="text" name="video" value="{{$promotion->promotion_name}}" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}">
+                                    <input type="text" name="video" value="{{$promotion->promotion_name}}" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" required>
                                 </div>
                                 @else
                                 <div class="from_part_2 image_section" id="image_section">
