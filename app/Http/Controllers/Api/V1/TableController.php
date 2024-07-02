@@ -305,4 +305,24 @@ class TableController extends Controller
 
         return response()->json(['message' => 'no data found']);
     }
+
+    // Update payment method order
+    public function place_order_update(Request $request, $id): JsonResponse
+    {
+        try {
+            $update_order_payment_method = Order::findOrFail($id);
+            $update_order_payment_method->payment_method = $request->payment_method;
+            $update_order_payment_method->save();
+    
+            return response()->json([
+                'message' => translate('Payment method updated successfully'),
+                'data' => $update_order_payment_method
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => translate('Failed to update payment method'),
+                'error' => $e->getMessage()  
+            ], 500);  
+        }
+    }
 }

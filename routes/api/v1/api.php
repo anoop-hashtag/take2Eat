@@ -175,6 +175,7 @@ Route::group(['namespace' => 'Api\V1', 'middleware' => 'localization'], function
         Route::post('order/place', 'TableController@place_order');
         Route::get('order/details', 'TableController@get_order_details');
         Route::get('order/list', 'TableController@table_order_list');
+        Route::post('order/updateplace/{id}', 'TableController@place_order_update');
     });
 
     Route::group(['prefix' => 'kitchen', 'middleware' => 'auth:kitchen_api', 'app_activate:' . APPS['kitchen_app']['software_id']], function () {
