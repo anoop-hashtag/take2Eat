@@ -53,16 +53,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- ... Your existing code ... -->
-                        <div class=" from_part_2 video_section d--none" id="video_section">
-                                                            <label class="input-label">{{translate('youtube Video URL')}}<span class="text-danger ml-1">*</span></label>
-                                                            <input type="text" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" id="url" oninput="validateUrl()">
-                                                            <span id="urlValidationMessage"></span>
-                                                        </div>
+                                <div class=" from_part_2 video_section d--none" id="video_section">
+                                    <label class="input-label">{{translate('youtube Video URL')}}<span class="text-danger ml-1">*</span></label>
+                                    <input type="text" name="video" class="form-control" placeholder="{{ translate('ex : https://youtu.be/0sus46BflpU') }}" id="url" oninput="validateUrl()">
+                                    <span id="urlValidationMessage"></span>
+                                </div>
                                 <div class=" from_part_2 image_section d--none" id="image_section">
                                     <label class="input-label">{{translate('Image')}} <span class="text-danger ml-1">*</span></label>
                                     <div class="custom-file">
                                         <input type="file" name="image" id="customFileEg" class="custom-file-input"
-                                               accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required
+                                               accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
                                                onchange="previewImage(this)">
                                         <label class="custom-file-label" for="customFileEg">{{ translate('choose file') }}</label>
                                     </div>
@@ -94,8 +94,8 @@
 
 
                     <div class="d-flex justify-content-end gap-3">
-                        <button type="reset" class="btn btn-secondary">{{translate('reset')}}</button>
-                        <button type="submit" class="btn btn-primary">{{translate('Save')}}</button>
+                        <button type="reset" id="reset" class="btn btn-secondary">{{translate('reset')}}</button>
+                        <button type="submit" id="submit" class="btn btn-primary">{{translate('Save')}}</button>
                     </div>
                 </form>
             </div>
@@ -150,7 +150,7 @@
                                 </td>
                                 <td>
                                     @if($promotion['promotion_type'] == 'video')
-                                        {{$promotion['promotion_name']}}
+                                        <a href="{{$promotion['promotion_name']}}" target="_blank">{{$promotion['promotion_name']}}</a>
                                     @else
                                         <div>
                                             <img class="mx-80px" width="100" src="{{asset('storage/app/public/promotion')}}/{{$promotion['promotion_name']}}"
@@ -160,8 +160,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex  gap-3">
-                                        <a href="{{route('admin.promotion.edit',[$promotion['id']])}}"
-                                        class="btn btn-outline-info btn-sm square-btn"
+                                        <a href="{{route('admin.promotion.edit',[$promotion['id']])}}" class="btn btn-outline-info btn-sm square-btn"
                                         title="{{translate('Edit')}}">
                                             <i class="tio-edit"></i>
                                         </a>
@@ -195,17 +194,55 @@
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @push('script_2')
+
     <script>
+        // $(function() {
+        //     $('#banner_type').change(function(){
+        //         if ($(this).val() === 'video'){
+        //             $('#video_section').show();
+        //             $('#image_section').hide();
+        //         }else{
+        //             $('#video_section').hide();
+        //             $('#image_section').show();
+        //         }
+        //     });
+        // });
+
+        
         $(function() {
-            $('#banner_type').change(function(){
-                if ($(this).val() === 'video'){
+            const customFile = $('#customFileEg');
+            const bannerType = $('#banner_type');
+            const submitButton = $('#submit');
+
+            submitButton.prop('disabled', true);
+
+            bannerType.change(function() {
+                if ($(this).val() === 'video') {
                     $('#video_section').show();
                     $('#image_section').hide();
-                }else{
+                    submitButton.prop('disabled', true);
+                } else {
                     $('#video_section').hide();
                     $('#image_section').show();
+                    checkSubmitButtonState(); 
                 }
             });
+
+            customFile.on('change', function() {
+                checkSubmitButtonState(); 
+            });
+
+            function checkSubmitButtonState() {
+                if (bannerType.val() !== 'video' && customFile.val().trim() === '') {
+                    $('#submit').attr('disabled','disabled');
+                } else {
+                    $('#submit').removeAttr('disabled');
+                }
+            }
+
+            $('#reset').on('click', function() {
+              $('#submit').attr('disabled','disabled');
+              });
         });
 
         function readURL(input, viewer_id) {
@@ -225,20 +262,41 @@
 
     </script>
     <script>
+        // function validateUrl() {
+        //     var urlInput = document.getElementById('url');
+        //     var validationMessage = document.getElementById('urlValidationMessage');
+        //     var url = urlInput.value;
+
+        //     // Regular expression for basic URL validation
+        //     var urlRegex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,6}(\/\S*)?$/i;
+
+        //     if (urlRegex.test(url)) {
+        //     validationMessage.textContent = '';
+        //     validationMessage.style.color = 'green';
+        //     } else {
+        //     validationMessage.textContent = 'Invalid URL. Please enter a valid URL.';
+        //     validationMessage.style.color = 'red';
+        //     }
+        // }
+
+        
         function validateUrl() {
             var urlInput = document.getElementById('url');
             var validationMessage = document.getElementById('urlValidationMessage');
             var url = urlInput.value;
-
             // Regular expression for basic URL validation
             var urlRegex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,6}(\/\S*)?$/i;
-
-            if (urlRegex.test(url)) {
+            $('#submit').attr('disabled','disabled');
+         
+            if (urlRegex.test(url) && urlInput.value.trim() !== '') {
             validationMessage.textContent = '';
             validationMessage.style.color = 'green';
+            $('#submit').removeAttr('disabled');
+           
             } else {
             validationMessage.textContent = 'Invalid URL. Please enter a valid URL.';
             validationMessage.style.color = 'red';
+          
             }
         }
     </script>
