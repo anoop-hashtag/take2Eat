@@ -60,8 +60,8 @@
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('invoice')}}</th>
-                                    <th>{{translate('supplier')}}</th>
-                                    <th>{{translate('purchse_date')}}</th>
+                                    <th>{{translate('vendor')}}</th>
+                                    <th>{{translate('purchase_date')}}</th>
                                     <th>{{translate('payment_type')}}</th>
                                     <th>{{translate('action')}}</th>
                                 </tr>

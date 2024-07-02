@@ -2406,4 +2406,6 @@
   'Cancel Return Purchase' => 'Cancel Return Purchase',
   'Are you sure you want to cancel this return purchase' => 'Are you sure you want to cancel this return purchase',
   'Payment method updated successfully' => 'Payment method updated successfully',
+  'Return_Purchase' => 'Return Purchase',
+  'purchase_date' => 'Purchase date',
 );

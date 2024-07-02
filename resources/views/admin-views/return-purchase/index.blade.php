@@ -62,7 +62,7 @@
                                 <tr>
                                     <th>{{translate('SL')}}</th>
                                     <th>{{translate('Invoice')}}</th>
-                                    <th>{{translate('Supplier')}}</th>
+                                    <th>{{translate('vendor')}}</th>
                                     <th>{{translate('return_date')}}</th>
                                     <th>{{translate('Action')}}</th>
                                 </tr>
