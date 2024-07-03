@@ -97,8 +97,8 @@ class PurchaseController extends Controller
         $invoice = $request->invoice;
         $payment_type = $request->payment_type;
         if(!empty($puchase_details) > 0) {
-            $returnPurchase = ReturnPurchase::where('purchase_id', '=', $purchase_id)->get();
-            if(empty($returnPurchase)) {
+            $returnPurchase = ReturnPurchase::where('purchase_id', '=', $purchase_id)->where('status', '=', 0)->get();
+            if(count($returnPurchase) == 0) {
                 if(isset($request->items)) {
                     $purchases = Purchase::where('vendor_id', '=', $vendor_id)->where('invoice', '=', $invoice)->where('id', '<>', $purchase_id)->get();
                     if(count($purchases) == 0) {
