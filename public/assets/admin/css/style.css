@@ -3065,11 +3065,14 @@ li.paginate_item.page-item span.ellipsis.page-link {
 .vendor-data span.vendor-title{
   font-weight: 600;
 }
+.py-4.table-responsive.buttons-fixes .dt-buttons {
+  position: absolute;
+}
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 @media only screen and (min-width:640px){
   span.status {
-    width: 100%;
-    max-width: 64px;
+    /* width: 100%; */
+    max-width: 100px;
     text-align: end;
   }
 }
@@ -3123,6 +3126,9 @@ li.paginate_item.page-item span.ellipsis.page-link {
   }
 }
 @media only screen and  (max-width: 1550px) {
+  .py-4.table-responsive.buttons-fixes .dt-buttons {
+    position: absolute;
+}
   .auth-wrapper-left .auth-left-cont {
     margin-inline-end: 134px;
   }
@@ -3151,6 +3157,9 @@ li.paginate_item.page-item span.ellipsis.page-link {
   }
 }
 @media only screen and  (max-width: 1300px) {
+  .py-4.table-responsive.buttons-fixes .dt-buttons {
+    position: absolute;
+}
   .auth-wrapper-left .auth-left-cont {
     margin-inline-end: 84px;
   }
@@ -3207,6 +3216,9 @@ li.paginate_item.page-item span.ellipsis.page-link {
 }
 }
 @media only screen and  (max-width: 1199px) {
+  .py-4.table-responsive.buttons-fixes .dt-buttons {
+    position: absolute;
+}
   .auth-wrapper-right {
     max-width: 450px;
     padding: 20px 40px;
@@ -3955,6 +3967,10 @@ table#pos_datatable {
   }
 }
 @media only screen and (max-width: 480px) {
+  .py-4.table-responsive.buttons-fixes .dataTables_wrapper .dataTables_filter label {
+    position: relative !important;
+    margin: 40px 0 10px 0 !important;
+}
   .check-item {
     max-width: 180px;
   }
@@ -4011,6 +4027,7 @@ select.custom-select.w-auto.min-width-170px {
 }
 }
 @media only screen and  (max-width: 385px) {
+ 
   .pos-product-item_title {
     display: block;
     margin-bottom: 5px;

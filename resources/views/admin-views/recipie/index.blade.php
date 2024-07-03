@@ -62,7 +62,7 @@ table.dataTable.no-footer {
                 </div>
                 <div class="card-body">
                 <!-- Table -->
-                <div class="set_table new-responsive attribute-list" style="margin-top:50px">
+                <div class="set_table new-responsive attribute-list inventory-search">
                     <div class="table-responsive datatable_wrapper_row"  >
                         <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                             <thead class="thead-light">

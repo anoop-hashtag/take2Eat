@@ -35,8 +35,8 @@
         </div>
         
         <div class="px-card">
-            <div class="py-4 table-responsive">
-                <table id="datatable" class="table-style table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+            <div class="py-4 table-responsive buttons-fixes">
+                <table id="datatable" class="bottom-line table-style table table-hover table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
                     <thead class="thead-light">
                         <tr>
                             <th>{{ translate('SL') }}</th>
