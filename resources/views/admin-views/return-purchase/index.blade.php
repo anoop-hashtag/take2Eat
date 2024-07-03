@@ -81,10 +81,10 @@
                                         <td>{{ date('d-m-Y', strtotime($returnPurchase->created_at)) }}</td>
                                         <td>
                                             <div class="d-flex  gap-2">
-                                                <a class="btn btn-outline-primary btn-sm edit square-btn" href="{{ route('admin.return-purchase.view', [$returnPurchase->id]) }}">
-                                                    <i class="tio-invisible"></i>
-                                                </a>
                                                 @if ($returnPurchase->status == 0)
+                                                    <a class="btn btn-outline-primary btn-sm edit square-btn" href="{{ route('admin.return-purchase.view', [$returnPurchase->id]) }}">
+                                                        <i class="tio-invisible"></i>
+                                                    </a>
                                                     <a class="btn btn-outline-info btn-sm edit square-btn" href="{{ route('admin.return-purchase.return-edit', [$returnPurchase->id]) }}"><i class="tio-edit"></i></a>
                                                 @else
                                                     <button type="button" class="btn btn-danger btn-sm " style="padding:5px">Cancelled</button>
