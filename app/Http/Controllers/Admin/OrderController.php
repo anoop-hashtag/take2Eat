@@ -10,6 +10,10 @@ use App\Model\BusinessSetting;
 use App\Model\CustomerAddress;
 use App\Model\DeliveryMan;
 use App\Model\Order;
+use App\Model\OrderDetail;
+use App\Model\Recipie;
+use App\Model\Ingredient;
+use App\Model\RecipieIngredient;
 use App\Model\TableOrder;
 use App\Models\OrderPartialPayment;
 use App\User;
@@ -393,6 +397,21 @@ class OrderController extends Controller
 
         //kitchen order notification
         if ($request->order_status == 'confirmed') {
+            $orderDetails = OrderDetail::where('order_id', $request->id)->get();
+            if(count($orderDetails) > 0) {
+                foreach($orderDetails as $orderDetail) {
+                    $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->name; 
+                    $recipie = Recipie::with('recipieIngredients')->where('product_id', $orderDetail->product_id)->where('variation', '=', $variation)->get();
+                    if(count($recipie) > 0) {
+                        foreach($recipie[0]->recipieIngredients as $ingredient) {
+                            $ingredient_details = Ingredient::find($ingredient->ingredient_id);
+                            $ingredient_details->quantity = $ingredient_details->quantity - ($ingredient->quantity * $orderDetail->quantity);
+                            $ingredient_details->save();
+                        }
+                    }
+                }
+            }
+
             $data = [
                 'title' => translate('You have a new order - (Order Confirmed).'),
                 'description' => $order->id,
@@ -428,6 +447,20 @@ class OrderController extends Controller
         }
 
         if ($request->order_status == 'canceled') {
+            $orderDetails = OrderDetail::where('order_id', $request->id)->get();
+            if(count($orderDetails) > 0) {
+                foreach($orderDetails as $orderDetail) {
+                    $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->name; 
+                    $recipie = Recipie::with('recipieIngredients')->where('product_id', $orderDetail->product_id)->where('variation', '=', $variation)->get();
+                    if(count($recipie) > 0) {
+                        foreach($recipie[0]->recipieIngredients as $ingredient) {
+                            $ingredient_details = Ingredient::find($ingredient->ingredient_id);
+                            $ingredient_details->quantity = $ingredient_details->quantity + ($ingredient->quantity * $orderDetail->quantity);
+                            $ingredient_details->save();
+                        }
+                    }
+                }
+            }
 
             if (isset($table_order->id)) {
                 $orders = $this->order->where(['table_order_id' => $table_order->id])->get();

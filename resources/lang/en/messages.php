@@ -2408,4 +2408,9 @@
   'Payment method updated successfully' => 'Payment method updated successfully',
   'Return_Purchase' => 'Return Purchase',
   'purchase_date' => 'Purchase date',
+  'Delivery Partner Last Location' => 'Delivery Partner Last Location',
+  'Khoya' => 'Khoya',
+  'Paneer' => 'Paneer',
+  'Sugar' => 'Sugar',
+  'Besan' => 'Besan',
 );

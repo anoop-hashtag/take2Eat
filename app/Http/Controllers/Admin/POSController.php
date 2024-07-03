@@ -13,6 +13,8 @@ use App\Model\DeliveryMan;
 use App\Model\Notification;
 use App\Model\Product;
 use App\Model\Order;
+use App\Model\Recipie;
+use App\Model\Ingredient;
 use App\Model\OrderDetail;
 use App\Model\ProductByBranch;
 use App\Model\Table;
@@ -797,9 +799,39 @@ class POSController extends Controller
                     }
                 }
 
+                $orderDetails = OrderDetail::where('order_id', $order_id)->get();
+                if(count($orderDetails) > 0) {
+                    foreach($orderDetails as $orderDetail) {
+                        $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->name; 
+                        $recipie = Recipie::with('recipieIngredients')->where('product_id', $orderDetail->product_id)->where('variation', '=', $variation)->get();
+                        if(count($recipie) > 0) {
+                            foreach($recipie[0]->recipieIngredients as $ingredient) {
+                                $ingredient_details = Ingredient::find($ingredient->ingredient_id);
+                                $ingredient_details->quantity = $ingredient_details->quantity - ($ingredient->quantity * $orderDetail->quantity);
+                                $ingredient_details->save();
+                            }
+                        }
+                    }
+                }
+
                 return back();
             } else {
                 Toastr::warning(translate('Branch select is required'));
+            }
+
+            $orderDetails = OrderDetail::where('order_id', $order_id)->get();
+            if(count($orderDetails) > 0) {
+                foreach($orderDetails as $orderDetail) {
+                    $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->name; 
+                    $recipie = Recipie::with('recipieIngredients')->where('product_id', $orderDetail->product_id)->where('variation', '=', $variation)->get();
+                    if(count($recipie) > 0) {
+                        foreach($recipie[0]->recipieIngredients as $ingredient) {
+                            $ingredient_details = Ingredient::find($ingredient->ingredient_id);
+                            $ingredient_details->quantity = $ingredient_details->quantity - ($ingredient->quantity * $orderDetail->quantity);
+                            $ingredient_details->save();
+                        }
+                    }
+                }
             }
 
         } catch (\Exception $e) {
