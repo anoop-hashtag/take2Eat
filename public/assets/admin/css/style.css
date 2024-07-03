@@ -3068,6 +3068,13 @@ li.paginate_item.page-item span.ellipsis.page-link {
 .py-4.table-responsive.buttons-fixes .dt-buttons {
   position: absolute;
 }
+.set_table.new-responsive.attribute-list.inventory-search .dataTables_wrapper .dataTables_filter {
+  position: relative !important;
+}
+.card-top.px-card.button-fixes {
+  position: absolute;
+  margin-top: -13px !important;
+}
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 @media only screen and (min-width:640px){
   span.status {
@@ -3266,6 +3273,9 @@ li.paginate_item.page-item span.ellipsis.page-link {
   }
 }
 @media (min-width:1200px) and (max-width:1299px){
+  .py-4.table-responsive.buttons-fixes .dataTables_wrapper .dataTables_filter {
+    position: relative !important;
+  }
   .customer-height{
     min-height: 45px;
   }
@@ -3364,6 +3374,7 @@ li.paginate_item.page-item span.ellipsis.page-link {
   }
 }
 @media (min-width:1040px) and (max-width:1200px){
+
   .customer-height{
     min-height: 45px;
   }
@@ -3392,7 +3403,9 @@ li.paginate_item.page-item span.ellipsis.page-link {
   }
 }
 @media only screen and (min-width:992px) and (max-width:1040px){
-
+  .py-4.table-responsive.buttons-fixes .dataTables_wrapper .dataTables_filter {
+    position: relative !important;
+  }
   .responsive-ui.block-view .datatable_wrapper_row .dataTable{
     display: block!important;
     overflow-x: auto!important;
@@ -3801,6 +3814,10 @@ div#printableArea #printableAreaContent{
   font-weight: 400 !important;
 }
 @media only screen and  (max-width:575px){
+  .set_table.new-responsive.attribute-list.inventory-search .dataTables_wrapper .dataTables_filter label {
+    margin: 1rem 0 1rem 0 !important;
+    display: block;
+}
   .__descripiton-txt.__not-first-hidden {
     margin-bottom: 18x;
     max-height: 55px;

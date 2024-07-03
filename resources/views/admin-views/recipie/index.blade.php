@@ -50,7 +50,7 @@ table.dataTable.no-footer {
     <div class="row g-3">
         <div class="col-12">
             <div class="card">
-                <div class="card-top px-card">
+                <div class="card-top px-card button-fixes">
                     <div class="d-flex flex-column flex-md-row flex-wrap  align-items-md-center">
                         <div class="d-flex flex-wrap align-items-center">
                             <a href="{{ route('admin.recipe.add') }}" type="button" class="btn btn-primary btn-attribute" >
