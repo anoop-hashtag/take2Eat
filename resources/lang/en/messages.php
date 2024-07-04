@@ -2413,4 +2413,5 @@
   'Paneer' => 'Paneer',
   'Sugar' => 'Sugar',
   'Besan' => 'Besan',
+  'Sanchit' => 'Sanchit',
 );

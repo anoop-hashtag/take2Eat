@@ -132,6 +132,8 @@ class ReturnPurchaseController extends Controller
                 $purchase_id = $request->purchase_id;
                 $return_purchase = ReturnPurchase::where('purchase_id', $id)->firstOrFail();
                 $return_purchase_id = $return_purchase->id;
+                $return_purchase->note = isset($request->note) ? $request->note : '';
+                $return_purchase->update();
 
                 for($i = 0; $i < count($request->return_ingredients); $i++) {
                     $index = array_keys($request->return_ingredients)[$i];

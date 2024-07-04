@@ -19,99 +19,96 @@
     <div class="row g-2">
         <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
             <div class="card">
-                <form action="{{ route('admin.return-purchase.edit') }}" method="post">
-                    @csrf
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('vendor')}}<span class="text-danger">*</span></label>
-                                        <input type="text" readonly name="vendor_id" value="{{  $returnPurchase[0]->name }}" class="form-control" required>
+                @if (isset($returnPurchaseIngredientItems))
+                    <form action="{{ route('admin.return-purchase.update', [$editpurchasedetail->id]) }}" method="post">
+                        @csrf
+                        
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="input-label">{{translate('vendor')}}<span class="text-danger">*</span></label>
+                                            <input type="text" readonly name="vendor_id" value="{{  $returnPurchase[0]->name }}" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Invoice')}}<span class="text-danger">*</span></label>
-                                        <input type="number" readonly name="invoice" value="{{ $returnPurchase[0]->invoice }}" class="form-control" required>
+                                    <div class="col-lg-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="input-label">{{translate('Invoice')}}<span class="text-danger">*</span></label>
+                                            <input type="number" readonly name="invoice" value="{{ $returnPurchase[0]->invoice }}" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label class="input-label">{{translate('Note')}}</label>
-                                        <textarea name="note" class="form-control">{{ $returnPurchase[0]->note }}</textarea>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="input-label">{{translate('Note')}}</label>
+                                            <textarea name="note" class="form-control">{{ $returnPurchase[0]->note }}</textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
-              <!-- Table -->
 
-              <div class="set_table banner-tbl mt-4" >
-                <div class="table-responsive datatable_wrapper_row">
-                    <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                        <thead class="thead-light">
-                        <tr>
-                            <th></th>
-                            <th style="width: 35%;">{{translate('Item')}}</th>
-                            <th style="width: 15%;">{{translate('quantity')}}</th>
-                            <th style="width: 15%;">{{translate('quantity_type')}}</th>
-                            <th style="width: 15%;">{{translate('rate')}}</th>
-                            <th style="width: 15%;">{{translate('total')}}</th>
-                        </tr>
-                        </thead>
-                        @if (isset($returnPurchaseIngredientItems))
-                        <form action="{{ route('admin.return-purchase.update', [$editpurchasedetail->id]) }}" method="post">
-                                <tbody>
-                                    @csrf
-                                    <input type="hidden" name="purchase_id" value="{{ $returnPurchaseIngredientItems[0]->return_purchase_id }}" />
-
-                                    @foreach ($returnPurchaseIngredientItems as $key => $purchaseIngredient)
+                        <!-- Table -->
+                        <div class="set_table banner-tbl mt-4" >
+                            <div class="table-responsive datatable_wrapper_row">
+                                <table id="datatable"  class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
+                                    <thead class="thead-light">
                                         <tr>
-                                            <td>
-                                                <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control" value="{{ $purchaseIngredient->purchase_ingredient_id }}">
-                                            </td>
-                                            
-                                            <td>
-                                                <select name="items[{{$key}}]" onchange="updateQtyType(this)" class="custom-select">
-                                                    <option selected disabled>{{translate('select_item')}}</option>
-                                                    @foreach ($ingredients as $ingredient)
-                                                        <option value="{{ $ingredient->id }}"
-                                                            data-qtytyp="{{ $ingredient->quantity_type }}"
-                                                            {{ $ingredient->id == json_decode($purchaseIngredient->ingredient_details)->id ? 'selected' : '' }}>
-                                                            {{ $ingredient->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)" class="form-control quantity qty" value="{{ $purchaseIngredient->return_quantity }}" required>
-                                                {{-- <input type="hidden" class="main_quantity qty" onkeyup="calculateTotal(this)" value="{{ $purchaseIngredient->return_quantity }}" /> --}}
-                                                {{-- <span class="max-error" style="color: red; font-size:12px; display: none;">Please valid quantity</span> --}}
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control quantity_type qty-type" value="{{ json_decode($purchaseIngredient->ingredient_details)->quantity_type }}" readonly>
-                                            </td>
-                                            <td>
-                                                <input type="number" class="form-control rate" onkeyup="calculateTotal(this)" value="{{ $purchaseIngredient->rate }}" readonly>
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control total" value="{{ $purchaseIngredient->rate * $purchaseIngredient->return_quantity }}" readonly>
-                                            </td>
+                                            <th></th>
+                                            <th style="width: 35%;">{{translate('Item')}}</th>
+                                            <th style="width: 15%;">{{translate('quantity')}}</th>
+                                            <th style="width: 15%;">{{translate('quantity_type')}}</th>
+                                            <th style="width: 15%;">{{translate('rate')}}</th>
+                                            <th style="width: 15%;">{{translate('total')}}</th>
                                         </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                            <div class="d-flex justify-content-end gap-3 m-4">
-                                <button type="submit" class="btn btn-primary">{{translate('Update')}}</button>
+                                    </thead>
+                                    <tbody>
+                                        <input type="hidden" name="purchase_id" value="{{ $returnPurchaseIngredientItems[0]->return_purchase_id }}" />
+                                        @foreach ($returnPurchaseIngredientItems as $key => $purchaseIngredient)
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control" value="{{ $purchaseIngredient->purchase_ingredient_id }}">
+                                                </td>
+                                                
+                                                <td>
+                                                    <select name="items[{{$key}}]" onchange="updateQtyType(this)" class="custom-select">
+                                                        <option selected disabled>{{translate('select_item')}}</option>
+                                                        @foreach ($ingredients as $ingredient)
+                                                            <option value="{{ $ingredient->id }}"
+                                                                data-qtytyp="{{ $ingredient->quantity_type }}"
+                                                                {{ $ingredient->id == json_decode($purchaseIngredient->ingredient_details)->id ? 'selected' : '' }}>
+                                                                {{ $ingredient->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)" class="form-control quantity qty" value="{{ $purchaseIngredient->return_quantity }}" required>
+                                                    {{-- <input type="hidden" class="main_quantity qty" onkeyup="calculateTotal(this)" value="{{ $purchaseIngredient->return_quantity }}" /> --}}
+                                                    {{-- <span class="max-error" style="color: red; font-size:12px; display: none;">Please valid quantity</span> --}}
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control quantity_type qty-type" value="{{ json_decode($purchaseIngredient->ingredient_details)->quantity_type }}" readonly>
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control rate" onkeyup="calculateTotal(this)" value="{{ $purchaseIngredient->rate }}" readonly>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control total" value="{{ $purchaseIngredient->rate * $purchaseIngredient->return_quantity }}" readonly>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-end gap-3 m-4">
+                                    <button type="submit" class="btn btn-primary">{{translate('Update')}}</button>
+                                </div>
                             </div>
-                        </form>
-                            
-                    @endif
-                </div>
-            </div>
+                        </div>
+                    </form>
+                @endif
+
+
             <form id="return_purchase-{{$returnPurchaseIngredientItems[0]->return_purchase_id}}" action="{{ route('admin.return-purchase.returncancel', [$returnPurchaseIngredientItems[0]->return_purchase_id]) }}" method="post">
                 @csrf 
             </form> 
