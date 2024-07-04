@@ -114,7 +114,7 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}"  value="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)"  class="form-control quantity" required>
+                                                        <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}"  value="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)"  class="form-control quantity qty" required>
                                                         <input type="hidden" class="main_quantity" value="{{ $purchaseIngredient->quantity }}" />
                                                     </td>
                                                     <td>
