@@ -75,7 +75,11 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>
-                                            <a href="{{ route('admin.return-purchase.view', [$returnPurchase->id]) }}">{{ $returnPurchase->invoice }}</a>
+                                            @if ($returnPurchase->status == 0)
+                                                <a href="{{ route('admin.return-purchase.view', [$returnPurchase->id]) }}">{{ $returnPurchase->invoice }}</a>
+                                            @else
+                                                <a href="javascript:void(0)">{{ $returnPurchase->invoice }}</a>
+                                            @endif
                                         </td>
                                         <td>{{ $returnPurchase->name }} <br/> {{ $returnPurchase->mobile }}</td>
                                         <td>{{ date('d-m-Y', strtotime($returnPurchase->created_at)) }}</td>
