@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->integer('vendor_id');
-            $table->integer('invoice');
+            $table->string('invoice');
             $table->date('purchase_date')->nullable();
             $table->string('payment_type')->nullable();
             $table->text('note')->nullable();
