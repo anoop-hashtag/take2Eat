@@ -2,7 +2,11 @@
 
 @section('title', translate('Edit_Return_Purchase'))
 
-
+<style>
+    input.form-control.input-check {
+        width: 16px !important; 
+    }
+    </style>
 @section('content')
 <div class="content container-fluid">
     <!-- Page Header -->
@@ -67,7 +71,7 @@
                                         @foreach ($returnPurchaseIngredientItems as $key => $purchaseIngredient)
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control" value="{{ $purchaseIngredient->purchase_ingredient_id }}">
+                                                    <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control input-check" value="{{ $purchaseIngredient->purchase_ingredient_id }}">
                                                 </td>
                                                 
                                                 <td>

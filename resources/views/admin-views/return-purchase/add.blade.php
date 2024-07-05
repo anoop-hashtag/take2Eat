@@ -1,7 +1,11 @@
 @extends('layouts.admin.app')
 
 @section('title', translate('Add_Return_Purchase'))
-
+<style>
+input.form-control.input-check {
+    width: 16px !important; 
+}
+</style>
 @section('content')
 <div class="content container-fluid">
     <!-- Page Header -->
@@ -97,11 +101,11 @@
                                 @if (isset($purchaseIngredients))
                                         <tbody>
                                             @csrf
-                                            <input type="hidden" name="purchase_id" value="{{ $purchaseIngredients[0]->id }}" />
+                                            <input type="hidden" name="purchase_id" value="{{ $purchaseIngredients[0]->id }}"  />
                                             @foreach ($purchaseIngredients as $key => $purchaseIngredient)
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control" value="{{ $purchaseIngredient->purchases_ingredient_items_id }}">
+                                                        <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control input-check" value="{{ $purchaseIngredient->purchases_ingredient_items_id }}">
                                                     </td>
                                                     <td>
                                                         <select name="items[{{$key}}]" onchange="updateQtyType(this)" class="custom-select items">
@@ -138,7 +142,7 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input type="checkbox" name="text" class="form-control">
+                                                <input type="checkbox" name="text" class="form-control input-check">
                                             </td>
                                             <td>
                                                 <select name="items[]" class="custom-select items">

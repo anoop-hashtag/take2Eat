@@ -3075,6 +3075,11 @@ li.paginate_item.page-item span.ellipsis.page-link {
   position: absolute;
   margin-top: -13px !important;
 }
+input.form-control.input-check {
+    width: 16px !important; 
+}
+
+
 /*---------------------------------------------------all media queries-------------------------------------------------------------*/
 @media only screen and (min-width:640px){
   span.status {
