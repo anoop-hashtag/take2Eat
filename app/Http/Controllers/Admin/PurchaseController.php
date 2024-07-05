@@ -139,10 +139,8 @@ class PurchaseController extends Controller
                             $ingredient_details->quantity = $ingredient_details->quantity + $quantity;
                             $ingredient_details->update();
                         }
-    
                         Toastr::success('Purchase update successfully');
                         return redirect('admin/purchase');
-    
                     } else {
                         Toastr::error('Vendor and invoice is already exists');
                         return back();
