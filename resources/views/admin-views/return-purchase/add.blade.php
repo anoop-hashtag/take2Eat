@@ -1,11 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title', translate('Add_Return_Purchase'))
-<style>
-input.form-control.input-check {
-    width: 16px !important; 
-}
-</style>
+
 @section('content')
 <div class="content container-fluid">
     <!-- Page Header -->
@@ -101,11 +97,11 @@ input.form-control.input-check {
                                 @if (isset($purchaseIngredients))
                                         <tbody>
                                             @csrf
-                                            <input type="hidden" name="purchase_id" value="{{ $purchaseIngredients[0]->id }}"  />
+                                            <input type="hidden" name="purchase_id" value="{{ $purchaseIngredients[0]->id }}" />
                                             @foreach ($purchaseIngredients as $key => $purchaseIngredient)
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control input-check" value="{{ $purchaseIngredient->purchases_ingredient_items_id }}">
+                                                        <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control" value="{{ $purchaseIngredient->purchases_ingredient_items_id }}">
                                                     </td>
                                                     <td>
                                                         <select name="items[{{$key}}]" onchange="updateQtyType(this)" class="custom-select items">
@@ -118,14 +114,14 @@ input.form-control.input-check {
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}"  value="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)"  class="form-control quantity qty" required>
+                                                        <input type="number" name="quantitys[{{$key}}]" step="0.1" min="0.1" max="{{ $purchaseIngredient->quantity }}"  value="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)"  class="form-control quantity qty" required>
                                                         <input type="hidden" class="main_quantity" value="{{ $purchaseIngredient->quantity }}" />
                                                     </td>
                                                     <td>
                                                         <input type="text" class="form-control quantity_type qty-type" value="{{ json_decode($purchaseIngredient->ingredient_details)->quantity_type }}" readonly>
                                                     </td>
                                                     <td>
-                                                        <input type="number" class="form-control rate"  onkeyup="calculateTotal(this)"  value="{{ $purchaseIngredient->rate }}" readonly>
+                                                        <input type="number"  class="form-control rate" step="0.1" min="0.1" onkeyup="calculateTotal(this)"  value="{{ $purchaseIngredient->rate }}" readonly>
                                                     </td>
                                                     <td>
                                                         <input type="text" class="form-control total" value="{{ $purchaseIngredient->rate * $purchaseIngredient->quantity }}" readonly>
@@ -142,7 +138,7 @@ input.form-control.input-check {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input type="checkbox" name="text" class="form-control input-check">
+                                                <input type="checkbox" name="text" class="form-control">
                                             </td>
                                             <td>
                                                 <select name="items[]" class="custom-select items">
@@ -153,13 +149,13 @@ input.form-control.input-check {
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="number" name="quantitys[]" class="form-control quantity" required>
+                                                <input type="number"  step="0.1" min="0.1" name="quantitys[]" class="form-control quantity" required>
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control quantity_type" readonly>
                                             </td>
                                             <td>
-                                                <input type="number" name="rates[]" class="form-control rate" required>
+                                                <input type="number" step="0.1" min="0.1" name="rates[]" class="form-control rate" required>
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control total" required readonly>
@@ -213,12 +209,17 @@ input.form-control.input-check {
     </script>
 
     <script>
+
         function calculateMax(input) {
-            var enteredValue = parseInt(input.value);
-            var maxValue = parseInt(input.getAttribute('max'));
-    
-            if (isNaN(enteredValue) || !Number.isInteger(enteredValue)) {
+            var enteredValue = parseFloat(input.value); 
+            var maxValue = parseFloat(input.getAttribute('max'));
+
+            if (isNaN(enteredValue) || !Number.isFinite(enteredValue)) { 
                 input.value = '';
+                document.querySelector('.max-error').style.display = 'none';
+            } else if (enteredValue === 0) {
+                alert("Quantity must be a positive number and cannot be 0. Please enter a valid quantity.");
+                input.value = ''; 
                 document.querySelector('.max-error').style.display = 'none';
             } else if (enteredValue > maxValue) {
                 input.value = Math.floor(maxValue);
@@ -227,6 +228,7 @@ input.form-control.input-check {
                 document.querySelector('.max-error').style.display = 'none';
             }
         }
+
     
         function updateQtyType(select) {
             var selectedOption = select.options[select.selectedIndex];
@@ -246,19 +248,19 @@ input.form-control.input-check {
             row.find('.total').val(total.toFixed(0));
         }
     
-        function showAlertOnZero(input) {
-            let quantity = parseFloat(input.value.trim());
-            if (isNaN(quantity) || quantity <= 0) {
-                alert("Quantity must be a positive number and cannot be 0. Please enter a valid quantity.");
-                input.value = '';
-            }
-        }
+        // function showAlertOnZero(input) {
+        //     let quantity = parseFloat(input.value.trim());
+        //     if (isNaN(quantity) || quantity <= 0) {
+        //         alert("Quantity must be a positive number and cannot be 0. Please enter a valid quantity.");
+        //         input.value = '';
+        //     }
+        // }
     
         document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('.qty');
             inputs.forEach(function(input) {
-                input.addEventListener('keyup', function() {
-                    showAlertOnZero(input);
+                input.addEventListener('onchange', function() {
+                    calculateMax(input);
                 });
             });
         });
