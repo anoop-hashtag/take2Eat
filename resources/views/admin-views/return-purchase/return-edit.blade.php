@@ -2,11 +2,7 @@
 
 @section('title', translate('Edit_Return_Purchase'))
 
-<style>
-    input.form-control.input-check {
-        width: 16px !important; 
-    }
-    </style>
+
 @section('content')
 <div class="content container-fluid">
     <!-- Page Header -->
@@ -71,7 +67,7 @@
                                         @foreach ($returnPurchaseIngredientItems as $key => $purchaseIngredient)
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control input-check" value="{{ $purchaseIngredient->purchase_ingredient_id }}">
+                                                    <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control" value="{{ $purchaseIngredient->purchase_ingredient_id }}">
                                                 </td>
                                                 
                                                 <td>
@@ -87,7 +83,7 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="quantitys[{{$key}}]" min="0" step="1" max="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)" class="form-control quantity qty" value="{{ $purchaseIngredient->return_quantity }}" required>
+                                                    <input type="number" name="quantitys[{{$key}}]" step="0.1" min="0.1" max="{{ $purchaseIngredient->quantity }}" onchange="calculateMax(this)" onkeyup="calculateTotal(this)" class="form-control quantity qty" value="{{ $purchaseIngredient->return_quantity }}" required>
                                                     {{-- <input type="hidden" class="main_quantity qty" onkeyup="calculateTotal(this)" value="{{ $purchaseIngredient->return_quantity }}" /> --}}
                                                     {{-- <span class="max-error" style="color: red; font-size:12px; display: none;">Please valid quantity</span> --}}
                                                 </td>
@@ -125,6 +121,7 @@
                         <li>User cannot edit the Purchase, for which user already created Return Purchase.</li>
                         <li>The quantity of the item which are cancelled will be added to Ingredients.</li>
                     </ol>
+
                 </div>
                 <div>
                     <button type="button" class="btn btn-outline-danger"
@@ -141,12 +138,16 @@
 
 @push('script_2') 
     <script>
-        function calculateMax(input) {
-            var enteredValue = parseInt(input.value);
-            var maxValue = parseInt(input.getAttribute('max'));
+         function calculateMax(input) {
+            var enteredValue = parseFloat(input.value); 
+            var maxValue = parseFloat(input.getAttribute('max'));
 
-            if (isNaN(enteredValue) || !Number.isInteger(enteredValue)) {
+            if (isNaN(enteredValue) || !Number.isFinite(enteredValue)) { 
                 input.value = '';
+                document.querySelector('.max-error').style.display = 'none';
+            } else if (enteredValue === 0) {
+                alert("Quantity must be a positive number and cannot be 0. Please enter a valid quantity.");
+                input.value = ''; 
                 document.querySelector('.max-error').style.display = 'none';
             } else if (enteredValue > maxValue) {
                 input.value = Math.floor(maxValue);
@@ -174,19 +175,19 @@
             row.find('.total').val(total.toFixed(0));
         }
 
-        function showAlertOnZero(input) {
-            let quantity = parseFloat(input.value.trim());
-            if (isNaN(quantity) || quantity <= 0) {
-                alert("Quantity must be a positive number and cannot be 0. Please enter a valid quantity.");
-                input.value = '';
-            }
-        }
-
+       // function showAlertOnZero(input) {
+        //     let quantity = parseFloat(input.value.trim());
+        //     if (isNaN(quantity) || quantity <= 0) {
+        //         alert("Quantity must be a positive number and cannot be 0. Please enter a valid quantity.");
+        //         input.value = '';
+        //     }
+        // }
+    
         document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('.qty');
             inputs.forEach(function(input) {
-                input.addEventListener('keyup', function() {
-                    showAlertOnZero(input);
+                input.addEventListener('onchange', function() {
+                    calculateMax(input);
                 });
             });
         });
