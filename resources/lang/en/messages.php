@@ -2414,4 +2414,6 @@
   'Sugar' => 'Sugar',
   'Besan' => 'Besan',
   'Sanchit' => 'Sanchit',
+  'GST No.' => 'GST No.',
+  'GST_No.' => 'GST No.',
 );

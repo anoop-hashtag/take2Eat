@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', translate('Recipie'))
+@section('title', translate('Recipe'))
 
 <style>
     .dataTables_wrapper .dataTables_paginate .paginate_button {
