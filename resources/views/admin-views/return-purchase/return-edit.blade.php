@@ -120,7 +120,7 @@
                 <div class="note-area">
                     <h5>Notes :-</h5>
                     <ol class="note-list" >
-                        <li>Quantity cannot be more than the original quantity and cannot be o.</li>
+                        <li>Quantity cannot be more than the original quantity and cannot be 0.</li>
                         <li>If the user wants to change the item in Edit Return Purchase, the user needs to cancel the Cancel Return Purchase and create a new Return Purchase.</li>
                         <li>User cannot edit the Purchase, for which user already created Return Purchase.</li>
                         <li>The quantity of the item which are cancelled will be added to Ingredients.</li>
