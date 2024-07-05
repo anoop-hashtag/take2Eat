@@ -54,7 +54,7 @@
                             <tr>
                                 <th>{{ translate('SL') }}</th>
                                 <th>{{ translate('ingredient') }}</th>
-                                <th>{{ translate('quanity') }}</th>
+                                <th>{{ translate('quantity') }}</th>
                                 <th>{{ translate('rate') }}</th>
                                 <th>{{ translate('total') }}</th>
                             </tr>
