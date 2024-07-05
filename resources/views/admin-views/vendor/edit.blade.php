@@ -74,8 +74,8 @@ table.dataTable.no-footer {
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label">{{translate('GST_No.')}}</label>
-                                    <input type="text" name="gst" id="gst" class="form-control" value="{{ $vendor->gst }}" placeholder="{{translate('GST')}}">
-                                    <p class="error-message" id="gstError" style="display: none; color:red">Invalid GST Number</p>
+                                    <input type="text" name="gst" id="gst" class="form-control" value="{{ $vendor->gst }}" placeholder="{{translate('GST_No.')}}">
+                                    <p class="error-message" id="gstError" style="display: none; color:red">Invalid GST No.</p>
                                 </div>
                             </div>
                         </div>
