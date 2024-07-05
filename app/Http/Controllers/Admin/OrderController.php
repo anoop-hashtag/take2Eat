@@ -400,7 +400,7 @@ class OrderController extends Controller
             $orderDetails = OrderDetail::where('order_id', $request->id)->get();
             if(count($orderDetails) > 0) {
                 foreach($orderDetails as $orderDetail) {
-                    $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->name; 
+                    $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->values[0]->label; 
                     $recipie = Recipie::with('recipieIngredients')->where('product_id', $orderDetail->product_id)->where('variation', '=', $variation)->get();
                     if(count($recipie) > 0) {
                         foreach($recipie[0]->recipieIngredients as $ingredient) {
@@ -450,7 +450,7 @@ class OrderController extends Controller
             $orderDetails = OrderDetail::where('order_id', $request->id)->get();
             if(count($orderDetails) > 0) {
                 foreach($orderDetails as $orderDetail) {
-                    $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->name; 
+                    $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->values[0]->label; 
                     $recipie = Recipie::with('recipieIngredients')->where('product_id', $orderDetail->product_id)->where('variation', '=', $variation)->get();
                     if(count($recipie) > 0) {
                         foreach($recipie[0]->recipieIngredients as $ingredient) {
