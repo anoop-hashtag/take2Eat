@@ -167,12 +167,14 @@ table.dataTable.no-footer {
                 success: function(response) {
                     if(response.status == 200) {
                         $('#variationDiv').show();
-                        $("#variation").append('<option selected disabled>Select Variation</option>');
+                        $('#variation').prop('required',true);
+                        $("#variation").append('<option disabled>Select Variation</option>');
                         response.data.forEach(function(value) {
                             $("#variation").append('<option>'+ value + '</option>');
                         })
                     } else {
                         $('#variationDiv').css('display', 'none');
+                        $('#variation').prop('required',false);
                     }
                 }
             });
