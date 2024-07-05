@@ -87,13 +87,13 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="number" name="quantitys[]" class="form-control quantity" required>
+                                        <input type="number" name="quantitys[]" step="0.1" min="0.1" class="form-control quantity" required>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control quantity_type" readonly>
                                     </td>
                                     <td>
-                                        <input type="number" name="rates[]" class="form-control rate" required>
+                                        <input type="number" name="rates[]" step="0.1" min="0.1" class="form-control rate" required>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control total" required readonly>
@@ -148,9 +148,9 @@
                             '@endforeach' +
                         '</select>' +
                     '</td>';
-            html += '<td><input type="number" name="quantitys[]" class="form-control quantity" required></td>';
+            html += '<td><input type="number" name="quantitys[]" step="0.1" min="0.1" class="form-control quantity" required></td>';
             html += '<td><input type="text" class="form-control quantity_type" required readonly></td>';
-            html += '<td><input type="number" name="rates[]" class="form-control rate" required></td>';
+            html += '<td><input type="number" step="0.1" min="0.1" name="rates[]" class="form-control rate" required></td>';
             html += '<td><input type="text" class="form-control total" required readonly></td>';
             html += '<td>' +
                         '<div class="d-flex gap-2">' +
