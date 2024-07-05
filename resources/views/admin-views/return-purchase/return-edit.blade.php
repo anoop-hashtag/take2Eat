@@ -120,8 +120,10 @@
                 <div class="note-area">
                     <h5>Notes :-</h5>
                     <ol class="note-list" >
-                        <li>After uploading products you need to edit them and set product s images and choices.</li>
-                        <li>You can get category and sub-category id from their list, please input the right ids.</li>
+                        <li>Quantity cannot be more than the original quantity and cannot be o.</li>
+                        <li>If the user wants to change the item in Edit Return Purchase, the user needs to cancel the Cancel Return Purchase and create a new Return Purchase.</li>
+                        <li>User cannot edit the Purchase, for which user already created Return Purchase.</li>
+                        <li>The quantity of the item which are cancelled will be added to Ingredients.</li>
                     </ol>
                 </div>
                 <div>
