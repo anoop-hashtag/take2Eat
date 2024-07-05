@@ -73,7 +73,7 @@ table.dataTable.no-footer {
                                     <input type="email" name="email" class="form-control" placeholder="{{translate('abc@gmail.com')}}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="input-label">{{translate('GST')}}</label>
+                                    <label class="input-label">{{translate('GST_No.')}}</label>
                                     <input type="text" name="gst" id="gst" class="form-control" placeholder="{{translate('GST')}}">
                                     <p class="error-message" id="gstError" style="display: none; color:red">Invalid GST Number</p>
                                 </div>
@@ -118,7 +118,7 @@ table.dataTable.no-footer {
                                         <th>{{translate('SL')}}</th>
                                         <th>{{translate('name')}}</th>
                                         <th>{{translate('contact_info')}}</th>
-                                        <th>{{translate('GST')}}</th>
+                                        <th>{{translate('GST No.')}}</th>
                                         <th>{{translate('address')}}</th>
                                         <th>{{translate('action')}}</th>
                                     </tr>
@@ -186,7 +186,7 @@ table.dataTable.no-footer {
                                         0: 'SL',
                                         1: 'Name',
                                         2: 'Contact Info',
-                                        3: 'GST',
+                                        3: 'GST No.',
                                         4: 'Address'
                                     };
                                     return columnNames[columnIdx] !== undefined ? columnNames[columnIdx] : data;

@@ -73,7 +73,7 @@ table.dataTable.no-footer {
                                     <input type="email" name="email" class="form-control" value="{{ $vendor->email }}" mailto:placeholder="{{translate('abc@gmail.com')}}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="input-label">{{translate('GST')}}</label>
+                                    <label class="input-label">{{translate('GST_No.')}}</label>
                                     <input type="text" name="gst" id="gst" class="form-control" value="{{ $vendor->gst }}" placeholder="{{translate('GST')}}">
                                     <p class="error-message" id="gstError" style="display: none; color:red">Invalid GST Number</p>
                                 </div>
