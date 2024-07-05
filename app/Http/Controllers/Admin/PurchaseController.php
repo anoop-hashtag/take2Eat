@@ -67,7 +67,7 @@ class PurchaseController extends Controller
                 return redirect('admin/purchase');
 
             } else {
-                Toastr::error('Vendor and invoice is already exists');
+                Toastr::error('Invoice Number for this Vendor already exists');
                 return back();
             }
         } else {
@@ -142,7 +142,7 @@ class PurchaseController extends Controller
                         Toastr::success('Purchase update successfully');
                         return redirect('admin/purchase');
                     } else {
-                        Toastr::error('Vendor and invoice is already exists');
+                        Toastr::error('Invoice Number for this Vendor already exists');
                         return back();
                     }
                 } else {
