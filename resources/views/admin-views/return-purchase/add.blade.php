@@ -65,7 +65,7 @@
                     
                 </form>
                 <!-- Table -->
-                <form action="{{ route('admin.return-purchase.store') }}" method="post">
+                <form action="{{ route('admin.return-purchase.store') }}" method="post"  id="myForm" onsubmit="return validateForm()">
                     <!-- for note -->
                     @if (isset($vendor_id) && isset($invoice))
                         <div class="row">
@@ -101,7 +101,7 @@
                                             @foreach ($purchaseIngredients as $key => $purchaseIngredient)
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control" value="{{ $purchaseIngredient->purchases_ingredient_items_id }}">
+                                                        <input type="checkbox" name="return_ingredients[{{$key}}]" class="form-control required-checkbox" value="{{ $purchaseIngredient->purchases_ingredient_items_id }}">
                                                     </td>
                                                     <td>
                                                         <select name="items[{{$key}}]" onchange="updateQtyType(this)" class="custom-select items">
@@ -178,6 +178,22 @@
 @endsection
 
 @push('script_2')
+    <script>
+        function validateForm() {
+            var checkboxes = $('.required-checkbox').val();
+            var isChecked = false;
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    isChecked = true;
+                    break;
+                }
+            }
+            if (!isChecked) {
+                alert('Please select at least one Ingredient.');
+                return false; 
+            }
+        }
+    </script>
     <script>
         $('#vendor_id').on('change', function() {
             let vendor_id = $(this).val();

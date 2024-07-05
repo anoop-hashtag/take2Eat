@@ -37,7 +37,7 @@ table.dataTable.no-footer {
         <h2 class="h1 mb-0 d-flex align-items-center gap-2">
             <img width="20" class="avatar-img" src="{{asset('public/assets/admin/img/inventory/recipe.png')}}" alt="">
             <span class="page-header-title">
-                {{translate('Recipe')}} 
+                {{translate('Add_Recipe')}} 
             </span>
         </h2>
     </div>
