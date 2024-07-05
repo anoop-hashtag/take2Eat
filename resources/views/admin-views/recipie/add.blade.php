@@ -99,7 +99,7 @@ table.dataTable.no-footer {
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="text" name="quantitys[]" class="form-control" required />
+                                            <input type="number" name="quantitys[]" step="0.1" min="0.1" class="form-control" required />
                                         </td>
                                         <td>
                                             <input type="text" class="form-control quantity_type" name="quantity_types[]" readonly>
@@ -141,7 +141,7 @@ table.dataTable.no-footer {
                             '@endforeach' +
                         '</select>' +
                     '</td>';
-            html += '<td><input type="text" name="quantitys[]" class="form-control quantity" required></td>';
+            html += '<td><input type="number" name="quantitys[]" step="0.1" min="0.1" class="form-control quantity" required></td>';
             html += '<td><input type="text" class="form-control quantity_type" name="quantity_types[]" readonly></td>';
             html += '<td>' +
                         '<button type="button" class="btn btn-outline-danger btn-sm delete square-btn" onclick="$(\'#faqs-row' + addRecipe_row+ '\').remove();"><i class="tio-delete"></i></button>' +
