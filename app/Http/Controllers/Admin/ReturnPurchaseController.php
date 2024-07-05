@@ -85,7 +85,7 @@ class ReturnPurchaseController extends Controller
     }
 
     public function view($id) {
-        $returnPurchaseIngredientItems = ReturnPurchaseIngredientItem::select('return_purchase_ingredient_items.*', 'purchases_ingredient_items.ingredient_details')
+        $returnPurchaseIngredientItems = ReturnPurchaseIngredientItem::select('return_purchase_ingredient_items.*', 'purchases_ingredient_items.ingredient_details', 'purchases_ingredient_items.rate')
             ->leftJoin('purchases_ingredient_items', 'purchases_ingredient_items.id', '=', 'return_purchase_ingredient_items.purchase_ingredient_id')
             ->where('return_purchase_ingredient_items.return_purchase_id', $id)
             ->get(); 

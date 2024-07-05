@@ -52,6 +52,8 @@
                     <th>{{ translate('SL') }}</th>
                     <th>{{ translate('ingredient') }}</th>
                     <th>{{ translate('quanity') }}</th>
+                    <th>{{ translate('rate') }}</th>
+                    <th>{{ translate('total') }}</th>
                 </tr>
                 </thead>  
                 <tbody>
@@ -63,6 +65,8 @@
                             <td>{{ $i++ }}</td>
                             <td>{{ translate(ucwords(json_decode($returnPurchaseIngredientItem->ingredient_details)->name)) }}</td>
                             <td>{{ $returnPurchaseIngredientItem->return_quantity }} {{ json_decode($returnPurchaseIngredientItem->ingredient_details)->quantity_type }}</td>
+                            <td>{{ \App\CentralLogics\Helpers::set_symbol($returnPurchaseIngredientItem->rate) }}</td>
+                            <td>{{ \App\CentralLogics\Helpers::set_symbol($returnPurchaseIngredientItem->return_quantity * $returnPurchaseIngredientItem->rate) }} </td>
                         </tr>
                     @endforeach
                 </tbody>
