@@ -43,9 +43,10 @@
                                 <label class="input-label">{{translate('Select Banner Type')}} <span class="text-danger ml-1">*</span></label>
                                 <select name="banner_type" id="banner_type" class="custom-select" required>
                                     <option disabled selected>{{ translate('-- Select --') }}</option>
-                                    <option value="bottom_banner">{{ translate('Bottom Banner (1110*380 px)') }}</option>
-                                    <option value="top_right_banner">{{ translate('Top Right Banner (280*450 px)') }}</option>
-                                    <option value="bottom_right_banner">{{ translate('Bottom Right Banner (280*350 px)') }}</option>
+                                    {{-- <option value="bottom_banner">{{ translate('Bottom Banner (1110*380 px)') }}</option> --}}
+                                    <option value="bottom_banner">{{ translate('Banner') }}</option>
+                                    {{-- <option value="top_right_banner">{{ translate('Top Right Banner (280*450 px)') }}</option>
+                                    <option value="bottom_right_banner">{{ translate('Bottom Right Banner (280*350 px)') }}</option> --}}
                                     <option value="video">{{ translate('Video') }}</option>
                                 </select>
                             </div>
