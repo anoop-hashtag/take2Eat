@@ -11,6 +11,8 @@ use App\Model\OrderDetail;
 use App\Model\Product;
 use App\Model\ProductByBranch;
 use App\Model\Table;
+use App\Model\Recipie;
+use App\Model\Ingredient;
 use App\Model\TableOrder;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -69,9 +71,12 @@ class TableController extends Controller
         //update daily stock
         Helpers::update_daily_product_stock();
 
+        $order_id = '';
+
         try {
             $order = $this->order;
-            $order->id = 100000 + $this->order->all()->count() + 1;
+            $order_id = 100000 + $this->order->all()->count() + 1;
+            $order->id = $order_id;
             $order->user_id = $request->id;
             $order->order_amount = Helpers::set_price($request['order_amount']);
             $order->coupon_discount_amount = Helpers::set_price($request->coupon_discount_amount);
@@ -223,6 +228,21 @@ class TableController extends Controller
                 if($branch_product->stock_type == 'daily' || $branch_product->stock_type == 'fixed' ){
                     $branch_product->sold_quantity += $c['quantity'];
                     $branch_product->save();
+                }
+            }
+
+            $orderDetails = OrderDetail::where('order_id', $order_id)->get();
+            if(count($orderDetails) > 0) {
+                foreach($orderDetails as $orderDetail) {
+                    $variation = count(json_decode($orderDetail->variation)) == 0 ? '' : json_decode($orderDetail->variation)[0]->values[0]->label; 
+                    $recipie = Recipie::with('recipieIngredients')->where('product_id', $orderDetail->product_id)->where('variation', '=', $variation)->get();
+                    if(count($recipie) > 0) {
+                        foreach($recipie[0]->recipieIngredients as $ingredient) {
+                            $ingredient_details = Ingredient::find($ingredient->ingredient_id);
+                            $ingredient_details->quantity = $ingredient_details->quantity - ($ingredient->quantity * $orderDetail->quantity);
+                            $ingredient_details->save();
+                        }
+                    }
                 }
             }
 
