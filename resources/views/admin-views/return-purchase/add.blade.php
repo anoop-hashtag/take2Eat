@@ -180,21 +180,23 @@
 @push('script_2')
     <script>
         function validateForm() {
-            var checkboxes = $('.required-checkbox').val();
+            var checkboxes = $('.required-checkbox');
             var isChecked = false;
-            for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
+            checkboxes.each(function() {
+                if ($(this).prop('checked')) {
                     isChecked = true;
-                    break;
+                    return false;
                 }
-            }
+            });
             if (!isChecked) {
                 alert('Please select at least one Ingredient.');
-                return false; 
+                return false;
             }
+            return true;
         }
+
     </script>
-    
+
     <script>
         $('#vendor_id').on('change', function() {
             let vendor_id = $(this).val();
