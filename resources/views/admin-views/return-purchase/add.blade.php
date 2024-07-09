@@ -194,6 +194,7 @@
             }
         }
     </script>
+    
     <script>
         $('#vendor_id').on('change', function() {
             let vendor_id = $(this).val();
