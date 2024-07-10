@@ -44,7 +44,7 @@
                                 <select name="banner_type" id="banner_type" class="custom-select" required>
                                     <option disabled selected>{{ translate('-- Select --') }}</option>
                                     {{-- <option value="bottom_banner">{{ translate('Bottom Banner (1110*380 px)') }}</option> --}}
-                                    <option value="bottom_banner">{{ translate('Banner') }}</option>
+                                    <option value="top_right_banner">{{ translate('Banner') }}</option>
                                     {{-- <option value="top_right_banner">{{ translate('Top Right Banner (280*450 px)') }}</option>
                                     <option value="bottom_right_banner">{{ translate('Bottom Right Banner (280*350 px)') }}</option> --}}
                                     <option value="video">{{ translate('Video') }}</option>
@@ -144,10 +144,11 @@
                                     <a class="text-dark" href="{{route('admin.promotion.branch',[$promotion->branch_id])}}">{{$promotion->branch->name}}</a>
                                 </td>
                                 <td>
-                                    @php
+                                    {{-- @php
                                         $promotion_type = $promotion['promotion_type'];
                                         echo str_replace('_', ' ', $promotion_type);
-                                    @endphp
+                                    @endphp --}}
+                                    {{ $promotion->promotion_type == 'top_right_banner' ? 'Banner' : 'Video' }}
                                 </td>
                                 <td>
                                     @if($promotion['promotion_type'] == 'video')
