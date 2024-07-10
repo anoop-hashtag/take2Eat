@@ -4138,3 +4138,7 @@ select.custom-select.w-auto.min-width-170px {
     opacity: 1;
   }
 }
+input[type="checkbox"].form-control {
+	height: 16px;
+	width: 16px;
+}
